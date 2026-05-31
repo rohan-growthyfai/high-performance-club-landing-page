@@ -14,18 +14,18 @@ export default function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left">
 
             {/* Identity pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full accent-pill text-xs font-bold tracking-wider uppercase animate-fade-up">
-              <Sparkles className="w-3.5 h-3.5" />
-              FREE 7-Day High Performance Lifestyle Challenge
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full accent-pill text-sm font-semibold animate-fade-up">
+              <Sparkles className="w-4 h-4" />
+              Join the FREE 7-Day High Performance Lifestyle Challenge
             </div>
 
             {/* Headline — more breathing room above */}
             <h1 className="mt-8 font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.1] tracking-tight text-balance text-foreground animate-fade-up delay-100">
-              Feel More{" "}
-              <span className="gradient-text">Energetic</span>,{" "}
-              <span className="gradient-text">Focused</span> &{" "}
-              <span className="gradient-text">In Control</span>{" "}
-              <span className="text-foreground-muted font-medium">in just</span>{" "}
+              Reclaim Your{" "}
+              <span className="gradient-text">Energy</span>,{" "}
+              <span className="gradient-text">Focus</span> &{" "}
+              <span className="gradient-text">Momentum</span>{" "}
+              <span className="text-foreground-muted font-medium">in Just</span>{" "}
               <span className="italic font-normal text-emphasis-yellow">7 Days</span>.
             </h1>
 
@@ -70,7 +70,7 @@ export default function Hero() {
                   <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />
                 ))}
                 <span className="ml-1 font-bold text-foreground">4.9</span>
-                <span>· 247+ members</span>
+                <span>· 2,400+ members</span>
               </div>
             </div>
           </div>

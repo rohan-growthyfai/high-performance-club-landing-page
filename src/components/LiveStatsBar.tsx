@@ -89,7 +89,7 @@ export default function LiveStatsBar() {
             value="4.9"
             suffix="★"
             label="Average rating"
-            sub="from 247+ members"
+            sub="from 2,400+ members"
           />
         </div>
 

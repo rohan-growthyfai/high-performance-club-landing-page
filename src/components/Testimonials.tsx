@@ -30,11 +30,7 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/women/44.jpg",
     rating: 5,
     text:
-      "I assumed it'd be another generic self-help thing. By Day 3 my afternoons felt completely different. The 90-min coffee tip alone was worth signing up for. 🙌",
-    attachedImage:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=400&fit=crop",
-    attachedCaption: "My morning chai now happens AFTER 90 mins ☕",
-    habit: "Day 1: Phone Parking",
+      "I assumed it'd be another generic self-help thing. By Day 3 my afternoons felt completely different. I cannot explain what changed — it just did. 🙌",
     daysAgo: "2 weeks ago",
     verified: true,
   },
@@ -44,23 +40,8 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     rating: 5,
     text:
-      "Honestly joined for the certificate (free + an actual prize?). Stayed because Day 5 broke me out of a 6-month productivity slump. Working on one tab at a time has changed my entire workday.",
-    habit: "Day 5: One-Tab Start",
+      "Honestly joined for the certificate. Stayed because Day 5 broke me out of a 6-month productivity slump. I did not expect a 7-minute habit to change my entire workday.",
     daysAgo: "3 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Anjali Reddy", // [PLACEHOLDER]
-    city: "Hyderabad",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-    rating: 5,
-    text:
-      "Did all 7 days. Phone Parking changed how I work. My team noticed I was more focused in meetings. Got my certificate framed on my desk now. 🏆",
-    attachedImage:
-      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=600&h=400&fit=crop",
-    attachedCaption: "Certificate on my desk!",
-    habit: "Day 1: Phone Parking",
-    daysAgo: "1 week ago",
     verified: true,
   },
   {
@@ -69,199 +50,11 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/men/76.jpg",
     rating: 5,
     text:
-      "The brain dump habit on Day 7 — I've been doing it every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast 😄",
+      "I've been doing one of the Day 7 habits every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast. 😄",
     attachedImage:
       "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop",
-    attachedCaption: "Brain dump journal — Day 21 streak 📔",
-    habit: "Day 7: Brain Dump",
+    attachedCaption: "Journal — Day 21 streak 📔",
     daysAgo: "1 month ago",
-    verified: true,
-  },
-  {
-    name: "Neha Kapoor", // [PLACEHOLDER]
-    city: "Delhi",
-    avatar: "https://randomuser.me/api/portraits/women/12.jpg",
-    rating: 5,
-    text:
-      "Light, fun, doable. Felt like a friend texting me, not a coach lecturing. The 'High five 🙌' messages made me actually smile.",
-    daysAgo: "5 days ago",
-    verified: true,
-  },
-  {
-    name: "Rohit Patel", // [PLACEHOLDER]
-    city: "Ahmedabad",
-    avatar: "https://randomuser.me/api/portraits/men/15.jpg",
-    rating: 5,
-    text:
-      "Joined Sunday night. Felt the shift by Wednesday. Closed Instagram on Day 5 and just… breathed. The Eye Vacation habit became my hourly ritual.",
-    habit: "Day 3: Eye Vacation",
-    daysAgo: "2 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Meera Krishnan", // [PLACEHOLDER]
-    city: "Chennai",
-    avatar: "https://randomuser.me/api/portraits/women/55.jpg",
-    rating: 5,
-    text:
-      "Eye Vacation sounds silly. It's not. I do it every hour now. Way less headaches. Wish my office gave us this instead of another wellness webinar 😅",
-    attachedImage:
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&h=400&fit=crop",
-    attachedCaption: "20-20-20 view from my office window",
-    habit: "Day 3: Eye Vacation",
-    daysAgo: "1 week ago",
-    verified: true,
-  },
-  {
-    name: "Aditya Singh", // [PLACEHOLDER]
-    city: "Gurgaon",
-    avatar: "https://randomuser.me/api/portraits/men/52.jpg",
-    rating: 5,
-    text:
-      "Best ₹0 I've ever spent. The posture switch on Day 2 actually works — felt like a different person in a client meeting. 🙏",
-    habit: "Day 2: Posture Switch",
-    daysAgo: "4 days ago",
-    verified: true,
-  },
-  {
-    name: "Sneha Iyer", // [PLACEHOLDER]
-    city: "Kolkata",
-    avatar: "https://randomuser.me/api/portraits/women/79.jpg",
-    rating: 5,
-    text:
-      "I'm a mom of 2 — zero time for anything. This was perfect. 5-minute habits while making dinner. Honestly the only challenge I've finished in years.",
-    attachedImage:
-      "https://images.unsplash.com/photo-1607000975492-3c8689e4a7ec?w=600&h=400&fit=crop",
-    attachedCaption: "Hung my certificate next to the kids' drawings ❤️",
-    daysAgo: "3 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Saurabh Joshi", // [PLACEHOLDER]
-    city: "Jaipur",
-    avatar: "https://randomuser.me/api/portraits/men/85.jpg",
-    rating: 5,
-    text:
-      "Skeptical at first. The Day 4 breathing thing actually works — used it before a tough team review and stayed calm the whole time. Wild.",
-    habit: "Day 4: The Double Breath",
-    daysAgo: "1 week ago",
-    verified: true,
-  },
-  {
-    name: "Kavya Nair", // [PLACEHOLDER]
-    city: "Kochi",
-    avatar: "https://randomuser.me/api/portraits/women/30.jpg",
-    rating: 5,
-    text:
-      "Sent this to my husband and sister. We're all doing it together now — comparing notes on WhatsApp. The 'High five 🙌' messages are addictive.",
-    attachedImage:
-      "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop",
-    attachedCaption: "Got the whole family in! 👨‍👩‍👧",
-    daysAgo: "6 days ago",
-    verified: true,
-  },
-  {
-    name: "Arjun Verma", // [PLACEHOLDER]
-    city: "Lucknow",
-    avatar: "https://randomuser.me/api/portraits/men/99.jpg",
-    rating: 5,
-    text:
-      "The Brain Dump is genuinely the best sleep hack I've ever tried. I was the 'I'll just remember it' guy. Now I sleep like a baby. Wife noticed first.",
-    habit: "Day 7: Brain Dump",
-    daysAgo: "2 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Ishita Bose", // [PLACEHOLDER]
-    city: "Bengaluru",
-    avatar: "https://randomuser.me/api/portraits/women/52.jpg",
-    rating: 5,
-    text:
-      "Marketing job, 60+ hour weeks. This was the only thing I actually finished in 2026 so far. Says a lot about how easy it is to stick with.",
-    attachedImage:
-      "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop",
-    attachedCaption: "My workspace after Day 5 ✨",
-    daysAgo: "3 days ago",
-    verified: true,
-  },
-  {
-    name: "Rahul Joshi", // [PLACEHOLDER]
-    city: "Indore",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
-    rating: 5,
-    text:
-      "Tried the One-Tab Start on a busy Monday morning. Got more done in 7 minutes than I usually do in an hour. Sold for life. 🎯",
-    habit: "Day 5: One-Tab Start",
-    daysAgo: "2 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Tanvi Desai", // [PLACEHOLDER]
-    city: "Surat",
-    avatar: "https://randomuser.me/api/portraits/women/91.jpg",
-    rating: 5,
-    text:
-      "I've started so many things and quit. This one felt like a friend texting, not a coach lecturing. Finished all 7 days for the first time ever. 🥹",
-    attachedImage:
-      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=600&h=400&fit=crop",
-    attachedCaption: "My Day 7 brain dump page 📔",
-    daysAgo: "1 week ago",
-    verified: true,
-  },
-  {
-    name: "Devansh Khanna", // [PLACEHOLDER]
-    city: "Chandigarh",
-    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
-    rating: 5,
-    text:
-      "Subscribed without expecting much. By Day 3, my evenings felt calmer. By Day 7, my mom asked what changed. That was the moment I knew.",
-    daysAgo: "10 days ago",
-    verified: true,
-  },
-  {
-    name: "Pooja Bansal", // [PLACEHOLDER]
-    city: "Noida",
-    avatar: "https://randomuser.me/api/portraits/women/19.jpg",
-    rating: 5,
-    text:
-      "Posture Switch on Day 2 sounds silly. It's not. Did it before a presentation — felt instantly more confident. Now my go-to before any meeting.",
-    habit: "Day 2: Posture Switch",
-    daysAgo: "4 days ago",
-    verified: true,
-  },
-  {
-    name: "Ritesh Gupta", // [PLACEHOLDER]
-    city: "Nagpur",
-    avatar: "https://randomuser.me/api/portraits/men/28.jpg",
-    rating: 5,
-    text:
-      "I was very sceptical at first. But the first habit itself — just putting my phone in another room — changed my entire work morning. Did more in 40 minutes than I do in 3 hours normally.",
-    habit: "Day 1: Phone Parking",
-    daysAgo: "5 days ago",
-    verified: true,
-  },
-  {
-    name: "Simran Kaur", // [PLACEHOLDER]
-    city: "Amritsar",
-    avatar: "https://randomuser.me/api/portraits/women/36.jpg",
-    rating: 5,
-    text:
-      "Honestly just joined for the certificate to show my husband I finished something for once. Ended up actually loving it. The Brain Dump habit is something I now do every single night.",
-    attachedImage:
-      "https://images.unsplash.com/photo-1455390582262-044cdead277a?w=600&h=400&fit=crop",
-    attachedCaption: "My brain dump journal — 3 weeks strong 📓",
-    habit: "Day 7: Brain Dump",
-    daysAgo: "2 weeks ago",
-    verified: true,
-  },
-  {
-    name: "Nikhil Sharma", // [PLACEHOLDER]
-    city: "Bhopal",
-    avatar: "https://randomuser.me/api/portraits/men/67.jpg",
-    rating: 5,
-    text:
-      "I have tried Headspace, Calm, three productivity apps, and two fitness programs. None lasted. This is the first thing I've actually completed. The WhatsApp format is a big reason — it meets me where I already am.",
-    daysAgo: "1 week ago",
     verified: true,
   },
   {
@@ -270,44 +63,41 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/women/62.jpg",
     rating: 5,
     text:
-      "The breathing habit on Day 4 saved me during a fight with my sister. I literally stopped, did three breaths, and was able to speak calmly. My sister noticed. Asked me what changed. 😂",
-    habit: "Day 4: The Double Breath",
+      "The Day 4 habit saved me during a fight with my sister. I literally stopped, used it, and was able to speak calmly in 30 seconds. My sister asked what changed. 😂",
     daysAgo: "1 week ago",
     verified: true,
   },
   {
-    name: "Abhishek Tiwari", // [PLACEHOLDER]
-    city: "Kanpur",
-    avatar: "https://randomuser.me/api/portraits/men/14.jpg",
+    name: "Sneha Iyer", // [PLACEHOLDER]
+    city: "Kolkata",
+    avatar: "https://randomuser.me/api/portraits/women/79.jpg",
     rating: 5,
     text:
-      "Day 5 hit different. I had been telling myself I'd do deep work for months. 7 minutes with one tab open and I finally believed I could. Small habits, big results — not just a saying.",
+      "I'm a mom of 2 with zero time for anything. This was the only challenge I've finished in years. 5 minutes while making dinner. And I still can't believe it actually worked.",
     attachedImage:
-      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=400&fit=crop",
-    attachedCaption: "My clean desk after Day 5 ✨",
-    habit: "Day 5: One-Tab Start",
-    daysAgo: "9 days ago",
-    verified: true,
-  },
-  {
-    name: "Ruchika Jain", // [PLACEHOLDER]
-    city: "Jodhpur",
-    avatar: "https://randomuser.me/api/portraits/women/48.jpg",
-    rating: 5,
-    text:
-      "A school teacher here. Thought this was for corporate people. But every habit worked beautifully for me too. The Eye Vacation habit especially — I teach 6 hours a day and the screen fatigue was real.",
-    habit: "Day 3: Eye Vacation",
+      "https://images.unsplash.com/photo-1607000975492-3c8689e4a7ec?w=600&h=400&fit=crop",
+    attachedCaption: "Certificate next to the kids' drawings ❤️",
     daysAgo: "3 weeks ago",
     verified: true,
   },
   {
-    name: "Varun Malhotra", // [PLACEHOLDER]
-    city: "Ludhiana",
-    avatar: "https://randomuser.me/api/portraits/men/38.jpg",
+    name: "Devansh Khanna", // [PLACEHOLDER]
+    city: "Chandigarh",
+    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
     rating: 5,
     text:
-      "I've sent this to 7 people. My wife, my brother, two colleagues, and three friends. Everyone I've sent it to has thanked me after completing it. This is genuinely one of the most useful free things I've found.",
-    daysAgo: "5 days ago",
+      "By Day 3, my evenings felt calmer. By Day 7, my mom asked what changed. That was the moment I knew something was actually different.",
+    daysAgo: "10 days ago",
+    verified: true,
+  },
+  {
+    name: "Nikhil Sharma", // [PLACEHOLDER]
+    city: "Bhopal",
+    avatar: "https://randomuser.me/api/portraits/men/67.jpg",
+    rating: 5,
+    text:
+      "I tried Headspace, Calm, three productivity apps, and two fitness programs. None lasted. This is the first thing I have actually completed. Something about the WhatsApp format just works.",
+    daysAgo: "1 week ago",
     verified: true,
   },
   {
@@ -316,11 +106,74 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/women/75.jpg",
     rating: 5,
     text:
-      "I cried a little when the certificate arrived. That sounds dramatic but I genuinely haven't finished anything I started in the last two years. This felt different because it was so small. Tiny habits, real change.",
+      "I cried a little when the certificate arrived. I genuinely have not finished anything I started in the last two years. It felt different because the habits were so small. Tiny action. Real change.",
     attachedImage:
       "https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=600&h=400&fit=crop",
     attachedCaption: "My certificate — finally! 🏆",
     daysAgo: "2 weeks ago",
+    verified: true,
+  },
+  {
+    name: "Pooja Bansal", // [PLACEHOLDER]
+    city: "Noida",
+    avatar: "https://randomuser.me/api/portraits/women/19.jpg",
+    rating: 5,
+    text:
+      "Day 2 habit sounds too simple to work. It does not. I did it before a presentation and felt instantly more confident. Now my go-to before any important meeting.",
+    daysAgo: "4 days ago",
+    verified: true,
+  },
+  {
+    name: "Rahul Joshi", // [PLACEHOLDER]
+    city: "Indore",
+    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    rating: 5,
+    text:
+      "Got more done in 7 minutes on Day 5 than I usually do in an hour. I literally sat there thinking — how is this possible? Completely sold. 🎯",
+    daysAgo: "2 weeks ago",
+    verified: true,
+  },
+  {
+    name: "Saurabh Joshi", // [PLACEHOLDER]
+    city: "Jaipur",
+    avatar: "https://randomuser.me/api/portraits/men/85.jpg",
+    rating: 5,
+    text:
+      "I was skeptical. The Day 4 habit took 30 seconds. I used it before a tough team review and stayed completely calm throughout. I do not know what that habit is scientifically — I just know it works.",
+    daysAgo: "1 week ago",
+    verified: true,
+  },
+  {
+    name: "Varun Malhotra", // [PLACEHOLDER]
+    city: "Ludhiana",
+    avatar: "https://randomuser.me/api/portraits/men/38.jpg",
+    rating: 5,
+    text:
+      "I have sent this to 7 people. My wife, my brother, two colleagues, three friends. Everyone came back and thanked me. The most useful free thing I have found in years.",
+    daysAgo: "5 days ago",
+    verified: true,
+  },
+  {
+    name: "Kavya Nair", // [PLACEHOLDER]
+    city: "Kochi",
+    avatar: "https://randomuser.me/api/portraits/women/30.jpg",
+    rating: 5,
+    text:
+      "We are doing it as a family now — comparing notes on WhatsApp every evening. The check-in messages made it feel like a game, not a chore.",
+    attachedImage:
+      "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop",
+    attachedCaption: "Got the whole family in! 👨‍👩‍👧",
+    daysAgo: "6 days ago",
+    verified: true,
+  },
+  {
+    name: "Ruchika Jain", // [PLACEHOLDER]
+    city: "Jodhpur",
+    avatar: "https://randomuser.me/api/portraits/women/48.jpg",
+    rating: 5,
+    text:
+      "I am a school teacher. Thought this was for corporate people. Every single habit worked for me too. The Day 3 habit especially — I teach 6 hours in front of a board and the difference was immediate.",
+    daysAgo: "3 weeks ago",
     verified: true,
   },
   {
@@ -329,7 +182,7 @@ const testimonials: Testimonial[] = [
     avatar: "https://randomuser.me/api/portraits/men/71.jpg",
     rating: 5,
     text:
-      "I run a small business and have zero time. These habits were made for someone like me. Under 10 minutes every day. Real results. Finished all 7 days without missing one. First time ever.",
+      "I run a small business. Zero time for anything. Under 5 minutes every day. Finished all 7 days without missing one. First time I have ever done that with anything.",
     daysAgo: "6 days ago",
     verified: true,
   },
@@ -348,9 +201,9 @@ export default function Testimonials() {
             Wall of love 💛
           </p>
           <h2 className="font-serif text-section-title text-balance text-foreground mb-6">
-            People who tried it.
+            What happened when
             <br />
-            <span className="italic font-light gradient-text">In their own words.</span>
+            <span className="italic font-light gradient-text">they actually tried it.</span>
           </h2>
           <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
           </p>
@@ -418,12 +271,7 @@ function TestimonialCard({ testimonial: t }: { testimonial: Testimonial }) {
         &ldquo;{t.text}&rdquo;
       </p>
 
-      {/* Habit tag */}
-      {t.habit && (
-        <p className="inline-block text-xs font-bold uppercase tracking-wider text-accent bg-accent/10 px-3 py-1 rounded-full mb-4">
-          {t.habit}
-        </p>
-      )}
+      {/* Habit tag removed — keeps habits a mystery until signup */}
 
       {/* Attached "proof" image */}
       {t.attachedImage && (

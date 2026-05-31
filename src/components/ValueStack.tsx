@@ -64,7 +64,7 @@ export default function ValueStack() {
             Everything you get 🎁
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
-            Here is what&apos;s inside.
+            Here is everything you will get.
           </h2>
           <p className="text-lg text-foreground-muted max-w-xl mx-auto">
             Every single thing you receive — with its real value — when you join today.

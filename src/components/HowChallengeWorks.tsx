@@ -75,7 +75,7 @@ const dailyLoop = [
 
 export default function HowChallengeWorks() {
   return (
-    <section className="py-20 lg:py-28 relative bg-section-cream overflow-hidden">
+    <section id="how-it-works-journey" className="py-20 lg:py-28 relative bg-section-cream overflow-hidden">
       {/* Floating decorations */}
       <span className="emoji-deco float-1 top-20 right-8 text-4xl hidden lg:block" aria-hidden="true">✨</span>
       <span className="emoji-deco float-2 bottom-24 left-10 text-4xl hidden lg:block" aria-hidden="true">💫</span>
@@ -212,6 +212,19 @@ export default function HowChallengeWorks() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Curiosity closer */}
+        <div className="mt-14 text-center">
+          <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-8 py-6 shadow-md max-w-xl">
+            <p className="text-xl font-bold text-foreground mb-2">
+              What are the 7 habits? 🔒
+            </p>
+            <p className="text-base text-foreground-muted leading-relaxed">
+              Deliberately kept secret. You unlock one each morning — delivered only in your WhatsApp.
+              <span className="font-semibold text-foreground"> No spoilers here.</span>
+            </p>
           </div>
         </div>
 

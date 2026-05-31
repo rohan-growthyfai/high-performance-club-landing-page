@@ -171,6 +171,7 @@ function buildPath(pts: [number, number][]): string {
 const ROAD_PATH_D = buildPath(WAYPTS);
 
 const SEG_DURATION_MS = 2200; // slow, relaxed drive
+const JUMP_DURATION_MS = 600;  // fast when user clicks a waypoint
 const PAUSE_MS        = 5000; // 5 seconds at each stop so user can read
 
 export default function CuriosityBullets() {
@@ -180,6 +181,7 @@ export default function CuriosityBullets() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const pathRef    = useRef<SVGPathElement>(null);
   const timers     = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const animateSegRef = useRef<((idx: number, duration?: number) => void) | null>(null);;
 
   // Start when visible
   useEffect(() => {
@@ -213,14 +215,17 @@ export default function CuriosityBullets() {
     setCarPos({ x: pt0.x, y: pt0.y, angle: 0 });
     setActiveIdx(0);
 
-    const animateSeg = (segIdx: number) => {
+    const animateSeg = (segIdx: number, duration = SEG_DURATION_MS) => {
       if (segIdx >= N) return;
-      const startLen = (segIdx - 1) * segLen;
-      const endLen   = segIdx * segLen;
+      // If jumping backwards (user clicked earlier waypoint), handle direction
+      const currentLen = activeIdx >= 0 ? activeIdx * segLen : 0;
+      const targetLen  = segIdx * segLen;
+      const startLen   = currentLen < targetLen ? (segIdx - 1) * segLen : currentLen;
+      const endLen     = targetLen;
       const t0 = performance.now();
 
       const frame = (now: number) => {
-        const raw = Math.min((now - t0) / SEG_DURATION_MS, 1);
+        const raw = Math.min((now - t0) / duration, 1);
         // Ease in-out cubic
         const p = raw < 0.5 ? 4 * raw * raw * raw : 1 - Math.pow(-2 * raw + 2, 3) / 2;
         const len = startLen + (endLen - startLen) * p;
@@ -241,15 +246,15 @@ export default function CuriosityBullets() {
           setActiveIdx(segIdx);
 
           if (segIdx < N - 1) {
-            const t = setTimeout(() => animateSeg(segIdx + 1), PAUSE_MS);
+            const t = setTimeout(() => animateSegRef.current?.(segIdx + 1), PAUSE_MS);
             timers.current.push(t);
           } else {
-            // Reached finish — pause at destination then loop from the start
+            // Reached finish — pause then loop
             const t = setTimeout(() => {
               setActiveIdx(0);
               const pt0 = svgPath.getPointAtLength(0);
               setCarPos({ x: pt0.x, y: pt0.y, angle: 0 });
-              const t2 = setTimeout(() => animateSeg(1), 400);
+              const t2 = setTimeout(() => animateSegRef.current?.(1), 400);
               timers.current.push(t2);
             }, PAUSE_MS);
             timers.current.push(t);
@@ -257,6 +262,51 @@ export default function CuriosityBullets() {
         }
       };
       requestAnimationFrame(frame);
+    };
+
+    // Store ref so click handler can call it after clearing timers
+    animateSegRef.current = animateSeg;
+
+    // Expose jump function for waypoint clicks
+    (window as unknown as Record<string, unknown>).__hpcJumpTo = (targetIdx: number) => {
+      // Clear all pending timers so current animation stops
+      timers.current.forEach(clearTimeout);
+      timers.current = [];
+
+      const svgP = pathRef.current;
+      if (!svgP) return;
+      const tLen = svgP.getTotalLength();
+      const sLen = tLen / (N - 1);
+
+      // Animate directly from current car position to target waypoint
+      const carCurrentLen = activeIdx >= 0 ? activeIdx * sLen : 0;
+      const targetLen = targetIdx * sLen;
+      const t0p = performance.now();
+
+      const jump = (now: number) => {
+        const raw = Math.min((now - t0p) / JUMP_DURATION_MS, 1);
+        const p = raw < 0.5 ? 4 * raw * raw * raw : 1 - Math.pow(-2 * raw + 2, 3) / 2;
+        const len = carCurrentLen + (targetLen - carCurrentLen) * p;
+        const cpt = svgP.getPointAtLength(Math.max(0, Math.min(len, tLen)));
+        const cpt2 = svgP.getPointAtLength(Math.max(0, Math.min(len + 1, tLen)));
+        const angle = Math.atan2(cpt2.y - cpt.y, cpt2.x - cpt.x) * (180 / Math.PI);
+        setCarPos({ x: cpt.x, y: cpt.y, angle });
+        if (raw < 1) {
+          requestAnimationFrame(jump);
+        } else {
+          const wp = WAYPTS[targetIdx];
+          const wp2 = WAYPTS[Math.min(targetIdx + 1, N - 1)];
+          const a = Math.atan2(wp2[1] - wp[1], wp2[0] - wp[0]) * (180 / Math.PI);
+          setCarPos({ x: wp[0], y: wp[1], angle: a });
+          setActiveIdx(targetIdx);
+          // Resume normal animation from this point
+          if (targetIdx < N - 1) {
+            const t = setTimeout(() => animateSegRef.current?.(targetIdx + 1), PAUSE_MS);
+            timers.current.push(t);
+          }
+        }
+      };
+      requestAnimationFrame(jump);
     };
 
     const t = setTimeout(() => animateSeg(1), 500);
@@ -334,7 +384,17 @@ export default function CuriosityBullets() {
                   : pt[1] - r - 8 - 90;     // above for peaks & midline
 
                 return (
-                  <g key={wp.id}>
+                  <g
+                    key={wp.id}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => {
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      (window as any).__hpcJumpTo?.(i);
+                    }}
+                  >
+                    {/* Invisible large hit area for easy clicking */}
+                    <circle cx={pt[0]} cy={pt[1]} r={r + 14} fill="transparent" />
+
                     {/* Pulse ring on active */}
                     {isAct && (
                       <circle cx={pt[0]} cy={pt[1]} r={r + 4} fill={wp.color} opacity={0.2}>
@@ -353,7 +413,7 @@ export default function CuriosityBullets() {
                     />
 
                     {/* Emoji or lock */}
-                    <text x={pt[0]} y={pt[1] + 0.5} textAnchor="middle" dominantBaseline="middle" fontSize={isCP ? 12 : 10}>
+                    <text x={pt[0]} y={pt[1] + 0.5} textAnchor="middle" dominantBaseline="middle" fontSize={isCP ? 14 : 12}>
                       {show ? wp.emoji : "🔒"}
                     </text>
 
@@ -477,21 +537,36 @@ export default function CuriosityBullets() {
                       );
                     })()}
 
-                    {/* Day label below dot (not active — just label) */}
+                    {/* Day label + tap hint below dot (not active) */}
                     {!isAct && (
-                      <text
-                        x={pt[0]}
-                        y={pt[1] + r + 11}
-                        textAnchor="middle"
-                        dominantBaseline="hanging"
-                        fontSize={8.5}
-                        fontWeight={isPast ? "600" : "400"}
-                        fill={isPast ? wp.color : "#6b7280"}
-                        fontFamily="var(--font-sans)"
-                        style={{ transition: "fill 0.3s" }}
-                      >
-                        {i === 0 ? "Start" : i === N - 1 ? "Finish" : `Day ${i}`}
-                      </text>
+                      <>
+                        <text
+                          x={pt[0]}
+                          y={pt[1] + r + 11}
+                          textAnchor="middle"
+                          dominantBaseline="hanging"
+                          fontSize={12}
+                          fontWeight={isPast ? "700" : "500"}
+                          fill={isPast ? wp.color : "#6b7280"}
+                          fontFamily="var(--font-sans)"
+                          style={{ transition: "fill 0.3s" }}
+                        >
+                          {i === 0 ? "Start" : i === N - 1 ? "Finish" : `Day ${i}`}
+                        </text>
+                        {!isPast && (
+                          <text
+                            x={pt[0]}
+                            y={pt[1] + r + 25}
+                            textAnchor="middle"
+                            dominantBaseline="hanging"
+                            fontSize={9}
+                            fill="#9ca3af"
+                            fontFamily="var(--font-sans)"
+                          >
+                            tap
+                          </text>
+                        )}
+                      </>
                     )}
                   </g>
                 );
@@ -512,6 +587,10 @@ export default function CuriosityBullets() {
               </defs>
             </svg>
           </div>
+          {/* Click hint */}
+          <p className="text-center mt-3 text-xs text-foreground-subtle italic">
+            👆 Tap any dot on the road to jump the car there instantly
+          </p>
         </div>
 
         {/* ── MOBILE — vertical road ───────────────────────────── */}

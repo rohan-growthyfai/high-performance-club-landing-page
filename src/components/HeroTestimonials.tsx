@@ -21,7 +21,7 @@ const reviews: Review[] = [
     tagBg: "#fef3c7",
     tagColor: "#92400e",
     review:
-      "Completely unbelievable. I barely have time for lunch — 2 kids, a startup, back-to-back meetings. I thought 5 minutes would not benefit much. How much can you even expect in 5 minutes? Turns out, a lot. Did it between calls on Day 1 and something actually shifted. I am on Day 19 now.",
+      "I barely have time for lunch — 2 kids, a startup, back-to-back meetings. I thought 5 minutes could not do much. Did it between calls on Day 1. Something actually shifted. I am on Day 19 now.",
     color: "#fef9ec",
     border: "#f5d78e",
   },
@@ -33,7 +33,7 @@ const reviews: Review[] = [
     tagBg: "#dcfce7",
     tagColor: "#166534",
     review:
-      "I never thought I would actually finish a challenge. I have tried every app, every program — all failed within a week. This one was different. WhatsApp showed up at 6 AM and I did the habit before I even fully woke up. No willpower needed. Just a message.",
+      "I have tried every app, every program — all failed within a week. This was different. WhatsApp showed up at 6 AM and I did the habit before I even fully woke up. No willpower. Just a message.",
     color: "#f0fdf4",
     border: "#86efac",
   },
@@ -45,7 +45,7 @@ const reviews: Review[] = [
     tagBg: "#ede9fe",
     tagColor: "#5b21b6",
     review:
-      "I had zero expectations from a free challenge. Assumed it would be the same generic advice I have already heard a hundred times. Day 3 genuinely surprised me — I had never come across that habit before. Still using it every single day.",
+      "Zero expectations from a free challenge. Assumed it would be generic advice I have heard a hundred times. Day 3 genuinely surprised me. Still using that habit every single day.",
     color: "#faf5ff",
     border: "#d8b4fe",
   },

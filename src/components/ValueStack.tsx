@@ -3,7 +3,7 @@ import { Check, ArrowRight } from "lucide-react";
 /**
  * ValueStack — Hormozi "Grand Slam Offer" style.
  * Each item has a defended rupee value.
- * Total stacks to ₹997. Offer price: FREE.
+ * Total stacks to ₹1999. Offer price: FREE.
  */
 
 const items = [
@@ -11,47 +11,47 @@ const items = [
     emoji: "📱",
     title: "7 Daily WhatsApp Habit Messages",
     detail: "One science-backed High Performance Habit delivered to your WhatsApp every morning for 7 days.",
-    value: 299,
+    value: 599,
   },
   {
     emoji: "🌙",
     title: "7 Evening Check-in Messages",
     detail: "A short nudge every evening to lock in the day's habit and keep you on track.",
-    value: 99,
+    value: 199,
   },
   {
     emoji: "📊",
     title: "Day 0 Self-Score Assessment",
     detail: "Rate yourself across Energy, Focus, Relationships, and Calmness before you begin. Your personal baseline.",
-    value: 149,
+    value: 299,
   },
   {
     emoji: "📈",
     title: "Day 7 Progress Comparison Report",
     detail: "Take the same assessment on Day 7 and see exactly what changed. Numbers don't lie.",
-    value: 199,
+    value: 399,
   },
   {
     emoji: "💬",
     title: "Private WhatsApp Community Access",
     detail: "Join others doing the same challenge. Share wins. Stay accountable. Stay motivated.",
-    value: 99,
+    value: 199,
   },
   {
     emoji: "🏆",
     title: "High Performance Lifestyle Starter Certificate",
     detail: "Complete 5 of 7 days and earn your official certificate. Print it. Frame it. Own it.",
-    value: 99,
+    value: 199,
   },
   {
     emoji: "📋",
     title: "7-Habit Reference PDF",
     detail: "All 7 habits documented in one clean PDF you can keep and revisit anytime you need a reset.",
-    value: 53,
+    value: 105,
   },
 ];
 
-const TOTAL = items.reduce((sum, i) => sum + i.value, 0); // = 997
+const TOTAL = items.reduce((sum, i) => sum + i.value, 0); // = 1999
 
 export default function ValueStack() {
   return (

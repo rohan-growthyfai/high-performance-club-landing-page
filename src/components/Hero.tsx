@@ -48,7 +48,7 @@ export default function Hero() {
                 className="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base sm:text-lg group"
               >
                 Join for{" "}
-                <span className="line-through opacity-70 mx-1">₹997</span>
+                <span className="line-through opacity-70 mx-1">₹1999</span>
                 <span className="font-extrabold">FREE</span>
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>

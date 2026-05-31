@@ -53,7 +53,7 @@ export default function PostScript() {
               href="#signup"
               className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl"
             >
-              Join for <span className="line-through opacity-70 mx-1">₹997</span> <span className="font-extrabold">FREE</span> →
+              Join for <span className="line-through opacity-70 mx-1">₹1999</span> <span className="font-extrabold">FREE</span> →
             </a>
             <p className="text-lg text-foreground-subtle italic">
               See you in your WhatsApp in 2 minutes. 👋
@@ -94,7 +94,7 @@ export default function PostScript() {
                 href="#signup"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl"
               >
-                Join for <span className="line-through opacity-70 mx-1">₹997</span> <span className="font-extrabold">FREE</span> →
+                Join for <span className="line-through opacity-70 mx-1">₹1999</span> <span className="font-extrabold">FREE</span> →
                 <ArrowRight className="w-5 h-5" />
               </a>
             </div>

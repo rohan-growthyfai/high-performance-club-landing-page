@@ -152,7 +152,7 @@ export default function BlogsPage() {
             <p style={{ fontSize:15, color:"#6b7280", maxWidth:380 }}>One tiny habit delivered to your WhatsApp every morning. Free. 7 days. No app required.</p>
           </div>
           <Link href="/#signup" style={{ background:"linear-gradient(135deg,#b8853a,#8a6428)", color:"#fff", padding:"15px 32px", borderRadius:999, fontSize:16, fontWeight:700, textDecoration:"none", boxShadow:"0 8px 24px rgba(184,133,58,0.35)", whiteSpace:"nowrap" }}>
-            Join for ₹997 FREE →
+            Join for ₹1999 FREE →
           </Link>
         </div>
       </main>

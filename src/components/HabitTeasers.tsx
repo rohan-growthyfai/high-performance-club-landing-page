@@ -129,7 +129,7 @@ export default function HabitTeasers() {
               href="#signup"
               className="mt-8 btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl self-start"
             >
-              Join for <span className="line-through opacity-70 mx-0.5">₹997</span> <span className="font-extrabold">FREE</span> →
+              Join for <span className="line-through opacity-70 mx-0.5">₹1999</span> <span className="font-extrabold">FREE</span> →
             </a>
           </div>
         </div>

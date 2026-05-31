@@ -64,17 +64,17 @@ const posts = [
 export default function BlogsPage() {
   return (
     <div style={{
-      background: "#0c0c0f",
+      background: "#faf8f3",
       minHeight: "100vh",
       fontFamily: "var(--font-sans)",
-      color: "#f5f5f7",
+      color: "#18181b",
     }}>
 
       {/* Header */}
       <header style={{
-        background: "rgba(12,12,15,0.85)",
+        background: "rgba(250,248,243,0.9)",
         backdropFilter: "blur(20px)",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        borderBottom: "1px solid #e2dfd6",
         padding: "0 32px",
         height: 68,
         display: "flex",
@@ -91,12 +91,12 @@ export default function BlogsPage() {
             display: "flex", alignItems: "center", justifyContent: "center",
             color: "#fff", fontWeight: 800, fontSize: 16, letterSpacing: "-0.01em",
           }}>H</div>
-          <span style={{ fontWeight: 700, fontSize: 16, color: "#f5f5f7", letterSpacing: "-0.02em" }}>
+          <span style={{ fontWeight: 700, fontSize: 16, color: "#18181b", letterSpacing: "-0.02em" }}>
             High Performance Club
           </span>
         </Link>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <Link href="/blogs" style={{ fontSize: 14, color: "rgba(255,255,255,0.5)", textDecoration: "none", fontWeight: 500 }}>
+          <Link href="/blogs" style={{ fontSize: 14, color: "#6b7280", textDecoration: "none", fontWeight: 500 }}>
             Blog
           </Link>
           <Link href="/#signup" style={{
@@ -131,12 +131,12 @@ export default function BlogsPage() {
             letterSpacing: "-0.04em",
             lineHeight: 1.0,
             marginBottom: 20,
-            color: "#f5f5f7",
+            color: "#18181b",
           }}>
             Tiny habits.
             <br />
             <span style={{
-              background: "linear-gradient(135deg, #f5f5f7 0%, #b8853a 100%)",
+              background: "linear-gradient(135deg, #18181b 0%, #b8853a 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -146,7 +146,7 @@ export default function BlogsPage() {
           </h1>
 
           <p style={{
-            fontSize: 18, color: "rgba(255,255,255,0.5)", maxWidth: 480,
+            fontSize: 18, color: "#6b7280", maxWidth: 480,
             lineHeight: 1.65, fontWeight: 400,
           }}>
             Practical writing on building tiny daily habits that stick — for busy people who have already tried the complicated approach.
@@ -157,8 +157,8 @@ export default function BlogsPage() {
         <Link href={`/blogs/${posts[0].slug}`} style={{ textDecoration: "none", display: "block", marginBottom: 20 }}>
           <div
             style={{
-              background: "linear-gradient(135deg, #141418 0%, #1a1a20 100%)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "linear-gradient(135deg, #ffffff 0%, #f3f0e8 100%)",
+              border: "1px solid #e5e7eb",
               borderRadius: 24,
               padding: "48px 52px",
               display: "grid",
@@ -191,8 +191,8 @@ export default function BlogsPage() {
               {/* Featured badge */}
               <div style={{ display: "flex", gap: 10, alignItems: "center", marginBottom: 20 }}>
                 <span style={{
-                  background: "rgba(255,255,255,0.08)", border: "1px solid rgba(255,255,255,0.1)",
-                  color: "rgba(255,255,255,0.6)", fontSize: 10, fontWeight: 700,
+                  background: "#f3f4f6", border: "1px solid #e5e7eb",
+                  color: "#6b7280", fontSize: 10, fontWeight: 700,
                   padding: "4px 12px", borderRadius: 999, letterSpacing: "0.1em", textTransform: "uppercase",
                 }}>Featured</span>
                 <span style={{
@@ -204,14 +204,14 @@ export default function BlogsPage() {
 
               <h2 style={{
                 fontSize: "clamp(1.5rem, 3vw, 2.25rem)",
-                fontWeight: 800, color: "#f5f5f7",
+                fontWeight: 800, color: "#18181b",
                 letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 16,
               }}>
                 {posts[0].title}
               </h2>
 
               <p style={{
-                fontSize: 16, color: "rgba(255,255,255,0.45)",
+                fontSize: 16, color: "#6b7280",
                 lineHeight: 1.7, marginBottom: 28, maxWidth: 520,
               }}>
                 {posts[0].excerpt}
@@ -225,7 +225,7 @@ export default function BlogsPage() {
                   Read article
                   <span style={{ fontSize: 18 }}>→</span>
                 </span>
-                <span style={{ color: "rgba(255,255,255,0.25)", fontSize: 13 }}>
+                <span style={{ color: "#9ca3af", fontSize: 13 }}>
                   {posts[0].readTime} · {posts[0].date}
                 </span>
               </div>
@@ -252,8 +252,8 @@ export default function BlogsPage() {
             <Link key={post.slug} href={`/blogs/${post.slug}`} style={{ textDecoration: "none" }}>
               <div
                 style={{
-                  background: "#141418",
-                  border: "1px solid rgba(255,255,255,0.06)",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
                   borderRadius: 20,
                   padding: "32px 28px",
                   height: "100%",
@@ -287,7 +287,7 @@ export default function BlogsPage() {
 
                 {/* Post number */}
                 <span style={{
-                  fontSize: 11, fontWeight: 700, color: "rgba(255,255,255,0.15)",
+                  fontSize: 11, fontWeight: 700, color: "#d1d5db",
                   letterSpacing: "0.15em", marginBottom: 20, display: "block",
                 }}>{post.number}</span>
 
@@ -314,7 +314,7 @@ export default function BlogsPage() {
 
                 {/* Title */}
                 <h2 style={{
-                  fontSize: 17, fontWeight: 800, color: "#f5f5f7",
+                  fontSize: 17, fontWeight: 800, color: "#18181b",
                   letterSpacing: "-0.02em", lineHeight: 1.3,
                   marginBottom: 12, flexGrow: 1,
                 }}>
@@ -323,7 +323,7 @@ export default function BlogsPage() {
 
                 {/* Excerpt */}
                 <p style={{
-                  fontSize: 13.5, color: "rgba(255,255,255,0.38)",
+                  fontSize: 13.5, color: "#9ca3af",
                   lineHeight: 1.65, marginBottom: 24,
                 }}>
                   {post.excerpt}
@@ -331,11 +331,11 @@ export default function BlogsPage() {
 
                 {/* Footer */}
                 <div style={{
-                  borderTop: "1px solid rgba(255,255,255,0.06)",
+                  borderTop: "1px solid #e5e7eb",
                   paddingTop: 16,
                   display: "flex", justifyContent: "space-between", alignItems: "center",
                 }}>
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>
+                  <span style={{ fontSize: 13, color: "#9ca3af" }}>
                     {post.readTime}
                   </span>
                   <span style={{
@@ -353,7 +353,7 @@ export default function BlogsPage() {
         {/* CTA section */}
         <div style={{
           marginTop: 80,
-          background: "linear-gradient(135deg, #141418 0%, #1c1c22 100%)",
+          background: "linear-gradient(135deg, #ffffff 0%, #f3f0e8 100%)",
           border: "1px solid rgba(184,133,58,0.2)",
           borderRadius: 24,
           padding: "52px 48px",
@@ -381,13 +381,13 @@ export default function BlogsPage() {
             </p>
             <h3 style={{
               fontSize: "clamp(1.5rem, 3vw, 2rem)",
-              fontWeight: 800, color: "#f5f5f7",
+              fontWeight: 800, color: "#18181b",
               letterSpacing: "-0.03em", lineHeight: 1.15, marginBottom: 12,
             }}>
               Stop reading about habits.
               <br />Start building them.
             </h3>
-            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.4)", maxWidth: 420 }}>
+            <p style={{ fontSize: 15, color: "#6b7280", maxWidth: 420 }}>
               One tiny high-performance habit delivered to your WhatsApp every morning. Free. 7 days. No app required.
             </p>
           </div>
@@ -407,7 +407,7 @@ export default function BlogsPage() {
 
       {/* Footer */}
       <footer style={{
-        borderTop: "1px solid rgba(255,255,255,0.06)",
+        borderTop: "1px solid #e5e7eb",
         padding: "32px 32px",
         display: "flex",
         justifyContent: "space-between",
@@ -415,11 +415,11 @@ export default function BlogsPage() {
         flexWrap: "wrap",
         gap: 12,
       }}>
-        <p style={{ fontSize: 13, color: "rgba(255,255,255,0.25)" }}>
+        <p style={{ fontSize: 13, color: "#9ca3af" }}>
           © 2026 High Performance Club
         </p>
         <div style={{ display: "flex", gap: 24 }}>
-          <Link href="/" style={{ fontSize: 13, color: "rgba(255,255,255,0.3)", textDecoration: "none" }}>Home</Link>
+          <Link href="/" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Home</Link>
           <Link href="/blogs" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Blog</Link>
         </div>
       </footer>

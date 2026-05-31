@@ -38,7 +38,7 @@ export default function Post() {
       <p>This is why consistent people do not seem to rely on motivation. They have built systems where the right actions happen automatically. Habit stacking is how those systems are built — one tiny anchor at a time.</p>
       <div className="callout">
         <p><strong>The 7-Day High Performance Challenge is built entirely around this principle.</strong> Each habit is designed to stack onto your existing morning and evening routines. No extra time required — just a smarter sequence.</p>
-        <a href="/#signup">Start the free challenge →</a>
+        <a href="/">Start the free challenge →</a>
       </div>
     </BlogPostLayout>
   );

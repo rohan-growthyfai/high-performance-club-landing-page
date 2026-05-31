@@ -169,12 +169,9 @@ export default function HeroPhone() {
             display: "flex", alignItems: "center", gap: 10,
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}>
-            <div style={{
-              width: 38, height: 38, borderRadius: "50%",
-              background: "linear-gradient(135deg, #b8853a, #8a6428)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: 15, fontWeight: 700, color: "#fff", fontFamily: "var(--font-sans)", flexShrink: 0,
-            }}>H</div>
+            <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.12)" }}>
+              <img src="/hpc-logo.png" alt="High Performance Club" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+            </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)", letterSpacing: "-0.01em" }}>
                 High Performance Club

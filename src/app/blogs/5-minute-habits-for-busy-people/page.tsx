@@ -30,7 +30,7 @@ export default function Post() {
       <p>Attach every new habit to something you already do. After I make tea → one double breath. When I sit at my desk → phone goes in the drawer. After lunch → close all tabs, open one. This is called habit stacking, and it is the most reliable way to make a new behaviour automatic without relying on memory or motivation.</p>
       <div className="callout">
         <p><strong>Try these habits for free.</strong> The 7-Day High Performance Lifestyle Challenge delivers one of these habits to your WhatsApp every morning. You just do it and reply ✅. No apps. No complicated tracking. Just a message and a habit.</p>
-        <a href="/#signup">Join free — takes 30 seconds →</a>
+        <a href="/">Join free — takes 30 seconds →</a>
       </div>
     </BlogPostLayout>
   );

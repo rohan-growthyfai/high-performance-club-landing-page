@@ -32,7 +32,7 @@ export default function Post() {
       <p>Start with one. Just one. The one that feels most feasible given where you are right now. Do it every day for seven days. Notice what changes. Then add the next one.</p>
       <div className="callout">
         <p><strong>These are exactly the kinds of habits we deliver in the 7-Day High Performance Lifestyle Challenge.</strong> One tiny, science-backed habit every morning on WhatsApp. Free. No app required.</p>
-        <a href="/#signup">Join the free challenge →</a>
+        <a href="/">Join the free challenge →</a>
       </div>
     </BlogPostLayout>
   );

@@ -30,7 +30,7 @@ export default function Post() {
       <p>This is not a slow path to change. This is the fast path — because it is the only path that actually works.</p>
       <div className="callout">
         <p><strong>Want to try this?</strong> The free 7-Day High Performance Lifestyle Challenge delivers one tiny, science-backed habit to your WhatsApp every morning. Each one takes under 5 minutes. No willpower required.</p>
-        <a href="/#signup">Join the free challenge →</a>
+        <a href="/">Join the free challenge →</a>
       </div>
     </BlogPostLayout>
   );

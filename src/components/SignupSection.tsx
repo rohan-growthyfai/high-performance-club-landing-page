@@ -50,7 +50,7 @@ export default function SignupSection() {
           </p>
         </div>
 
-        <SignupForm />
+        <SignupForm testimonialVariant={1} />
 
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           <div className="flex flex-col items-center gap-1.5">

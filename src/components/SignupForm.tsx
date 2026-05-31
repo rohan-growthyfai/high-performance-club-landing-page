@@ -13,7 +13,22 @@ const struggles = [
   "Mind Space — too much mental noise",
 ];
 
-export default function SignupForm() {
+const testimonials = [
+  {
+    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    name: "Priya S.",
+    city: "Mumbai",
+    quote: "I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.",
+  },
+  {
+    avatar: "https://randomuser.me/api/portraits/men/52.jpg",
+    name: "Karan M.",
+    city: "Bengaluru",
+    quote: "I have quit every habit app I ever downloaded. This one came to me on WhatsApp. I did not have to remember anything. Finished all 7 days.",
+  },
+];
+
+export default function SignupForm({ testimonialVariant = 0 }: { testimonialVariant?: number }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string>("");
 
@@ -208,16 +223,16 @@ export default function SignupForm() {
         {/* Testimonial — directly below form, minimal gap */}
         <div className="mt-5 pt-5 border-t border-border-subtle flex items-start gap-3">
           <img
-            src="https://randomuser.me/api/portraits/women/44.jpg"
-            alt="Priya"
+            src={testimonials[testimonialVariant % testimonials.length].avatar}
+            alt={testimonials[testimonialVariant % testimonials.length].name}
             className="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-0.5"
           />
           <div>
             <p className="text-sm text-foreground leading-snug">
-              &ldquo;I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.&rdquo;
+              &ldquo;{testimonials[testimonialVariant % testimonials.length].quote}&rdquo;
             </p>
             <p className="text-xs text-foreground-subtle mt-1.5 font-medium">
-              Priya S. &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp;
+              {testimonials[testimonialVariant % testimonials.length].name} &nbsp;·&nbsp; {testimonials[testimonialVariant % testimonials.length].city} &nbsp;·&nbsp;
               <span className="text-accent">★★★★★</span>
             </p>
           </div>

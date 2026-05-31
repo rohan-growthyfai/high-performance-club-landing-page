@@ -28,7 +28,7 @@ const testimonials = [
   },
 ];
 
-export default function SignupForm({ testimonialVariant = 0 }: { testimonialVariant?: number }) {
+export default function SignupForm({ testimonialVariant = 0, formId = "form" }: { testimonialVariant?: number; formId?: string }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string>("");
 
@@ -89,13 +89,13 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
       <div className="space-y-6">
         <div>
           <label
-            htmlFor="name"
+            htmlFor={`${formId}-name`}
             className="block text-base font-medium text-foreground mb-2"
           >
             First name
           </label>
           <input
-            id="name"
+            id={`${formId}-name`}
             name="name"
             type="text"
             required
@@ -106,7 +106,7 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
 
         <div>
           <label
-            htmlFor="whatsapp"
+            htmlFor={`${formId}-whatsapp`}
             className="block text-base font-medium text-foreground mb-2"
           >
             WhatsApp number{" "}
@@ -115,7 +115,7 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
             </span>
           </label>
           <input
-            id="whatsapp"
+            id={`${formId}-whatsapp`}
             name="whatsapp"
             type="tel"
             required
@@ -127,13 +127,13 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
 
         <div>
           <label
-            htmlFor="email"
+            htmlFor={`${formId}-email`}
             className="block text-base font-medium text-foreground mb-2"
           >
             Email
           </label>
           <input
-            id="email"
+            id={`${formId}-email`}
             name="email"
             type="email"
             required
@@ -144,13 +144,13 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
 
         <div>
           <label
-            htmlFor="struggle"
+            htmlFor={`${formId}-struggle`}
             className="block text-base font-medium text-foreground mb-2"
           >
             Which area do you want to upgrade most?
           </label>
           <select
-            id="struggle"
+            id={`${formId}-struggle`}
             name="struggle"
             required
             className="input-premium w-full px-5 py-4 rounded-xl text-foreground appearance-none cursor-pointer text-lg"
@@ -176,14 +176,14 @@ export default function SignupForm({ testimonialVariant = 0 }: { testimonialVari
 
         <div className="flex items-start gap-3 pt-2">
           <input
-            id="consent"
+            id={`${formId}-consent`}
             name="consent"
             type="checkbox"
             required
             className="mt-1.5 w-5 h-5 rounded border-border bg-white text-accent focus:ring-accent focus:ring-offset-0 cursor-pointer accent-accent"
           />
           <label
-            htmlFor="consent"
+            htmlFor={`${formId}-consent`}
             className="text-base text-foreground-muted leading-relaxed cursor-pointer"
           >
             I agree to receive daily WhatsApp messages for 7 days. I can stop

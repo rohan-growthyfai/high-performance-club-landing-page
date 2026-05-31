@@ -23,7 +23,7 @@ export default function InlineSignup({ id }: { id?: string }) {
             No app. No login. Just 30 seconds to join.
           </p>
         </div>
-        <SignupForm />
+        <SignupForm formId="inline" />
       </div>
     </section>
   );

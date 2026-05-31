@@ -204,6 +204,24 @@ export default function SignupForm() {
           <Lock className="w-4 h-4" />
           <span>We never share your number. No spam. No phone calls.</span>
         </div>
+
+        {/* Testimonial — directly below form, minimal gap */}
+        <div className="mt-5 pt-5 border-t border-border-subtle flex items-start gap-3">
+          <img
+            src="https://randomuser.me/api/portraits/women/44.jpg"
+            alt="Priya"
+            className="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-0.5"
+          />
+          <div>
+            <p className="text-sm text-foreground leading-snug">
+              &ldquo;I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.&rdquo;
+            </p>
+            <p className="text-xs text-foreground-subtle mt-1.5 font-medium">
+              Priya S. &nbsp;·&nbsp; Mumbai &nbsp;·&nbsp;
+              <span className="text-accent">★★★★★</span>
+            </p>
+          </div>
+        </div>
       </div>
     </form>
   );

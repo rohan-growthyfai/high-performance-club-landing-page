@@ -9,6 +9,9 @@ interface BlogPostLayoutProps {
   title: string;
   accent: string;
   bg: string;
+  faqQuestion?: string;
+  faqAnswer?: string;
+  keywords?: string[];
 }
 
 export default function BlogPostLayout({

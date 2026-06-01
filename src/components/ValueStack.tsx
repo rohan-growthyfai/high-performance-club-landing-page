@@ -153,6 +153,13 @@ export default function ValueStack() {
         <p className="text-center mt-6 text-sm text-foreground-subtle italic">
           We offer this free because we&apos;re building something bigger — and this is how we earn your trust first.
         </p>
+
+        <div className="flex flex-col items-center gap-3 pt-14 pb-2">
+          <p className="text-base text-foreground-muted text-center max-w-md">Everything above is yours. For free. Right now.</p>
+          <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
+            Claim everything — join for free →
+          </a>
+        </div>
       </div>
     </section>
   );

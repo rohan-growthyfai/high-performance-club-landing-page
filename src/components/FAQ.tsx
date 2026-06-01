@@ -92,6 +92,13 @@ export default function FAQ() {
             <FAQItem key={faq.q} q={faq.q} a={faq.a} />
           ))}
         </div>
+
+        <div className="flex flex-col items-center gap-3 pt-14 pb-2">
+          <p className="text-base text-foreground-muted text-center max-w-md">Still have a question? Just join and ask us directly on WhatsApp.</p>
+          <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
+            Join the challenge — it&apos;s free →
+          </a>
+        </div>
       </div>
     </section>
   );

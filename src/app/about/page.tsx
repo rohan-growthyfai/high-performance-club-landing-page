@@ -63,9 +63,11 @@ export default function About() {
         {/* Company */}
         <div style={{ background: "linear-gradient(135deg,#fef9ec,#fff7ed)", border: "2px solid #f5d78e", borderRadius: 20, padding: "40px 36px", marginBottom: 56 }}>
           <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.15em", color: "#b8853a", marginBottom: 16 }}>The company behind it</p>
-          <h3 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", letterSpacing: "-0.025em", marginBottom: 16 }}>Growthyfai Technologies Private Limited</h3>
-          <p style={{ fontSize: 16, color: "#6b7280", lineHeight: 1.75, marginBottom: 16 }}>High Performance Club is owned and operated by Growthyfai Technologies Private Limited — a technology company focused on building AI-powered products that help Indians grow faster in health, career, and life.</p>
-          <p style={{ fontSize: 15, color: "#9ca3af" }}>For business enquiries: <a href="mailto:contact@highperformanceclub.com" style={{ color: "#b8853a" }}>contact@highperformanceclub.com</a></p>
+          <p style={{ fontSize: 16, color: "#6b7280", lineHeight: 1.75, marginBottom: 20 }}>High Performance Club is a wellness and personal growth initiative owned and operated by Growthyfai Technologies Private Limited.</p>
+          <p style={{ fontSize: 14, color: "#9ca3af", fontWeight: 600, marginBottom: 4 }}>Operated by:</p>
+          <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 16 }}>Growthyfai Technologies Private Limited</p>
+          <p style={{ fontSize: 15, color: "#9ca3af" }}>Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
+          <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 4 }}>Website: <a href="https://www.highperformanceclub.co" style={{ color: "#b8853a" }}>www.highperformanceclub.co</a></p>
         </div>
 
         {/* CTA */}
@@ -79,7 +81,10 @@ export default function About() {
       </main>
 
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club · Growthyfai Technologies Private Limited</p>
+        <div>
+          <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club.</p>
+          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by Growthyfai Technologies Private Limited.</p>
+        </div>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/terms-and-conditions" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Terms</Link>

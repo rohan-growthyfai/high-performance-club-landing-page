@@ -44,14 +44,17 @@ export default function Footer() {
               Get in touch
             </p>
             <a
-              href="mailto:contact@highperformanceclub.com"
-              className="text-foreground-muted hover:text-accent transition-colors text-base block mb-2"
+              href="mailto:contact@highperformanceclub.co"
+              className="text-foreground-muted hover:text-accent transition-colors text-base block mb-1"
             >
-              contact@highperformanceclub.com
+              Email: contact@highperformanceclub.co
             </a>
-            <p className="text-xs text-foreground-subtle mb-2 sm:text-right">
-              Powered by Growthyfai Technologies Private Limited
-            </p>
+            <a
+              href="https://www.highperformanceclub.co"
+              className="text-foreground-muted hover:text-accent transition-colors text-base block mb-3"
+            >
+              Website: www.highperformanceclub.co
+            </a>
             <p className="text-sm text-foreground-subtle flex items-center gap-2 sm:justify-end">
               <Phone className="w-4 h-4" />
               <span>Support: Mon-Sat, 10 AM – 6 PM IST</span>
@@ -129,7 +132,10 @@ export default function Footer() {
               Contact Us
             </a>
           </div>
-          <p>© 2026 High Performance Club · Made with 💛 in India</p>
+          <div className="text-right">
+            <p>© 2026 High Performance Club.</p>
+            <p className="text-xs mt-1">Owned and operated by Growthyfai Technologies Private Limited.</p>
+          </div>
         </div>
       </div>
     </footer>

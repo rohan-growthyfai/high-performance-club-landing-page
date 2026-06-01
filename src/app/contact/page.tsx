@@ -27,8 +27,8 @@ export default function Contact() {
           {/* Email */}
           <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
             <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Email Support</p>
-            <a href="mailto:contact@highperformanceclub.com" style={{ fontSize: 22, fontWeight: 800, color: "#18181b", textDecoration: "none", letterSpacing: "-0.02em" }}>
-              contact@highperformanceclub.com
+            <a href="mailto:contact@highperformanceclub.co" style={{ fontSize: 22, fontWeight: 800, color: "#18181b", textDecoration: "none", letterSpacing: "-0.02em" }}>
+              contact@highperformanceclub.co
             </a>
             <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 10 }}>We respond within 24 hours, Mon–Sat.</p>
           </div>
@@ -40,11 +40,17 @@ export default function Contact() {
             <p style={{ fontSize: 16, color: "#6b7280", marginTop: 6 }}>10:00 AM – 6:00 PM IST</p>
           </div>
 
-          {/* Company */}
+          {/* Email */}
           <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
-            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Company</p>
-            <p style={{ fontSize: 18, fontWeight: 700, color: "#18181b" }}>Growthyfai Technologies Private Limited</p>
-            <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 6 }}>High Performance Club is a product of Growthyfai Technologies Private Limited, proudly built in India.</p>
+            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Website</p>
+            <a href="https://www.highperformanceclub.co" style={{ fontSize: 18, fontWeight: 700, color: "#18181b", textDecoration: "none" }}>www.highperformanceclub.co</a>
+          </div>
+
+          {/* Operated by */}
+          <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Operated by</p>
+            <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b" }}>Growthyfai Technologies Private Limited</p>
+            <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 6 }}>High Performance Club is a wellness and personal growth initiative owned and operated by Growthyfai Technologies Private Limited.</p>
           </div>
         </div>
 
@@ -60,7 +66,10 @@ export default function Contact() {
       </main>
 
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club · Growthyfai Technologies Private Limited</p>
+        <div>
+          <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club.</p>
+          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by Growthyfai Technologies Private Limited.</p>
+        </div>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/terms-and-conditions" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Terms</Link>

@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
             <li style={{ marginBottom: 10 }}>Withdraw consent for WhatsApp messages at any time (reply STOP)</li>
             <li style={{ marginBottom: 10 }}>Lodge a complaint with the relevant data protection authority</li>
           </ul>
-          <p>To exercise these rights, email us at <a href="mailto:contact@highperformanceclub.com" style={{ color: "#b8853a" }}>contact@highperformanceclub.com</a>.</p>
+          <p>To exercise these rights, email us at <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a>.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>7. Third-Party Services</h2>
           <p>We use the following third-party services, each with their own privacy policies:</p>
@@ -80,12 +80,12 @@ export default function PrivacyPolicy() {
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>9. Contact Us</h2>
           <p>For any privacy-related questions or requests, contact us at:</p>
-          <p><strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong><br />Email: <a href="mailto:contact@highperformanceclub.com" style={{ color: "#b8853a" }}>contact@highperformanceclub.com</a></p>
+          <p><strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong><br />Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
         </div>
       </main>
 
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club · Growthyfai Technologies Private Limited</p>
+        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club. Owned and operated by Growthyfai Technologies Private Limited.</p>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/terms-and-conditions" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Terms</Link>

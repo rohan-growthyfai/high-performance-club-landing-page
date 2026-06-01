@@ -5,8 +5,8 @@ export default function Header() {
 
         {/* Brand */}
         <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
-          <div className="w-9 h-9 rounded-full bg-gradient-to-br from-accent to-accent-dim flex items-center justify-center">
-            <span className="text-white font-sans font-bold text-base">H</span>
+          <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+            <img src="/hpc-logo.png" alt="High Performance Club" className="w-full h-full object-cover" />
           </div>
           <span className="font-display text-base font-bold tracking-tight text-foreground hidden sm:block">
             High Performance Club

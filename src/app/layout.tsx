@@ -21,6 +21,11 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://highperformanceclub.co"),
+  icons: {
+    icon: "/hpc-logo.png",
+    shortcut: "/hpc-logo.png",
+    apple: "/hpc-logo.png",
+  },
   title: "7 Tiny High Performance Habits in 7 Days | Free WhatsApp Challenge",
   description:
     "Free 7-day WhatsApp challenge. One science-backed habit per day, 5 minutes each. Built for Indians 25–45 who keep starting and quitting habits.",

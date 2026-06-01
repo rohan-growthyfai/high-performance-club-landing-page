@@ -84,7 +84,7 @@ export default function BlogPostLayout({
         position: "sticky", top: 0, zIndex: 50,
       }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none" }}>
-          <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #b8853a, #8a6428)", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 16 }}>H</div>
+          <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}><img src="/hpc-logo.png" alt="High Performance Club" style={{ width: "100%", height: "100%", objectFit: "cover" }} /></div>
           <span style={{ fontWeight: 700, fontSize: 16, color: "#18181b", letterSpacing: "-0.02em" }}>High Performance Club</span>
         </Link>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>

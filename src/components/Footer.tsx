@@ -18,8 +18,8 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 gap-10 mb-12">
           <div>
             <div className="flex items-center gap-2.5 mb-4">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-accent to-accent-dim flex items-center justify-center">
-                <span className="text-white font-serif font-bold text-base">H</span>
+              <div className="w-9 h-9 rounded-full overflow-hidden flex-shrink-0">
+                <img src="/hpc-logo.png" alt="High Performance Club" className="w-full h-full object-cover" />
               </div>
               <span className="font-serif text-lg font-medium tracking-tight text-foreground">
                 High Performance Club

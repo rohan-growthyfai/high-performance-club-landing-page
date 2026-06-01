@@ -35,10 +35,6 @@ export default function HeroTestimonials() {
     <section className="py-10 lg:py-12 border-b border-border-subtle">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
 
-        <p className="text-center text-xs uppercase tracking-[0.2em] text-foreground-subtle font-semibold mb-8">
-          What people said before they tried it — and after 👇
-        </p>
-
         <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle">
           {reviews.map((r) => (
             <div key={r.name} className="flex flex-col gap-3 px-6 py-4 sm:py-0 first:pl-0 last:pr-0">

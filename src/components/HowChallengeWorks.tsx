@@ -91,7 +91,6 @@ export default function HowChallengeWorks() {
             How this challenge works.
           </h2>
           <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-            This is not a fitness challenge. This is not about diets or workouts.
             This challenge is designed to help you build tiny sustainable habits
             across <span className="font-semibold text-foreground">four key areas of your life</span> — all in 7 days.
           </p>

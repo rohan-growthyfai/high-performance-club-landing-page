@@ -32,6 +32,9 @@ export default function Footer() {
               One tiny daily upgrade. Measurable progress every week.
               Built in India, for Indians.
             </p>
+            <p className="text-xs text-foreground-subtle mb-3">
+              High Performance Club is owned and operated by Growthyfai Technologies Private Limited.
+            </p>
             <p className="font-serif italic text-base text-accent">
               Aadat banao. Zindagi badlo.
             </p>
@@ -41,11 +44,14 @@ export default function Footer() {
               Get in touch
             </p>
             <a
-              href="mailto:hi@highperformanceclub.in"
+              href="mailto:contact@highperformanceclub.com"
               className="text-foreground-muted hover:text-accent transition-colors text-base block mb-2"
             >
-              hi@highperformanceclub.in
+              contact@highperformanceclub.com
             </a>
+            <p className="text-xs text-foreground-subtle mb-2 sm:text-right">
+              Powered by Growthyfai Technologies Private Limited
+            </p>
             <p className="text-sm text-foreground-subtle flex items-center gap-2 sm:justify-end">
               <Phone className="w-4 h-4" />
               <span>Support: Mon-Sat, 10 AM – 6 PM IST</span>
@@ -110,17 +116,17 @@ export default function Footer() {
         {/* Bottom row — links */}
         <div className="flex flex-col sm:flex-row sm:justify-between gap-4 text-sm text-foreground-subtle">
           <div className="flex flex-wrap gap-x-7 gap-y-2">
-            <a href="/privacy" className="hover:text-foreground transition-colors">
+            <a href="/privacy-policy" className="hover:text-foreground transition-colors">
               Privacy Policy
             </a>
-            <a href="/terms" className="hover:text-foreground transition-colors">
-              Terms of Service
+            <a href="/terms-and-conditions" className="hover:text-foreground transition-colors">
+              Terms &amp; Conditions
             </a>
-            <a href="/refund" className="hover:text-foreground transition-colors">
-              Refund Policy
+            <a href="/about" className="hover:text-foreground transition-colors">
+              About Us
             </a>
             <a href="/contact" className="hover:text-foreground transition-colors">
-              Contact
+              Contact Us
             </a>
           </div>
           <p>© 2026 High Performance Club · Made with 💛 in India</p>

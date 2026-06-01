@@ -64,6 +64,8 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <head>
+        {/* Facebook Domain Verification */}
+        <meta name="facebook-domain-verification" content="f8hrst14oxakqq9m922edch69zqmxd" />
         {/* Google Analytics 4 */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}

@@ -75,7 +75,7 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
         </p>
         <p className="text-base text-foreground-subtle">
           Didn&apos;t receive anything? Make sure your WhatsApp number is correct,
-          or contact us at hi@highperformanceclub.in
+          or contact us at contact@highperformanceclub.com
         </p>
       </div>
     );

@@ -52,6 +52,26 @@ export default function Contact() {
             <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b" }}>Growthyfai Technologies Private Limited</p>
             <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 6 }}>High Performance Club is a wellness and personal growth initiative owned and operated by Growthyfai Technologies Private Limited.</p>
           </div>
+
+          {/* Registered Office */}
+          <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Registered Office</p>
+            <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", marginBottom: 8 }}>Growthyfai Technologies Private Limited</p>
+            <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.8 }}>
+              Office No. 603,<br />
+              Global Business Hub,<br />
+              Kharadi,<br />
+              Pune, Maharashtra 411014,<br />
+              India
+            </p>
+          </div>
+
+          {/* WhatsApp Support */}
+          <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>WhatsApp Support</p>
+            <a href="https://wa.me/918459429045" style={{ fontSize: 22, fontWeight: 800, color: "#18181b", textDecoration: "none", letterSpacing: "-0.02em" }}>+91 84594 29045</a>
+            <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 10 }}>Mon–Sat, 10 AM – 6 PM IST</p>
+          </div>
         </div>
 
         {/* CTA */}

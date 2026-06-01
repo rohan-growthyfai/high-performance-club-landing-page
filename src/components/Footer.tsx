@@ -55,6 +55,12 @@ export default function Footer() {
             >
               Website: www.highperformanceclub.co
             </a>
+            <a
+              href="https://wa.me/918459429045"
+              className="text-foreground-muted hover:text-accent transition-colors text-base block mb-3"
+            >
+              WhatsApp Support: +91 84594 29045
+            </a>
             <p className="text-sm text-foreground-subtle flex items-center gap-2 sm:justify-end">
               <Phone className="w-4 h-4" />
               <span>Support: Mon-Sat, 10 AM – 6 PM IST</span>
@@ -82,9 +88,13 @@ export default function Footer() {
             <div>
               <p className="text-sm font-bold text-foreground mb-1">Registered Office</p>
               <p className="text-xs text-foreground-subtle leading-relaxed">
+                Growthyfai Technologies Private Limited
+                <br />
                 Office No. 603, Global Business Hub,
                 <br />
-                Kharadi, Pune, Maharashtra 411041 · India
+                Kharadi, Pune, Maharashtra 411014
+                <br />
+                India
               </p>
             </div>
           </div>

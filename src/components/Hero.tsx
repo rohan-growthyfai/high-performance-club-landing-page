@@ -21,11 +21,12 @@ export default function Hero() {
 
             {/* Headline — more breathing room above */}
             <h1 className="mt-8 font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.1] tracking-tight text-balance text-foreground animate-fade-up delay-100">
-              Reclaim your <span className="gradient-text">energy</span>,{" "}
-              <span className="gradient-text">focus</span>, and{" "}
-              <span className="gradient-text">momentum</span> with tiny habits{" "}
-              <span className="text-foreground-muted font-medium">in just</span>{" "}
-              <span className="italic font-normal text-emphasis-yellow">7 days</span>.
+              Reclaim Your{" "}
+              <span className="gradient-text">Energy</span>,{" "}
+              <span className="gradient-text">Focus</span> &{" "}
+              <span className="gradient-text">Momentum</span>{" "}
+              <span className="text-foreground-muted font-medium">in Just</span>{" "}
+              <span className="italic font-normal text-emphasis-yellow">7 Days</span>.
             </h1>
 
             {/* Subhead — more space below headline */}

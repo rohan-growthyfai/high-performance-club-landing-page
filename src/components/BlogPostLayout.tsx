@@ -9,13 +9,14 @@ interface BlogPostLayoutProps {
   title: string;
   accent: string;
   bg: string;
+  heroImage?: string;
   faqQuestion?: string;
   faqAnswer?: string;
   keywords?: string[];
 }
 
 export default function BlogPostLayout({
-  children, emoji, category, readTime, date, title, accent,
+  children, emoji, category, readTime, date, title, accent, heroImage,
 }: BlogPostLayoutProps) {
   return (
     <div style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "var(--font-sans)", color: "#18181b" }}>
@@ -52,6 +53,21 @@ export default function BlogPostLayout({
           text-decoration: none; font-size: 15px;
         }
         .callout a:hover { text-decoration: underline; }
+        .blog-content .inline-cta {
+          margin: 4px 0 32px !important;
+        }
+        .blog-content .inline-cta a {
+          display: inline-block;
+          color: #b8853a !important;
+          font-weight: 700 !important;
+          font-size: 16px !important;
+          text-decoration: underline !important;
+          text-underline-offset: 3px;
+          line-height: 1.6;
+        }
+        .blog-content .inline-cta a:hover {
+          color: #8a6428 !important;
+        }
         .blog-divider {
           height: 1px;
           background: linear-gradient(90deg, transparent, #e2dfd6, transparent);
@@ -91,14 +107,34 @@ export default function BlogPostLayout({
             <span style={{ fontSize: 13, color: "#9ca3af" }}>· {date}</span>
           </div>
 
-          {/* Emoji hero block */}
-          <div style={{
-            width: 80, height: 80, borderRadius: 20,
-            background: `${accent}18`, border: `1px solid ${accent}25`,
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 38, marginBottom: 28,
-          }}>
-            {emoji}
+          {/* Hero image (AI-generated) + emoji badge */}
+          <div style={{ position: "relative", marginBottom: 32 }}>
+            {heroImage && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={heroImage}
+                alt={title}
+                style={{
+                  width: "100%", height: 340, objectFit: "cover",
+                  borderRadius: 20, display: "block",
+                  border: "1px solid #e5e7eb",
+                }}
+              />
+            )}
+            <div style={{
+              width: 72, height: 72, borderRadius: 18,
+              background: heroImage ? "rgba(250,248,243,0.95)" : `${accent}18`,
+              border: `1px solid ${accent}25`,
+              display: "flex", alignItems: "center", justifyContent: "center",
+              fontSize: 34,
+              position: heroImage ? "absolute" : "relative",
+              bottom: heroImage ? -20 : undefined,
+              left: heroImage ? 24 : undefined,
+              marginBottom: heroImage ? 0 : 28,
+              boxShadow: heroImage ? "0 4px 16px rgba(0,0,0,0.12)" : "none",
+            }}>
+              {emoji}
+            </div>
           </div>
 
           <h1 style={{

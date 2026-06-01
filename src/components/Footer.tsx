@@ -71,7 +71,7 @@ export default function Footer() {
             <div>
               <p className="text-sm font-bold text-foreground mb-1">Verified Indian Business</p>
               <p className="text-xs text-foreground-subtle leading-relaxed">
-                GSTIN: <span className="font-mono">[YOUR_GSTIN]</span>
+                GSTIN: <span className="font-mono">27AAKCG6243L1Z6</span>
                 <br />
                 Registered in India
               </p>
@@ -82,9 +82,9 @@ export default function Footer() {
             <div>
               <p className="text-sm font-bold text-foreground mb-1">Registered Office</p>
               <p className="text-xs text-foreground-subtle leading-relaxed">
-                [Your Office Address]
+                Office No. 603, Global Business Hub,
                 <br />
-                [City, State, PIN] · India
+                Kharadi, Pune, Maharashtra 411041 · India
               </p>
             </div>
           </div>

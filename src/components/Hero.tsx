@@ -84,14 +84,10 @@ export default function Hero() {
             </div>
 
             {/* Trust microcopy */}
-            <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 text-sm text-foreground-subtle animate-fade-up delay-400 justify-center lg:justify-start">
-              <span className="font-medium">No app. No login. Just 30 seconds to join.</span>
-              <span className="hidden sm:block w-1 h-1 rounded-full bg-foreground-subtle/40" />
-              <div className="flex items-center gap-1 justify-center lg:justify-start">
-                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />)}
-                <span className="ml-1 font-bold text-foreground">4.9</span>
-                <span>· 2,400+ members</span>
-              </div>
+            <div className="mt-4 flex items-center gap-1 justify-center lg:justify-start text-sm text-foreground-subtle animate-fade-up delay-400">
+              {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />)}
+              <span className="ml-1 font-bold text-foreground">4.9</span>
+              <span>· 2,400+ members</span>
             </div>
 
             {/* Reviews — inline inside hero */}

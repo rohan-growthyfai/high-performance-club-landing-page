@@ -95,7 +95,7 @@ export default function Hero() {
             </div>
 
             {/* Reviews — inline inside hero */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
+            <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
               {reviews.map((r) => (
                 <div key={r.name} className="flex flex-col gap-2 px-4 py-2 first:pl-0 last:pr-0">
                   <div className="flex gap-0.5">
@@ -117,10 +117,10 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — iPhone */}
-          <div className="lg:col-span-5 flex justify-center animate-fade-up delay-300">
+          <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10">
             <div className="relative">
               {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
-              <div className="absolute -right-4 lg:-right-44 top-1/3 z-20 sticky-note p-2.5 rounded-md tilt-right w-36 hidden lg:block">
+              <div className="absolute -right-4 lg:-right-48 top-1/3 z-20 sticky-note p-2.5 rounded-md tilt-right w-36 hidden lg:block">
                 <p className="font-serif italic text-xs text-amber-900 leading-snug">
                   This is what lands in your phone! 📱
                 </p>

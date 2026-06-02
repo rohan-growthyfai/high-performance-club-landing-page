@@ -103,21 +103,53 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — iPhone */}
-          <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10">
-            <div className="relative">
-              {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
-              <div className="absolute -right-4 lg:-right-48 top-1/3 z-20 sticky-note p-2.5 rounded-md tilt-right w-36 hidden lg:block">
+          {/* RIGHT — iPhone held in hand */}
+          <div className="lg:col-span-5 flex justify-center items-end animate-fade-up delay-300 lg:-mt-6">
+            <div className="relative" style={{ width: 310 }}>
+
+              {/* "This is what lands in your phone" sticky note — right of phone */}
+              <div className="absolute -right-4 lg:-right-44 top-1/4 z-30 sticky-note p-2.5 rounded-md tilt-right w-36 hidden lg:block">
                 <p className="font-serif italic text-xs text-amber-900 leading-snug">
                   This is what lands in your phone! 📱
                 </p>
               </div>
-              <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">
+
+              {/* Win cert badge */}
+              <div className="absolute -bottom-2 -left-4 z-30 animate-wiggle">
                 <div className="bg-accent text-white rounded-full px-3 py-1.5 shadow-xl tilt-right">
                   <p className="text-[10px] font-bold uppercase">🏆 Win cert!</p>
                 </div>
               </div>
-              <HeroPhone />
+
+              {/* Hand holding phone — hand image sits behind/below the phone */}
+              <div className="relative" style={{ display: "inline-block" }}>
+                {/* iPhone on top */}
+                <div style={{ position: "relative", zIndex: 2 }}>
+                  <HeroPhone />
+                </div>
+
+                  {/* Hand holding phone — real photo, blended into cream background */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?w=600&h=700&fit=crop&crop=bottom&q=85"
+                  alt=""
+                  aria-hidden="true"
+                  style={{
+                    position: "absolute",
+                    bottom: -120,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                    width: 310,
+                    height: 180,
+                    objectFit: "cover",
+                    objectPosition: "top center",
+                    zIndex: 1,
+                    pointerEvents: "none",
+                    mixBlendMode: "multiply",
+                    opacity: 0.92,
+                  }}
+                />
+              </div>
             </div>
           </div>
 

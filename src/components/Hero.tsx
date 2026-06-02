@@ -31,7 +31,7 @@ const StarIcon = () => (
 
 export default function Hero() {
   return (
-    <section className="relative pt-6 pb-0 lg:pt-10 lg:pb-0 overflow-hidden mesh-bg">
+    <section className="relative pt-6 pb-8 lg:pt-10 lg:pb-0 overflow-hidden mesh-bg min-h-[calc(100vh-68px)] flex flex-col justify-center">
       <span className="emoji-deco float-1 top-10 left-6 text-3xl hidden lg:block" aria-hidden="true">✨</span>
       <span className="emoji-deco float-2 top-16 right-10 text-3xl hidden lg:block" aria-hidden="true">🎯</span>
 

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Star, Award } from "lucide-react";
+import { Star } from "lucide-react";
 import HeroPhone from "./HeroPhone";
 
 const reviews = [
@@ -74,20 +74,11 @@ export default function Hero() {
                 <span className="font-extrabold">FREE</span>
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
-              <a
-                href="#certificate"
-                className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full border border-border hover:border-accent/40 text-foreground-muted hover:text-foreground transition-all text-base font-medium"
-              >
-                <Award className="w-4 h-4 text-accent" />
-                See the prize
-              </a>
-            </div>
-
-            {/* Trust microcopy */}
-            <div className="mt-4 flex items-center gap-1 justify-center lg:justify-start text-sm text-foreground-subtle animate-fade-up delay-400">
-              {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />)}
-              <span className="ml-1 font-bold text-foreground">4.9</span>
-              <span>· 2,400+ members</span>
+              <div className="flex items-center gap-1 justify-center lg:justify-start text-sm text-foreground-subtle">
+                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />)}
+                <span className="ml-1 font-bold text-foreground">4.9</span>
+                <span>· 2,400+ members</span>
+              </div>
             </div>
 
             {/* Reviews — inline inside hero */}

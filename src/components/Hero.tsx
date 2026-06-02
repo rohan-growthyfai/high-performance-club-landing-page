@@ -7,19 +7,19 @@ const reviews = [
     avatar: "https://randomuser.me/api/portraits/men/34.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "I barely have time for lunch — 2 kids, a startup, back-to-back meetings. Something actually shifted. I am on Day 19 now.",
+    review: "Something shifted on Day 1. I am on Day 19 now.",
   },
   {
     avatar: "https://randomuser.me/api/portraits/women/58.jpg",
     name: "Preethi R.",
     city: "Chennai",
-    review: "WhatsApp showed up at 6 AM and I did the habit before I even fully woke up. No willpower. Just a message.",
+    review: "Did the habit before I even fully woke up.",
   },
   {
     avatar: "https://randomuser.me/api/portraits/women/29.jpg",
     name: "Divya M.",
     city: "Mumbai",
-    review: "Zero expectations from a free challenge. Day 3 genuinely surprised me. Still using that habit every single day.",
+    review: "Day 3 genuinely surprised me.",
   },
 ];
 

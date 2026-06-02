@@ -141,9 +141,44 @@ export default function BlogPostLayout({
             fontSize: "clamp(1.85rem, 4.5vw, 2.75rem)",
             fontWeight: 800, color: "#18181b",
             letterSpacing: "-0.035em", lineHeight: 1.12,
+            marginBottom: 28,
           }}>
             {title}
           </h1>
+
+          {/* Author / publisher strip */}
+          <div style={{
+            display: "flex", alignItems: "center", gap: 12,
+            padding: "14px 18px",
+            background: "#fff",
+            border: "1px solid #e5e7eb",
+            borderRadius: 14,
+          }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/hpc-logo.png"
+              alt="High Performance Club"
+              style={{ width: 44, height: 44, borderRadius: "50%", objectFit: "cover", flexShrink: 0 }}
+            />
+            <div>
+              <p style={{ fontSize: 15, fontWeight: 700, color: "#18181b", margin: 0, lineHeight: 1.3 }}>
+                High Performance Club
+              </p>
+              <p style={{ fontSize: 13, color: "#9ca3af", margin: 0, marginTop: 2 }}>
+                {date} · {readTime}
+              </p>
+            </div>
+            <div style={{ marginLeft: "auto", display: "flex", alignItems: "center", gap: 6 }}>
+              <span style={{
+                fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const,
+                letterSpacing: "0.08em", color: "#b8853a",
+                background: "#fef9ec", border: "1px solid #f5d78e",
+                padding: "4px 10px", borderRadius: 999,
+              }}>
+                Official
+              </span>
+            </div>
+          </div>
         </div>
 
         {/* Divider */}

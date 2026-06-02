@@ -5,7 +5,9 @@ import LiveStatsBar from "@/components/LiveStatsBar";
 import HeroTestimonials from "@/components/HeroTestimonials";
 import InlineSignup from "@/components/InlineSignup";
 import HowChallengeWorks from "@/components/HowChallengeWorks";
+import WhyTinyHabits from "@/components/WhyTinyHabits";
 import CuriosityBullets from "@/components/CuriosityBullets";
+import SevenDayResults from "@/components/SevenDayResults";
 import Testimonials from "@/components/Testimonials";
 import CertificateReveal from "@/components/CertificateReveal";
 import Hook from "@/components/Hook";
@@ -43,8 +45,14 @@ export default function Home() {
         {/* 4. How this challenge works */}
         <HowChallengeWorks />
 
-        {/* 5. Your Journey — animated road map */}
+        {/* 5. Why Tiny Habits */}
+        <WhyTinyHabits />
+
+        {/* 6. Your Journey — animated road map */}
         <CuriosityBullets />
+
+        {/* 7. What You'll Actually Notice in 7 Days */}
+        <SevenDayResults />
 
         {/* 6. Wall of Love — Testimonials */}
         <Testimonials />

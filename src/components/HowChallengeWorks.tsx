@@ -230,7 +230,7 @@ export default function HowChallengeWorks() {
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Simple. Tiny. Powerful. Ready to experience it yourself?</p>
           <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-            Yes, let&apos;s get started — join free →
+            Yes!! Let&apos;s Get Started
           </a>
         </div>
 

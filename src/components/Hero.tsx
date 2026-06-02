@@ -95,9 +95,9 @@ export default function Hero() {
             </div>
 
             {/* Reviews — inline inside hero */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle border border-border-subtle rounded-2xl bg-white/60 backdrop-blur-sm animate-fade-up delay-500">
-              {reviews.map((r, i) => (
-                <div key={r.name} className={`flex flex-col gap-2 p-4 ${i === 0 ? "rounded-l-2xl" : ""} ${i === reviews.length - 1 ? "rounded-r-2xl" : ""}`}>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
+              {reviews.map((r) => (
+                <div key={r.name} className="flex flex-col gap-2 px-4 py-2 first:pl-0 last:pr-0">
                   <div className="flex gap-0.5">
                     {[1,2,3,4,5].map(j => <StarIcon key={j} />)}
                   </div>

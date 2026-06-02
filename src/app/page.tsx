@@ -2,7 +2,6 @@ import UrgencyBar from "@/components/UrgencyBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
-import HeroTestimonials from "@/components/HeroTestimonials";
 import InlineSignup from "@/components/InlineSignup";
 import HowChallengeWorks from "@/components/HowChallengeWorks";
 import WhyTinyHabits from "@/components/WhyTinyHabits";
@@ -33,10 +32,7 @@ export default function Home() {
         {/* 1. Hero */}
         <Hero />
 
-        {/* 2. Hero testimonials — 3 objection-busting reviews */}
-        <HeroTestimonials />
-
-        {/* 3. Live stats */}
+        {/* 2. Live stats */}
         <LiveStatsBar />
 
         {/* 3. Form #1 */}

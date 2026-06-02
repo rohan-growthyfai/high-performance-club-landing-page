@@ -1,4 +1,3 @@
-import UrgencyBar from "@/components/UrgencyBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
@@ -26,7 +25,6 @@ import LiveEnrollmentPopup from "@/components/LiveEnrollmentPopup";
 export default function Home() {
   return (
     <>
-      <UrgencyBar />
       <Header />
       <main className="flex-1">
         {/* 1. Hero */}

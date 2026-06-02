@@ -1,26 +1,33 @@
+/* eslint-disable @next/next/no-img-element */
+
 const benefits = [
   {
-    emoji: "⚡",
+    // Person energetically stretching/waking up in morning sunlight
+    image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&h=400&fit=crop&q=80",
     title: "More Energy",
     desc: "Start your mornings feeling lighter and more awake.",
   },
   {
-    emoji: "🎯",
+    // Person focused and working deeply, no distractions
+    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&q=80",
     title: "Better Focus",
     desc: "Less distraction. More control.",
   },
   {
-    emoji: "😊",
+    // Person smiling confidently, proud expression
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&q=80",
     title: "More Confidence",
     desc: "Keep promises to yourself again.",
   },
   {
-    emoji: "🌿",
+    // Person doing healthy activity — walking, eating well, outdoors
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80",
     title: "Healthier Daily Habits",
     desc: "Small habits that support your wellbeing.",
   },
   {
-    emoji: "🔁",
+    // Person in calm consistent routine — journaling or planning
+    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop&q=80",
     title: "Consistency",
     desc: "Build habits you can actually sustain.",
   },
@@ -41,17 +48,33 @@ export default function SevenDayResults() {
           </h2>
         </div>
 
-        {/* Benefit cards — centered row wrapping */}
-        <div className="flex flex-wrap justify-center gap-5 mb-16">
+        {/* Benefit cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {benefits.map((b) => (
             <div
               key={b.title}
-              className="flex flex-col items-center text-center gap-3 bg-white border border-border-subtle rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow"
-              style={{ width: "clamp(200px, 28%, 280px)", flexGrow: 0 }}
+              className="bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
             >
-              <span className="text-4xl">{b.emoji}</span>
-              <p className="text-lg font-bold text-foreground leading-snug">{b.title}</p>
-              <p className="text-base text-foreground-muted leading-relaxed">{b.desc}</p>
+              {/* Photo */}
+              <div style={{ height: 200, overflow: "hidden" }}>
+                <img
+                  src={b.image}
+                  alt={b.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    transition: "transform 0.4s ease",
+                  }}
+                  className="group-hover:scale-105"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="p-6">
+                <p className="text-lg font-bold text-foreground mb-2 leading-snug">{b.title}</p>
+                <p className="text-base text-foreground-muted leading-relaxed">{b.desc}</p>
+              </div>
             </div>
           ))}
         </div>

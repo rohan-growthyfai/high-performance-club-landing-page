@@ -265,48 +265,38 @@ export async function POST(request: Request) {
 
     const pdfBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
-    // Upload PDF to Cloudinary — proper public PDF URL with all required headers
-    const cloudName  = process.env.CLOUDINARY_CLOUD_NAME;
-    const apiKey     = process.env.CLOUDINARY_API_KEY;
-    const apiSecret  = process.env.CLOUDINARY_API_SECRET;
+    // Upload PDF to Cloudinary using SDK — handles signature automatically
+    const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
+    const apiKey    = process.env.CLOUDINARY_API_KEY;
+    const apiSecret = process.env.CLOUDINARY_API_SECRET;
 
     if (!cloudName || !apiKey || !apiSecret) {
       throw new Error("Cloudinary credentials not configured");
     }
 
+    const { v2: cloudinary } = await import("cloudinary");
+    cloudinary.config({ cloud_name: cloudName, api_key: apiKey, api_secret: apiSecret });
+
     const slug      = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
     const firstName = data.name.split(" ")[0];
 
-    // Upload via Cloudinary REST API directly (no SDK needed)
-    const formData  = new FormData();
-    const timestamp = Math.floor(Date.now() / 1000).toString();
-    const publicId  = `hpc-reports/${slug}`;
-
-    // Build signature
-    const crypto = await import("crypto");
-    // Cloudinary signature must include ALL non-file params sorted alphabetically
-    const sigStr = `public_id=${publicId}&timestamp=${timestamp}&type=upload${apiSecret}`;
-    const signature = crypto.createHash("sha256").update(sigStr).digest("hex");
-
-    formData.append("file", new Blob([pdfBuffer.buffer as ArrayBuffer], { type: "application/pdf" }), `${slug}.pdf`);
-    formData.append("public_id", publicId);
-    formData.append("timestamp", timestamp);
-    formData.append("type", "upload");
-    formData.append("api_key", apiKey);
-    formData.append("signature", signature);
-
-    const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
-      method: "POST",
-      body: formData,
+    const uploadResult = await new Promise<{ secure_url: string }>((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        {
+          resource_type: "raw",
+          public_id: `hpc-reports/${slug}`,
+          access_mode: "public",
+          overwrite: true,
+        },
+        (error, result) => {
+          if (error || !result) reject(error ?? new Error("No upload result"));
+          else resolve(result as { secure_url: string });
+        }
+      );
+      stream.end(Buffer.from(pdfBuffer));
     });
 
-    if (!uploadRes.ok) {
-      const err = await uploadRes.text();
-      throw new Error(`Cloudinary upload failed: ${err.slice(0, 200)}`);
-    }
-
-    const uploadData = await uploadRes.json() as { secure_url: string };
-    const pdfUrl = uploadData.secure_url;
+    const pdfUrl = uploadResult.secure_url;
 
     return NextResponse.json({
       success: true,

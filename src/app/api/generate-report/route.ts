@@ -237,58 +237,67 @@ export async function POST(request: Request) {
 
     const html = buildHTML(data);
 
-    // Push the HTML report as a file to GitHub → Vercel serves it publicly
-    // This avoids Drive quota issues and works reliably on serverless
-    const slug = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
-    const filename = `${slug}.html`;
-    const githubToken = process.env.GITHUB_TOKEN;
+    // Generate real PDF using Playwright + Chromium (Vercel-compatible)
+    const chromium   = (await import("@sparticuz/chromium")).default;
+    const playwright = await import("playwright-core");
 
-    if (!githubToken) {
-      // Fallback: return HTML directly as a data URL (works for testing)
-      const b64 = Buffer.from(html).toString("base64");
-      const dataUrl = `data:text/html;base64,${b64}`;
-      const firstName = data.name.split(" ")[0];
-      return NextResponse.json({
-        success: true,
-        name: data.name,
-        firstName,
-        whatsapp: data.whatsapp,
-        pdfUrl: dataUrl,
-        caption: `🏆 ${firstName}, your personalised 7-Day High Performance Report is ready!`,
-        filename: `${firstName}-HPC-Progress-Report.html`,
-        note: "Set GITHUB_TOKEN env var to get a proper public URL",
-      });
-    }
-
-    // Push to a dedicated GitHub repo used only as a CDN for reports
-    // Raw GitHub content is served immediately — no deploy needed
-    const repoOwner = "rohan-growthyfai";
-    const repoName  = "high-performance-club-landing-page";
-    const filePath  = `public/reports/${filename}`;
-    const content   = Buffer.from(html).toString("base64");
-
-    const ghRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${githubToken}`,
-        "Content-Type": "application/json",
-        "User-Agent": "HPC-Report-Generator",
-      },
-      body: JSON.stringify({
-        message: `report: ${data.name} 7-day progress`,
-        content,
-        branch: "reports",
-      }),
+    const browser = await playwright.chromium.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
     });
 
-    if (!ghRes.ok) {
-      const err = await ghRes.text();
-      throw new Error(`GitHub push failed: ${err.slice(0, 200)}`);
+    const page = await browser.newPage();
+    await page.setContent(html, { waitUntil: "networkidle" });
+    const pdfBuffer = await page.pdf({
+      width: "800px",
+      printBackground: true,
+      margin: { top: "0", right: "0", bottom: "0", left: "0" },
+    });
+    await browser.close();
+
+    // Upload PDF to Cloudinary — proper public PDF URL with all required headers
+    const cloudName  = process.env.CLOUDINARY_CLOUD_NAME;
+    const apiKey     = process.env.CLOUDINARY_API_KEY;
+    const apiSecret  = process.env.CLOUDINARY_API_SECRET;
+
+    if (!cloudName || !apiKey || !apiSecret) {
+      throw new Error("Cloudinary credentials not configured");
     }
 
-    // Serve via our own domain — WhatsApp requires a trusted URL with correct Content-Type
-    const pdfUrl = `https://www.highperformanceclub.co/api/report/${filename}`;
+    const slug      = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
     const firstName = data.name.split(" ")[0];
+
+    // Upload via Cloudinary REST API directly (no SDK needed)
+    const formData  = new FormData();
+    const timestamp = Math.floor(Date.now() / 1000).toString();
+    const publicId  = `hpc-reports/${slug}`;
+
+    // Build signature
+    const crypto = await import("crypto");
+    const sigStr = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
+    const signature = crypto.createHash("sha256").update(sigStr).digest("hex");
+
+    formData.append("file", new Blob([pdfBuffer], { type: "application/pdf" }), `${slug}.pdf`);
+    formData.append("public_id", publicId);
+    formData.append("timestamp", timestamp);
+    formData.append("api_key", apiKey);
+    formData.append("signature", signature);
+    formData.append("resource_type", "raw");
+    formData.append("type", "upload");
+
+    const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
+      method: "POST",
+      body: formData,
+    });
+
+    if (!uploadRes.ok) {
+      const err = await uploadRes.text();
+      throw new Error(`Cloudinary upload failed: ${err.slice(0, 200)}`);
+    }
+
+    const uploadData = await uploadRes.json() as { secure_url: string };
+    const pdfUrl = uploadData.secure_url;
 
     return NextResponse.json({
       success: true,

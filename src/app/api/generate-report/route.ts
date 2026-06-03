@@ -286,8 +286,8 @@ export async function POST(request: Request) {
       throw new Error(`GitHub push failed: ${err.slice(0, 200)}`);
     }
 
-    // Raw GitHub CDN URL — available immediately, no Vercel deploy needed
-    const pdfUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/reports/public/reports/${filename}`;
+    // Serve via our own domain — WhatsApp requires a trusted URL with correct Content-Type
+    const pdfUrl = `https://highperformanceclub.co/api/report/${filename}`;
     const firstName = data.name.split(" ")[0];
 
     return NextResponse.json({

@@ -29,7 +29,7 @@ const stories: Story[] = [
       name: "Priya", // [PLACEHOLDER]
       age: 28,
       city: "Mumbai",
-      photo: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "Touched phone 87 times/day 📱",
     after: "Down to 23 by Day 7 ✨",
@@ -42,7 +42,7 @@ const stories: Story[] = [
       name: "Karan", // [PLACEHOLDER]
       age: 35,
       city: "Bengaluru",
-      photo: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "Energy crashed by 2 PM daily 😴",
     after: "Held energy till 6 PM, every day 💪",
@@ -55,7 +55,7 @@ const stories: Story[] = [
       name: "Neha", // [PLACEHOLDER]
       age: 24,
       city: "Delhi",
-      photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "4 headaches/week from screen time 🤕",
     after: "0 headaches by Day 5 ☀️",
@@ -68,7 +68,7 @@ const stories: Story[] = [
       name: "Vikram", // [PLACEHOLDER]
       age: 41,
       city: "Hyderabad",
-      photo: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "Heart rate 92 bpm before client calls 😰",
     after: "Drops to 68 bpm in 30 seconds 🧘",
@@ -81,7 +81,7 @@ const stories: Story[] = [
       name: "Anjali", // [PLACEHOLDER]
       age: 32,
       city: "Pune",
-      photo: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/3766111/pexels-photo-3766111.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "47 tabs open · brain in 12 places 🥵",
     after: "1 tab · 7 min · 1 task done ✅",
@@ -94,7 +94,7 @@ const stories: Story[] = [
       name: "Rohit", // [PLACEHOLDER]
       age: 29,
       city: "Gurgaon",
-      photo: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "Vague anxiety from 9 AM to 11 PM 😶‍🌫️",
     after: "Cut to 1 specific thing in 60 seconds 💡",
@@ -107,7 +107,7 @@ const stories: Story[] = [
       name: "Meera", // [PLACEHOLDER]
       age: 36,
       city: "Chennai",
-      photo: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&q=80",
+      photo: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     },
     before: "Took 42 min to fall asleep 🌃",
     after: "Down to 11 min by Day 4 😴",

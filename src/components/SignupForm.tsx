@@ -15,13 +15,13 @@ const struggles = [
 
 const testimonials = [
   {
-    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face&q=80",
+    avatar: "https://images.pexels.com/photos/3760270/pexels-photo-3760270.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     name: "Priya S.",
     city: "Mumbai",
     quote: "I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.",
   },
   {
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face&q=80",
+    avatar: "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
     name: "Karan M.",
     city: "Bengaluru",
     quote: "I have quit every habit app I ever downloaded. This one came to me on WhatsApp. I did not have to remember anything. Finished all 7 days.",

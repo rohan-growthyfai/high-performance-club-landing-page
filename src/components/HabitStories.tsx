@@ -55,7 +55,7 @@ const stories: Story[] = [
       name: "Neha", // [PLACEHOLDER]
       age: 24,
       city: "Delhi",
-      photo: "/avatars/men/man-8.webp",
+      photo: "/avatars/women/woman-8.webp",
     },
     before: "4 headaches/week from screen time 🤕",
     after: "0 headaches by Day 5 ☀️",

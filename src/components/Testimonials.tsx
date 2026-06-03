@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Vikram Iyer", // [PLACEHOLDER]
     city: "Pune",
-    avatar: "/avatars/women/woman-4.jpg",
+    avatar: "/avatars/men/man-4.jpg",
     rating: 5,
     text:
       "I've been doing one of the Day 7 habits every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast. 😄",
@@ -93,7 +93,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Nikhil Sharma", // [PLACEHOLDER]
     city: "Bhopal",
-    avatar: "/avatars/women/woman-7.avif",
+    avatar: "/avatars/men/man-7.jpg",
     rating: 5,
     text:
       "I tried Headspace, Calm, three productivity apps, and two fitness programs. None lasted. This is the first thing I have actually completed. Something about the WhatsApp format just works.",

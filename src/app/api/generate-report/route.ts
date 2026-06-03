@@ -278,7 +278,7 @@ export async function POST(request: Request) {
     const sigStr = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
     const signature = crypto.createHash("sha256").update(sigStr).digest("hex");
 
-    formData.append("file", new Blob([pdfBuffer], { type: "application/pdf" }), `${slug}.pdf`);
+    formData.append("file", new Blob([pdfBuffer.buffer as ArrayBuffer], { type: "application/pdf" }), `${slug}.pdf`);
     formData.append("public_id", publicId);
     formData.append("timestamp", timestamp);
     formData.append("api_key", apiKey);

@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Priya Sharma", // [PLACEHOLDER]
     city: "Mumbai",
-    avatar: "https://randomuser.me/api/portraits/women/44.jpg",
+    avatar: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I assumed it'd be another generic self-help thing. By Day 3 my afternoons felt completely different. I cannot explain what changed — it just did. 🙌",
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Karan Mehta", // [PLACEHOLDER]
     city: "Bengaluru",
-    avatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "Honestly joined for the certificate. Stayed because Day 5 broke me out of a 6-month productivity slump. I did not expect a 7-minute habit to change my entire workday.",
@@ -47,7 +47,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Vikram Iyer", // [PLACEHOLDER]
     city: "Pune",
-    avatar: "https://randomuser.me/api/portraits/men/76.jpg",
+    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I've been doing one of the Day 7 habits every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast. 😄",
@@ -60,7 +60,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Divya Menon", // [PLACEHOLDER]
     city: "Thiruvananthapuram",
-    avatar: "https://randomuser.me/api/portraits/women/62.jpg",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "The Day 4 habit saved me during a fight with my sister. I literally stopped, used it, and was able to speak calmly in 30 seconds. My sister asked what changed. 😂",
@@ -70,7 +70,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Sneha Iyer", // [PLACEHOLDER]
     city: "Kolkata",
-    avatar: "https://randomuser.me/api/portraits/women/79.jpg",
+    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I'm a mom of 2 with zero time for anything. This was the only challenge I've finished in years. 5 minutes while making dinner. And I still can't believe it actually worked.",
@@ -83,7 +83,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Devansh Khanna", // [PLACEHOLDER]
     city: "Chandigarh",
-    avatar: "https://randomuser.me/api/portraits/men/40.jpg",
+    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "By Day 3, my evenings felt calmer. By Day 7, my mom asked what changed. That was the moment I knew something was actually different.",
@@ -93,7 +93,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Nikhil Sharma", // [PLACEHOLDER]
     city: "Bhopal",
-    avatar: "https://randomuser.me/api/portraits/men/67.jpg",
+    avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I tried Headspace, Calm, three productivity apps, and two fitness programs. None lasted. This is the first thing I have actually completed. Something about the WhatsApp format just works.",
@@ -103,7 +103,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Preeti Saxena", // [PLACEHOLDER]
     city: "Agra",
-    avatar: "https://randomuser.me/api/portraits/women/75.jpg",
+    avatar: "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I cried a little when the certificate arrived. I genuinely have not finished anything I started in the last two years. It felt different because the habits were so small. Tiny action. Real change.",
@@ -116,7 +116,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Pooja Bansal", // [PLACEHOLDER]
     city: "Noida",
-    avatar: "https://randomuser.me/api/portraits/women/19.jpg",
+    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "Day 2 habit sounds too simple to work. It does not. I did it before a presentation and felt instantly more confident. Now my go-to before any important meeting.",
@@ -126,7 +126,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Rahul Joshi", // [PLACEHOLDER]
     city: "Indore",
-    avatar: "https://randomuser.me/api/portraits/men/3.jpg",
+    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "Got more done in 7 minutes on Day 5 than I usually do in an hour. I literally sat there thinking — how is this possible? Completely sold. 🎯",
@@ -136,7 +136,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Saurabh Joshi", // [PLACEHOLDER]
     city: "Jaipur",
-    avatar: "https://randomuser.me/api/portraits/men/85.jpg",
+    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I was skeptical. The Day 4 habit took 30 seconds. I used it before a tough team review and stayed completely calm throughout. I do not know what that habit is scientifically — I just know it works.",
@@ -146,7 +146,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Varun Malhotra", // [PLACEHOLDER]
     city: "Ludhiana",
-    avatar: "https://randomuser.me/api/portraits/men/38.jpg",
+    avatar: "https://images.unsplash.com/photo-1618641986557-1ecd230959aa?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I have sent this to 7 people. My wife, my brother, two colleagues, three friends. Everyone came back and thanked me. The most useful free thing I have found in years.",
@@ -156,7 +156,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Kavya Nair", // [PLACEHOLDER]
     city: "Kochi",
-    avatar: "https://randomuser.me/api/portraits/women/30.jpg",
+    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "We are doing it as a family now — comparing notes on WhatsApp every evening. The check-in messages made it feel like a game, not a chore.",
@@ -169,7 +169,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Ruchika Jain", // [PLACEHOLDER]
     city: "Jodhpur",
-    avatar: "https://randomuser.me/api/portraits/women/48.jpg",
+    avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I am a school teacher. Thought this was for corporate people. Every single habit worked for me too. The Day 3 habit especially — I teach 6 hours in front of a board and the difference was immediate.",
@@ -179,7 +179,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Manish Dubey", // [PLACEHOLDER]
     city: "Varanasi",
-    avatar: "https://randomuser.me/api/portraits/men/71.jpg",
+    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&q=80",
     rating: 5,
     text:
       "I run a small business. Zero time for anything. Under 5 minutes every day. Finished all 7 days without missing one. First time I have ever done that with anything.",

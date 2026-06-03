@@ -284,16 +284,16 @@ export async function POST(request: Request) {
 
     // Build signature
     const crypto = await import("crypto");
-    // Cloudinary signature: only include params that are in the signed string
-    const sigStr = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
+    // Cloudinary signature must include ALL non-file params sorted alphabetically
+    const sigStr = `public_id=${publicId}&timestamp=${timestamp}&type=upload${apiSecret}`;
     const signature = crypto.createHash("sha256").update(sigStr).digest("hex");
 
     formData.append("file", new Blob([pdfBuffer.buffer as ArrayBuffer], { type: "application/pdf" }), `${slug}.pdf`);
     formData.append("public_id", publicId);
     formData.append("timestamp", timestamp);
+    formData.append("type", "upload");
     formData.append("api_key", apiKey);
     formData.append("signature", signature);
-    formData.append("resource_type", "raw");
 
     const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
       method: "POST",

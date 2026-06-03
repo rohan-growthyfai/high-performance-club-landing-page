@@ -107,9 +107,9 @@ export default function Hero() {
           <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10">
             <div className="relative">
               {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
-              <div className="absolute -right-4 lg:-right-48 top-1/3 z-20 sticky-note p-2.5 rounded-md tilt-right w-36 hidden lg:block">
-                <p className="font-serif italic text-xs text-amber-900 leading-snug">
-                  This is what lands in your phone! 📱
+              <div className="absolute -right-4 lg:-right-48 top-1/3 z-20 sticky-note p-3.5 rounded-md tilt-right w-44 hidden lg:block">
+                <p className="font-serif italic text-sm text-amber-900 leading-snug">
+                  7-Days WhatsApp Challenge 📱
                 </p>
               </div>
               <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">

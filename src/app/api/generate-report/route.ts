@@ -287,7 +287,7 @@ export async function POST(request: Request) {
     }
 
     // Serve via our own domain — WhatsApp requires a trusted URL with correct Content-Type
-    const pdfUrl = `https://highperformanceclub.co/api/report/${filename}`;
+    const pdfUrl = `https://www.highperformanceclub.co/api/report/${filename}`;
     const firstName = data.name.split(" ")[0];
 
     return NextResponse.json({

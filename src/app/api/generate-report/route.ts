@@ -280,12 +280,13 @@ export async function POST(request: Request) {
     const slug      = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
     const firstName = data.name.split(" ")[0];
 
+    // Upload as "image" resource type with pdf format — always public on Cloudinary free tier
     const uploadResult = await new Promise<{ secure_url: string }>((resolve, reject) => {
       const stream = cloudinary.uploader.upload_stream(
         {
-          resource_type: "raw",
+          resource_type: "image",
           public_id: `hpc-reports/${slug}`,
-          access_mode: "public",
+          format: "pdf",
           overwrite: true,
         },
         (error, result) => {

@@ -24,12 +24,14 @@ export async function GET(
     const res = await fetch(rawUrl, { next: { revalidate: 0 } });
     if (!res.ok) return new NextResponse("Report not found", { status: 404 });
 
-    const html = await res.text();
+    const htmlBuffer = Buffer.from(await res.arrayBuffer());
 
-    return new NextResponse(html, {
+    return new NextResponse(htmlBuffer, {
       status: 200,
       headers: {
         "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": String(htmlBuffer.length),
+        "Content-Disposition": `attachment; filename="HPC-Progress-Report.html"`,
         "Cache-Control": "no-store",
       },
     });

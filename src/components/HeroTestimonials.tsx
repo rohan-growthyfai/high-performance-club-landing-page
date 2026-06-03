@@ -9,7 +9,7 @@ const reviews = [
       "I barely have time for lunch — 2 kids, a startup, back-to-back meetings. I thought 5 minutes could not do much. Did it between calls on Day 1. Something actually shifted. I am on Day 19 now.",
   },
   {
-    avatar: "/avatars/men/man-4.jpg",
+    avatar: "/avatars/women/woman-4.jpg",
     name: "Preethi R.",
     city: "Chennai",
     review:

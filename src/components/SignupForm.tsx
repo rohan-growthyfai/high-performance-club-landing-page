@@ -21,7 +21,7 @@ const testimonials = [
     quote: "I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.",
   },
   {
-    avatar: "/avatars/women/woman-8.webp",
+    avatar: "/avatars/men/man-5.avif",
     name: "Karan M.",
     city: "Bengaluru",
     quote: "I have quit every habit app I ever downloaded. This one came to me on WhatsApp. I did not have to remember anything. Finished all 7 days.",

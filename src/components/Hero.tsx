@@ -10,7 +10,7 @@ const reviews = [
     review: "Something shifted on Day 1. I am on Day 19 now.",
   },
   {
-    avatar: "/avatars/men/man-2.jpg",
+    avatar: "/avatars/women/woman-3.avif",
     name: "Preethi R.",
     city: "Chennai",
     review: "Did the habit before I even fully woke up.",

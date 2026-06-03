@@ -237,18 +237,18 @@ export async function POST(request: Request) {
 
     const html = buildHTML(data);
 
-    // Generate real PDF using Playwright + Chromium (Vercel-compatible)
-    const chromium   = (await import("@sparticuz/chromium")).default;
-    const playwright = await import("playwright-core");
+    // Generate real PDF using puppeteer-core + @sparticuz/chromium (Vercel-compatible)
+    const chromium  = (await import("@sparticuz/chromium")).default;
+    const puppeteer = (await import("puppeteer-core")).default;
 
-    const browser = await playwright.chromium.launch({
+    const browser = await puppeteer.launch({
       args: chromium.args,
       executablePath: await chromium.executablePath(),
       headless: true,
     });
 
     const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: "networkidle" });
+    await page.setContent(html, { waitUntil: "networkidle0" });
     const pdfBuffer = await page.pdf({
       width: "800px",
       printBackground: true,

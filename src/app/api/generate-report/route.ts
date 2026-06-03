@@ -189,9 +189,29 @@ export async function POST(request: Request) {
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
     if (!serviceAccountKey) return NextResponse.json({ error: "GOOGLE_SERVICE_ACCOUNT_KEY not set" }, { status: 500 });
 
-    // Key is stored as base64 to avoid newline corruption in Vercel env vars
-    const decoded = Buffer.from(serviceAccountKey, "base64").toString("utf8");
-    const keyJson = JSON.parse(decoded);
+    // Debug: return info about stored key
+    const keyLen = serviceAccountKey.length;
+    const keyPreview = serviceAccountKey.slice(0, 20);
+    const keyChar179 = serviceAccountKey.charCodeAt(179);
+
+    // Try base64 decode first, fall back to direct JSON parse
+    let keyJson: Record<string, unknown>;
+    try {
+      const decoded = Buffer.from(serviceAccountKey, "base64").toString("utf8");
+      keyJson = JSON.parse(decoded);
+    } catch {
+      try {
+        keyJson = JSON.parse(serviceAccountKey);
+      } catch (e2) {
+        return NextResponse.json({
+          error: "Key parse failed",
+          keyLen,
+          keyPreview,
+          keyChar179,
+          parseError: String(e2),
+        }, { status: 500 });
+      }
+    }
     const auth = new google.auth.GoogleAuth({
       credentials: keyJson,
       scopes: [

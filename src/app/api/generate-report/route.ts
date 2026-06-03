@@ -237,24 +237,33 @@ export async function POST(request: Request) {
 
     const html = buildHTML(data);
 
-    // Generate real PDF using puppeteer-core + @sparticuz/chromium (Vercel-compatible)
-    const chromium  = (await import("@sparticuz/chromium")).default;
-    const puppeteer = (await import("puppeteer-core")).default;
+    // Generate real PDF using Gotenberg (free, no API key, no size limits)
+    // Gotenberg is an open-source PDF service — demo.gotenberg.dev is the public instance
+    const gotenbergForm = new FormData();
+    gotenbergForm.append(
+      "files",
+      new Blob([html], { type: "text/html" }),
+      "index.html"
+    );
+    // Paper size matching our 800px design
+    gotenbergForm.append("paperWidth",  "8.5");
+    gotenbergForm.append("paperHeight", "11");
+    gotenbergForm.append("marginTop",   "0");
+    gotenbergForm.append("marginBottom","0");
+    gotenbergForm.append("marginLeft",  "0");
+    gotenbergForm.append("marginRight", "0");
+    gotenbergForm.append("printBackground", "true");
 
-    const browser = await puppeteer.launch({
-      args: chromium.args,
-      executablePath: await chromium.executablePath(),
-      headless: true,
+    const gotenbergRes = await fetch("https://demo.gotenberg.dev/forms/chromium/convert/html", {
+      method: "POST",
+      body: gotenbergForm,
     });
 
-    const page = await browser.newPage();
-    await page.setContent(html, { waitUntil: "networkidle0" });
-    const pdfBuffer = await page.pdf({
-      width: "800px",
-      printBackground: true,
-      margin: { top: "0", right: "0", bottom: "0", left: "0" },
-    });
-    await browser.close();
+    if (!gotenbergRes.ok) {
+      throw new Error(`Gotenberg failed: ${gotenbergRes.status}`);
+    }
+
+    const pdfBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
     // Upload PDF to Cloudinary — proper public PDF URL with all required headers
     const cloudName  = process.env.CLOUDINARY_CLOUD_NAME;

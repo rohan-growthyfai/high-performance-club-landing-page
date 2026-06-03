@@ -43,7 +43,7 @@ export default function Hero() {
 
             {/* Headline */}
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.1] tracking-tight text-balance text-foreground animate-fade-up">
-              Reclaim Your{" "}
+              Get Back Your{" "}
               <span className="gradient-text">Energy</span>,{" "}
               <span className="gradient-text">Focus</span> &{" "}
               <span className="gradient-text">Momentum</span>{" "}

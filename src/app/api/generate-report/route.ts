@@ -232,47 +232,55 @@ export async function POST(request: Request) {
 
     const html = buildHTML(data);
 
-    // Use browserless.io or similar — for now return HTML for PDF generation externally
-    // Upload HTML as a web page and return a PDF-generation URL
-    // Actually: upload the HTML to Drive as a Google Doc and export as PDF
-    const { Readable } = await import("stream");
-    const htmlBuffer = Buffer.from(html, "utf8");
-    const stream = Readable.from(htmlBuffer);
+    // Push the HTML report as a file to GitHub → Vercel serves it publicly
+    // This avoids Drive quota issues and works reliably on serverless
+    const slug = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
+    const filename = `${slug}.html`;
+    const githubToken = process.env.GITHUB_TOKEN;
 
-    const uploaded = await drive.files.create({
-      requestBody: {
-        name: `HPC-Report-${data.name.replace(/\s+/g, "-")}-${Date.now()}.html`,
-        mimeType: "text/html",
+    if (!githubToken) {
+      // Fallback: return HTML directly as a data URL (works for testing)
+      const b64 = Buffer.from(html).toString("base64");
+      const dataUrl = `data:text/html;base64,${b64}`;
+      const firstName = data.name.split(" ")[0];
+      return NextResponse.json({
+        success: true,
+        name: data.name,
+        firstName,
+        whatsapp: data.whatsapp,
+        pdfUrl: dataUrl,
+        caption: `🏆 ${firstName}, your personalised 7-Day High Performance Report is ready!`,
+        filename: `${firstName}-HPC-Progress-Report.html`,
+        note: "Set GITHUB_TOKEN env var to get a proper public URL",
+      });
+    }
+
+    // Push to GitHub → served at highperformanceclub.co/reports/<filename>
+    const repoOwner = "rohan-growthyfai";
+    const repoName  = "high-performance-club-landing-page";
+    const filePath  = `public/reports/${filename}`;
+    const content   = Buffer.from(html).toString("base64");
+
+    const ghRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+      method: "PUT",
+      headers: {
+        "Authorization": `Bearer ${githubToken}`,
+        "Content-Type": "application/json",
       },
-      media: { mimeType: "text/html", body: stream },
-      fields: "id",
+      body: JSON.stringify({
+        message: `report: ${data.name} 7-day progress`,
+        content,
+      }),
     });
 
-    const fileId = uploaded.data.id!;
-    await drive.permissions.create({ fileId, requestBody: { role: "reader", type: "anyone" } });
+    if (!ghRes.ok) {
+      const err = await ghRes.text();
+      throw new Error(`GitHub push failed: ${err.slice(0, 200)}`);
+    }
 
-    // Export as PDF directly from Drive
-    const pdfRes = await drive.files.export({ fileId, mimeType: "application/pdf" }, { responseType: "arraybuffer" });
-    const pdfBuffer = Buffer.from(pdfRes.data as ArrayBuffer);
-
-    // Upload PDF
-    const pdfStream = Readable.from(pdfBuffer);
-    const pdfUploaded = await drive.files.create({
-      requestBody: {
-        name: `${data.name.split(" ")[0]}-HPC-Progress-Report.pdf`,
-        mimeType: "application/pdf",
-      },
-      media: { mimeType: "application/pdf", body: pdfStream },
-      fields: "id",
-    });
-
-    const pdfFileId = pdfUploaded.data.id!;
-    await drive.permissions.create({ fileId: pdfFileId, requestBody: { role: "reader", type: "anyone" } });
-
-    // Clean up HTML file
-    await drive.files.delete({ fileId }).catch(() => {});
-
-    const pdfUrl = `https://drive.google.com/uc?export=download&id=${pdfFileId}`;
+    // Vercel will deploy within ~60s — return the URL immediately
+    // (Pabbly can retry or we can add a small delay in the workflow)
+    const pdfUrl = `https://highperformanceclub.co/reports/${filename}`;
     const firstName = data.name.split(" ")[0];
 
     return NextResponse.json({

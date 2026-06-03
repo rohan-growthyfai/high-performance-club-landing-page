@@ -260,10 +260,11 @@ export async function POST(request: Request) {
       });
     }
 
-    // Push to GitHub → served at highperformanceclub.co/reports/<filename>
+    // Push to a dedicated GitHub repo used only as a CDN for reports
+    // Raw GitHub content is served immediately — no deploy needed
     const repoOwner = "rohan-growthyfai";
     const repoName  = "high-performance-club-landing-page";
-    const filePath  = `public/reports/${filename}`;
+    const filePath  = `reports/${filename}`;
     const content   = Buffer.from(html).toString("base64");
 
     const ghRes = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
@@ -271,10 +272,12 @@ export async function POST(request: Request) {
       headers: {
         "Authorization": `Bearer ${githubToken}`,
         "Content-Type": "application/json",
+        "User-Agent": "HPC-Report-Generator",
       },
       body: JSON.stringify({
         message: `report: ${data.name} 7-day progress`,
         content,
+        branch: "reports",
       }),
     });
 
@@ -283,9 +286,8 @@ export async function POST(request: Request) {
       throw new Error(`GitHub push failed: ${err.slice(0, 200)}`);
     }
 
-    // Vercel will deploy within ~60s — return the URL immediately
-    // (Pabbly can retry or we can add a small delay in the workflow)
-    const pdfUrl = `https://highperformanceclub.co/reports/${filename}`;
+    // Raw GitHub CDN URL — available immediately, no deploy needed
+    const pdfUrl = `https://raw.githubusercontent.com/${repoOwner}/${repoName}/reports/reports/${filename}`;
     const firstName = data.name.split(" ")[0];
 
     return NextResponse.json({

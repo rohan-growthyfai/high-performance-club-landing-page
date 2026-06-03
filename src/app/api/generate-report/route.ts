@@ -284,6 +284,7 @@ export async function POST(request: Request) {
 
     // Build signature
     const crypto = await import("crypto");
+    // Cloudinary signature: only include params that are in the signed string
     const sigStr = `public_id=${publicId}&timestamp=${timestamp}${apiSecret}`;
     const signature = crypto.createHash("sha256").update(sigStr).digest("hex");
 
@@ -293,7 +294,6 @@ export async function POST(request: Request) {
     formData.append("api_key", apiKey);
     formData.append("signature", signature);
     formData.append("resource_type", "raw");
-    formData.append("type", "upload");
 
     const uploadRes = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/raw/upload`, {
       method: "POST",

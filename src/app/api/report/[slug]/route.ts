@@ -25,13 +25,14 @@ export async function GET(
     if (!res.ok) return new NextResponse("Report not found", { status: 404 });
 
     const htmlBuffer = Buffer.from(await res.arrayBuffer());
+    const nameWithoutExt = slug.replace(".html", "");
 
     return new NextResponse(htmlBuffer, {
       status: 200,
       headers: {
-        "Content-Type": "text/html; charset=utf-8",
+        "Content-Type": "application/pdf",
         "Content-Length": String(htmlBuffer.length),
-        "Content-Disposition": `attachment; filename="HPC-Progress-Report.html"`,
+        "Content-Disposition": `attachment; filename="${nameWithoutExt}.pdf"`,
         "Cache-Control": "no-store",
       },
     });

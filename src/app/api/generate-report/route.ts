@@ -189,7 +189,9 @@ export async function POST(request: Request) {
     const serviceAccountKey = process.env.GOOGLE_SERVICE_ACCOUNT_KEY;
     if (!serviceAccountKey) return NextResponse.json({ error: "GOOGLE_SERVICE_ACCOUNT_KEY not set" }, { status: 500 });
 
-    const keyJson = JSON.parse(serviceAccountKey);
+    // Vercel encodes \n in private keys — restore them before parsing
+    const sanitised = serviceAccountKey.replace(/\\n/g, "\n");
+    const keyJson = JSON.parse(sanitised);
     const auth = new google.auth.GoogleAuth({
       credentials: keyJson,
       scopes: [

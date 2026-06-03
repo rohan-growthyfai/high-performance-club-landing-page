@@ -265,39 +265,36 @@ export async function POST(request: Request) {
 
     const pdfBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
-    // Upload PDF to Cloudinary using SDK — handles signature automatically
-    const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
-    const apiKey    = process.env.CLOUDINARY_API_KEY;
-    const apiSecret = process.env.CLOUDINARY_API_SECRET;
+    const supabaseUrl        = process.env.SUPABASE_URL!;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
 
-    if (!cloudName || !apiKey || !apiSecret) {
-      throw new Error("Cloudinary credentials not configured");
+    if (!supabaseUrl || !supabaseServiceKey) {
+      throw new Error("Supabase credentials not configured");
     }
 
-    const { v2: cloudinary } = await import("cloudinary");
-    cloudinary.config({ cloud_name: cloudName, api_key: apiKey, api_secret: apiSecret });
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
 
     const slug      = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
     const firstName = data.name.split(" ")[0];
+    const filename  = `${slug}.pdf`;
 
-    // Upload as "image" resource type with pdf format — always public on Cloudinary free tier
-    const uploadResult = await new Promise<{ secure_url: string }>((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        {
-          resource_type: "image",
-          public_id: `hpc-reports/${slug}`,
-          format: "pdf",
-          overwrite: true,
-        },
-        (error, result) => {
-          if (error || !result) reject(error ?? new Error("No upload result"));
-          else resolve(result as { secure_url: string });
-        }
-      );
-      stream.end(Buffer.from(pdfBuffer));
-    });
+    // Upload PDF to Supabase public bucket
+    const { error: uploadError } = await supabase.storage
+      .from("reports")
+      .upload(filename, Buffer.from(pdfBuffer), {
+        contentType: "application/pdf",
+        upsert: true,
+      });
 
-    const pdfUrl = uploadResult.secure_url;
+    if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
+
+    // Get permanent public URL — no auth needed, WhatsApp-compatible
+    const { data: urlData } = supabase.storage
+      .from("reports")
+      .getPublicUrl(filename);
+
+    const pdfUrl = urlData.publicUrl;
 
     return NextResponse.json({
       success: true,

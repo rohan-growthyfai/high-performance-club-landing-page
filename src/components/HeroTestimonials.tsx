@@ -2,21 +2,21 @@
 
 const reviews = [
   {
-    avatar: "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-3.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
     review:
       "I barely have time for lunch — 2 kids, a startup, back-to-back meetings. I thought 5 minutes could not do much. Did it between calls on Day 1. Something actually shifted. I am on Day 19 now.",
   },
   {
-    avatar: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-4.jpg",
     name: "Preethi R.",
     city: "Chennai",
     review:
       "I have tried every app, every program — all failed within a week. This was different. WhatsApp showed up at 6 AM and I did the habit before I even fully woke up. No willpower. Just a message.",
   },
   {
-    avatar: "https://images.pexels.com/photos/2613260/pexels-photo-2613260.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-2.jpeg",
     name: "Divya M.",
     city: "Mumbai",
     review:

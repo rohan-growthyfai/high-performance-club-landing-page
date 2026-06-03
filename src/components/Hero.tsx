@@ -4,19 +4,19 @@ import HeroPhone from "./HeroPhone";
 
 const reviews = [
   {
-    avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
     review: "Something shifted on Day 1. I am on Day 19 now.",
   },
   {
-    avatar: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-2.jpg",
     name: "Preethi R.",
     city: "Chennai",
     review: "Did the habit before I even fully woke up.",
   },
   {
-    avatar: "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-1.jpg",
     name: "Divya M.",
     city: "Mumbai",
     review: "Day 3 genuinely surprised me.",

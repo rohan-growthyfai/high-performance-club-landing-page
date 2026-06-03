@@ -27,7 +27,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Priya Sharma", // [PLACEHOLDER]
     city: "Mumbai",
-    avatar: "https://images.pexels.com/photos/3766111/pexels-photo-3766111.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-3.avif",
     rating: 5,
     text:
       "I assumed it'd be another generic self-help thing. By Day 3 my afternoons felt completely different. I cannot explain what changed — it just did. 🙌",
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Karan Mehta", // [PLACEHOLDER]
     city: "Bengaluru",
-    avatar: "https://images.pexels.com/photos/1516680/pexels-photo-1516680.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-5.avif",
     rating: 5,
     text:
       "Honestly joined for the certificate. Stayed because Day 5 broke me out of a 6-month productivity slump. I did not expect a 7-minute habit to change my entire workday.",
@@ -47,12 +47,12 @@ const testimonials: Testimonial[] = [
   {
     name: "Vikram Iyer", // [PLACEHOLDER]
     city: "Pune",
-    avatar: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-4.jpg",
     rating: 5,
     text:
       "I've been doing one of the Day 7 habits every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast. 😄",
     attachedImage:
-      "https://images.unsplash.com/photo-1517842645767-c639042777db?w=600&h=400&fit=crop",
+      "/avatars/men/man-6.webp",
     attachedCaption: "Journal — Day 21 streak 📔",
     daysAgo: "1 month ago",
     verified: true,
@@ -60,7 +60,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Divya Menon", // [PLACEHOLDER]
     city: "Thiruvananthapuram",
-    avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-5.jpg",
     rating: 5,
     text:
       "The Day 4 habit saved me during a fight with my sister. I literally stopped, used it, and was able to speak calmly in 30 seconds. My sister asked what changed. 😂",
@@ -70,12 +70,12 @@ const testimonials: Testimonial[] = [
   {
     name: "Sneha Iyer", // [PLACEHOLDER]
     city: "Kolkata",
-    avatar: "https://images.pexels.com/photos/3760270/pexels-photo-3760270.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-6.webp",
     rating: 5,
     text:
       "I'm a mom of 2 with zero time for anything. This was the only challenge I've finished in years. 5 minutes while making dinner. And I still can't believe it actually worked.",
     attachedImage:
-      "https://images.unsplash.com/photo-1607000975492-3c8689e4a7ec?w=600&h=400&fit=crop",
+      "/avatars/men/man-7.jpg",
     attachedCaption: "Certificate next to the kids' drawings ❤️",
     daysAgo: "3 weeks ago",
     verified: true,
@@ -83,7 +83,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Devansh Khanna", // [PLACEHOLDER]
     city: "Chandigarh",
-    avatar: "https://images.pexels.com/photos/3785079/pexels-photo-3785079.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-8.webp",
     rating: 5,
     text:
       "By Day 3, my evenings felt calmer. By Day 7, my mom asked what changed. That was the moment I knew something was actually different.",
@@ -93,7 +93,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Nikhil Sharma", // [PLACEHOLDER]
     city: "Bhopal",
-    avatar: "https://images.pexels.com/photos/2065195/pexels-photo-2065195.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-7.avif",
     rating: 5,
     text:
       "I tried Headspace, Calm, three productivity apps, and two fitness programs. None lasted. This is the first thing I have actually completed. Something about the WhatsApp format just works.",
@@ -103,12 +103,12 @@ const testimonials: Testimonial[] = [
   {
     name: "Preeti Saxena", // [PLACEHOLDER]
     city: "Agra",
-    avatar: "https://images.pexels.com/photos/3755761/pexels-photo-3755761.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-8.webp",
     rating: 5,
     text:
       "I cried a little when the certificate arrived. I genuinely have not finished anything I started in the last two years. It felt different because the habits were so small. Tiny action. Real change.",
     attachedImage:
-      "https://images.unsplash.com/photo-1586769852044-692d6e3703f0?w=600&h=400&fit=crop",
+      "/avatars/men/man-1.jpg",
     attachedCaption: "My certificate — finally! 🏆",
     daysAgo: "2 weeks ago",
     verified: true,
@@ -116,7 +116,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Pooja Bansal", // [PLACEHOLDER]
     city: "Noida",
-    avatar: "https://images.pexels.com/photos/3771807/pexels-photo-3771807.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-1.jpg",
     rating: 5,
     text:
       "Day 2 habit sounds too simple to work. It does not. I did it before a presentation and felt instantly more confident. Now my go-to before any important meeting.",
@@ -126,7 +126,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Rahul Joshi", // [PLACEHOLDER]
     city: "Indore",
-    avatar: "https://images.pexels.com/photos/2269872/pexels-photo-2269872.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-2.jpg",
     rating: 5,
     text:
       "Got more done in 7 minutes on Day 5 than I usually do in an hour. I literally sat there thinking — how is this possible? Completely sold. 🎯",
@@ -136,7 +136,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Saurabh Joshi", // [PLACEHOLDER]
     city: "Jaipur",
-    avatar: "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-3.jpg",
     rating: 5,
     text:
       "I was skeptical. The Day 4 habit took 30 seconds. I used it before a tough team review and stayed completely calm throughout. I do not know what that habit is scientifically — I just know it works.",
@@ -146,7 +146,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Varun Malhotra", // [PLACEHOLDER]
     city: "Ludhiana",
-    avatar: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-4.jpg",
     rating: 5,
     text:
       "I have sent this to 7 people. My wife, my brother, two colleagues, three friends. Everyone came back and thanked me. The most useful free thing I have found in years.",
@@ -156,12 +156,12 @@ const testimonials: Testimonial[] = [
   {
     name: "Kavya Nair", // [PLACEHOLDER]
     city: "Kochi",
-    avatar: "https://images.pexels.com/photos/3762800/pexels-photo-3762800.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-2.jpeg",
     rating: 5,
     text:
       "We are doing it as a family now — comparing notes on WhatsApp every evening. The check-in messages made it feel like a game, not a chore.",
     attachedImage:
-      "https://images.unsplash.com/photo-1511895426328-dc8714191300?w=600&h=400&fit=crop",
+      "/avatars/men/man-5.avif",
     attachedCaption: "Got the whole family in! 👨‍👩‍👧",
     daysAgo: "6 days ago",
     verified: true,
@@ -169,7 +169,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Ruchika Jain", // [PLACEHOLDER]
     city: "Jodhpur",
-    avatar: "https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/women/woman-3.avif",
     rating: 5,
     text:
       "I am a school teacher. Thought this was for corporate people. Every single habit worked for me too. The Day 3 habit especially — I teach 6 hours in front of a board and the difference was immediate.",
@@ -179,7 +179,7 @@ const testimonials: Testimonial[] = [
   {
     name: "Manish Dubey", // [PLACEHOLDER]
     city: "Varanasi",
-    avatar: "https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=100&h=100&fit=crop",
+    avatar: "/avatars/men/man-6.webp",
     rating: 5,
     text:
       "I run a small business. Zero time for anything. Under 5 minutes every day. Finished all 7 days without missing one. First time I have ever done that with anything.",

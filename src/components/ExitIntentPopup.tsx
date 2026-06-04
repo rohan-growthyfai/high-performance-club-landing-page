@@ -231,14 +231,14 @@ export default function ExitIntentPopup() {
                     <><Loader2 className="w-5 h-5 animate-spin" /> Joining…</>
                   ) : (
                     <>
-                      Join <span className="font-extrabold">FREE</span>
+                      Join Now for <span className="font-extrabold">FREE</span>
                       <ArrowRight className="w-5 h-5" />
                     </>
                   )}
                 </button>
 
                 <p className="text-center text-xs text-foreground-subtle pt-1">
-                  Already joined by <span className="font-semibold text-foreground">2,400+ global members</span> 🌍
+                  <span className="font-semibold text-foreground">2,400+ members</span> already joined
                 </p>
 
                 <div className="flex items-center justify-center gap-1.5 text-xs text-foreground-subtle">

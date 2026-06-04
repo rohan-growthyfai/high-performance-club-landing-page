@@ -1,155 +1,114 @@
-import { Check, ArrowRight } from "lucide-react";
-
-/**
- * ValueStack — Hormozi "Grand Slam Offer" style.
- * Each item has a defended rupee value.
- * Total stacks to ₹1999. Offer price: FREE.
- */
+import { ArrowRight } from "lucide-react";
 
 const items = [
   {
     emoji: "📱",
     title: "7 Daily WhatsApp Habit Messages",
-    detail: "One science-backed High Performance Habit delivered to your WhatsApp every morning for 7 days.",
-    value: 599,
+    detail: "One science-backed habit delivered to your WhatsApp every morning for 7 days.",
+  },
+  {
+    emoji: "⏰",
+    title: "Flexible Timings",
+    detail: "Habits designed for busy schedules — under 5 minutes, whenever suits you.",
   },
   {
     emoji: "🌙",
     title: "7 Evening Check-in Messages",
     detail: "A short nudge every evening to lock in the day's habit and keep you on track.",
-    value: 199,
+  },
+  {
+    emoji: "💬",
+    title: "Private WhatsApp Community",
+    detail: "Join others doing the same challenge. Share wins. Stay accountable.",
   },
   {
     emoji: "📊",
     title: "Day 0 Self-Score Assessment",
-    detail: "Rate yourself across Energy, Focus, Relationships, and Calmness before you begin. Your personal baseline.",
-    value: 299,
-  },
-  {
-    emoji: "📈",
-    title: "Day 7 Progress Comparison Report",
-    detail: "Take the same assessment on Day 7 and see exactly what changed. Numbers don't lie.",
-    value: 399,
-  },
-  {
-    emoji: "💬",
-    title: "Private WhatsApp Community Access",
-    detail: "Join others doing the same challenge. Share wins. Stay accountable. Stay motivated.",
-    value: 199,
+    detail: "Rate yourself across Energy, Focus, and Health before you begin. Your personal baseline.",
   },
   {
     emoji: "🏆",
-    title: "High Performance Lifestyle Starter Certificate",
-    detail: "Complete 5 of 7 days and earn your official certificate. Print it. Frame it. Own it.",
-    value: 199,
+    title: "Completion Certificate",
+    detail: "Complete the challenge and earn your official High Performance Lifestyle certificate.",
+  },
+  {
+    emoji: "📈",
+    title: "Day 7 Progress Report",
+    detail: "See exactly what changed from Day 1 to Day 7. Numbers don't lie.",
   },
   {
     emoji: "📋",
     title: "7-Habit Reference PDF",
-    detail: "All 7 habits documented in one clean PDF you can keep and revisit anytime you need a reset.",
-    value: 105,
+    detail: "All 7 habits in one clean PDF you can keep and revisit anytime.",
   },
 ];
-
-const TOTAL = items.reduce((sum, i) => sum + i.value, 0); // = 1999
 
 export default function ValueStack() {
   return (
     <section id="what-you-get" className="py-20 lg:py-28 relative bg-section-white">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-12">
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
-            Everything you get 🎁
+            What you receive 🎁
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
-            Here is everything you will get.
+            Everything You Get In This Challenge
           </h2>
           <p className="text-lg text-foreground-muted max-w-xl mx-auto">
-            Every single thing you receive — with its real value — when you join today.
+            Everything you receive when you join today — completely free.
           </p>
         </div>
 
-        {/* Stack card */}
+        {/* 2-column benefits grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
+          {items.map((item, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border-subtle hover:shadow-sm transition-shadow"
+            >
+              {/* Icon */}
+              <div className="w-12 h-12 rounded-xl bg-accent/8 border border-accent/15 flex items-center justify-center flex-shrink-0 text-2xl">
+                {item.emoji}
+              </div>
+              {/* Text */}
+              <div className="flex-1 min-w-0">
+                <p className="font-bold text-foreground text-base mb-1 leading-snug">
+                  {item.title}
+                </p>
+                <p className="text-sm text-foreground-muted leading-relaxed">
+                  {item.detail}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* You pay ₹0 + CTA */}
         <div className="premium-card rounded-2xl overflow-hidden border-glow">
-
-          {/* Items */}
-          <div className="divide-y divide-border-subtle">
-            {items.map((item, i) => (
-              <div
-                key={i}
-                className="flex items-start gap-4 px-6 py-5 hover:bg-background-elevated/40 transition-colors"
-              >
-                {/* Check */}
-                <div className="w-6 h-6 rounded-full bg-accent/15 border border-accent/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <Check className="w-3.5 h-3.5 text-accent" />
-                </div>
-
-                {/* Emoji + text */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-xl leading-none">{item.emoji}</span>
-                    <p className="font-display font-bold text-foreground text-base leading-snug">
-                      {item.title}
-                    </p>
-                  </div>
-                  <p className="text-sm text-foreground-muted leading-relaxed">
-                    {item.detail}
-                  </p>
-                </div>
-
-                {/* Value */}
-                <div className="flex-shrink-0 text-right pl-4">
-                  <p className="text-[10px] uppercase tracking-wider text-foreground-subtle font-semibold mb-0.5">Value</p>
-                  <p className="font-display font-bold text-foreground text-base tabular-nums">
-                    ₹{item.value}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Total row */}
-          <div className="bg-background-elevated/60 px-6 py-5 flex items-center justify-between border-t-2 border-border">
-            <p className="font-display font-bold text-foreground text-lg">
-              Total Value
-            </p>
-            <p className="font-display font-bold text-foreground text-2xl tabular-nums line-through decoration-accent decoration-2">
-              ₹{TOTAL}
-            </p>
-          </div>
-
-          {/* Offer row */}
-          <div className="bg-gradient-to-br from-accent/15 via-accent/8 to-white px-6 py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 border-t-2 border-accent/30">
+          <div className="bg-gradient-to-br from-accent/15 via-accent/8 to-white px-6 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
             <div>
-              <p className="text-sm uppercase tracking-[0.15em] text-accent font-bold mb-1">
-                Your price today
+              <p className="text-sm uppercase tracking-[0.15em] text-accent font-bold mb-2">
+                You pay
               </p>
-              <div className="flex items-baseline gap-3">
-                <p className="font-display font-bold text-foreground-subtle text-2xl line-through tabular-nums">
-                  ₹{TOTAL}
-                </p>
-                <p className="font-display font-black text-5xl gradient-text tabular-nums leading-none">
-                  ₹0
-                </p>
-              </div>
-              <p className="text-sm text-foreground-subtle mt-1.5 italic">
+              <p className="font-display font-black text-6xl gradient-text tabular-nums leading-none">
+                ₹0
+              </p>
+              <p className="text-sm text-foreground-subtle mt-2 italic">
                 100% FREE. No credit card. No catch.
               </p>
             </div>
-
             <a
               href="#signup"
-              className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl sm:text-lg whitespace-nowrap"
+              className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl whitespace-nowrap"
             >
-              Join completely free today
+              Join Completely FREE Today
               <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
 
-        {/* Footnote */}
         <p className="text-center mt-6 text-sm text-foreground-subtle italic">
           We offer this free because we&apos;re building something bigger — and this is how we earn your trust first.
         </p>

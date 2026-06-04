@@ -66,8 +66,6 @@ export default function Home() {
           <CertificateReveal />
         </div>
 
-        {/* 11. Real Talk */}
-        <Hook />
 
         {/* 11. Founder story */}
         <FounderStory />

@@ -2,7 +2,7 @@
 
 const benefits = [
   {
-    image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&h=400&fit=crop&q=80",
+    image: "/section-images/reasons-energetic.png",
     title: "Become More Energetic",
     points: [
       "Stop feeling tired and drained by afternoon",
@@ -11,7 +11,7 @@ const benefits = [
     ],
   },
   {
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&q=80",
+    image: "/section-images/reasons-focused.png",
     title: "Boost Your Focus",
     points: [
       "Get more done without getting distracted",
@@ -20,7 +20,7 @@ const benefits = [
     ],
   },
   {
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&q=80",
+    image: "/section-images/reasons-confident.png",
     title: "Get More Confidence & Productivity",
     points: [
       "Keep promises to yourself and follow through",

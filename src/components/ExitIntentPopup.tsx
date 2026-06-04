@@ -21,25 +21,30 @@ export default function ExitIntentPopup() {
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    // Don't show if already dismissed this session
-    if (sessionStorage.getItem("popup_dismissed")) return;
+    // Reset on every page load — use a page-load timestamp key
+    // so the popup shows fresh on every reload
+    // Clear any old dismissed flags so reload always resets
+    sessionStorage.removeItem("popup_dismissed");
 
-    // Start 7-second timer on first scroll
+    let shown = false;
+
+    const showPopup = () => {
+      if (shown) return;
+      shown = true;
+      setVisible(true);
+    };
+
+    // Start 5-second timer immediately on page load
+    timerRef.current = setTimeout(showPopup, 5000);
+
+    // Also trigger on first scroll — whichever comes first
     const onScroll = () => {
-      if (timerRef.current) return; // timer already started
-      timerRef.current = setTimeout(() => {
-        setVisible(true);
-      }, 7000);
+      if (shown) return;
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(showPopup, 5000);
     };
 
     window.addEventListener("scroll", onScroll, { passive: true, once: true });
-
-    // Also start timer on page load (no scroll needed) after 7s
-    timerRef.current = setTimeout(() => {
-      if (!sessionStorage.getItem("popup_dismissed")) {
-        setVisible(true);
-      }
-    }, 7000);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
@@ -50,7 +55,7 @@ export default function ExitIntentPopup() {
   const dismiss = () => {
     setVisible(false);
     setDismissed(true);
-    sessionStorage.setItem("popup_dismissed", "1");
+    // dismissed only for this page view — reloading will show it again
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -94,7 +99,6 @@ export default function ExitIntentPopup() {
       setTimeout(firePixel, 500);
 
       setStatus("success");
-      sessionStorage.setItem("popup_dismissed", "1");
     } catch {
       setStatus("error");
       setError("Something went wrong. Please try again.");

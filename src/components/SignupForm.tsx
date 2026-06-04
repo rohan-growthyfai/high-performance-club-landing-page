@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import PhoneInput from "./PhoneInput";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -38,10 +39,9 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
     setError("");
 
     const formData = new FormData(e.currentTarget);
-    const phone = formData.get("whatsapp") as string;
     const data = {
       name: formData.get("name"),
-      whatsapp: `+91${phone.replace(/\D/g, "")}`,
+      whatsapp: formData.get("whatsapp"), // already includes country code from PhoneInput hidden field
       email: formData.get("email"),
       struggle: formData.get("struggle"),
       consent: true,
@@ -119,27 +119,12 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
           />
         </div>
 
-        {/* WhatsApp with +91 prefix */}
+        {/* WhatsApp with country code selector */}
         <div>
           <label htmlFor={`${formId}-whatsapp`} className="block text-sm font-medium text-foreground mb-1.5">
             WhatsApp number
           </label>
-          <div className="flex gap-2">
-            <div className="input-premium flex items-center gap-2 px-3 py-3 rounded-xl text-foreground text-base whitespace-nowrap flex-shrink-0">
-              <span className="text-lg">🇮🇳</span>
-              <span className="font-medium">+91</span>
-            </div>
-            <input
-              id={`${formId}-whatsapp`}
-              name="whatsapp"
-              type="tel"
-              required
-              placeholder="10 Digit WhatsApp No."
-              pattern="[0-9]{10}"
-              maxLength={10}
-              className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
-            />
-          </div>
+          <PhoneInput id={`${formId}-whatsapp`} name="whatsapp" required placeholder="WhatsApp Number" />
         </div>
 
         {/* Email */}

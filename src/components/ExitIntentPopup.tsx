@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { X, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import PhoneInput from "./PhoneInput";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -64,10 +65,9 @@ export default function ExitIntentPopup() {
     setError("");
 
     const formData = new FormData(e.currentTarget);
-    const phone = formData.get("whatsapp") as string;
     const data = {
       name:     formData.get("name"),
-      whatsapp: `+91${phone.replace(/\D/g, "")}`,
+      whatsapp: formData.get("whatsapp"),
       email:    formData.get("email"),
       struggle: formData.get("struggle"),
       consent:  true,
@@ -166,21 +166,7 @@ export default function ExitIntentPopup() {
                     className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-sm"
                   />
                 </div>
-                <div className="flex gap-2">
-                  <div className="input-premium flex items-center gap-1.5 px-3 py-3 rounded-xl text-foreground text-sm whitespace-nowrap flex-shrink-0">
-                    <span>🇮🇳</span>
-                    <span className="font-medium">+91</span>
-                  </div>
-                  <input
-                    name="whatsapp"
-                    type="tel"
-                    required
-                    placeholder="10 Digit WhatsApp No."
-                    pattern="[0-9]{10}"
-                    maxLength={10}
-                    className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-sm"
-                  />
-                </div>
+                <PhoneInput name="whatsapp" required placeholder="WhatsApp Number" />
                 <div>
                   <input
                     name="email"

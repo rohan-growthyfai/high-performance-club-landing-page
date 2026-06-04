@@ -66,7 +66,7 @@ export default function Hero() {
             <div className="mt-7 flex flex-col items-center lg:items-start gap-2 animate-fade-up delay-300">
               <a
                 href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold group"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-12 py-6 rounded-full text-xl sm:text-2xl font-bold group"
               >
                 Join for{" "}<span className="font-extrabold">FREE</span>
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
@@ -104,7 +104,7 @@ export default function Hero() {
               {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
               <div className="absolute -right-4 lg:-right-56 top-1/3 z-20 sticky-note p-5 rounded-md tilt-right w-60 hidden lg:block">
                 <p className="font-serif italic text-lg text-amber-900 leading-snug">
-                  7 Days Habits WhatsApp Challenge 📱
+                  FREE 7 Days WhatsApp Challenge 📱
                 </p>
               </div>
               <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">

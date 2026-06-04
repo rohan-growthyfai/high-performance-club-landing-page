@@ -82,7 +82,7 @@ export default function BlogsPage() {
         </div>
       </header>
 
-      <main style={{ maxWidth:1100, margin:"0 auto", padding:"64px 32px 100px" }}>
+      <main style={{ maxWidth:1200, margin:"0 auto", padding:"72px 40px 120px" }}>
         {/* Hero */}
         <div style={{ marginBottom:52 }}>
           <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(184,133,58,0.1)", border:"1px solid rgba(184,133,58,0.2)", borderRadius:999, padding:"5px 14px", marginBottom:20 }}>
@@ -103,7 +103,7 @@ export default function BlogsPage() {
           <div style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", display:"grid", gridTemplateColumns:"1fr 1fr", transition:"all 0.3s" }}
             onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(184,133,58,0.12)"; (e.currentTarget as HTMLElement).style.borderColor="#f5d78e"; }}
             onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
-            <div style={{ overflow:"hidden", maxHeight:320 }}>
+            <div style={{ overflow:"hidden", maxHeight:380 }}>
               <img src={featured.image} alt={featured.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
                 onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.04)"}
                 onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
@@ -124,43 +124,45 @@ export default function BlogsPage() {
         </Link>
 
         {/* Category filter */}
-        <div style={{ display:"flex", gap:8, flexWrap:"wrap", marginBottom:28 }}>
+        <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:40 }}>
           {CATEGORIES.map(cat => {
             const isActive = active === cat;
             const m = cm(cat);
             return (
               <button key={cat} onClick={()=>setActive(cat)}
-                style={{ padding:"7px 16px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:13, fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
+                style={{ padding:"9px 20px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:14, fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
                 {cat}
               </button>
             );
           })}
         </div>
 
-        {/* Grid */}
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))", gap:20 }}>
+        {/* Grid — 3 columns, larger cards */}
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(360px,1fr))", gap:36 }}>
           {filtered.filter(p => !(p.slug === featured.slug && active === "All")).map(post => {
             const m = cm(post.category);
             return (
               <Link key={post.slug} href={`/blogs/${post.slug}`} style={{ textDecoration:"none" }}>
-                <article style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:16, overflow:"hidden", transition:"all 0.25s", cursor:"pointer", display:"flex", flexDirection:"column", height:"100%" }}
-                  onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 8px 28px rgba(0,0,0,0.08)"; (e.currentTarget as HTMLElement).style.transform="translateY(-3px)"; (e.currentTarget as HTMLElement).style.borderColor=m.color+"55"; }}
+                <article style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", transition:"all 0.3s", cursor:"pointer", display:"flex", flexDirection:"column", height:"100%" }}
+                  onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(0,0,0,0.10)"; (e.currentTarget as HTMLElement).style.transform="translateY(-4px)"; (e.currentTarget as HTMLElement).style.borderColor=m.color+"55"; }}
                   onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.transform="translateY(0)"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
-                  <div style={{ overflow:"hidden", height:180, flexShrink:0 }}>
-                    <img src={post.image} alt={post.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.4s" }}
-                      onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.06)"}
+                  {/* Image — taller */}
+                  <div style={{ overflow:"hidden", height:240, flexShrink:0 }}>
+                    <img src={post.image} alt={post.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
+                      onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.05)"}
                       onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
                   </div>
-                  <div style={{ padding:"18px 20px 20px", display:"flex", flexDirection:"column", flex:1 }}>
-                    <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:10 }}>
-                      <span style={{ background:m.bg, color:m.color, fontSize:10, fontWeight:700, padding:"3px 9px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
-                      <span style={{ fontSize:12, color:"#9ca3af" }}>{post.readTime}</span>
+                  {/* Content — more padding, bigger text */}
+                  <div style={{ padding:"24px 26px 26px", display:"flex", flexDirection:"column", flex:1 }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:14 }}>
+                      <span style={{ background:m.bg, color:m.color, fontSize:11, fontWeight:700, padding:"4px 12px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
+                      <span style={{ fontSize:13, color:"#9ca3af" }}>{post.readTime}</span>
                     </div>
-                    <h2 style={{ fontSize:15.5, fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.3, marginBottom:8, flex:1 }}>{post.title}</h2>
-                    <p style={{ fontSize:13, color:"#9ca3af", lineHeight:1.55, marginBottom:14 }}>{post.excerpt.slice(0,110)}...</p>
-                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:12, borderTop:"1px solid #f3f4f6" }}>
-                      <span style={{ fontSize:12, color:"#9ca3af" }}>{post.date}</span>
-                      <span style={{ fontSize:13, color:m.color, fontWeight:700 }}>Read →</span>
+                    <h2 style={{ fontSize:18, fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:12, flex:1 }}>{post.title}</h2>
+                    <p style={{ fontSize:14, color:"#6b7280", lineHeight:1.65, marginBottom:18 }}>{post.excerpt.slice(0,130)}...</p>
+                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:16, borderTop:"1px solid #f3f4f6" }}>
+                      <span style={{ fontSize:13, color:"#9ca3af" }}>{post.date}</span>
+                      <span style={{ fontSize:14, color:m.color, fontWeight:700 }}>Read article →</span>
                     </div>
                   </div>
                 </article>

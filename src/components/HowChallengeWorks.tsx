@@ -93,7 +93,7 @@ export default function HowChallengeWorks() {
           <p className="text-center text-xs uppercase tracking-[0.2em] text-foreground-subtle font-bold mb-6">
             The key areas you will improve
           </p>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {areas.map((a) => (
               <div
                 key={a.label}

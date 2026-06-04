@@ -46,7 +46,10 @@ export default function Home() {
         {/* 5. Reasons to join — 3 benefit cards */}
         <SevenDayResults />
 
-        {/* 6. Wall of Love — Testimonials */}
+        {/* 6. Everything You Get In This Challenge */}
+        <ValueStack />
+
+        {/* 7. Wall of Love — Testimonials */}
         <Testimonials />
 
         {/* 7. Why this is different */}
@@ -68,9 +71,6 @@ export default function Home() {
 
         {/* 11. Founder story */}
         <FounderStory />
-
-        {/* 12. Value stack */}
-        <ValueStack />
 
         {/* 13. Guarantee */}
         <Guarantee />

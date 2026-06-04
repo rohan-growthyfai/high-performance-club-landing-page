@@ -64,12 +64,11 @@ export default function Hero() {
             {/* Body */}
             <p className="mt-3 text-base sm:text-lg text-foreground font-medium leading-relaxed animate-fade-up delay-200">
               Get 1 tiny habit delivered on WhatsApp every day.{" "}
-              <span className="text-emphasis-mint">Takes 5 minutes to do.</span>{" "}
-              That&apos;s it. 🙌
+              <span className="text-emphasis-mint">Takes 5 minutes to do.</span>
             </p>
 
             {/* CTA */}
-            <div className="mt-7 flex flex-col items-center lg:items-start gap-2 animate-fade-up delay-300">
+            <div className="mt-7 flex flex-col items-center gap-2 animate-fade-up delay-300">
               <a
                 href="#signup"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-12 py-6 rounded-full text-xl sm:text-2xl font-bold group"
@@ -77,7 +76,7 @@ export default function Hero() {
                 Join FREE on WhatsApp
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
-              <p className="text-sm text-foreground-subtle font-medium">
+              <p className="text-sm text-foreground-subtle font-medium text-center">
                 Already joined by <span className="text-foreground font-semibold">2,400+ members</span>
               </p>
             </div>

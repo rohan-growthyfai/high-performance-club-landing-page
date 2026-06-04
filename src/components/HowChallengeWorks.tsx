@@ -30,19 +30,11 @@ const areas = [
   },
   {
     emoji: "🎯",
-    label: "Productivity",
+    label: "Focus & Productivity",
     desc: "Get more done in less time. Cut distractions. Feel in control of your day.",
     color: "bg-blue-50 border-blue-200",
     badgeColor: "bg-blue-500 text-white",
     textColor: "text-blue-600",
-  },
-  {
-    emoji: "🤝",
-    label: "Relationships",
-    desc: "Better connection with yourself and others. Calmer. More present. More you.",
-    color: "bg-pink-50 border-pink-200",
-    badgeColor: "bg-pink-500 text-white",
-    textColor: "text-pink-600",
   },
 ];
 
@@ -92,14 +84,14 @@ export default function HowChallengeWorks() {
           </h2>
           <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
             This challenge is designed to help you build tiny sustainable habits
-            across <span className="font-semibold text-foreground">four key areas of your life</span> — all in 7 days.
+            across <span className="font-semibold text-foreground">3 key areas of your life</span> — all in 7 days.
           </p>
         </div>
 
         {/* ── PART 1: 4 Life Areas ── */}
         <div className="mb-14">
           <p className="text-center text-xs uppercase tracking-[0.2em] text-foreground-subtle font-bold mb-6">
-            The 4 areas you will improve
+            The key areas you will improve
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {areas.map((a) => (

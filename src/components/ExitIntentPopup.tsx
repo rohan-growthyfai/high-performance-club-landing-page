@@ -122,7 +122,7 @@ export default function ExitIntentPopup() {
           onClick={(e) => e.stopPropagation()}
         >
           {/* Header */}
-          <div className="relative bg-gradient-to-br from-accent to-accent-dim px-6 pt-6 pb-5 text-white">
+          <div className="relative bg-gradient-to-br from-accent to-accent-dim px-6 pt-8 pb-6 text-white text-center">
             <button
               onClick={dismiss}
               className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/20 hover:bg-white/30 transition-colors"
@@ -130,13 +130,10 @@ export default function ExitIntentPopup() {
             >
               <X className="w-4 h-4" />
             </button>
-            <p className="text-xs font-bold uppercase tracking-[0.15em] opacity-80 mb-2">
-              Wait — before you go 👋
-            </p>
-            <h2 className="text-xl font-bold leading-snug">
+            <h2 className="text-2xl font-bold leading-snug">
               Get More Energy, Focus & Calm in Just 7 Days
             </h2>
-            <p className="text-sm opacity-80 mt-2 leading-relaxed">
+            <p className="text-sm opacity-80 mt-3 leading-relaxed">
               Join the FREE 7-Day WhatsApp Habits Challenge and get 1 tiny good habit delivered in your WhatsApp daily. No app. No gym. No 5 AM alarm.
             </p>
           </div>
@@ -242,7 +239,7 @@ export default function ExitIntentPopup() {
 
                 <div className="flex items-center justify-center gap-1.5 text-xs text-foreground-subtle pt-1">
                   <Lock className="w-3 h-3" />
-                  <span>No spam. No credit card. Stop anytime.</span>
+                  <span>No credit card. Stop anytime.</span>
                 </div>
               </form>
             )}

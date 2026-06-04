@@ -21,9 +21,8 @@ const rows = [
   { feature: "Where it lives", us: "Your WhatsApp", them: "Yet another app to install" },
   { feature: "What it costs you", us: "₹0", them: "₹2,000 – ₹50,000" },
   { feature: "Setup", us: "30 seconds", them: "Onboarding calls + intake forms" },
-  { feature: "Habits per day", us: "One small habit", them: "Diet + workout + meditation + journal + ..." },
-  { feature: "Progress tracking", us: "5-area score, Day 0 vs Day 7", them: "Vague vibes" },
-  { feature: "What you do tonight", us: "Read one short message", them: "Watch 47-min onboarding video" },
+  { feature: "Habits per day", us: "One tiny habit that takes <5 mins", them: "Diet + workout + meditation + journal + ..." },
+  { feature: "Progress tracking", us: "Get personalized progress report on Day 7", them: "Vague vibes" },
   { feature: "If you miss a day", us: "No drama. Continue tomorrow.", them: "Guilt. Restart. Quit by Day 11." },
 ];
 
@@ -39,7 +38,7 @@ export default function Comparison() {
             Why This Is Different.
             <br />
           </h2>
-          <p className="text-2xl sm:text-3xl text-foreground-muted leading-[1.5]">
+          <p className="text-lg sm:text-xl text-foreground-muted leading-[1.5]">
             Most challenges fail not because the advice is bad.
             <br />
             They fail because the format is too hard to keep up. So we rebuilt the format. ✨

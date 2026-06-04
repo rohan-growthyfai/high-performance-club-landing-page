@@ -144,7 +144,7 @@ export default function ExitIntentPopup() {
               <X className="w-4 h-4" />
             </button>
             <h2 className="text-2xl font-bold leading-snug">
-              {isExitIntent ? "Wait! Before You Go 👋" : "Get More Energy, Focus & Calm in Just 7 Days"}
+              {isExitIntent ? "Wait! Before You Go 👋" : "Feel More Energetic, Healthy & Focused in Just 7 Days"}
             </h2>
             <p className="text-sm opacity-90 mt-3 leading-relaxed">
               Join the FREE 7-Day WhatsApp Habits Challenge<br />

@@ -11,21 +11,21 @@ const benefits = [
     ],
   },
   {
-    image: "/section-images/reasons-focused.png",
-    title: "Boost Your Focus",
+    image: "/section-images/reasons-healthy.png",
+    title: "Become More Healthy",
     points: [
-      "Get more done without getting distracted",
-      "Stay sharp during meetings and deep work",
-      "Cut through mental noise and think clearly",
+      "Build small daily habits that support your body",
+      "Feel lighter, stronger, and more active every day",
+      "Improve your overall wellbeing without a gym or diet",
     ],
   },
   {
-    image: "/section-images/reasons-confident.png",
-    title: "Get More Confidence & Productivity",
+    image: "/section-images/reasons-focused.png",
+    title: "Boost Your Focus & Productivity",
     points: [
-      "Keep promises to yourself and follow through",
-      "Build daily habits that actually stick",
-      "Feel calm, in control, and more productive",
+      "Get more done without getting distracted",
+      "Stay sharp during meetings and deep work",
+      "Feel calm, in control, and more productive every day",
     ],
   },
 ];

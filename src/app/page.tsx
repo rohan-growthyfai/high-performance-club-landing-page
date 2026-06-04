@@ -46,14 +46,14 @@ export default function Home() {
         {/* 5. Reasons to join — 3 benefit cards */}
         <SevenDayResults />
 
-        {/* 6. Why Tiny Habits */}
-        <WhyTinyHabits />
-
-        {/* 7. Your Journey — animated road map */}
-        <CuriosityBullets />
-
         {/* 6. Wall of Love — Testimonials */}
         <Testimonials />
+
+        {/* 7. Why Tiny Habits */}
+        <WhyTinyHabits />
+
+        {/* 8. Your Journey — animated road map */}
+        <CuriosityBullets />
 
         {/* 7. Certificate */}
         <div id="certificate">

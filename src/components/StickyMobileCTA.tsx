@@ -26,7 +26,7 @@ export default function StickyMobileCTA() {
           href="#signup"
           className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-5 rounded-full text-lg"
         >
-          Join for <span className="line-through opacity-70 mx-1">₹1999</span> <span className="font-extrabold">FREE</span>
+          Join for <span className="font-extrabold">FREE</span>
           <ArrowRight className="w-4 h-4" />
         </a>
         <p className="text-center text-xs text-foreground-subtle mt-2">

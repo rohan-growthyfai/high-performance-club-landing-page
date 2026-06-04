@@ -56,7 +56,7 @@ export default function FinalCTA() {
               href="#signup"
               className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl group"
             >
-              Join for <span className="line-through opacity-70 mx-1">₹1999</span> <span className="font-extrabold">FREE</span>
+              Join for <span className="font-extrabold">FREE</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </a>
 

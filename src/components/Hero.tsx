@@ -1,5 +1,4 @@
 /* eslint-disable @next/next/no-img-element */
-import { Star } from "lucide-react";
 import HeroPhone from "./HeroPhone";
 
 const reviews = [
@@ -69,16 +68,12 @@ export default function Hero() {
                 href="#signup"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base sm:text-lg group"
               >
-                Join for{" "}
-                <span className="line-through opacity-70 mx-1">₹1999</span>
-                <span className="font-extrabold">FREE</span>
+                Join for{" "} <span className="font-extrabold">FREE</span>
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
-              <div className="flex items-center gap-1 justify-center lg:justify-start text-sm text-foreground-subtle">
-                {[1,2,3,4,5].map(i => <Star key={i} className="w-3.5 h-3.5 fill-accent text-accent" />)}
-                <span className="ml-1 font-bold text-foreground">4.9</span>
-                <span>· 2,400+ members</span>
-              </div>
+              <p className="text-base sm:text-lg font-semibold text-foreground-muted justify-center lg:justify-start">
+                Already joined by <span className="text-foreground font-bold">2,400+ global members</span> 🌍
+              </p>
             </div>
 
             {/* Reviews — inline inside hero */}

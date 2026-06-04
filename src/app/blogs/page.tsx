@@ -82,7 +82,7 @@ export default function BlogsPage() {
         </div>
       </header>
 
-      <main style={{ maxWidth:1200, margin:"0 auto", padding:"72px 40px 120px" }}>
+      <main style={{ maxWidth:1400, margin:"0 auto", padding:"72px 48px 120px" }}>
         {/* Hero */}
         <div style={{ marginBottom:52 }}>
           <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(184,133,58,0.1)", border:"1px solid rgba(184,133,58,0.2)", borderRadius:999, padding:"5px 14px", marginBottom:20 }}>
@@ -138,7 +138,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Grid — 3 columns, larger cards */}
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(360px,1fr))", gap:36 }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:28 }}>
           {filtered.filter(p => !(p.slug === featured.slug && active === "All")).map(post => {
             const m = cm(post.category);
             return (
@@ -147,22 +147,22 @@ export default function BlogsPage() {
                   onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(0,0,0,0.10)"; (e.currentTarget as HTMLElement).style.transform="translateY(-4px)"; (e.currentTarget as HTMLElement).style.borderColor=m.color+"55"; }}
                   onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.transform="translateY(0)"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
                   {/* Image — taller */}
-                  <div style={{ overflow:"hidden", height:240, flexShrink:0 }}>
+                  <div style={{ overflow:"hidden", height:210, flexShrink:0 }}>
                     <img src={post.image} alt={post.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
                       onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.05)"}
                       onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
                   </div>
                   {/* Content — more padding, bigger text */}
-                  <div style={{ padding:"24px 26px 26px", display:"flex", flexDirection:"column", flex:1 }}>
-                    <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:14 }}>
-                      <span style={{ background:m.bg, color:m.color, fontSize:11, fontWeight:700, padding:"4px 12px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
-                      <span style={{ fontSize:13, color:"#9ca3af" }}>{post.readTime}</span>
+                  <div style={{ padding:"20px 22px 22px", display:"flex", flexDirection:"column", flex:1 }}>
+                    <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:12 }}>
+                      <span style={{ background:m.bg, color:m.color, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
+                      <span style={{ fontSize:12, color:"#9ca3af" }}>{post.readTime}</span>
                     </div>
-                    <h2 style={{ fontSize:18, fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:12, flex:1 }}>{post.title}</h2>
-                    <p style={{ fontSize:14, color:"#6b7280", lineHeight:1.65, marginBottom:18 }}>{post.excerpt.slice(0,130)}...</p>
-                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:16, borderTop:"1px solid #f3f4f6" }}>
-                      <span style={{ fontSize:13, color:"#9ca3af" }}>{post.date}</span>
-                      <span style={{ fontSize:14, color:m.color, fontWeight:700 }}>Read article →</span>
+                    <h2 style={{ fontSize:16, fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:10, flex:1 }}>{post.title}</h2>
+                    <p style={{ fontSize:13, color:"#6b7280", lineHeight:1.6, marginBottom:16 }}>{post.excerpt.slice(0,120)}...</p>
+                    <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:14, borderTop:"1px solid #f3f4f6" }}>
+                      <span style={{ fontSize:12, color:"#9ca3af" }}>{post.date}</span>
+                      <span style={{ fontSize:13, color:m.color, fontWeight:700 }}>Read article →</span>
                     </div>
                   </div>
                 </article>
@@ -185,7 +185,7 @@ export default function BlogsPage() {
             <p style={{ fontSize:15, color:"#6b7280", maxWidth:380 }}>One tiny habit delivered to your WhatsApp every morning. Free. 7 days. No app required.</p>
           </div>
           <Link href="/#signup" style={{ background:"linear-gradient(135deg,#b8853a,#8a6428)", color:"#fff", padding:"15px 32px", borderRadius:999, fontSize:16, fontWeight:700, textDecoration:"none", boxShadow:"0 8px 24px rgba(184,133,58,0.35)", whiteSpace:"nowrap" }}>
-            Join for ₹1999 FREE →
+            Join FREE →
           </Link>
         </div>
       </main>

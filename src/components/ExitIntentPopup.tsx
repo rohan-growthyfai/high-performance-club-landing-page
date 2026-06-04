@@ -234,7 +234,7 @@ export default function ExitIntentPopup() {
                     <><Loader2 className="w-4 h-4 animate-spin" /> Joining…</>
                   ) : (
                     <>
-                      Join for <span className="line-through opacity-70 mx-1">₹1999</span> <span className="font-extrabold">FREE</span>
+                      Join for <span className="font-extrabold">FREE</span>
                       <ArrowRight className="w-4 h-4" />
                     </>
                   )}

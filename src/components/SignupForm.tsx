@@ -54,6 +54,23 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
       });
 
       if (!res.ok) throw new Error("Submission failed");
+
+      // Meta Pixel — Lead event (fires on successful form submission)
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          content_category: "Challenge Registration",
+          status: "submitted",
+        });
+        // CompleteRegistration fires immediately after Lead — confirms signup
+        (window as any).fbq("track", "CompleteRegistration", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          status: "registered",
+          currency: "INR",
+          value: 0,
+        });
+      }
+
       setStatus("success");
     } catch {
       setStatus("error");

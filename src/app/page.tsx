@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import MetaPixelEvents from "@/components/MetaPixelEvents";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
 import InlineSignup from "@/components/InlineSignup";
@@ -25,6 +26,8 @@ import LiveEnrollmentPopup from "@/components/LiveEnrollmentPopup";
 export default function Home() {
   return (
     <>
+      {/* Meta Pixel — ViewContent fires when someone views the homepage */}
+      <MetaPixelEvents event="ViewContent" params={{ content_name: "HPC Homepage", content_category: "Landing Page", content_type: "page" }} />
       <Header />
       <main className="flex-1">
         {/* 1. Hero */}

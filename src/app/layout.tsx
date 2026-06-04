@@ -72,8 +72,8 @@ export default function RootLayout({
         {/* Facebook Domain Verification */}
         <meta name="facebook-domain-verification" content="f8hrst14oxakqq9m922edch69zqmxd" />
 
-        {/* Meta Pixel Base Code */}
-        <Script id="meta-pixel" strategy="afterInteractive">
+        {/* Meta Pixel Base Code — beforeInteractive ensures fbq is ready before any events fire */}
+        <Script id="meta-pixel" strategy="beforeInteractive">
           {`
             !function(f,b,e,v,n,t,s)
             {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

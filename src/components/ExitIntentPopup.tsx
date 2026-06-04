@@ -225,19 +225,23 @@ export default function ExitIntentPopup() {
                 <button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-base font-bold disabled:opacity-70"
+                  className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full text-lg font-bold disabled:opacity-70"
                 >
                   {status === "submitting" ? (
-                    <><Loader2 className="w-4 h-4 animate-spin" /> Joining…</>
+                    <><Loader2 className="w-5 h-5 animate-spin" /> Joining…</>
                   ) : (
                     <>
-                      Join for <span className="font-extrabold">FREE</span>
-                      <ArrowRight className="w-4 h-4" />
+                      Join <span className="font-extrabold">FREE</span>
+                      <ArrowRight className="w-5 h-5" />
                     </>
                   )}
                 </button>
 
-                <div className="flex items-center justify-center gap-1.5 text-xs text-foreground-subtle pt-1">
+                <p className="text-center text-xs text-foreground-subtle pt-1">
+                  Already joined by <span className="font-semibold text-foreground">2,400+ global members</span> 🌍
+                </p>
+
+                <div className="flex items-center justify-center gap-1.5 text-xs text-foreground-subtle">
                   <Lock className="w-3 h-3" />
                   <span>No credit card. Stop anytime.</span>
                 </div>

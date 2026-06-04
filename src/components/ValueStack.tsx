@@ -4,17 +4,17 @@ const items = [
   {
     emoji: "📱",
     title: "7 Daily WhatsApp Habit Messages",
-    detail: "One science-backed habit delivered to your WhatsApp every morning for 7 days.",
+    detail: "1 tiny science-backed habit delivered to your WhatsApp every morning for 7 days.",
   },
   {
     emoji: "⏰",
     title: "Flexible Timings",
-    detail: "Habits designed for busy schedules — under 5 minutes, whenever suits you.",
+    detail: "All habits designed for busy schedules — takes <5 minutes to do.",
   },
   {
     emoji: "🌙",
-    title: "7 Evening Check-in Messages",
-    detail: "A short nudge every evening to lock in the day's habit and keep you on track.",
+    title: "Evening Check-in Messages",
+    detail: "A short reminder every evening to keep you on track.",
   },
   {
     emoji: "💬",
@@ -23,8 +23,8 @@ const items = [
   },
   {
     emoji: "📊",
-    title: "Day 0 Self-Score Assessment",
-    detail: "Rate yourself across Energy, Focus, and Health before you begin. Your personal baseline.",
+    title: "Personalized 7 Days Progress Report",
+    detail: "Get fully personalized report on how much you have improved on Day 7.",
   },
   {
     emoji: "🏆",

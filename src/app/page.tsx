@@ -49,22 +49,22 @@ export default function Home() {
         {/* 6. Wall of Love — Testimonials */}
         <Testimonials />
 
-        {/* 7. Why Tiny Habits */}
+        {/* 7. Why this is different */}
+        <Comparison />
+
+        {/* 8. Why Tiny Habits */}
         <WhyTinyHabits />
 
-        {/* 8. Your Journey — animated road map */}
+        {/* 9. Your Journey — animated road map */}
         <CuriosityBullets />
 
-        {/* 7. Certificate */}
+        {/* 10. Certificate */}
         <div id="certificate">
           <CertificateReveal />
         </div>
 
-        {/* 8. Real Talk — "you don't need another motivation video" */}
+        {/* 11. Real Talk */}
         <Hook />
-
-        {/* 9. Why this is different */}
-        <Comparison />
 
         {/* 11. Founder story */}
         <FounderStory />

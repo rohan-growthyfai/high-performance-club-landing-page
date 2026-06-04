@@ -40,14 +40,20 @@ export default function Hero() {
           {/* LEFT — copy */}
           <div className="lg:col-span-7 text-center lg:text-left">
 
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-5 animate-fade-up">
+              <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" />
+              <span className="text-sm font-bold text-green-700 tracking-wide">FREE 7-Day WhatsApp Challenge</span>
+            </div>
+
             {/* Headline */}
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.1] tracking-tight text-balance text-foreground animate-fade-up">
-              Get Back Your{" "}
-              <span className="gradient-text">Energy</span>,{" "}
-              <span className="gradient-text">Focus</span> &{" "}
-              <span className="gradient-text">Productivity</span>{" "}
+              Feel More{" "}
+              <span className="gradient-text">Energetic</span>,{" "}
+              <span className="gradient-text">Healthy</span> &{" "}
+              <span className="gradient-text">Focused</span>{" "}
               <span className="text-foreground-muted font-medium">in Just</span>{" "}
-              <span className="italic font-normal text-emphasis-yellow">7 Days</span>.
+              <span className="italic font-normal text-emphasis-yellow">7 Days</span>
             </h1>
 
             {/* Subhead */}
@@ -57,27 +63,27 @@ export default function Hero() {
 
             {/* Body */}
             <p className="mt-3 text-base sm:text-lg text-foreground font-medium leading-relaxed animate-fade-up delay-200">
-              1 tiny habit delivered on your WhatsApp.{" "}
-              <span className="text-emphasis-mint">Just 5 minutes to do.</span>{" "}
+              Get 1 tiny habit delivered on WhatsApp every day.{" "}
+              <span className="text-emphasis-mint">Takes 5 minutes to do.</span>{" "}
               That&apos;s it. 🙌
             </p>
 
-            {/* CTAs */}
+            {/* CTA */}
             <div className="mt-7 flex flex-col items-center lg:items-start gap-2 animate-fade-up delay-300">
               <a
                 href="#signup"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-12 py-6 rounded-full text-xl sm:text-2xl font-bold group"
               >
-                Join for{" "}<span className="font-extrabold">FREE</span>
+                Join FREE on WhatsApp
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
               <p className="text-sm text-foreground-subtle font-medium">
-                Already joined by <span className="text-foreground font-semibold">2,400+ global members</span> 🌍
+                Already joined by <span className="text-foreground font-semibold">2,400+ members</span>
               </p>
             </div>
 
-            {/* Reviews — inline inside hero */}
-            <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
+            {/* 3 Testimonials */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
               {reviews.map((r) => (
                 <div key={r.name} className="flex flex-col gap-2 px-4 py-2 first:pl-0 last:pr-0">
                   <div className="flex gap-0.5">
@@ -103,8 +109,9 @@ export default function Hero() {
             <div className="relative">
               {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
               <div className="absolute -right-4 lg:-right-56 top-1/3 z-20 sticky-note p-5 rounded-md tilt-right w-60 hidden lg:block">
-                <p className="font-serif italic text-lg text-amber-900 leading-snug">
-                  FREE 7 Days WhatsApp Challenge 📱
+                <p className="font-serif italic text-amber-900 leading-snug">
+                  <span className="text-xl font-bold not-italic block">FREE</span>
+                  <span className="text-base block">7-Day WhatsApp Challenge 📱</span>
                 </p>
               </div>
               <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">

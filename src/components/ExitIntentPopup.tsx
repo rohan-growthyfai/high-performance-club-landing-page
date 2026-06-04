@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { X, ArrowRight, Lock, CheckCircle2, Loader2 } from "lucide-react";
+import { X, ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -64,12 +64,13 @@ export default function ExitIntentPopup() {
     setError("");
 
     const formData = new FormData(e.currentTarget);
+    const phone = formData.get("whatsapp") as string;
     const data = {
       name:     formData.get("name"),
-      whatsapp: formData.get("whatsapp"),
+      whatsapp: `+91${phone.replace(/\D/g, "")}`,
       email:    formData.get("email"),
       struggle: formData.get("struggle"),
-      consent:  formData.get("consent") === "on",
+      consent:  true,
     };
 
     try {
@@ -165,13 +166,18 @@ export default function ExitIntentPopup() {
                     className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-sm"
                   />
                 </div>
-                <div>
+                <div className="flex gap-2">
+                  <div className="input-premium flex items-center gap-1.5 px-3 py-3 rounded-xl text-foreground text-sm whitespace-nowrap flex-shrink-0">
+                    <span>🇮🇳</span>
+                    <span className="font-medium">+91</span>
+                  </div>
                   <input
                     name="whatsapp"
                     type="tel"
                     required
-                    placeholder="+91 98765 43210 (WhatsApp number)"
-                    pattern="^\+?[0-9\s]{10,15}$"
+                    placeholder="10 Digit WhatsApp No."
+                    pattern="[0-9]{10}"
+                    maxLength={10}
                     className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-sm"
                   />
                 </div>
@@ -203,19 +209,6 @@ export default function ExitIntentPopup() {
                     ))}
                   </select>
                 </div>
-                <div className="flex items-start gap-2.5">
-                  <input
-                    name="consent"
-                    type="checkbox"
-                    required
-                    id="popup-consent"
-                    className="mt-1 w-4 h-4 rounded border-border accent-accent cursor-pointer"
-                  />
-                  <label htmlFor="popup-consent" className="text-xs text-foreground-muted leading-relaxed cursor-pointer">
-                    I agree to receive daily WhatsApp messages for 7 days. I can stop anytime by replying STOP.
-                  </label>
-                </div>
-
                 {error && (
                   <p className="text-xs text-red-600 bg-red-50 border border-red-200 rounded-lg px-3 py-2">
                     {error}
@@ -240,11 +233,6 @@ export default function ExitIntentPopup() {
                 <p className="text-center text-xs text-foreground-subtle pt-1">
                   <span className="font-semibold text-foreground">2,400+ members</span> already joined
                 </p>
-
-                <div className="flex items-center justify-center gap-1.5 text-xs text-foreground-subtle">
-                  <Lock className="w-3 h-3" />
-                  <span>No credit card. Stop anytime.</span>
-                </div>
               </form>
             )}
           </div>

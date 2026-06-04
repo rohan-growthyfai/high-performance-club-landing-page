@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, Lock, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -38,12 +38,13 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
     setError("");
 
     const formData = new FormData(e.currentTarget);
+    const phone = formData.get("whatsapp") as string;
     const data = {
       name: formData.get("name"),
-      whatsapp: formData.get("whatsapp"),
+      whatsapp: `+91${phone.replace(/\D/g, "")}`,
       email: formData.get("email"),
       struggle: formData.get("struggle"),
-      consent: formData.get("consent") === "on",
+      consent: true,
     };
 
     try {
@@ -55,8 +56,6 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
 
       if (!res.ok) throw new Error("Submission failed");
 
-      // Meta Pixel — fire Lead + CompleteRegistration events
-      // Uses retry to handle async pixel load timing
       const firePixelEvents = () => {
         if (typeof window !== "undefined" && (window as any).fbq) {
           (window as any).fbq("track", "Lead", {
@@ -72,32 +71,28 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
           });
         }
       };
-      // Fire immediately, then retry after 500ms in case fbq loaded slightly late
       firePixelEvents();
       setTimeout(firePixelEvents, 500);
 
       setStatus("success");
     } catch {
       setStatus("error");
-      setError(
-        "Something went wrong. Please try again or message us on WhatsApp."
-      );
+      setError("Something went wrong. Please try again or message us on WhatsApp.");
     }
   }
 
   if (status === "success") {
     return (
-      <div className="premium-card rounded-2xl p-10 lg:p-14 text-center border-glow">
-        <div className="w-20 h-20 mx-auto rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center mb-8">
-          <CheckCircle2 className="w-10 h-10 text-accent" />
+      <div className="premium-card rounded-2xl p-8 lg:p-10 text-center border-glow">
+        <div className="w-16 h-16 mx-auto rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center mb-6">
+          <CheckCircle2 className="w-8 h-8 text-accent" />
         </div>
-        <h3 className="font-serif text-4xl mb-4 text-foreground">You&apos;re in. 🎉</h3>
-        <p className="text-foreground-muted leading-relaxed mb-8 text-lg">
+        <h3 className="font-serif text-3xl mb-3 text-foreground">You&apos;re in. 🎉</h3>
+        <p className="text-foreground-muted leading-relaxed mb-6 text-base">
           Check your WhatsApp in the next 2 minutes. Your Day 1 habit is on the way.
         </p>
-        <p className="text-base text-foreground-subtle">
-          Didn&apos;t receive anything? Make sure your WhatsApp number is correct,
-          or contact us at contact@highperformanceclub.co
+        <p className="text-sm text-foreground-subtle">
+          Didn&apos;t receive anything? Contact us at contact@highperformanceclub.co
         </p>
       </div>
     );
@@ -106,14 +101,12 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
   return (
     <form
       onSubmit={handleSubmit}
-      className="premium-card rounded-2xl p-8 lg:p-12 border-glow"
+      className="premium-card rounded-2xl p-6 lg:p-8 border-glow"
     >
-      <div className="space-y-6">
+      <div className="space-y-4">
+        {/* Name */}
         <div>
-          <label
-            htmlFor={`${formId}-name`}
-            className="block text-base font-medium text-foreground mb-2"
-          >
+          <label htmlFor={`${formId}-name`} className="block text-sm font-medium text-foreground mb-1.5">
             First name
           </label>
           <input
@@ -122,36 +115,36 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
             type="text"
             required
             placeholder="Rohan"
-            className="input-premium w-full px-5 py-4 rounded-xl text-foreground placeholder:text-foreground-subtle text-lg"
+            className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
           />
         </div>
 
+        {/* WhatsApp with +91 prefix */}
         <div>
-          <label
-            htmlFor={`${formId}-whatsapp`}
-            className="block text-base font-medium text-foreground mb-2"
-          >
-            WhatsApp number{" "}
-            <span className="text-foreground-subtle font-normal">
-              (with country code)
-            </span>
+          <label htmlFor={`${formId}-whatsapp`} className="block text-sm font-medium text-foreground mb-1.5">
+            WhatsApp number
           </label>
-          <input
-            id={`${formId}-whatsapp`}
-            name="whatsapp"
-            type="tel"
-            required
-            placeholder="+91 98765 43210"
-            pattern="^\+?[0-9\s]{10,15}$"
-            className="input-premium w-full px-5 py-4 rounded-xl text-foreground placeholder:text-foreground-subtle text-lg"
-          />
+          <div className="flex gap-2">
+            <div className="input-premium flex items-center gap-2 px-3 py-3 rounded-xl text-foreground text-base whitespace-nowrap flex-shrink-0">
+              <span className="text-lg">🇮🇳</span>
+              <span className="font-medium">+91</span>
+            </div>
+            <input
+              id={`${formId}-whatsapp`}
+              name="whatsapp"
+              type="tel"
+              required
+              placeholder="10 Digit WhatsApp No."
+              pattern="[0-9]{10}"
+              maxLength={10}
+              className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
+            />
+          </div>
         </div>
 
+        {/* Email */}
         <div>
-          <label
-            htmlFor={`${formId}-email`}
-            className="block text-base font-medium text-foreground mb-2"
-          >
+          <label htmlFor={`${formId}-email`} className="block text-sm font-medium text-foreground mb-1.5">
             Email
           </label>
           <input
@@ -160,100 +153,72 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
             type="email"
             required
             placeholder="rohan@example.com"
-            className="input-premium w-full px-5 py-4 rounded-xl text-foreground placeholder:text-foreground-subtle text-lg"
+            className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
           />
         </div>
 
+        {/* Struggle */}
         <div>
-          <label
-            htmlFor={`${formId}-struggle`}
-            className="block text-base font-medium text-foreground mb-2"
-          >
+          <label htmlFor={`${formId}-struggle`} className="block text-sm font-medium text-foreground mb-1.5">
             Which area do you want to upgrade most?
           </label>
           <select
             id={`${formId}-struggle`}
             name="struggle"
             required
-            className="input-premium w-full px-5 py-4 rounded-xl text-foreground appearance-none cursor-pointer text-lg"
+            className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
             style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
               backgroundRepeat: "no-repeat",
-              backgroundPosition: "right 1.25rem center",
-              backgroundSize: "1.25rem",
-              paddingRight: "3rem",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+              paddingRight: "2.5rem",
             }}
           >
-            <option value="" disabled defaultValue="">
-              Choose one…
-            </option>
+            <option value="" disabled defaultValue="">Choose one…</option>
             {struggles.map((s) => (
-              <option key={s} value={s}>
-                {s}
-              </option>
+              <option key={s} value={s}>{s}</option>
             ))}
           </select>
         </div>
 
-        <div className="flex items-start gap-3 pt-2">
-          <input
-            id={`${formId}-consent`}
-            name="consent"
-            type="checkbox"
-            required
-            className="mt-1.5 w-5 h-5 rounded border-border bg-white text-accent focus:ring-accent focus:ring-offset-0 cursor-pointer accent-accent"
-          />
-          <label
-            htmlFor={`${formId}-consent`}
-            className="text-base text-foreground-muted leading-relaxed cursor-pointer"
-          >
-            I agree to receive daily WhatsApp messages for 7 days. I can stop
-            anytime by replying STOP.
-          </label>
-        </div>
-
         {error && (
-          <p className="text-base text-red-600 bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
             {error}
           </p>
         )}
 
+        {/* CTA Button */}
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-6 rounded-full text-xl mt-2 disabled:opacity-70 disabled:cursor-not-allowed"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full text-lg font-bold mt-1 disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {status === "submitting" ? (
-            <>
-              <Loader2 className="w-5 h-5 animate-spin" />
-              Joining…
-            </>
+            <><Loader2 className="w-5 h-5 animate-spin" />Joining…</>
           ) : (
-            <>
-              Join for <span className="font-extrabold">FREE</span>
-              <ArrowRight className="w-5 h-5" />
-            </>
+            <>Join Now for <span className="font-extrabold">FREE</span><ArrowRight className="w-5 h-5" /></>
           )}
         </button>
 
-        <div className="flex items-center justify-center gap-2 pt-2 text-sm text-foreground-subtle">
-          <Lock className="w-4 h-4" />
-          <span>We never share your number. No spam. No phone calls.</span>
-        </div>
+        {/* Social proof below button */}
+        <p className="text-center text-xs text-foreground-subtle">
+          <span className="font-semibold text-foreground">2,400+ members</span> already joined
+        </p>
 
-        {/* Testimonial — directly below form, minimal gap */}
-        <div className="mt-5 pt-5 border-t border-border-subtle flex items-start gap-3">
+        {/* Testimonial */}
+        <div className="pt-4 border-t border-border-subtle flex items-start gap-3">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={testimonials[testimonialVariant % testimonials.length].avatar}
             alt={testimonials[testimonialVariant % testimonials.length].name}
-            className="w-9 h-9 rounded-full object-cover flex-shrink-0 mt-0.5"
+            className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5"
           />
           <div>
             <p className="text-sm text-foreground leading-snug">
               &ldquo;{testimonials[testimonialVariant % testimonials.length].quote}&rdquo;
             </p>
-            <p className="text-xs text-foreground-subtle mt-1.5 font-medium">
+            <p className="text-xs text-foreground-subtle mt-1 font-medium">
               {testimonials[testimonialVariant % testimonials.length].name} &nbsp;·&nbsp; {testimonials[testimonialVariant % testimonials.length].city} &nbsp;·&nbsp;
               <span className="text-accent">★★★★★</span>
             </p>

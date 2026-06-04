@@ -2,10 +2,9 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const points = [
   "📱 First WhatsApp message in 2 minutes",
-  "⏱️ 5-10 minutes a day, for 7 days",
+  "⏱️ <5 minutes/day",
   "📈 See your Day 0 → Day 7 progress",
   "🏆 Win your certificate if you finish 5/7",
-  "💸 Free forever. Takes 30 seconds to join.",
 ];
 
 export default function FinalCTA() {
@@ -27,15 +26,13 @@ export default function FinalCTA() {
               Time to go 🚀
             </p>
             <h2 className="font-serif text-5xl sm:text-6xl lg:text-8xl font-medium leading-[1.05] mb-10 text-balance text-foreground">
-              Ready to try
+              Ready to Try
               <br />
-              7 tiny habits?
+              FREE 7 Days WhatsApp Challenge?
             </h2>
 
             <p className="text-foreground-muted text-2xl sm:text-3xl max-w-2xl mx-auto mb-12 leading-[1.5]">
-              Join the FREE 7-Day Challenge.
-              <br />
-              Your first habit lands in your WhatsApp in 2 minutes. ⚡
+              Your first habit message lands in your WhatsApp in next 2 minutes. ⚡
             </p>
 
             <div className="max-w-md mx-auto mb-12">
@@ -56,12 +53,12 @@ export default function FinalCTA() {
               href="#signup"
               className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl group"
             >
-              Join for <span className="font-extrabold">FREE</span>
+              Join FREE on WhatsApp
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
             </a>
 
             <p className="mt-7 text-base text-foreground-subtle">
-              No credit card · No phone calls · Stop anytime with one reply
+              No credit card · Stop anytime with one reply
             </p>
           </div>
         </div>

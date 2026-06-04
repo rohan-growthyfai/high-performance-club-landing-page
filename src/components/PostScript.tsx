@@ -26,7 +26,7 @@ export default function PostScript() {
 
           <div className="space-y-7 text-2xl sm:text-3xl text-foreground-muted leading-[1.55]">
             <p>
-              If you&apos;ve read this far, you probably need this more than you think. 🫂
+              If you&apos;ve read this far, you probably need this more than you think. 🤔
             </p>
             <p>
               You&apos;ve watched the videos. You&apos;ve saved the posts.
@@ -36,10 +36,10 @@ export default function PostScript() {
               The gap between knowing and doing? That&apos;s the whole reason this challenge exists.
             </p>
             <p>
-              7 days. 5-10 minutes a day. Zero risk. Free. Plus a certificate. 🏆
+              7 days. &lt;5 minutes/day. FREE. Plus a certificate. 🏆
             </p>
             <p className="text-foreground font-serif italic text-3xl sm:text-4xl leading-[1.3] my-10">
-              Worst case: you waste 35 minutes.
+              Worst case: you waste 35 minutes. (7 days X 5 mins 🫠)
               <br />
               Best case: you find 1 habit you keep for life.
             </p>

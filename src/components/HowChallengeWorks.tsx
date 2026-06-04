@@ -175,45 +175,6 @@ export default function HowChallengeWorks() {
           </div>
         </div>
 
-        {/* ── Divider ── */}
-        <div className="flex items-center gap-4 mb-14">
-          <div className="flex-1 h-px bg-border-subtle" />
-          <p className="text-sm text-foreground-subtle font-medium whitespace-nowrap">
-            What happens on Day 7
-          </p>
-          <div className="flex-1 h-px bg-border-subtle" />
-        </div>
-
-        {/* ── PART 3: Day 7 Result ── */}
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl bg-gradient-to-br from-green-50 via-emerald-50 to-white border-2 border-green-300 p-8 lg:p-10">
-            <div className="flex items-start gap-5">
-              <span className="text-5xl flex-shrink-0">🏆</span>
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-emerald-600 font-bold mb-2">
-                  Day 7 · Your result
-                </p>
-                <h3 className="font-display text-2xl font-bold text-foreground mb-4 leading-snug">
-                  Significant shifts in all 4 areas of your life.
-                </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-                  {areas.map((a) => (
-                    <div key={a.label} className="bg-white border border-green-200 rounded-xl p-3 text-center">
-                      <div className="text-2xl mb-1">{a.emoji}</div>
-                      <p className="text-xs font-bold text-foreground">{a.label}</p>
-                      <p className="text-xs text-emerald-600 font-bold mt-0.5">↑ Improved</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="text-sm text-foreground-muted leading-relaxed">
-                  You will also receive a <span className="font-semibold text-foreground">personalized Day 7 report</span> showing
-                  exactly what changed — and a <span className="font-semibold text-foreground">completion certificate</span> to celebrate finishing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Curiosity closer */}
         <div className="mt-14 text-center">
           <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-8 py-6 shadow-md max-w-xl">

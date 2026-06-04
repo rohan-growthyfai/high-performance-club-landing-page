@@ -63,16 +63,16 @@ export default function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="mt-7 flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-center lg:justify-start animate-fade-up delay-300">
+            <div className="mt-7 flex flex-col items-center lg:items-start gap-2 animate-fade-up delay-300">
               <a
                 href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-7 py-4 rounded-full text-base sm:text-lg group"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold group"
               >
-                Join for{" "} <span className="font-extrabold">FREE</span>
+                Join for{" "}<span className="font-extrabold">FREE</span>
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
-              <p className="text-base sm:text-lg font-semibold text-foreground-muted justify-center lg:justify-start">
-                Already joined by <span className="text-foreground font-bold">2,400+ global members</span> 🌍
+              <p className="text-sm text-foreground-subtle font-medium">
+                Already joined by <span className="text-foreground font-semibold">2,400+ global members</span> 🌍
               </p>
             </div>
 

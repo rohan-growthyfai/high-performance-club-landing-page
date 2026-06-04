@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import MetaPixelEvents from "@/components/MetaPixelEvents";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
 import InlineSignup from "@/components/InlineSignup";
@@ -88,6 +89,7 @@ export default function Home() {
       <StickyMobileCTA />
       <BackToTop />
       <LiveEnrollmentPopup />
+      <ExitIntentPopup />
     </>
   );
 }

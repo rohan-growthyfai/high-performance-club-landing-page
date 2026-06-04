@@ -90,11 +90,10 @@ export default function BlogsPage() {
             <span style={{ fontSize:11, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", color:"#b8853a" }}>High Performance Blog</span>
           </div>
           <h1 style={{ fontSize:"clamp(2.2rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16, color:"#18181b" }}>
-            Tiny habits.{" "}
-            <span style={{ background:"linear-gradient(135deg,#18181b 0%,#b8853a 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>Real results.</span>
+            High Performance Blogs
           </h1>
-          <p style={{ fontSize:18, color:"#6b7280", maxWidth:520, lineHeight:1.65 }}>
-            Science-backed articles on building tiny daily habits for busy Indians who want something that actually works.
+          <p style={{ fontSize:18, color:"#6b7280", maxWidth:580, lineHeight:1.65 }}>
+            Science-backed articles on building tiny daily habits to feel more energetic, healthy and focused.
           </p>
         </div>
 

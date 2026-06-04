@@ -7,11 +7,9 @@ import PhoneInput from "./PhoneInput";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const struggles = [
-  "Energy Battery — I feel drained most days",
-  "Daily Control — my day runs me, not the other way",
-  "Phone Control — I reach for my phone too often",
-  "Body Lightness — I feel heavy / stiff / low movement",
-  "Mind Space — too much mental noise",
+  "Energy — I feel drained most days",
+  "Health — I want to be more healthy",
+  "Focus — I want to boost my focus and productivity",
 ];
 
 export default function ExitIntentPopup() {

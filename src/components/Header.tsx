@@ -25,7 +25,7 @@ export default function Header() {
           href="#signup"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-accent hover:bg-accent-dim transition-colors px-4 py-2 rounded-full whitespace-nowrap"
         >
-          Join free
+          Join FREE on WhatsApp
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>

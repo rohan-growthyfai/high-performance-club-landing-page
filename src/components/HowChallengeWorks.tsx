@@ -174,8 +174,7 @@ export default function HowChallengeWorks() {
               What are the 7 habits? 🔒
             </p>
             <p className="text-base text-foreground-muted leading-relaxed">
-              Deliberately kept secret. You unlock one each morning — delivered only in your WhatsApp.
-              <span className="font-semibold text-foreground"> No spoilers here.</span>
+              They are secret 🤫. You unlock a new habit every morning — delivered in your WhatsApp.
             </p>
           </div>
         </div>

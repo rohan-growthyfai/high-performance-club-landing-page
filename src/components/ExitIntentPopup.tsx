@@ -15,48 +15,60 @@ const struggles = [
 ];
 
 export default function ExitIntentPopup() {
-  const [visible, setVisible]   = useState(false);
+  const [visible, setVisible]     = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [status, setStatus]     = useState<FormStatus>("idle");
-  const [error, setError]       = useState("");
+  const [isExitIntent, setIsExitIntent] = useState(false);
+  const [status, setStatus]       = useState<FormStatus>("idle");
+  const [error, setError]         = useState("");
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const shownRef = useRef(false);
 
   useEffect(() => {
-    // Reset on every page load — use a page-load timestamp key
-    // so the popup shows fresh on every reload
-    // Clear any old dismissed flags so reload always resets
     sessionStorage.removeItem("popup_dismissed");
 
-    let shown = false;
-
-    const showPopup = () => {
-      if (shown) return;
-      shown = true;
+    const showPopup = (exitIntent = false) => {
+      if (shownRef.current && !exitIntent) return;
+      if (exitIntent && dismissed) {
+        // Already dismissed exit popup — allow tab to close
+        return;
+      }
+      shownRef.current = true;
+      setIsExitIntent(exitIntent);
+      setStatus("idle");
+      setError("");
       setVisible(true);
     };
 
-    // Start 5-second timer immediately on page load
-    timerRef.current = setTimeout(showPopup, 5000);
+    // 5-second timer on page load
+    timerRef.current = setTimeout(() => showPopup(false), 5000);
 
-    // Also trigger on first scroll — whichever comes first
+    // Scroll also starts 5-second countdown
     const onScroll = () => {
-      if (shown) return;
+      if (shownRef.current) return;
       if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(showPopup, 5000);
+      timerRef.current = setTimeout(() => showPopup(false), 5000);
     };
-
     window.addEventListener("scroll", onScroll, { passive: true, once: true });
+
+    // Exit intent — mouse leaves top of page (desktop tab close gesture)
+    const onMouseLeave = (e: MouseEvent) => {
+      if (e.clientY <= 5) {
+        showPopup(true);
+      }
+    };
+    document.addEventListener("mouseleave", onMouseLeave);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("mouseleave", onMouseLeave);
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, []);
+  }, [dismissed]);
 
   const dismiss = () => {
     setVisible(false);
     setDismissed(true);
-    // dismissed only for this page view — reloading will show it again
+    shownRef.current = false; // allow exit-intent popup to show after timed one dismissed
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -132,10 +144,11 @@ export default function ExitIntentPopup() {
               <X className="w-4 h-4" />
             </button>
             <h2 className="text-2xl font-bold leading-snug">
-              Get More Energy, Focus & Calm in Just 7 Days
+              {isExitIntent ? "Wait! Before You Go 👋" : "Get More Energy, Focus & Calm in Just 7 Days"}
             </h2>
-            <p className="text-sm opacity-80 mt-3 leading-relaxed">
-              Join the FREE 7-Day WhatsApp Habits Challenge and get 1 tiny good habit delivered in your WhatsApp daily. No app. No gym. No 5 AM alarm.
+            <p className="text-sm opacity-90 mt-3 leading-relaxed">
+              Join the FREE 7-Day WhatsApp Habits Challenge<br />
+              &amp; Get 1 tiny good habit delivered in your WhatsApp daily.
             </p>
           </div>
 

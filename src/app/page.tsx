@@ -43,14 +43,14 @@ export default function Home() {
         {/* 4. How this challenge works */}
         <HowChallengeWorks />
 
-        {/* 5. Why Tiny Habits */}
+        {/* 5. Reasons to join — 3 benefit cards */}
+        <SevenDayResults />
+
+        {/* 6. Why Tiny Habits */}
         <WhyTinyHabits />
 
-        {/* 6. Your Journey — animated road map */}
+        {/* 7. Your Journey — animated road map */}
         <CuriosityBullets />
-
-        {/* 7. What You'll Actually Notice in 7 Days */}
-        <SevenDayResults />
 
         {/* 6. Wall of Love — Testimonials */}
         <Testimonials />

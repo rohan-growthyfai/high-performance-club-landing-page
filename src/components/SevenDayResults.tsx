@@ -2,34 +2,31 @@
 
 const benefits = [
   {
-    // Person energetically stretching/waking up in morning sunlight
     image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=600&h=400&fit=crop&q=80",
-    title: "More Energy",
-    desc: "Start your mornings feeling lighter and more awake.",
+    title: "Become More Energetic",
+    points: [
+      "Stop feeling tired and drained by afternoon",
+      "Wake up feeling refreshed and ready to go",
+      "Sustain your energy throughout the entire day",
+    ],
   },
   {
-    // Person focused and working deeply, no distractions
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop&q=80",
-    title: "Better Focus",
-    desc: "Less distraction. More control.",
+    title: "Boost Your Focus",
+    points: [
+      "Get more done without getting distracted",
+      "Stay sharp during meetings and deep work",
+      "Cut through mental noise and think clearly",
+    ],
   },
   {
-    // Person smiling confidently, proud expression
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=400&fit=crop&q=80",
-    title: "More Confidence",
-    desc: "Keep promises to yourself again.",
-  },
-  {
-    // Person doing healthy activity — walking, eating well, outdoors
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=400&fit=crop&q=80",
-    title: "Healthier Daily Habits",
-    desc: "Small habits that support your wellbeing.",
-  },
-  {
-    // Person in calm consistent routine — journaling or planning
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop&q=80",
-    title: "Consistency",
-    desc: "Build habits you can actually sustain.",
+    title: "Get More Confidence & Productivity",
+    points: [
+      "Keep promises to yourself and follow through",
+      "Build daily habits that actually stick",
+      "Feel calm, in control, and more productive",
+    ],
   },
 ];
 
@@ -44,12 +41,12 @@ export default function SevenDayResults() {
             What will happen in just 7 days
           </p>
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-foreground">
-            What You&apos;ll Actually Notice
+            Reasons to Join the Challenge
           </h2>
         </div>
 
-        {/* Benefit cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {/* 3 Benefit cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
           {benefits.map((b) => (
             <div
               key={b.title}
@@ -60,20 +57,26 @@ export default function SevenDayResults() {
                 <img
                   src={b.image}
                   alt={b.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    transition: "transform 0.4s ease",
-                  }}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 0.4s ease" }}
                   className="group-hover:scale-105"
                 />
               </div>
 
               {/* Text */}
               <div className="p-6">
-                <p className="text-lg font-bold text-foreground mb-2 leading-snug">{b.title}</p>
-                <p className="text-base text-foreground-muted leading-relaxed">{b.desc}</p>
+                <p className="text-lg font-bold text-foreground mb-4 leading-snug">{b.title}</p>
+                <ul className="space-y-2">
+                  {b.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2.5">
+                      <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-accent/10 flex items-center justify-center">
+                        <svg className="w-2.5 h-2.5 text-accent" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                      <span className="text-sm text-foreground-muted leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
@@ -83,7 +86,7 @@ export default function SevenDayResults() {
         <div className="text-center max-w-xl mx-auto mb-12">
           <div className="w-12 h-px bg-border mx-auto mb-8" />
           <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
-            Just 7 tiny upgrades that naturally fit into your daily routine.
+            Just 7 tiny habits that naturally fit into your daily routine.
           </p>
         </div>
 

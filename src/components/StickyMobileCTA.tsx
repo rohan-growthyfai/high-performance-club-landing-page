@@ -8,7 +8,8 @@ export default function StickyMobileCTA() {
 
   useEffect(() => {
     function onScroll() {
-      setVisible(window.scrollY > 600);
+      // Show after user scrolls past the hero (approx viewport height)
+      setVisible(window.scrollY > window.innerHeight * 0.8);
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
@@ -18,20 +19,20 @@ export default function StickyMobileCTA() {
   return (
     <div
       className={`md:hidden fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${
-        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0"
+        visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"
       }`}
     >
-      <div className="bg-white/95 backdrop-blur-xl border-t border-border shadow-2xl px-4 py-3.5">
+      <div className="bg-white border-t border-border shadow-[0_-4px_24px_rgba(0,0,0,0.10)] px-4 pt-2.5 pb-4">
+        <p className="text-center text-xs font-semibold text-foreground-subtle tracking-wide uppercase mb-2">
+          Free 7-day challenge
+        </p>
         <a
           href="#signup"
-          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-5 rounded-full text-lg"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-bold"
         >
-          Join for <span className="font-extrabold">FREE</span>
+          Join FREE on WhatsApp
           <ArrowRight className="w-4 h-4" />
         </a>
-        <p className="text-center text-xs text-foreground-subtle mt-2">
-          Free · WhatsApp delivery · Stop anytime
-        </p>
       </div>
     </div>
   );

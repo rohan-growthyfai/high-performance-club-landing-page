@@ -87,29 +87,6 @@ export default function HowChallengeWorks() {
           </p>
         </div>
 
-        {/* ── PART 1: 4 Life Areas ── */}
-        <div className="mb-14">
-          <p className="text-center text-xs uppercase tracking-[0.2em] text-foreground-subtle font-bold mb-6">
-            The key areas you will improve
-          </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
-            {areas.map((a) => (
-              <div
-                key={a.label}
-                className={`rounded-2xl border-2 ${a.color} p-5 text-center hover-glow`}
-              >
-                <div className="text-4xl mb-3">{a.emoji}</div>
-                <span className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${a.badgeColor}`}>
-                  {a.label}
-                </span>
-                <p className={`text-sm leading-relaxed ${a.textColor} font-medium`}>
-                  {a.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
         {/* ── Divider ── */}
         <div className="flex items-center gap-4 mb-14">
           <div className="flex-1 h-px bg-border-subtle" />

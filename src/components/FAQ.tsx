@@ -42,10 +42,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
       <button
         type="button"
         onClick={() => setOpen(!open)}
-        className="w-full py-7 flex items-start justify-between gap-6 text-left group"
+        className="w-full py-5 sm:py-7 flex items-start justify-between gap-4 sm:gap-6 text-left group"
         aria-expanded={open}
       >
-        <span className="font-medium text-foreground text-sm sm:text-xl leading-snug group-hover:text-accent transition-colors">
+        <span className="font-medium text-foreground text-xs sm:text-xl leading-snug group-hover:text-accent transition-colors">
           {q}
         </span>
         <span className="flex-shrink-0 w-10 h-10 rounded-full border border-border-subtle group-hover:border-accent/40 flex items-center justify-center transition-colors mt-0.5 bg-white">
@@ -63,7 +63,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         }}
       >
         <div className="overflow-hidden">
-          <p className="pb-7 pr-14 text-foreground-muted leading-relaxed text-sm sm:text-lg">
+          <p className="pb-5 sm:pb-7 pr-8 sm:pr-14 text-foreground-muted leading-relaxed text-xs sm:text-lg">
             {a}
           </p>
         </div>

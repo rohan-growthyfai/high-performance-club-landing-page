@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-display text-[1.85rem] sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
+            <h1 className="font-display text-[2.1rem] sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
               Feel More{" "}
               <span className="gradient-text">Energetic</span>,{" "}
               <span className="gradient-text">Healthy</span> &{" "}
@@ -82,9 +82,9 @@ export default function Hero() {
             </div>
 
             {/* 3 Testimonials */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500 text-center sm:text-left">
               {reviews.map((r) => (
-                <div key={r.name} className="flex flex-col gap-2 px-0 sm:px-4 py-3 sm:py-2 first:sm:pl-0 last:sm:pr-0 text-left">
+                <div key={r.name} className="flex flex-col items-center sm:items-start gap-2 px-0 sm:px-4 py-3 sm:py-2 first:sm:pl-0 last:sm:pr-0 text-center sm:text-left">
                   <div className="flex gap-0.5">
                     {[1,2,3,4,5].map(j => <StarIcon key={j} />)}
                   </div>

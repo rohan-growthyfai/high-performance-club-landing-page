@@ -82,7 +82,7 @@ export default function HowChallengeWorks() {
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
             How this challenge works.
           </h2>
-          <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+          <p className="text-sm sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
             For 7 days, you&apos;ll receive one tiny habit on WhatsApp every morning. Each habit is designed to help you feel more energetic, healthier, and more focused.
           </p>
         </div>

@@ -114,7 +114,7 @@ export default function LiveEnrollmentPopup() {
 
   return (
     <div
-      className="fixed bottom-24 md:bottom-6 left-4 z-50 flex flex-col gap-2.5 pointer-events-none"
+      className="fixed bottom-4 left-2 z-50 flex flex-col gap-2 pointer-events-none"
       aria-live="polite"
     >
       {toasts.map((toast, i) => (
@@ -128,14 +128,14 @@ export default function LiveEnrollmentPopup() {
           }}
         >
           <div
-            className="flex items-center gap-3 bg-white border border-border-subtle rounded-2xl px-4 py-3 shadow-lg w-[310px]"
+            className="flex items-center gap-2 bg-white border border-border-subtle rounded-2xl px-3 py-2.5 shadow-lg w-[260px] sm:w-[310px]"
             style={{
               boxShadow: "0 4px 20px rgba(0,0,0,0.10), 0 1px 4px rgba(0,0,0,0.06)",
             }}
           >
             {/* Avatar circle with initial */}
             <div
-              className="w-9 h-9 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0"
+              className="w-7 h-7 sm:w-9 sm:h-9 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-sm flex-shrink-0"
               style={{
                 background: `hsl(${(toast.name.charCodeAt(0) * 37) % 360}, 55%, 52%)`,
               }}
@@ -145,10 +145,10 @@ export default function LiveEnrollmentPopup() {
 
             {/* Text */}
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-foreground leading-snug truncate">
+              <p className="text-xs sm:text-sm font-semibold text-foreground leading-snug truncate">
                 {toast.name} from {toast.city}
               </p>
-              <p className="text-xs text-foreground-muted leading-snug mt-0.5">
+              <p className="text-[10px] sm:text-xs text-foreground-muted leading-snug mt-0.5">
                 joined the challenge · {toast.time}
               </p>
             </div>

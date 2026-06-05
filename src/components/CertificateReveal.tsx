@@ -65,7 +65,7 @@ export default function CertificateReveal() {
 
             {/* THE CERTIFICATE */}
             <div
-              className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-700 w-full max-w-xs sm:max-w-lg"
+              className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-700 w-full max-w-[280px] sm:max-w-lg"
               style={{
                 background: "linear-gradient(145deg, #fdfbf4 0%, #faf6e8 50%, #fdfbf4 100%)",
                 border: "1px solid #d4b896",
@@ -78,7 +78,7 @@ export default function CertificateReveal() {
                   "0 32px 80px -16px rgba(180,130,60,0.35)",
                   "0 8px 24px rgba(0,0,0,0.15)",
                 ].join(", "),
-                padding: "clamp(16px, 5vw, 40px) clamp(16px, 5vw, 44px) clamp(14px, 4vw, 36px)",
+                padding: "clamp(12px, 3vw, 40px) clamp(12px, 3vw, 44px) clamp(10px, 3vw, 36px)",
                 position: "relative",
                 overflow: "hidden",
               }}

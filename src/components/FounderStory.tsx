@@ -38,7 +38,7 @@ export default function FounderStory() {
             <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6 text-center lg:text-left">
               👋 Hi, I&apos;m the guy who built this
             </p>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] mb-10 text-balance text-foreground">
+            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] mb-10 text-balance text-foreground text-center lg:text-left">
               I made this because
               <br />
               <span className="italic font-light">I needed it first.</span>

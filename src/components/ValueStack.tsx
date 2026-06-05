@@ -7,14 +7,14 @@ const items = [
     detail: "1 tiny science-backed habit delivered to your WhatsApp every morning for 7 days.",
   },
   {
-    emoji: "⏰",
-    title: "Flexible Timings",
-    detail: "All habits designed for busy schedules — takes <5 minutes to do.",
+    emoji: "⏱️",
+    title: "Less Than 5 Minutes a Day",
+    detail: "Simple habits designed for busy schedules.",
   },
   {
     emoji: "🌙",
-    title: "Evening Check-in Messages",
-    detail: "A short reminder every evening to keep you on track.",
+    title: "Evening Check-ins",
+    detail: "A short reminder to help you stay consistent.",
   },
   {
     emoji: "💬",
@@ -24,22 +24,17 @@ const items = [
   {
     emoji: "📊",
     title: "Personalized 7 Days Progress Report",
-    detail: "Get fully personalized report on how much you have improved on Day 7.",
+    detail: "Compare your Energy, Health, and Focus before and after the challenge.",
   },
   {
     emoji: "🏆",
     title: "Completion Certificate",
-    detail: "Complete the challenge and earn your official High Performance Lifestyle certificate.",
+    detail: "Complete the challenge and receive your 7-Day Habits Starter Certificate.",
   },
   {
-    emoji: "📈",
-    title: "Day 7 Progress Report",
-    detail: "See exactly what changed from Day 1 to Day 7. Numbers don't lie.",
-  },
-  {
-    emoji: "📋",
+    emoji: "📄",
     title: "7-Habit Reference PDF",
-    detail: "All 7 habits in one clean PDF you can keep and revisit anytime.",
+    detail: "Keep all 7 habits with you even after the challenge ends.",
   },
 ];
 
@@ -54,10 +49,10 @@ export default function ValueStack() {
             What you receive 🎁
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
-            Everything You Get In This Challenge
+            Everything You Get for FREE
           </h2>
           <p className="text-lg text-foreground-muted max-w-xl mx-auto">
-            Everything you receive when you join today — completely free.
+            When you join today, you&apos;ll receive everything at ₹0.
           </p>
         </div>
 
@@ -68,11 +63,9 @@ export default function ValueStack() {
               key={i}
               className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border-subtle hover:shadow-sm transition-shadow"
             >
-              {/* Icon */}
               <div className="w-12 h-12 rounded-xl bg-accent/8 border border-accent/15 flex items-center justify-center flex-shrink-0 text-2xl">
                 {item.emoji}
               </div>
-              {/* Text */}
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-foreground text-base mb-1 leading-snug">
                   {item.title}
@@ -96,7 +89,7 @@ export default function ValueStack() {
                 ₹0
               </p>
               <p className="text-sm text-foreground-subtle mt-2 italic">
-                100% FREE. No credit card. No catch.
+                100% FREE. No credit card.
               </p>
             </div>
             <a
@@ -110,15 +103,9 @@ export default function ValueStack() {
         </div>
 
         <p className="text-center mt-6 text-sm text-foreground-subtle italic">
-          We offer this free because we&apos;re building something bigger — and this is how we earn your trust first.
+          We are on a mission to help 1 million people live healthier, more energetic lives — one habit at a time.
         </p>
 
-        <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">Everything above is yours. For free. Right now.</p>
-          <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-            Claim everything — join for free →
-          </a>
-        </div>
       </div>
     </section>
   );

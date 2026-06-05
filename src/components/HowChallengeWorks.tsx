@@ -41,7 +41,7 @@ const areas = [
 const dailyLoop = [
   {
     icon: Sun,
-    time: "6:00 AM — Morning Habit",
+    time: "6:00 AM — Morning",
     label: "You receive one tiny habit on WhatsApp.",
     desc: "",
     color: "text-amber-500",
@@ -87,8 +87,6 @@ export default function HowChallengeWorks() {
           </p>
         </div>
 
-        {/* ── Divider ── */}
-        <div className="h-px bg-border-subtle mb-14" />
 
         {/* ── PART 2: Daily Loop ── */}
         <div className="mb-14">

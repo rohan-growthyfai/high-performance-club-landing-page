@@ -68,15 +68,15 @@ export default function Hero() {
             </p>
 
             {/* CTA */}
-            <div className="mt-6 animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 w-full">
+            <div className="mt-6 animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-0 w-full sm:w-auto">
               <a
                 href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-12 sm:py-6 rounded-full text-base sm:text-xl font-bold group w-full sm:w-auto"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-12 sm:py-6 rounded-full text-base sm:text-xl font-bold group w-full"
               >
                 Join FREE on WhatsApp
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
               </a>
-              <p className="text-sm text-foreground-subtle font-medium text-center">
+              <p className="text-sm text-foreground-subtle font-medium text-center w-full mt-2">
                 Already joined by <span className="text-foreground font-semibold">2,400+ members</span>
               </p>
             </div>

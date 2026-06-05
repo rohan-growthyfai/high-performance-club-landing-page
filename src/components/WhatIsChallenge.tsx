@@ -44,7 +44,7 @@ export default function WhatIsChallenge() {
         </div>
 
         {/* 3 Area Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
           {areas.map((a) => (
             <div
               key={a.label}

@@ -90,7 +90,7 @@ export default function HowChallengeWorks() {
 
         {/* ── PART 2: Daily Loop ── */}
         <div className="mb-14">
-          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto relative pt-3 pl-3">
+          <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto relative pt-3 pl-3">
             {/* Connector arrows between steps */}
             <div className="hidden sm:flex absolute top-1/2 left-[33%] -translate-y-1/2 items-center pointer-events-none z-10">
               <ArrowRight className="w-6 h-6 text-accent/40" />

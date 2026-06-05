@@ -4,6 +4,7 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
 import InlineSignup from "@/components/InlineSignup";
+import WhatIsChallenge from "@/components/WhatIsChallenge";
 import HowChallengeWorks from "@/components/HowChallengeWorks";
 import WhyTinyHabits from "@/components/WhyTinyHabits";
 import CuriosityBullets from "@/components/CuriosityBullets";
@@ -39,6 +40,9 @@ export default function Home() {
 
         {/* 3. Form #1 */}
         <InlineSignup id="signup-1" />
+
+        {/* 3b. What is this challenge */}
+        <WhatIsChallenge />
 
         {/* 4. How this challenge works */}
         <HowChallengeWorks />

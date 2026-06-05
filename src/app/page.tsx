@@ -47,6 +47,9 @@ export default function Home() {
         {/* 4. How this challenge works */}
         <HowChallengeWorks />
 
+        {/* 4b. Here is how your 7 days will look */}
+        <CuriosityBullets />
+
         {/* 5. Reasons to join — 3 benefit cards */}
         <SevenDayResults />
 
@@ -61,9 +64,6 @@ export default function Home() {
 
         {/* 8. Why Tiny Habits */}
         <WhyTinyHabits />
-
-        {/* 9. Your Journey — animated road map */}
-        <CuriosityBullets />
 
         {/* 10. Certificate */}
         <div id="certificate">

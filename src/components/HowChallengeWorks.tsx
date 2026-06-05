@@ -88,13 +88,7 @@ export default function HowChallengeWorks() {
         </div>
 
         {/* ── Divider ── */}
-        <div className="flex items-center gap-4 mb-14">
-          <div className="flex-1 h-px bg-border-subtle" />
-          <p className="text-sm text-foreground-subtle font-medium whitespace-nowrap">
-            Here is your daily routine
-          </p>
-          <div className="flex-1 h-px bg-border-subtle" />
-        </div>
+        <div className="h-px bg-border-subtle mb-14" />
 
         {/* ── PART 2: Daily Loop ── */}
         <div className="mb-14">

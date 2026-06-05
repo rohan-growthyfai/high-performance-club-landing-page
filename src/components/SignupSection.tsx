@@ -31,8 +31,9 @@ export default function SignupSection() {
           <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-balance text-foreground mb-6">
             Send me the first habit on WhatsApp 🚀
           </h2>
-          <p className="text-lg sm:text-xl text-foreground-muted leading-relaxed whitespace-nowrap">
-            Register free and get a tiny kickstart habit instantly. Your official Day 1 starts tomorrow morning.
+          <p className="text-lg sm:text-xl text-foreground-muted leading-relaxed text-center">
+            Register free and get a tiny kickstart habit instantly.<br />
+            Your official Day 1 starts tomorrow morning.
           </p>
         </div>
 

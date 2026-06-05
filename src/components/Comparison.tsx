@@ -43,18 +43,18 @@ export default function Comparison() {
         </div>
 
         {/* Desktop table */}
-        <div className="hidden md:block premium-card rounded-2xl overflow-hidden">
+        <div className="premium-card rounded-2xl overflow-hidden">
           <div className="grid grid-cols-3 gap-px bg-border-subtle">
-            <div className="bg-background-elevated p-6 text-sm uppercase tracking-[0.2em] text-foreground-subtle font-semibold">
+            <div className="bg-background-elevated p-3 sm:p-6 text-xs sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] text-foreground-subtle font-semibold">
               The format
             </div>
-            <div className="bg-background-elevated p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold">
+            <div className="bg-background-elevated p-3 sm:p-6">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] text-accent font-bold">
                 This challenge
               </p>
             </div>
-            <div className="bg-background-elevated p-6">
-              <p className="text-sm uppercase tracking-[0.2em] text-foreground-subtle font-semibold">
+            <div className="bg-background-elevated p-3 sm:p-6">
+              <p className="text-xs sm:text-sm uppercase tracking-[0.1em] sm:tracking-[0.2em] text-foreground-subtle font-semibold">
                 Most Habit Programs
               </p>
             </div>
@@ -66,7 +66,7 @@ export default function Comparison() {
         </div>
 
         {/* Mobile */}
-        <div className="md:hidden space-y-4">
+        <div className="hidden space-y-4">
           {rows.map((row) => (
             <div key={row.feature} className="premium-card rounded-xl p-6">
               <p className="text-sm uppercase tracking-[0.15em] text-foreground-subtle mb-4 font-semibold">
@@ -105,16 +105,16 @@ export default function Comparison() {
 function ContentRow({ feature, us, them }: { feature: string; us: string; them: string }) {
   return (
     <>
-      <div className="bg-background-card p-6 text-base font-semibold text-foreground">
+      <div className="bg-background-card p-3 sm:p-6 text-sm sm:text-base font-semibold text-foreground">
         {feature}
       </div>
-      <div className="bg-background-card p-6 flex items-start gap-3">
+      <div className="bg-background-card p-3 sm:p-6 flex items-start gap-2 sm:gap-3">
         <GreenTick />
-        <span className="text-foreground font-medium text-base">{us}</span>
+        <span className="text-foreground font-medium text-xs sm:text-base">{us}</span>
       </div>
-      <div className="bg-background-card p-6 flex items-start gap-3">
+      <div className="bg-background-card p-3 sm:p-6 flex items-start gap-2 sm:gap-3">
         <RedCross />
-        <span className="text-foreground-subtle text-base">{them}</span>
+        <span className="text-foreground-subtle text-xs sm:text-base">{them}</span>
       </div>
     </>
   );

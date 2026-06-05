@@ -134,7 +134,7 @@ function StatCard({
           <Icon className="w-5 h-5 text-accent" />
         </div>
       </div>
-      <div className="number-badge text-4xl sm:text-5xl gradient-text tabular-nums leading-none">
+      <div className="number-badge text-2xl sm:text-5xl gradient-text tabular-nums leading-none">
         {value}{suffix && <span className="text-accent">{suffix}</span>}
       </div>
       <p className="mt-2 text-sm font-semibold text-foreground">{label}</p>

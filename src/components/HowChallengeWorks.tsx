@@ -122,7 +122,7 @@ export default function HowChallengeWorks() {
           </div>
 
           {/* Repeat badge */}
-          <div className="flex justify-center mt-5">
+          <div className="flex justify-center mt-5 text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-border shadow-sm">
               <span className="text-base">🔁</span>
               <span className="text-sm font-semibold text-foreground-muted">

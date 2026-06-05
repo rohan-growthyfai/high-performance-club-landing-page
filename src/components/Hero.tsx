@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
+            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
               Feel More{" "}
               <span className="gradient-text">Energetic</span>,{" "}
               <span className="gradient-text">Healthy</span> &{" "}
@@ -82,7 +82,7 @@ export default function Hero() {
             </div>
 
             {/* 3 Testimonials */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500">
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500 text-left">
               {reviews.map((r) => (
                 <div key={r.name} className="flex flex-col gap-2 px-4 py-2 first:pl-0 last:pr-0">
                   <div className="flex gap-0.5">

@@ -80,7 +80,7 @@ export default function ValueStack() {
 
         {/* You pay ₹0 + CTA */}
         <div className="premium-card rounded-2xl overflow-hidden border-glow">
-          <div className="bg-gradient-to-br from-accent/15 via-accent/8 to-white px-6 py-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+          <div className="bg-gradient-to-br from-accent/15 via-accent/8 to-white px-6 py-8 flex flex-col items-center sm:flex-row sm:items-center sm:justify-between gap-6 text-center sm:text-left">
             <div>
               <p className="text-sm uppercase tracking-[0.15em] text-accent font-bold mb-2">
                 You pay

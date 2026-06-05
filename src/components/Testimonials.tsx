@@ -262,7 +262,7 @@ function TestimonialCard({ testimonial: t }: { testimonial: Testimonial }) {
       </div>
 
       {/* Review text */}
-      <p className="text-foreground text-lg leading-[1.55] mb-4">
+      <p className="text-foreground text-sm sm:text-lg leading-[1.55] mb-4">
         &ldquo;{t.text}&rdquo;
       </p>
 

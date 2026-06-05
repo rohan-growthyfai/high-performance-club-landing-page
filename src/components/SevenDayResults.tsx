@@ -40,7 +40,7 @@ export default function SevenDayResults() {
           <p className="text-xs uppercase tracking-[0.25em] text-accent font-bold mb-5">
             What will happen in just 7 days
           </p>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground whitespace-nowrap">
+          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground text-center">
             What you&apos;ll feel after 7 days
           </h2>
         </div>
@@ -53,7 +53,7 @@ export default function SevenDayResults() {
               className="bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
             >
               {/* Photo */}
-              <div style={{ height: "clamp(140px, 25vw, 200px)", overflow: "hidden" }}>
+              <div style={{ height: "clamp(180px, 40vw, 200px)", overflow: "hidden" }}>
                 <img
                   src={b.image}
                   alt={b.title}

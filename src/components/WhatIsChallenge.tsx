@@ -32,10 +32,10 @@ export default function WhatIsChallenge() {
 
         {/* Heading */}
         <div className="text-center mb-10">
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
+          <h2 className="font-display text-3xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
             What exactly is this challenge?
           </h2>
-          <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-6">
+          <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-6">
             The Free 7-Day Habits WhatsApp Challenge is a simple habit-building challenge where you receive one tiny habit every morning on WhatsApp.
           </p>
           <p className="text-base text-foreground-muted font-medium mb-6">

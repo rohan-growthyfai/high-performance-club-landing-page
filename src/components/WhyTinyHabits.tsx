@@ -17,7 +17,7 @@ export default function WhyTinyHabits() {
           <p className="text-xs uppercase tracking-[0.25em] text-accent font-bold mb-5">
             Why Tiny Habits?
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-6xl font-medium leading-[1.1] text-foreground mb-6">
+          <h2 className="font-serif text-4xl sm:text-4xl lg:text-6xl font-medium leading-[1.1] text-foreground mb-6">
             Big changes fail.
             <br />
             <span className="italic font-light">Tiny changes stick.</span>
@@ -32,7 +32,7 @@ export default function WhyTinyHabits() {
           {cards.map((card) => (
             <div
               key={card.title}
-              className="bg-white rounded-2xl p-6 border border-border-subtle shadow-sm flex flex-col gap-3 hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl p-6 border border-border-subtle shadow-sm flex flex-col gap-3 hover:shadow-md transition-shadow text-center sm:text-left"
             >
               <span className="text-3xl">{card.emoji}</span>
               <p className="text-lg font-bold text-foreground leading-snug">{card.title}</p>

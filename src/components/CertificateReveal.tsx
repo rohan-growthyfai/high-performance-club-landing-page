@@ -27,12 +27,12 @@ export default function CertificateReveal() {
               <span className="italic font-medium gradient-text">Get your certificate.</span>
             </h2>
 
-            <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed mb-6">
+            <p className="text-base sm:text-2xl text-foreground-muted leading-relaxed mb-6">
               Complete at least <span className="highlight-yellow font-bold text-foreground">5 out of 7 days</span> and receive your{" "}
               <span className="font-semibold text-foreground">7-Day Habits Starter Certificate</span>.
             </p>
 
-            <p className="text-lg text-foreground-muted leading-relaxed mb-10">
+            <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-10">
               Print it. Frame it. Put it on your desk.
               It is a real reminder that you showed up for yourself. 🥹
             </p>
@@ -65,7 +65,7 @@ export default function CertificateReveal() {
 
             {/* THE CERTIFICATE */}
             <div
-              className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-700 w-full max-w-lg"
+              className="rotate-[-1.5deg] hover:rotate-0 transition-transform duration-700 w-full max-w-xs sm:max-w-lg"
               style={{
                 background: "linear-gradient(145deg, #fdfbf4 0%, #faf6e8 50%, #fdfbf4 100%)",
                 border: "1px solid #d4b896",

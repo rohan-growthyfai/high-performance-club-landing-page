@@ -587,10 +587,7 @@ export default function CuriosityBullets() {
               </defs>
             </svg>
           </div>
-          {/* Click hint */}
-          <p className="text-center mt-3 text-xs text-foreground-subtle italic">
-            👆 Tap any dot on the road to jump the car there instantly
-          </p>
+
         </div>
 
         {/* ── MOBILE — vertical road ───────────────────────────── */}
@@ -652,13 +649,11 @@ export default function CuriosityBullets() {
 
         {/* CTA */}
         <div className="mt-4 text-center">
-          <a href="#signup" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl">
+          <a href="#signup" className="btn-primary inline-flex items-center gap-2 px-14 py-5 rounded-full text-xl">
             Join for <span className="font-extrabold">FREE</span> →
             <ArrowRight className="w-5 h-5" />
           </a>
-          <p className="mt-3 text-sm text-foreground-subtle">
-            Each habit revealed one per day — only in your WhatsApp.
-          </p>
+
         </div>
       </div>
     </section>

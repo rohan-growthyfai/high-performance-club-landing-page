@@ -24,12 +24,12 @@ export default function CertificateReveal() {
             <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] text-foreground mb-6">
               Finish the challenge.
               <br />
-              <span className="italic font-medium gradient-text">Win your certificate.</span>
+              <span className="italic font-medium gradient-text">Get your certificate.</span>
             </h2>
 
             <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed mb-6">
-              Complete <span className="highlight-yellow font-bold text-foreground">5 out of 7 days</span> and receive your official{" "}
-              <span className="font-semibold text-foreground">High Performance Lifestyle Starter Certificate</span>.
+              Complete at least <span className="highlight-yellow font-bold text-foreground">5 out of 7 days</span> and receive your{" "}
+              <span className="font-semibold text-foreground">7-Day Habits Starter Certificate</span>.
             </p>
 
             <p className="text-lg text-foreground-muted leading-relaxed mb-10">
@@ -39,9 +39,9 @@ export default function CertificateReveal() {
 
             <a
               href="#signup"
-              className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl"
+              className="btn-primary inline-flex items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-lg sm:text-xl w-full sm:w-auto justify-center"
             >
-              I want my certificate →
+              I Want My Certificate →
             </a>
           </div>
 
@@ -49,9 +49,9 @@ export default function CertificateReveal() {
           <div className="lg:col-span-7 relative flex justify-center">
 
             {/* Sticky note */}
-            <div className="absolute -top-8 -left-2 lg:-left-8 z-20 sticky-note p-3.5 rounded-md tilt-left w-44 hidden sm:block">
-              <p className="font-serif italic text-sm text-amber-900 leading-snug">
-                &ldquo;Finish 5 days and this is yours!&rdquo;
+            <div className="absolute -top-6 -left-2 lg:-left-6 z-20 sticky-note p-2.5 rounded-md tilt-left w-36 hidden sm:block">
+              <p className="font-serif italic text-xs text-amber-900 leading-snug">
+                Finish at least 5 days &amp; this is yours!
               </p>
             </div>
 
@@ -312,12 +312,6 @@ export default function CertificateReveal() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">Complete all 7 days and this certificate is yours. Start now.</p>
-          <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-            Join for FREE
-          </a>
-        </div>
       </div>
     </section>
   );

@@ -49,8 +49,8 @@ export default function CertificateReveal() {
           <div className="lg:col-span-7 relative flex justify-center">
 
             {/* Sticky note */}
-            <div className="absolute -top-6 -left-2 lg:-left-6 z-20 sticky-note p-2.5 rounded-md tilt-left inline-block hidden sm:inline-block">
-              <p className="font-serif italic text-xs text-amber-900 leading-snug whitespace-nowrap">
+            <div className="absolute -top-8 -left-2 lg:-left-6 z-20 sticky-note p-4 rounded-md tilt-left w-40 hidden sm:block">
+              <p className="font-serif italic text-sm text-amber-900 leading-snug">
                 Finish at least 5 days &amp; this is yours!
               </p>
             </div>

@@ -1,10 +1,10 @@
 const cards = [
-  { emoji: "⚡", title: "Tiny Is Fast", desc: "Start in seconds, not hours." },
-  { emoji: "🛡️", title: "Tiny Is Safe", desc: "No pressure. No fear of failure." },
+  { emoji: "⚡", title: "Tiny Is Fast", desc: "Start in minutes, not hours." },
+  { emoji: "🛡️", title: "Tiny Feels Safe", desc: "No pressure. No fear of failure." },
   { emoji: "🌱", title: "Tiny Can Grow Big", desc: "Small actions create real momentum." },
-  { emoji: "🧠", title: "Tiny Doesn't Need Motivation", desc: "Easy enough to do, even on busy days." },
-  { emoji: "🔄", title: "Tiny Is Sustainable", desc: "Built to last beyond the challenge." },
-  { emoji: "🚀", title: "Tiny Is Transformative", desc: "Small shifts. Big results over time." },
+  { emoji: "🧠", title: "Tiny Doesn't Need Motivation", desc: "Easy enough to do even on busy days." },
+  { emoji: "🔁", title: "Tiny Is Sustainable", desc: "Built to last beyond the challenge." },
+  { emoji: "🚀", title: "Tiny Builds Momentum", desc: "One small win makes the next one easier." },
 ];
 
 export default function WhyTinyHabits() {
@@ -23,7 +23,7 @@ export default function WhyTinyHabits() {
             <span className="italic font-light">Tiny changes stick.</span>
           </h2>
           <p className="text-base sm:text-xl text-foreground-muted leading-relaxed">
-            The challenge is built around tiny actions that take less than 30 seconds to start. No willpower. No pressure. No perfection required.
+            This challenge is built around tiny actions that take less than 5 minutes. No willpower. No pressure. No perfection required.
           </p>
         </div>
 
@@ -52,7 +52,7 @@ export default function WhyTinyHabits() {
             <br />
             Stay consistent.
             <br />
-            Let the momentum do the work.
+            Let momentum do the work.
           </p>
         </div>
 

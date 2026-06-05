@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import ExitIntentPopup from "./ExitIntentPopup";
 
 interface BlogPostLayoutProps {
   children: React.ReactNode;
@@ -225,6 +227,7 @@ export default function BlogPostLayout({
           <Link href="/blogs" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Blog</Link>
         </div>
       </footer>
+      <ExitIntentPopup />
     </div>
   );
 }

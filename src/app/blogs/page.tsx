@@ -2,6 +2,7 @@
 // SEO metadata in layout.tsx
 import Link from "next/link";
 import { useState } from "react";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 const CATEGORIES = ["All", "Health Habits", "Productivity Habits", "Focus Habits", "Relationships", "Habit Science"];
 
@@ -86,14 +87,14 @@ export default function BlogsPage() {
         </Link>
         <div style={{ display:"flex", gap:12, alignItems:"center" }}>
           <Link href="/blogs" style={{ fontSize:14, color:"#b8853a", textDecoration:"none", fontWeight:600 }}>Blog</Link>
-          <Link href="/#signup" style={{ background:"linear-gradient(135deg,#b8853a,#8a6428)", color:"#fff", padding:"9px 22px", borderRadius:999, fontSize:14, fontWeight:600, textDecoration:"none", boxShadow:"0 4px 16px rgba(184,133,58,0.3)" }}>Join Free →</Link>
+          <Link href="/#signup" style={{ background:"linear-gradient(135deg,#b8853a,#8a6428)", color:"#fff", padding:"7px 12px", borderRadius:999, fontSize:12, fontWeight:600, textDecoration:"none", boxShadow:"0 4px 16px rgba(184,133,58,0.3)" }}>Join Free →</Link>
         </div>
       </header>
 
       <main style={{ maxWidth:1400, margin:"0 auto", padding:"clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(60px,8vw,120px)" }}>
         {/* Hero */}
         <div style={{ marginBottom:52, textAlign:"center" }}>
-          <h1 style={{ fontSize:"clamp(1.6rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16 }}>
+          <h1 style={{ fontSize:"clamp(2rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16 }}>
             <span style={{ background:"linear-gradient(135deg,#b8853a 0%,#8a6428 50%,#f5d78e 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
               High Performance Blogs
             </span>
@@ -129,13 +130,13 @@ export default function BlogsPage() {
         </Link>
 
         {/* Category filter */}
-        <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:40 }}>
+        <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:40, justifyContent:"center" }}>
           {CATEGORIES.map(cat => {
             const isActive = active === cat;
             const m = cm(cat);
             return (
               <button key={cat} onClick={()=>setActive(cat)}
-                style={{ padding:"6px 12px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:"clamp(11px,2.5vw,14px)", fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
+                style={{ padding:"6px 12px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:"clamp(13px,2.5vw,14px)", fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
                 {cat}
               </button>
             );
@@ -163,7 +164,7 @@ export default function BlogsPage() {
                       <span style={{ background:m.bg, color:m.color, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
                       <span style={{ fontSize:12, color:"#9ca3af" }}>{post.readTime}</span>
                     </div>
-                    <h2 style={{ fontSize:"clamp(13px,2.5vw,16px)", fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:8, flex:1 }}>{post.title}</h2>
+                    <h2 style={{ fontSize:"clamp(15px,2.5vw,16px)", fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:8, flex:1 }}>{post.title}</h2>
                     <p style={{ fontSize:13, color:"#6b7280", lineHeight:1.6, marginBottom:16 }}>{post.excerpt.slice(0,120)}...</p>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:14, borderTop:"1px solid #f3f4f6" }}>
                       <span style={{ fontSize:12, color:"#9ca3af" }}>{post.date}</span>
@@ -202,6 +203,7 @@ export default function BlogsPage() {
           <Link href="/blogs" style={{ fontSize:13, color:"#b8853a", textDecoration:"none" }}>Blog</Link>
         </div>
       </footer>
+      <ExitIntentPopup />
     </div>
   );
 }

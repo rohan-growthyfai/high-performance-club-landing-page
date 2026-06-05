@@ -41,7 +41,8 @@ export default function SevenDayResults() {
             What will happen in just 7 days
           </p>
           <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground text-center">
-            What you&apos;ll feel after 7 days
+            <span className="sm:hidden">What you&apos;ll feel after<br />7 days</span>
+            <span className="hidden sm:inline">What you&apos;ll feel after 7 days</span>
           </h2>
         </div>
 
@@ -53,7 +54,7 @@ export default function SevenDayResults() {
               className="bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
             >
               {/* Photo */}
-              <div style={{ height: "clamp(180px, 40vw, 200px)", overflow: "hidden" }}>
+              <div style={{ height: "clamp(200px, 45vw, 220px)", overflow: "hidden" }}>
                 <img
                   src={b.image}
                   alt={b.title}
@@ -92,7 +93,7 @@ export default function SevenDayResults() {
         <div className="flex flex-col items-center gap-3">
           <a
             href="#signup"
-            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5 text-center"
           >
             I want these results — join free →
           </a>

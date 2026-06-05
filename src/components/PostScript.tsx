@@ -48,7 +48,7 @@ export default function PostScript() {
               Join for Free
               <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-base sm:text-lg text-foreground-subtle italic">
+            <p className="text-base sm:text-lg text-foreground-subtle italic text-center sm:text-left">
               See you in your WhatsApp in 2 minutes. 👋
             </p>
           </div>

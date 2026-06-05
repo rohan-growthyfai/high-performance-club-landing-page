@@ -78,7 +78,7 @@ export default function CertificateReveal() {
                   "0 32px 80px -16px rgba(180,130,60,0.35)",
                   "0 8px 24px rgba(0,0,0,0.15)",
                 ].join(", "),
-                padding: "40px 44px 36px",
+                padding: "clamp(16px, 5vw, 40px) clamp(16px, 5vw, 44px) clamp(14px, 4vw, 36px)",
                 position: "relative",
                 overflow: "hidden",
               }}

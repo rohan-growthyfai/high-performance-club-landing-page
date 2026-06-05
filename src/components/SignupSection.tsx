@@ -40,11 +40,11 @@ export default function SignupSection() {
         <SignupForm formId="final" testimonialVariant={1} />
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
-          <span className="text-accent text-base font-bold">100% Free</span>
-          <span className="text-foreground-subtle text-sm">·</span>
-          <span className="text-base text-foreground-subtle">No credit card. No spam.</span>
-          <span className="text-foreground-subtle text-sm">·</span>
-          <span className="text-base text-foreground-subtle">Stop anytime.</span>
+          <span className="text-accent text-xs sm:text-base font-bold">100% Free</span>
+          <span className="text-foreground-subtle text-xs sm:text-sm">·</span>
+          <span className="text-xs sm:text-base text-foreground-subtle">No credit card. No spam.</span>
+          <span className="text-foreground-subtle text-xs sm:text-sm">·</span>
+          <span className="text-xs sm:text-base text-foreground-subtle">Stop anytime.</span>
         </div>
       </div>
     </section>

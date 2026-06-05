@@ -45,7 +45,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         className="w-full py-7 flex items-start justify-between gap-6 text-left group"
         aria-expanded={open}
       >
-        <span className="font-medium text-foreground text-lg sm:text-xl leading-snug group-hover:text-accent transition-colors">
+        <span className="font-medium text-foreground text-sm sm:text-xl leading-snug group-hover:text-accent transition-colors">
           {q}
         </span>
         <span className="flex-shrink-0 w-10 h-10 rounded-full border border-border-subtle group-hover:border-accent/40 flex items-center justify-center transition-colors mt-0.5 bg-white">
@@ -63,7 +63,7 @@ function FAQItem({ q, a }: { q: string; a: string }) {
         }}
       >
         <div className="overflow-hidden">
-          <p className="pb-7 pr-14 text-foreground-muted leading-relaxed text-lg">
+          <p className="pb-7 pr-14 text-foreground-muted leading-relaxed text-sm sm:text-lg">
             {a}
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function FAQ() {
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Still have a question? Just join and ask us directly on WhatsApp.</p>
           <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-            Join the challenge — it&apos;s free →
+            Join the Challenge — It&apos;s FREE
           </a>
         </div>
       </div>

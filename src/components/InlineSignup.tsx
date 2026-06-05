@@ -15,7 +15,7 @@ export default function InlineSignup({ id }: { id?: string }) {
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-3 leading-tight">
             Start your 7 Day WhatsApp Challenge
             <br />
-            <span className="gradient-text">First habit message in 2 minutes.</span>
+            <span className="gradient-text">First habit message in<br className="sm:hidden" /> 2 minutes.</span>
           </h2>
           <p className="text-base text-foreground-muted">
             No app. No login. Only on WhatsApp.

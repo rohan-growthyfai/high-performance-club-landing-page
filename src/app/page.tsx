@@ -70,9 +70,6 @@ export default function Home() {
         {/* 11. Founder story */}
         <FounderStory />
 
-        {/* 13. Guarantee */}
-        <Guarantee />
-
         {/* 14. Form #2 — Final Step */}
         <SignupSection />
 

@@ -15,7 +15,7 @@ const areas = [
   {
     emoji: "⚡",
     label: "Energy",
-    desc: "Wake up lighter. Stay energised till evening. No afternoon crash.",
+    desc: "Start your day with small actions that help you feel active and refreshed.",
     color: "bg-amber-50 border-amber-200",
     badgeColor: "bg-amber-400 text-white",
     textColor: "text-amber-600",
@@ -23,15 +23,15 @@ const areas = [
   {
     emoji: "💚",
     label: "Health",
-    desc: "Small daily actions that improve how your body feels — without gym or diet.",
+    desc: "Build simple habits that support your body without gym routines or strict diets.",
     color: "bg-emerald-50 border-emerald-200",
     badgeColor: "bg-emerald-500 text-white",
     textColor: "text-emerald-600",
   },
   {
     emoji: "🎯",
-    label: "Focus & Productivity",
-    desc: "Get more done in less time. Cut distractions. Feel in control of your day.",
+    label: "Focus",
+    desc: "Create a calmer, clearer start so you can get more done without feeling scattered.",
     color: "bg-blue-50 border-blue-200",
     badgeColor: "bg-blue-500 text-white",
     textColor: "text-blue-600",
@@ -41,25 +41,25 @@ const areas = [
 const dailyLoop = [
   {
     icon: Sun,
-    time: "6:00 AM",
-    label: "Morning habit",
-    desc: "One tiny high-performance habit lands in your WhatsApp.",
+    time: "6:00 AM — Morning Habit",
+    label: "You receive one tiny habit on WhatsApp.",
+    desc: "",
     color: "text-amber-500",
     bg: "bg-amber-50 border-amber-200",
   },
   {
     icon: CheckCircle2,
-    time: "Anytime",
-    label: "You do it",
-    desc: "Takes max 5 minutes. Read it, do it, done.",
+    time: "Anytime — You Do It",
+    label: "Read it. Do it. Reply when done.",
+    desc: "",
     color: "text-emerald-500",
     bg: "bg-emerald-50 border-emerald-200",
   },
   {
     icon: Moon,
-    time: "8:00 PM",
-    label: "Evening check-in",
-    desc: "A quick reminder to reflect on your habit for the day.",
+    time: "8:00 PM — Evening Check-in",
+    label: "A quick reminder to reflect and stay on track.",
+    desc: "",
     color: "text-indigo-500",
     bg: "bg-indigo-50 border-indigo-200",
   },
@@ -83,8 +83,7 @@ export default function HowChallengeWorks() {
             How this challenge works.
           </h2>
           <p className="text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-            This challenge is designed to help you build tiny sustainable habits
-            across <span className="font-semibold text-foreground">3 key areas of your life</span> — all in 7 days.
+            For 7 days, you&apos;ll receive one tiny habit on WhatsApp every morning. Each habit is designed to help you feel more energetic, healthier, and more focused.
           </p>
         </div>
 
@@ -134,18 +133,15 @@ export default function HowChallengeWorks() {
             {dailyLoop.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={step.label} className={`rounded-2xl border-2 ${step.bg} p-6 text-center relative`}>
+                <div key={step.time} className={`rounded-2xl border-2 ${step.bg} p-6 text-center relative`}>
                   <div className={`w-12 h-12 rounded-full bg-white border-2 flex items-center justify-center mx-auto mb-3 shadow-sm ${step.bg}`}>
                     <Icon className={`w-6 h-6 ${step.color}`} />
                   </div>
-                  <p className={`text-xs font-bold uppercase tracking-wider mb-1 ${step.color}`}>
+                  <p className={`text-sm font-bold mb-2 ${step.color}`}>
                     {step.time}
                   </p>
-                  <h3 className="font-display font-bold text-foreground text-base mb-2">
-                    {step.label}
-                  </h3>
                   <p className="text-sm text-foreground-muted leading-relaxed">
-                    {step.desc}
+                    {step.label}
                   </p>
                   {/* Step number */}
                   <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center shadow-sm">
@@ -170,17 +166,14 @@ export default function HowChallengeWorks() {
         {/* Curiosity closer */}
         <div className="mt-14 text-center">
           <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-8 sm:py-6 shadow-md max-w-xl">
-            <p className="text-xl font-bold text-foreground mb-2">
-              What are the 7 habits? 🔒
-            </p>
             <p className="text-base text-foreground-muted leading-relaxed">
-              They are secret 🤫. You unlock a new habit every morning — delivered in your WhatsApp.
+              The habits are simple, practical, and revealed one day at a time on WhatsApp.
             </p>
           </div>
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">Simple. Tiny. Powerful. Ready to experience it yourself?</p>
+          <p className="text-base text-foreground-muted text-center max-w-md">Ready to experience it yourself?</p>
           <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
             Yes!! Let&apos;s Get Started
           </a>

@@ -44,43 +44,39 @@ export default function FounderStory() {
               <span className="italic font-light">I needed it first.</span>
             </h2>
 
-            <div className="space-y-6 text-base sm:text-2xl text-foreground-muted leading-[1.6]">
+            <div className="space-y-5 text-base sm:text-lg text-foreground-muted leading-relaxed">
               <p>
-                For years, I was the guy who saved every productivity video on Instagram. 📲
-              </p>
-              <p>
-                Tired by 11 AM. Crashing by 3 PM. Scrolling reels till midnight. Promising tomorrow would be different. (It wasn&apos;t.) 🫠
+                For years, I kept saving productivity videos and promising myself I&apos;d start tomorrow.
               </p>
               <p>
-                I tried the 5 AM Club. Quit on Day 11.
-                <br />
-                Bought a meditation app. Opened it 3 times.
-                <br />
-                Started a fitness program. Still on Module 2. 😅
-              </p>
-              <p>The problem wasn&apos;t the advice. The advice was{" "}
-                <span className="text-foreground font-medium">too big</span> for my actual life.
-              </p>
-
-              <p className="text-foreground text-2xl sm:text-3xl font-serif italic pl-6 border-l-4 border-accent leading-relaxed">
-                So I made the smallest, simplest, most fun version I could.
-              </p>
-
-              <p>
-                7 days. 5-10 minutes a day. Free. WhatsApp.
+                I tried big routines.<br />
+                I tried 5 AM plans.<br />
+                I tried apps, videos, trackers, and complicated systems.
               </p>
               <p>
-                The exact thing I wish someone had handed me 5 years ago.
+                Most of them failed because they were too big for my actual life.
+              </p>
+              <p>
+                So I built the smallest, simplest and the most fun version I could:
+              </p>
+              <p className="text-foreground font-medium">
+                7 days.<br />
+                1 tiny habit daily.<br />
+                Delivered on WhatsApp.<br />
+                Free.
+              </p>
+              <p>
+                That&apos;s it.
               </p>
               <p className="text-foreground font-medium">
                 Hope it helps. 🤝
               </p>
             </div>
 
-            <div className="mt-12 flex items-center gap-4">
-              <p className="font-serif italic text-3xl text-accent">— Rohan</p>
-              <span className="w-12 h-px bg-border" />
-              <p className="text-lg text-foreground-subtle">
+            <div className="mt-10 flex items-center gap-4">
+              <p className="font-serif italic text-2xl text-accent">— Rohan</p>
+              <span className="w-10 h-px bg-border" />
+              <p className="text-base text-foreground-subtle">
                 Builder, High Performance Club
               </p>
             </div>
@@ -88,9 +84,9 @@ export default function FounderStory() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">This challenge exists because it worked for me first. Now it&apos;s your turn.</p>
+          <p className="text-base text-foreground-muted text-center whitespace-nowrap">This challenge exists because it worked for me first. Now it&apos;s your turn.</p>
           <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-            Join the challenge — completely free →
+            Join the Challenge — Completely FREE →
           </a>
         </div>
       </div>

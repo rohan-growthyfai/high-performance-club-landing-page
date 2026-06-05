@@ -22,11 +22,11 @@ export default function BlogPostLayout({
     <div style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "var(--font-sans)", color: "#18181b" }}>
       <style>{`
         .blog-content p {
-          font-size: 17px; line-height: 1.85; color: #4b5563;
+          font-size: clamp(14px, 3.5vw, 17px); line-height: 1.85; color: #4b5563;
           margin-bottom: 24px; font-weight: 400;
         }
         .blog-content h2 {
-          font-size: 24px; font-weight: 800; color: #18181b;
+          font-size: clamp(18px, 4vw, 24px); font-weight: 800; color: #18181b;
           letter-spacing: -0.03em; margin: 52px 0 18px; line-height: 1.25;
         }
         .blog-content h3 {
@@ -93,7 +93,7 @@ export default function BlogPostLayout({
         </div>
       </header>
 
-      <main style={{ maxWidth: 740, margin: "0 auto", padding: "64px 32px 120px" }}>
+      <main style={{ maxWidth: 740, margin: "0 auto", padding: "clamp(24px,5vw,64px) clamp(16px,4vw,32px) clamp(60px,8vw,120px)" }}>
         {/* Back link */}
         <Link href="/blogs" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, color: "#9ca3af", textDecoration: "none", marginBottom: 52, fontWeight: 600, letterSpacing: "0.02em", transition: "color 0.2s" }}>
           ← All articles
@@ -115,7 +115,7 @@ export default function BlogPostLayout({
                 src={heroImage}
                 alt={title}
                 style={{
-                  width: "100%", height: 340, objectFit: "cover",
+                  width: "100%", height: "clamp(180px,45vw,340px)", objectFit: "cover",
                   borderRadius: 20, display: "block",
                   border: "1px solid #e5e7eb",
                 }}
@@ -138,7 +138,7 @@ export default function BlogPostLayout({
           </div>
 
           <h1 style={{
-            fontSize: "clamp(1.85rem, 4.5vw, 2.75rem)",
+            fontSize: "clamp(1.4rem, 4.5vw, 2.75rem)",
             fontWeight: 800, color: "#18181b",
             letterSpacing: "-0.035em", lineHeight: 1.12,
             marginBottom: 28,

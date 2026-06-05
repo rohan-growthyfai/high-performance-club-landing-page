@@ -90,35 +90,35 @@ export default function BlogsPage() {
         </div>
       </header>
 
-      <main style={{ maxWidth:1400, margin:"0 auto", padding:"72px 48px 120px" }}>
+      <main style={{ maxWidth:1400, margin:"0 auto", padding:"clamp(32px,5vw,72px) clamp(16px,4vw,48px) clamp(60px,8vw,120px)" }}>
         {/* Hero */}
         <div style={{ marginBottom:52, textAlign:"center" }}>
-          <h1 style={{ fontSize:"clamp(2.2rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16 }}>
+          <h1 style={{ fontSize:"clamp(1.6rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16 }}>
             <span style={{ background:"linear-gradient(135deg,#b8853a 0%,#8a6428 50%,#f5d78e 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
               High Performance Blogs
             </span>
           </h1>
-          <p style={{ fontSize:18, color:"#6b7280", maxWidth:580, lineHeight:1.65, margin:"0 auto" }}>
+          <p style={{ fontSize:"clamp(14px,3vw,18px)", color:"#6b7280", maxWidth:580, lineHeight:1.65, margin:"0 auto" }}>
             Science-backed articles on building tiny daily habits to feel more energetic, healthy and focused.
           </p>
         </div>
 
         {/* Featured */}
         <Link href={`/blogs/${featured.slug}`} style={{ textDecoration:"none", display:"block", marginBottom:32 }}>
-          <div style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", display:"grid", gridTemplateColumns:"1fr 1fr", transition:"all 0.3s" }}
+          <div style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", display:"grid", gridTemplateColumns:"minmax(0,1fr)", transition:"all 0.3s" }}
             onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(184,133,58,0.12)"; (e.currentTarget as HTMLElement).style.borderColor="#f5d78e"; }}
             onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
-            <div style={{ overflow:"hidden", maxHeight:380 }}>
+            <div style={{ overflow:"hidden", maxHeight:"clamp(200px,50vw,380px)" }}>
               <img src={featured.image} alt={featured.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
                 onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.04)"}
                 onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
             </div>
-            <div style={{ padding:"36px 40px", display:"flex", flexDirection:"column", justifyContent:"center" }}>
+            <div style={{ padding:"clamp(20px,4vw,36px) clamp(16px,4vw,40px)", display:"flex", flexDirection:"column", justifyContent:"center" }}>
               <div style={{ display:"flex", gap:8, marginBottom:16, flexWrap:"wrap" }}>
                 <span style={{ background:"#fef9ec", border:"1px solid #f5d78e", color:"#b8853a", fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:999, letterSpacing:"0.08em", textTransform:"uppercase" }}>Featured</span>
                 <span style={{ background:cm(featured.category).bg, color:cm(featured.category).color, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.08em" }}>{featured.category}</span>
               </div>
-              <h2 style={{ fontSize:22, fontWeight:800, color:"#18181b", letterSpacing:"-0.025em", lineHeight:1.25, marginBottom:12 }}>{featured.title}</h2>
+              <h2 style={{ fontSize:"clamp(16px,3vw,22px)", fontWeight:800, color:"#18181b", letterSpacing:"-0.025em", lineHeight:1.25, marginBottom:12 }}>{featured.title}</h2>
               <p style={{ fontSize:15, color:"#6b7280", lineHeight:1.65, marginBottom:20 }}>{featured.excerpt}</p>
               <div style={{ display:"flex", alignItems:"center", gap:16 }}>
                 <span style={{ color:"#b8853a", fontSize:14, fontWeight:700 }}>Read article →</span>
@@ -135,7 +135,7 @@ export default function BlogsPage() {
             const m = cm(cat);
             return (
               <button key={cat} onClick={()=>setActive(cat)}
-                style={{ padding:"9px 20px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:14, fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
+                style={{ padding:"6px 12px", borderRadius:999, border:`1.5px solid ${isActive ? m.color : "#e5e7eb"}`, background:isActive ? m.bg : "#fff", color:isActive ? m.color : "#6b7280", fontSize:"clamp(11px,2.5vw,14px)", fontWeight:isActive?700:500, cursor:"pointer", transition:"all 0.2s" }}>
                 {cat}
               </button>
             );
@@ -143,7 +143,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Grid — 3 columns, larger cards */}
-        <div style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:28 }}>
+        <div style={{ display:"grid", gridTemplateColumns:"repeat(auto-fill,minmax(min(100%,300px),1fr))", gap:"clamp(16px,3vw,28px)" }}>
           {filtered.filter(p => !(p.slug === featured.slug && active === "All")).map(post => {
             const m = cm(post.category);
             return (
@@ -152,18 +152,18 @@ export default function BlogsPage() {
                   onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(0,0,0,0.10)"; (e.currentTarget as HTMLElement).style.transform="translateY(-4px)"; (e.currentTarget as HTMLElement).style.borderColor=m.color+"55"; }}
                   onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.transform="translateY(0)"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
                   {/* Image — taller */}
-                  <div style={{ overflow:"hidden", height:240, flexShrink:0 }}>
+                  <div style={{ overflow:"hidden", height:"clamp(160px,35vw,240px)", flexShrink:0 }}>
                     <img src={post.image} alt={post.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
                       onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.05)"}
                       onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
                   </div>
                   {/* Content — more padding, bigger text */}
-                  <div style={{ padding:"20px 22px 22px", display:"flex", flexDirection:"column", flex:1 }}>
+                  <div style={{ padding:"clamp(14px,3vw,20px) clamp(14px,3vw,22px)", display:"flex", flexDirection:"column", flex:1 }}>
                     <div style={{ display:"flex", alignItems:"center", gap:8, marginBottom:12 }}>
                       <span style={{ background:m.bg, color:m.color, fontSize:10, fontWeight:700, padding:"3px 10px", borderRadius:999, textTransform:"uppercase", letterSpacing:"0.07em" }}>{post.category}</span>
                       <span style={{ fontSize:12, color:"#9ca3af" }}>{post.readTime}</span>
                     </div>
-                    <h2 style={{ fontSize:16, fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:10, flex:1 }}>{post.title}</h2>
+                    <h2 style={{ fontSize:"clamp(13px,2.5vw,16px)", fontWeight:800, color:"#18181b", letterSpacing:"-0.02em", lineHeight:1.35, marginBottom:8, flex:1 }}>{post.title}</h2>
                     <p style={{ fontSize:13, color:"#6b7280", lineHeight:1.6, marginBottom:16 }}>{post.excerpt.slice(0,120)}...</p>
                     <div style={{ display:"flex", justifyContent:"space-between", alignItems:"center", paddingTop:14, borderTop:"1px solid #f3f4f6" }}>
                       <span style={{ fontSize:12, color:"#9ca3af" }}>{post.date}</span>
@@ -183,11 +183,11 @@ export default function BlogsPage() {
         )}
 
         {/* CTA */}
-        <div style={{ marginTop:72, background:"linear-gradient(135deg,#fef9ec,#fff7ed)", border:"2px solid #f5d78e", borderRadius:20, padding:"44px 40px", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:32 }}>
+        <div style={{ marginTop:48, background:"linear-gradient(135deg,#fef9ec,#fff7ed)", border:"2px solid #f5d78e", borderRadius:20, padding:"clamp(24px,5vw,44px) clamp(16px,4vw,40px)", display:"flex", justifyContent:"space-between", alignItems:"center", flexWrap:"wrap", gap:32 }}>
           <div>
             <p style={{ fontSize:11, letterSpacing:"0.15em", textTransform:"uppercase", color:"#b8853a", fontWeight:700, marginBottom:8 }}>Want to live it, not just read it?</p>
-            <h3 style={{ fontSize:24, fontWeight:800, color:"#18181b", letterSpacing:"-0.025em", marginBottom:8 }}>Join the free 7-day challenge.</h3>
-            <p style={{ fontSize:15, color:"#6b7280", maxWidth:380 }}>One tiny habit delivered to your WhatsApp every morning. Free. 7 days. No app required.</p>
+            <h3 style={{ fontSize:"clamp(16px,4vw,24px)", fontWeight:800, color:"#18181b", letterSpacing:"-0.025em", marginBottom:8 }}>Join the free 7-day challenge.</h3>
+            <p style={{ fontSize:"clamp(13px,3vw,15px)", color:"#6b7280", maxWidth:380 }}>One tiny habit delivered to your WhatsApp every morning. Free. 7 days. No app required.</p>
           </div>
           <Link href="/#signup" style={{ background:"linear-gradient(135deg,#b8853a,#8a6428)", color:"#fff", padding:"15px 32px", borderRadius:999, fontSize:16, fontWeight:700, textDecoration:"none", boxShadow:"0 8px 24px rgba(184,133,58,0.35)", whiteSpace:"nowrap" }}>
             Join FREE →

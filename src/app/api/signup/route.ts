@@ -1,42 +1,51 @@
 import { NextResponse } from "next/server";
 
-// Stub API route — forwards signup data to Pabbly Connect webhook.
-// Set PABBLY_WEBHOOK_URL in your environment (.env.local) when you wire automation.
+/**
+ * Signup API — receives form data, forwards to local WhatsApp engine
+ * (port 4001) which handles sheet + WhatsApp confirmation + Day 1 assessment.
+ * Falls back to Pabbly webhook if engine is unavailable.
+ */
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // Basic validation
-    if (!body.name || !body.whatsapp || !body.email || !body.consent) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
+    if (!body.name || !body.whatsapp) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
-    const webhookUrl = process.env.PABBLY_WEBHOOK_URL;
-
-    if (webhookUrl) {
-      // Forward to Pabbly Connect → triggers WhatsApp Day 1 sequence
-      const res = await fetch(webhookUrl, {
+    // Primary: call local WhatsApp engine
+    const engineUrl = process.env.WA_ENGINE_URL || "http://localhost:4001";
+    try {
+      const res = await fetch(`${engineUrl}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...body,
-          source: "landing-page",
-          timestamp: new Date().toISOString(),
+          name:     body.name,
+          whatsapp: body.whatsapp,
+          email:    body.email || "",
+          struggle: body.struggle || "",
         }),
+        signal: AbortSignal.timeout(8000),
+      });
+      if (res.ok) {
+        return NextResponse.json({ ok: true });
+      }
+    } catch {
+      // Engine not reachable — fall through to Pabbly fallback
+    }
+
+    // Fallback: Pabbly webhook (keeps existing automation working)
+    const pabblyUrl = process.env.PABBLY_WEBHOOK_URL;
+    if (pabblyUrl) {
+      const res = await fetch(pabblyUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...body, source: "landing-page", timestamp: new Date().toISOString() }),
       });
       if (!res.ok) {
-        return NextResponse.json(
-          { error: "Webhook forwarding failed" },
-          { status: 502 }
-        );
+        return NextResponse.json({ error: "Registration service unavailable" }, { status: 502 });
       }
-    } else {
-      // Dev mode — log to server console
-      console.log("[signup] (dev mode, no webhook configured):", body);
     }
 
     return NextResponse.json({ ok: true });

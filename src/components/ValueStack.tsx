@@ -61,7 +61,7 @@ export default function ValueStack() {
           {items.map((item, i) => (
             <div
               key={i}
-              className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-border-subtle hover:shadow-sm transition-shadow"
+              className={`flex items-start gap-4 p-5 rounded-2xl bg-white border border-border-subtle hover:shadow-sm transition-shadow${i === items.length - 1 && items.length % 2 !== 0 ? " sm:col-start-1 sm:col-span-2 sm:max-w-sm sm:mx-auto sm:w-full" : ""}`}
             >
               <div className="w-12 h-12 rounded-xl bg-accent/8 border border-accent/15 flex items-center justify-center flex-shrink-0 text-2xl">
                 {item.emoji}

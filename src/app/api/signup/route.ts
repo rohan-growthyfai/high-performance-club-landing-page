@@ -15,7 +15,7 @@ export async function POST(request: Request) {
     }
 
     // Primary: call local WhatsApp engine
-    const engineUrl = process.env.WA_ENGINE_URL || "http://localhost:4001";
+    const engineUrl = process.env.WA_ENGINE_URL || "https://hpc-whatsapp-engine-production.up.railway.app";
     try {
       const res = await fetch(`${engineUrl}/register`, {
         method: "POST",

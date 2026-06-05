@@ -38,9 +38,11 @@ export default function SignupSection() {
 
         <SignupForm formId="final" testimonialVariant={1} />
 
-        <div className="mt-10 flex flex-col items-center gap-1.5 text-center">
-          <span className="text-accent text-xl font-bold">100% Free</span>
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
+          <span className="text-accent text-base font-bold">100% Free</span>
+          <span className="text-foreground-subtle text-sm">·</span>
           <span className="text-base text-foreground-subtle">No credit card. No spam.</span>
+          <span className="text-foreground-subtle text-sm">·</span>
           <span className="text-base text-foreground-subtle">Stop anytime.</span>
         </div>
       </div>

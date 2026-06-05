@@ -31,7 +31,7 @@ const areas = [
   {
     emoji: "🎯",
     label: "Focus",
-    desc: "Create a calmer, clearer start so you can get more done without feeling scattered.",
+    desc: "Improve your focus and productivity with small daily actions to finish tasks faster.",
     color: "bg-blue-50 border-blue-200",
     badgeColor: "bg-blue-500 text-white",
     textColor: "text-blue-600",
@@ -121,7 +121,7 @@ export default function HowChallengeWorks() {
 
         {/* ── PART 2: Daily Loop ── */}
         <div className="mb-14">
-          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto relative overflow-hidden">
+          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto relative pt-3 pl-3">
             {/* Connector arrows between steps */}
             <div className="hidden sm:flex absolute top-1/2 left-[33%] -translate-y-1/2 items-center pointer-events-none z-10">
               <ArrowRight className="w-6 h-6 text-accent/40" />

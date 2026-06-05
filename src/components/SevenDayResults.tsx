@@ -3,29 +3,23 @@
 const benefits = [
   {
     image: "/section-images/reasons-energetic.png",
-    title: "Become More Energetic",
+    title: "Feel More Energetic",
     points: [
-      "Stop feeling tired and drained by afternoon",
-      "Wake up feeling refreshed and ready to go",
-      "Sustain your energy throughout the entire day",
+      "Small morning habits to help you start your day with more energy.",
     ],
   },
   {
     image: "/section-images/reasons-healthy.png",
-    title: "Become More Healthy",
+    title: "Build Healthier Habits",
     points: [
-      "Build small daily habits that support your body",
-      "Feel lighter, stronger, and more active every day",
-      "Improve your overall wellbeing without a gym or diet",
+      "Simple actions that fit into normal daily life — no strict diet, no gym pressure.",
     ],
   },
   {
     image: "/section-images/reasons-focused.png",
-    title: "Boost Your Focus & Productivity",
+    title: "Feel More Focused",
     points: [
-      "Get more done without getting distracted",
-      "Stay sharp during meetings and deep work",
-      "Feel calm, in control, and more productive every day",
+      "Reduce scattered starts and create a calmer beginning to your day.",
     ],
   },
 ];
@@ -41,7 +35,7 @@ export default function SevenDayResults() {
             What will happen in just 7 days
           </p>
           <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-foreground">
-            Reasons to Join the Challenge
+            What you&apos;ll feel after 7 days
           </h2>
         </div>
 
@@ -64,19 +58,8 @@ export default function SevenDayResults() {
 
               {/* Text */}
               <div className="p-6">
-                <p className="text-lg font-bold text-foreground mb-4 leading-snug">{b.title}</p>
-                <ul className="space-y-2">
-                  {b.points.map((point) => (
-                    <li key={point} className="flex items-start gap-2.5">
-                      <span className="mt-0.5 flex-shrink-0 w-4 h-4 rounded-full bg-accent/10 flex items-center justify-center">
-                        <svg className="w-2.5 h-2.5 text-accent" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </span>
-                      <span className="text-sm text-foreground-muted leading-relaxed">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+                <p className="text-lg font-bold text-foreground mb-3 leading-snug">{b.title}</p>
+                <p className="text-sm text-foreground-muted leading-relaxed">{b.points[0]}</p>
               </div>
             </div>
           ))}

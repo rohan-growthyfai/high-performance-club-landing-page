@@ -329,7 +329,7 @@ export default function CuriosityBullets() {
             <span className="gradient-text">7 days</span> will look.
           </h2>
           <p className="text-lg text-foreground-muted max-w-xl mx-auto">
-            Watch the car travel your journey. Each stop = one tiny habit. One new level.
+            1 new habit every day on WhatsApp. Takes less than 5 minutes. Complete it anytime that day.
           </p>
         </div>
 

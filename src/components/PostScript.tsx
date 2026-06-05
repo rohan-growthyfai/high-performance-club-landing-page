@@ -1,14 +1,5 @@
 import { ArrowRight } from "lucide-react";
 
-/**
- * Brunson rule: every sales page ends with P.S. + P.P.S.
- * - P.S. restates the OFFER (one sentence)
- * - P.P.S. restates URGENCY or RISK REVERSAL (one sentence)
- *
- * Eye-tracking studies show readers who skim often jump to P.S. lines.
- * These are some of the most-read elements on a long page.
- */
-
 export default function PostScript() {
   return (
     <section className="py-28 lg:py-40 relative bg-section-white">
@@ -24,80 +15,42 @@ export default function PostScript() {
             One last thing 💛
           </p>
 
-          <div className="space-y-5 text-base sm:text-2xl text-foreground-muted leading-relaxed">
+          <div className="space-y-5 text-base sm:text-lg text-foreground-muted leading-relaxed">
             <p>
-              If you&apos;ve read this far, you probably need this more than you think. 🤔
+              You&apos;ve probably watched the videos.<br />
+              Saved the posts.<br />
+              Planned the routines.
             </p>
             <p>
-              You&apos;ve watched the videos. You&apos;ve saved the posts.
-              You know what you should do. You&apos;ve also quit a hundred things.
+              But the gap between knowing and doing is where most people get stuck.
             </p>
             <p>
-              The gap between knowing and doing? That&apos;s the whole reason this challenge exists.
+              That&apos;s why this challenge is simple:
             </p>
-            <p>
-              7 days. &lt;5 minutes/day. FREE. Plus a certificate. 🏆
+            <p className="text-foreground font-medium">
+              7 days.<br />
+              Less than 5 minutes a day.<br />
+              Free.<br />
+              Delivered on WhatsApp.
             </p>
-            <p className="text-foreground font-serif italic text-xl sm:text-3xl leading-relaxed my-6">
-              Worst case: you waste 35 minutes. (7 days X 5 mins 🫠)
+            <p className="text-foreground font-serif italic text-lg sm:text-2xl leading-relaxed my-4">
+              Worst case: you spend 35 minutes (7 days X 5 mins 🫠) and learn a few simple habits.
               <br />
-              Best case: you find 1 habit you keep for life.
-            </p>
-            <p>
-              Either way, it beats closing this tab and going back to scrolling. 😉
+              Best case: you find one habit that stays with you for life.
             </p>
           </div>
 
-          <div className="mt-14 flex flex-col sm:flex-row sm:items-center gap-5">
+          <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-5">
             <a
               href="#signup"
               className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
-              Join for <span className="font-extrabold">FREE</span> →
+              Join for Free
+              <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-lg text-foreground-subtle italic">
+            <p className="text-base sm:text-lg text-foreground-subtle italic">
               See you in your WhatsApp in 2 minutes. 👋
             </p>
-          </div>
-
-          {/* P.S. + P.P.S. — Brunson signature close */}
-          <div className="mt-20 pt-12 border-t border-border-subtle space-y-8">
-            <div>
-              <p className="font-serif text-2xl text-foreground leading-[1.55]">
-                <span className="text-accent font-bold">P.S.</span>{" "}
-                If you commit to just{" "}
-                <span className="font-bold">5 minutes a day for 7 days</span>,
-                you&apos;ll get 7 unusual high-performance habits delivered on
-                WhatsApp, your Day 7 personalized report, a private member
-                community, and your{" "}
-                <span className="highlight-yellow font-bold">
-                  High Performance Lifestyle Starter Certificate
-                </span>{" "}
-                — all 100% free.
-              </p>
-            </div>
-
-            <div>
-              <p className="font-serif text-2xl text-foreground leading-[1.55]">
-                <span className="text-accent font-bold">P.P.S.</span>{" "}
-                Remember — if you finish all 7 days and don&apos;t feel
-                meaningfully more in control,{" "}
-                <span className="italic">Rohan will personally hop on a free 30-minute call with you</span>{" "}
-                to figure out what went wrong. You have nothing to lose, and a
-                potentially life-changing habit to gain. The only question is —
-                will today be the day you finally start? 🌅
-              </p>
-            </div>
-
-            <div className="pt-6">
-              <a
-                href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
-              >
-                Join for <span className="font-extrabold">FREE</span> →
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </div>
           </div>
         </div>
       </div>

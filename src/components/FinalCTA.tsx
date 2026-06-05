@@ -1,10 +1,10 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const points = [
-  "📱 First WhatsApp message in 2 minutes",
-  "⏱️ <5 minutes/day",
-  "📈 See your Day 0 → Day 7 progress",
-  "🏆 Win your certificate if you finish 5/7",
+  "📱 Confirmation message within 2 minutes",
+  "⏱️ Less than 5 minutes/day",
+  "📊 Day 1 → Day 7 progress check",
+  "🏆 Completion certificate if you finish 5/7 days",
 ];
 
 export default function FinalCTA() {
@@ -25,14 +25,14 @@ export default function FinalCTA() {
             <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
               Time to go 🚀
             </p>
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-8xl font-medium leading-[1.1] mb-8 text-balance text-foreground">
-              Ready to Try
-              <br />
-              FREE 7 Days WhatsApp Challenge?
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] mb-8 text-balance text-foreground">
+              Ready to try the Free 7-Day WhatsApp Challenge?
             </h2>
 
-            <p className="text-foreground-muted text-lg sm:text-2xl max-w-2xl mx-auto mb-8 leading-relaxed">
-              Your first habit message lands in your WhatsApp in next 2 minutes. ⚡
+            <p className="text-foreground-muted text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
+              Your confirmation message arrives on WhatsApp within 2 minutes.
+              <br />
+              Your first habit starts immediately after it.
             </p>
 
             <div className="max-w-md mx-auto mb-12">
@@ -40,9 +40,9 @@ export default function FinalCTA() {
                 {points.map((p) => (
                   <li
                     key={p}
-                    className="flex items-start gap-3 text-left text-foreground-muted text-base sm:text-xl"
+                    className="flex items-start gap-3 text-left text-foreground-muted text-base sm:text-lg"
                   >
-                    <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                    <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
                     <span>{p}</span>
                   </li>
                 ))}
@@ -53,13 +53,9 @@ export default function FinalCTA() {
               href="#signup"
               className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl group w-full sm:w-auto"
             >
-              Join FREE on WhatsApp
-              <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
+              Join Free on WhatsApp
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-
-            <p className="mt-7 text-base text-foreground-subtle">
-              No credit card · Stop anytime with one reply
-            </p>
           </div>
         </div>
       </div>

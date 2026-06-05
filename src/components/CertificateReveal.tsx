@@ -226,7 +226,7 @@ export default function CertificateReveal() {
                 marginBottom: 4,
                 lineHeight: 1.4,
               }}>
-                7-Day High Performance
+                7 Day Habits
               </p>
               <p style={{
                 textAlign: "center",
@@ -237,7 +237,7 @@ export default function CertificateReveal() {
                 letterSpacing: "0.02em",
                 marginBottom: 6,
               }}>
-                Lifestyle Challenge
+                WhatsApp Challenge
               </p>
 
               <p style={{

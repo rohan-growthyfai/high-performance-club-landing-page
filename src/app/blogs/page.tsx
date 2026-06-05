@@ -71,7 +71,9 @@ const posts = [
 export default function BlogsPage() {
   const [active, setActive] = useState("All");
   const filtered = active === "All" ? posts : posts.filter(p => p.category === active);
-  const featured = posts.find(p => p.featured) || posts[0];
+  // Rotate featured article daily — uses day-of-year so it changes every day
+  const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
+  const featured = posts[dayOfYear % posts.length];
   const cm = (cat: string) => (CATEGORY_META as Record<string,{color:string,bg:string}>)[cat] || CATEGORY_META["All"];
 
   return (
@@ -89,15 +91,13 @@ export default function BlogsPage() {
 
       <main style={{ maxWidth:1400, margin:"0 auto", padding:"72px 48px 120px" }}>
         {/* Hero */}
-        <div style={{ marginBottom:52 }}>
-          <div style={{ display:"inline-flex", alignItems:"center", gap:8, background:"rgba(184,133,58,0.1)", border:"1px solid rgba(184,133,58,0.2)", borderRadius:999, padding:"5px 14px", marginBottom:20 }}>
-            <span style={{ width:5, height:5, borderRadius:"50%", background:"#b8853a", display:"inline-block" }} />
-            <span style={{ fontSize:11, fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", color:"#b8853a" }}>High Performance Blog</span>
-          </div>
-          <h1 style={{ fontSize:"clamp(2.2rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16, color:"#18181b" }}>
-            High Performance Blogs
+        <div style={{ marginBottom:52, textAlign:"center" }}>
+          <h1 style={{ fontSize:"clamp(2.2rem,5.5vw,4rem)", fontWeight:800, letterSpacing:"-0.04em", lineHeight:1.05, marginBottom:16 }}>
+            <span style={{ background:"linear-gradient(135deg,#b8853a 0%,#8a6428 50%,#f5d78e 100%)", WebkitBackgroundClip:"text", WebkitTextFillColor:"transparent", backgroundClip:"text" }}>
+              High Performance Blogs
+            </span>
           </h1>
-          <p style={{ fontSize:18, color:"#6b7280", maxWidth:580, lineHeight:1.65 }}>
+          <p style={{ fontSize:18, color:"#6b7280", maxWidth:580, lineHeight:1.65, margin:"0 auto" }}>
             Science-backed articles on building tiny daily habits to feel more energetic, healthy and focused.
           </p>
         </div>

@@ -17,13 +17,12 @@ function RedCross() {
 }
 
 const rows = [
-  { feature: "Time per day", us: "Max 5 minutes", them: "2+ hours" },
-  { feature: "Where it lives", us: "Your WhatsApp", them: "Yet another app to install" },
-  { feature: "What it costs you", us: "₹0", them: "₹2,000 – ₹50,000" },
-  { feature: "Setup", us: "30 seconds", them: "Onboarding calls + intake forms" },
-  { feature: "Habits per day", us: "One tiny habit that takes <5 mins", them: "Diet + workout + meditation + journal + ..." },
-  { feature: "Progress tracking", us: "Get personalized progress report on Day 7", them: "Vague vibes" },
-  { feature: "If you miss a day", us: "No drama. Continue tomorrow.", them: "Guilt. Restart. Quit by Day 11." },
+  { feature: "Time per day", us: "Max 5 minutes", them: "30–60 minutes or more" },
+  { feature: "Where it happens", us: "Your WhatsApp", them: "Another app or dashboard" },
+  { feature: "Cost", us: "₹0", them: "Usually paid" },
+  { feature: "Setup", us: "30 seconds", them: "Long forms or onboarding" },
+  { feature: "Habits per day", us: "1 tiny habit", them: "Too many tasks at once" },
+  { feature: "If you miss a day", us: "Continue tomorrow", them: "People often feel like restarting" },
 ];
 
 export default function Comparison() {
@@ -39,9 +38,7 @@ export default function Comparison() {
             <br />
           </h2>
           <p className="text-lg sm:text-xl text-foreground-muted leading-[1.5]">
-            Most challenges fail not because the advice is bad.
-            <br />
-            They fail because the format is too hard to keep up. So we rebuilt the format. ✨
+            Most habit programs fail because they are too heavy for real life. This one is built to be simple.
           </p>
         </div>
 
@@ -58,7 +55,7 @@ export default function Comparison() {
             </div>
             <div className="bg-background-elevated p-6">
               <p className="text-sm uppercase tracking-[0.2em] text-foreground-subtle font-semibold">
-                Traditional coaching
+                Most Habit Programs
               </p>
             </div>
 
@@ -86,7 +83,7 @@ export default function Comparison() {
                 <div className="flex items-start gap-3">
                   <RedCross />
                   <div>
-                    <span className="text-sm text-red-500 font-bold uppercase tracking-wider">Traditional: </span>
+                    <span className="text-sm text-red-500 font-bold uppercase tracking-wider">Most Habit Programs: </span>
                     <span className="text-foreground-muted text-base">{row.them}</span>
                   </div>
                 </div>
@@ -96,7 +93,6 @@ export default function Comparison() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">Now you know the difference. Choose the one that actually works.</p>
           <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
             I Want This!!!
           </a>

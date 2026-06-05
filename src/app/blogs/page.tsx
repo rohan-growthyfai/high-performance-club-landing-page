@@ -79,8 +79,7 @@ export default function BlogsPage() {
   const cm = (cat: string) => (CATEGORY_META as Record<string,{color:string,bg:string}>)[cat] || CATEGORY_META["All"];
 
   return (
-    <style>{`@media (max-width: 640px) { .blog-grid { grid-template-columns: 1fr !important; } } @media (min-width: 641px) and (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2,1fr) !important; } }`}</style>
-      <div style={{ background:"#faf8f3", minHeight:"100vh", fontFamily:"var(--font-sans)", color:"#18181b" }}>
+    <div style={{ background:"#faf8f3", minHeight:"100vh", fontFamily:"var(--font-sans)", color:"#18181b" }}>
       <header style={{ background:"rgba(250,248,243,0.92)", backdropFilter:"blur(20px)", borderBottom:"1px solid #e2dfd6", padding:"0 32px", height:68, display:"flex", alignItems:"center", justifyContent:"space-between", position:"sticky", top:0, zIndex:50 }}>
         <Link href="/" style={{ display:"flex", alignItems:"center", gap:10, textDecoration:"none" }}>
           <div style={{ width:38, height:38, borderRadius:"50%", overflow:"hidden", flexShrink:0 }}><img src="/hpc-logo.png" alt="High Performance Club" style={{ width:"100%", height:"100%", objectFit:"cover" }} /></div>
@@ -145,7 +144,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Grid — 3 columns, larger cards */}
-        <div className="blog-grid" style={{ display:"grid", gridTemplateColumns:"repeat(3,1fr)", gap:"clamp(16px,3vw,28px)" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-7">
           {filtered.filter(p => !(p.slug === featured.slug && active === "All")).map(post => {
             const m = cm(post.category);
             return (

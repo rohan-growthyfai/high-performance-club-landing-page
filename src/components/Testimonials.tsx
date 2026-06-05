@@ -208,18 +208,6 @@ export default function Testimonials() {
           <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
           </p>
 
-          {/* Aggregate trust */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-base text-foreground-muted">
-            <div className="flex items-center gap-2">
-              <div className="flex">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                ))}
-              </div>
-              <span className="font-bold text-foreground">4.9</span>
-              <span>average rating</span>
-            </div>
-          </div>
         </div>
 
         {/* Masonry-style wall */}

@@ -17,12 +17,12 @@ export default function WhyTinyHabits() {
           <p className="text-xs uppercase tracking-[0.25em] text-accent font-bold mb-5">
             Why Tiny Habits?
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-foreground mb-6">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-6xl font-medium leading-[1.1] text-foreground mb-6">
             Big changes fail.
             <br />
             <span className="italic font-light">Tiny changes stick.</span>
           </h2>
-          <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
+          <p className="text-base sm:text-xl text-foreground-muted leading-relaxed">
             The challenge is built around tiny actions that take less than 30 seconds to start. No willpower. No pressure. No perfection required.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function WhyTinyHabits() {
           <p className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
             Don&apos;t try to change your life overnight.
           </p>
-          <p className="text-2xl sm:text-3xl font-serif italic text-accent leading-relaxed">
+          <p className="text-xl sm:text-2xl font-serif italic text-accent leading-relaxed">
             Start tiny.
             <br />
             Stay consistent.

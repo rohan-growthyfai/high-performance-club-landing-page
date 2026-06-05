@@ -19,7 +19,7 @@ export default function Hook() {
           <p className="eyebrow-line text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Real talk 👇
           </p>
-          <h2 className="font-serif text-section-title text-balance text-foreground">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-medium text-balance text-foreground">
             You don&apos;t need
             <br />
             <span className="italic font-light">another motivation video.</span>
@@ -28,13 +28,13 @@ export default function Hook() {
 
         {/* First paragraph with DROP CAP — editorial signature */}
         <div className="space-y-7 text-body-lg text-foreground-muted">
-          <p className="drop-cap text-2xl sm:text-3xl leading-[1.55]">
+          <p className="drop-cap text-base sm:text-2xl leading-relaxed">
             You already know what to do. Sleep more. Move more. Use your phone less.
             Stay calm. Be disciplined. 🥱 You&apos;ve heard it a million times.
           </p>
 
-          <p className="text-2xl sm:text-3xl leading-[1.55]">You&apos;ve heard it a million times.</p>
-          <p className="text-2xl sm:text-3xl leading-[1.55] text-foreground font-medium">
+          <p className="text-base sm:text-2xl leading-relaxed">You&apos;ve heard it a million times.</p>
+          <p className="text-base sm:text-2xl leading-relaxed text-foreground font-medium">
             But the real problem is something else.
           </p>
         </div>
@@ -56,27 +56,27 @@ export default function Hook() {
           {distractions.map((d, i) => (
             <span
               key={d}
-              className={`px-6 py-3 rounded-full bg-white border-2 border-border text-foreground text-xl sm:text-2xl font-semibold shadow-sm ${i % 2 === 0 ? "tilt-left" : "tilt-right"}`}
+              className={`px-4 py-2 rounded-full bg-white border-2 border-border text-foreground text-sm sm:text-xl font-semibold shadow-sm ${i % 2 === 0 ? "tilt-left" : "tilt-right"}`}
             >
               {d}
             </span>
           ))}
         </div>
 
-        <div className="space-y-7 text-2xl sm:text-3xl leading-[1.55] text-foreground-muted">
+        <div className="space-y-5 text-base sm:text-2xl leading-relaxed text-foreground-muted">
           <p>
             And then somebody says,{" "}
             <span className="text-foreground-subtle italic">&ldquo;build a perfect morning routine&rdquo;</span>{" "}
             — and your brain just goes… 🫠
           </p>
 
-          <p className="text-pain font-semibold">
+          <p className="text-pain font-semibold text-base sm:text-2xl">
             Nope. Not happening.
           </p>
 
           <div className="my-12 section-divider-fancy" />
 
-          <p className="text-foreground text-4xl sm:text-5xl font-serif italic leading-[1.2]">
+          <p className="text-foreground text-2xl sm:text-4xl font-serif italic leading-[1.2]">
             So we did the <span className="text-emphasis-yellow not-italic font-semibold">opposite</span>.
           </p>
 

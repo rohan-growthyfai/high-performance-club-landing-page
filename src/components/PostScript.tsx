@@ -24,7 +24,7 @@ export default function PostScript() {
             One last thing 💛
           </p>
 
-          <div className="space-y-7 text-2xl sm:text-3xl text-foreground-muted leading-[1.55]">
+          <div className="space-y-5 text-base sm:text-2xl text-foreground-muted leading-relaxed">
             <p>
               If you&apos;ve read this far, you probably need this more than you think. 🤔
             </p>
@@ -38,7 +38,7 @@ export default function PostScript() {
             <p>
               7 days. &lt;5 minutes/day. FREE. Plus a certificate. 🏆
             </p>
-            <p className="text-foreground font-serif italic text-3xl sm:text-4xl leading-[1.3] my-10">
+            <p className="text-foreground font-serif italic text-xl sm:text-3xl leading-relaxed my-6">
               Worst case: you waste 35 minutes. (7 days X 5 mins 🫠)
               <br />
               Best case: you find 1 habit you keep for life.
@@ -51,7 +51,7 @@ export default function PostScript() {
           <div className="mt-14 flex flex-col sm:flex-row sm:items-center gap-5">
             <a
               href="#signup"
-              className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl"
+              className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
               Join for <span className="font-extrabold">FREE</span> →
             </a>
@@ -92,7 +92,7 @@ export default function PostScript() {
             <div className="pt-6">
               <a
                 href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
               >
                 Join for <span className="font-extrabold">FREE</span> →
                 <ArrowRight className="w-5 h-5" />

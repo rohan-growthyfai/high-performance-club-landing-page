@@ -122,7 +122,7 @@ export default function HowChallengeWorks() {
 
         {/* ── PART 2: Daily Loop ── */}
         <div className="mb-14">
-          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto relative">
+          <div className="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto relative overflow-hidden">
             {/* Connector arrows between steps */}
             <div className="hidden sm:flex absolute top-1/2 left-[33%] -translate-y-1/2 items-center pointer-events-none z-10">
               <ArrowRight className="w-6 h-6 text-accent/40" />
@@ -169,7 +169,7 @@ export default function HowChallengeWorks() {
 
         {/* Curiosity closer */}
         <div className="mt-14 text-center">
-          <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-8 py-6 shadow-md max-w-xl">
+          <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-8 sm:py-6 shadow-md max-w-xl">
             <p className="text-xl font-bold text-foreground mb-2">
               What are the 7 habits? 🔒
             </p>

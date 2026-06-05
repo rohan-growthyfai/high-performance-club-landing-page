@@ -25,22 +25,22 @@ export default function FinalCTA() {
             <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
               Time to go 🚀
             </p>
-            <h2 className="font-serif text-5xl sm:text-6xl lg:text-8xl font-medium leading-[1.05] mb-10 text-balance text-foreground">
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-8xl font-medium leading-[1.1] mb-8 text-balance text-foreground">
               Ready to Try
               <br />
               FREE 7 Days WhatsApp Challenge?
             </h2>
 
-            <p className="text-foreground-muted text-2xl sm:text-3xl max-w-2xl mx-auto mb-12 leading-[1.5]">
+            <p className="text-foreground-muted text-lg sm:text-2xl max-w-2xl mx-auto mb-8 leading-relaxed">
               Your first habit message lands in your WhatsApp in next 2 minutes. ⚡
             </p>
 
             <div className="max-w-md mx-auto mb-12">
-              <ul className="space-y-4">
+              <ul className="space-y-3">
                 {points.map((p) => (
                   <li
                     key={p}
-                    className="flex items-start gap-3 text-left text-foreground-muted text-xl"
+                    className="flex items-start gap-3 text-left text-foreground-muted text-base sm:text-xl"
                   >
                     <CheckCircle2 className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
                     <span>{p}</span>
@@ -51,7 +51,7 @@ export default function FinalCTA() {
 
             <a
               href="#signup"
-              className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl group"
+              className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl group w-full sm:w-auto"
             >
               Join FREE on WhatsApp
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />

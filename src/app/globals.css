@@ -38,17 +38,21 @@
 }
 
 html {
+  overflow-x: hidden;
   scroll-behavior: smooth;
   font-size: 17px;
 }
 
 @media (min-width: 1024px) {
   html {
+  overflow-x: hidden;
     font-size: 18px;
   }
 }
 
 body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -678,17 +682,23 @@ input[type="range"].range-premium::-moz-range-thumb {
 
 /* Bigger base body text override */
 .text-fun-body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
   font-size: 1.25rem;
   line-height: 1.7;
 }
 @media (min-width: 640px) {
   .text-fun-body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
     font-size: 1.4rem;
     line-height: 1.75;
   }
 }
 @media (min-width: 1024px) {
   .text-fun-body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
     font-size: 1.5rem;
     line-height: 1.7;
   }

@@ -69,6 +69,8 @@ export default function RootLayout({
       className={`${inter.variable} ${fraunces.variable} h-full antialiased`}
     >
       <head>
+        {/* Viewport — prevents pinch zoom, ensures full-width mobile layout */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         {/* Facebook Domain Verification */}
         <meta name="facebook-domain-verification" content="f8hrst14oxakqq9m922edch69zqmxd" />
 

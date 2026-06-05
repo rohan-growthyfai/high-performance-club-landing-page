@@ -44,7 +44,7 @@ export default function FounderStory() {
               <span className="italic font-light">I needed it first.</span>
             </h2>
 
-            <div className="space-y-6 text-2xl text-foreground-muted leading-[1.6]">
+            <div className="space-y-6 text-base sm:text-2xl text-foreground-muted leading-[1.6]">
               <p>
                 For years, I was the guy who saved every productivity video on Instagram. 📲
               </p>

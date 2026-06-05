@@ -28,12 +28,12 @@ export default function SignupSection() {
           <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Final step ✨
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-8">
+          <h2 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-6">
             Send me
             <br />
             <span className="gradient-text">Day 1</span> 🚀
           </h2>
-          <p className="text-2xl sm:text-3xl text-foreground-muted leading-[1.5] mb-6">
+          <p className="text-lg sm:text-2xl text-foreground-muted leading-relaxed mb-4">
             Your first WhatsApp message arrives in <span className="text-foreground font-bold">under 2 minutes.</span>
             <br className="hidden sm:block" />
             <span className="text-foreground-subtle text-xl sm:text-2xl">
@@ -42,7 +42,7 @@ export default function SignupSection() {
           </p>
 
           {/* Hindi emotional anchor — Warikoo pattern */}
-          <p className="font-serif italic text-2xl sm:text-3xl text-accent leading-tight">
+          <p className="font-serif italic text-xl sm:text-2xl text-accent leading-tight">
             Aadat banao. Zindagi badlo.
           </p>
           <p className="text-base text-foreground-subtle mt-2">

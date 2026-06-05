@@ -49,7 +49,7 @@ export default function Guarantee() {
               <span className="italic font-light">nothing to lose.</span>
             </h2>
 
-            <p className="text-2xl sm:text-3xl text-foreground-muted leading-[1.5] mb-12 max-w-2xl">
+            <p className="text-base sm:text-2xl text-foreground-muted leading-relaxed mb-12 max-w-2xl">
               Here is exactly what we promise you:
             </p>
 

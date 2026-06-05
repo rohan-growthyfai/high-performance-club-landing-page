@@ -53,7 +53,7 @@ export default function SevenDayResults() {
               className="bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group"
             >
               {/* Photo */}
-              <div style={{ height: 200, overflow: "hidden" }}>
+              <div style={{ height: "clamp(140px, 25vw, 200px)", overflow: "hidden" }}>
                 <img
                   src={b.image}
                   alt={b.title}

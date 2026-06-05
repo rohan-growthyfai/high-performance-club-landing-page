@@ -223,7 +223,7 @@ export default function Testimonials() {
         </div>
 
         {/* Masonry-style wall */}
-        <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+        <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
           {testimonials.map((t) => (
             <TestimonialCard key={t.name} testimonial={t} />
           ))}

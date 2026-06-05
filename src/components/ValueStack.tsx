@@ -92,7 +92,7 @@ export default function ValueStack() {
               <p className="text-sm uppercase tracking-[0.15em] text-accent font-bold mb-2">
                 You pay
               </p>
-              <p className="font-display font-black text-6xl gradient-text tabular-nums leading-none">
+              <p className="font-display font-black text-5xl sm:text-6xl gradient-text tabular-nums leading-none">
                 ₹0
               </p>
               <p className="text-sm text-foreground-subtle mt-2 italic">
@@ -101,7 +101,7 @@ export default function ValueStack() {
             </div>
             <a
               href="#signup"
-              className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl whitespace-nowrap"
+              className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
               Join Completely FREE Today
               <ArrowRight className="w-5 h-5" />

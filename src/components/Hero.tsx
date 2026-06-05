@@ -35,7 +35,7 @@ export default function Hero() {
       <span className="emoji-deco float-2 top-16 right-10 text-3xl hidden lg:block" aria-hidden="true">🎯</span>
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
           {/* LEFT — copy */}
           <div className="lg:col-span-7 text-center lg:text-left">
@@ -47,7 +47,7 @@ export default function Hero() {
             </div>
 
             {/* Headline */}
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.1] tracking-tight text-balance text-foreground animate-fade-up">
+            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
               Feel More{" "}
               <span className="gradient-text">Energetic</span>,{" "}
               <span className="gradient-text">Healthy</span> &{" "}
@@ -68,10 +68,10 @@ export default function Hero() {
             </p>
 
             {/* CTA */}
-            <div className="mt-7 animate-fade-up delay-300 inline-flex flex-col items-stretch gap-2">
+            <div className="mt-6 animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 w-full">
               <a
                 href="#signup"
-                className="btn-primary inline-flex items-center justify-center gap-2 px-12 py-6 rounded-full text-xl sm:text-2xl font-bold group"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-12 sm:py-6 rounded-full text-base sm:text-xl font-bold group w-full sm:w-auto"
               >
                 Join FREE on WhatsApp
                 <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
@@ -104,7 +104,7 @@ export default function Hero() {
           </div>
 
           {/* RIGHT — iPhone */}
-          <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10">
+          <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10 mt-6">
             <div className="relative">
               {/* "This is what lands in your phone" — to the RIGHT of the iPhone */}
               <div className="absolute -right-4 lg:-right-56 top-1/3 z-20 sticky-note p-5 rounded-md tilt-right w-60 hidden lg:block">

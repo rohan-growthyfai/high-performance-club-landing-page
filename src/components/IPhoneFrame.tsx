@@ -113,8 +113,12 @@ export default function IPhoneFrame({
               fontFamily: "var(--font-sans)", flexShrink: 0,
             }}>H</div>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)", letterSpacing: "-0.01em" }}>
+              <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)", letterSpacing: "-0.01em", display: "flex", alignItems: "center", gap: 4 }}>
                 {contactName}
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                  <circle cx="12" cy="12" r="12" fill="#4fc3f7"/>
+                  <path d="M6.5 12.5l3.5 3.5 7-7" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </p>
               <p style={{ margin: 0, color: "rgba(255,255,255,0.75)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2 }}>
                 {contactStatus}

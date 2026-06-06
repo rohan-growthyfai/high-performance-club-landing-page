@@ -1,6 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from "next";
-import DUCPhone from "@/components/duc/DUCPhone";
+import Header from "@/components/Header";
 import DUCHero from "@/components/duc/DUCHero";
 import DUCWhatIs from "@/components/duc/DUCWhatIs";
 import DUCWhy from "@/components/duc/DUCWhy";
@@ -34,6 +33,7 @@ export const metadata: Metadata = {
 export default function DailyUpgradeClub() {
   return (
     <>
+      <Header />
       <main className="flex-1">
         <DUCHero />
         <DUCWhatIs />

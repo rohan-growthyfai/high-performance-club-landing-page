@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Header from "@/components/Header";
+import BackToTop from "@/components/BackToTop";
 import DUCHero from "@/components/duc/DUCHero";
+import DUCLiveStatsBar from "@/components/duc/DUCLiveStatsBar";
 import DUCWhatIs from "@/components/duc/DUCWhatIs";
 import DUCWhy from "@/components/duc/DUCWhy";
 import DUCHowWorks from "@/components/duc/DUCHowWorks";
@@ -12,6 +14,7 @@ import DUCTracking from "@/components/duc/DUCTracking";
 import DUCScorecard from "@/components/duc/DUCScorecard";
 import DUCGroup from "@/components/duc/DUCGroup";
 import DUCVault from "@/components/duc/DUCVault";
+import DUCTestimonials from "@/components/duc/DUCTestimonials";
 import DUCPrice from "@/components/duc/DUCPrice";
 import DUCForWho from "@/components/duc/DUCForWho";
 import DUCFounder from "@/components/duc/DUCFounder";
@@ -19,6 +22,8 @@ import DUCFAQ from "@/components/duc/DUCFAQ";
 import DUCFinalCTA from "@/components/duc/DUCFinalCTA";
 import DUCFooter from "@/components/duc/DUCFooter";
 import DUCStickyBar from "@/components/duc/DUCStickyBar";
+import DUCEnrollmentPopup from "@/components/duc/DUCEnrollmentPopup";
+import DUCExitIntentPopup from "@/components/duc/DUCExitIntentPopup";
 
 export const metadata: Metadata = {
   title: "Daily Upgrade Club — Build Better Habits Every Day on WhatsApp | ₹99/month",
@@ -36,6 +41,7 @@ export default function DailyUpgradeClub() {
       <Header />
       <main className="flex-1">
         <DUCHero />
+        <DUCLiveStatsBar />
         <DUCWhatIs />
         <DUCWhy />
         <DUCHowWorks />
@@ -47,6 +53,7 @@ export default function DailyUpgradeClub() {
         <DUCScorecard />
         <DUCGroup />
         <DUCVault />
+        <DUCTestimonials />
         <DUCPrice />
         <DUCForWho />
         <DUCFounder />
@@ -55,6 +62,9 @@ export default function DailyUpgradeClub() {
       </main>
       <DUCFooter />
       <DUCStickyBar />
+      <BackToTop />
+      <DUCEnrollmentPopup />
+      <DUCExitIntentPopup />
     </>
   );
 }

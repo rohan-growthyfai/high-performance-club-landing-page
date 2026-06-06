@@ -2,17 +2,17 @@ const forYou = [
   "You want better habits but apps make it complicated",
   "You check WhatsApp more than any other app",
   "You want accountability without group pressure",
-  "You prefer small daily actions over big lifestyle overhauls",
-  "You want Energy, Focus, Health, Calmness, Sleep, Discipline — all in one system",
-  "You want to spend ₹99 better than you spend it on chai",
+  "You prefer small daily actions over big lifestyle changes",
+  "You want more Energy, Focus, Health, Sleep & Discipline — all in one system",
+  "You want a simple habit system that costs less than most monthly snacks or coffee",
 ];
 
 const notForYou = [
   "You want overnight transformation",
   "You don't want WhatsApp messages",
-  "You want 1-on-1 personal coaching",
+  "You expect a personal coach to guide you one-on-one",
   "You want a strict gym or diet plan",
-  "You won't do even one tiny habit daily",
+  "You're not willing to spend even 5 minutes a day on yourself",
   "You're looking for long video courses",
 ];
 

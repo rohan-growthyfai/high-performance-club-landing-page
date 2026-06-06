@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
 import DUCPhone from "./DUCPhone";
 
-const STATS = [
-  { n: "1", label: "habit a day" },
-  { n: "5min", label: "to complete" },
-  { n: "₹99", label: "per month" },
-  { n: "30", label: "days / month" },
+const reviews = [
+  { avatar: "/avatars/men/man-1.jpg", name: "Karan M.", city: "Pune", review: "Finally a habit system that actually fits into real life. No app, no hassle." },
+  { avatar: "/avatars/women/woman-3.avif", name: "Sneha R.", city: "Mumbai", review: "The DONE tracking keeps me accountable every single day." },
+  { avatar: "/avatars/women/woman-1.jpg", name: "Priya T.", city: "Bengaluru", review: "Best ₹99 I've spent. My energy has noticeably improved." },
 ];
+
+const StarIcon = () => (
+  <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="#f59e0b">
+    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+  </svg>
+);
 
 export default function DUCHero() {
   return (
@@ -40,16 +45,13 @@ export default function DUCHero() {
             {/* Green divider */}
             <div className="mt-6 mb-6 h-1 w-14 rounded-full bg-[#25d366]" />
 
-            {/* Body */}
-            <p className="text-foreground-muted text-lg leading-relaxed max-w-lg">
-              Daily Upgrade Club delivers <strong className="text-foreground">1 tiny habit</strong> every morning, tracks your progress automatically, and keeps you consistent — all inside WhatsApp.
-            </p>
-            <p className="text-foreground-subtle text-sm mt-2">
-              No app. No login. No complicated routine.
+            {/* Subheadline — updated */}
+            <p className="text-foreground-muted text-lg leading-relaxed max-w-xl">
+              Get 1 tiny habit every morning on WhatsApp to help you feel more energetic, focused, and consistent — with complete progress tracking built in.
             </p>
 
             {/* Trust bullets */}
-            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-1.5">
               {["Cancel anytime", "No app needed", "Daily on WhatsApp", "Under 5 minutes/day"].map(t => (
                 <span key={t} className="flex items-center gap-1.5 text-sm text-foreground-muted">
                   <span className="text-[#1da851] font-bold">✓</span> {t}
@@ -57,46 +59,49 @@ export default function DUCHero() {
               ))}
             </div>
 
-            {/* CTA */}
-            <div className="mt-7 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {/* CTA — bigger */}
+            <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
               <a
                 href="#duc-join"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold text-white overflow-hidden"
-                style={{ background: "linear-gradient(135deg, #1da851 0%, #16a341 100%)", boxShadow: "0 4px 20px rgba(29,168,81,0.35)" }}
+                className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full text-lg font-bold group"
               >
                 <span className="relative z-10">Start for ₹99/month</span>
-                <span className="relative z-10 text-lg group-hover:translate-x-1 transition-transform">→</span>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "linear-gradient(135deg, #25d366, #1da851)" }} />
+                <span className="relative z-10 text-xl group-hover:translate-x-1 transition-transform">→</span>
               </a>
               <p className="text-foreground-subtle text-sm">Cancel anytime · No lock-in</p>
             </div>
 
-            {/* Stats row */}
-            <div className="mt-8 grid grid-cols-4 bg-white border border-border-subtle rounded-2xl overflow-hidden shadow-sm max-w-lg">
-              {STATS.map((s, i) => (
-                <div key={s.label} className={`text-center py-4 ${i < STATS.length - 1 ? "border-r border-border-subtle" : ""}`}>
-                  <p className="font-display text-lg sm:text-xl font-black text-foreground tabular-nums" style={{ letterSpacing: "-0.02em" }}>{s.n}</p>
-                  <p className="text-[10px] text-foreground-subtle mt-0.5 uppercase tracking-wider">{s.label}</p>
+            {/* Reviews — replacing stats */}
+            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle">
+              {reviews.map((r) => (
+                <div key={r.name} className="flex flex-col items-start gap-2 px-0 sm:px-4 py-3 sm:py-2 first:sm:pl-0 last:sm:pr-0">
+                  <div className="flex gap-0.5">{[1,2,3,4,5].map(j => <StarIcon key={j} />)}</div>
+                  <p className="text-sm text-foreground leading-relaxed flex-1">&ldquo;{r.review}&rdquo;</p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <img src={r.avatar} alt={r.name} className="w-7 h-7 rounded-full object-cover" />
+                    <div>
+                      <p className="text-xs font-bold text-foreground leading-none">{r.name}</p>
+                      <p className="text-[11px] text-foreground-subtle mt-0.5">{r.city}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
 
           </div>
 
-          {/* RIGHT — iPhone, hidden on mobile, shown on lg+ */}
+          {/* RIGHT — iPhone */}
           <div className="hidden lg:flex flex-shrink-0 justify-center items-start relative mt-4" style={{ width: 300 }}>
             <div className="absolute inset-0 blur-3xl opacity-20 pointer-events-none" style={{ background: "radial-gradient(circle, #25d366 0%, transparent 70%)" }} />
             <div className="relative z-10">
               <DUCPhone />
             </div>
-            {/* DONE label */}
             <div className="absolute -left-16 top-1/3 z-20">
               <div className="bg-white border border-border-subtle rounded-xl px-3 py-2 shadow-lg">
                 <p className="text-[#1da851] font-bold text-sm">DONE ✅</p>
                 <p className="text-foreground-subtle text-xs mt-0.5">streak: 7 days 🔥</p>
               </div>
             </div>
-            {/* Sticky note */}
             <div className="absolute -right-8 bottom-1/3 z-20 sticky-note px-3 py-2 rounded-lg tilt-right">
               <p className="font-serif italic text-amber-900 text-sm">₹99/month 📱</p>
             </div>

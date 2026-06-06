@@ -11,7 +11,7 @@ export default function DUCVault() {
               <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>compound over time.</span>
             </h2>
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
-              Every month you get a clean PDF of all 30 habits. Save it. Revisit it. Build your personal habit library.
+              Every month you get a detailed PDF of all 30 habits. Save it. Revisit it. Build your personal habit library.
             </p>
             <p className="text-foreground-subtle text-sm mt-4">The Habit Vault grows the longer you stay.</p>
           </div>
@@ -37,6 +37,12 @@ export default function DUCVault() {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="mt-12 text-center">
+        <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">
+          Start for ₹99/month →
+        </a>
       </div>
     </section>
   );

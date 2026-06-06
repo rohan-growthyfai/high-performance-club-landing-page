@@ -57,14 +57,13 @@ export default function DUCPrice() {
               href="https://rzp.io/l/daily-upgrade-club"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl text-base font-bold text-black transition-all hover:-translate-y-0.5"
-              style={{ background: "linear-gradient(135deg, #25d366 0%, #1da851 100%)", boxShadow: "0 0 40px rgba(37,211,102,0.4), 0 4px 16px rgba(0,0,0,0.5)" }}
+              className="btn-primary w-full flex items-center justify-center gap-3 py-5 rounded-2xl text-lg font-bold"
             >
-              Start Daily Upgrade Club <ArrowRight className="w-5 h-5" />
+              Start for ₹99/month → <ArrowRight className="w-5 h-5" />
             </a>
 
             <p className="text-center text-foreground-subtle text-xs mt-4">
-              Cancel anytime · No app needed · Starts on WhatsApp
+              Billed monthly. Cancel anytime. Starts on WhatsApp.
             </p>
           </div>
         </div>

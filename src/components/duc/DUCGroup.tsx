@@ -20,11 +20,11 @@ export default function DUCGroup() {
               <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>with people.</span>
             </h2>
             <p className="text-foreground-muted text-lg leading-relaxed mt-5">
-              A private WhatsApp group where members check in daily, share wins, and hold each other accountable.
+              A private WhatsApp group where enrolled members check in daily, share wins, and hold each other accountable.
             </p>
             <div className="mt-7 space-y-3">
               {[
-                { icon: "✅", text: "Daily DONE check-ins from members" },
+                { icon: "✅", text: 'Daily "DONE" check-ins from enrolled members' },
                 { icon: "🔥", text: "Streak celebrations and wins" },
                 { icon: "🚫", text: "No spam. No promotions. No noise." },
                 { icon: "👥", text: "Just people building better habits together" },
@@ -47,23 +47,23 @@ export default function DUCGroup() {
                 <div style={{ position: "absolute", left: -3, top: 198, width: 3, height: 58, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
                 <div style={{ position: "absolute", right: -3, top: 148, width: 3, height: 72, background: "#2a2a2a", borderRadius: "0 2px 2px 0" }} />
                 <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
-                  <div style={{ background: "#202c33", paddingTop: 12, display: "flex", justifyContent: "center" }}>
+                  <div style={{ background: "#ffffff", paddingTop: 12, display: "flex", justifyContent: "center" }}>
                     <div style={{ width: 120, height: 34, background: "#000", borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
                       <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#1a1a1a", border: "1px solid #333" }} />
                       <div style={{ width: 56, height: 16, borderRadius: 8, background: "#1a1a1a" }} />
                     </div>
                   </div>
-                  <div style={{ background: "#202c33", padding: "8px 16px 6px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", fontWeight: 600 }}>
+                  <div style={{ background: "#ffffff", padding: "8px 16px 6px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", fontWeight: 600 }}>
                     <span>9:41</span><span style={{ fontSize: 10, fontWeight: 700 }}>100%</span>
                   </div>
-                  <div style={{ background: "#202c33", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+                  <div style={{ background: "#ffffff", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
                     <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #25d366, #1da851)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 18 }}>👥</div>
                     <div>
                       <p style={{ margin: 0, color: "#fff", fontSize: 12, fontWeight: 600, fontFamily: "var(--font-sans)" }}>DUC Members Group</p>
                       <p style={{ margin: 0, color: "rgba(255,255,255,0.45)", fontSize: 10, fontFamily: "var(--font-sans)", marginTop: 1 }}>1,240 members</p>
                     </div>
                   </div>
-                  <div style={{ background: "#0b141a", padding: "10px 8px 14px", minHeight: 400, display: "flex", flexDirection: "column", gap: 7 }}>
+                  <div style={{ background: "#efeae2", padding: "10px 8px 14px", minHeight: 400, display: "flex", flexDirection: "column", gap: 7 }}>
                     <div style={{ textAlign: "center", marginBottom: 2 }}>
                       <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", background: "rgba(31,44,52,0.8)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>Today</span>
                     </div>
@@ -72,17 +72,17 @@ export default function DUCGroup() {
                         {!m.sent && (
                           <div style={{ width: 22, height: 22, borderRadius: "50%", background: m.color, flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 9, fontWeight: 700, color: "#fff" }}>{m.initial}</div>
                         )}
-                        <div style={{ background: m.sent ? "#005c4b" : "#202c33", borderRadius: m.sent ? "8px 8px 0 8px" : "8px 8px 8px 0", padding: "6px 10px", maxWidth: "78%", position: "relative" }}>
+                        <div style={{ background: m.sent ? "#d9fdd3" : "#ffffff", borderRadius: m.sent ? "8px 8px 0 8px" : "8px 8px 8px 0", padding: "6px 10px", maxWidth: "78%", position: "relative" }}>
                           {m.sent && <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />}
                           {!m.sent && <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />}
                           {!m.sent && <p style={{ margin: "0 0 2px", color: m.color, fontSize: 10, fontWeight: 700, fontFamily: "var(--font-sans)" }}>{m.name}</p>}
-                          <p style={{ margin: 0, color: "rgba(255,255,255,0.9)", fontSize: 11, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>{m.msg}</p>
-                          <p style={{ margin: "2px 0 0", color: "rgba(255,255,255,0.35)", fontSize: 9, textAlign: "right", fontFamily: "var(--font-sans)" }}>{m.time}{m.sent ? " ✓✓" : ""}</p>
+                          <p style={{ margin: 0, color: "#111b21", fontSize: 11, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>{m.msg}</p>
+                          <p style={{ margin: "2px 0 0", color: "#667781", fontSize: 9, textAlign: "right", fontFamily: "var(--font-sans)" }}>{m.time}{m.sent ? " ✓✓" : ""}</p>
                         </div>
                       </div>
                     ))}
                   </div>
-                  <div style={{ background: "#0b141a", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
+                  <div style={{ background: "#efeae2", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
                     <div style={{ width: 120, height: 5, background: "rgba(255,255,255,0.25)", borderRadius: 3 }} />
                   </div>
                 </div>
@@ -91,6 +91,12 @@ export default function DUCGroup() {
           </div>
 
         </div>
+      </div>
+
+      <div className="mt-12 text-center">
+        <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">
+          Join the Community →
+        </a>
       </div>
     </section>
   );

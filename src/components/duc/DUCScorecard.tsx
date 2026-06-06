@@ -58,12 +58,18 @@ export default function DUCScorecard() {
               gets improved.
             </h2>
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
-              Every week, a simple progress report arrives on WhatsApp. You see your consistency score, current streak, and next target.
+              Every week, you get a detailed personalized progress report on your WhatsApp. You see your progress, streaks and next goals.
             </p>
-            <p className="text-foreground-subtle text-base mt-4 leading-relaxed italic">Simple. Slightly annoying. Very effective.</p>
+            <p className="text-foreground-subtle text-base mt-4 leading-relaxed italic">Simple. Very Effective.</p>
           </div>
 
         </div>
+      </div>
+
+      <div className="mt-12 text-center">
+        <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">
+          Start for ₹99/month →
+        </a>
       </div>
     </section>
   );

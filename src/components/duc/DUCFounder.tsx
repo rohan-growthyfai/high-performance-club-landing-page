@@ -41,6 +41,7 @@ export default function DUCFounder() {
                 I tried expensive courses and complicated systems.
               </p>
               <p>Most of them failed because they were too big for my actual life.</p>
+              <p>But the system I actually needed was simpler: one small habit, one daily reminder, one way to track it.</p>
               <p>So I built the smallest, simplest version I could think of:</p>
               <p className="text-foreground font-medium">
                 One tiny habit every day.<br />
@@ -61,11 +62,10 @@ export default function DUCFounder() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-lg">Built because it worked for me first. Now it&apos;s your turn.</p>
+          <p className="text-base text-foreground-muted text-center max-w-lg">This challenge exists because it worked for me first. Now it&apos;s your turn.</p>
           <a
             href="#duc-join"
-            className="inline-flex items-center justify-center gap-2 text-white font-bold text-base sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-full shadow-lg hover:-translate-y-0.5 transition-all w-full sm:w-auto text-center"
-            style={{ background: "linear-gradient(135deg, #1da851, #16a341)", boxShadow: "0 4px 24px rgba(29,168,81,0.35)" }}
+            className="btn-primary inline-flex items-center justify-center gap-2 font-bold text-base sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-full w-full sm:w-auto text-center"
           >
             Start Daily Upgrade Club →
           </a>

@@ -6,11 +6,11 @@ const lines = [
 
 export default function DUCWhatIs() {
   return (
-    <section className="py-24 lg:py-32 bg-section-white border-t border-border-subtle">
+    <section className="py-20 lg:py-28 bg-section-white border-t border-border-subtle">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-          {/* Left — editorial big text */}
+          {/* Left */}
           <div>
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">What is it</p>
             <h2 style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", lineHeight: 1.08, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
@@ -19,9 +19,11 @@ export default function DUCWhatIs() {
               on WhatsApp.
             </h2>
             <div className="mt-8 h-px bg-border-subtle" />
-            <p className="mt-8 text-[#52525b] text-lg leading-relaxed">
-              No app. No dashboard. No long video courses. Daily Upgrade Club is the simplest possible habit system — delivered through the one app you already use every day.
-            </p>
+            {/* Updated subheadline — 2 rows */}
+            <div className="mt-8 space-y-2 text-foreground-muted text-lg leading-relaxed">
+              <p>No separate app. No dashboard. No long video courses.</p>
+              <p>Daily Upgrade Club is the simplest possible habit system — delivered through WhatsApp, the app you already use every day.</p>
+            </div>
           </div>
 
           {/* Right — 3 lines */}
@@ -41,11 +43,11 @@ export default function DUCWhatIs() {
           </div>
         </div>
 
-        {/* Bottom row */}
-        <div className="mt-20 grid grid-cols-3 gap-4">
+        {/* Bottom row — updated labels, no "dashboard" */}
+        <div className="mt-16 grid grid-cols-3 gap-4">
           {[
             { label: "No separate app", icon: "🚫" },
-            { label: "No dashboard login", icon: "🔓" },
+            { label: "No login needed", icon: "🔓" },
             { label: "No long lectures", icon: "🎬" },
           ].map(item => (
             <div key={item.label} className="bg-white border border-border-subtle rounded-2xl flex flex-col items-center justify-center gap-3 py-8 px-4">
@@ -56,7 +58,7 @@ export default function DUCWhatIs() {
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#duc-join" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
+          <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">
             Start for ₹99/month →
           </a>
         </div>

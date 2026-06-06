@@ -14,33 +14,40 @@ const included = [
 
 export default function DUCPrice() {
   return (
-    <section id="duc-join" className="py-20 lg:py-28 relative bg-section-cream scroll-mt-20">
+    <section id="duc-join" className="py-24 lg:py-32 bg-[#0a0a0a] border-t border-white/5 scroll-mt-8">
       <div className="max-w-2xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">Simple pricing</p>
-          <h2 className="font-display text-section-title text-foreground mb-4 text-balance">
-            All This for Just ₹99/month
-          </h2>
-          <p className="text-lg text-foreground-muted">
-            For less than the cost of one café coffee, you get a complete daily habit system on WhatsApp.
+
+        <div className="text-center mb-14">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Pricing</p>
+          <p style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+            Less than one cup of<br />
+            <span style={{ color: "#444", fontStyle: "italic", fontWeight: 400 }}>coffee a month.</span>
           </p>
         </div>
 
-        <div className="premium-card rounded-3xl overflow-hidden border-glow">
-          <div className="bg-gradient-to-br from-accent/15 via-accent/5 to-white p-8">
+        {/* Pricing card */}
+        <div className="relative rounded-3xl overflow-hidden border border-[#25d366]/20" style={{ background: "linear-gradient(145deg, #111 0%, #0d0d0d 100%)" }}>
+          {/* Top glow line */}
+          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #25d366, transparent)" }} />
 
+          <div className="p-8 sm:p-10">
             {/* Price */}
-            <div className="text-center mb-8">
-              <p className="font-display font-black text-7xl gradient-text tabular-nums leading-none">₹99</p>
-              <p className="text-foreground-muted mt-2">per month • Cancel anytime</p>
+            <div className="flex items-end gap-3 mb-8">
+              <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#25d366" }}>₹99</p>
+              <div className="mb-3">
+                <p className="text-white text-lg font-semibold">/month</p>
+                <p className="text-[#555] text-sm">Cancel anytime</p>
+              </div>
             </div>
 
             {/* Checklist */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
               {included.map(item => (
                 <div key={item} className="flex items-center gap-3">
-                  <span className="text-green-500 font-bold flex-shrink-0">✅</span>
-                  <span className="text-sm text-foreground">{item}</span>
+                  <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,211,102,0.15)", border: "1px solid rgba(37,211,102,0.3)" }}>
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#25d366]" />
+                  </div>
+                  <span className="text-[#888] text-sm">{item}</span>
                 </div>
               ))}
             </div>
@@ -50,12 +57,14 @@ export default function DUCPrice() {
               href="https://rzp.io/l/daily-upgrade-club"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full text-xl font-bold"
+              className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl text-base font-bold text-black transition-all hover:-translate-y-0.5"
+              style={{ background: "linear-gradient(135deg, #25d366 0%, #1da851 100%)", boxShadow: "0 0 40px rgba(37,211,102,0.4), 0 4px 16px rgba(0,0,0,0.5)" }}
             >
               Start Daily Upgrade Club <ArrowRight className="w-5 h-5" />
             </a>
-            <p className="text-center text-sm text-foreground-subtle mt-4">
-              Cancel anytime • No app needed • Delivered on WhatsApp
+
+            <p className="text-center text-[#444] text-xs mt-4">
+              Cancel anytime · No app needed · Starts on WhatsApp
             </p>
           </div>
         </div>

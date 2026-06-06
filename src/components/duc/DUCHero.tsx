@@ -1,107 +1,111 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+import { useEffect, useState } from "react";
 import DUCPhone from "./DUCPhone";
 
-const StarIcon = () => (
-  <svg className="w-3.5 h-3.5" viewBox="0 0 20 20" fill="#f59e0b">
-    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-  </svg>
-);
-
-const reviews = [
-  { avatar: "/avatars/men/man-1.jpg", name: "Karan M.", city: "Pune", review: "Finally a habit system that doesn't need an app." },
-  { avatar: "/avatars/women/woman-3.avif", name: "Sneha R.", city: "Mumbai", review: "The DONE tracking keeps me accountable every day." },
-  { avatar: "/avatars/women/woman-1.jpg", name: "Priya T.", city: "Bengaluru", review: "Best ₹99 I've spent this year." },
+const STATS = [
+  { n: "1", label: "habit a day" },
+  { n: "5min", label: "to complete" },
+  { n: "₹99", label: "per month" },
+  { n: "30", label: "days / month" },
 ];
 
 export default function DUCHero() {
-  return (
-    <section className="relative pt-6 pb-8 lg:pt-10 lg:pb-0 overflow-hidden mesh-bg min-h-[calc(100vh-68px)] flex flex-col justify-center">
-      <span className="emoji-deco float-1 top-10 left-6 text-3xl hidden lg:block" aria-hidden="true">⚡</span>
-      <span className="emoji-deco float-2 top-16 right-10 text-3xl hidden lg:block" aria-hidden="true">🎯</span>
+  const [show, setShow] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setShow(true), 80); return () => clearTimeout(t); }, []);
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+  return (
+    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#0f0f0f]">
+
+      {/* Grain overlay */}
+      <div className="pointer-events-none absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E\")", backgroundSize: "128px" }} />
+
+      {/* Glow spots */}
+      <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-20" style={{ background: "radial-gradient(circle, #25d366 0%, transparent 70%)" }} />
+      <div className="pointer-events-none absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #b8853a 0%, transparent 70%)" }} />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-16 lg:pt-28 lg:pb-20 w-full">
+
+        {/* Top label */}
+        <div className={`mb-10 transition-all duration-700 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+          <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.25em] text-[#25d366] border border-[#25d366]/30 bg-[#25d366]/8 px-4 py-2 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#25d366] animate-pulse" />
+            WhatsApp Habit Subscription
+          </span>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
           {/* LEFT */}
-          <div className="lg:col-span-7 text-center lg:text-left">
+          <div className="lg:col-span-7">
 
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 mb-5 animate-fade-up">
-              <span className="w-2.5 h-2.5 rounded-full bg-orange-500 inline-block" />
-              <span className="text-sm font-bold text-orange-700 tracking-wide">🔥 Daily Habit System on WhatsApp</span>
-            </div>
-
-            {/* Headline */}
-            <h1 className="font-display text-[2.1rem] sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
-              Build Better{" "}
-              <span className="gradient-text">Habits Every Day</span>{" "}
-              on WhatsApp
+            {/* Headline — editorial large */}
+            <h1 className={`font-display transition-all duration-700 delay-100 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={{ fontSize: "clamp(2.8rem, 7vw, 5.5rem)", lineHeight: 1.02, letterSpacing: "-0.03em", fontWeight: 800, color: "#fafafa" }}>
+              One habit.<br />
+              <span style={{ color: "#25d366" }}>Every day.</span><br />
+              <span style={{ color: "#888", fontWeight: 400, fontStyle: "italic", fontSize: "0.82em" }}>On WhatsApp.</span>
             </h1>
 
-            {/* Subhead */}
-            <p className="mt-4 text-base sm:text-lg text-foreground leading-relaxed animate-fade-up delay-100">
-              Join <strong>Daily Upgrade Club</strong> and get <strong>1 tiny habit daily</strong>, weekly progress tracking, monthly themes, habit guides, and a private accountability group — all for just <strong>₹99/month</strong>.
+            {/* Divider */}
+            <div className={`my-8 h-px w-16 bg-[#25d366] transition-all duration-700 delay-200 ${show ? "opacity-100 w-16" : "opacity-0 w-0"}`} />
+
+            {/* Sub */}
+            <p className={`text-[#aaa] text-lg sm:text-xl leading-relaxed max-w-lg transition-all duration-700 delay-300 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+              Daily Upgrade Club delivers <strong className="text-white">1 tiny habit</strong> every morning, tracks your progress automatically, and keeps you consistent — all inside WhatsApp.
             </p>
-            <p className="mt-2 text-base text-foreground-muted italic animate-fade-up delay-150">
-              No app. No long videos. No complicated routine.
+
+            <p className={`text-[#666] text-base mt-3 transition-all duration-700 delay-[350ms] ${show ? "opacity-100" : "opacity-0"}`}>
+              No app. No login. No complicated routine.
             </p>
 
             {/* CTA */}
-            <div className="mt-6 animate-fade-up delay-300 inline-flex flex-col gap-2">
-              <a href="#duc-join" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold group">
-                Start for ₹99/month
-                <span className="group-hover:translate-x-1 transition-transform inline-block ml-1">→</span>
+            <div className={`mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-4 transition-all duration-700 delay-500 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+              <a href="#duc-join"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full text-base font-bold text-black overflow-hidden"
+                style={{ background: "linear-gradient(135deg, #25d366 0%, #1da851 100%)", boxShadow: "0 0 32px rgba(37, 211, 102, 0.35)" }}>
+                <span className="relative z-10">Start for ₹99/month</span>
+                <span className="relative z-10 text-lg group-hover:translate-x-1 transition-transform">→</span>
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: "linear-gradient(135deg, #2de070 0%, #25d366 100%)" }} />
               </a>
-              <p className="text-sm text-foreground-subtle font-medium text-center">Your 30-day habit journey starts today.</p>
+              <p className="text-[#555] text-sm">Cancel anytime · No lock-in</p>
             </div>
 
-            {/* Trust bullets */}
-            <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-x-5 gap-y-2 animate-fade-up delay-400">
-              {["Cancel anytime","No app needed","Daily habits on WhatsApp","Less than 5 minutes/day"].map(t => (
-                <span key={t} className="flex items-center gap-1.5 text-sm text-foreground-muted">
-                  <span className="text-green-500 font-bold">✓</span> {t}
-                </span>
-              ))}
-            </div>
-
-            {/* Reviews */}
-            <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-border-subtle animate-fade-up delay-500 text-center sm:text-left">
-              {reviews.map((r) => (
-                <div key={r.name} className="flex flex-col items-center sm:items-start gap-2 px-0 sm:px-4 py-3 sm:py-2 first:sm:pl-0 last:sm:pr-0">
-                  <div className="flex gap-0.5">{[1,2,3,4,5].map(j => <StarIcon key={j} />)}</div>
-                  <p className="text-sm text-foreground leading-relaxed flex-1">&ldquo;{r.review}&rdquo;</p>
-                  <div className="flex items-center gap-2 mt-1">
-                    <img src={r.avatar} alt={r.name} className="w-7 h-7 rounded-full object-cover" />
-                    <div>
-                      <p className="text-xs font-bold text-foreground leading-none">{r.name}</p>
-                      <p className="text-[11px] text-foreground-subtle mt-0.5">{r.city}</p>
-                    </div>
-                  </div>
+            {/* Stats row */}
+            <div className={`mt-12 grid grid-cols-4 gap-0 transition-all duration-700 delay-700 ${show ? "opacity-100" : "opacity-0"}`}>
+              {STATS.map((s, i) => (
+                <div key={s.label} className={`text-center py-4 ${i < STATS.length - 1 ? "border-r border-white/8" : ""}`}>
+                  <p className="font-display text-xl sm:text-2xl font-black text-white tabular-nums" style={{ letterSpacing: "-0.02em" }}>{s.n}</p>
+                  <p className="text-[10px] sm:text-xs text-[#555] mt-1 uppercase tracking-wider">{s.label}</p>
                 </div>
               ))}
             </div>
+
           </div>
 
           {/* RIGHT — iPhone */}
-          <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10 mt-6">
+          <div className={`lg:col-span-5 flex justify-center transition-all duration-700 delay-300 ${show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
             <div className="relative">
-              <div className="absolute -right-4 lg:-right-56 top-1/3 z-20 sticky-note p-5 rounded-md tilt-right w-60 hidden lg:block">
-                <p className="font-serif italic text-amber-900 leading-snug">
-                  <span className="text-xl font-bold not-italic block">₹99/month</span>
-                  <span className="text-base block">Daily habits on WhatsApp 📱</span>
-                </p>
+              {/* Glow behind phone */}
+              <div className="absolute inset-0 blur-3xl opacity-30 scale-75" style={{ background: "radial-gradient(circle, #25d366 0%, transparent 70%)" }} />
+              <div className="relative">
+                <DUCPhone dark />
               </div>
-              <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">
-                <div className="bg-accent text-white rounded-full px-3 py-1.5 shadow-xl tilt-right">
-                  <p className="text-[10px] font-bold uppercase">🔥 Cancel anytime</p>
+              {/* Floating label */}
+              <div className="absolute -left-4 lg:-left-16 top-1/4 hidden lg:block">
+                <div className="bg-[#1a1a1a] border border-white/10 rounded-2xl px-4 py-3 shadow-xl" style={{ boxShadow: "0 8px 32px rgba(0,0,0,0.5)" }}>
+                  <p className="text-[#25d366] font-bold text-sm">DONE ✅</p>
+                  <p className="text-white/50 text-xs mt-0.5">streak: 7 days 🔥</p>
                 </div>
               </div>
-              <DUCPhone />
             </div>
           </div>
 
         </div>
       </div>
+
+      {/* Bottom fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, #0f0f0f)" }} />
     </section>
   );
 }

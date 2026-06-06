@@ -1,60 +1,63 @@
 const forYou = [
-  "You want to build better habits but struggle with consistency",
-  "You prefer simple WhatsApp reminders over complicated apps",
-  "You want to improve Energy, Health, Focus, Calmness, and Discipline",
-  "You like small daily actions instead of big routines",
-  "You want accountability without pressure",
-  "You want a structured monthly habit system",
+  "You want better habits but apps make it complicated",
+  "You check WhatsApp more than any other app",
+  "You want accountability without group pressure",
+  "You prefer small daily actions over big lifestyle overhauls",
+  "You want Energy, Focus, Health, Calmness, Sleep, Discipline — all in one system",
+  "You want to spend ₹99 better than you spend it on chai",
 ];
 
 const notForYou = [
   "You want overnight transformation",
   "You don't want WhatsApp messages",
-  "You want 1-on-1 personal coaching for ₹99/month",
+  "You want 1-on-1 personal coaching",
   "You want a strict gym or diet plan",
-  "You don't want to do even one tiny habit daily",
-  "You are looking for long video courses",
+  "You won't do even one tiny habit daily",
+  "You're looking for long video courses",
 ];
 
 export default function DUCForWho() {
   return (
-    <section className="py-20 lg:py-28 relative bg-section-white">
+    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">Is this for you?</p>
-          <h2 className="font-display text-section-title text-foreground text-balance">
-            Who Is Daily Upgrade Club For?
+        <div className="mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Honest fit check</p>
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+            Is this for you?
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-8">
+        <div className="grid sm:grid-cols-2 gap-px bg-white/5 rounded-3xl overflow-hidden">
           {/* For you */}
-          <div className="bg-green-50 border border-green-100 rounded-2xl p-7">
-            <p className="font-bold text-foreground text-lg mb-6">This Is Perfect for You If…</p>
-            <ul className="space-y-3">
-              {forYou.map(i => (
-                <li key={i} className="flex items-start gap-3 text-sm text-foreground">
-                  <span className="text-green-500 font-bold text-lg flex-shrink-0 mt-0.5">✅</span>
-                  {i}
-                </li>
+          <div className="bg-[#0f0f0f] p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#25d366] mb-6">This is for you if…</p>
+            <div className="space-y-4">
+              {forYou.map(item => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.25)" }}>
+                    <span className="text-[#25d366] text-[10px]">✓</span>
+                  </div>
+                  <p className="text-[#888] text-sm leading-relaxed">{item}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
 
           {/* Not for you */}
-          <div className="bg-gray-50 border border-gray-100 rounded-2xl p-7">
-            <p className="font-bold text-foreground text-lg mb-6">This Is Not for You If…</p>
-            <ul className="space-y-3">
-              {notForYou.map(i => (
-                <li key={i} className="flex items-start gap-3 text-sm text-foreground">
-                  <span className="text-red-400 font-bold text-lg flex-shrink-0 mt-0.5">❌</span>
-                  {i}
-                </li>
+          <div className="bg-[#0a0a0a] p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-400 mb-6">This is not for you if…</p>
+            <div className="space-y-4">
+              {notForYou.map(item => (
+                <div key={item} className="flex items-start gap-3">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-red-500/10 border border-red-500/20">
+                    <div className="w-2 h-0.5 bg-red-400 rounded-full" />
+                  </div>
+                  <p className="text-[#555] text-sm leading-relaxed">{item}</p>
+                </div>
               ))}
-            </ul>
-            <div className="mt-6 pt-5 border-t border-gray-200">
-              <p className="text-sm text-foreground-muted italic">This is simple, but it still needs participation.</p>
-              <p className="text-sm text-foreground-muted italic mt-2">We send the habit. You do the habit. That&apos;s where the momentum begins.</p>
+            </div>
+            <div className="mt-8 pt-6 border-t border-white/5">
+              <p className="text-[#444] text-xs italic leading-relaxed">This is simple, but it still needs participation. We send the habit. You do the habit. That&apos;s where the momentum begins.</p>
             </div>
           </div>
         </div>

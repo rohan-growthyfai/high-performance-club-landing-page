@@ -1,49 +1,45 @@
-import { ArrowRight } from "lucide-react";
-
 const steps = [
-  { icon: "📩", time: "Every Morning", title: "Daily Prompt", desc: "You receive one tiny habit every day on WhatsApp.", color: "bg-amber-50 border-amber-200", iconColor: "text-amber-500" },
-  { icon: "✅", time: "5 Minutes", title: "Simple Action", desc: "You complete the habit in less than 5 minutes.", color: "bg-green-50 border-green-200", iconColor: "text-green-500" },
-  { icon: "🔁", time: "Reply DONE", title: "DONE Tracking", desc: "You reply DONE and your progress gets tracked.", color: "bg-blue-50 border-blue-200", iconColor: "text-blue-500" },
-  { icon: "📊", time: "Every Week", title: "Weekly Scorecard", desc: "You see your weekly consistency and monthly progress.", color: "bg-purple-50 border-purple-200", iconColor: "text-purple-500" },
+  { num: "01", title: "Habit lands at 6 AM", desc: "Every morning, one tiny habit arrives on your WhatsApp. Practical. Under 5 minutes.", color: "#25d366" },
+  { num: "02", title: "You do it", desc: "Read it. Do it. Could be 30 seconds. Could be 5 minutes. Never more.", color: "#60a5fa" },
+  { num: "03", title: "Reply DONE", desc: "One word. Your streak updates. Your monthly count goes up. No app needed.", color: "#f59e0b" },
+  { num: "04", title: "Weekly scorecard", desc: "Every week, a simple report. How consistent were you? What's your streak?", color: "#a78bfa" },
 ];
 
 export default function DUCHowWorks() {
   return (
-    <section className="py-20 lg:py-28 relative bg-section-white">
+    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">Simple system</p>
-          <h2 className="font-display text-section-title text-foreground mb-4 text-balance">
-            A simple system that keeps you consistent
+
+        <div className="mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">The loop</p>
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+            Four steps.<br />
+            <span style={{ color: "#444", fontStyle: "italic", fontWeight: 400 }}>Repeat for 30 days.</span>
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {/* Steps — horizontal scrolling timeline */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-3xl overflow-hidden">
           {steps.map((step, i) => (
-            <div key={step.title} className="relative">
-              <div className={`rounded-2xl border-2 ${step.color} p-6 text-center h-full flex flex-col items-center`}>
-                <div className="w-14 h-14 rounded-2xl bg-white border border-border-subtle flex items-center justify-center mb-4 text-2xl shadow-sm">
-                  {step.icon}
-                </div>
-                <p className={`text-xs font-bold uppercase tracking-wider mb-2 ${step.iconColor}`}>{step.time}</p>
-                <p className="font-bold text-foreground text-base mb-2">{step.title}</p>
-                <p className="text-sm text-foreground-muted leading-relaxed">{step.desc}</p>
-                <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center shadow-sm">{i + 1}</div>
-              </div>
+            <div key={step.num} className="bg-[#0f0f0f] p-8 relative group hover:bg-[#141414] transition-colors">
+              {/* Step number — huge */}
+              <p className="font-display font-black mb-6 select-none" style={{ fontSize: "4rem", lineHeight: 1, color: step.color, opacity: 0.15, letterSpacing: "-0.04em" }}>{step.num}</p>
+              <div className="w-8 h-px mb-6" style={{ background: step.color }} />
+              <p className="text-white font-bold text-base mb-3 leading-snug">{step.title}</p>
+              <p className="text-[#666] text-sm leading-relaxed">{step.desc}</p>
+              {/* Arrow */}
               {i < steps.length - 1 && (
-                <div className="hidden lg:flex absolute top-1/2 -right-4 -translate-y-1/2 z-10">
-                  <ArrowRight className="w-5 h-5 text-accent/40" />
-                </div>
+                <div className="hidden lg:block absolute top-1/2 -right-3 -translate-y-1/2 z-10 text-[#333] text-xl">›</div>
               )}
             </div>
           ))}
         </div>
 
-        <div className="mt-12 text-center bg-white border border-border-subtle rounded-2xl p-8 max-w-2xl mx-auto">
-          <p className="text-lg text-foreground leading-relaxed">
-            You don&apos;t need more motivation.<br />
-            <strong>You need a simple system that shows up daily.</strong>
-          </p>
+        <div className="mt-12 flex justify-center">
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/4 border border-white/8">
+            <span className="text-base">🔁</span>
+            <span className="text-sm text-[#888]">Repeat every month with a new theme.</span>
+          </div>
         </div>
       </div>
     </section>

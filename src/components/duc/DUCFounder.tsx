@@ -1,40 +1,51 @@
 /* eslint-disable @next/next/no-img-element */
 export default function DUCFounder() {
   return (
-    <section className="py-20 lg:py-28 relative bg-section-cream">
-      <div className="max-w-2xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">From the founder</p>
-          <h2 className="font-display text-section-title text-foreground mb-4 text-balance">
-            Why I Built Daily Upgrade Club
-          </h2>
-        </div>
+    <section className="py-24 lg:py-32 bg-[#0a0a0a] border-t border-white/5">
+      <div className="max-w-3xl mx-auto px-6 lg:px-8">
 
-        <div className="bg-white border border-border-subtle rounded-2xl p-8 shadow-sm">
-          <div className="space-y-4 text-base text-foreground leading-relaxed mb-6">
+        {/* Pull quote style */}
+        <div className="relative">
+          <div className="absolute -left-4 lg:-left-12 top-0 bottom-0 w-px bg-[#25d366]/30" />
+
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-8">From the founder</p>
+
+          <div className="space-y-5 text-[#888] text-lg leading-relaxed">
             <p>Most people don&apos;t fail because they lack information.</p>
-            <p>They fail because they forget, overthink, or try to change everything at once.</p>
-            <p>Daily Upgrade Club is built for real life.</p>
-            <div className="bg-section-cream rounded-xl p-5 space-y-2 border border-border-subtle text-foreground-muted">
-              <p>One tiny habit.</p>
-              <p>One daily reminder.</p>
-              <p>One DONE reply.</p>
-              <p>One weekly scorecard.</p>
-              <p>All on WhatsApp.</p>
-            </div>
-            <p>No pressure. No perfection. Just daily momentum.</p>
+            <p>They fail because they <span className="text-white">forget, overthink</span>, or try to change everything at once.</p>
+            <p className="text-white font-medium">Daily Upgrade Club is built for real life.</p>
           </div>
 
-          <div className="flex items-center gap-4 pt-5 border-t border-border-subtle">
-            <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-accent/20 flex-shrink-0">
-              <img src="/hpc-logo.png" alt="Rohan" className="w-full h-full object-cover" />
-            </div>
-            <div>
-              <p className="font-bold text-foreground">— Rohan</p>
-              <p className="text-sm text-foreground-muted">High Performance Club</p>
+          {/* 5 lines */}
+          <div className="mt-10 grid grid-cols-1 gap-0">
+            {[
+              "One tiny habit.",
+              "One daily reminder.",
+              "One DONE reply.",
+              "One weekly scorecard.",
+              "All on WhatsApp.",
+            ].map((line, i) => (
+              <div key={line} className={`py-4 border-b border-white/5 flex items-center gap-4 ${i === 4 ? "border-b-0" : ""}`}>
+                <span className="text-[#25d366] font-bold font-display text-sm tabular-nums" style={{ letterSpacing: "-0.02em" }}>0{i + 1}</span>
+                <p className="text-white font-medium text-base">{line}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 pt-8 border-t border-white/5">
+            <p className="text-[#555] text-base italic mb-6">No pressure. No perfection. Just daily momentum.</p>
+            <div className="flex items-center gap-4">
+              <div className="w-10 h-10 rounded-full overflow-hidden border border-white/10">
+                <img src="/hpc-logo.png" alt="Rohan" className="w-full h-full object-cover" />
+              </div>
+              <div>
+                <p className="text-white font-bold text-sm">Rohan</p>
+                <p className="text-[#555] text-xs">Founder, High Performance Club</p>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
   );

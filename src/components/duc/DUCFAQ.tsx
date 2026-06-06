@@ -1,58 +1,55 @@
 "use client";
-
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  { q: "Is it really ₹99/month?", a: "Yes. Daily Upgrade Club is ₹99/month. No hidden charges." },
-  { q: "Can I cancel anytime?", a: "Yes. You can cancel anytime. No questions asked." },
-  { q: "Where will I receive the habits?", a: "You'll receive them on WhatsApp directly." },
-  { q: "Do I need to install an app?", a: "No. Everything happens on WhatsApp. No downloads needed." },
-  { q: "What happens after I reply DONE?", a: "Your habit completion gets counted and your progress is updated automatically." },
-  { q: "Will I get too many messages?", a: "No. You'll receive daily habit messages, weekly progress updates, the newsletter, and accountability group messages. That's it." },
-  { q: "Is this a fitness or diet program?", a: "No. This is a habit-building subscription focused on daily improvement across energy, focus, health, calmness, sleep, and discipline." },
-  { q: "Is this medical advice?", a: "No. This is for general habit-building and self-improvement only. It is not medical, fitness, or mental-health advice." },
-  { q: "What is the Private Accountability Group?", a: "It is a private WhatsApp group for daily check-ins, habit wins, reminders, and community support. No spam. No promotions." },
-  { q: "What is the Habit Vault?", a: "It is a growing collection of monthly habit guides, habit calendars, and resources you unlock over time." },
-  { q: "What happens after one month?", a: "You move into the next monthly theme and continue your habit journey. Your library of PDF guides keeps growing." },
+  { q: "Is it really ₹99/month?", a: "Yes. ₹99/month. No hidden charges, no upsells forced on you." },
+  { q: "Can I cancel anytime?", a: "Yes. Cancel anytime. No questions asked, no lock-in period." },
+  { q: "Where will I receive the habits?", a: "Directly on WhatsApp. That's the only place." },
+  { q: "Do I need to install an app?", a: "No. Everything happens on WhatsApp. Nothing to download." },
+  { q: "What happens after I reply DONE?", a: "Your progress updates automatically — streak, weekly count, monthly progress. You see it reflected in your next scorecard." },
+  { q: "Will I get too many messages?", a: "No. One habit in the morning. One weekly scorecard. One weekly newsletter. Group messages when relevant. That's it." },
+  { q: "Is this medical or fitness advice?", a: "No. This is general habit-building for self-improvement only. Not medical, not therapy, not a diet or fitness plan." },
+  { q: "What is the Habit Vault?", a: "A growing collection of monthly PDF guides and habit calendars. One new guide added every month you're subscribed." },
+  { q: "What happens after one month?", a: "You move into the next monthly theme. Your library of PDF guides keeps growing the longer you stay." },
+  { q: "What if I miss a few days?", a: "Nothing bad happens. You pick up the next day. The habit still lands at 6 AM. Progress is cumulative, not binary." },
 ];
 
-function FAQItem({ q, a }: { q: string; a: string }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="border-b border-border-subtle last:border-b-0">
-      <button
-        type="button"
-        onClick={() => setOpen(!open)}
-        className="w-full py-5 sm:py-6 flex items-start justify-between gap-4 text-left group"
-        aria-expanded={open}
-      >
-        <span className="font-medium text-foreground text-sm sm:text-lg leading-snug group-hover:text-accent transition-colors">
-          {q}
-        </span>
-        <span className="flex-shrink-0 w-9 h-9 rounded-full border border-border-subtle group-hover:border-accent/40 flex items-center justify-center transition-colors mt-0.5 bg-white">
-          {open ? <Minus className="w-4 h-4 text-accent" /> : <Plus className="w-4 h-4 text-foreground-muted group-hover:text-accent" />}
-        </span>
-      </button>
-      <div className="grid transition-all duration-300 ease-out" style={{ gridTemplateRows: open ? "1fr" : "0fr" }}>
-        <div className="overflow-hidden">
-          <p className="pb-5 pr-8 sm:pr-12 text-foreground-muted leading-relaxed text-sm sm:text-base">{a}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function DUCFAQ() {
+  const [open, setOpen] = useState<number | null>(null);
+
   return (
-    <section className="py-20 lg:py-28 relative bg-section-white">
+    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
-        <div className="text-center mb-14">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">Questions</p>
-          <h2 className="font-display text-section-title text-foreground mb-4">Common Questions</h2>
+        <div className="mb-16">
+          <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Questions</p>
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+            Common questions.
+          </h2>
         </div>
-        <div className="bg-white border border-border-subtle rounded-2xl px-6 sm:px-8 divide-y divide-border-subtle">
-          {faqs.map(f => <FAQItem key={f.q} q={f.q} a={f.a} />)}
+
+        <div className="space-y-0">
+          {faqs.map((faq, i) => (
+            <div key={faq.q} className={`border-b border-white/5 ${i === 0 ? "border-t" : ""}`}>
+              <button
+                type="button"
+                onClick={() => setOpen(open === i ? null : i)}
+                className="w-full flex items-center justify-between gap-6 py-6 text-left group"
+              >
+                <span className={`text-sm sm:text-base font-medium transition-colors ${open === i ? "text-white" : "text-[#888] group-hover:text-white"}`}>
+                  {faq.q}
+                </span>
+                <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
+                  <div className={`w-4 h-px bg-current transition-all duration-300 ${open === i ? "text-[#25d366]" : "text-[#444] group-hover:text-[#666]"}`} />
+                  <div className={`absolute w-px h-4 bg-current transition-all duration-300 ${open === i ? "opacity-0 text-[#25d366]" : "opacity-100 text-[#444] group-hover:text-[#666]"}`} />
+                </span>
+              </button>
+              <div className="grid transition-all duration-300 ease-out" style={{ gridTemplateRows: open === i ? "1fr" : "0fr" }}>
+                <div className="overflow-hidden">
+                  <p className="pb-6 pr-8 text-[#666] text-sm leading-relaxed">{faq.a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

@@ -1,30 +1,65 @@
+const lines = [
+  { icon: "📩", bold: "Every day", rest: " — one tiny habit lands in your WhatsApp." },
+  { icon: "📊", bold: "Every week", rest: " — a simple scorecard shows your progress." },
+  { icon: "🗓️", bold: "Every month", rest: " — one clear theme: Energy, Focus, Sleep, Calmness, Discipline, or Health." },
+];
+
 export default function DUCWhatIs() {
   return (
-    <section className="py-20 lg:py-28 relative bg-section-white">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8 text-center">
-        <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">What is it?</p>
-        <h2 className="font-display text-section-title text-foreground mb-8 text-balance">
-          What is Daily Upgrade Club?
-        </h2>
+    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
 
-        <div className="text-left space-y-5 text-lg text-foreground leading-relaxed bg-white border border-border-subtle rounded-2xl p-8 shadow-sm mb-10">
-          <p>Daily Upgrade Club is a <strong>monthly WhatsApp habit subscription</strong> designed to help you build better habits consistently.</p>
-          <p>Every day, you receive one tiny habit on WhatsApp.</p>
-          <p>Every week, you see your progress.</p>
-          <p>Every month, you follow one clear theme like <strong>Energy, Health, Focus, Calmness, Sleep, or Discipline</strong>.</p>
-
-          <div className="border-t border-border-subtle pt-5 space-y-1 text-foreground-muted">
-            <p>No separate app.</p>
-            <p>No dashboard login.</p>
-            <p>No long lectures.</p>
+          {/* Left — editorial big text */}
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">What is it</p>
+            <h2 style={{ fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)", lineHeight: 1.08, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+              A monthly habit<br />
+              <span style={{ color: "#555", fontStyle: "italic", fontWeight: 400 }}>subscription</span><br />
+              on WhatsApp.
+            </h2>
+            <div className="mt-8 h-px bg-white/8" />
+            <p className="mt-8 text-[#888] text-lg leading-relaxed">
+              No app. No dashboard. No long video courses. Daily Upgrade Club is the simplest possible habit system — delivered through the one app you already use every day.
+            </p>
           </div>
 
-          <p className="text-foreground font-medium">Just one small habit a day — directly on WhatsApp.</p>
+          {/* Right — 3 lines */}
+          <div className="space-y-0">
+            {lines.map((l, i) => (
+              <div key={l.bold} className={`flex items-start gap-5 py-7 ${i < lines.length - 1 ? "border-b border-white/6" : ""}`}>
+                <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/8 flex items-center justify-center text-xl flex-shrink-0">
+                  {l.icon}
+                </div>
+                <div>
+                  <p className="text-base text-[#ccc] leading-relaxed">
+                    <strong className="text-white text-lg">{l.bold}</strong>{l.rest}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <a href="#duc-join" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
-          Start for ₹99/month →
-        </a>
+        {/* Bottom row */}
+        <div className="mt-20 grid grid-cols-3 gap-px bg-white/6 rounded-2xl overflow-hidden">
+          {[
+            { label: "No separate app", icon: "🚫" },
+            { label: "No dashboard login", icon: "🔓" },
+            { label: "No long lectures", icon: "🎬" },
+          ].map(item => (
+            <div key={item.label} className="bg-[#0f0f0f] flex flex-col items-center justify-center gap-3 py-8 px-4">
+              <span className="text-2xl">{item.icon}</span>
+              <p className="text-sm text-[#666] font-medium text-center">{item.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-10 text-center">
+          <a href="#duc-join" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-black" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
+            Start for ₹99/month →
+          </a>
+        </div>
       </div>
     </section>
   );

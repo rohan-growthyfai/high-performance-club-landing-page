@@ -1,31 +1,29 @@
 "use client";
-
 import { useEffect, useState } from "react";
-import { ArrowRight } from "lucide-react";
 
 export default function DUCStickyBar() {
   const [visible, setVisible] = useState(false);
-
   useEffect(() => {
-    const handler = () => setVisible(window.scrollY > 600);
-    window.addEventListener("scroll", handler, { passive: true });
-    return () => window.removeEventListener("scroll", handler);
+    const h = () => setVisible(window.scrollY > 700);
+    window.addEventListener("scroll", h, { passive: true });
+    return () => window.removeEventListener("scroll", h);
   }, []);
 
   return (
-    <div className={`fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 ${visible ? "translate-y-0" : "translate-y-full"} lg:hidden`}>
-      <div className="bg-white border-t border-border-subtle px-4 py-3 flex items-center justify-between gap-3 shadow-2xl">
+    <div className={`fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 lg:hidden ${visible ? "translate-y-0" : "translate-y-full"}`}>
+      <div className="bg-[#0f0f0f] border-t border-white/8 px-4 py-3 flex items-center justify-between gap-3">
         <div>
-          <p className="font-bold text-foreground text-sm leading-none">Daily Upgrade Club</p>
-          <p className="text-xs text-foreground-muted mt-0.5">₹99/month • Cancel anytime</p>
+          <p className="text-white font-bold text-sm leading-none">Daily Upgrade Club</p>
+          <p className="text-[#555] text-xs mt-0.5">₹99/month · Cancel anytime</p>
         </div>
         <a
           href="https://rzp.io/l/daily-upgrade-club"
           target="_blank"
           rel="noopener noreferrer"
-          className="btn-primary inline-flex items-center gap-1.5 px-5 py-3 rounded-full text-sm font-bold flex-shrink-0"
+          className="inline-flex items-center gap-1.5 px-5 py-3 rounded-full text-sm font-bold text-black flex-shrink-0"
+          style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 20px rgba(37,211,102,0.3)" }}
         >
-          Join Now <ArrowRight className="w-4 h-4" />
+          Join Now →
         </a>
       </div>
     </div>

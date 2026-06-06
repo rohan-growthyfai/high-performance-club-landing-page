@@ -137,7 +137,7 @@ export default function HeroPhone() {
         <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
           {/* Dynamic Island */}
           <div style={{
-            position: "relative", background: "#25d366", paddingTop: 12,
+            position: "relative", background: "#4caf6e", paddingTop: 12,
             display: "flex", justifyContent: "center",
           }}>
             <div style={{
@@ -153,7 +153,7 @@ export default function HeroPhone() {
 
           {/* Status bar */}
           <div style={{
-            background: "#25d366", padding: "8px 16px 6px",
+            background: "#4caf6e", padding: "8px 16px 6px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
             fontSize: 11, color: "#fff", fontFamily: "var(--font-sans)", fontWeight: 600,
           }}>
@@ -165,7 +165,7 @@ export default function HeroPhone() {
 
           {/* WhatsApp header */}
           <div style={{
-            background: "#25d366", padding: "8px 12px 10px",
+            background: "#4caf6e", padding: "8px 12px 10px",
             display: "flex", alignItems: "center", gap: 10,
           }}>
             <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.3)" }}>

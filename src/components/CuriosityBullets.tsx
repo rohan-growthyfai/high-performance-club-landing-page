@@ -20,9 +20,9 @@ const waypoints = [
     emoji: "📊",
     title: "Rate yourself today",
     desc: "You give yourself a score in 4 areas: Energy, Focus, Relationships, and Calmness. This tells us where you are right now.",
-    color: "#25d366",
+    color: "#4caf6e",
     bg: "#fef9ec",
-    border: "#25d366",
+    border: "#4caf6e",
     isCheckpoint: true,
   },
   {
@@ -116,9 +116,9 @@ const waypoints = [
     emoji: "🏆",
     title: "See how much you have changed",
     desc: "You take the same quiz again. Every single score goes up. Plus you earn your certificate. 🎓",
-    color: "#1ea84f",
+    color: "#3d9b5a",
     bg: "#f0fdf4",
-    border: "#1ea84f",
+    border: "#3d9b5a",
     isCheckpoint: true,
   },
 ];
@@ -360,7 +360,7 @@ export default function CuriosityBullets() {
                 <path
                   d={ROAD_PATH_D}
                   fill="none"
-                  stroke="#25d366"
+                  stroke="#4caf6e"
                   strokeWidth={5}
                   strokeLinecap="round"
                   strokeDasharray={`${(pathRef.current?.getTotalLength() ?? 0) * (activeIdx / (N - 1))} 9999`}
@@ -498,7 +498,7 @@ export default function CuriosityBullets() {
                                       <span style={{
                                         fontSize: 11,
                                         fontWeight: 800,
-                                        color: wp.id === "end" ? "#1ea84f" : wp.color,
+                                        color: wp.id === "end" ? "#3d9b5a" : wp.color,
                                       }}>
                                         {wp.id === "end" ? "↑ Up" : "?"}
                                       </span>
@@ -521,7 +521,7 @@ export default function CuriosityBullets() {
                                 <span style={{
                                   fontSize: 10,
                                   fontWeight: 700,
-                                  color: wp.isCheckpoint ? (wp.id === "start" ? "#25d366" : "#1ea84f") : "#25d366",
+                                  color: wp.isCheckpoint ? (wp.id === "start" ? "#4caf6e" : "#3d9b5a") : "#4caf6e",
                                 }}>
                                   {wp.isCheckpoint
                                     ? (wp.id === "start"
@@ -596,7 +596,7 @@ export default function CuriosityBullets() {
           <div
             className="absolute left-[20px] top-0 w-5 rounded-full transition-all duration-500"
             style={{
-              background: "linear-gradient(to bottom, #25d366, #1ea84f)",
+              background: "linear-gradient(to bottom, #4caf6e, #3d9b5a)",
               height: activeIdx < 0 ? 0 : `${(activeIdx / (N - 1)) * 100}%`,
               opacity: 0.5,
             }}

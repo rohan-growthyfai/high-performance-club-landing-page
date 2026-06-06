@@ -45,7 +45,7 @@ export default function IPhoneFrame({
           {/* Dynamic Island */}
           <div style={{
             position: "relative",
-            background: "#25d366",
+            background: "#4caf6e",
             paddingTop: 12,
             display: "flex",
             justifyContent: "center",
@@ -69,7 +69,7 @@ export default function IPhoneFrame({
 
           {/* Status bar */}
           <div style={{
-            background: "#25d366",
+            background: "#4caf6e",
             padding: "8px 16px 6px",
             display: "flex",
             alignItems: "center",
@@ -98,7 +98,7 @@ export default function IPhoneFrame({
 
           {/* WhatsApp nav bar */}
           <div style={{
-            background: "#25d366",
+            background: "#4caf6e",
             padding: "8px 12px 10px",
             display: "flex",
             alignItems: "center",
@@ -107,7 +107,7 @@ export default function IPhoneFrame({
           }}>
             <div style={{
               width: 38, height: 38, borderRadius: "50%",
-              background: "linear-gradient(135deg, #25d366, #1ea84f)",
+              background: "linear-gradient(135deg, #4caf6e, #3d9b5a)",
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 15, fontWeight: 700, color: "#fff",
               fontFamily: "var(--font-sans)", flexShrink: 0,

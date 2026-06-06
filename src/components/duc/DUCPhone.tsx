@@ -76,18 +76,18 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
         <div style={{ position: "absolute", right: -3, top: 148, width: 3, height: 72, background: "#2a2a2a", borderRadius: "0 2px 2px 0" }} />
         <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
           {/* Dynamic island */}
-          <div style={{ position: "relative", background: "#202c33", paddingTop: 12, display: "flex", justifyContent: "center" }}>
+          <div style={{ position: "relative", background: "#ffffff", paddingTop: 12, display: "flex", justifyContent: "center" }}>
             <div style={{ width: 120, height: 34, background: "#000", borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
               <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#1a1a1a", border: "1px solid #333" }} />
               <div style={{ width: 56, height: 16, borderRadius: 8, background: "#1a1a1a" }} />
             </div>
           </div>
           {/* Status */}
-          <div style={{ background: "#202c33", padding: "8px 16px 6px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", fontWeight: 600 }}>
+          <div style={{ background: "#ffffff", padding: "8px 16px 6px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", fontWeight: 600 }}>
             <span>9:41</span><span style={{ fontSize: 10, fontWeight: 700 }}>100%</span>
           </div>
           {/* WA Header */}
-          <div style={{ background: "#202c33", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
+          <div style={{ background: "#ffffff", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
             <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #25d366, #1da851)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 700, color: "#18181b" }}>D</div>
             <div>
               <p style={{ margin: 0, color: "#18181b", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)" }}>Daily Upgrade Club</p>
@@ -101,7 +101,7 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
             </div>
             {phase.msg1Visible && (
               <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
-                <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
+                <div style={{ background: "#ffffff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
                   <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
                   <p style={{ margin: 0, color: "#25d366", fontSize: 11, fontWeight: 700, fontFamily: "var(--font-sans)" }}>🎯 Day 12 — Focus Start Habit</p>
                   <p style={{ margin: "5px 0 0", color: "rgba(255,255,255,0.88)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>Before opening any app today, write your ONE most important task.</p>
@@ -124,7 +124,7 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
             )}
             {phase.msg2Visible && (
               <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
-                <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
+                <div style={{ background: "#ffffff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
                   <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
                   <p style={{ margin: 0, color: "#18181b", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>Done counted ✅</p>
                   <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.75)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.6 }}>

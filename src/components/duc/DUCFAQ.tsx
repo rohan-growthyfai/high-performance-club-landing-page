@@ -39,8 +39,8 @@ export default function DUCFAQ() {
                   {faq.q}
                 </span>
                 <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
-                  <div className={`w-4 h-px bg-current transition-all duration-300 ${open === i ? "text-[#25d366]" : "text-[#a1a1aa] group-hover:text-[#71717a]"}`} />
-                  <div className={`absolute w-px h-4 bg-current transition-all duration-300 ${open === i ? "opacity-0 text-[#25d366]" : "opacity-100 text-[#a1a1aa] group-hover:text-[#71717a]"}`} />
+                  <div className={`w-4 h-px bg-current transition-all duration-300 ${open === i ? "text-[#25d366]" : "text-foreground-subtle group-hover:text-[#71717a]"}`} />
+                  <div className={`absolute w-px h-4 bg-current transition-all duration-300 ${open === i ? "opacity-0 text-[#25d366]" : "opacity-100 text-foreground-subtle group-hover:text-[#71717a]"}`} />
                 </span>
               </button>
               <div className="grid transition-all duration-300 ease-out" style={{ gridTemplateRows: open === i ? "1fr" : "0fr" }}>

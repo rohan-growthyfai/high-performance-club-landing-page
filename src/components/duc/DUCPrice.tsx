@@ -21,22 +21,22 @@ export default function DUCPrice() {
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Pricing</p>
           <p style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
             Less than one cup of<br />
-            <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>coffee a month.</span>
+            <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>coffee a month.</span>
           </p>
         </div>
 
         {/* Pricing card */}
-        <div className="relative rounded-3xl overflow-hidden border border-[#25d366]/20" style={{ background: "linear-gradient(145deg, #111 0%, #0d0d0d 100%)" }}>
-          {/* Top glow line */}
-          <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #25d366, transparent)" }} />
+        <div className="relative rounded-3xl overflow-hidden border border-green-200 bg-white shadow-lg">
+          {/* Top accent line */}
+          <div className="absolute top-0 left-0 right-0 h-1 rounded-t-3xl" style={{ background: "linear-gradient(90deg, #25d366, #1da851)" }} />
 
-          <div className="p-8 sm:p-10">
+          <div className="p-8 sm:p-10 pt-10">
             {/* Price */}
             <div className="flex items-end gap-3 mb-8">
-              <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#25d366" }}>₹99</p>
+              <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#1da851" }}>₹99</p>
               <div className="mb-3">
                 <p className="text-foreground text-lg font-semibold">/month</p>
-                <p className="text-[#71717a] text-sm">Cancel anytime</p>
+                <p className="text-foreground-muted text-sm">Cancel anytime</p>
               </div>
             </div>
 
@@ -63,7 +63,7 @@ export default function DUCPrice() {
               Start Daily Upgrade Club <ArrowRight className="w-5 h-5" />
             </a>
 
-            <p className="text-center text-[#a1a1aa] text-xs mt-4">
+            <p className="text-center text-foreground-subtle text-xs mt-4">
               Cancel anytime · No app needed · Starts on WhatsApp
             </p>
           </div>

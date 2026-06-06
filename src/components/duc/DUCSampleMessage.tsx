@@ -7,7 +7,7 @@ export default function DUCSampleMessage() {
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">What you receive</p>
           <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
             This lands on your<br />
-            <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>WhatsApp every morning.</span>
+            <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>WhatsApp every morning.</span>
           </h2>
         </div>
 
@@ -27,7 +27,7 @@ export default function DUCSampleMessage() {
               </div>
               {/* Message */}
               <div className="p-5 bg-section-cream">
-                <div className="bg-[#202c33] rounded-xl rounded-tl-none p-5 max-w-sm">
+                <div className="bg-white rounded-xl rounded-tl-none p-5 max-w-sm">
                   <p className="text-[#25d366] text-xs font-bold mb-3">🎯 Day 4 — Focus Start Habit</p>
                   <p className="text-white/90 text-sm leading-relaxed mb-4">
                     Before opening Instagram, YouTube, or WhatsApp today, write down your first important task.

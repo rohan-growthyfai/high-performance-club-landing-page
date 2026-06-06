@@ -15,16 +15,16 @@ export default function DUCTracking() {
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
               No habit tracker app. No streak calendar to update. No dashboard to log into.
             </p>
-            <p className="text-[#a1a1aa] text-base mt-4 leading-relaxed">
+            <p className="text-foreground-subtle text-base mt-4 leading-relaxed">
               Complete your habit. Reply <span className="text-foreground font-bold">DONE</span>. We track everything automatically.
             </p>
 
             {/* DONE button visual */}
             <div className="mt-10">
-              <div className="inline-flex items-center justify-center rounded-2xl font-display font-black text-5xl text-black px-12 py-6" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 48px rgba(37,211,102,0.4), 0 4px 16px rgba(0,0,0,0.5)", letterSpacing: "-0.03em" }}>
+              <div className="inline-flex items-center justify-center rounded-2xl font-display font-black text-5xl text-white px-12 py-6" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 48px rgba(37,211,102,0.4), 0 4px 16px rgba(0,0,0,0.5)", letterSpacing: "-0.03em" }}>
                 DONE
               </div>
-              <p className="text-[#a1a1aa] text-xs mt-3 uppercase tracking-wider">That&apos;s all you need to type</p>
+              <p className="text-foreground-subtle text-xs mt-3 uppercase tracking-wider">That&apos;s all you need to type</p>
             </div>
           </div>
 
@@ -37,7 +37,7 @@ export default function DUCTracking() {
                 <p className="text-[#52525b] text-xs">Automatic reply from Daily Upgrade Club</p>
               </div>
               <div className="p-5 bg-section-cream">
-                <div className="bg-[#202c33] rounded-xl rounded-tl-none p-5">
+                <div className="bg-white rounded-xl rounded-tl-none p-5">
                   <p className="text-foreground text-sm font-medium mb-5">Done counted ✅</p>
                   <div className="space-y-3">
                     {[

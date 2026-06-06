@@ -20,7 +20,7 @@ export default function DUCValueStack() {
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
               Nine things.<br />
-              <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>One price.</span>
+              <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>One price.</span>
             </h2>
             <div className="text-right">
               <p className="font-display font-black text-5xl" style={{ color: "#25d366", letterSpacing: "-0.03em" }}>₹99</p>
@@ -30,22 +30,22 @@ export default function DUCValueStack() {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-3xl overflow-hidden">
-          {items.map((item, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {items.map((item) => (
             <div
               key={item.title}
-              className={`relative p-7 hover:bg-white transition-colors ${item.highlight ? "bg-white" : "bg-section-cream"}`}
+              className={`relative p-6 rounded-2xl border hover:shadow-sm transition-shadow ${item.highlight ? "bg-white border-accent/20 shadow-sm" : "bg-white border-border-subtle"}`}
             >
-              {item.highlight && <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #25d366, transparent)" }} />}
+              {item.highlight && <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl" style={{ background: "linear-gradient(90deg, transparent, #1da851, transparent)" }} />}
               <span className="text-2xl mb-4 block">{item.emoji}</span>
-              <p className="text-foreground font-bold text-sm mb-2">{item.title}</p>
-              <p className="text-[#71717a] text-xs leading-relaxed">{item.detail}</p>
+              <p className="text-foreground font-bold text-sm mb-1.5">{item.title}</p>
+              <p className="text-foreground-muted text-xs leading-relaxed">{item.detail}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-10 flex justify-center">
-          <a href="#duc-join" className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-base font-bold text-black" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 32px rgba(37,211,102,0.3)" }}>
+          <a href="#duc-join" className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-base font-bold text-white" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 32px rgba(37,211,102,0.3)" }}>
             Get everything for ₹99/month →
           </a>
         </div>

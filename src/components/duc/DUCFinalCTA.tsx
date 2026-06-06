@@ -35,13 +35,13 @@ export default function DUCFinalCTA() {
             href="https://rzp.io/l/daily-upgrade-club"
             target="_blank"
             rel="noopener noreferrer"
-            className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-lg font-bold text-black transition-all hover:-translate-y-0.5"
+            className="group inline-flex items-center gap-3 px-10 py-5 rounded-full text-lg font-bold text-white transition-all hover:-translate-y-0.5"
             style={{ background: "linear-gradient(135deg, #25d366 0%, #1da851 100%)", boxShadow: "0 0 48px rgba(37,211,102,0.45), 0 4px 24px rgba(0,0,0,0.5)" }}
           >
             Join Daily Upgrade Club
             <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
           </a>
-          <p className="text-[#a1a1aa] text-sm">Cancel anytime · No app needed · Starts instantly</p>
+          <p className="text-foreground-subtle text-sm">Cancel anytime · No app needed · Starts instantly</p>
         </div>
       </div>
     </section>

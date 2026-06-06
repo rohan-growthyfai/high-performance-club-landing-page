@@ -8,12 +8,12 @@ export default function DUCVault() {
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Habit library</p>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
               Your habits<br />
-              <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>compound over time.</span>
+              <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>compound over time.</span>
             </h2>
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
               Every month you get a clean PDF of all 30 habits. Save it. Revisit it. Build your personal habit library.
             </p>
-            <p className="text-[#a1a1aa] text-sm mt-4">The Habit Vault grows the longer you stay.</p>
+            <p className="text-foreground-subtle text-sm mt-4">The Habit Vault grows the longer you stay.</p>
           </div>
 
           {/* Vault visual */}
@@ -25,7 +25,7 @@ export default function DUCVault() {
                 </div>
                 <div className="flex-1">
                   <p className={`text-sm font-medium ${i === 0 ? "text-white" : "text-[#52525b]"}`}>{g} Habit Guide</p>
-                  <p className="text-[#a1a1aa] text-xs mt-0.5">30 habits · PDF · Month {i + 1}</p>
+                  <p className="text-foreground-subtle text-xs mt-0.5">30 habits · PDF · Month {i + 1}</p>
                 </div>
                 {i === 0 && <span className="text-[#25d366] text-xs font-bold border border-[#25d366]/30 rounded-full px-2 py-0.5">Current</span>}
                 {i > 0 && <div className="w-4 h-4 rounded-full bg-border-subtle border border-border flex items-center justify-center"><div className="w-1.5 h-1.5 rounded-full bg-[#444]" /></div>}
@@ -33,7 +33,7 @@ export default function DUCVault() {
             ))}
             <div className="flex items-center gap-4 p-4 rounded-xl border border-dashed border-border">
               <div className="w-8 h-10 rounded-md bg-section-elevated flex items-center justify-center text-sm">+</div>
-              <p className="text-[#a1a1aa] text-sm">More themes added every month</p>
+              <p className="text-foreground-subtle text-sm">More themes added every month</p>
             </div>
           </div>
         </div>

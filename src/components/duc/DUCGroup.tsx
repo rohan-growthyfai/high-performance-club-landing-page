@@ -8,7 +8,7 @@ export default function DUCGroup() {
             <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Community</p>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
               Habits are easier<br />
-              <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>with people.</span>
+              <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>with people.</span>
             </h2>
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
               A private WhatsApp group where members check in, share wins, and hold each other accountable.

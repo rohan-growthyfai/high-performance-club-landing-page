@@ -16,16 +16,16 @@ export default function DUCScorecard() {
 
               {/* Big number */}
               <div className="flex items-end gap-2 mb-6">
-                <p className="font-display font-black text-7xl text-white tabular-nums" style={{ letterSpacing: "-0.04em", lineHeight: 1 }}>5</p>
-                <p className="text-[#71717a] text-2xl mb-2 font-light">/7</p>
-                <p className="text-[#71717a] text-sm mb-3 ml-1">habits this week</p>
+                <p className="font-display font-black text-7xl text-foreground tabular-nums" style={{ letterSpacing: "-0.04em", lineHeight: 1 }}>5</p>
+                <p className="text-foreground-muted text-2xl mb-2 font-light">/7</p>
+                <p className="text-foreground-muted text-sm mb-3 ml-1">habits this week</p>
               </div>
 
               {/* Week grid */}
               <div className="flex gap-1.5 mb-8">
                 {["M","T","W","T","F","S","S"].map((d, i) => (
                   <div key={d + i} className="flex-1 flex flex-col items-center gap-1.5">
-                    <div className={`w-full h-8 rounded-lg flex items-center justify-center text-xs font-bold ${i < 5 ? "text-black" : "bg-border-subtle text-[#a1a1aa]"}`} style={i < 5 ? { background: "linear-gradient(135deg, #25d366, #1da851)" } : {}}>{i < 5 ? "✓" : "—"}</div>
+                    <div className={`w-full h-8 rounded-lg flex items-center justify-center text-xs font-bold ${i < 5 ? "text-white" : "bg-border-subtle text-foreground-subtle"}`} style={i < 5 ? { background: "linear-gradient(135deg, #25d366, #1da851)" } : {}}>{i < 5 ? "✓" : "—"}</div>
                     <p className="text-[#71717a] text-[9px] uppercase">{d}</p>
                   </div>
                 ))}
@@ -41,7 +41,7 @@ export default function DUCScorecard() {
                     <p className="text-[#71717a] text-xs">{row.label}</p>
                     <div className="text-right">
                       <p className="text-foreground text-xs font-bold">{row.value}</p>
-                      <p className="text-[#a1a1aa] text-[10px]">{row.sub}</p>
+                      <p className="text-foreground-subtle text-[10px]">{row.sub}</p>
                     </div>
                   </div>
                 ))}
@@ -60,7 +60,7 @@ export default function DUCScorecard() {
             <p className="text-[#71717a] text-lg leading-relaxed mt-6">
               Every week, a simple progress report arrives on WhatsApp. You see your consistency score, current streak, and next target.
             </p>
-            <p className="text-[#a1a1aa] text-base mt-4 leading-relaxed italic">Simple. Slightly annoying. Very effective.</p>
+            <p className="text-foreground-subtle text-base mt-4 leading-relaxed italic">Simple. Slightly annoying. Very effective.</p>
           </div>
 
         </div>

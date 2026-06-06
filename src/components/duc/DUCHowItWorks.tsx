@@ -26,7 +26,7 @@ export default function DUCHowItWorks() {
               <div key={step.step} className={`relative flex items-start gap-6 py-8 ${i < steps.length - 1 ? "border-b border-border-subtle" : ""}`}>
                 {/* Number circle */}
                 <div className="relative z-10 w-10 h-10 rounded-full border border-[#25d366]/30 bg-section-white flex items-center justify-center flex-shrink-0" style={{ boxShadow: i === 0 ? "0 0 16px rgba(37,211,102,0.2)" : "none" }}>
-                  <span className="text-xs font-bold" style={{ color: i === 0 ? "#25d366" : "#444" }}>{step.step}</span>
+                  <span className="text-xs font-bold" style={{ color: i === 0 ? "#1da851" : "#a1a1aa" }}>{step.step}</span>
                 </div>
                 <div className="pt-1">
                   <p className="text-foreground font-bold text-base mb-1">{step.title}</p>
@@ -38,7 +38,7 @@ export default function DUCHowItWorks() {
         </div>
 
         <div className="mt-12 text-center">
-          <a href="#duc-join" className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-base font-bold text-black" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
+          <a href="#duc-join" className="inline-flex items-center gap-2 px-10 py-4 rounded-full text-base font-bold text-white" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
             Start My Daily Upgrade →
           </a>
         </div>

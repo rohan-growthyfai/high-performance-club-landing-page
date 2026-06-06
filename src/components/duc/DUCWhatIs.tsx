@@ -32,7 +32,7 @@ export default function DUCWhatIs() {
                   {l.icon}
                 </div>
                 <div>
-                  <p className="text-base text-[#ccc] leading-relaxed">
+                  <p className="text-base text-foreground-muted leading-relaxed">
                     <strong className="text-foreground text-lg">{l.bold}</strong>{l.rest}
                   </p>
                 </div>
@@ -42,21 +42,21 @@ export default function DUCWhatIs() {
         </div>
 
         {/* Bottom row */}
-        <div className="mt-20 grid grid-cols-3 gap-6 rounded-2xl overflow-hidden">
+        <div className="mt-20 grid grid-cols-3 gap-4">
           {[
             { label: "No separate app", icon: "🚫" },
             { label: "No dashboard login", icon: "🔓" },
             { label: "No long lectures", icon: "🎬" },
           ].map(item => (
-            <div key={item.label} className="bg-section-white flex flex-col items-center justify-center gap-3 py-8 px-4">
+            <div key={item.label} className="bg-white border border-border-subtle rounded-2xl flex flex-col items-center justify-center gap-3 py-8 px-4">
               <span className="text-2xl">{item.icon}</span>
-              <p className="text-sm text-[#71717a] font-medium text-center">{item.label}</p>
+              <p className="text-sm text-foreground-muted font-medium text-center">{item.label}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-10 text-center">
-          <a href="#duc-join" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-black" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
+          <a href="#duc-join" className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-sm font-bold text-white" style={{ background: "linear-gradient(135deg, #25d366, #1da851)", boxShadow: "0 0 24px rgba(37,211,102,0.25)" }}>
             Start for ₹99/month →
           </a>
         </div>

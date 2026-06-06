@@ -17,21 +17,21 @@ export default function DUCThemes() {
           <div className="flex flex-col lg:flex-row lg:items-end gap-6 lg:justify-between">
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
               One month.<br />
-              <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>One focus.</span>
+              <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>One focus.</span>
             </h2>
             <p className="text-[#71717a] text-sm max-w-xs leading-relaxed">No random tips. Every month follows one focused theme so your habits compound.</p>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
           {themes.map(theme => (
-            <div key={theme.name} className="bg-section-cream p-7 hover:bg-white transition-colors group">
+            <div key={theme.name} className="bg-white border border-border-subtle rounded-2xl p-6 hover:shadow-md transition-shadow group">
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl">{theme.icon}</span>
-                <div className="h-px flex-1 opacity-0 group-hover:opacity-100 transition-opacity" style={{ background: theme.color }} />
+                <div className="h-0.5 flex-1 rounded-full opacity-40" style={{ background: theme.color }} />
               </div>
-              <p className="font-bold text-white text-sm mb-2">{theme.name}</p>
-              <p className="text-[#71717a] text-xs leading-relaxed">{theme.desc}</p>
+              <p className="font-bold text-foreground text-sm mb-1.5">{theme.name}</p>
+              <p className="text-foreground-muted text-xs leading-relaxed">{theme.desc}</p>
             </div>
           ))}
         </div>

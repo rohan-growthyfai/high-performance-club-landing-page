@@ -27,37 +27,37 @@ export default function DUCForWho() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-6 rounded-3xl overflow-hidden">
+        <div className="grid sm:grid-cols-2 gap-6">
           {/* For you */}
-          <div className="bg-section-white p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#25d366] mb-6">This is for you if…</p>
+          <div className="bg-green-50 border border-green-100 rounded-3xl p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-green-700 mb-6">This is for you if…</p>
             <div className="space-y-4">
               {forYou.map(item => (
                 <div key={item} className="flex items-start gap-3">
-                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.25)" }}>
-                    <span className="text-[#25d366] text-[10px]">✓</span>
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-green-500/15 border border-green-500/30">
+                    <span className="text-green-600 text-[10px] font-bold">✓</span>
                   </div>
-                  <p className="text-[#52525b] text-sm leading-relaxed">{item}</p>
+                  <p className="text-foreground-muted text-sm leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* Not for you */}
-          <div className="bg-section-cream p-8">
-            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-400 mb-6">This is not for you if…</p>
+          <div className="bg-white border border-border-subtle rounded-3xl p-8">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-red-500 mb-6">This is not for you if…</p>
             <div className="space-y-4">
               {notForYou.map(item => (
                 <div key={item} className="flex items-start gap-3">
                   <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5 bg-red-500/10 border border-red-500/20">
                     <div className="w-2 h-0.5 bg-red-400 rounded-full" />
                   </div>
-                  <p className="text-[#71717a] text-sm leading-relaxed">{item}</p>
+                  <p className="text-foreground-muted text-sm leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
             <div className="mt-8 pt-6 border-t border-border-subtle">
-              <p className="text-[#a1a1aa] text-xs italic leading-relaxed">This is simple, but it still needs participation. We send the habit. You do the habit. That&apos;s where the momentum begins.</p>
+              <p className="text-foreground-subtle text-xs italic leading-relaxed">This is simple, but it still needs participation. We send the habit. You do the habit. That&apos;s where the momentum begins.</p>
             </div>
           </div>
         </div>

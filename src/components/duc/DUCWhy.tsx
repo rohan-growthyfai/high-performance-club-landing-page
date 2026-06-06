@@ -10,7 +10,7 @@ export default function DUCWhy() {
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">The real problem</p>
           <p style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", lineHeight: 1.2, letterSpacing: "-0.02em", color: "#18181b", fontWeight: 700, maxWidth: "36ch" }}>
             You already know what to do. You don&apos;t need more advice.{" "}
-            <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>You need a system that reminds you daily.</span>
+            <span style={{ color: "#71717a", fontStyle: "italic", fontWeight: 400 }}>You need a system that reminds you daily.</span>
           </p>
         </div>
 

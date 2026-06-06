@@ -10,13 +10,13 @@ const STATS = [
 
 export default function DUCHero() {
   return (
-    <section className="relative min-h-[calc(100vh-68px)] flex flex-col justify-center overflow-hidden mesh-bg">
+    <section className="relative overflow-hidden mesh-bg">
 
       {/* Soft glow spots */}
       <div className="pointer-events-none absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full opacity-15" style={{ background: "radial-gradient(circle, #25d366 0%, transparent 70%)" }} />
       <div className="pointer-events-none absolute -bottom-40 -right-20 w-[500px] h-[500px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #b8853a 0%, transparent 70%)" }} />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-16 lg:py-24 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-14 lg:py-20 w-full">
 
         {/* Top badge */}
         <div className="mb-10">

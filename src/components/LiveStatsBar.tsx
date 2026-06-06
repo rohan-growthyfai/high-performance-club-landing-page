@@ -53,7 +53,7 @@ export default function LiveStatsBar() {
         <div className="flex justify-center mb-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-border shadow-sm">
             <span className="relative flex w-2.5 h-2.5">
-              <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-70" style={{ background: "#25d366" }}" />
+              <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-70" style={{ background: "#25d366" }} />
               <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#25d366" }} />
             </span>
             <span className="text-sm font-bold text-foreground-muted tracking-wider uppercase">Live</span>
@@ -125,7 +125,7 @@ function StatCard({
     <div className="text-center bg-white rounded-2xl p-6 border border-border-subtle shadow-sm relative hover-glow">
       {live && (
         <span className="absolute top-3 right-3 flex w-2 h-2">
-          <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-70" style={{ background: "#25d366" }}" />
+          <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-70" style={{ background: "#25d366" }} />
           <span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#25d366" }} />
         </span>
       )}

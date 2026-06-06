@@ -93,7 +93,7 @@ export default function Comparison() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <a href="#signup" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
+          <a href="#signup-1" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5">
             I Want This!!!
           </a>
         </div>

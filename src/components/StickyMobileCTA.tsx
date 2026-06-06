@@ -27,7 +27,7 @@ export default function StickyMobileCTA() {
           Free 7-day challenge
         </p>
         <a
-          href="#signup"
+          href="#signup-1"
           className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base font-bold"
         >
           Join FREE on WhatsApp

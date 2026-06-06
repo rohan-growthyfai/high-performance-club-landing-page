@@ -92,7 +92,7 @@ export default function BonusStack() {
 
         <div className="text-center mt-12">
           <a
-            href="#signup"
+            href="#signup-1"
             className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl"
           >
             Get All of This Free →

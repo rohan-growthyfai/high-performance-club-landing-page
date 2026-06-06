@@ -38,7 +38,7 @@ export default function CertificateReveal() {
             </p>
 
             <a
-              href="#signup"
+              href="#signup-1"
               className="btn-primary inline-flex items-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-lg sm:text-xl w-full sm:w-auto justify-center"
             >
               I Want My Certificate →

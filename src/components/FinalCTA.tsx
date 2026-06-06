@@ -48,7 +48,7 @@ export default function FinalCTA() {
             </div>
 
             <a
-              href="#signup"
+              href="#signup-1"
               className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl group w-full sm:w-auto"
             >
               Join Free on WhatsApp

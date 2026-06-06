@@ -70,7 +70,7 @@ export default function Hero() {
             {/* CTA */}
             <div className="mt-6 animate-fade-up delay-300 inline-flex flex-col gap-2">
               <a
-                href="#signup"
+                href="#signup-1"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold group"
               >
                 Join FREE on WhatsApp

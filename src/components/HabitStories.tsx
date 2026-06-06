@@ -156,7 +156,7 @@ export default function HabitStories() {
               </p>
             </div>
             <a
-              href="#signup"
+              href="#signup-1"
               className="mt-5 btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl self-start"
             >
               Start now →

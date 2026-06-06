@@ -22,7 +22,7 @@ export default function Header() {
 
         {/* CTA */}
         <a
-          href="#signup"
+          href="#signup-1"
           className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-accent hover:bg-accent-dim transition-colors px-4 py-2 rounded-full whitespace-nowrap"
         >
           Join FREE on WhatsApp

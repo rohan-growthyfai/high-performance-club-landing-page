@@ -93,7 +93,7 @@ export default function ValueStack() {
               </p>
             </div>
             <a
-              href="#signup"
+              href="#signup-1"
               className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
               Join Completely FREE Today

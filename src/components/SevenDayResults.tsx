@@ -92,7 +92,7 @@ export default function SevenDayResults() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-3">
           <a
-            href="#signup"
+            href="#signup-1"
             className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:-translate-y-0.5 text-center"
           >
             I want these results — join free →

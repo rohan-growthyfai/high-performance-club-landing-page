@@ -2,8 +2,8 @@ import { Check, X } from "lucide-react";
 
 function GreenTick() {
   return (
-    <span className="inline-flex items-center justify-center w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-green-100 flex-shrink-0">
-      <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-green-600 stroke-[3]" />
+    <span className="inline-flex items-center justify-center w-4 h-4 sm:w-6 sm:h-6 rounded-full bg-accent/10 flex-shrink-0">
+      <Check className="w-2.5 h-2.5 sm:w-3.5 sm:h-3.5 text-accent stroke-[3]" />
     </span>
   );
 }
@@ -76,7 +76,7 @@ export default function Comparison() {
                 <div className="flex items-start gap-3">
                   <GreenTick />
                   <div>
-                    <span className="text-sm text-green-700 font-bold uppercase tracking-wider">This challenge: </span>
+                    <span className="text-sm text-accent font-bold uppercase tracking-wider">This challenge: </span>
                     <span className="text-foreground text-base">{row.us}</span>
                   </div>
                 </div>

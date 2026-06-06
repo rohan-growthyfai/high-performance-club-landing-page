@@ -13,8 +13,8 @@ export default function SignupSection() {
         <div className="flex justify-center mb-8">
           <div className="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white border border-border shadow-sm">
             <span className="relative flex w-2.5 h-2.5">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex w-2.5 h-2.5 rounded-full bg-green-500" />
+              <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#25d366" }}" />
+              <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#25d366" }} />
             </span>
             <Users className="w-4 h-4 text-foreground-muted" />
             <span className="text-sm text-foreground-muted">

@@ -155,8 +155,8 @@ export default function LiveEnrollmentPopup() {
 
             {/* Live dot */}
             <span className="relative flex w-2 h-2 flex-shrink-0">
-              <span className="absolute inline-flex w-full h-full rounded-full bg-green-400 opacity-75 animate-ping" />
-              <span className="relative inline-flex w-2 h-2 rounded-full bg-green-500" />
+              <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#25d366" }}" />
+              <span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#25d366" }} />
             </span>
           </div>
         </div>

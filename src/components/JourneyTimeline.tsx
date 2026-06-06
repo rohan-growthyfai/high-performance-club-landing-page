@@ -45,7 +45,7 @@ const days = [
     hook: "Works in 30 seconds. You'll use it for life.",
     area: "Mind Space",
     color: "from-green-50 to-green-100/50",
-    border: "border-green-200",
+    border: "border-accent/30",
     icon: "🫁",
   },
   {

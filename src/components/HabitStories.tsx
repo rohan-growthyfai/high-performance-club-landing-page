@@ -213,7 +213,7 @@ function StoryCard({ story: s, index }: { story: Story; index: number }) {
         <div className="flex items-center justify-center text-accent">
           <ArrowRight className="w-6 h-6 rotate-90" />
         </div>
-        <div className="bg-green-50/60 border-l-4 border-green-400 rounded-r-lg p-3">
+        <div className="bg-accent/5 border-l-4 border-accent rounded-r-lg p-3">
           <div className="flex items-center gap-2 mb-1">
             <span className="badge-after text-[10px] uppercase px-2 py-0.5 rounded">
               After

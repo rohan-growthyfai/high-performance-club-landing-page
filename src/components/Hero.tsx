@@ -41,9 +41,9 @@ export default function Hero() {
           <div className="lg:col-span-7 text-center lg:text-left">
 
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-200 mb-5 animate-fade-up">
-              <span className="w-2.5 h-2.5 rounded-full bg-green-500 inline-block" />
-              <span className="text-sm font-bold text-green-700 tracking-wide">FREE 7-Day WhatsApp Challenge</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.3)" }}>
+              <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#25d366" }} />
+              <span className="text-sm font-bold tracking-wide" style={{ color: "#1ea84f" }}>FREE 7-Day WhatsApp Challenge</span>
             </div>
 
             {/* Headline */}

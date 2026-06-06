@@ -107,7 +107,7 @@ export default function IPhoneFrame({
           }}>
             <div style={{
               width: 38, height: 38, borderRadius: "50%",
-              background: "linear-gradient(135deg, #b8853a, #8a6428)",
+              background: "linear-gradient(135deg, #1da851, #178a42)",
               display: "flex", alignItems: "center", justifyContent: "center",
               fontSize: 15, fontWeight: 700, color: "#fff",
               fontFamily: "var(--font-sans)", flexShrink: 0,

@@ -20,9 +20,9 @@ const waypoints = [
     emoji: "📊",
     title: "Rate yourself today",
     desc: "You give yourself a score in 4 areas: Energy, Focus, Relationships, and Calmness. This tells us where you are right now.",
-    color: "#b8853a",
+    color: "#1da851",
     bg: "#fef9ec",
-    border: "#b8853a",
+    border: "#1da851",
     isCheckpoint: true,
   },
   {
@@ -360,7 +360,7 @@ export default function CuriosityBullets() {
                 <path
                   d={ROAD_PATH_D}
                   fill="none"
-                  stroke="#b8853a"
+                  stroke="#1da851"
                   strokeWidth={5}
                   strokeLinecap="round"
                   strokeDasharray={`${(pathRef.current?.getTotalLength() ?? 0) * (activeIdx / (N - 1))} 9999`}
@@ -521,7 +521,7 @@ export default function CuriosityBullets() {
                                 <span style={{
                                   fontSize: 10,
                                   fontWeight: 700,
-                                  color: wp.isCheckpoint ? (wp.id === "start" ? "#b8853a" : "#16a34a") : "#b8853a",
+                                  color: wp.isCheckpoint ? (wp.id === "start" ? "#1da851" : "#16a34a") : "#1da851",
                                 }}>
                                   {wp.isCheckpoint
                                     ? (wp.id === "start"
@@ -596,7 +596,7 @@ export default function CuriosityBullets() {
           <div
             className="absolute left-[20px] top-0 w-5 rounded-full transition-all duration-500"
             style={{
-              background: "linear-gradient(to bottom, #b8853a, #16a34a)",
+              background: "linear-gradient(to bottom, #1da851, #16a34a)",
               height: activeIdx < 0 ? 0 : `${(activeIdx / (N - 1)) * 100}%`,
               opacity: 0.5,
             }}

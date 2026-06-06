@@ -43,7 +43,7 @@ export default function BlogPostLayout({
           font-size: 17px; line-height: 1.8; color: #4b5563;
           margin-bottom: 10px;
         }
-        .blog-content a { color: #b8853a; }
+        .blog-content a { color: #1da851; }
         .callout {
           background: #fef9ec;
           border: 1px solid #f5d78e;
@@ -51,7 +51,7 @@ export default function BlogPostLayout({
         }
         .callout p { color: #6b7280 !important; margin-bottom: 16px; }
         .callout a {
-          color: #b8853a !important; font-weight: 700;
+          color: #1da851 !important; font-weight: 700;
           text-decoration: none; font-size: 15px;
         }
         .callout a:hover { text-decoration: underline; }
@@ -60,7 +60,7 @@ export default function BlogPostLayout({
         }
         .blog-content .inline-cta a {
           display: inline-block;
-          color: #b8853a !important;
+          color: #1da851 !important;
           font-weight: 700 !important;
           font-size: 16px !important;
           text-decoration: underline !important;
@@ -68,7 +68,7 @@ export default function BlogPostLayout({
           line-height: 1.6;
         }
         .blog-content .inline-cta a:hover {
-          color: #8a6428 !important;
+          color: #178a42 !important;
         }
         .blog-divider {
           height: 1px;
@@ -91,7 +91,7 @@ export default function BlogPostLayout({
         </Link>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <Link href="/blogs" style={{ fontSize: 14, color: "#9ca3af", textDecoration: "none", fontWeight: 500 }}>Blog</Link>
-          <Link href="/" style={{ background: "linear-gradient(135deg, #b8853a, #8a6428)", color: "#fff", padding: "9px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 4px 16px rgba(184,133,58,0.35)" }}>Join Free →</Link>
+          <Link href="/" style={{ background: "linear-gradient(135deg, #1da851, #178a42)", color: "#fff", padding: "9px 22px", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 4px 16px rgba(29,168,81,0.35)" }}>Join Free →</Link>
         </div>
       </header>
 
@@ -215,7 +215,7 @@ export default function BlogPostLayout({
         {/* Bottom nav */}
         <div style={{ marginTop: 72, paddingTop: 32, borderTop: "1px solid #e5e7eb", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
           <Link href="/blogs" style={{ fontSize: 14, color: "#9ca3af", textDecoration: "none", fontWeight: 600 }}>← All articles</Link>
-          <Link href="/" style={{ background: "linear-gradient(135deg, #b8853a, #8a6428)", color: "#fff", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 4px 16px rgba(184,133,58,0.3)" }}>Join free challenge →</Link>
+          <Link href="/" style={{ background: "linear-gradient(135deg, #1da851, #178a42)", color: "#fff", padding: "10px 24px", borderRadius: 999, fontSize: 14, fontWeight: 600, textDecoration: "none", boxShadow: "0 4px 16px rgba(29,168,81,0.3)" }}>Join free challenge →</Link>
         </div>
       </main>
 
@@ -224,7 +224,7 @@ export default function BlogPostLayout({
         <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club</p>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Home</Link>
-          <Link href="/blogs" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Blog</Link>
+          <Link href="/blogs" style={{ fontSize: 13, color: "#1da851", textDecoration: "none" }}>Blog</Link>
         </div>
       </footer>
       <ExitIntentPopup />

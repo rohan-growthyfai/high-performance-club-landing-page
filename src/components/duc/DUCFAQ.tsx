@@ -18,34 +18,34 @@ export default function DUCFAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
+    <section className="py-24 lg:py-32 bg-section-white border-t border-border-subtle">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <div className="mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Questions</p>
-          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
             Common questions.
           </h2>
         </div>
 
         <div className="space-y-0">
           {faqs.map((faq, i) => (
-            <div key={faq.q} className={`border-b border-white/5 ${i === 0 ? "border-t" : ""}`}>
+            <div key={faq.q} className={`border-b border-border-subtle ${i === 0 ? "border-t" : ""}`}>
               <button
                 type="button"
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full flex items-center justify-between gap-6 py-6 text-left group"
               >
-                <span className={`text-sm sm:text-base font-medium transition-colors ${open === i ? "text-white" : "text-[#888] group-hover:text-white"}`}>
+                <span className={`text-sm sm:text-base font-medium transition-colors ${open === i ? "text-white" : "text-[#52525b] group-hover:text-white"}`}>
                   {faq.q}
                 </span>
                 <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">
-                  <div className={`w-4 h-px bg-current transition-all duration-300 ${open === i ? "text-[#25d366]" : "text-[#444] group-hover:text-[#666]"}`} />
-                  <div className={`absolute w-px h-4 bg-current transition-all duration-300 ${open === i ? "opacity-0 text-[#25d366]" : "opacity-100 text-[#444] group-hover:text-[#666]"}`} />
+                  <div className={`w-4 h-px bg-current transition-all duration-300 ${open === i ? "text-[#25d366]" : "text-[#a1a1aa] group-hover:text-[#71717a]"}`} />
+                  <div className={`absolute w-px h-4 bg-current transition-all duration-300 ${open === i ? "opacity-0 text-[#25d366]" : "opacity-100 text-[#a1a1aa] group-hover:text-[#71717a]"}`} />
                 </span>
               </button>
               <div className="grid transition-all duration-300 ease-out" style={{ gridTemplateRows: open === i ? "1fr" : "0fr" }}>
                 <div className="overflow-hidden">
-                  <p className="pb-6 pr-8 text-[#666] text-sm leading-relaxed">{faq.a}</p>
+                  <p className="pb-6 pr-8 text-[#71717a] text-sm leading-relaxed">{faq.a}</p>
                 </div>
               </div>
             </div>

@@ -12,34 +12,34 @@ const items = [
 
 export default function DUCValueStack() {
   return (
-    <section className="py-24 lg:py-32 bg-[#0a0a0a] border-t border-white/5">
+    <section className="py-24 lg:py-32 bg-section-cream border-t border-border-subtle">
       <div className="max-w-5xl mx-auto px-6 lg:px-8">
 
         <div className="mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Everything included</p>
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
-            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+            <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
               Nine things.<br />
-              <span style={{ color: "#444", fontStyle: "italic", fontWeight: 400 }}>One price.</span>
+              <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>One price.</span>
             </h2>
             <div className="text-right">
               <p className="font-display font-black text-5xl" style={{ color: "#25d366", letterSpacing: "-0.03em" }}>₹99</p>
-              <p className="text-[#555] text-sm mt-1">per month</p>
+              <p className="text-[#71717a] text-sm mt-1">per month</p>
             </div>
           </div>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-3xl overflow-hidden">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 rounded-3xl overflow-hidden">
           {items.map((item, i) => (
             <div
               key={item.title}
-              className={`relative p-7 hover:bg-[#141414] transition-colors ${item.highlight ? "bg-[#141414]" : "bg-[#0a0a0a]"}`}
+              className={`relative p-7 hover:bg-white transition-colors ${item.highlight ? "bg-white" : "bg-section-cream"}`}
             >
               {item.highlight && <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #25d366, transparent)" }} />}
               <span className="text-2xl mb-4 block">{item.emoji}</span>
-              <p className="text-white font-bold text-sm mb-2">{item.title}</p>
-              <p className="text-[#666] text-xs leading-relaxed">{item.detail}</p>
+              <p className="text-foreground font-bold text-sm mb-2">{item.title}</p>
+              <p className="text-[#71717a] text-xs leading-relaxed">{item.detail}</p>
             </div>
           ))}
         </div>

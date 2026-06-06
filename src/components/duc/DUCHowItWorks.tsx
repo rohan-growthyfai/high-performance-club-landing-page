@@ -8,11 +8,11 @@ const steps = [
 
 export default function DUCHowItWorks() {
   return (
-    <section className="py-24 lg:py-32 bg-[#0f0f0f] border-t border-white/5">
+    <section className="py-24 lg:py-32 bg-section-white border-t border-border-subtle">
       <div className="max-w-3xl mx-auto px-6 lg:px-8">
         <div className="mb-16">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Step by step</p>
-          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+          <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
             How it works.
           </h2>
         </div>
@@ -23,14 +23,14 @@ export default function DUCHowItWorks() {
 
           <div className="space-y-0">
             {steps.map((step, i) => (
-              <div key={step.step} className={`relative flex items-start gap-6 py-8 ${i < steps.length - 1 ? "border-b border-white/5" : ""}`}>
+              <div key={step.step} className={`relative flex items-start gap-6 py-8 ${i < steps.length - 1 ? "border-b border-border-subtle" : ""}`}>
                 {/* Number circle */}
-                <div className="relative z-10 w-10 h-10 rounded-full border border-[#25d366]/30 bg-[#0f0f0f] flex items-center justify-center flex-shrink-0" style={{ boxShadow: i === 0 ? "0 0 16px rgba(37,211,102,0.2)" : "none" }}>
+                <div className="relative z-10 w-10 h-10 rounded-full border border-[#25d366]/30 bg-section-white flex items-center justify-center flex-shrink-0" style={{ boxShadow: i === 0 ? "0 0 16px rgba(37,211,102,0.2)" : "none" }}>
                   <span className="text-xs font-bold" style={{ color: i === 0 ? "#25d366" : "#444" }}>{step.step}</span>
                 </div>
                 <div className="pt-1">
-                  <p className="text-white font-bold text-base mb-1">{step.title}</p>
-                  <p className="text-[#666] text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-foreground font-bold text-base mb-1">{step.title}</p>
+                  <p className="text-[#71717a] text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}

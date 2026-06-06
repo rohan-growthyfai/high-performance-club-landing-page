@@ -14,14 +14,14 @@ const included = [
 
 export default function DUCPrice() {
   return (
-    <section id="duc-join" className="py-24 lg:py-32 bg-[#0a0a0a] border-t border-white/5 scroll-mt-8">
+    <section id="duc-join" className="py-24 lg:py-32 bg-section-cream border-t border-border-subtle scroll-mt-8">
       <div className="max-w-2xl mx-auto px-6 lg:px-8">
 
         <div className="text-center mb-14">
           <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-6">Pricing</p>
-          <p style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#fafafa" }}>
+          <p style={{ fontSize: "clamp(2rem, 4vw, 3rem)", lineHeight: 1.1, letterSpacing: "-0.025em", fontWeight: 800, color: "#18181b" }}>
             Less than one cup of<br />
-            <span style={{ color: "#444", fontStyle: "italic", fontWeight: 400 }}>coffee a month.</span>
+            <span style={{ color: "#a1a1aa", fontStyle: "italic", fontWeight: 400 }}>coffee a month.</span>
           </p>
         </div>
 
@@ -35,8 +35,8 @@ export default function DUCPrice() {
             <div className="flex items-end gap-3 mb-8">
               <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#25d366" }}>₹99</p>
               <div className="mb-3">
-                <p className="text-white text-lg font-semibold">/month</p>
-                <p className="text-[#555] text-sm">Cancel anytime</p>
+                <p className="text-foreground text-lg font-semibold">/month</p>
+                <p className="text-[#71717a] text-sm">Cancel anytime</p>
               </div>
             </div>
 
@@ -47,7 +47,7 @@ export default function DUCPrice() {
                   <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "rgba(37,211,102,0.15)", border: "1px solid rgba(37,211,102,0.3)" }}>
                     <div className="w-1.5 h-1.5 rounded-full bg-[#25d366]" />
                   </div>
-                  <span className="text-[#888] text-sm">{item}</span>
+                  <span className="text-[#52525b] text-sm">{item}</span>
                 </div>
               ))}
             </div>
@@ -63,7 +63,7 @@ export default function DUCPrice() {
               Start Daily Upgrade Club <ArrowRight className="w-5 h-5" />
             </a>
 
-            <p className="text-center text-[#444] text-xs mt-4">
+            <p className="text-center text-[#a1a1aa] text-xs mt-4">
               Cancel anytime · No app needed · Starts on WhatsApp
             </p>
           </div>

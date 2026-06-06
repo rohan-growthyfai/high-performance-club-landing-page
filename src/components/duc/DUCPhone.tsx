@@ -88,14 +88,14 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
           </div>
           {/* WA Header */}
           <div style={{ background: "#202c33", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10, borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #25d366, #1da851)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 700, color: "#fff" }}>D</div>
+            <div style={{ width: 38, height: 38, borderRadius: "50%", background: "linear-gradient(135deg, #25d366, #1da851)", flexShrink: 0, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16, fontWeight: 700, color: "#18181b" }}>D</div>
             <div>
-              <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)" }}>Daily Upgrade Club</p>
+              <p style={{ margin: 0, color: "#18181b", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)" }}>Daily Upgrade Club</p>
               <p style={{ margin: 0, color: phase.headerStatus === "typing…" ? "#53bdeb" : "rgba(255,255,255,0.45)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2, transition: "color 0.3s" }}>{phase.headerStatus}</p>
             </div>
           </div>
           {/* Chat */}
-          <div style={{ background: "#0b141a", minHeight: 440, padding: "12px 8px 16px", display: "flex", flexDirection: "column", gap: 6 }}>
+          <div style={{ background: "#f0ede5", minHeight: 440, padding: "12px 8px 16px", display: "flex", flexDirection: "column", gap: 6 }}>
             <div style={{ textAlign: "center", marginBottom: 6 }}>
               <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", background: "rgba(31,44,52,0.8)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>Today</span>
             </div>
@@ -115,7 +115,7 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
               <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
                 <div style={{ background: "#005c4b", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "50%", position: "relative" }}>
                   <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)" }}>DONE ✅</p>
+                  <p style={{ margin: 0, color: "#18181b", fontSize: 12, fontFamily: "var(--font-sans)" }}>DONE ✅</p>
                   <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.5)", fontSize: 10, textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center", fontFamily: "var(--font-sans)" }}>
                     <span>6:07 AM</span><Tick state={phase.reply1Ticks} />
                   </p>
@@ -126,10 +126,10 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
               <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
                 <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
                   <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>Done counted ✅</p>
+                  <p style={{ margin: 0, color: "#18181b", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>Done counted ✅</p>
                   <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.75)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.6 }}>
-                    This week: <strong style={{ color: "#fff" }}>5/7</strong> ✅<br />
-                    Month: <strong style={{ color: "#fff" }}>18/30</strong><br />
+                    This week: <strong style={{ color: "#18181b" }}>5/7</strong> ✅<br />
+                    Month: <strong style={{ color: "#18181b" }}>18/30</strong><br />
                     Streak: <strong style={{ color: "#25d366" }}>12 days 🔥</strong>
                   </p>
                   <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.4)", fontSize: 10, textAlign: "right", fontFamily: "var(--font-sans)" }}>6:07 AM</p>
@@ -140,7 +140,7 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
               <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
                 <div style={{ background: "#005c4b", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "65%", position: "relative" }}>
                   <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)" }}>12 day streak 🔥 let&apos;s go!</p>
+                  <p style={{ margin: 0, color: "#18181b", fontSize: 12, fontFamily: "var(--font-sans)" }}>12 day streak 🔥 let&apos;s go!</p>
                   <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.5)", fontSize: 10, textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center", fontFamily: "var(--font-sans)" }}>
                     <span>6:07 AM</span><Tick state={phase.reply2Ticks} />
                   </p>
@@ -148,7 +148,7 @@ export default function DUCPhone({ dark }: { dark?: boolean }) {
               </div>
             )}
           </div>
-          <div style={{ background: "#0b141a", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
+          <div style={{ background: "#f0ede5", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
             <div style={{ width: 120, height: 5, background: "rgba(255,255,255,0.25)", borderRadius: 3 }} />
           </div>
         </div>

@@ -1,6 +1,6 @@
 export default function DUCFinalCTA() {
   return (
-    <section className="py-24 lg:py-40 bg-[#0a0a0a] border-t border-white/5 relative overflow-hidden">
+    <section className="py-24 lg:py-40 bg-section-cream border-t border-border-subtle relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-10" style={{ background: "radial-gradient(circle, #25d366 0%, transparent 70%)" }} />
@@ -10,20 +10,20 @@ export default function DUCFinalCTA() {
 
         {/* Headline */}
         <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#25d366] mb-8">Start today</p>
-        <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.02, letterSpacing: "-0.03em", fontWeight: 800, color: "#fafafa" }}>
+        <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.02, letterSpacing: "-0.03em", fontWeight: 800, color: "#18181b" }}>
           One habit.<br />
           Every day.<br />
           <span style={{ color: "#25d366" }}>₹99/month.</span>
         </h2>
 
-        <p className="text-[#666] text-lg leading-relaxed mt-8 max-w-xl mx-auto">
+        <p className="text-[#71717a] text-lg leading-relaxed mt-8 max-w-xl mx-auto">
           You don&apos;t need another app. You need one small habit daily, a simple way to track it, and a system that shows up for you.
         </p>
 
         {/* Feature list — horizontal */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-8">
           {["Daily habits", "DONE tracking", "Weekly scorecards", "Monthly themes", "PDF guides", "Private group"].map(f => (
-            <span key={f} className="text-sm text-[#555] flex items-center gap-1.5">
+            <span key={f} className="text-sm text-[#71717a] flex items-center gap-1.5">
               <span className="text-[#25d366]">·</span> {f}
             </span>
           ))}
@@ -41,7 +41,7 @@ export default function DUCFinalCTA() {
             Join Daily Upgrade Club
             <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
           </a>
-          <p className="text-[#444] text-sm">Cancel anytime · No app needed · Starts instantly</p>
+          <p className="text-[#a1a1aa] text-sm">Cancel anytime · No app needed · Starts instantly</p>
         </div>
       </div>
     </section>

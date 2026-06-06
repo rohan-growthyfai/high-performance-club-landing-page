@@ -11,10 +11,10 @@ export default function DUCStickyBar() {
 
   return (
     <div className={`fixed bottom-0 left-0 right-0 z-50 transition-transform duration-300 lg:hidden ${visible ? "translate-y-0" : "translate-y-full"}`}>
-      <div className="bg-[#0f0f0f] border-t border-white/8 px-4 py-3 flex items-center justify-between gap-3">
+      <div className="bg-[#faf8f3] border-t border-border px-4 py-3 flex items-center justify-between gap-3">
         <div>
-          <p className="text-white font-bold text-sm leading-none">Daily Upgrade Club</p>
-          <p className="text-[#555] text-xs mt-0.5">₹99/month · Cancel anytime</p>
+          <p className="text-foreground font-bold text-sm leading-none">Daily Upgrade Club</p>
+          <p className="text-[#71717a] text-xs mt-0.5">₹99/month · Cancel anytime</p>
         </div>
         <a
           href="https://rzp.io/l/daily-upgrade-club"

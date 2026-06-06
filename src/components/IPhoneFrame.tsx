@@ -45,7 +45,7 @@ export default function IPhoneFrame({
           {/* Dynamic Island */}
           <div style={{
             position: "relative",
-            background: "#202c33",
+            background: "#25d366",
             paddingTop: 12,
             display: "flex",
             justifyContent: "center",
@@ -69,13 +69,13 @@ export default function IPhoneFrame({
 
           {/* Status bar */}
           <div style={{
-            background: "#202c33",
+            background: "#25d366",
             padding: "8px 16px 6px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
             fontSize: 11,
-            color: "rgba(255,255,255,0.85)",
+            color: "#fff",
             fontFamily: "var(--font-sans)",
             fontWeight: 600,
           }}>
@@ -98,12 +98,12 @@ export default function IPhoneFrame({
 
           {/* WhatsApp nav bar */}
           <div style={{
-            background: "#202c33",
+            background: "#25d366",
             padding: "8px 12px 10px",
             display: "flex",
             alignItems: "center",
             gap: 10,
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
+            borderBottom: "none",
           }}>
             <div style={{
               width: 38, height: 38, borderRadius: "50%",
@@ -116,7 +116,7 @@ export default function IPhoneFrame({
               <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)", letterSpacing: "-0.01em" }}>
                 {contactName}
               </p>
-              <p style={{ margin: 0, color: "rgba(255,255,255,0.45)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2 }}>
+              <p style={{ margin: 0, color: "rgba(255,255,255,0.75)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2 }}>
                 {contactStatus}
               </p>
             </div>
@@ -127,12 +127,12 @@ export default function IPhoneFrame({
 
           {/* Home bar */}
           <div style={{
-            background: "#0b141a",
+            background: "#efeae2",
             padding: "8px 0 12px",
             display: "flex",
             justifyContent: "center",
           }}>
-            <div style={{ width: 120, height: 5, background: "rgba(255,255,255,0.25)", borderRadius: 3 }} />
+            <div style={{ width: 120, height: 5, background: "rgba(0,0,0,0.15)", borderRadius: 3 }} />
           </div>
         </div>
       </div>

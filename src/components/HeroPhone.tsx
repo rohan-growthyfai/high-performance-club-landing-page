@@ -137,7 +137,7 @@ export default function HeroPhone() {
         <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
           {/* Dynamic Island */}
           <div style={{
-            position: "relative", background: "#202c33", paddingTop: 12,
+            position: "relative", background: "#25d366", paddingTop: 12,
             display: "flex", justifyContent: "center",
           }}>
             <div style={{
@@ -153,9 +153,9 @@ export default function HeroPhone() {
 
           {/* Status bar */}
           <div style={{
-            background: "#202c33", padding: "8px 16px 6px",
+            background: "#25d366", padding: "8px 16px 6px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
-            fontSize: 11, color: "rgba(255,255,255,0.85)", fontFamily: "var(--font-sans)", fontWeight: 600,
+            fontSize: 11, color: "#fff", fontFamily: "var(--font-sans)", fontWeight: 600,
           }}>
             <span>9:41</span>
             <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
@@ -165,51 +165,50 @@ export default function HeroPhone() {
 
           {/* WhatsApp header */}
           <div style={{
-            background: "#202c33", padding: "8px 12px 10px",
+            background: "#25d366", padding: "8px 12px 10px",
             display: "flex", alignItems: "center", gap: 10,
-            borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}>
-            <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.12)" }}>
+            <div style={{ width: 38, height: 38, borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.3)" }}>
               <img src="/hpc-logo.png" alt="High Performance Club" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
             </div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, fontFamily: "var(--font-sans)", letterSpacing: "-0.01em" }}>
                 High Performance Club
               </p>
-              <p style={{ margin: 0, color: phase.headerStatus === "typing…" ? "#53bdeb" : "rgba(255,255,255,0.45)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2, transition: "color 0.3s" }}>
+              <p style={{ margin: 0, color: phase.headerStatus === "typing…" ? "#e8f5e9" : "rgba(255,255,255,0.75)", fontSize: 11, fontFamily: "var(--font-sans)", marginTop: 2, transition: "color 0.3s" }}>
                 {phase.headerStatus}
               </p>
             </div>
           </div>
 
-          {/* Chat */}
+          {/* Chat — WhatsApp light background */}
           <div style={{
-            background: "#0b141a",
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
+            background: "#efeae2",
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
             minHeight: 440,
             padding: "12px 8px 16px",
             display: "flex", flexDirection: "column", gap: 6,
           }}>
             {/* Date pill */}
             <div style={{ textAlign: "center", marginBottom: 6 }}>
-              <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", background: "rgba(31,44,52,0.8)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>Today</span>
+              <span style={{ fontSize: 10, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>Today</span>
             </div>
 
             {/* MSG 1 — incoming curious teaser */}
             {phase.msg1Visible && (
               <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
-                <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative" }}>
-                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>
+                <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>
                     ⚡ Your Day 1 habit is ready!
                   </p>
-                  <p style={{ margin: "5px 0 0", color: "rgba(255,255,255,0.88)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
+                  <p style={{ margin: "5px 0 0", color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
                     It takes just 2 minutes to do.
                   </p>
-                  <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.88)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
+                  <p style={{ margin: "3px 0 0", color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
                     Most people feel an instant energy boost for the rest of the day — right after doing this. 🔥
                   </p>
-                  <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.55)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
+                  <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                     6:00 AM
                   </p>
                 </div>
@@ -219,10 +218,10 @@ export default function HeroPhone() {
             {/* REPLY 1 — user excited */}
             {phase.reply1Visible && (
               <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
-                <div style={{ background: "#005c4b", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "65%", position: "relative" }}>
-                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)" }}>Yes! Super excited 😀</p>
-                  <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.5)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
+                <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "65%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontFamily: "var(--font-sans)" }}>Yes! Super excited 😀</p>
+                  <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
                     <span>6:01 AM</span>
                     <Tick state={phase.reply1Ticks} />
                   </p>
@@ -233,12 +232,12 @@ export default function HeroPhone() {
             {/* MSG 2 — incoming CTA */}
             {phase.msg2Visible && (
               <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
-                <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative" }}>
-                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
+                <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
                     Register for the FREE challenge and you will receive all the habits directly on this WhatsApp. 🎯
                   </p>
-                  <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.55)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
+                  <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                     6:01 AM
                   </p>
                 </div>
@@ -248,10 +247,10 @@ export default function HeroPhone() {
             {/* REPLY 2 — user joining */}
             {phase.reply2Visible && (
               <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
-                <div style={{ background: "#005c4b", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "70%", position: "relative" }}>
-                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
-                  <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)" }}>Awesome, joining right now! 🚀</p>
-                  <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.5)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
+                <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "70%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontFamily: "var(--font-sans)" }}>Awesome, joining right now! 🚀</p>
+                  <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
                     <span>6:02 AM</span>
                     <Tick state={phase.reply2Ticks} />
                   </p>
@@ -261,8 +260,8 @@ export default function HeroPhone() {
           </div>
 
           {/* Home bar */}
-          <div style={{ background: "#0b141a", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
-            <div style={{ width: 120, height: 5, background: "rgba(255,255,255,0.25)", borderRadius: 3 }} />
+          <div style={{ background: "#efeae2", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 120, height: 5, background: "rgba(0,0,0,0.15)", borderRadius: 3 }} />
           </div>
         </div>
       </div>

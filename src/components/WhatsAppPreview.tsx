@@ -95,30 +95,30 @@ function PreviewPhone({ data: p }: { data: PhoneCardData }) {
         width={270}
       >
         <div style={{
-          background: "#0b141a",
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
+          background: "#efeae2",
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
           padding: "12px 8px 8px",
           minHeight: 380,
         }}>
           <div style={{ textAlign: "center", marginBottom: 10 }}>
-            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", background: "rgba(31,44,52,0.8)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>
+            <span style={{ fontSize: 10, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>
               {p.day}
             </span>
           </div>
 
           {/* Incoming message */}
           <div style={{ display: "flex", paddingLeft: 6, marginBottom: 6 }}>
-            <div style={{ background: "#202c33", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
-              <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
-              <p style={{ margin: 0, color: "#fff", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>
+            <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "88%", position: "relative" }}>
+              <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
+              <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>
                 {p.title}
               </p>
               {p.messages.map((msg, i) => (
-                <p key={i} style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.88)", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
+                <p key={i} style={{ margin: "4px 0 0", color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
                   {msg}
                 </p>
               ))}
-              <p style={{ margin: "4px 0 0", color: "rgba(255,255,255,0.4)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
+              <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                 {p.time}
               </p>
             </div>
@@ -126,10 +126,10 @@ function PreviewPhone({ data: p }: { data: PhoneCardData }) {
 
           {/* User reply */}
           <div style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
-            <div style={{ background: "#005c4b", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "55%", position: "relative" }}>
-              <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
-              <p style={{ margin: 0, color: "#fff", fontSize: 12, fontFamily: "var(--font-sans)" }}>✅ Done</p>
-              <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.5)", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
+            <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "55%", position: "relative" }}>
+              <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
+              <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontFamily: "var(--font-sans)" }}>✅ Done</p>
+              <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                 ✓✓
               </p>
             </div>

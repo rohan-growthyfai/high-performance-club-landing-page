@@ -124,22 +124,22 @@ function Bubble({ msg }: { msg: Message }) {
       paddingRight: isIn ? 0 : 8,
     }}>
       <div style={{
-        background: isIn ? "#202c33" : "#005c4b",
+        background: isIn ? "#fff" : "#d9fdd3",
         borderRadius: isIn ? "8px 8px 8px 0" : "8px 8px 0 8px",
         padding: "7px 10px",
         maxWidth: "83%",
         position: "relative",
       }}>
         {isIn && (
-          <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #202c33 transparent" }} />
+          <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
         )}
         {!isIn && (
-          <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #005c4b transparent" }} />
+          <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
         )}
-        <p style={{ margin: 0, color: "#fff", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5, whiteSpace: "pre-line" }}>
+        <p style={{ margin: 0, color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5, whiteSpace: "pre-line" }}>
           {msg.text}
         </p>
-        <p style={{ margin: "3px 0 0", color: "rgba(255,255,255,0.4)", fontSize: 9.5, fontFamily: "var(--font-sans)", textAlign: "right" }}>
+        <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 9.5, fontFamily: "var(--font-sans)", textAlign: "right" }}>
           {msg.time}{!isIn && " ✓✓"}
         </p>
       </div>
@@ -159,15 +159,15 @@ function ConversationPhone({ conv }: { conv: Conversation }) {
         width={260}
       >
         <div style={{
-          background: "#0b141a",
-          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23ffffff' fill-opacity='0.02' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
+          background: "#efeae2",
+          backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
           padding: "12px 0 8px",
           height: CHAT_HEIGHT,
           overflow: "hidden",
           boxSizing: "border-box",
         }}>
           <div style={{ textAlign: "center", marginBottom: 10 }}>
-            <span style={{ fontSize: 10, color: "rgba(255,255,255,0.45)", background: "rgba(31,44,52,0.8)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>
+            <span style={{ fontSize: 10, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 20, fontFamily: "var(--font-sans)" }}>
               {conv.day}
             </span>
           </div>

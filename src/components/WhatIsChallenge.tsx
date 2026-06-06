@@ -71,7 +71,7 @@ export default function WhatIsChallenge() {
         <div className="flex justify-center">
           <a
             href="#signup-1"
-            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-base sm:text-lg px-8 py-4 rounded-full shadow-lg hover:-translate-y-0.5 w-full sm:w-auto"
+            className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold w-full sm:w-auto"
           >
             I Want to Join This Challenge →
           </a>

@@ -6,7 +6,7 @@ export default function SectionCTA({ text, sub }: { text: string; sub?: string }
       )}
       <a
         href="#signup-1"
-        className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-colors text-white font-bold text-lg sm:text-xl px-10 py-5 rounded-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all"
+        className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
       >
         {text} →
       </a>

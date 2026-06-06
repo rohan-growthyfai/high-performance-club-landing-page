@@ -26,7 +26,7 @@ export default function BackToTop() {
         bg-accent text-white shadow-lg
         flex items-center justify-center
         transition-all duration-300
-        hover:bg-accent-dim hover:-translate-y-1 hover:shadow-xl
+        hover:-translate-y-1 hover:shadow-xl cursor-pointer
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}
       `}
     >

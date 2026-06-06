@@ -38,19 +38,22 @@ export async function POST(request: Request) {
     // Fallback: Pabbly webhook (keeps existing automation working)
     const pabblyUrl = process.env.PABBLY_WEBHOOK_URL;
     if (pabblyUrl) {
-      const res = await fetch(pabblyUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...body, source: "landing-page", timestamp: new Date().toISOString() }),
-      });
-      if (!res.ok) {
-        return NextResponse.json({ error: "Registration service unavailable" }, { status: 502 });
+      try {
+        await fetch(pabblyUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...body, source: "landing-page", timestamp: new Date().toISOString() }),
+        });
+      } catch (e) {
+        console.error("[signup] Pabbly fallback failed:", e);
       }
     }
 
+    // Always return ok to the user — backend failures are logged server-side
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("[signup] error:", err);
-    return NextResponse.json({ error: "Internal error" }, { status: 500 });
+    // Still return ok so users don't see errors for transient backend issues
+    return NextResponse.json({ ok: true });
   }
 }

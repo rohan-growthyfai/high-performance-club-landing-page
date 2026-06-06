@@ -23,7 +23,7 @@ export default function Header() {
         {/* CTA */}
         <a
           href="#signup-1"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-accent hover:bg-accent-dim transition-colors px-4 py-2 rounded-full whitespace-nowrap"
+          className="btn-primary inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full whitespace-nowrap"
         >
           Join FREE on WhatsApp
           <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>

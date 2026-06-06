@@ -85,7 +85,7 @@ export default function FounderStory() {
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center">This challenge exists because it worked for me first. Now it&apos;s your turn.</p>
-          <a href="#signup-1" className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-dim transition-all text-white font-bold text-base sm:text-xl px-8 py-4 sm:px-10 sm:py-5 rounded-full shadow-lg hover:-translate-y-0.5 w-full sm:w-auto text-center">
+          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl font-bold w-full sm:w-auto text-center">
             Join the Challenge — Completely FREE →
           </a>
         </div>

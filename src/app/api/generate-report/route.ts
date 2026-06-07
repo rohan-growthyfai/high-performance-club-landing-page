@@ -1,8 +1,7 @@
 import { NextResponse } from "next/server";
 import { google } from "googleapis";
 
-const DAY1_SHEET_ID = "1mhVBpvSSYVlYf_qu55Z7Vu_WBAT6-O9hGi3fYAMyDGs";
-const DAY7_SHEET_ID = "1dOQPYuX5nyD_xjDrOMq4yarxasYoJLp2rW9n1mQ8LNg";
+const MEMBERS_SHEET_ID = "1mhVBpvSSYVlYf_qu55Z7Vu_WBAT6-O9hGi3fYAMyDGs";
 
 function normalisePhone(p: string) {
   return (p || "").replace(/\D/g, "").replace(/^91/, "").slice(-10);
@@ -60,14 +59,14 @@ function buildHTML(data: Record<string, string>): string {
   const today = new Date().toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
 
   const cats = [
-    { key: "energy",       label: "Energy",               emoji: "⚡", b: data.day1Energy,       a: data.day7Energy },
-    { key: "focus",        label: "Focus & Concentration", emoji: "🎯", b: data.day1Focus,        a: data.day7Focus },
-    { key: "health",       label: "Daily Habits",          emoji: "🌿", b: data.day1Health,       a: data.day7Health },
-    { key: "relationship", label: "Self & Relationships",  emoji: "❤️", b: data.day1Relationship, a: data.day7Relationship },
+    { key: "energy", label: "Energy",                emoji: "⚡", b: data.day1Energy, a: data.day7Energy },
+    { key: "focus",  label: "Focus & Concentration", emoji: "🎯", b: data.day1Focus,  a: data.day7Focus },
+    { key: "health", label: "Daily Habits",          emoji: "🌿", b: data.day1Health, a: data.day7Health },
   ].map(c => ({ ...c, bs: score(c.b), as: score(c.a) }));
 
   const totalB = cats.reduce((s, c) => s + c.bs, 0);
   const totalA = cats.reduce((s, c) => s + c.as, 0);
+  const maxScore = cats.length * 4; // 3 categories × 4 = 12
   const growthPct = totalB > 0 ? Math.round(((totalA - totalB) / totalB) * 100) : 0;
   const growthStr = growthPct >= 0 ? `+${growthPct}%` : `${growthPct}%`;
 
@@ -156,8 +155,8 @@ body{font-family:'Inter',sans-serif;background:#faf8f3;color:#18181b;width:800px
   <div class="s-eye">Your Results</div>
   <div class="s-title">What changed in 7 days</div>
   <div class="s-grid">
-    <div class="s-card"><div class="s-num">${totalB}/16</div><div class="s-lbl">Day 1 Score</div></div>
-    <div class="s-card hl"><div class="s-num">${totalA}/16</div><div class="s-lbl">Day 7 Score</div></div>
+    <div class="s-card"><div class="s-num">${totalB}/${maxScore}</div><div class="s-lbl">Day 1 Score</div></div>
+    <div class="s-card hl"><div class="s-num">${totalA}/${maxScore}</div><div class="s-lbl">Day 7 Score</div></div>
     <div class="s-card"><div class="s-num" style="color:${growthPct>=0?"#10b981":"#ef4444"}">${growthStr}</div><div class="s-lbl">Overall Growth</div></div>
   </div>
 </div>
@@ -206,33 +205,31 @@ export async function POST(request: Request) {
     });
 
     const sheets = google.sheets({ version: "v4", auth });
-    const drive = google.drive({ version: "v3", auth });
     const phone = normalisePhone(whatsapp);
 
-    const [d1res, d7res] = await Promise.all([
-      sheets.spreadsheets.values.get({ spreadsheetId: DAY1_SHEET_ID, range: "A:Z" }),
-      sheets.spreadsheets.values.get({ spreadsheetId: DAY7_SHEET_ID, range: "A:Z" }),
-    ]);
+    // Read assessment answers directly from the Members tab (single source of truth).
+    // Columns: A=whatsapp B=first_name C=email ... K=day1_energy L=day1_focus
+    // M=day1_health N=day7_energy O=day7_focus P=day7_health
+    const memberRes = await sheets.spreadsheets.values.get({
+      spreadsheetId: MEMBERS_SHEET_ID,
+      range: "Members!A:P",
+    });
+    const memberRows = (memberRes.data.values || []).slice(1);
+    const row = memberRows.find((r: string[]) => normalisePhone(r[0]) === phone);
 
-    const rows1 = (d1res.data.values || []).slice(1);
-    const rows7 = (d7res.data.values || []).slice(1);
-    const row1 = rows1.find((r: string[]) => normalisePhone(r[3]) === phone);
-    const row7 = rows7.find((r: string[]) => normalisePhone(r[3]) === phone);
-
-    if (!row1) return NextResponse.json({ error: `Day 1 not found for ${whatsapp}` }, { status: 404 });
-    if (!row7) return NextResponse.json({ error: `Day 7 not found for ${whatsapp}` }, { status: 404 });
+    if (!row) return NextResponse.json({ error: `Member not found for ${whatsapp}` }, { status: 404 });
 
     const data = {
-      name:             row1[1] || "Friend",
-      whatsapp:         row1[3],
-      day1Energy:       row1[4] || "",
-      day1Focus:        row1[5] || "",
-      day1Health:       row1[6] || "",
-      day1Relationship: row1[7] || "",
-      day7Energy:       row7[4] || "",
-      day7Focus:        row7[5] || "",
-      day7Relationship: row7[6] || "",
-      day7Health:       row7[7] || "",
+      name:             row[1] || "Friend",
+      whatsapp:         row[0],
+      day1Energy:       row[10] || "",
+      day1Focus:        row[11] || "",
+      day1Health:       row[12] || "",
+      day1Relationship: "",
+      day7Energy:       row[13] || "",
+      day7Focus:        row[14] || "",
+      day7Health:       row[15] || "",
+      day7Relationship: "",
     };
 
     const html = buildHTML(data);

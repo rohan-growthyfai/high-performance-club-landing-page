@@ -33,8 +33,8 @@ export default function WhatIsChallenge() {
         {/* Two-column: text LEFT, 3 stacked cards RIGHT */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-          {/* LEFT — copy + CTA */}
-          <div className="text-center lg:text-left">
+          {/* LEFT — copy + CTA (center-aligned) */}
+          <div className="text-center">
             <h2 className="font-display text-3xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
               What exactly is this challenge?
             </h2>
@@ -48,7 +48,7 @@ export default function WhatIsChallenge() {
               No app. No course login. No long videos.<br className="hidden sm:block" />
               Just one small action per day for 7 days.
             </p>
-            <div className="flex justify-center lg:justify-start">
+            <div className="flex justify-center">
               <a
                 href="#signup-1"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold w-full sm:w-auto"

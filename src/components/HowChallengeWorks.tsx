@@ -112,8 +112,8 @@ export default function HowChallengeWorks() {
               })}
             </div>
 
-            {/* Repeat badge */}
-            <div className="flex justify-center lg:justify-start mt-5">
+            {/* Repeat badge — center-aligned */}
+            <div className="flex justify-center mt-5">
               <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-border shadow-sm">
                 <span className="text-base">🔁</span>
                 <span className="text-sm font-semibold text-foreground-muted">
@@ -123,8 +123,8 @@ export default function HowChallengeWorks() {
             </div>
           </div>
 
-          {/* RIGHT — copy */}
-          <div className="order-1 lg:order-2 text-center lg:text-left">
+          {/* RIGHT — copy (center-aligned) */}
+          <div className="order-1 lg:order-2 text-center">
             <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
               Simple. Tiny. Powerful.
             </p>

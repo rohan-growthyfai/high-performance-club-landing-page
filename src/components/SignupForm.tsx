@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
 import PhoneInput from "./PhoneInput";
 
@@ -31,10 +31,22 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string>("");
 
+  // Capture ?ref= referral code from the URL on load, persist it.
+  useEffect(() => {
+    try {
+      const params = new URLSearchParams(window.location.search);
+      const ref = params.get("ref");
+      if (ref) localStorage.setItem("hpc_ref", ref.slice(0, 40));
+    } catch { /* ignore */ }
+  }, []);
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
     setError("");
+
+    let referredBy = "";
+    try { referredBy = localStorage.getItem("hpc_ref") || ""; } catch { /* ignore */ }
 
     const formData = new FormData(e.currentTarget);
     const data = {
@@ -42,6 +54,7 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
       whatsapp: formData.get("whatsapp"), // already includes country code from PhoneInput hidden field
       email: formData.get("email"),
       struggle: formData.get("struggle"),
+      referredBy,
       consent: true,
     };
 

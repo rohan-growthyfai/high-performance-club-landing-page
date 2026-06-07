@@ -21,10 +21,11 @@ export async function POST(request: Request) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          name:     body.name,
-          whatsapp: body.whatsapp,
-          email:    body.email || "",
-          struggle: body.struggle || "",
+          name:       body.name,
+          whatsapp:   body.whatsapp,
+          email:      body.email || "",
+          struggle:   body.struggle || "",
+          referredBy: body.referredBy || "",
         }),
         signal: AbortSignal.timeout(8000),
       });

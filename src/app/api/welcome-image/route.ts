@@ -8,8 +8,9 @@ import { NextResponse } from "next/server";
  * Same pipeline as the report PDF: HTML → Gotenberg screenshot → Supabase.
  */
 
-function buildWelcomeHTML(firstName: string): string {
+function buildWelcomeHTML(firstName: string, startDate: string): string {
   const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
+  const dateSafe = (startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,500;0,700&display=swap');
@@ -41,12 +42,13 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .sub{position:relative;font-size:42px;font-weight:600;color:#fff;line-height:1.4;
   max-width:780px;margin-bottom:18px}
 .sub em{font-family:'Playfair Display',serif;font-style:italic;color:#4ade80;font-weight:500}
-.tag{position:relative;font-size:30px;color:rgba(255,255,255,0.5);margin-top:8px}
+.tag{position:relative;font-size:30px;color:rgba(255,255,255,0.5);margin-top:36px}
 .divider{position:relative;width:90px;height:5px;border-radius:999px;
   background:linear-gradient(90deg,#25d366,transparent);margin:40px 0}
-.footer{position:absolute;bottom:64px;left:0;right:0;text-align:center;
-  font-size:26px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;
-  color:rgba(255,255,255,0.4)}
+.datebox{position:relative;margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:8px;
+  background:rgba(37,211,102,0.1);border:2px solid rgba(37,211,102,0.35);border-radius:24px;padding:24px 44px}
+.datebox span{font-size:26px;color:rgba(255,255,255,0.55);font-weight:500}
+.datebox strong{font-family:'Playfair Display',serif;font-size:40px;color:#4ade80;font-weight:700}
 </style></head>
 <body>
 <div class="card">
@@ -56,19 +58,19 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   <div class="welcome">Welcome,</div>
   <div class="name">${safe}!</div>
   <div class="divider"></div>
-  <div class="sub">Your seat in the<br><em>7-Day High Performance Challenge</em><br>is confirmed 🎉</div>
+  <div class="sub">Your seat in the<br><em>FREE 7-Day WhatsApp Challenge</em><br>is confirmed 🎉</div>
+  <div class="datebox"><span>📅 Your challenge starts</span><strong>${dateSafe}</strong></div>
   <div class="tag">1 tiny habit a day · delivered on WhatsApp</div>
-  <div class="footer">High Performance Club</div>
 </div>
 </body></html>`;
 }
 
 export async function POST(request: Request) {
   try {
-    const { firstName } = await request.json();
+    const { firstName, startDate } = await request.json();
     if (!firstName) return NextResponse.json({ error: "firstName required" }, { status: 400 });
 
-    const html = buildWelcomeHTML(firstName);
+    const html = buildWelcomeHTML(firstName, startDate || "tomorrow, 6 AM");
 
     // Render HTML → PNG via Gotenberg's screenshot endpoint (free public instance)
     const form = new FormData();

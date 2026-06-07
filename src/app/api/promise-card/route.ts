@@ -1,0 +1,92 @@
+import { NextResponse } from "next/server";
+
+/**
+ * Generates a personalized Promise Card image (PNG) — a signable commitment
+ * card with the member's name. Same Gotenberg screenshot → Supabase pipeline.
+ */
+
+function buildHTML(firstName: string, startDate: string): string {
+  const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
+  const dateSafe = (startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
+  return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Caveat:wght@600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1080px;overflow:hidden}
+.wrap{width:1080px;height:1080px;background:linear-gradient(150deg,#0a0a0a 0%,#0f1f14 50%,#16341f 100%);
+  display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
+.glow{position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(37,211,102,0.22) 0%,transparent 70%);filter:blur(18px)}
+.card{position:relative;width:840px;background:#fffdf8;border-radius:36px;padding:70px 64px;
+  box-shadow:0 40px 120px rgba(0,0,0,0.5);text-align:center;border:1px solid rgba(0,0,0,0.05)}
+.seal{position:absolute;top:-44px;left:50%;transform:translateX(-50%);
+  width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#25d366,#1da851);
+  display:flex;align-items:center;justify-content:center;font-size:46px;
+  box-shadow:0 12px 30px rgba(29,168,81,0.4)}
+.kicker{margin-top:30px;font-size:22px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#1da851}
+.title{font-family:'Playfair Display',serif;font-size:54px;font-weight:700;color:#18181b;margin:8px 0 36px}
+.body{font-size:30px;line-height:1.6;color:#374151;font-weight:500}
+.name{font-family:'Caveat',cursive;font-size:62px;color:#1da851;font-weight:700;display:inline-block}
+.commit{margin-top:30px;font-size:26px;line-height:1.6;color:#6b7280;font-style:italic}
+.divider{width:80px;height:4px;border-radius:999px;background:linear-gradient(90deg,#25d366,#1da851);margin:38px auto}
+.datebox{display:inline-flex;align-items:center;gap:12px;background:#f0fdf4;border:2px solid #bbf7d0;
+  border-radius:18px;padding:16px 30px;font-size:24px;color:#15803d;font-weight:700;margin-top:8px}
+.footer{margin-top:36px;font-size:20px;color:#9ca3af;font-weight:600;letter-spacing:0.08em}
+</style></head>
+<body>
+<div class="wrap">
+  <div class="glow"></div>
+  <div class="card">
+    <div class="seal">🤝</div>
+    <div class="kicker">My Promise</div>
+    <div class="title">I'm All In</div>
+    <div class="body">
+      I, <span class="name">${safe}</span>, promise myself to complete the
+      <strong>7-Day WhatsApp Habits Challenge</strong> for my energy, health and focus.
+    </div>
+    <div class="commit">"I commit to do all the tiny habits every day — even on busy days."</div>
+    <div class="divider"></div>
+    <div class="datebox">📅 Starts ${dateSafe}</div>
+    <div class="footer">FREE 7-DAY WHATSAPP HABITS CHALLENGE</div>
+  </div>
+</div>
+</body></html>`;
+}
+
+export async function POST(request: Request) {
+  try {
+    const { firstName, startDate } = await request.json();
+    if (!firstName) return NextResponse.json({ error: "firstName required" }, { status: 400 });
+
+    const html = buildHTML(firstName, startDate || "tomorrow");
+
+    const form = new FormData();
+    form.append("files", new Blob([html], { type: "text/html" }), "index.html");
+    form.append("format", "png");
+    form.append("width", "1080");
+    form.append("height", "1080");
+    form.append("clip", "true");
+
+    const got = await fetch("https://demo.gotenberg.dev/forms/chromium/screenshot/html", { method: "POST", body: form });
+    if (!got.ok) throw new Error(`Gotenberg screenshot failed: ${got.status}`);
+    const png = Buffer.from(await got.arrayBuffer());
+
+    const supabaseUrl = process.env.SUPABASE_URL!;
+    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
+    if (!supabaseUrl || !supabaseServiceKey) throw new Error("Supabase not configured");
+    const { createClient } = await import("@supabase/supabase-js");
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    const safeName = firstName.replace(/\s+/g, "-").toLowerCase().replace(/[^a-z0-9-]/g, "");
+    const filename = `promise-${safeName}-${Date.now()}.png`;
+    const { error: upErr } = await supabase.storage.from("reports").upload(filename, png, { contentType: "image/png", upsert: true });
+    if (upErr) throw new Error(`Supabase upload failed: ${upErr.message}`);
+    const { data } = supabase.storage.from("reports").getPublicUrl(filename);
+
+    return NextResponse.json({ success: true, imageUrl: data.publicUrl });
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[promise-card]", message);
+    return NextResponse.json({ error: message }, { status: 500 });
+  }
+}

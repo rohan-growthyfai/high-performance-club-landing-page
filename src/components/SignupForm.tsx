@@ -40,9 +40,8 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
     } catch { /* ignore */ }
   }, []);
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
     setError("");
 
     let referredBy = "";
@@ -58,41 +57,38 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
       consent: true,
     };
 
-    try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
+    // Optimistic UX: confirm to the user IMMEDIATELY on click. The engine now
+    // accepts the registration instantly and runs onboarding in the background,
+    // so there's no reason to make the user watch a spinner.
+    try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
 
-      if (!res.ok) throw new Error("Submission failed");
+    const firePixelEvents = () => {
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          content_category: "Challenge Registration",
+          status: "submitted",
+        });
+        (window as any).fbq("track", "CompleteRegistration", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          status: "registered",
+          currency: "INR",
+          value: 0,
+        });
+      }
+    };
+    firePixelEvents();
+    setTimeout(firePixelEvents, 500);
 
-      // Mark registered so the timed popup never appears for this person again.
-      try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
+    setStatus("success");
 
-      const firePixelEvents = () => {
-        if (typeof window !== "undefined" && (window as any).fbq) {
-          (window as any).fbq("track", "Lead", {
-            content_name: "FREE 7-Day WhatsApp Habits Challenge",
-            content_category: "Challenge Registration",
-            status: "submitted",
-          });
-          (window as any).fbq("track", "CompleteRegistration", {
-            content_name: "FREE 7-Day WhatsApp Habits Challenge",
-            status: "registered",
-            currency: "INR",
-            value: 0,
-          });
-        }
-      };
-      firePixelEvents();
-      setTimeout(firePixelEvents, 500);
-
-      setStatus("success");
-    } catch {
-      setStatus("error");
-      setError("Something went wrong. Please try again or message us on WhatsApp.");
-    }
+    // Fire the registration in the background — we already showed success.
+    fetch("/api/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      keepalive: true, // survive navigation/tab close
+    }).catch(() => { /* backend retries/logs server-side; user already confirmed */ });
   }
 
   if (status === "success") {

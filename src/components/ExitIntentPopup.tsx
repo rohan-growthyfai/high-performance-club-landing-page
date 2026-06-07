@@ -60,9 +60,8 @@ export default function ExitIntentPopup() {
     setDismissed(true);
   };
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("submitting");
     setError("");
 
     const formData = new FormData(e.currentTarget);
@@ -74,38 +73,33 @@ export default function ExitIntentPopup() {
       consent:  true,
     };
 
-    try {
-      const res = await fetch("/api/signup", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      if (!res.ok) throw new Error("Submission failed");
+    // Optimistic: confirm immediately, fire the request in the background.
+    const firePixel = () => {
+      if (typeof window !== "undefined" && (window as any).fbq) {
+        (window as any).fbq("track", "Lead", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          content_category: "Popup Registration",
+        });
+        (window as any).fbq("track", "CompleteRegistration", {
+          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          status: "registered",
+          currency: "INR",
+          value: 0,
+        });
+      }
+    };
+    firePixel();
+    setTimeout(firePixel, 500);
 
-      // Meta Pixel events
-      const firePixel = () => {
-        if (typeof window !== "undefined" && (window as any).fbq) {
-          (window as any).fbq("track", "Lead", {
-            content_name: "FREE 7-Day WhatsApp Habits Challenge",
-            content_category: "Popup Registration",
-          });
-          (window as any).fbq("track", "CompleteRegistration", {
-            content_name: "FREE 7-Day WhatsApp Habits Challenge",
-            status: "registered",
-            currency: "INR",
-            value: 0,
-          });
-        }
-      };
-      firePixel();
-      setTimeout(firePixel, 500);
+    try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
+    setStatus("success");
 
-      try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
-      setStatus("success");
-    } catch {
-      setStatus("error");
-      setError("Something went wrong. Please try again.");
-    }
+    fetch("/api/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+      keepalive: true,
+    }).catch(() => { /* user already confirmed; server logs failures */ });
   }
 
   if (!visible || dismissed) return null;

@@ -208,27 +208,29 @@ export async function POST(request: Request) {
     const phone = normalisePhone(whatsapp);
 
     // Read assessment answers directly from the Members tab (single source of truth).
-    // Columns: A=whatsapp B=first_name C=email ... K=day1_energy L=day1_focus
-    // M=day1_health N=day7_energy O=day7_focus P=day7_health
+    // Columns: A=registered_at B=full_name C=first_name D=last_name E=whatsapp F=email
+    // G=start_date H=current_day I=morning_sent J=evening_sent K=struggle
+    // L=day1_energy M=day1_focus N=day1_health O=day7_energy P=day7_focus Q=day7_health
     const memberRes = await sheets.spreadsheets.values.get({
       spreadsheetId: MEMBERS_SHEET_ID,
-      range: "Members!A:P",
+      range: "Members!A:T",
     });
     const memberRows = (memberRes.data.values || []).slice(1);
-    const row = memberRows.find((r: string[]) => normalisePhone(r[0]) === phone);
+    // whatsapp is column E (index 4)
+    const row = memberRows.find((r: string[]) => normalisePhone(r[4]) === phone);
 
     if (!row) return NextResponse.json({ error: `Member not found for ${whatsapp}` }, { status: 404 });
 
     const data = {
-      name:             row[1] || "Friend",
-      whatsapp:         row[0],
-      day1Energy:       row[10] || "",
-      day1Focus:        row[11] || "",
-      day1Health:       row[12] || "",
+      name:             row[1] || row[2] || "Friend", // full_name, fallback first_name
+      whatsapp:         row[4],
+      day1Energy:       row[11] || "", // L
+      day1Focus:        row[12] || "", // M
+      day1Health:       row[13] || "", // N
       day1Relationship: "",
-      day7Energy:       row[13] || "",
-      day7Focus:        row[14] || "",
-      day7Health:       row[15] || "",
+      day7Energy:       row[14] || "", // O
+      day7Focus:        row[15] || "", // P
+      day7Health:       row[16] || "", // Q
       day7Relationship: "",
     };
 

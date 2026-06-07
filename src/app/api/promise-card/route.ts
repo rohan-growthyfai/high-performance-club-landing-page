@@ -12,9 +12,12 @@ function buildHTML(firstName: string, startDate: string): string {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&family=Caveat:wght@600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1080px;height:1080px;overflow:hidden}
-.wrap{width:1080px;height:1080px;background:linear-gradient(150deg,#0a0a0a 0%,#0f1f14 50%,#16341f 100%);
-  display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
+html,body{width:1080px}
+/* wrap grows to fit the card (auto height) with generous vertical padding so the
+   seal at the top and footer at the bottom are never clipped. */
+.wrap{width:1080px;min-height:1080px;background:linear-gradient(150deg,#0a0a0a 0%,#0f1f14 50%,#16341f 100%);
+  display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;position:relative;
+  padding:90px 0;overflow:hidden}
 .glow{position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;
   background:radial-gradient(circle,rgba(37,211,102,0.22) 0%,transparent 70%);filter:blur(18px)}
 .card{position:relative;width:960px;background:#fffdf8;border-radius:40px;padding:84px 72px;
@@ -64,8 +67,9 @@ export async function POST(request: Request) {
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");
     form.append("format", "png");
     form.append("width", "1080");
-    form.append("height", "1080");
-    form.append("clip", "true");
+    // No fixed height / clip — capture the FULL page height so the card (seal at
+    // top, footer at bottom) is never cropped. The wrap keeps a 1080px minimum,
+    // and grows taller only if the content needs it.
 
     const got = await fetch("https://demo.gotenberg.dev/forms/chromium/screenshot/html", { method: "POST", body: form });
     if (!got.ok) throw new Error(`Gotenberg screenshot failed: ${got.status}`);

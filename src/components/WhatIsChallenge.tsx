@@ -28,55 +28,57 @@ export default function WhatIsChallenge() {
 
   return (
     <section className="py-16 lg:py-20 bg-section-cream border-t border-border-subtle">
-      <div className="max-w-3xl mx-auto px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Heading */}
-        <div className="text-center mb-10">
-          <h2 className="font-display text-3xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            What exactly is this challenge?
-          </h2>
-          <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-6">
-            The Free 7-Day Habits WhatsApp Challenge is a simple habit-building challenge where you receive one tiny habit every morning on WhatsApp.
-          </p>
-          <p className="text-base text-foreground-muted font-medium mb-6">
-            Each habit is designed to help you improve:
-          </p>
-        </div>
+        {/* Two-column: text LEFT, 3 stacked cards RIGHT */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-        {/* 3 Area Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
-          {areas.map((a) => (
-            <div
-              key={a.label}
-              className={`rounded-2xl border-2 ${a.color} p-5 text-center`}
-            >
-              <div className="text-4xl mb-3">{a.emoji}</div>
-              <span className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-3 ${a.badgeColor}`}>
-                {a.label}
-              </span>
-              <p className={`text-sm leading-relaxed ${a.textColor} font-medium`}>
-                {a.desc}
-              </p>
+          {/* LEFT — copy + CTA */}
+          <div className="text-center lg:text-left">
+            <h2 className="font-display text-3xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+              What exactly is this challenge?
+            </h2>
+            <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-5">
+              The Free 7-Day Habits WhatsApp Challenge is a simple habit-building challenge where you receive one tiny habit every morning on WhatsApp.
+            </p>
+            <p className="text-base text-foreground-muted font-medium mb-5">
+              Each habit is designed to help you improve:
+            </p>
+            <p className="text-base text-foreground-muted leading-relaxed mb-8">
+              No app. No course login. No long videos.<br className="hidden sm:block" />
+              Just one small action per day for 7 days.
+            </p>
+            <div className="flex justify-center lg:justify-start">
+              <a
+                href="#signup-1"
+                className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold w-full sm:w-auto"
+              >
+                I Want to Join This Challenge →
+              </a>
             </div>
-          ))}
+          </div>
+
+          {/* RIGHT — 3 Area Cards stacked vertically */}
+          <div className="flex flex-col gap-5">
+            {areas.map((a) => (
+              <div
+                key={a.label}
+                className={`rounded-2xl border-2 ${a.color} p-5 flex items-start gap-4 text-left`}
+              >
+                <div className="text-4xl shrink-0 leading-none">{a.emoji}</div>
+                <div>
+                  <span className={`inline-block text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-2 ${a.badgeColor}`}>
+                    {a.label}
+                  </span>
+                  <p className={`text-sm leading-relaxed ${a.textColor} font-medium`}>
+                    {a.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
-
-        {/* Footer line */}
-        <p className="text-center text-base text-foreground-muted leading-relaxed mb-8">
-          No app. No course login. No long videos.<br />
-          Just one small action per day for 7 days.
-        </p>
-
-        {/* CTA */}
-        <div className="flex justify-center">
-          <a
-            href="#signup-1"
-            className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold w-full sm:w-auto"
-          >
-            I Want to Join This Challenge →
-          </a>
-        </div>
-
       </div>
     </section>
   );

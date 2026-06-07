@@ -74,74 +74,78 @@ export default function HowChallengeWorks() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Header */}
-        <div className="text-center mb-14">
-          <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
-            Simple. Tiny. Powerful.
-          </p>
-          <h2 className="font-display text-section-title text-balance text-foreground mb-4">
-            How this challenge works.
-          </h2>
-          <p className="text-sm sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-            For 7 days, you&apos;ll receive one tiny habit on WhatsApp every morning. Each habit is designed to help you feel more energetic, healthier, and more focused.
-          </p>
-        </div>
+        {/* Two-column: 3 stacked cards LEFT, text RIGHT */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-14">
 
+          {/* LEFT — Daily Loop cards stacked vertically */}
+          <div className="order-2 lg:order-1">
+            <div className="flex flex-col gap-5 relative pt-3 pl-3">
+              {/* Connector arrows between stacked steps */}
+              <div className="hidden lg:flex absolute left-[7%] top-[28%] -translate-y-1/2 items-center pointer-events-none z-10">
+                <ArrowRight className="w-6 h-6 text-accent/40 rotate-90" />
+              </div>
+              <div className="hidden lg:flex absolute left-[7%] top-[64%] -translate-y-1/2 items-center pointer-events-none z-10">
+                <ArrowRight className="w-6 h-6 text-accent/40 rotate-90" />
+              </div>
 
-        {/* ── PART 2: Daily Loop ── */}
-        <div className="mb-14">
-          <div className="grid sm:grid-cols-3 gap-6 max-w-3xl mx-auto relative pt-3 pl-3">
-            {/* Connector arrows between steps */}
-            <div className="hidden sm:flex absolute top-1/2 left-[33%] -translate-y-1/2 items-center pointer-events-none z-10">
-              <ArrowRight className="w-6 h-6 text-accent/40" />
-            </div>
-            <div className="hidden sm:flex absolute top-1/2 left-[66%] -translate-y-1/2 items-center pointer-events-none z-10">
-              <ArrowRight className="w-6 h-6 text-accent/40" />
-            </div>
-
-            {dailyLoop.map((step, i) => {
-              const Icon = step.icon;
-              return (
-                <div key={step.time} className={`rounded-2xl border-2 ${step.bg} p-6 text-center relative`}>
-                  <div className={`w-12 h-12 rounded-full bg-white border-2 flex items-center justify-center mx-auto mb-3 shadow-sm ${step.bg}`}>
-                    <Icon className={`w-6 h-6 ${step.color}`} />
+              {dailyLoop.map((step, i) => {
+                const Icon = step.icon;
+                return (
+                  <div key={step.time} className={`rounded-2xl border-2 ${step.bg} p-6 flex items-start gap-4 text-left relative`}>
+                    <div className={`w-12 h-12 rounded-full bg-white border-2 flex items-center justify-center shrink-0 shadow-sm ${step.bg}`}>
+                      <Icon className={`w-6 h-6 ${step.color}`} />
+                    </div>
+                    <div>
+                      <p className={`text-sm font-bold mb-2 ${step.color}`}>
+                        {step.time}
+                      </p>
+                      <p className="text-sm text-foreground-muted leading-relaxed">
+                        {step.label}
+                      </p>
+                    </div>
+                    {/* Step number */}
+                    <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center shadow-sm">
+                      {i + 1}
+                    </div>
                   </div>
-                  <p className={`text-sm font-bold mb-2 ${step.color}`}>
-                    {step.time}
-                  </p>
-                  <p className="text-sm text-foreground-muted leading-relaxed">
-                    {step.label}
-                  </p>
-                  {/* Step number */}
-                  <div className="absolute -top-3 -left-3 w-7 h-7 rounded-full bg-accent text-white text-xs font-bold flex items-center justify-center shadow-sm">
-                    {i + 1}
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
+
+            {/* Repeat badge */}
+            <div className="flex justify-center lg:justify-start mt-5">
+              <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-border shadow-sm">
+                <span className="text-base">🔁</span>
+                <span className="text-sm font-semibold text-foreground-muted">
+                  Repeat for 7 days. That&apos;s the whole thing.
+                </span>
+              </div>
+            </div>
           </div>
 
-          {/* Repeat badge */}
-          <div className="flex justify-center mt-5 text-center">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-border shadow-sm">
-              <span className="text-base">🔁</span>
-              <span className="text-sm font-semibold text-foreground-muted">
-                Repeat for 7 days. That&apos;s the whole thing.
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Curiosity closer */}
-        <div className="mt-14 text-center">
-          <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-8 sm:py-6 shadow-md max-w-xl">
-            <p className="text-base text-foreground-muted leading-relaxed">
-              The habits are simple, practical, and revealed one day at a time on WhatsApp.
+          {/* RIGHT — copy */}
+          <div className="order-1 lg:order-2 text-center lg:text-left">
+            <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
+              Simple. Tiny. Powerful.
             </p>
+            <h2 className="font-display text-section-title text-balance text-foreground mb-4">
+              How this challenge works.
+            </h2>
+            <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-6">
+              For 7 days, you&apos;ll receive one tiny habit on WhatsApp every morning. Each habit is designed to help you feel more energetic, healthier, and more focused.
+            </p>
+
+            {/* Curiosity closer */}
+            <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-6 sm:py-5 shadow-md">
+              <p className="text-base text-foreground-muted leading-relaxed">
+                The habits are simple, practical, and revealed one day at a time on WhatsApp.
+              </p>
+            </div>
           </div>
+
         </div>
 
-        <div className="flex flex-col items-center gap-3 pt-14 pb-2">
+        <div className="flex flex-col items-center gap-3 pt-4 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Ready to experience it yourself?</p>
           <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Yes!! Let&apos;s Get Started

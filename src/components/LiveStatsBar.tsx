@@ -44,7 +44,7 @@ const fmt = (n: number) => n.toLocaleString("en-IN");
 export default function LiveStatsBar() {
   const messages  = useLiveCounter(12847, 4200, 9800, 2);
   const habits    = useLiveCounter(3247,  6800, 13000, 1);
-  const activeNow = useLiveCounter(189,   8500, 17000, 1);
+  const activeNow = useLiveCounter(847,   8500, 17000, 1);
 
   return (
     <section className="bg-section-white border-y border-border-subtle py-8 lg:py-10">
@@ -66,7 +66,7 @@ export default function LiveStatsBar() {
           <StatCard
             icon={MessageCircle}
             value={fmt(messages)}
-            label="Messages delivered"
+            label="WhatsApp messages delivered"
             sub="across all members"
             live
           />

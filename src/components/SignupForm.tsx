@@ -67,6 +67,9 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
 
       if (!res.ok) throw new Error("Submission failed");
 
+      // Mark registered so the timed popup never appears for this person again.
+      try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
+
       const firePixelEvents = () => {
         if (typeof window !== "undefined" && (window as any).fbq) {
           (window as any).fbq("track", "Lead", {

@@ -15,72 +15,49 @@ const struggles = [
 export default function ExitIntentPopup() {
   const [visible, setVisible]     = useState(false);
   const [dismissed, setDismissed] = useState(false);
-  const [isExitIntent, setIsExitIntent] = useState(false);
   const [status, setStatus]       = useState<FormStatus>("idle");
   const [error, setError]         = useState("");
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shownRef = useRef(false);
 
   useEffect(() => {
-    sessionStorage.removeItem("popup_dismissed");
+    // If the user already registered (here or via the main form), never show.
+    const alreadyRegistered = () => {
+      try { return localStorage.getItem("hpc_registered") === "yes"; } catch { return false; }
+    };
 
-    // Returns true if the user is actively filling in the signup form
+    // True if the user is actively focused inside a signup form.
     const isUserFillingForm = () => {
       const active = document.activeElement;
       if (!active) return false;
       const form = active.closest("form");
       if (!form) return false;
-      // Check if the focused form is a signup/registration form (not this popup itself)
-      return (
-        form.id === "signup-form" ||
-        form.closest("#signup-1") !== null ||
-        form.closest("[id^='signup']") !== null ||
-        (form.querySelector("[name='whatsapp']") !== null && !form.closest(".popup-form"))
-      );
+      if (form.classList.contains("popup-form")) return false; // not this popup's own form
+      // Any non-popup form with a whatsapp field = a signup form
+      return form.querySelector("[name='whatsapp']") !== null;
     };
 
-    const showPopup = (exitIntent = false) => {
-      if (shownRef.current && !exitIntent) return;
-      if (exitIntent && dismissed) return;
-      // Don't interrupt user filling the signup form
-      if (isUserFillingForm()) return;
+    const showPopup = () => {
+      if (shownRef.current) return;
+      if (alreadyRegistered()) return;          // already signed up → never show
+      if (isUserFillingForm()) return;          // mid-typing → don't interrupt
       shownRef.current = true;
-      setIsExitIntent(exitIntent);
       setStatus("idle");
       setError("");
       setVisible(true);
     };
 
-    // 10-second timer on page load
-    timerRef.current = setTimeout(() => showPopup(false), 10000);
-
-    // Scroll resets to 10-second countdown
-    const onScroll = () => {
-      if (shownRef.current) return;
-      if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => showPopup(false), 10000);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true, once: true });
-
-    // Exit intent — mouse leaves top of page
-    const onMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 5) {
-        showPopup(true);
-      }
-    };
-    document.addEventListener("mouseleave", onMouseLeave);
+    // 10-second timer on page load (single timed popup — no exit-intent)
+    timerRef.current = setTimeout(showPopup, 10000);
 
     return () => {
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("mouseleave", onMouseLeave);
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [dismissed]);
+  }, []);
 
   const dismiss = () => {
     setVisible(false);
     setDismissed(true);
-    shownRef.current = false; // allow exit-intent popup to show after timed one dismissed
   };
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -123,6 +100,7 @@ export default function ExitIntentPopup() {
       firePixel();
       setTimeout(firePixel, 500);
 
+      try { localStorage.setItem("hpc_registered", "yes"); } catch { /* ignore */ }
       setStatus("success");
     } catch {
       setStatus("error");
@@ -156,7 +134,7 @@ export default function ExitIntentPopup() {
               <X className="w-4 h-4" />
             </button>
             <h2 className="text-2xl font-bold leading-snug">
-              {isExitIntent ? "Wait! Before You Go 👋" : "Feel More Energetic, Healthy & Focused in Just 7 Days"}
+              Feel More Energetic, Healthy &amp; Focused in Just 7 Days
             </h2>
             <p className="text-sm opacity-90 mt-3 leading-relaxed">
               Join the FREE 7-Day WhatsApp Habits Challenge<br />

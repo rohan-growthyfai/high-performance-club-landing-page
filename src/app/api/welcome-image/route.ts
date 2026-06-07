@@ -11,56 +11,63 @@ import { NextResponse } from "next/server";
 function buildWelcomeHTML(firstName: string, startDate: string): string {
   const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
   const dateSafe = (startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
+  const logo = "https://www.highperformanceclub.co/hpc-logo.png";
+  // HaBuild-style LIGHT theme: clean white/cream bg, logo + title top, big bold
+  // Inter (same as HPC site), challenge badge box with start date, "Click Button Below" footer.
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,500;0,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1080px;overflow:hidden}
-.card{
-  width:1080px;height:1080px;position:relative;
-  background:linear-gradient(150deg,#0a0a0a 0%,#0f1f14 45%,#16341f 100%);
-  font-family:'Inter',sans-serif;overflow:hidden;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  padding:90px;text-align:center;
-}
-/* WhatsApp-green glow */
-.glow1{position:absolute;top:-200px;left:-160px;width:560px;height:560px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,211,102,0.28) 0%,transparent 70%);filter:blur(20px)}
-.glow2{position:absolute;bottom:-220px;right:-180px;width:600px;height:600px;border-radius:50%;
-  background:radial-gradient(circle,rgba(37,211,102,0.18) 0%,transparent 70%);filter:blur(20px)}
-.badge{position:relative;display:inline-flex;align-items:center;gap:14px;
-  background:rgba(37,211,102,0.12);border:2px solid rgba(37,211,102,0.4);
-  color:#4ade80;font-size:26px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;
-  padding:14px 36px;border-radius:999px;margin-bottom:54px}
-.dot{width:14px;height:14px;border-radius:50%;background:#25d366;box-shadow:0 0 16px #25d366}
-.welcome{position:relative;font-size:46px;font-weight:600;color:rgba(255,255,255,0.55);
-  letter-spacing:0.02em;margin-bottom:10px}
-.name{position:relative;font-family:'Playfair Display',serif;font-weight:700;
-  font-size:128px;line-height:1.0;letter-spacing:-0.02em;margin-bottom:48px;
-  background:linear-gradient(135deg,#ffffff 0%,#4ade80 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.sub{position:relative;font-size:42px;font-weight:600;color:#fff;line-height:1.4;
-  max-width:780px;margin-bottom:18px}
-.sub em{font-family:'Playfair Display',serif;font-style:italic;color:#4ade80;font-weight:500}
-.tag{position:relative;font-size:30px;color:rgba(255,255,255,0.5);margin-top:36px}
-.divider{position:relative;width:90px;height:5px;border-radius:999px;
-  background:linear-gradient(90deg,#25d366,transparent);margin:40px 0}
-.datebox{position:relative;margin-top:18px;display:flex;flex-direction:column;align-items:center;gap:8px;
-  background:rgba(37,211,102,0.1);border:2px solid rgba(37,211,102,0.35);border-radius:24px;padding:24px 44px}
-.datebox span{font-size:26px;color:rgba(255,255,255,0.55);font-weight:500}
-.datebox strong{font-family:'Playfair Display',serif;font-size:40px;color:#4ade80;font-weight:700}
+.card{width:1080px;height:1080px;position:relative;overflow:hidden;
+  background:#f7f9f8;font-family:'Inter',-apple-system,sans-serif;
+  display:flex;flex-direction:column;padding:70px 80px 0;}
+/* soft decorative shapes */
+.blob1{position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;
+  background:rgba(37,211,102,0.10)}
+.blob2{position:absolute;bottom:120px;left:-160px;width:420px;height:420px;border-radius:50%;
+  background:rgba(184,133,58,0.07)}
+/* header: logo + brand */
+.head{position:relative;display:flex;align-items:center;gap:20px;margin-bottom:70px}
+.head img{width:78px;height:78px;border-radius:50%;object-fit:cover}
+.head .brand{font-size:34px;font-weight:800;color:#18181b;letter-spacing:-0.01em}
+/* big welcome */
+.welcome{position:relative;font-size:64px;font-weight:600;color:#3f4a44;margin-bottom:6px}
+.name{position:relative;font-size:104px;font-weight:900;color:#18181b;line-height:1.0;
+  letter-spacing:-0.03em;margin-bottom:50px}
+.name b{color:#1da851}
+/* challenge badge box (like HaBuild's blue box) */
+.cbox{position:relative;background:linear-gradient(135deg,#1da851,#16893f);border-radius:32px;
+  padding:46px 54px;box-shadow:0 24px 60px -20px rgba(29,168,81,0.5);max-width:760px}
+.cbox .small{font-size:34px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:8px}
+.cbox .big{font-size:64px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05;margin-bottom:18px}
+.cbox .date{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.18);
+  border-radius:16px;padding:14px 28px;font-size:38px;font-weight:800;color:#fff}
+/* benefits line */
+.bene{position:relative;margin-top:46px;font-size:38px;font-weight:600;color:#3f4a44;line-height:1.5}
+.bene b{color:#18181b}
+/* click button below footer */
+.footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
+  padding:38px;text-align:center}
+.footer span{font-size:42px;font-weight:800;color:#fff;letter-spacing:0.01em}
+.footer .arrow{color:#4ade80;margin-left:6px}
 </style></head>
 <body>
 <div class="card">
-  <div class="glow1"></div>
-  <div class="glow2"></div>
-  <div class="badge"><span class="dot"></span>You're In</div>
+  <div class="blob1"></div><div class="blob2"></div>
+  <div class="head">
+    <img src="${logo}" alt="logo" />
+    <div class="brand">High Performance Club</div>
+  </div>
   <div class="welcome">Welcome,</div>
-  <div class="name">${safe}!</div>
-  <div class="divider"></div>
-  <div class="sub">Your seat in the<br><em>FREE 7-Day WhatsApp Challenge</em><br>is confirmed 🎉</div>
-  <div class="datebox"><span>📅 Your challenge starts</span><strong>${dateSafe}</strong></div>
-  <div class="tag">1 tiny habit a day · delivered on WhatsApp</div>
+  <div class="name"><b>${safe}</b> 🙏</div>
+  <div class="cbox">
+    <div class="small">You're registered for the</div>
+    <div class="big">FREE 7-Day<br>WhatsApp Habits Challenge</div>
+    <div class="date">📅 Starts ${dateSafe}</div>
+  </div>
+  <div class="bene">1 tiny habit a day · under 5 minutes · <b>on WhatsApp</b></div>
+  <div class="footer"><span>Click Button Below<span class="arrow">⬇</span></span></div>
 </div>
 </body></html>`;
 }

@@ -24,12 +24,26 @@ export default function ExitIntentPopup() {
   useEffect(() => {
     sessionStorage.removeItem("popup_dismissed");
 
+    // Returns true if the user is actively filling in the signup form
+    const isUserFillingForm = () => {
+      const active = document.activeElement;
+      if (!active) return false;
+      const form = active.closest("form");
+      if (!form) return false;
+      // Check if the focused form is a signup/registration form (not this popup itself)
+      return (
+        form.id === "signup-form" ||
+        form.closest("#signup-1") !== null ||
+        form.closest("[id^='signup']") !== null ||
+        (form.querySelector("[name='whatsapp']") !== null && !form.closest(".popup-form"))
+      );
+    };
+
     const showPopup = (exitIntent = false) => {
       if (shownRef.current && !exitIntent) return;
-      if (exitIntent && dismissed) {
-        // Already dismissed exit popup — allow tab to close
-        return;
-      }
+      if (exitIntent && dismissed) return;
+      // Don't interrupt user filling the signup form
+      if (isUserFillingForm()) return;
       shownRef.current = true;
       setIsExitIntent(exitIntent);
       setStatus("idle");
@@ -37,18 +51,18 @@ export default function ExitIntentPopup() {
       setVisible(true);
     };
 
-    // 5-second timer on page load
-    timerRef.current = setTimeout(() => showPopup(false), 5000);
+    // 10-second timer on page load
+    timerRef.current = setTimeout(() => showPopup(false), 10000);
 
-    // Scroll also starts 5-second countdown
+    // Scroll resets to 10-second countdown
     const onScroll = () => {
       if (shownRef.current) return;
       if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => showPopup(false), 5000);
+      timerRef.current = setTimeout(() => showPopup(false), 10000);
     };
     window.addEventListener("scroll", onScroll, { passive: true, once: true });
 
-    // Exit intent — mouse leaves top of page (desktop tab close gesture)
+    // Exit intent — mouse leaves top of page
     const onMouseLeave = (e: MouseEvent) => {
       if (e.clientY <= 5) {
         showPopup(true);
@@ -167,7 +181,7 @@ export default function ExitIntentPopup() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-3 popup-form">
                 <div>
                   <input
                     name="name"

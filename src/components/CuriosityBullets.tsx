@@ -16,18 +16,6 @@ import { ArrowRight } from "lucide-react";
 
 const waypoints = [
   {
-    id: "start",
-    label: "Day 0",
-    sublabel: "Before",
-    emoji: "📊",
-    title: "Starting Point 🚩",
-    desc: "Rate yourself in 4 areas. See where you stand today.",
-    color: "#25d366",
-    bg: "#fef9ec",
-    border: "#25d366",
-    isCheckpoint: true,
-  },
-  {
     id: "d1",
     label: "Day 1",
     sublabel: "Energy",
@@ -243,15 +231,15 @@ export default function CuriosityBullets() {
                         opacity: activeIdx < 0 || isAct ? 1 : 0.72,
                       }}
                     >
-                      <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: wp.color }}>
+                      <p className="text-[10px] font-bold uppercase tracking-wider mb-1 text-center" style={{ color: wp.color }}>
                         {wp.label} · {wp.sublabel}
                       </p>
-                      <h3 className="font-display text-sm font-bold text-foreground leading-snug mb-1.5">
+                      <h3 className="font-display text-sm font-bold text-foreground leading-snug mb-1.5 text-center">
                         {wp.title}
                       </h3>
-                      <p className="text-xs text-foreground-muted leading-relaxed">{wp.desc}</p>
+                      <p className="text-xs text-foreground-muted leading-relaxed text-left">{wp.desc}</p>
                       {!wp.isCheckpoint && (
-                        <p className="text-[10px] mt-2 font-semibold text-accent">🔒 Revealed on WhatsApp</p>
+                        <p className="text-[10px] mt-2 font-semibold text-accent text-left">🔒 Revealed on WhatsApp</p>
                       )}
                     </div>
                   </div>
@@ -310,15 +298,15 @@ export default function CuriosityBullets() {
                       opacity: activeIdx < 0 || isAct ? 1 : 0.72,
                     }}
                   >
-                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1" style={{ color: wp.color }}>
+                    <p className="text-[10px] font-bold uppercase tracking-wider mb-1 text-center" style={{ color: wp.color }}>
                       {wp.label} · {wp.sublabel}
                     </p>
-                    <h3 className="font-display text-sm font-bold text-foreground leading-snug mb-1">
+                    <h3 className="font-display text-sm font-bold text-foreground leading-snug mb-1 text-center">
                       {wp.title}
                     </h3>
-                    <p className="text-xs text-foreground-muted leading-relaxed">{wp.desc}</p>
+                    <p className="text-xs text-foreground-muted leading-relaxed text-left">{wp.desc}</p>
                     {!wp.isCheckpoint && (
-                      <p className="text-[10px] mt-1.5 font-semibold text-accent">🔒 Revealed on WhatsApp</p>
+                      <p className="text-[10px] mt-1.5 font-semibold text-accent text-left">🔒 Revealed on WhatsApp</p>
                     )}
                   </div>
                 </div>

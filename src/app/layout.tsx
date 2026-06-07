@@ -44,11 +44,22 @@ export const metadata: Metadata = {
       "One small habit per day. 5 minutes each. Delivered on WhatsApp. Free.",
     type: "website",
     locale: "en_IN",
+    url: "https://highperformanceclub.co",
+    siteName: "High Performance Club",
+    images: [
+      {
+        url: "/og-challenge.png",
+        width: 1200,
+        height: 630,
+        alt: "FREE 7-Day WhatsApp Habits Challenge",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "7 Tiny High Performance Habits | Free 7-Day Challenge",
     description: "One habit a day. 5 minutes each. WhatsApp. Free.",
+    images: ["/og-challenge.png"],
   },
   robots: {
     index: true,

@@ -17,21 +17,21 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   display:flex;align-items:center;justify-content:center;font-family:'Inter',sans-serif;position:relative;overflow:hidden}
 .glow{position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;
   background:radial-gradient(circle,rgba(37,211,102,0.22) 0%,transparent 70%);filter:blur(18px)}
-.card{position:relative;width:840px;background:#fffdf8;border-radius:36px;padding:70px 64px;
+.card{position:relative;width:960px;background:#fffdf8;border-radius:40px;padding:84px 72px;
   box-shadow:0 40px 120px rgba(0,0,0,0.5);text-align:center;border:1px solid rgba(0,0,0,0.05)}
-.seal{position:absolute;top:-44px;left:50%;transform:translateX(-50%);
-  width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,#25d366,#1da851);
-  display:flex;align-items:center;justify-content:center;font-size:46px;
+.seal{position:absolute;top:-52px;left:50%;transform:translateX(-50%);
+  width:112px;height:112px;border-radius:50%;background:linear-gradient(135deg,#25d366,#1da851);
+  display:flex;align-items:center;justify-content:center;font-size:56px;
   box-shadow:0 12px 30px rgba(29,168,81,0.4)}
-.kicker{margin-top:30px;font-size:22px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#1da851}
-.title{font-family:'Playfair Display',serif;font-size:54px;font-weight:700;color:#18181b;margin:8px 0 36px}
-.body{font-size:30px;line-height:1.6;color:#374151;font-weight:500}
-.name{font-family:'Caveat',cursive;font-size:62px;color:#1da851;font-weight:700;display:inline-block}
-.commit{margin-top:30px;font-size:26px;line-height:1.6;color:#6b7280;font-style:italic}
-.divider{width:80px;height:4px;border-radius:999px;background:linear-gradient(90deg,#25d366,#1da851);margin:38px auto}
+.kicker{margin-top:40px;font-size:28px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#1da851}
+.title{font-family:'Playfair Display',serif;font-size:76px;font-weight:700;color:#18181b;margin:12px 0 44px}
+.body{font-size:42px;line-height:1.55;color:#374151;font-weight:500}
+.name{font-family:'Caveat',cursive;font-size:88px;color:#1da851;font-weight:700;display:inline-block}
+.commit{margin-top:40px;font-size:36px;line-height:1.55;color:#6b7280;font-style:italic}
+.divider{width:96px;height:5px;border-radius:999px;background:linear-gradient(90deg,#25d366,#1da851);margin:46px auto}
 .datebox{display:inline-flex;align-items:center;gap:12px;background:#f0fdf4;border:2px solid #bbf7d0;
-  border-radius:18px;padding:16px 30px;font-size:24px;color:#15803d;font-weight:700;margin-top:8px}
-.footer{margin-top:36px;font-size:20px;color:#9ca3af;font-weight:600;letter-spacing:0.08em}
+  border-radius:20px;padding:20px 38px;font-size:32px;color:#15803d;font-weight:700;margin-top:8px}
+.footer{margin-top:44px;font-size:26px;color:#9ca3af;font-weight:600;letter-spacing:0.06em}
 </style></head>
 <body>
 <div class="wrap">

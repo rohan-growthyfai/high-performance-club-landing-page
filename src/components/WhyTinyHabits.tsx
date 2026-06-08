@@ -1,10 +1,10 @@
 const cards = [
   { emoji: "⚡", title: "Tiny Is Fast", desc: "Start in minutes, not hours." },
-  { emoji: "🛡️", title: "Tiny Feels Safe", desc: "No pressure. No fear of failure." },
-  { emoji: "🌱", title: "Tiny Can Grow Big", desc: "Small actions create real momentum." },
-  { emoji: "🧠", title: "Tiny Doesn't Need Motivation", desc: "Easy enough to do even on busy days." },
-  { emoji: "🔁", title: "Tiny Is Sustainable", desc: "Built to last beyond the challenge." },
-  { emoji: "🚀", title: "Tiny Builds Momentum", desc: "One small win makes the next one easier." },
+  { emoji: "🛡️", title: "Tiny Feels Safe", desc: "No pressure. No fear of failing." },
+  { emoji: "🌱", title: "Tiny Can Grow Big", desc: "Small wins push you forward." },
+  { emoji: "🧠", title: "Tiny Is Easy", desc: "Easy to do even on busy days." },
+  { emoji: "🔁", title: "Tiny Lasts", desc: "It keeps going after the challenge ends." },
+  { emoji: "🚀", title: "Tiny Keeps You Going", desc: "One small win makes the next one easier." },
 ];
 
 export default function WhyTinyHabits() {
@@ -23,7 +23,7 @@ export default function WhyTinyHabits() {
             <span className="italic font-light">Tiny changes stick.</span>
           </h2>
           <p className="text-base sm:text-xl text-foreground-muted leading-relaxed">
-            This challenge is built around tiny actions that take less than 5 minutes. No willpower. No pressure. No perfection required.
+            This challenge uses tiny steps that take under 5 minutes. No hard work. No pressure. You do not have to be perfect.
           </p>
         </div>
 
@@ -45,14 +45,14 @@ export default function WhyTinyHabits() {
         <div className="text-center max-w-xl mx-auto mb-12">
           <div className="w-12 h-px bg-border mx-auto mb-8" />
           <p className="text-xl sm:text-2xl font-semibold text-foreground mb-4">
-            Don&apos;t try to change your life overnight.
+            Don&apos;t try to change your life in one day.
           </p>
           <p className="text-xl sm:text-2xl font-serif italic text-accent leading-relaxed">
             Start tiny.
             <br />
-            Stay consistent.
+            Keep going every day.
             <br />
-            Let momentum do the work.
+            The small wins do the work.
           </p>
         </div>
 

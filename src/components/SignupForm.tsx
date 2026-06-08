@@ -7,9 +7,9 @@ import PhoneInput from "./PhoneInput";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 const struggles = [
-  "Energy — I feel drained most days",
+  "Energy — I feel tired most days",
   "Health — I want to be more healthy",
-  "Focus — I want to boost my focus and productivity",
+  "Focus — I want to focus better and get more done",
 ];
 
 const testimonials = [

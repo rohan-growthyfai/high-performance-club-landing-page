@@ -46,15 +46,15 @@ export default function FounderStory() {
 
             <div className="space-y-5 text-base sm:text-lg text-foreground-muted leading-relaxed">
               <p>
-                For years, I kept saving productivity videos and promising myself I&apos;d start tomorrow.
+                For years, I kept saving self-help videos and telling myself I&apos;d start tomorrow.
               </p>
               <p>
                 I tried big routines.<br />
                 I tried 5 AM plans.<br />
-                I tried apps, videos, trackers, and complicated systems.
+                I tried apps, videos, trackers, and hard plans.
               </p>
               <p>
-                Most of them failed because they were too big for my actual life.
+                Most of them failed because they were too big for my real life.
               </p>
               <p>
                 So I built the smallest, simplest and the most fun version I could:

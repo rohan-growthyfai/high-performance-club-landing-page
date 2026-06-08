@@ -4,7 +4,7 @@ const promises = [
   {
     icon: Lock,
     title: "No hidden charges",
-    body: "Everything you see is what you get. Nothing is locked behind a paywall. No surprises.",
+    body: "Everything you see is free. Nothing is hidden behind a payment. No surprises.",
   },
   {
     icon: X,
@@ -14,7 +14,7 @@ const promises = [
   {
     icon: Phone,
     title: "No phone calls",
-    body: "No 'discovery calls'. No sales pressure. No coach calling to qualify you. It's a WhatsApp drip — and you control it.",
+    body: "No sales calls. No pressure. No coach calling to sign you up. It's just WhatsApp messages — and you are in charge.",
   },
   {
     icon: Shield,
@@ -44,7 +44,7 @@ export default function Guarantee() {
             </div>
 
             <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-balance text-foreground mb-8">
-              You literally have
+              You have
               <br />
               <span className="italic font-light">nothing to lose.</span>
             </h2>

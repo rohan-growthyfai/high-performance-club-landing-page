@@ -30,7 +30,7 @@ export default function FinalCTA() {
             </h2>
 
             <p className="text-foreground-muted text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-              Register free and get a tiny kickstart habit instantly. Your official Day 1 starts tomorrow morning.
+              Sign up free and get a tiny starter habit right away. Your real Day 1 starts tomorrow morning.
             </p>
 
             <div className="max-w-md mx-auto mb-12">

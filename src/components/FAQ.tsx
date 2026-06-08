@@ -6,7 +6,7 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "I have zero time. Can I still do it?",
-    a: "Yes! Most habits take under 2 minutes. The longest one is 10 minutes. Honestly, if 2 minutes is too much, the issue isn't time — it's not having a simple system. We give you that system. 🙌",
+    a: "Yes! Most habits take under 2 minutes. The longest one is 10 minutes. Honestly, if 2 minutes is too much, the problem isn't time — it's not having a simple plan. We give you that plan. 🙌",
   },
   {
     q: "What if I miss a day?",
@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     q: "I've quit every challenge I've ever tried. Why is this different?",
-    a: "Because this one isn't built on willpower or motivation. It's tiny experiments. No big promises. No fake transformation. Just one small action a day and a visible score at the end. Way easier to stick with. 🎯",
+    a: "Because this one isn't built on willpower or motivation. It's tiny experiments. No big promises. No fake big promises. Just one small thing a day, and a score you can see at the end. Way easier to stick with. 🎯",
   },
   {
     q: "Is it really free? What's the catch?",

@@ -32,8 +32,8 @@ export default function SignupSection() {
             Send me the first habit on WhatsApp 🚀
           </h2>
           <p className="text-sm sm:text-xl text-foreground-muted leading-relaxed text-center">
-            Register free and get a tiny kickstart habit instantly.<br />
-            Your official Day 1 starts tomorrow morning.
+            Sign up free and get a tiny starter habit right away.<br />
+            Your real Day 1 starts tomorrow morning.
           </p>
         </div>
 

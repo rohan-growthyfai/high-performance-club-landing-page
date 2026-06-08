@@ -3,7 +3,7 @@ export default function WhatIsChallenge() {
     {
       emoji: "⚡",
       label: "Energy",
-      desc: "Start your day with small actions that help you feel active and refreshed.",
+      desc: "Start your day with small steps that help you feel awake and fresh.",
       color: "bg-amber-50 border-amber-200",
       badgeColor: "bg-amber-400 text-white",
       textColor: "text-amber-600",
@@ -11,7 +11,7 @@ export default function WhatIsChallenge() {
     {
       emoji: "💚",
       label: "Health",
-      desc: "Build simple habits that support your body without gym routines or strict diets.",
+      desc: "Build simple habits that help your body — no gym and no hard diets.",
       color: "bg-emerald-50 border-emerald-200",
       badgeColor: "bg-emerald-500 text-white",
       textColor: "text-emerald-600",
@@ -19,7 +19,7 @@ export default function WhatIsChallenge() {
     {
       emoji: "🎯",
       label: "Focus",
-      desc: "Improve your focus and productivity with small daily actions to finish tasks faster.",
+      desc: "Get more done with small daily steps, so you finish your work faster.",
       color: "bg-blue-50 border-blue-200",
       badgeColor: "bg-blue-500 text-white",
       textColor: "text-blue-600",
@@ -39,10 +39,10 @@ export default function WhatIsChallenge() {
               What exactly is this challenge?
             </h2>
             <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-5">
-              The Free 7-Day Habits WhatsApp Challenge is a simple habit-building challenge where you receive one tiny habit every morning on WhatsApp.
+              It is a free 7-day challenge. Every morning, we send you one tiny habit on WhatsApp.
             </p>
             <p className="text-base text-foreground-muted font-medium mb-5">
-              Each habit is designed to help you improve:
+              Each habit helps you get better at:
             </p>
             <p className="text-base text-foreground-muted leading-relaxed mb-8">
               No app. No course login. No long videos.<br className="hidden sm:block" />

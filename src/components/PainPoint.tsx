@@ -13,49 +13,49 @@ export default function PainPoint() {
         </p>
 
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-foreground mb-6 text-balance">
-          You don&apos;t need more{" "}
-          <span className="text-foreground-muted">motivation</span>.<br className="hidden sm:block" />{" "}
-          You need a habit that{" "}
-          <span className="gradient-text">actually sticks</span>.
+          Tired of big plans that{" "}
+          <span className="text-foreground-muted">never last</span>?{" "}
+          <br className="hidden sm:block" />
+          Try{" "}
+          <span className="gradient-text">1 tiny habit a day</span>.
         </h2>
 
         <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
-          Be honest — you&apos;ve tried the programs before. The 60-day plan. The fitness app.
-          The new morning routine. And every one of them asked you to{" "}
-          <span className="font-semibold text-foreground">overhaul your entire life at once</span> —
-          wake up at 5 AM, change what you eat, follow a strict schedule, give up the things you enjoy.
+          You have tried other plans before. A fitness app. A new morning routine. A big diet.
+          And each one asked you to <span className="font-semibold text-foreground">change everything at once</span> —
+          wake up at 5 AM, eat new food, follow strict rules, give up things you love.
         </p>
 
         <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-8">
-          It feels exciting for two or three days… then real life hits. It&apos;s too much, too fast.
-          You miss a day, feel like you&apos;ve failed, and quietly quit. <span className="font-semibold text-foreground">It&apos;s not your fault.</span>{" "}
-          No one can flip their whole life overnight and keep it up.
+          It feels good for two or three days. Then real life gets busy. It is too much, too fast.
+          You miss one day, feel like you failed, and stop. <span className="font-semibold text-foreground">It is not your fault.</span>{" "}
+          No one can change their whole life in one day.
         </p>
 
         {/* Old way vs Tiny way contrast */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left mb-8">
           <div className="rounded-2xl border-2 border-red-200 bg-red-50/60 p-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-red-500 mb-2">❌ Other programs</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-red-500 mb-2">❌ Other plans</p>
             <p className="text-sm text-foreground-muted leading-relaxed">
-              &quot;Change everything. Wake up early, new diet, new routine, more discipline.&quot;
-              Overwhelming → you burn out and quit.
+              &quot;Change everything. Wake up early. New food. New rules.&quot;
+              Too hard → you give up.
             </p>
           </div>
           <div className="rounded-2xl border-2 border-accent/40 bg-accent/5 p-5">
             <p className="text-xs font-bold uppercase tracking-wider text-accent mb-2">✅ Tiny Habits</p>
             <p className="text-sm text-foreground leading-relaxed">
-              <span className="font-semibold">One tiny change a day</span> — so small you barely
-              notice you made it. Effortless to keep. Easy to win.
+              <span className="font-semibold">Just 1 tiny change a day</span> — so small you barely
+              notice it. Easy to do. Easy to win.
             </p>
           </div>
         </div>
 
         <p className="text-base sm:text-lg text-foreground leading-relaxed font-medium mb-10">
-          That&apos;s the magic. You don&apos;t change your life — you change{" "}
-          <span className="text-emphasis-mint">one tiny thing</span>, on WhatsApp, in under 5 minutes.
-          You won&apos;t even feel it. But day after day, those tiny wins{" "}
-          <span className="font-semibold text-foreground">compound</span> — until one day you look
-          back and see a real, visible difference. <span className="italic">Maybe this time is different. Let&apos;s find out.</span>
+          That is the magic. You do not change your whole life. You change{" "}
+          <span className="text-emphasis-mint">one tiny thing</span> — on WhatsApp, in under 5 minutes.
+          You will barely feel it. But day after day, these tiny wins{" "}
+          <span className="font-semibold text-foreground">add up</span> — until one day you look back
+          and see a big change. <span className="italic">Maybe this time is different. Let us find out.</span>
         </p>
 
         <div className="flex justify-center">

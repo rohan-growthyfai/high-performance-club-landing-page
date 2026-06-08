@@ -1,17 +1,15 @@
 "use client";
 
+/* eslint-disable @next/next/no-img-element */
+
 import { useEffect, useRef, useState } from "react";
 
 /**
- * TinyGains — the James Clear "1% better every day" compounding visual,
- * rebuilt on-brand and animated. Shows three paths from a single "You are here"
- * starting point:
- *   • 1% better every day  → 37× in a year (green, soaring)
+ * TinyGains — the "1% better every day" compounding visual, rebuilt on-brand
+ * and animated. Shows two paths from a single "You are here" starting point:
+ *   • 1% better every day  → 37× in a year (green, soaring) with a happy figure
  *   • no change            → flat (dashed grey)
- *   • 1% worse every day   → near-zero (red, declining)
- *
- * The curves draw themselves when the section scrolls into view, and the
- * "37×" counter ticks up — to stick the picture in the visitor's mind.
+ * A tired cartoon sits at the start; a happy, healthy cartoon sits at the top.
  */
 
 // SVG canvas
@@ -24,9 +22,6 @@ const TOP = 40;         // top of the soaring curve
 
 // Compounding curve: starts at baseline (value 1) and soars to the top-right.
 const BETTER_PATH = `M ${X0} ${Y0} C ${X0 + 240} ${Y0 - 8}, ${XEND - 140} ${Y0 - 70}, ${XEND} ${TOP}`;
-// Worse curve: decays from baseline toward the x-axis.
-const WORSE_PATH = `M ${X0} ${Y0} C ${X0 + 200} ${Y0 + 70}, ${XEND - 160} ${Y0 + 78}, ${XEND - 40} ${Y0 + 80}`;
-// No-change: flat dashed line at the baseline.
 const FLAT_Y = Y0;
 
 export default function TinyGains() {
@@ -48,7 +43,7 @@ export default function TinyGains() {
   useEffect(() => {
     if (!shown) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setCount(37.78);
+      setCount(37);
       return;
     }
     let raf = 0;
@@ -57,7 +52,7 @@ export default function TinyGains() {
     const tick = (now: number) => {
       const p = Math.min((now - start) / dur, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      setCount(1 + eased * (37.78 - 1));
+      setCount(1 + eased * (37 - 1));
       if (p < 1) raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -71,29 +66,25 @@ export default function TinyGains() {
         {/* Header */}
         <div className="text-center mb-10 lg:mb-12">
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
-            The power of tiny gains
+            The power of tiny habits
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
             Get just <span className="gradient-text">1% better</span> every day…
           </h2>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-            A tiny habit feels like nothing on Day 1. But improvements{" "}
-            <span className="font-semibold text-foreground">compound</span>. Keep going for a year and the
-            math is staggering — you become a <span className="font-semibold text-foreground">37× better</span> version of yourself.
+            A tiny habit feels like nothing on Day 1. But small wins add up over time.
+            Keep going and the math is shocking — you can become a{" "}
+            <span className="font-semibold text-foreground">37× better version of yourself</span> in just 1 year!
           </p>
         </div>
 
-        {/* The two equations */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-8 mb-10">
-          <div className="flex items-center gap-3 text-lg sm:text-xl font-semibold text-foreground">
-            <span>1% better every day</span>
-            <span className="font-mono text-foreground-muted">1.01<sup>365</sup> =</span>
-            <span className="px-3 py-1 rounded-lg bg-accent/15 text-accent font-bold tabular-nums">37.78</span>
-          </div>
-          <div className="flex items-center gap-3 text-lg sm:text-xl font-semibold text-foreground-muted">
-            <span>1% worse every day</span>
-            <span className="font-mono">0.99<sup>365</sup> =</span>
-            <span className="px-3 py-1 rounded-lg bg-red-100 text-red-500 font-bold tabular-nums">0.03</span>
+        {/* The one simple line */}
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-accent/10 border border-accent/30 text-center">
+            <span className="text-base sm:text-xl font-bold text-foreground">
+              1% better every day ={" "}
+              <span className="text-accent">37× better version of yourself</span> 🚀
+            </span>
           </div>
         </div>
 
@@ -106,7 +97,7 @@ export default function TinyGains() {
 
             {/* Y-axis label */}
             <text x={X0 - 14} y={(TOP + Y0) / 2} textAnchor="middle" fontSize={15} fill="#64748b" fontFamily="var(--font-sans)" transform={`rotate(-90 ${X0 - 56} ${(TOP + Y0) / 2})`}>
-              Improvement or Decline
+              Better or Worse
             </text>
             {/* baseline "1" marker */}
             <text x={X0 - 16} y={Y0 + 5} textAnchor="end" fontSize={16} fontWeight={700} fill="#475569" fontFamily="var(--font-sans)">1</text>
@@ -125,21 +116,6 @@ export default function TinyGains() {
               No change — stay the same
             </text>
 
-            {/* Worse curve (red) */}
-            <path
-              d={WORSE_PATH} fill="none" stroke="#ef4444" strokeWidth={3.5} strokeLinecap="round"
-              pathLength={1}
-              style={{
-                strokeDasharray: 1,
-                strokeDashoffset: shown ? 0 : 1,
-                transition: "stroke-dashoffset 1.6s ease 0.2s",
-              }}
-            />
-            <text x={X0 + 150} y={Y0 + 70} textAnchor="middle" fontSize={13} fontWeight={700} fill="#ef4444" fontFamily="var(--font-sans)"
-              style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 1.4s" }}>
-              ↓ 1% worse → 0.03×
-            </text>
-
             {/* Better curve (green, soaring) */}
             <path
               d={BETTER_PATH} fill="none" stroke="#1da851" strokeWidth={4.5} strokeLinecap="round"
@@ -150,33 +126,30 @@ export default function TinyGains() {
                 transition: "stroke-dashoffset 1.8s ease 0.3s",
               }}
             />
-            {/* arrowhead on the better curve */}
-            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.4s 1.9s" }}>
-              <path d={`M ${XEND - 14} ${TOP + 16} L ${XEND} ${TOP} L ${XEND - 18} ${TOP - 2}`} fill="none" stroke="#1da851" strokeWidth={4.5} strokeLinecap="round" strokeLinejoin="round" />
-            </g>
 
-            {/* "You are here" start marker */}
-            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.5s 0.1s" }}>
-              <circle cx={X0} cy={Y0} r={9} fill="#18181b" stroke="#fff" strokeWidth={3} />
-              <circle cx={X0} cy={Y0} r={9} fill="none" stroke="#18181b" strokeWidth={2}>
-                <animate attributeName="r" values="9;18;9" dur="1.6s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.6;0;0.6" dur="1.6s" repeatCount="indefinite" />
-              </circle>
-            </g>
-
-            {/* 37x badge to the LEFT of the soaring arrow tip */}
+            {/* 37x badge near the top of the green curve */}
             <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.5s 1.7s" }}>
-              <rect x={XEND - 168} y={TOP + 6} width={128} height={48} rx={12} fill="#1da851" />
-              <text x={XEND - 104} y={TOP + 37} textAnchor="middle" fontSize={25} fontWeight={900} fill="#fff" fontFamily="var(--font-sans)">
-                {count.toFixed(1)}× 🚀
+              <rect x={XEND - 220} y={TOP + 4} width={120} height={46} rx={12} fill="#1da851" />
+              <text x={XEND - 160} y={TOP + 33} textAnchor="middle" fontSize={24} fontWeight={900} fill="#fff" fontFamily="var(--font-sans)">
+                {Math.round(count)}× 🚀
               </text>
+            </g>
+
+            {/* BEFORE cartoon at the starting point (tired figure) */}
+            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.2s" }}>
+              <image href="/value/before.png" x={X0 - 42} y={Y0 - 8} width={84} height={84} preserveAspectRatio="xMidYMid meet" />
+            </g>
+
+            {/* AFTER cartoon at the top of the curve (happy, healthy figure) */}
+            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 1.9s" }}>
+              <image href="/value/after.png" x={XEND - 30} y={TOP - 36} width={96} height={96} preserveAspectRatio="xMidYMid meet" />
             </g>
           </svg>
 
-          {/* "You are here" callout label (HTML, positioned over the start dot) */}
+          {/* "You are here" callout label over the start figure */}
           <div
             className="absolute"
-            style={{ left: `${(X0 / VW) * 100}%`, top: `${(Y0 / VH) * 100}%`, transform: "translate(-50%, 18px)" }}
+            style={{ left: `${(X0 / VW) * 100}%`, top: `${(Y0 / VH) * 100}%`, transform: "translate(-50%, 64px)" }}
           >
             <div
               className="whitespace-nowrap rounded-full bg-foreground text-background text-xs font-bold px-3 py-1.5 shadow-lg"
@@ -187,13 +160,13 @@ export default function TinyGains() {
           </div>
         </div>
 
-        {/* Closer + CTA */}
+        {/* Closer + CTA — simple language */}
         <div className="text-center mt-12 lg:mt-14">
           <p className="text-lg sm:text-xl text-foreground font-semibold max-w-2xl mx-auto leading-relaxed mb-2">
-            Standing still isn&apos;t neutral — without tiny wins, habits quietly slide backwards.
+            If you do nothing, nothing changes. In fact, things can slowly get worse.
           </p>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed mb-8">
-            This challenge starts your 1% — one tiny habit a day, on WhatsApp. The compounding does the rest.
+            This challenge gives you your 1% — one tiny habit a day, on WhatsApp. The small wins do the rest.
           </p>
           <a
             href="#signup-1"

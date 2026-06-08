@@ -4,22 +4,22 @@ const items = [
   {
     emoji: "📱",
     title: "7 Daily WhatsApp Habit Messages",
-    detail: "1 tiny science-backed habit delivered to your WhatsApp every morning for 7 days.",
+    detail: "1 tiny habit that really works, sent to your WhatsApp every morning for 7 days.",
   },
   {
     emoji: "⏱️",
     title: "Less Than 5 Minutes a Day",
-    detail: "Simple habits designed for busy schedules.",
+    detail: "Simple habits made for busy people.",
   },
   {
     emoji: "🌙",
     title: "Evening Check-ins",
-    detail: "A short reminder to help you stay consistent.",
+    detail: "A short reminder to help you keep going.",
   },
   {
     emoji: "💬",
     title: "Private WhatsApp Community",
-    detail: "Join others doing the same challenge. Share wins. Stay accountable.",
+    detail: "Join others doing the challenge. Share your wins. Cheer each other on.",
   },
   {
     emoji: "📊",
@@ -103,7 +103,7 @@ export default function ValueStack() {
         </div>
 
         <p className="text-center mt-6 text-sm text-foreground-subtle italic">
-          We are on a mission to help 1 million people live healthier, more energetic lives — one habit at a time.
+          Our goal is to help 1 million people live healthier, happier lives — one habit at a time.
         </p>
 
       </div>

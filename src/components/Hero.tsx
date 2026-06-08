@@ -6,7 +6,7 @@ const reviews = [
     avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "Something shifted on Day 1. I am on Day 19 now.",
+    review: "Something changed on Day 1. I am on Day 19 now.",
   },
   {
     avatar: "/avatars/women/woman-3.avif",
@@ -58,8 +58,8 @@ export default function Hero() {
 
             {/* Subhead — single line */}
             <p className="mt-4 text-base sm:text-lg text-foreground font-medium leading-relaxed animate-fade-up delay-100">
-              <span className="italic text-foreground-muted">No 5 AM wake-ups. No complicated routine.</span>{" "}
-              Get 1 tiny habit delivered on WhatsApp every day.{" "}
+              <span className="italic text-foreground-muted">No 5 AM wake-ups. No hard daily plan.</span>{" "}
+              We send you 1 tiny habit on WhatsApp every day.{" "}
               <span className="text-emphasis-mint">Takes 5 minutes to do.</span>
             </p>
 

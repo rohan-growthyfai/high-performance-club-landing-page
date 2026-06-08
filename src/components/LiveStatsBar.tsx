@@ -57,7 +57,7 @@ export default function LiveStatsBar() {
               <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#25d366" }} />
             </span>
             <span className="text-sm font-bold text-foreground-muted tracking-wider uppercase">Live</span>
-            <span className="text-sm text-foreground-subtle">· updating right now</span>
+            <span className="text-sm text-foreground-subtle">· changing right now</span>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ export default function LiveStatsBar() {
           <StatCard
             icon={MessageCircle}
             value={fmt(messages)}
-            label="WhatsApp messages delivered"
+            label="WhatsApp messages sent"
             sub="across all members"
             live
           />

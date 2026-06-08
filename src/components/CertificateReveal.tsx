@@ -34,7 +34,7 @@ export default function CertificateReveal() {
 
             <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-10">
               Print it. Frame it. Put it on your desk.
-              It is a real reminder that you showed up for yourself. 🥹
+              It shows that you did this for yourself. 🥹
             </p>
 
             <a

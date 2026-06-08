@@ -5,18 +5,18 @@ const benefits = [
     image: "/section-images/reasons-energetic.png",
     title: "Feel More Energetic",
     points: [
-      "Stop feeling tired and drained by afternoon",
-      "Wake up feeling refreshed and ready to go",
-      "Sustain your energy throughout the entire day",
+      "Stop feeling tired and worn out by afternoon",
+      "Wake up feeling fresh and ready to go",
+      "Keep your energy up all day long",
     ],
   },
   {
     image: "/section-images/reasons-healthy.png",
     title: "Build Healthier Habits",
     points: [
-      "Build small daily habits that support your body",
+      "Build small daily habits that are good for your body",
       "Feel lighter, stronger, and more active every day",
-      "Improve your overall wellbeing without a gym or diet",
+      "Feel better all over — no gym or diet needed",
     ],
   },
   {
@@ -24,8 +24,8 @@ const benefits = [
     title: "Feel More Focused",
     points: [
       "Get more done without getting distracted",
-      "Stay sharp during meetings and deep work",
-      "Feel calm, in control, and more productive every day",
+      "Stay focused in meetings and hard tasks",
+      "Feel calm, in control, and get more done every day",
     ],
   },
 ];
@@ -85,7 +85,7 @@ export default function SevenDayResults() {
         <div className="text-center max-w-xl mx-auto mb-12">
           <div className="w-12 h-px bg-border mx-auto mb-8" />
           <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
-            Just 7 tiny habits that naturally fit into your daily routine.
+            Just 7 tiny habits that fit easily into your day.
           </p>
         </div>
 

@@ -21,7 +21,7 @@ const waypoints = [
     sublabel: "Energy",
     emoji: "⚡",
     title: "Energy Hack",
-    desc: "A 30-second morning habit that keeps you charged till night.",
+    desc: "A 30-second morning habit that keeps your energy up till night.",
     color: "#f97316",
     bg: "#fff7ed",
     border: "#f97316",
@@ -33,7 +33,7 @@ const waypoints = [
     sublabel: "Confidence",
     emoji: "💪",
     title: "60-Second Confidence",
-    desc: "One tiny shift that makes you feel stronger before any moment.",
+    desc: "One tiny change that makes you feel stronger before any big moment.",
     color: "#a855f7",
     bg: "#faf5ff",
     border: "#a855f7",
@@ -45,7 +45,7 @@ const waypoints = [
     sublabel: "Body",
     emoji: "👁️",
     title: "Body Recharge",
-    desc: "A simple hourly move that leaves your body lighter and awake.",
+    desc: "A simple move each hour that leaves your body lighter and awake.",
     color: "#0ea5e9",
     bg: "#f0f9ff",
     border: "#0ea5e9",
@@ -81,7 +81,7 @@ const waypoints = [
     sublabel: "Mind",
     emoji: "🧠",
     title: "Mental Reset",
-    desc: "However messy your day — one minute and everything clears.",
+    desc: "No matter how messy your day is — one minute and your head clears.",
     color: "#ec4899",
     bg: "#fdf2f8",
     border: "#ec4899",
@@ -105,7 +105,7 @@ const waypoints = [
     sublabel: "After",
     emoji: "🏆",
     title: "Challenge Complete",
-    desc: "Re-take the quiz. Every score is up — plus your certificate. 🎓",
+    desc: "Take the quiz again. Every score is higher — plus you get your certificate. 🎓",
     color: "#1ea84f",
     bg: "#f0fdf4",
     border: "#1ea84f",
@@ -239,7 +239,7 @@ export default function CuriosityBullets() {
                       </h3>
                       <p className="text-xs text-foreground-muted leading-relaxed text-left">{wp.desc}</p>
                       {!wp.isCheckpoint && (
-                        <p className="text-[10px] mt-2 font-semibold text-accent text-left">🔒 Revealed on WhatsApp</p>
+                        <p className="text-[10px] mt-2 font-semibold text-accent text-left">🔒 Shown on WhatsApp</p>
                       )}
                     </div>
                   </div>
@@ -306,7 +306,7 @@ export default function CuriosityBullets() {
                     </h3>
                     <p className="text-xs text-foreground-muted leading-relaxed text-left">{wp.desc}</p>
                     {!wp.isCheckpoint && (
-                      <p className="text-[10px] mt-1.5 font-semibold text-accent text-left">🔒 Revealed on WhatsApp</p>
+                      <p className="text-[10px] mt-1.5 font-semibold text-accent text-left">🔒 Shown on WhatsApp</p>
                     )}
                   </div>
                 </div>

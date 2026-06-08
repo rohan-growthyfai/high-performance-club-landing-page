@@ -11,14 +11,14 @@ const props = [
   {
     eyebrow: "More Energy",
     title: "Wake up and feel awake",
-    body: "Each morning you get one tiny habit. It helps you feel fresh and full of energy — all day long. No early alarms. No coffee crashes.",
+    body: "Each morning you get one tiny habit. It helps you feel fresh and full of energy — all day long. No early alarms. No tired feeling after coffee.",
     img: "/value/energy.png",
     tint: "from-amber-50 to-amber-100/40",
   },
   {
     eyebrow: "Better Focus",
     title: "Get your work done faster",
-    body: "Small habits help your mind stop wandering. You finish what matters — and you stop wasting time. It feels easy, not hard.",
+    body: "Small habits help you stop getting distracted. You finish what matters — and you stop wasting time. It feels easy, not hard.",
     img: "/value/focus.png",
     tint: "from-blue-50 to-blue-100/40",
   },

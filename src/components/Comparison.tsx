@@ -18,9 +18,9 @@ function RedCross() {
 
 const rows = [
   { feature: "Time per day", us: "Max 5 minutes", them: "30–60 minutes or more" },
-  { feature: "Where it happens", us: "Your WhatsApp", them: "Another app or dashboard" },
+  { feature: "Where it happens", us: "Your WhatsApp", them: "Another app or website" },
   { feature: "Cost", us: "₹0", them: "Usually paid" },
-  { feature: "Setup", us: "30 seconds", them: "Long forms or onboarding" },
+  { feature: "Setup", us: "30 seconds", them: "Long forms or setup" },
   { feature: "Habits per day", us: "1 tiny habit", them: "Too many tasks at once" },
   { feature: "If you miss a day", us: "Continue tomorrow", them: "People often feel like restarting" },
 ];
@@ -38,7 +38,7 @@ export default function Comparison() {
             <br />
           </h2>
           <p className="text-lg sm:text-xl text-foreground-muted leading-[1.5]">
-            Most habit programs fail because they are too heavy for real life. This one is built to be simple.
+            Most habit plans fail because they ask too much. This one is built to be easy.
           </p>
         </div>
 

@@ -42,7 +42,7 @@ const dailyLoop = [
   {
     icon: Sun,
     time: "6:00 AM — Morning",
-    label: "You receive one tiny habit on WhatsApp.",
+    label: "You get one tiny habit on WhatsApp.",
     desc: "",
     color: "text-amber-500",
     bg: "bg-amber-50 border-amber-200",
@@ -58,7 +58,7 @@ const dailyLoop = [
   {
     icon: Moon,
     time: "8:00 PM — Evening Check-in",
-    label: "A quick reminder to reflect and stay on track.",
+    label: "A quick note to think about your day and keep going.",
     desc: "",
     color: "text-indigo-500",
     bg: "bg-indigo-50 border-indigo-200",
@@ -132,13 +132,13 @@ export default function HowChallengeWorks() {
               How this challenge works.
             </h2>
             <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-6">
-              For 7 days, you&apos;ll receive one tiny habit on WhatsApp every morning. Each habit is designed to help you feel more energetic, healthier, and more focused.
+              For 7 days, we send you one tiny habit each morning on WhatsApp. Each one helps you feel more awake, healthy, and focused.
             </p>
 
             {/* Curiosity closer */}
             <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-6 sm:py-5 shadow-md">
               <p className="text-base text-foreground-muted leading-relaxed">
-                The habits are simple, practical, and revealed one day at a time on WhatsApp.
+                The habits are simple and easy. You get one new habit each day on WhatsApp.
               </p>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function HowChallengeWorks() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-4 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">Ready to experience it yourself?</p>
+          <p className="text-base text-foreground-muted text-center max-w-md">Ready to try it yourself?</p>
           <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Yes!! Let&apos;s Get Started
           </a>

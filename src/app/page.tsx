@@ -4,6 +4,7 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
 import PainPoint from "@/components/PainPoint";
+import TinyGains from "@/components/TinyGains";
 import ValueProps from "@/components/ValueProps";
 import InlineSignup from "@/components/InlineSignup";
 import WhatIsChallenge from "@/components/WhatIsChallenge";
@@ -42,6 +43,9 @@ export default function Home() {
 
         {/* 2b. Largest pain point */}
         <PainPoint />
+
+        {/* 2b-ii. The Power of Tiny Gains — 1% better compounding (James Clear style) */}
+        <TinyGains />
 
         {/* 2c. Value props — zigzag big benefits */}
         <ValueProps />

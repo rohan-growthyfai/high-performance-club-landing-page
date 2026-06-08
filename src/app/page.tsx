@@ -11,7 +11,6 @@ import WhatIsChallenge from "@/components/WhatIsChallenge";
 import HowChallengeWorks from "@/components/HowChallengeWorks";
 import WhyTinyHabits from "@/components/WhyTinyHabits";
 import CuriosityBullets from "@/components/CuriosityBullets";
-import SevenDayResults from "@/components/SevenDayResults";
 import Testimonials from "@/components/Testimonials";
 import CertificateReveal from "@/components/CertificateReveal";
 import Hook from "@/components/Hook";
@@ -61,9 +60,6 @@ export default function Home() {
 
         {/* 4b. Here is how your 7 days will look */}
         <CuriosityBullets />
-
-        {/* 5. Reasons to join — 3 benefit cards */}
-        <SevenDayResults />
 
         {/* 6. Everything You Get In This Challenge */}
         <ValueStack />

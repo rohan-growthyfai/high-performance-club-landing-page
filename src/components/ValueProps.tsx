@@ -16,11 +16,11 @@ const props = [
     tint: "from-amber-50 to-amber-100/40",
   },
   {
-    eyebrow: "Better Focus",
-    title: "Get your work done faster",
-    body: "Small habits help you stop getting distracted. You finish what matters — and you stop wasting time. It feels easy, not hard.",
-    img: "/value/focus.png",
-    tint: "from-blue-50 to-blue-100/40",
+    eyebrow: "Better Health",
+    title: "Get healthier and lose weight",
+    body: "Tiny daily habits help you eat better and feel lighter. No hard diets. No gym. Just small, easy steps that are good for your body.",
+    img: "/value/health.png",
+    tint: "from-emerald-50 to-emerald-100/40",
   },
   {
     eyebrow: "Calm & Sleep",
@@ -42,7 +42,7 @@ export default function ValueProps() {
             What you get
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground">
-            Three changes in <span className="gradient-text">7 days</span>.
+            Three Shifts in <span className="gradient-text">7 days</span>.
           </h2>
         </div>
 

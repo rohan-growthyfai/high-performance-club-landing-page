@@ -13,11 +13,11 @@ export default function PainPoint() {
         </p>
 
         <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.15] text-foreground mb-6 text-balance">
-          Tired of big plans that{" "}
-          <span className="text-foreground-muted">never last</span>?{" "}
+          Big plans{" "}
+          <span className="text-foreground-muted">burn you out</span>.{" "}
           <br className="hidden sm:block" />
-          Try{" "}
-          <span className="gradient-text">1 tiny habit a day</span>.
+          One{" "}
+          <span className="gradient-text">tiny habit a day</span> actually works.
         </h2>
 
         <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
@@ -51,11 +51,11 @@ export default function PainPoint() {
         </div>
 
         <p className="text-base sm:text-lg text-foreground leading-relaxed font-medium mb-10">
-          That is the magic. You do not change your whole life. You change{" "}
-          <span className="text-emphasis-mint">one tiny thing</span> — on WhatsApp, in under 5 minutes.
+          That&apos;s the magic. You do not change your whole life. You change{" "}
+          <span className="text-emphasis-mint">one tiny thing</span> — that takes less than 5 minutes.
           You will barely feel it. But day after day, these tiny wins{" "}
           <span className="font-semibold text-foreground">add up</span> — until one day you look back
-          and see a big change. <span className="italic">Maybe this time is different. Let us find out.</span>
+          and see a big change.
         </p>
 
         <div className="flex justify-center">

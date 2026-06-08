@@ -97,7 +97,7 @@ export default function TinyGains() {
 
             {/* Y-axis label */}
             <text x={X0 - 14} y={(TOP + Y0) / 2} textAnchor="middle" fontSize={15} fill="#64748b" fontFamily="var(--font-sans)" transform={`rotate(-90 ${X0 - 56} ${(TOP + Y0) / 2})`}>
-              Better or Worse
+              Growth
             </text>
             {/* baseline "1" marker */}
             <text x={X0 - 16} y={Y0 + 5} textAnchor="end" fontSize={16} fontWeight={700} fill="#475569" fontFamily="var(--font-sans)">1</text>

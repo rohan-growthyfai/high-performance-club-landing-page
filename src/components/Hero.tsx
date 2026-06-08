@@ -50,10 +50,10 @@ export default function Hero() {
             <h1 className="font-display text-[2.1rem] sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
               Feel More{" "}
               <span className="gradient-text">Energetic</span>,{" "}
-              <span className="gradient-text">Healthy</span> &{" "}
-              <span className="gradient-text">Focused</span>{" "}
-              <span className="text-foreground-muted font-medium">in Just</span>{" "}
-              <span className="italic font-normal text-emphasis-yellow">7 Days</span>
+              <span className="gradient-text">Healthier</span> &{" "}
+              <span className="gradient-text">Sleep Better</span>{" "}
+              <span className="text-foreground-muted font-medium">with tiny habits that take</span>{" "}
+              <span className="italic font-normal text-emphasis-yellow">less than 5 minutes a day</span>
             </h1>
 
             {/* Subhead — single line */}

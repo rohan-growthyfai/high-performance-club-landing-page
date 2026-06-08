@@ -35,7 +35,7 @@ export default function WhatIsChallenge() {
 
           {/* LEFT — copy + CTA (left-aligned) */}
           <div className="text-left">
-            <h2 className="font-display text-3xl sm:text-3xl lg:text-4xl font-bold text-foreground mb-5">
+            <h2 className="font-display text-section-title text-foreground mb-5">
               What exactly is this challenge?
             </h2>
             <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-5">

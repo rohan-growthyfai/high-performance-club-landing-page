@@ -1,29 +1,32 @@
+/* eslint-disable @next/next/no-img-element */
+
 /**
  * ValueProps — 3 big benefit blocks in an alternating zig-zag layout
- * (visual ⇄ text), each with a "Dream Outcome" eyebrow, a value-prop headline,
- * a short WIIFM line, and a CTA. Mirrors the classic sales-page zig-zag.
+ * (image ⇄ text), each with a simple eyebrow, a plain-language headline,
+ * a short line, and a CTA. Mirrors the classic sales-page zig-zag.
+ * Language is kept dead-simple on purpose.
  */
 
 const props = [
   {
-    eyebrow: "More Energy, All Day",
-    title: "Wake up clear — and stay sharp till night",
-    body: "Each morning you get one science-backed habit that lifts your energy without caffeine crashes or 5 AM alarms. Small input, all-day output.",
-    emoji: "⚡",
+    eyebrow: "More Energy",
+    title: "Wake up and feel awake",
+    body: "Each morning you get one tiny habit. It helps you feel fresh and full of energy — all day long. No early alarms. No coffee crashes.",
+    img: "/value/energy.png",
     tint: "from-amber-50 to-amber-100/40",
   },
   {
-    eyebrow: "Deep Focus On Demand",
-    title: "Get more done in 7 minutes than most do in 2 hours",
-    body: "Tiny focus rituals retrain your attention so distractions lose their grip. You finish what matters — and actually log off on time.",
-    emoji: "🎯",
+    eyebrow: "Better Focus",
+    title: "Get your work done faster",
+    body: "Small habits help your mind stop wandering. You finish what matters — and you stop wasting time. It feels easy, not hard.",
+    img: "/value/focus.png",
     tint: "from-blue-50 to-blue-100/40",
   },
   {
-    eyebrow: "Calm Nights, Better Sleep",
-    title: "Switch off stress and fall asleep faster",
-    body: "End-of-day habits that quiet a racing mind in under a minute — so you rest deeper and wake up genuinely refreshed.",
-    emoji: "🌙",
+    eyebrow: "Calm & Sleep",
+    title: "Relax and sleep better",
+    body: "A few simple habits at night calm your busy mind in under a minute. You fall asleep faster and wake up happy.",
+    img: "/value/sleep.png",
     tint: "from-indigo-50 to-indigo-100/40",
   },
 ];
@@ -36,10 +39,10 @@ export default function ValueProps() {
         {/* Header */}
         <div className="text-center mb-14 lg:mb-20">
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
-            What you actually get
+            What you get
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground">
-            Three shifts in <span className="gradient-text">7 days</span>.
+            Three changes in <span className="gradient-text">7 days</span>.
           </h2>
         </div>
 
@@ -51,10 +54,15 @@ export default function ValueProps() {
                 key={p.title}
                 className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
               >
-                {/* VISUAL */}
+                {/* IMAGE */}
                 <div className={`${imgFirst ? "lg:order-1" : "lg:order-2"}`}>
-                  <div className={`relative rounded-3xl overflow-hidden border border-border-subtle shadow-sm aspect-[4/3] bg-gradient-to-br ${p.tint} flex items-center justify-center`}>
-                    <span className="text-7xl lg:text-8xl opacity-90" aria-hidden="true">{p.emoji}</span>
+                  <div className={`relative rounded-3xl overflow-hidden border border-border-subtle shadow-md aspect-[4/3] bg-gradient-to-br ${p.tint}`}>
+                    <img
+                      src={p.img}
+                      alt={p.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
                 </div>
 
@@ -74,7 +82,7 @@ export default function ValueProps() {
                       href="#signup-1"
                       className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold"
                     >
-                      Start Free on WhatsApp →
+                      Join Free on WhatsApp →
                     </a>
                   </div>
                 </div>

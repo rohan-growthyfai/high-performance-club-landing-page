@@ -3,6 +3,8 @@ import MetaPixelEvents from "@/components/MetaPixelEvents";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
+import PainPoint from "@/components/PainPoint";
+import ValueProps from "@/components/ValueProps";
 import InlineSignup from "@/components/InlineSignup";
 import WhatIsChallenge from "@/components/WhatIsChallenge";
 import HowChallengeWorks from "@/components/HowChallengeWorks";
@@ -37,6 +39,12 @@ export default function Home() {
 
         {/* 2. Live stats */}
         <LiveStatsBar />
+
+        {/* 2b. Largest pain point */}
+        <PainPoint />
+
+        {/* 2c. Value props — zigzag big benefits */}
+        <ValueProps />
 
         {/* 3. Form #1 */}
         <InlineSignup id="signup-1" />

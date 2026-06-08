@@ -56,13 +56,9 @@ export default function Hero() {
               <span className="italic font-normal text-emphasis-yellow">7 Days</span>
             </h1>
 
-            {/* Subhead */}
-            <p className="mt-4 text-lg sm:text-xl text-foreground-muted italic leading-relaxed animate-fade-up delay-100">
-              No 5 AM wake-ups. No complicated routine.
-            </p>
-
-            {/* Body */}
-            <p className="mt-3 text-base sm:text-lg text-foreground font-medium leading-relaxed animate-fade-up delay-200">
+            {/* Subhead — single line */}
+            <p className="mt-4 text-base sm:text-lg text-foreground font-medium leading-relaxed animate-fade-up delay-100">
+              <span className="italic text-foreground-muted">No 5 AM wake-ups. No complicated routine.</span>{" "}
               Get 1 tiny habit delivered on WhatsApp every day.{" "}
               <span className="text-emphasis-mint">Takes 5 minutes to do.</span>
             </p>

@@ -20,13 +20,17 @@ html,body{width:1080px}
   padding:90px 0;overflow:hidden}
 .glow{position:absolute;top:-160px;right:-160px;width:520px;height:520px;border-radius:50%;
   background:radial-gradient(circle,rgba(37,211,102,0.22) 0%,transparent 70%);filter:blur(18px)}
-.card{position:relative;width:960px;background:#fffdf8;border-radius:40px;padding:84px 72px;
+.card{position:relative;width:960px;background:#fffdf8;border-radius:40px;padding:64px 72px 84px;
   box-shadow:0 40px 120px rgba(0,0,0,0.5);text-align:center;border:1px solid rgba(0,0,0,0.05)}
-.seal{position:absolute;top:-52px;left:50%;transform:translateX(-50%);
-  width:112px;height:112px;border-radius:50%;background:linear-gradient(135deg,#25d366,#1da851);
-  display:flex;align-items:center;justify-content:center;font-size:56px;
+/* HPC brand header at the very top of the card */
+.brand{display:flex;align-items:center;justify-content:center;gap:18px;margin-bottom:30px}
+.brand img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.brand .bt{font-family:'Inter',sans-serif;font-size:34px;font-weight:800;color:#18181b;letter-spacing:-0.01em}
+.seal{position:relative;margin:0 auto 0;
+  width:104px;height:104px;border-radius:50%;background:linear-gradient(135deg,#25d366,#1da851);
+  display:flex;align-items:center;justify-content:center;font-size:52px;
   box-shadow:0 12px 30px rgba(29,168,81,0.4)}
-.kicker{margin-top:40px;font-size:28px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#1da851}
+.kicker{margin-top:26px;font-size:28px;font-weight:700;letter-spacing:0.25em;text-transform:uppercase;color:#1da851}
 .title{font-family:'Playfair Display',serif;font-size:76px;font-weight:700;color:#18181b;margin:12px 0 44px}
 .body{font-size:42px;line-height:1.55;color:#374151;font-weight:500}
 .name{font-family:'Caveat',cursive;font-size:88px;color:#1da851;font-weight:700;display:inline-block}
@@ -40,6 +44,10 @@ html,body{width:1080px}
 <div class="wrap">
   <div class="glow"></div>
   <div class="card">
+    <div class="brand">
+      <img src="https://www.highperformanceclub.co/hpc-logo.png" alt="logo" />
+      <div class="bt">High Performance Club</div>
+    </div>
     <div class="seal">🤝</div>
     <div class="kicker">My Promise</div>
     <div class="title">I'm All In</div>

@@ -83,7 +83,7 @@ export default function TinyGains() {
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl bg-accent/10 border border-accent/30 text-center">
             <span className="text-base sm:text-xl font-bold text-foreground">
               1% better every day ={" "}
-              <span className="text-accent">37× better version of yourself</span> 🚀
+              <span className="text-accent">37× better version of yourself in just 1 year</span> 🚀
             </span>
           </div>
         </div>

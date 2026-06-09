@@ -84,14 +84,15 @@ export default function Hook() {
           </p>
           <p className="text-foreground">
             You just{" "}
-            <span className="text-emphasis-yellow font-semibold">test one tiny habit per day.</span>
+            <span className="text-emphasis-yellow font-semibold">do 1 tiny habit per day</span>{" "}
+            for your energy, health and sleep.
           </p>
 
           <p>
-            Most take less than <span className="text-success font-bold">2 minutes</span>.
+            Each habit takes less than <span className="text-success font-bold">5 minutes</span>.
           </p>
           <p>
-            The longest is just <span className="text-success font-bold">10 minutes</span>.
+            And, in the end, you compare your <span className="text-success font-bold">before-after progress</span>.
           </p>
           <p className="text-foreground font-semibold">
             That&apos;s really it. 🤝

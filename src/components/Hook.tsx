@@ -33,7 +33,6 @@ export default function Hook() {
             Stay calm. Be disciplined. 🥱 You&apos;ve heard it a million times.
           </p>
 
-          <p className="text-base sm:text-2xl leading-relaxed">You&apos;ve heard it a million times.</p>
           <p className="text-base sm:text-2xl leading-relaxed text-foreground font-medium">
             But the real problem is something else.
           </p>
@@ -81,7 +80,7 @@ export default function Hook() {
           </p>
 
           <p>
-            For 7 days, you don&apos;t change anything big.
+            For next 7 days, you don&apos;t change anything big.
           </p>
           <p className="text-foreground">
             You just{" "}
@@ -99,19 +98,7 @@ export default function Hook() {
           </p>
         </div>
 
-        {/* Sticky note */}
-        <div className="mt-20 max-w-md mx-auto">
-          <div className="sticky-note p-7 rounded-md tilt-right">
-            <p className="font-serif italic text-xl text-amber-900 leading-relaxed">
-              &ldquo;If I had time for a perfect routine, I&apos;d already have one.&rdquo;
-              <br />
-              <span className="text-base">— Literally everyone who&apos;s tried this</span>
-            </p>
-          </div>
-        </div>
-
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <p className="text-base text-foreground-muted text-center max-w-md">You already know what you need. Let the challenge do the hard part.</p>
           <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Start the free 7-day challenge →
           </a>

@@ -13,7 +13,7 @@ export default function InlineSignup({ id }: { id?: string }) {
             Join for free
           </p>
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-3 leading-tight">
-            Start Small. Start your 7 Day WhatsApp Challenge
+            Start Small. Start your 7 Day WhatsApp Challenge.
             <br />
             <span className="gradient-text">First habit message in<br className="sm:hidden" /> 2 minutes.</span>
           </h2>

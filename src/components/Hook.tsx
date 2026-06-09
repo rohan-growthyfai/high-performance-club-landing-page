@@ -85,7 +85,7 @@ export default function Hook() {
           <p className="text-foreground">
             You just{" "}
             <span className="text-emphasis-yellow font-semibold">do 1 tiny habit per day</span>{" "}
-            for your energy, health and sleep.
+            to improve your energy, health and sleep.
           </p>
 
           <p>

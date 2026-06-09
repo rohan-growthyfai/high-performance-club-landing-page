@@ -40,6 +40,9 @@ export default function Home() {
         {/* 2. Live stats */}
         <LiveStatsBar />
 
+        {/* 2a. Real Talk — "You don't need another motivation video" (Hook) */}
+        <Hook />
+
         {/* 2b. Largest pain point */}
         <PainPoint />
 

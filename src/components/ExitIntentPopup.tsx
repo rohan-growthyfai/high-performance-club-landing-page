@@ -9,7 +9,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 const struggles = [
   "Energy — I feel drained most days",
   "Health — I want to be more healthy",
-  "Focus — I want to boost my focus and productivity",
+  "Sleep — I want to sleep better and feel rested",
 ];
 
 export default function ExitIntentPopup() {
@@ -128,7 +128,7 @@ export default function ExitIntentPopup() {
               <X className="w-4 h-4" />
             </button>
             <h2 className="text-2xl font-bold leading-snug">
-              Feel More Energetic, Healthy &amp; Focused in Just 7 Days
+              Feel More Energetic, Healthier &amp; Sleep Better in Just 7 Days
             </h2>
             <p className="text-sm opacity-90 mt-3 leading-relaxed">
               Join the FREE 7-Day WhatsApp Habits Challenge<br />

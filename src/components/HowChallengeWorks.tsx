@@ -29,12 +29,12 @@ const areas = [
     textColor: "text-emerald-600",
   },
   {
-    emoji: "🎯",
-    label: "Focus",
-    desc: "Improve your focus and productivity with small daily actions to finish tasks faster.",
-    color: "bg-blue-50 border-blue-200",
-    badgeColor: "bg-blue-500 text-white",
-    textColor: "text-blue-600",
+    emoji: "🌙",
+    label: "Sleep",
+    desc: "Calm your mind at night with small habits, so you sleep better and wake up fresh.",
+    color: "bg-indigo-50 border-indigo-200",
+    badgeColor: "bg-indigo-500 text-white",
+    textColor: "text-indigo-600",
   },
 ];
 

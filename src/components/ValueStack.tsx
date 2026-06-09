@@ -24,7 +24,7 @@ const items = [
   {
     emoji: "📊",
     title: "Personalized 7 Days Progress Report",
-    detail: "Compare your Energy, Health, and Focus before and after the challenge.",
+    detail: "Compare your Energy, Health, and Sleep before and after the challenge.",
   },
   {
     emoji: "🏆",

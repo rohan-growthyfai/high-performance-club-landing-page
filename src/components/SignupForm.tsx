@@ -9,7 +9,7 @@ type FormStatus = "idle" | "submitting" | "success" | "error";
 const struggles = [
   "Energy — I feel tired most days",
   "Health — I want to be more healthy",
-  "Focus — I want to focus better and get more done",
+  "Sleep — I want to sleep better and feel rested",
 ];
 
 const testimonials = [

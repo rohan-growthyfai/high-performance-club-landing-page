@@ -38,13 +38,13 @@ export default function WhatIsChallenge() {
             <h2 className="font-display text-section-title text-foreground mb-5">
               What exactly is this challenge?
             </h2>
-            <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-5">
+            <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
               It is a free 7-day challenge. Every morning, we send you one tiny habit on WhatsApp.
             </p>
-            <p className="text-base text-foreground-muted font-medium mb-5">
+            <p className="text-base sm:text-lg text-foreground-muted font-medium mb-5">
               Each habit helps you get better at:
             </p>
-            <p className="text-base text-foreground-muted leading-relaxed mb-8">
+            <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-8">
               No app. No course login. No long videos.<br className="hidden sm:block" />
               Just one small action per day for 7 days.
             </p>

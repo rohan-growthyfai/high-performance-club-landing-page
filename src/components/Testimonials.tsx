@@ -267,23 +267,6 @@ function TestimonialCard({ testimonial: t }: { testimonial: Testimonial }) {
       </p>
 
       {/* Habit tag removed — keeps habits a mystery until signup */}
-
-      {/* Attached "proof" image */}
-      {t.attachedImage && (
-        <div className="mt-3 rounded-xl overflow-hidden border border-border-subtle">
-          <img
-            src={t.attachedImage}
-            alt={t.attachedCaption || "Attached image"}
-            className="w-full h-48 object-cover"
-            loading="lazy"
-          />
-          {t.attachedCaption && (
-            <p className="text-sm text-foreground-muted bg-background-elevated/60 px-4 py-2 italic">
-              📷 {t.attachedCaption}
-            </p>
-          )}
-        </div>
-      )}
     </div>
   );
 }

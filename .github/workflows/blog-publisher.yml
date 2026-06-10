@@ -1,0 +1,47 @@
+name: Auto-publish blog
+
+on:
+  schedule:
+    - cron: '0 */3 * * *'   # every 3 hours (UTC)
+  workflow_dispatch:        # allow manual runs from the Actions tab
+
+permissions:
+  contents: write           # let the workflow push commits
+
+concurrency:
+  group: blog-publisher     # never run two at once
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate & write blog post
+        working-directory: scripts/blog-publisher
+        env:
+          ACTIONS_MODE: 'true'
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: node publish.js
+
+      - name: Commit & push new blog
+        run: |
+          git config user.name "HPC Blog Bot"
+          git config user.email "blog-bot@highperformanceclub.co"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "blog: automated post $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git push
+            echo "Published new blog."
+          else
+            echo "No new blog this run."
+          fi

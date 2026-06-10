@@ -114,22 +114,77 @@ function existingTitlesAndSlugs() {
 
 const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "").slice(0, 70);
 
+// ── Live Google Trends signal (free, no API key) ─────────────────────────────
+// Pulls Google's public daily-trends RSS for India and keeps only terms that
+// are relevant to our niche (energy / health / sleep / habits / focus / etc.).
+// Most days India's top trends are cricket/films — that's fine: we just return
+// [] and the topic generator falls back to its evergreen logic. When something
+// niche-relevant IS rising (a wellness story, a sleep study, a fitness trend),
+// it gets injected into the topic prompt so the post rides a real search wave.
+const NICHE_TERMS = [
+  "sleep", "insomnia", "nap", "melatonin", "circadian", "rest", "tired", "fatigue",
+  "energy", "burnout", "stress", "anxiety", "calm", "mood", "focus", "productivity",
+  "habit", "routine", "morning", "discipline", "motivation", "mindfulness", "meditation",
+  "health", "wellness", "wellbeing", "fitness", "exercise", "workout", "walk", "steps",
+  "diet", "nutrition", "weight", "metabolism", "hydration", "water", "gut", "immunity",
+  "vitamin", "protein", "screen time", "digital detox", "dopamine", "cortisol",
+];
+
+async function fetchTrendingNicheTerms() {
+  // Google Trends "Daily Trends" RSS — public, free, no key. India geo.
+  const url = "https://trends.google.com/trending/rss?geo=IN";
+  try {
+    const res = await fetch(url, {
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; HPCBlogBot/1.0)" },
+      signal: AbortSignal.timeout(12000),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const xml = await res.text();
+
+    // Each <item> has a <title> (the trending query). Pull them all.
+    const titles = [...xml.matchAll(/<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?<\/title>/gis)]
+      .map(m => m[1].trim())
+      .filter(t => t && t.toLowerCase() !== "daily search trends");
+
+    // Keep trends whose text touches our niche vocabulary.
+    const relevant = titles.filter(t => {
+      const low = t.toLowerCase();
+      return NICHE_TERMS.some(term => low.includes(term));
+    });
+
+    if (relevant.length) {
+      console.log(`  ✓ Google Trends (IN): ${relevant.length} niche-relevant rising term(s): ${relevant.slice(0, 5).join(" | ")}`);
+    } else {
+      console.log(`  · Google Trends (IN): ${titles.length} trends fetched, none niche-relevant today → evergreen mode`);
+    }
+    return relevant.slice(0, 8);
+  } catch (e) {
+    console.warn(`  ⚠ Google Trends fetch failed (${e.message}) → evergreen mode`);
+    return [];
+  }
+}
+
 // ── AI trend-aware, SEO topic generator ──────────────────────────────────────
 // Each run, ask the model for a HIGH search-intent, currently-relevant blog
 // topic in the habits/health/sleep/energy/productivity niche — the kind of
 // long-tail query people actually Google ("how to…", "why…", "best…", "X vs Y",
 // "for busy professionals", year-stamped) — and that's realistic to rank for.
-// We pass the list of already-published slugs so it never repeats.
-async function pickTopicWithAI(state) {
+// We pass the list of already-published slugs so it never repeats, plus any
+// live Google-Trends signal so the topic can ride a real, current search wave.
+async function pickTopicWithAI(state, trends = []) {
   const used = existingTitlesAndSlugs();
   const month = new Date().toLocaleString("en", { month: "long" });
   const year = new Date().getFullYear();
+
+  const trendBlock = trends.length
+    ? `\n\nLIVE GOOGLE-TRENDS SIGNAL (rising searches in India right now, relevant to our niche):\n${trends.map(t => `- ${t}`).join("\n")}\nIf any of these can be turned into a genuinely useful, on-brand habits/health/sleep/energy article, lean into it so the post rides this current search wave. If none fit naturally, ignore them and pick the best evergreen topic instead — never force an off-brand or low-value angle.`
+    : "";
 
   const prompt = `You are an SEO content strategist for "High Performance Club", a brand teaching tiny daily habits for more ENERGY, better HEALTH, and better SLEEP, aimed at busy Indian professionals aged 25-45.
 
 Today is ${month} ${year}. Propose ONE new, high-value blog article topic that real people are actively searching for on Google right now in the habits / health / sleep / energy / focus / productivity / wellness space.
 
-Pick a topic with strong, realistic SEARCH INTENT and rankability — favour long-tail, question-style, or "best/how-to/why" queries that get steady search volume (e.g. "how to fix afternoon energy crash", "morning habits for better focus", "natural ways to sleep deeper", "5-minute habits for busy professionals"). Prefer evergreen + currently-relevant angles. India-relevant where natural.
+Pick a topic with strong, realistic SEARCH INTENT and rankability — favour long-tail, question-style, or "best/how-to/why" queries that get steady search volume (e.g. "how to fix afternoon energy crash", "morning habits for better focus", "natural ways to sleep deeper", "5-minute habits for busy professionals"). Prefer evergreen + currently-relevant angles. India-relevant where natural.${trendBlock}
 
 Do NOT reuse any of these already-published slugs:
 ${used.join(", ")}
@@ -170,9 +225,10 @@ Return ONLY a compact JSON object, no markdown, with exactly these keys:
 
 // Primary entry: try AI trend topic first, fall back to static list, then dated variant.
 async function pickNextTopic(state) {
-  const aiTopic = await pickTopicWithAI(state);
+  const trends = await fetchTrendingNicheTerms();
+  const aiTopic = await pickTopicWithAI(state, trends);
   if (aiTopic && !slugExists(aiTopic.slug) && !slugsInIndex().has(aiTopic.slug)) {
-    console.log("  ✓ AI-generated trend topic");
+    console.log(trends.length ? "  ✓ Topic chosen (live Google-Trends signal in play)" : "  ✓ AI-generated topic (evergreen — no niche trend today)");
     return aiTopic;
   }
   const fromList = pickFromStaticList(state);

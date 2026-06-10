@@ -1,0 +1,9 @@
+{
+  "name": "hpc-blog-autopublish",
+  "version": "1.0.0",
+  "description": "Auto-publish SEO-optimised blogs every 3 hours for highperformanceclub.co",
+  "type": "module",
+  "scripts": {
+    "publish": "node publish.js"
+  }
+}

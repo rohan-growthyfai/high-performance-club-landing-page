@@ -52,8 +52,8 @@ html,body{width:1080px}
     <div class="kicker">My Promise</div>
     <div class="title">I'm All In</div>
     <div class="body">
-      I, <span class="name">${safe}</span>, promise myself to complete the
-      <strong>7-Day WhatsApp Habits Challenge</strong> for my energy, health and focus.
+      I, <span class="name">${safe}</span>, promise myself to stay committed and complete the
+      <strong>7-Days WhatsApp habits challenge</strong> for my overall health and wellbeing.
     </div>
     <div class="commit">"I commit to do all the tiny habits every day — even on busy days."</div>
     <div class="divider"></div>

@@ -14,7 +14,7 @@ const items = [
   { name: "Day-7 Completion Certificate", value: "₹1,499" },
   { name: "7-Habit Reference PDF (keep forever)", value: "₹1,499" },
   { name: "Evening Check-ins & Streak Tracker", value: "₹999" },
-  { name: "Private WhatsApp Community", value: "₹1,004" },
+  { name: "Private WhatsApp Community", value: "₹999" },
 ];
 
 export default function ValueLadder() {
@@ -59,7 +59,7 @@ export default function ValueLadder() {
                 Total Value
               </span>
               <span className="text-xl font-black text-foreground-subtle line-through tabular-nums">
-                ₹9,999
+                ₹9,994
               </span>
             </div>
           </div>

@@ -11,20 +11,38 @@ import { NextResponse } from "next/server";
 function buildWelcomeHTML(firstName: string, startDate: string): string {
   const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 18);
   const dateSafe = (startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
-  // Personalized version of the static Sun/Heart/Moon WELCOME banner. Same look:
-  // light-green radial gradient, WhatsApp glyph + confetti up top, big green
-  // "Welcome <Name>!", the challenge line, the start date, and the three line
-  // icons (smiling sun · heartbeat · crescent moon). Rendered square 1080x1080.
-  const confetti = [
-    [60, 90, "#3ddc84", 8], [200, 50, "#d4af37", -14], [340, 120, "#9be7b4", 20],
-    [480, 60, "#ffffff", 35], [620, 130, "#3ddc84", -22], [760, 55, "#d4af37", 12],
-    [900, 115, "#9be7b4", -30], [1000, 70, "#ffffff", 18], [140, 200, "#3ddc84", 25],
-    [930, 210, "#d4af37", 40], [40, 320, "#9be7b4", -18], [1020, 330, "#3ddc84", -12],
-    [280, 40, "#ffffff", 30], [700, 200, "#9be7b4", -25], [420, 175, "#d4af37", 15],
-    [840, 175, "#ffffff", -20], [120, 430, "#9be7b4", 22], [960, 440, "#3ddc84", -16],
-  ].map(([x, y, c, r]) =>
-    `<div class="conf" style="left:${x}px;top:${y}px;background:${c};transform:rotate(${r}deg)"></div>`
-  ).join("");
+  // Personalized version of the static Sun/Heart/Moon WELCOME banner: rich green
+  // corner-vignette gradient over a white center, dense green/gold/white confetti
+  // + sparkles, WhatsApp glyph, big green "Welcome <Name>!", the challenge line,
+  // the start date, and three filled icons (smiling sun · heart · crescent moon).
+  // Rendered square 1080x1080.
+  //
+  // Confetti: a deterministic scatter of rectangles + small circles ("sparkles")
+  // densely covering the top band and corners, in the brand green/gold/white mix.
+  const COLORS = ["#2bb673", "#3ddc84", "#9be7b4", "#d4af37", "#e8c766", "#ffffff", "#1aa84f"];
+  const pieces: string[] = [];
+  // pseudo-random but fixed (no Math.random — keeps renders consistent)
+  let seed = 12345;
+  const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
+  for (let i = 0; i < 70; i++) {
+    const x = Math.round(rnd() * 1080);
+    // bias toward the top third + a lighter sprinkle lower down
+    const y = i < 50 ? Math.round(rnd() * 360) : Math.round(360 + rnd() * 680);
+    const c = COLORS[Math.floor(rnd() * COLORS.length)];
+    const rot = Math.round(rnd() * 360);
+    const op = (0.6 + rnd() * 0.4).toFixed(2);
+    if (rnd() < 0.42) {
+      // sparkle (small circle/dot)
+      const d = 8 + Math.round(rnd() * 12);
+      pieces.push(`<div class="spark" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px;background:${c};opacity:${op}"></div>`);
+    } else {
+      // confetti rectangle
+      const w = 22 + Math.round(rnd() * 16);
+      const h = 9 + Math.round(rnd() * 7);
+      pieces.push(`<div class="conf" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};transform:rotate(${rot}deg);opacity:${op}"></div>`);
+    }
+  }
+  const confetti = pieces.join("");
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
@@ -32,9 +50,16 @@ function buildWelcomeHTML(firstName: string, startDate: string): string {
 html,body{width:1080px;height:1080px;overflow:hidden}
 .card{width:1080px;height:1080px;position:relative;overflow:hidden;
   font-family:'Inter',-apple-system,sans-serif;
-  background:radial-gradient(120% 120% at 50% 38%, #ffffff 0%, #eafaf0 44%, #c9f0d6 78%, #a8e6bf 100%);
+  /* rich green vignette in all four corners, fading to a clean white center */
+  background:
+    radial-gradient(60% 55% at 0% 0%, rgba(43,182,115,0.55) 0%, rgba(43,182,115,0) 60%),
+    radial-gradient(60% 55% at 100% 0%, rgba(43,182,115,0.55) 0%, rgba(43,182,115,0) 60%),
+    radial-gradient(65% 60% at 0% 100%, rgba(26,168,79,0.6) 0%, rgba(26,168,79,0) 62%),
+    radial-gradient(65% 60% at 100% 100%, rgba(26,168,79,0.6) 0%, rgba(26,168,79,0) 62%),
+    radial-gradient(120% 120% at 50% 45%, #ffffff 0%, #f1fbf5 50%, #d6f3e0 80%, #aee9c4 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:40px;}
-.conf{position:absolute;width:30px;height:13px;border-radius:3px;opacity:0.95}
+.conf{position:absolute;border-radius:3px}
+.spark{position:absolute;border-radius:50%;box-shadow:0 0 6px rgba(255,255,255,0.4)}
 .wa{width:120px;height:120px;border-radius:50%;
   background:#25d366;display:flex;align-items:center;justify-content:center;
   box-shadow:0 14px 34px -10px rgba(37,211,102,0.6);position:relative;z-index:2;margin-bottom:46px}
@@ -48,8 +73,7 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   background:rgba(255,255,255,0.6);border-radius:18px;padding:14px 40px;
   text-align:center;position:relative;z-index:2}
 .icons{margin-top:64px;display:flex;gap:120px;align-items:center;position:relative;z-index:2}
-.icons svg{width:118px;height:118px;stroke:#1f7a43;stroke-width:5;fill:none;
-  stroke-linecap:round;stroke-linejoin:round}
+.icons svg{width:120px;height:120px;fill:#1f7a43}
 </style></head>
 <body>
 <div class="card">
@@ -61,9 +85,33 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   <div class="title">7-Day WhatsApp Challenge</div>
   <div class="date">📅 Starts ${dateSafe}</div>
   <div class="icons">
-    <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="13"/><circle cx="27.5" cy="30" r="1.6" fill="#1f7a43" stroke="none"/><circle cx="36.5" cy="30" r="1.6" fill="#1f7a43" stroke="none"/><path d="M27.5 35.5c1.6 2 7.4 2 9 0"/><path d="M32 7v6M32 51v6M7 32h6M51 32h6M13.5 13.5l4 4M46.5 46.5l4 4M50.5 13.5l-4 4M17.5 46.5l-4 4"/></svg>
-    <svg viewBox="0 0 64 64"><path d="M6 38h11l5-15 8 26 6-17 4 6h12"/></svg>
-    <svg viewBox="0 0 64 64"><path d="M41 12a20 20 0 100 40 16 16 0 010-40z"/><path d="M50 15l1.6 4.2 4.2 1.6-4.2 1.6-1.6 4.2-1.6-4.2-4.2-1.6 4.2-1.6z" fill="#1f7a43" stroke="none"/><circle cx="49" cy="40" r="1.9" fill="#1f7a43" stroke="none"/></svg>
+    <!-- SUN: filled disc with rays + smiling face (face cut out in white) -->
+    <svg viewBox="0 0 64 64">
+      <circle cx="32" cy="30" r="15"/>
+      <g stroke="#1f7a43" stroke-width="4" stroke-linecap="round">
+        <line x1="32" y1="4" x2="32" y2="11"/>
+        <line x1="32" y1="49" x2="32" y2="56"/>
+        <line x1="6" y1="30" x2="13" y2="30"/>
+        <line x1="51" y1="30" x2="58" y2="30"/>
+        <line x1="13.5" y1="11.5" x2="18.5" y2="16.5"/>
+        <line x1="45.5" y1="43.5" x2="50.5" y2="48.5"/>
+        <line x1="50.5" y1="11.5" x2="45.5" y2="16.5"/>
+        <line x1="18.5" y1="43.5" x2="13.5" y2="48.5"/>
+      </g>
+      <circle cx="27" cy="28" r="1.9" fill="#fff"/>
+      <circle cx="37" cy="28" r="1.9" fill="#fff"/>
+      <path d="M26 34c2.2 2.6 9.8 2.6 12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <!-- HEART: solid filled heart -->
+    <svg viewBox="0 0 64 64">
+      <path d="M32 56S6 40 6 22.5C6 13.4 13.4 6 22.5 6c5.6 0 10.5 2.9 13.5 7.3C39 8.9 43.9 6 49.5 6 58.6 6 66 13.4 66 22.5 66 40 32 56 32 56z" transform="translate(-2,0)"/>
+    </svg>
+    <!-- MOON: crescent + two stars -->
+    <svg viewBox="0 0 64 64">
+      <path d="M44 8a24 24 0 100 48 19 19 0 010-48z"/>
+      <path d="M50 10l1.8 4.6 4.6 1.8-4.6 1.8-1.8 4.6-1.8-4.6-4.6-1.8 4.6-1.8z"/>
+      <circle cx="52" cy="40" r="2.4"/>
+    </svg>
   </div>
 </div>
 </body></html>`;

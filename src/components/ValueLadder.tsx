@@ -9,12 +9,12 @@ import { Check } from "lucide-react";
  */
 
 const items = [
-  { name: "7 Daily Tiny-Habit Messages (on WhatsApp)", value: "₹299" },
-  { name: "Personalized Before → After Progress Score", value: "₹199" },
-  { name: "Day-7 Completion Certificate", value: "₹149" },
-  { name: "7-Habit Reference PDF (keep forever)", value: "₹149" },
-  { name: "Evening Check-ins & Streak Tracker", value: "₹99" },
-  { name: "Private WhatsApp Community", value: "₹104" },
+  { name: "7 Daily Tiny-Habit Messages (on WhatsApp)", value: "₹2,999" },
+  { name: "Personalized Before → After Progress Score", value: "₹1,999" },
+  { name: "Day-7 Completion Certificate", value: "₹1,499" },
+  { name: "7-Habit Reference PDF (keep forever)", value: "₹1,499" },
+  { name: "Evening Check-ins & Streak Tracker", value: "₹999" },
+  { name: "Private WhatsApp Community", value: "₹1,004" },
 ];
 
 export default function ValueLadder() {
@@ -59,7 +59,7 @@ export default function ValueLadder() {
                 Total Value
               </span>
               <span className="text-xl font-black text-foreground-subtle line-through tabular-nums">
-                ₹999
+                ₹9,999
               </span>
             </div>
           </div>

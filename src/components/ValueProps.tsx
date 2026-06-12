@@ -19,7 +19,6 @@ const props = [
       "One tiny morning habit — under 5 minutes",
     ],
     img: "/value/energy.png",
-    tint: "from-amber-50 to-amber-100/40",
   },
   {
     eyebrow: "Shift 2 · Better Health",
@@ -30,7 +29,6 @@ const props = [
       "Easy steps that fit your real, busy life",
     ],
     img: "/value/health.png",
-    tint: "from-emerald-50 to-emerald-100/40",
   },
   {
     eyebrow: "Shift 3 · Calm & Sleep",
@@ -41,7 +39,6 @@ const props = [
       "Simple night habits — no screens, no stress",
     ],
     img: "/value/sleep.png",
-    tint: "from-indigo-50 to-indigo-100/40",
   },
 ];
 
@@ -68,15 +65,27 @@ export default function ValueProps() {
                 key={p.title}
                 className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 items-center rounded-3xl border border-border-subtle bg-white shadow-sm p-5 sm:p-6 lg:p-7"
               >
-                {/* IMAGE — smaller, fixed aspect */}
+                {/* IMAGE — sits inside a premium green gradient frame (photo
+                    floats on the gradient with padding, like a polished card) */}
                 <div className={`${imgFirst ? "md:order-1" : "md:order-2"}`}>
-                  <div className={`relative rounded-2xl overflow-hidden aspect-[16/10] bg-gradient-to-br ${p.tint}`}>
-                    <img
-                      src={p.img}
-                      alt={p.title}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
+                  <div
+                    className="relative rounded-3xl overflow-hidden aspect-[16/11] p-4 sm:p-5 shadow-xl"
+                    style={{
+                      background:
+                        "radial-gradient(130% 130% at 25% 15%, #25d366 0%, #1aa84f 40%, #0e5b2c 100%)",
+                    }}
+                  >
+                    {/* soft glow accents for a premium feel */}
+                    <span className="pointer-events-none absolute -top-12 -right-12 w-44 h-44 rounded-full bg-white/15 blur-2xl" aria-hidden="true" />
+                    <span className="pointer-events-none absolute -bottom-14 -left-10 w-48 h-48 rounded-full bg-emerald-200/20 blur-3xl" aria-hidden="true" />
+                    <div className="relative w-full h-full rounded-2xl overflow-hidden ring-1 ring-white/20 shadow-2xl">
+                      <img
+                        src={p.img}
+                        alt={p.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
                   </div>
                 </div>
 

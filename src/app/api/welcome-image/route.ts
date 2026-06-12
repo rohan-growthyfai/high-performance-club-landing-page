@@ -9,110 +9,65 @@ import { NextResponse } from "next/server";
  */
 
 function buildWelcomeHTML(firstName: string, startDate: string): string {
-  const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 18);
+  const safe = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
   const dateSafe = (startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
-  // Personalized version of the static Sun/Heart/Moon WELCOME banner: rich green
-  // corner-vignette gradient over a white center, dense green/gold/white confetti
-  // + sparkles, WhatsApp glyph, big green "Welcome <Name>!", the challenge line,
-  // the start date, and three filled icons (smiling sun · heart · crescent moon).
-  // Rendered square 1080x1080.
-  //
-  // Confetti: a deterministic scatter of rectangles + small circles ("sparkles")
-  // densely covering the top band and corners, in the brand green/gold/white mix.
-  const COLORS = ["#2bb673", "#3ddc84", "#9be7b4", "#d4af37", "#e8c766", "#ffffff", "#1aa84f"];
-  const pieces: string[] = [];
-  // pseudo-random but fixed (no Math.random — keeps renders consistent)
-  let seed = 12345;
-  const rnd = () => { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; };
-  for (let i = 0; i < 70; i++) {
-    const x = Math.round(rnd() * 1080);
-    // bias toward the top third + a lighter sprinkle lower down
-    const y = i < 50 ? Math.round(rnd() * 360) : Math.round(360 + rnd() * 680);
-    const c = COLORS[Math.floor(rnd() * COLORS.length)];
-    const rot = Math.round(rnd() * 360);
-    const op = (0.6 + rnd() * 0.4).toFixed(2);
-    if (rnd() < 0.42) {
-      // sparkle (small circle/dot)
-      const d = 8 + Math.round(rnd() * 12);
-      pieces.push(`<div class="spark" style="left:${x}px;top:${y}px;width:${d}px;height:${d}px;background:${c};opacity:${op}"></div>`);
-    } else {
-      // confetti rectangle
-      const w = 22 + Math.round(rnd() * 16);
-      const h = 9 + Math.round(rnd() * 7);
-      pieces.push(`<div class="conf" style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c};transform:rotate(${rot}deg);opacity:${op}"></div>`);
-    }
-  }
-  const confetti = pieces.join("");
+  const logo = "https://www.highperformanceclub.co/hpc-logo.png";
+  // HaBuild-style LIGHT theme: clean white/cream bg, logo + title top, big bold
+  // Inter (same as HPC site), challenge badge box with start date, "Click Button Below" footer.
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1080px;overflow:hidden}
 .card{width:1080px;height:1080px;position:relative;overflow:hidden;
-  font-family:'Inter',-apple-system,sans-serif;
-  /* rich green vignette in all four corners, fading to a clean white center */
-  background:
-    radial-gradient(75% 70% at 0% 0%, rgba(38,176,110,0.85) 0%, rgba(38,176,110,0.35) 40%, rgba(38,176,110,0) 70%),
-    radial-gradient(75% 70% at 100% 0%, rgba(38,176,110,0.85) 0%, rgba(38,176,110,0.35) 40%, rgba(38,176,110,0) 70%),
-    radial-gradient(80% 75% at 0% 100%, rgba(22,160,74,0.9) 0%, rgba(22,160,74,0.4) 42%, rgba(22,160,74,0) 72%),
-    radial-gradient(80% 75% at 100% 100%, rgba(22,160,74,0.9) 0%, rgba(22,160,74,0.4) 42%, rgba(22,160,74,0) 72%),
-    radial-gradient(95% 95% at 50% 47%, #ffffff 0%, #ffffff 30%, #e9f9ef 60%, #cdefdb 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:40px;}
-.conf{position:absolute;border-radius:3px}
-.spark{position:absolute;border-radius:50%;box-shadow:0 0 6px rgba(255,255,255,0.4)}
-.wa{width:120px;height:120px;border-radius:50%;
-  background:#25d366;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 14px 34px -10px rgba(37,211,102,0.6);position:relative;z-index:2;margin-bottom:46px}
-.wa svg{width:72px;height:72px;fill:#fff}
-.welcome{font-size:118px;font-weight:900;color:#1aa84f;
-  letter-spacing:-0.02em;line-height:1.0;text-align:center;position:relative;z-index:2;
-  text-shadow:0 2px 0 rgba(255,255,255,0.6);padding:0 40px}
-.title{margin-top:26px;font-size:60px;font-weight:800;color:#15924a;
-  letter-spacing:-0.01em;text-align:center;position:relative;z-index:2}
-.date{margin-top:30px;font-size:46px;font-weight:700;color:#1f8a47;
-  background:rgba(255,255,255,0.6);border-radius:18px;padding:14px 40px;
-  text-align:center;position:relative;z-index:2}
-.icons{margin-top:64px;display:flex;gap:120px;align-items:center;position:relative;z-index:2}
-.icons svg{width:120px;height:120px;fill:#1f7a43}
+  background:#f7f9f8;font-family:'Inter',-apple-system,sans-serif;
+  display:flex;flex-direction:column;padding:70px 80px 0;}
+/* soft decorative shapes */
+.blob1{position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;
+  background:rgba(37,211,102,0.10)}
+.blob2{position:absolute;bottom:120px;left:-160px;width:420px;height:420px;border-radius:50%;
+  background:rgba(184,133,58,0.07)}
+/* header: logo + brand */
+.head{position:relative;display:flex;align-items:center;gap:20px;margin-bottom:70px}
+.head img{width:78px;height:78px;border-radius:50%;object-fit:cover}
+.head .brand{font-size:34px;font-weight:800;color:#18181b;letter-spacing:-0.01em}
+/* big welcome */
+.welcome{position:relative;font-size:64px;font-weight:600;color:#3f4a44;margin-bottom:6px}
+.name{position:relative;font-size:104px;font-weight:900;color:#18181b;line-height:1.0;
+  letter-spacing:-0.03em;margin-bottom:50px}
+.name b{color:#1da851}
+/* challenge badge box (like HaBuild's blue box) */
+.cbox{position:relative;background:linear-gradient(135deg,#1da851,#16893f);border-radius:32px;
+  padding:46px 54px;box-shadow:0 24px 60px -20px rgba(29,168,81,0.5);max-width:760px}
+.cbox .small{font-size:34px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:8px}
+.cbox .big{font-size:64px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05;margin-bottom:18px}
+.cbox .date{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.18);
+  border-radius:16px;padding:14px 28px;font-size:38px;font-weight:800;color:#fff}
+/* benefits line */
+.bene{position:relative;margin-top:46px;font-size:38px;font-weight:600;color:#3f4a44;line-height:1.5}
+.bene b{color:#18181b}
+/* click button below footer */
+.footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
+  padding:38px;text-align:center}
+.footer span{font-size:42px;font-weight:800;color:#fff;letter-spacing:0.01em}
+.footer .arrow{color:#4ade80;margin-left:6px}
 </style></head>
 <body>
 <div class="card">
-  ${confetti}
-  <div class="wa">
-    <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.07zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+  <div class="blob1"></div><div class="blob2"></div>
+  <div class="head">
+    <img src="${logo}" alt="logo" />
+    <div class="brand">High Performance Club</div>
   </div>
-  <div class="welcome">Welcome ${safe}!</div>
-  <div class="title">7-Day WhatsApp Challenge</div>
-  <div class="date">📅 Starts ${dateSafe}</div>
-  <div class="icons">
-    <!-- SUN: filled disc + rays + smiling face (eyes/mouth cut out in white) -->
-    <svg viewBox="0 0 64 64">
-      <g stroke="#1f7a43" stroke-width="4.5" stroke-linecap="round">
-        <line x1="32" y1="3" x2="32" y2="11"/>
-        <line x1="32" y1="53" x2="32" y2="61"/>
-        <line x1="3" y1="32" x2="11" y2="32"/>
-        <line x1="53" y1="32" x2="61" y2="32"/>
-        <line x1="11.8" y1="11.8" x2="17.4" y2="17.4"/>
-        <line x1="46.6" y1="46.6" x2="52.2" y2="52.2"/>
-        <line x1="52.2" y1="11.8" x2="46.6" y2="17.4"/>
-        <line x1="11.8" y1="52.2" x2="17.4" y2="46.6"/>
-      </g>
-      <circle cx="32" cy="32" r="16"/>
-      <circle cx="26.5" cy="29.5" r="2" fill="#fff"/>
-      <circle cx="37.5" cy="29.5" r="2" fill="#fff"/>
-      <path d="M25.5 37c2.6 3 10.4 3 13 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
-    </svg>
-    <!-- HEART: solid filled heart, centered -->
-    <svg viewBox="0 0 64 64">
-      <path d="M32 55C14 43 6 33 6 23 6 14.7 12.7 8 21 8c4.6 0 8.7 2.1 11 5.5C34.3 10.1 38.4 8 43 8c8.3 0 15 6.7 15 15 0 10-8 20-26 32z"/>
-    </svg>
-    <!-- MOON: crescent + two stars -->
-    <svg viewBox="0 0 64 64">
-      <path d="M38 6a24 24 0 1018 39.6A26 26 0 0138 6z"/>
-      <path d="M50 8l1.7 4.4 4.4 1.7-4.4 1.7-1.7 4.4-1.7-4.4-4.4-1.7 4.4-1.7z"/>
-      <circle cx="54" cy="40" r="2.4"/>
-    </svg>
+  <div class="welcome">Welcome,</div>
+  <div class="name"><b>${safe}</b> 🙏</div>
+  <div class="cbox">
+    <div class="small">You're registered for the</div>
+    <div class="big">FREE 7-Day<br>WhatsApp Habits Challenge</div>
+    <div class="date">📅 Starts ${dateSafe}</div>
   </div>
+  <div class="bene">1 tiny habit a day · under 5 minutes · <b>on WhatsApp</b></div>
+  <div class="footer"><span>Click Button Below<span class="arrow">⬇</span></span></div>
 </div>
 </body></html>`;
 }

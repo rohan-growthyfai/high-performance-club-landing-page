@@ -264,36 +264,13 @@ export async function POST(request: Request) {
 
     const pdfBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
-    const supabaseUrl        = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error("Supabase credentials not configured");
-    }
-
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
     const slug      = `${data.name.replace(/\s+/g, "-").toLowerCase()}-${Date.now()}`;
     const firstName = data.name.split(" ")[0];
     const filename  = `${slug}.pdf`;
 
-    // Upload PDF to Supabase public bucket
-    const { error: uploadError } = await supabase.storage
-      .from("reports")
-      .upload(filename, Buffer.from(pdfBuffer), {
-        contentType: "application/pdf",
-        upsert: true,
-      });
-
-    if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
-
-    // Get permanent public URL — no auth needed, WhatsApp-compatible
-    const { data: urlData } = supabase.storage
-      .from("reports")
-      .getPublicUrl(filename);
-
-    const pdfUrl = urlData.publicUrl;
+    // Store PDF in Neon — permanent public /api/file URL, WhatsApp-compatible.
+    const { putFile } = await import("@/lib/fileStore");
+    const pdfUrl = await putFile(filename, Buffer.from(pdfBuffer), "application/pdf");
 
     return NextResponse.json({
       success: true,

@@ -14,14 +14,14 @@ function buildWelcomeHTML(firstName: string, startDate: string): string {
   // Personalized version of the static Sun/Heart/Moon WELCOME banner. Same look:
   // light-green radial gradient, WhatsApp glyph + confetti up top, big green
   // "Welcome <Name>!", the challenge line, the start date, and the three line
-  // icons (smiling sun · heartbeat · crescent moon) — kept identical.
-  // Rendered 1200x675 (16:9, same shape as the original banner).
+  // icons (smiling sun · heartbeat · crescent moon). Rendered square 1080x1080.
   const confetti = [
-    [60, 70, "#3ddc84", 8], [180, 40, "#d4af37", -14], [300, 92, "#9be7b4", 20],
-    [430, 50, "#ffffff", 35], [560, 95, "#3ddc84", -22], [690, 45, "#d4af37", 12],
-    [820, 86, "#9be7b4", -30], [950, 55, "#ffffff", 18], [1080, 90, "#3ddc84", 25],
-    [120, 150, "#d4af37", 40], [1010, 165, "#9be7b4", -18], [40, 240, "#3ddc84", -12],
-    [1130, 250, "#d4af37", 30], [250, 28, "#ffffff", -25], [760, 24, "#9be7b4", 15],
+    [60, 90, "#3ddc84", 8], [200, 50, "#d4af37", -14], [340, 120, "#9be7b4", 20],
+    [480, 60, "#ffffff", 35], [620, 130, "#3ddc84", -22], [760, 55, "#d4af37", 12],
+    [900, 115, "#9be7b4", -30], [1000, 70, "#ffffff", 18], [140, 200, "#3ddc84", 25],
+    [930, 210, "#d4af37", 40], [40, 320, "#9be7b4", -18], [1020, 330, "#3ddc84", -12],
+    [280, 40, "#ffffff", 30], [700, 200, "#9be7b4", -25], [420, 175, "#d4af37", 15],
+    [840, 175, "#ffffff", -20], [120, 430, "#9be7b4", 22], [960, 440, "#3ddc84", -16],
   ].map(([x, y, c, r]) =>
     `<div class="conf" style="left:${x}px;top:${y}px;background:${c};transform:rotate(${r}deg)"></div>`
   ).join("");
@@ -29,26 +29,26 @@ function buildWelcomeHTML(firstName: string, startDate: string): string {
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{width:1200px;height:675px;overflow:hidden}
-.card{width:1200px;height:675px;position:relative;overflow:hidden;
+html,body{width:1080px;height:1080px;overflow:hidden}
+.card{width:1080px;height:1080px;position:relative;overflow:hidden;
   font-family:'Inter',-apple-system,sans-serif;
-  background:radial-gradient(120% 120% at 50% 35%, #ffffff 0%, #eafaf0 42%, #c9f0d6 78%, #a8e6bf 100%);
-  display:flex;flex-direction:column;align-items:center;}
-.conf{position:absolute;width:26px;height:11px;border-radius:3px;opacity:0.95}
-.wa{margin-top:46px;width:80px;height:80px;border-radius:50%;
+  background:radial-gradient(120% 120% at 50% 38%, #ffffff 0%, #eafaf0 44%, #c9f0d6 78%, #a8e6bf 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:40px;}
+.conf{position:absolute;width:30px;height:13px;border-radius:3px;opacity:0.95}
+.wa{width:120px;height:120px;border-radius:50%;
   background:#25d366;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 10px 26px -8px rgba(37,211,102,0.6);position:relative;z-index:2}
-.wa svg{width:48px;height:48px;fill:#fff}
-.welcome{margin-top:28px;font-size:84px;font-weight:900;color:#1aa84f;
+  box-shadow:0 14px 34px -10px rgba(37,211,102,0.6);position:relative;z-index:2;margin-bottom:46px}
+.wa svg{width:72px;height:72px;fill:#fff}
+.welcome{font-size:118px;font-weight:900;color:#1aa84f;
   letter-spacing:-0.02em;line-height:1.0;text-align:center;position:relative;z-index:2;
-  text-shadow:0 2px 0 rgba(255,255,255,0.6)}
-.title{margin-top:14px;font-size:46px;font-weight:800;color:#15924a;
+  text-shadow:0 2px 0 rgba(255,255,255,0.6);padding:0 40px}
+.title{margin-top:26px;font-size:60px;font-weight:800;color:#15924a;
   letter-spacing:-0.01em;text-align:center;position:relative;z-index:2}
-.date{margin-top:18px;font-size:34px;font-weight:700;color:#1f8a47;
-  background:rgba(255,255,255,0.55);border-radius:14px;padding:8px 28px;
+.date{margin-top:30px;font-size:46px;font-weight:700;color:#1f8a47;
+  background:rgba(255,255,255,0.6);border-radius:18px;padding:14px 40px;
   text-align:center;position:relative;z-index:2}
-.icons{margin-top:30px;display:flex;gap:96px;align-items:center;position:relative;z-index:2}
-.icons svg{width:80px;height:80px;stroke:#1f7a43;stroke-width:5;fill:none;
+.icons{margin-top:64px;display:flex;gap:120px;align-items:center;position:relative;z-index:2}
+.icons svg{width:118px;height:118px;stroke:#1f7a43;stroke-width:5;fill:none;
   stroke-linecap:round;stroke-linejoin:round}
 </style></head>
 <body>
@@ -80,8 +80,8 @@ export async function POST(request: Request) {
     const form = new FormData();
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");
     form.append("format", "png");
-    form.append("width", "1200");
-    form.append("height", "675");
+    form.append("width", "1080");
+    form.append("height", "1080");
     form.append("clip", "true");
 
     const gotenbergRes = await fetch("https://demo.gotenberg.dev/forms/chromium/screenshot/html", {
@@ -93,26 +93,13 @@ export async function POST(request: Request) {
     }
     const pngBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
-    // Upload to Supabase
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error("Supabase credentials not configured");
-    }
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
+    // Store in Neon (replaces Supabase) and return the public /api/file URL.
+    const { putFile } = await import("@/lib/fileStore");
     const safeName = firstName.replace(/\s+/g, "-").toLowerCase().replace(/[^a-z0-9-]/g, "");
     const filename = `welcome-${safeName}-${Date.now()}.png`;
+    const imageUrl = await putFile(filename, pngBuffer, "image/png");
 
-    const { error: uploadError } = await supabase.storage
-      .from("reports")
-      .upload(filename, pngBuffer, { contentType: "image/png", upsert: true });
-    if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
-
-    const { data: urlData } = supabase.storage.from("reports").getPublicUrl(filename);
-
-    return NextResponse.json({ success: true, firstName, imageUrl: urlData.publicUrl });
+    return NextResponse.json({ success: true, firstName, imageUrl });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[welcome-image]", message);

@@ -77,29 +77,8 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 </body></html>`;
 }
 
-export async function POST(request: Request) {
+export async function POST() {
   try {
-    const url = new URL(request.url);
-    const refresh = url.searchParams.get("refresh") === "1";
-
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error("Supabase credentials not configured");
-    }
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-    const publicUrl = supabase.storage.from("reports").getPublicUrl(BANNER_FILENAME).data.publicUrl;
-
-    // Reuse the already-rendered banner unless a refresh is requested.
-    if (!refresh) {
-      const head = await fetch(publicUrl, { method: "HEAD" });
-      if (head.ok) {
-        return NextResponse.json({ success: true, imageUrl: publicUrl, cached: true });
-      }
-    }
-
     // Render HTML → PNG via Gotenberg's screenshot endpoint
     const html = buildBannerHTML();
     const form = new FormData();
@@ -116,10 +95,8 @@ export async function POST(request: Request) {
     if (!gotenbergRes.ok) throw new Error(`Gotenberg screenshot failed: ${gotenbergRes.status}`);
     const pngBuffer = Buffer.from(await gotenbergRes.arrayBuffer());
 
-    const { error: uploadError } = await supabase.storage
-      .from("reports")
-      .upload(BANNER_FILENAME, pngBuffer, { contentType: "image/png", upsert: true });
-    if (uploadError) throw new Error(`Supabase upload failed: ${uploadError.message}`);
+    const { putFile } = await import("@/lib/fileStore");
+    const publicUrl = await putFile(BANNER_FILENAME, Buffer.from(pngBuffer), "image/png");
 
     return NextResponse.json({ success: true, imageUrl: publicUrl, cached: false });
   } catch (err: unknown) {

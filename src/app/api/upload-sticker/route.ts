@@ -15,25 +15,12 @@ const SOURCE_RAW =
 
 async function handle() {
   try {
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-    if (!supabaseUrl || !supabaseServiceKey) {
-      throw new Error("Supabase credentials not configured");
-    }
-
     const srcRes = await fetch(SOURCE_RAW);
     if (!srcRes.ok) throw new Error(`fetch source failed: ${srcRes.status}`);
     const bytes = Buffer.from(await srcRes.arrayBuffer());
 
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-    const { error } = await supabase.storage
-      .from("reports")
-      .upload(FILENAME, bytes, { contentType: "image/webp", upsert: true });
-    if (error) throw new Error(`supabase upload failed: ${error.message}`);
-
-    const publicUrl = supabase.storage.from("reports").getPublicUrl(FILENAME).data.publicUrl;
+    const { putFile } = await import("@/lib/fileStore");
+    const publicUrl = await putFile(FILENAME, Buffer.from(bytes), "image/webp");
     return NextResponse.json({ success: true, publicUrl, bytes: bytes.length });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : "unknown error";

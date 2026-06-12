@@ -136,19 +136,6 @@ body{font-family:'Inter',sans-serif;background:#faf8f3;color:#18181b;width:800px
 
 export async function POST() {
   try {
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-    if (!supabaseUrl || !supabaseServiceKey) throw new Error("Supabase not configured");
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
-    // Return cached if it exists
-    const { data: existing } = supabase.storage.from("reports").getPublicUrl(CACHED_FILENAME);
-    if (existing?.publicUrl) {
-      const head = await fetch(existing.publicUrl, { method: "HEAD" });
-      if (head.ok) return NextResponse.json({ success: true, pdfUrl: existing.publicUrl, cached: true });
-    }
-
     const html = buildHTML();
     const form = new FormData();
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");
@@ -162,11 +149,10 @@ export async function POST() {
     if (!got.ok) throw new Error(`Gotenberg failed: ${got.status}`);
     const pdfBuffer = Buffer.from(await got.arrayBuffer());
 
-    const { error: upErr } = await supabase.storage.from("reports").upload(CACHED_FILENAME, pdfBuffer, { contentType: "application/pdf", upsert: true });
-    if (upErr) throw new Error(`Supabase upload failed: ${upErr.message}`);
-    const { data } = supabase.storage.from("reports").getPublicUrl(CACHED_FILENAME);
+    const { putFile } = await import("@/lib/fileStore");
+    const publicUrl = await putFile(CACHED_FILENAME, Buffer.from(pdfBuffer), "application/pdf");
 
-    return NextResponse.json({ success: true, pdfUrl: data.publicUrl, cached: false });
+    return NextResponse.json({ success: true, pdfUrl: publicUrl, cached: false });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[challenge-schedule-pdf]", message);

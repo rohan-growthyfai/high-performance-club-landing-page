@@ -83,19 +83,12 @@ export async function POST(request: Request) {
     if (!got.ok) throw new Error(`Gotenberg screenshot failed: ${got.status}`);
     const png = Buffer.from(await got.arrayBuffer());
 
-    const supabaseUrl = process.env.SUPABASE_URL!;
-    const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
-    if (!supabaseUrl || !supabaseServiceKey) throw new Error("Supabase not configured");
-    const { createClient } = await import("@supabase/supabase-js");
-    const supabase = createClient(supabaseUrl, supabaseServiceKey);
-
+    const { putFile } = await import("@/lib/fileStore");
     const safeName = firstName.replace(/\s+/g, "-").toLowerCase().replace(/[^a-z0-9-]/g, "");
     const filename = `promise-${safeName}-${Date.now()}.png`;
-    const { error: upErr } = await supabase.storage.from("reports").upload(filename, png, { contentType: "image/png", upsert: true });
-    if (upErr) throw new Error(`Supabase upload failed: ${upErr.message}`);
-    const { data } = supabase.storage.from("reports").getPublicUrl(filename);
+    const publicUrl = await putFile(filename, Buffer.from(png), "image/png");
 
-    return NextResponse.json({ success: true, imageUrl: data.publicUrl });
+    return NextResponse.json({ success: true, imageUrl: publicUrl });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[promise-card]", message);

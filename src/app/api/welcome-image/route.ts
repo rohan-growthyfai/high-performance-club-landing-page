@@ -52,11 +52,11 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   font-family:'Inter',-apple-system,sans-serif;
   /* rich green vignette in all four corners, fading to a clean white center */
   background:
-    radial-gradient(60% 55% at 0% 0%, rgba(43,182,115,0.55) 0%, rgba(43,182,115,0) 60%),
-    radial-gradient(60% 55% at 100% 0%, rgba(43,182,115,0.55) 0%, rgba(43,182,115,0) 60%),
-    radial-gradient(65% 60% at 0% 100%, rgba(26,168,79,0.6) 0%, rgba(26,168,79,0) 62%),
-    radial-gradient(65% 60% at 100% 100%, rgba(26,168,79,0.6) 0%, rgba(26,168,79,0) 62%),
-    radial-gradient(120% 120% at 50% 45%, #ffffff 0%, #f1fbf5 50%, #d6f3e0 80%, #aee9c4 100%);
+    radial-gradient(75% 70% at 0% 0%, rgba(38,176,110,0.85) 0%, rgba(38,176,110,0.35) 40%, rgba(38,176,110,0) 70%),
+    radial-gradient(75% 70% at 100% 0%, rgba(38,176,110,0.85) 0%, rgba(38,176,110,0.35) 40%, rgba(38,176,110,0) 70%),
+    radial-gradient(80% 75% at 0% 100%, rgba(22,160,74,0.9) 0%, rgba(22,160,74,0.4) 42%, rgba(22,160,74,0) 72%),
+    radial-gradient(80% 75% at 100% 100%, rgba(22,160,74,0.9) 0%, rgba(22,160,74,0.4) 42%, rgba(22,160,74,0) 72%),
+    radial-gradient(95% 95% at 50% 47%, #ffffff 0%, #ffffff 30%, #e9f9ef 60%, #cdefdb 100%);
   display:flex;flex-direction:column;align-items:center;justify-content:center;padding-bottom:40px;}
 .conf{position:absolute;border-radius:3px}
 .spark{position:absolute;border-radius:50%;box-shadow:0 0 6px rgba(255,255,255,0.4)}
@@ -85,32 +85,32 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   <div class="title">7-Day WhatsApp Challenge</div>
   <div class="date">📅 Starts ${dateSafe}</div>
   <div class="icons">
-    <!-- SUN: filled disc with rays + smiling face (face cut out in white) -->
+    <!-- SUN: filled disc + rays + smiling face (eyes/mouth cut out in white) -->
     <svg viewBox="0 0 64 64">
-      <circle cx="32" cy="30" r="15"/>
-      <g stroke="#1f7a43" stroke-width="4" stroke-linecap="round">
-        <line x1="32" y1="4" x2="32" y2="11"/>
-        <line x1="32" y1="49" x2="32" y2="56"/>
-        <line x1="6" y1="30" x2="13" y2="30"/>
-        <line x1="51" y1="30" x2="58" y2="30"/>
-        <line x1="13.5" y1="11.5" x2="18.5" y2="16.5"/>
-        <line x1="45.5" y1="43.5" x2="50.5" y2="48.5"/>
-        <line x1="50.5" y1="11.5" x2="45.5" y2="16.5"/>
-        <line x1="18.5" y1="43.5" x2="13.5" y2="48.5"/>
+      <g stroke="#1f7a43" stroke-width="4.5" stroke-linecap="round">
+        <line x1="32" y1="3" x2="32" y2="11"/>
+        <line x1="32" y1="53" x2="32" y2="61"/>
+        <line x1="3" y1="32" x2="11" y2="32"/>
+        <line x1="53" y1="32" x2="61" y2="32"/>
+        <line x1="11.8" y1="11.8" x2="17.4" y2="17.4"/>
+        <line x1="46.6" y1="46.6" x2="52.2" y2="52.2"/>
+        <line x1="52.2" y1="11.8" x2="46.6" y2="17.4"/>
+        <line x1="11.8" y1="52.2" x2="17.4" y2="46.6"/>
       </g>
-      <circle cx="27" cy="28" r="1.9" fill="#fff"/>
-      <circle cx="37" cy="28" r="1.9" fill="#fff"/>
-      <path d="M26 34c2.2 2.6 9.8 2.6 12 0" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/>
+      <circle cx="32" cy="32" r="16"/>
+      <circle cx="26.5" cy="29.5" r="2" fill="#fff"/>
+      <circle cx="37.5" cy="29.5" r="2" fill="#fff"/>
+      <path d="M25.5 37c2.6 3 10.4 3 13 0" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
     </svg>
-    <!-- HEART: solid filled heart -->
+    <!-- HEART: solid filled heart, centered -->
     <svg viewBox="0 0 64 64">
-      <path d="M32 56S6 40 6 22.5C6 13.4 13.4 6 22.5 6c5.6 0 10.5 2.9 13.5 7.3C39 8.9 43.9 6 49.5 6 58.6 6 66 13.4 66 22.5 66 40 32 56 32 56z" transform="translate(-2,0)"/>
+      <path d="M32 55C14 43 6 33 6 23 6 14.7 12.7 8 21 8c4.6 0 8.7 2.1 11 5.5C34.3 10.1 38.4 8 43 8c8.3 0 15 6.7 15 15 0 10-8 20-26 32z"/>
     </svg>
     <!-- MOON: crescent + two stars -->
     <svg viewBox="0 0 64 64">
-      <path d="M44 8a24 24 0 100 48 19 19 0 010-48z"/>
-      <path d="M50 10l1.8 4.6 4.6 1.8-4.6 1.8-1.8 4.6-1.8-4.6-4.6-1.8 4.6-1.8z"/>
-      <circle cx="52" cy="40" r="2.4"/>
+      <path d="M38 6a24 24 0 1018 39.6A26 26 0 0138 6z"/>
+      <path d="M50 8l1.7 4.4 4.4 1.7-4.4 1.7-1.7 4.4-1.7-4.4-4.4-1.7 4.4-1.7z"/>
+      <circle cx="54" cy="40" r="2.4"/>
     </svg>
   </div>
 </div>

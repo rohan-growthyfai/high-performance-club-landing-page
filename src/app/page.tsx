@@ -3,6 +3,10 @@ import MetaPixelEvents from "@/components/MetaPixelEvents";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import Hero from "@/components/Hero";
 import LiveStatsBar from "@/components/LiveStatsBar";
+import SoundsLikeYou from "@/components/SoundsLikeYou";
+import BeforeAfter from "@/components/BeforeAfter";
+import SystemAdapts from "@/components/SystemAdapts";
+import ValueLadder from "@/components/ValueLadder";
 import TinyGains from "@/components/TinyGains";
 import ValueProps from "@/components/ValueProps";
 import InlineSignup from "@/components/InlineSignup";
@@ -15,7 +19,6 @@ import CertificateReveal from "@/components/CertificateReveal";
 import Hook from "@/components/Hook";
 import Comparison from "@/components/Comparison";
 import FounderStory from "@/components/FounderStory";
-import ValueStack from "@/components/ValueStack";
 import Guarantee from "@/components/Guarantee";
 import SignupSection from "@/components/SignupSection";
 import FAQ from "@/components/FAQ";
@@ -39,6 +42,15 @@ export default function Home() {
         {/* 2. Live stats */}
         <LiveStatsBar />
 
+        {/* 2-new-1. Does this sound like you? (pain points) */}
+        <SoundsLikeYou />
+
+        {/* 2-new-2. Before/After — where you are now → where you'll be in 7 days */}
+        <BeforeAfter />
+
+        {/* 2-new-3. Whoever you are, the system adapts to you */}
+        <SystemAdapts />
+
         {/* 2a. Real Talk — "You don't need another motivation video" (Hook) */}
         <Hook />
 
@@ -60,8 +72,8 @@ export default function Home() {
         {/* 4b. Here is how your 7 days will look */}
         <CuriosityBullets />
 
-        {/* 6. Everything You Get In This Challenge */}
-        <ValueStack />
+        {/* 6. Everything you're getting today — value ladder (₹999 → FREE) */}
+        <ValueLadder />
 
         {/* 7. Wall of Love — Testimonials */}
         <Testimonials />

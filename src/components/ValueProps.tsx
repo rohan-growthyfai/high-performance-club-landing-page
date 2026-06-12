@@ -1,31 +1,45 @@
 /* eslint-disable @next/next/no-img-element */
+import { Check } from "lucide-react";
 
 /**
- * ValueProps — 3 big benefit blocks in an alternating zig-zag layout
- * (image ⇄ text), each with a simple eyebrow, a plain-language headline,
- * a short line, and a CTA. Mirrors the classic sales-page zig-zag.
- * Language is kept dead-simple on purpose.
+ * ValueProps — "Three Shifts in 7 days" in a COMPACT zig-zag.
+ *
+ * Redesigned to be much shorter than the old version: smaller image, tight
+ * eyebrow + headline + a 3-point benefit checklist per shift, alternating
+ * sides. Far less scrolling; users grasp all three shifts quickly.
  */
 
 const props = [
   {
-    eyebrow: "More Energy",
-    title: "Wake up and feel awake",
-    body: "Each morning you get one tiny habit. It helps you feel fresh and full of energy — all day long. No early alarms. No tired feeling after coffee.",
+    eyebrow: "Shift 1 · More Energy",
+    title: "Wake up and actually feel awake",
+    points: [
+      "Steady energy that lasts all day",
+      "No more 3pm crash or coffee dependence",
+      "One tiny morning habit — under 5 minutes",
+    ],
     img: "/value/energy.png",
     tint: "from-amber-50 to-amber-100/40",
   },
   {
-    eyebrow: "Better Health",
-    title: "Get healthier and lose weight",
-    body: "Tiny daily habits help you eat better and feel lighter. No hard diets. No gym. Just small, easy steps that are good for your body.",
+    eyebrow: "Shift 2 · Better Health",
+    title: "Feel lighter and healthier",
+    points: [
+      "Small daily habits that are kind to your body",
+      "No hard diets, no gym, no overwhelm",
+      "Easy steps that fit your real, busy life",
+    ],
     img: "/value/health.png",
     tint: "from-emerald-50 to-emerald-100/40",
   },
   {
-    eyebrow: "Calm & Sleep",
-    title: "Relax and sleep better",
-    body: "A few simple habits at night calm your busy mind in under a minute. You fall asleep faster and wake up happy.",
+    eyebrow: "Shift 3 · Calm & Sleep",
+    title: "Relax and sleep deeper",
+    points: [
+      "Calm your busy mind in under a minute",
+      "Fall asleep faster, wake up refreshed",
+      "Simple night habits — no screens, no stress",
+    ],
     img: "/value/sleep.png",
     tint: "from-indigo-50 to-indigo-100/40",
   },
@@ -33,11 +47,11 @@ const props = [
 
 export default function ValueProps() {
   return (
-    <section className="py-16 lg:py-24 bg-section-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+    <section className="py-14 lg:py-20 bg-section-white">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
-        <div className="text-center mb-14 lg:mb-20">
+        <div className="text-center mb-10 lg:mb-14">
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
             What you get
           </p>
@@ -46,17 +60,17 @@ export default function ValueProps() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-16 lg:gap-24">
+        <div className="flex flex-col gap-8 lg:gap-10">
           {props.map((p, i) => {
-            const imgFirst = i % 2 === 0; // alternate sides on desktop
+            const imgFirst = i % 2 === 0;
             return (
               <div
                 key={p.title}
-                className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10 items-center rounded-3xl border border-border-subtle bg-white shadow-sm p-5 sm:p-6 lg:p-7"
               >
-                {/* IMAGE */}
-                <div className={`${imgFirst ? "lg:order-1" : "lg:order-2"}`}>
-                  <div className={`relative rounded-3xl overflow-hidden border border-border-subtle shadow-md aspect-[4/3] bg-gradient-to-br ${p.tint}`}>
+                {/* IMAGE — smaller, fixed aspect */}
+                <div className={`${imgFirst ? "md:order-1" : "md:order-2"}`}>
+                  <div className={`relative rounded-2xl overflow-hidden aspect-[16/10] bg-gradient-to-br ${p.tint}`}>
                     <img
                       src={p.img}
                       alt={p.title}
@@ -66,29 +80,38 @@ export default function ValueProps() {
                   </div>
                 </div>
 
-                {/* TEXT */}
-                <div className={`${imgFirst ? "lg:order-2" : "lg:order-1"} text-center lg:text-left`}>
-                  <p className="text-xs sm:text-sm uppercase tracking-[0.18em] text-accent font-bold mb-3">
+                {/* TEXT — tight */}
+                <div className={`${imgFirst ? "md:order-2" : "md:order-1"} text-center md:text-left`}>
+                  <p className="text-xs sm:text-sm uppercase tracking-[0.16em] text-accent font-bold mb-2">
                     {p.eyebrow}
                   </p>
-                  <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold leading-[1.2] text-foreground mb-4 text-balance">
+                  <h3 className="font-display text-2xl sm:text-3xl font-bold leading-tight text-foreground mb-4 text-balance">
                     {p.title}
                   </h3>
-                  <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-7 max-w-xl mx-auto lg:mx-0">
-                    {p.body}
-                  </p>
-                  <div className="flex justify-center lg:justify-start">
-                    <a
-                      href="#signup-1"
-                      className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold"
-                    >
-                      Join Free on WhatsApp →
-                    </a>
-                  </div>
+                  <ul className="flex flex-col gap-2.5 max-w-md mx-auto md:mx-0">
+                    {p.points.map((pt, j) => (
+                      <li key={j} className="flex items-start gap-2.5 text-left">
+                        <span className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center shrink-0 mt-0.5">
+                          <Check className="w-3 h-3 text-accent" strokeWidth={3} />
+                        </span>
+                        <span className="text-base text-foreground-muted leading-snug">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        {/* single CTA below all three */}
+        <div className="flex justify-center mt-10">
+          <a
+            href="#signup-1"
+            className="btn-primary inline-flex items-center justify-center gap-2 px-9 py-4 rounded-full text-base sm:text-lg font-bold"
+          >
+            Join Free on WhatsApp →
+          </a>
         </div>
 
       </div>

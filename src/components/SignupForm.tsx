@@ -12,22 +12,10 @@ const struggles = [
   "Sleep — I want to sleep better and feel rested",
 ];
 
-const testimonials = [
-  {
-    avatar: "/avatars/women/woman-7.avif",
-    name: "Priya S.",
-    city: "Mumbai",
-    quote: "I kept telling myself I had no time. Turns out I only needed 5 minutes. Day 3 changed everything.",
-  },
-  {
-    avatar: "/avatars/men/man-5.avif",
-    name: "Karan M.",
-    city: "Bengaluru",
-    quote: "I have quit every habit app I ever downloaded. This one came to me on WhatsApp. I did not have to remember anything. Finished all 7 days.",
-  },
-];
-
-export default function SignupForm({ testimonialVariant = 0, formId = "form" }: { testimonialVariant?: number; formId?: string }) {
+// Compact form: testimonial moved out of the form card (the page sections handle
+// social proof). The `testimonialVariant` prop is kept for call-site
+// compatibility but no longer rendered here.
+export default function SignupForm({ formId = "form" }: { testimonialVariant?: number; formId?: string }) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [error, setError] = useState<string>("");
 
@@ -111,71 +99,56 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
   return (
     <form
       onSubmit={handleSubmit}
-      className="premium-card rounded-2xl p-6 lg:p-8 border-glow"
+      className="premium-card rounded-2xl p-5 sm:p-6 border-glow"
     >
-      <div className="space-y-4">
+      {/* Compact: no field labels — placeholders only, tighter spacing. */}
+      <div className="space-y-3">
         {/* Name */}
-        <div>
-          <label htmlFor={`${formId}-name`} className="block text-sm font-medium text-foreground mb-1.5">
-            First name
-          </label>
-          <input
-            id={`${formId}-name`}
-            name="name"
-            type="text"
-            required
-            placeholder="Rohan"
-            className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
-          />
-        </div>
-
-        {/* WhatsApp with country code selector */}
-        <div>
-          <label htmlFor={`${formId}-whatsapp`} className="block text-sm font-medium text-foreground mb-1.5">
-            WhatsApp number
-          </label>
-          <PhoneInput id={`${formId}-whatsapp`} name="whatsapp" required placeholder="WhatsApp Number" />
-        </div>
+        <input
+          id={`${formId}-name`}
+          name="name"
+          type="text"
+          required
+          placeholder="Full name"
+          aria-label="Full name"
+          className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
+        />
 
         {/* Email */}
-        <div>
-          <label htmlFor={`${formId}-email`} className="block text-sm font-medium text-foreground mb-1.5">
-            Email
-          </label>
-          <input
-            id={`${formId}-email`}
-            name="email"
-            type="email"
-            required
-            placeholder="rohan@example.com"
-            className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
-          />
-        </div>
+        <input
+          id={`${formId}-email`}
+          name="email"
+          type="email"
+          required
+          placeholder="Email (we send your progress here)"
+          aria-label="Email"
+          className="input-premium w-full px-4 py-3 rounded-xl text-foreground placeholder:text-foreground-subtle text-base"
+        />
+
+        {/* WhatsApp with country code selector */}
+        <PhoneInput id={`${formId}-whatsapp`} name="whatsapp" required placeholder="WhatsApp number" />
 
         {/* Struggle */}
-        <div>
-          <label htmlFor={`${formId}-struggle`} className="block text-sm font-medium text-foreground mb-1.5">
-            What do you want to improve?
-          </label>
-          <select
-            id={`${formId}-struggle`}
-            name="struggle"
-            required
-            className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
-            style={{
-              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "right 1rem center",
-              backgroundSize: "1rem",
-              paddingRight: "2.5rem",
-            }}
-          >
-            <option value="" disabled defaultValue="">Choose one…</option>
-            {struggles.map((s) => (
-              <option key={s} value={s}>{s}</option>
-            ))}
-          </select>
-        </div>
+        <select
+          id={`${formId}-struggle`}
+          name="struggle"
+          required
+          aria-label="What do you want to improve?"
+          defaultValue=""
+          className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
+          style={{
+            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right 1rem center",
+            backgroundSize: "1rem",
+            paddingRight: "2.5rem",
+          }}
+        >
+          <option value="" disabled>What do you want to improve?</option>
+          {struggles.map((s) => (
+            <option key={s} value={s}>{s}</option>
+          ))}
+        </select>
 
         {error && (
           <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">
@@ -187,7 +160,7 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-5 rounded-full text-lg font-bold mt-1 disabled:opacity-70 disabled:cursor-not-allowed"
+          className="btn-primary w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-lg font-bold disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {status === "submitting" ? (
             <><Loader2 className="w-5 h-5 animate-spin" />Joining…</>
@@ -196,29 +169,10 @@ export default function SignupForm({ testimonialVariant = 0, formId = "form" }: 
           )}
         </button>
 
-        {/* Social proof below button */}
+        {/* Trust line below button (compact) */}
         <p className="text-center text-xs text-foreground-subtle">
-          <span className="font-semibold text-foreground">2,400+ members</span> already joined
+          🔒 100% free · no credit card · <span className="font-semibold text-foreground">2,400+ already joined</span>
         </p>
-
-        {/* Testimonial */}
-        <div className="pt-4 border-t border-border-subtle flex items-start gap-3">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={testimonials[testimonialVariant % testimonials.length].avatar}
-            alt={testimonials[testimonialVariant % testimonials.length].name}
-            className="w-8 h-8 rounded-full object-cover flex-shrink-0 mt-0.5"
-          />
-          <div>
-            <p className="text-sm text-foreground leading-snug">
-              &ldquo;{testimonials[testimonialVariant % testimonials.length].quote}&rdquo;
-            </p>
-            <p className="text-xs text-foreground-subtle mt-1 font-medium">
-              {testimonials[testimonialVariant % testimonials.length].name} &nbsp;·&nbsp; {testimonials[testimonialVariant % testimonials.length].city} &nbsp;·&nbsp;
-              <span className="text-accent">★★★★★</span>
-            </p>
-          </div>
-        </div>
       </div>
     </form>
   );

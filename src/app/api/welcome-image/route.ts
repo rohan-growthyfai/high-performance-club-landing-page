@@ -43,9 +43,6 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .cbox .big{font-size:64px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05;margin-bottom:18px}
 .cbox .date{display:inline-flex;align-items:center;gap:12px;background:rgba(255,255,255,0.18);
   border-radius:16px;padding:14px 28px;font-size:38px;font-weight:800;color:#fff}
-/* benefits line */
-.bene{position:relative;margin-top:46px;font-size:38px;font-weight:600;color:#3f4a44;line-height:1.5}
-.bene b{color:#18181b}
 /* click button below footer */
 .footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
   padding:38px;text-align:center}
@@ -66,7 +63,6 @@ html,body{width:1080px;height:1080px;overflow:hidden}
     <div class="big">FREE 7-Day<br>WhatsApp Habits Challenge</div>
     <div class="date">📅 Starts ${dateSafe}</div>
   </div>
-  <div class="bene">1 tiny habit a day · under 5 minutes · <b>on WhatsApp</b></div>
   <div class="footer"><span>Click Button Below<span class="arrow">⬇</span></span></div>
 </div>
 </body></html>`;

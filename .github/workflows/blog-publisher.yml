@@ -2,7 +2,11 @@ name: Auto-publish blog
 
 on:
   schedule:
-    - cron: '0 */3 * * *'   # every 3 hours (UTC)
+    # Every 2 hours, at :17 past the hour. GitHub throttles/skips scheduled runs
+    # (we were only getting ~5 of 8 daily fires), so we run MORE often than needed
+    # and the script tops up to the daily target (idempotent). Off-the-hour minute
+    # (:17) is less likely to be dropped than the heavily-contended top-of-hour.
+    - cron: '17 */2 * * *'
   workflow_dispatch:        # allow manual runs from the Actions tab
 
 permissions:
@@ -26,22 +30,26 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Generate & write blog post
+      - name: Generate & write blog posts (top up to daily target)
         working-directory: scripts/blog-publisher
         env:
           ACTIONS_MODE: 'true'
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          DAILY_TARGET: '8'    # publish 8 blogs/day
+          MAX_PER_RUN: '8'     # a single run can fully catch up if earlier runs were skipped
         run: node publish.js
 
-      - name: Commit & push new blog
+      - name: Commit & push new blogs
         run: |
           git config user.name "HPC Blog Bot"
           git config user.email "blog-bot@highperformanceclub.co"
+          # pull first in case another run pushed while we were generating
+          git pull --rebase --autostash origin main || true
           if [ -n "$(git status --porcelain)" ]; then
             git add -A
-            git commit -m "blog: automated post $(date -u +'%Y-%m-%d %H:%M UTC')"
+            git commit -m "blog: automated posts $(date -u +'%Y-%m-%d %H:%M UTC')"
             git push
-            echo "Published new blog."
+            echo "Published new blog(s)."
           else
-            echo "No new blog this run."
+            echo "No new blog this run (daily target already met)."
           fi

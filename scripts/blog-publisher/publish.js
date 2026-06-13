@@ -584,12 +584,9 @@ function gitCommitAndPush(topic) {
 
 // ── Main ─────────────────────────────────────────────────────────────────────
 
-async function main() {
-  console.log(`\n[${new Date().toISOString()}] HPC Blog Publisher starting...`);
-
-  const state = loadState();
+// Publish a single blog. Returns the topic on success, null on failure.
+async function publishOne(state) {
   const topic = await pickNextTopic(state);
-
   console.log(`  Topic  : ${topic.title}`);
   console.log(`  Keyword: ${topic.keyword}`);
 
@@ -604,12 +601,70 @@ async function main() {
   ensureInlineCTAStyle();
   writePageTsx(topic, html, heroImagePath);
   updateBlogsIndex(topic, heroImagePath);
-  gitCommitAndPush(topic);
 
   state.published.push(topic.slug);
   saveState(state);
+  return topic;
+}
 
-  console.log(`  Done. Total published: ${state.published.length}\n`);
+// Count how many blog posts already exist for a given "D Mon YYYY" date label
+// by scanning the blog index (the date the publisher stamps on each post).
+function countPublishedOn(dateLabel) {
+  try {
+    const idx = fs.readFileSync(BLOGS_INDEX, "utf8");
+    const re = new RegExp(`date:"${dateLabel.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}"`, "g");
+    return (idx.match(re) || []).length;
+  } catch { return 0; }
+}
+
+function todayLabel() {
+  // Matches the "D Mon YYYY" format the publisher uses (e.g. "13 Jun 2026").
+  return new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
+
+async function main() {
+  console.log(`\n[${new Date().toISOString()}] HPC Blog Publisher starting...`);
+
+  // Daily quota: publish until DAILY_TARGET posts exist for today. Because GitHub
+  // Actions throttles scheduled runs (we get ~5/day, not the cron's 8), a single
+  // blog per run isn't enough. Each run now tops up to the daily target, capped
+  // at MAX_PER_RUN so a single job never runs too long. Idempotent across runs.
+  const DAILY_TARGET = parseInt(process.env.DAILY_TARGET || "8", 10);
+  const MAX_PER_RUN = parseInt(process.env.MAX_PER_RUN || "8", 10);
+
+  const label = todayLabel();
+  const already = countPublishedOn(label);
+  const need = Math.max(0, DAILY_TARGET - already);
+  const toPublish = Math.min(need, MAX_PER_RUN);
+
+  console.log(`  Today (${label}): ${already}/${DAILY_TARGET} published — need ${need}, doing ${toPublish} this run.`);
+
+  if (toPublish === 0) {
+    console.log(`  Daily target already met. Nothing to do.\n`);
+    return;
+  }
+
+  const state = loadState();
+  let published = 0;
+  for (let i = 0; i < toPublish; i++) {
+    console.log(`  --- Post ${i + 1}/${toPublish} ---`);
+    try {
+      const topic = await publishOne(state);
+      console.log(`  ✓ Published: ${topic.title}`);
+      published++;
+    } catch (e) {
+      console.error(`  ✗ Post ${i + 1} failed: ${e.message}`);
+      // keep going — one failure shouldn't abort the whole quota
+    }
+  }
+
+  // Commit + push ALL new posts in one go (workflow's commit step also covers
+  // this, but committing here keeps the script self-contained when run locally).
+  if (published > 0) {
+    gitCommitAndPush({ title: `${published} post${published > 1 ? "s" : ""} (${label})` });
+  }
+
+  console.log(`  Done. Published ${published} this run. Total: ${state.published.length}\n`);
 }
 
 main().catch((err) => {

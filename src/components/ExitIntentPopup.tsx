@@ -174,7 +174,7 @@ export default function ExitIntentPopup() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="exit-struggle" className="block text-sm font-medium text-foreground mb-1.5">
+                  <label htmlFor="exit-struggle" className="block text-sm font-medium text-foreground mb-2.5">
                     What do you want to improve the most?
                   </label>
                   <select

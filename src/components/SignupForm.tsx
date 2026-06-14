@@ -129,28 +129,30 @@ export default function SignupForm({ formId = "form" }: { testimonialVariant?: n
         <PhoneInput id={`${formId}-whatsapp`} name="whatsapp" required placeholder="WhatsApp number" />
 
         {/* Struggle */}
-        <label htmlFor={`${formId}-struggle`} className="block text-sm font-medium text-foreground -mb-1">
-          What do you want to improve the most?
-        </label>
-        <select
-          id={`${formId}-struggle`}
-          name="struggle"
-          required
-          defaultValue=""
-          className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
-          style={{
-            backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "right 1rem center",
-            backgroundSize: "1rem",
-            paddingRight: "2.5rem",
-          }}
-        >
-          <option value="" disabled hidden>Select an option</option>
-          {struggles.map((s) => (
-            <option key={s} value={s}>{s}</option>
-          ))}
-        </select>
+        <div className="pt-1">
+          <label htmlFor={`${formId}-struggle`} className="block text-sm font-medium text-foreground mb-2.5">
+            What do you want to improve the most?
+          </label>
+          <select
+            id={`${formId}-struggle`}
+            name="struggle"
+            required
+            defaultValue=""
+            className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
+            style={{
+              backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "right 1rem center",
+              backgroundSize: "1rem",
+              paddingRight: "2.5rem",
+            }}
+          >
+            <option value="" disabled hidden>Select an option</option>
+            {struggles.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+        </div>
 
         {error && (
           <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">

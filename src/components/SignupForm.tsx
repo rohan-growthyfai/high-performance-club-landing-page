@@ -129,11 +129,13 @@ export default function SignupForm({ formId = "form" }: { testimonialVariant?: n
         <PhoneInput id={`${formId}-whatsapp`} name="whatsapp" required placeholder="WhatsApp number" />
 
         {/* Struggle */}
+        <label htmlFor={`${formId}-struggle`} className="block text-sm font-medium text-foreground -mb-1">
+          What do you want to improve the most?
+        </label>
         <select
           id={`${formId}-struggle`}
           name="struggle"
           required
-          aria-label="What do you want to improve the most?"
           defaultValue=""
           className="input-premium w-full px-4 py-3 rounded-xl text-foreground appearance-none cursor-pointer text-base"
           style={{
@@ -144,9 +146,7 @@ export default function SignupForm({ formId = "form" }: { testimonialVariant?: n
             paddingRight: "2.5rem",
           }}
         >
-          {/* `hidden` keeps this prompt visible as the closed-state label but
-              removes it from the list once the dropdown is opened. */}
-          <option value="" disabled hidden>What do you want to improve the most?</option>
+          <option value="" disabled hidden>Select an option</option>
           {struggles.map((s) => (
             <option key={s} value={s}>{s}</option>
           ))}

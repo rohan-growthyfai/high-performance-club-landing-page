@@ -49,17 +49,19 @@ export default function Contact() {
           {/* Operated by */}
           <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
             <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Operated by</p>
-            <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b" }}>Growthyfai Technologies Private Limited</p>
-            <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 6 }}>High Performance Club is a wellness and personal growth initiative owned and operated by Growthyfai Technologies Private Limited.</p>
+            <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b" }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</p>
+            <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 6 }}>High Performance Club is a wellness and personal growth initiative owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
           </div>
 
           {/* Registered Office */}
           <div style={{ background: "#fff", border: "1.5px solid #e5e7eb", borderRadius: 20, padding: "32px 36px" }}>
             <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 12 }}>Registered Office</p>
-            <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", marginBottom: 8 }}>Growthyfai Technologies Private Limited</p>
+            <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", marginBottom: 8 }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</p>
             <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.8 }}>
-              Office No. 603,<br />
+              6th Floor, Office No 603,<br />
               Global Business Hub,<br />
+              Survey No 1/1A &amp; 1/2/A,<br />
+              Opposite EON IT Park,<br />
               Kharadi,<br />
               Pune, Maharashtra 411014,<br />
               India
@@ -88,7 +90,7 @@ export default function Contact() {
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div>
           <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club.</p>
-          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by Growthyfai Technologies Private Limited.</p>
+          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
         </div>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Privacy Policy</Link>

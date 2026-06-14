@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — High Performance Club",
-  description: "Privacy Policy for High Performance Club, operated by Growthyfai Technologies Private Limited.",
+  description: "Privacy Policy for High Performance Club, operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.",
 };
 
 export default function PrivacyPolicy() {
@@ -24,7 +24,7 @@ export default function PrivacyPolicy() {
         <p style={{ fontSize: 14, color: "#9ca3af", marginBottom: 48 }}>Last updated: June 2026</p>
 
         <div style={{ fontSize: 17, lineHeight: 1.85, color: "#4b5563" }}>
-          <p>This Privacy Policy describes how <strong style={{ color: "#18181b" }}>High Performance Club</strong>, owned and operated by <strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), collects, uses, and protects your personal information when you use our website at <strong style={{ color: "#18181b" }}>highperformanceclub.co</strong> and participate in our WhatsApp habit challenge.</p>
+          <p>This Privacy Policy describes how <strong style={{ color: "#18181b" }}>High Performance Club</strong>, owned and operated by <strong style={{ color: "#18181b" }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</strong> (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;), collects, uses, and protects your personal information when you use our website at <strong style={{ color: "#18181b" }}>highperformanceclub.co</strong> and participate in our WhatsApp habit challenge.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>1. Information We Collect</h2>
           <p>When you register for the High Performance Club 7-Day Challenge, we collect:</p>
@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
           <p>By registering and ticking the consent checkbox, you agree to receive WhatsApp messages from High Performance Club for the duration of the 7-day challenge. You can stop receiving messages at any time by replying <strong style={{ color: "#18181b" }}>STOP</strong> to any message. We use Pabbly Chatflow (a WhatsApp Business API provider) to deliver messages.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>4. Data Storage and Security</h2>
-          <p>Your registration data is stored securely in Google Sheets, accessible only to authorised team members of Growthyfai Technologies Private Limited. We implement reasonable security measures to protect your data from unauthorised access. However, no internet transmission is 100% secure.</p>
+          <p>Your registration data is stored securely in Google Sheets, accessible only to authorised team members of GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED. We implement reasonable security measures to protect your data from unauthorised access. However, no internet transmission is 100% secure.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>5. Cookies</h2>
           <p>We use Google Analytics cookies to understand how visitors interact with our website. These are analytics-only cookies and do not track you across other websites. You can disable cookies in your browser settings.</p>
@@ -80,12 +80,12 @@ export default function PrivacyPolicy() {
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>9. Contact Us</h2>
           <p>For any privacy-related questions or requests, contact us at:</p>
-          <p><strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong><br />Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
+          <p><strong style={{ color: "#18181b" }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</strong><br />Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
         </div>
       </main>
 
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club. Owned and operated by Growthyfai Technologies Private Limited.</p>
+        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club. Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/terms-and-conditions" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Terms</Link>

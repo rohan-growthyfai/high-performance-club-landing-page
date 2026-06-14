@@ -33,7 +33,7 @@ export default function Footer() {
               Built in India, for Indians.
             </p>
             <p className="text-xs text-foreground-subtle mb-3">
-              High Performance Club is owned and operated by Growthyfai Technologies Private Limited.
+              High Performance Club is owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.
             </p>
             <p className="font-serif italic text-base text-accent">
               Aadat banao. Zindagi badlo.
@@ -88,9 +88,11 @@ export default function Footer() {
             <div>
               <p className="text-sm font-bold text-foreground mb-1">Registered Office</p>
               <p className="text-xs text-foreground-subtle leading-relaxed">
-                Growthyfai Technologies Private Limited
+                GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED
                 <br />
-                Office No. 603, Global Business Hub,
+                6th Floor, Office No 603, Global Business Hub,
+                <br />
+                Survey No 1/1A &amp; 1/2/A, Opposite EON IT Park,
                 <br />
                 Kharadi, Pune, Maharashtra 411014
                 <br />
@@ -144,7 +146,7 @@ export default function Footer() {
           </div>
           <div className="text-right">
             <p>© 2026 High Performance Club.</p>
-            <p className="text-xs mt-1">Owned and operated by Growthyfai Technologies Private Limited.</p>
+            <p className="text-xs mt-1">Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
           </div>
         </div>
       </div>

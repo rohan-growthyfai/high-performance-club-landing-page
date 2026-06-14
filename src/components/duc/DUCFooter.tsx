@@ -7,7 +7,7 @@ export default function DUCFooter() {
             <p className="text-foreground font-bold text-base mb-1">Daily Upgrade Club</p>
             <p className="text-foreground-subtle text-sm">by High Performance Club</p>
             <p className="text-foreground-subtle text-xs mt-3 leading-relaxed max-w-xs">
-              Owned and operated by Growthyfai Technologies Private Limited.<br />
+              Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.<br />
               GSTIN: 27AAKCG6243L1Z6 · Pune, Maharashtra
             </p>
           </div>

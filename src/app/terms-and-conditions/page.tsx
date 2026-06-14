@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions — High Performance Club",
-  description: "Terms and Conditions for High Performance Club, operated by Growthyfai Technologies Private Limited.",
+  description: "Terms and Conditions for High Performance Club, operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.",
 };
 
 export default function TermsAndConditions() {
@@ -24,7 +24,7 @@ export default function TermsAndConditions() {
         <p style={{ fontSize: 14, color: "#9ca3af", marginBottom: 48 }}>Last updated: June 2026</p>
 
         <div style={{ fontSize: 17, lineHeight: 1.85, color: "#4b5563" }}>
-          <p>These Terms &amp; Conditions govern your use of the <strong style={{ color: "#18181b" }}>High Performance Club</strong> website and services, owned and operated by <strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). By accessing our website or participating in any of our programmes, you agree to be bound by these Terms.</p>
+          <p>These Terms &amp; Conditions govern your use of the <strong style={{ color: "#18181b" }}>High Performance Club</strong> website and services, owned and operated by <strong style={{ color: "#18181b" }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</strong> (&ldquo;Company&rdquo;, &ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;). By accessing our website or participating in any of our programmes, you agree to be bound by these Terms.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>1. About the Service</h2>
           <p>High Performance Club offers a free 7-day WhatsApp habit challenge designed to help busy Indian professionals build small daily habits for improved energy, focus, productivity, and overall well-being. Participation is voluntary and entirely free.</p>
@@ -39,7 +39,7 @@ export default function TermsAndConditions() {
           <p>The content provided through High Performance Club — including WhatsApp messages, website articles, and any other materials — is for general lifestyle and habit education purposes only. It is <strong style={{ color: "#18181b" }}>not</strong> medical advice, nutritional prescription, therapeutic treatment, or a substitute for professional healthcare. If you have a medical condition, please consult a qualified healthcare professional before making any changes to your lifestyle or routine.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>5. Intellectual Property</h2>
-          <p>All content on the High Performance Club website and delivered via WhatsApp — including text, images, graphics, and logos — is the property of Growthyfai Technologies Private Limited and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use our content for commercial purposes without prior written consent.</p>
+          <p>All content on the High Performance Club website and delivered via WhatsApp — including text, images, graphics, and logos — is the property of GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use our content for commercial purposes without prior written consent.</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>6. User Conduct</h2>
           <p>You agree not to:</p>
@@ -51,7 +51,7 @@ export default function TermsAndConditions() {
           </ul>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>7. Limitation of Liability</h2>
-          <p>To the maximum extent permitted by applicable law, Growthyfai Technologies Private Limited shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of or inability to use our services. Our total liability to you for any claim shall not exceed the amount you paid us in the 12 months preceding the claim (which, for the free challenge, is zero).</p>
+          <p>To the maximum extent permitted by applicable law, GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED shall not be liable for any indirect, incidental, special, or consequential damages arising from your use of or inability to use our services. Our total liability to you for any claim shall not exceed the amount you paid us in the 12 months preceding the claim (which, for the free challenge, is zero).</p>
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>8. Modifications to Service</h2>
           <p>We reserve the right to modify, suspend, or discontinue the service at any time without notice. We may also update these Terms periodically. Continued use of the service after any changes constitutes your acceptance of the revised Terms.</p>
@@ -61,12 +61,12 @@ export default function TermsAndConditions() {
 
           <h2 style={{ fontSize: 22, fontWeight: 800, color: "#18181b", marginTop: 48, marginBottom: 16 }}>10. Contact</h2>
           <p>For any questions about these Terms, contact us at:</p>
-          <p><strong style={{ color: "#18181b" }}>Growthyfai Technologies Private Limited</strong><br />Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
+          <p><strong style={{ color: "#18181b" }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</strong><br />Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
         </div>
       </main>
 
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
-        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club. Owned and operated by Growthyfai Technologies Private Limited.</p>
+        <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club. Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Privacy Policy</Link>
           <Link href="/terms-and-conditions" style={{ fontSize: 13, color: "#b8853a", textDecoration: "none" }}>Terms</Link>

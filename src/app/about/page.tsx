@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "About Us — High Performance Club",
-  description: "Learn about High Performance Club and Growthyfai Technologies Private Limited — building tiny daily habits for busy Indians.",
+  description: "Learn about High Performance Club and GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED — building tiny daily habits for busy Indians.",
 };
 
 export default function About() {
@@ -63,9 +63,18 @@ export default function About() {
         {/* Company */}
         <div style={{ background: "linear-gradient(135deg,#fef9ec,#fff7ed)", border: "2px solid #f5d78e", borderRadius: 20, padding: "40px 36px", marginBottom: 56 }}>
           <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.15em", color: "#b8853a", marginBottom: 16 }}>The company behind it</p>
-          <p style={{ fontSize: 16, color: "#6b7280", lineHeight: 1.75, marginBottom: 20 }}>High Performance Club is a wellness and personal growth initiative owned and operated by Growthyfai Technologies Private Limited.</p>
+          <p style={{ fontSize: 16, color: "#6b7280", lineHeight: 1.75, marginBottom: 20 }}>High Performance Club is a wellness and personal growth initiative owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
           <p style={{ fontSize: 14, color: "#9ca3af", fontWeight: 600, marginBottom: 4 }}>Operated by:</p>
-          <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 16 }}>Growthyfai Technologies Private Limited</p>
+          <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 8 }}>GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</p>
+          <p style={{ fontSize: 13, fontWeight: 700, textTransform: "uppercase" as const, letterSpacing: "0.12em", color: "#b8853a", marginBottom: 6 }}>Registered Office</p>
+          <p style={{ fontSize: 15, color: "#6b7280", lineHeight: 1.7, marginBottom: 16 }}>
+            6th Floor, Office No 603,<br />
+            Global Business Hub,<br />
+            Survey No 1/1A &amp; 1/2/A,<br />
+            Opposite EON IT Park,<br />
+            Kharadi,<br />
+            Pune, Maharashtra 411014, India
+          </p>
           <p style={{ fontSize: 15, color: "#9ca3af" }}>Email: <a href="mailto:contact@highperformanceclub.co" style={{ color: "#b8853a" }}>contact@highperformanceclub.co</a></p>
           <p style={{ fontSize: 15, color: "#9ca3af", marginTop: 4 }}>Website: <a href="https://www.highperformanceclub.co" style={{ color: "#b8853a" }}>www.highperformanceclub.co</a></p>
         </div>
@@ -83,7 +92,7 @@ export default function About() {
       <footer style={{ borderTop: "1px solid #e2dfd6", padding: "28px 32px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div>
           <p style={{ fontSize: 13, color: "#9ca3af" }}>© 2026 High Performance Club.</p>
-          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by Growthyfai Technologies Private Limited.</p>
+          <p style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
         </div>
         <div style={{ display: "flex", gap: 24 }}>
           <Link href="/privacy-policy" style={{ fontSize: 13, color: "#9ca3af", textDecoration: "none" }}>Privacy Policy</Link>

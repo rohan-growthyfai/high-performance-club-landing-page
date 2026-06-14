@@ -174,7 +174,7 @@ body{font-family:'Inter',sans-serif;background:#faf8f3;color:#18181b;width:800px
 </div>
 <div class="footer">
   <div class="f-brand">High Performance Club</div>
-  <div class="f-meta">highperformanceclub.co · Growthyfai Technologies Pvt. Ltd.</div>
+  <div class="f-meta">highperformanceclub.co · GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED</div>
 </div>
 </body></html>`;
 }

@@ -9,7 +9,7 @@ export default function DUCFooter() {
             <p className="font-serif text-lg font-medium text-foreground mb-3">Daily Upgrade Club</p>
             <p className="text-sm text-foreground-muted mb-2">by High Performance Club</p>
             <p className="text-xs text-foreground-subtle leading-relaxed max-w-sm">
-              Owned and operated by Growthyfai Technologies Private Limited.
+              Owned and operated by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.
             </p>
           </div>
           <div className="sm:text-right">
@@ -37,7 +37,7 @@ export default function DUCFooter() {
             <MapPin className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-bold text-foreground mb-1">Registered Office</p>
-              <p className="text-xs text-foreground-subtle">Growthyfai Technologies Private Limited<br />Office No. 603, Global Business Hub,<br />Kharadi, Pune, Maharashtra 411014</p>
+              <p className="text-xs text-foreground-subtle">GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED<br />6th Floor, Office No 603, Global Business Hub,<br />Survey No 1/1A &amp; 1/2/A, Opposite EON IT Park,<br />Kharadi, Pune, Maharashtra 411014</p>
             </div>
           </div>
         </div>
@@ -54,7 +54,7 @@ export default function DUCFooter() {
           </div>
           <div className="text-right">
             <p>© 2026 High Performance Club.</p>
-            <p className="text-xs mt-1">Owned by Growthyfai Technologies Private Limited.</p>
+            <p className="text-xs mt-1">Owned by GROWTHYFAI TECHNOLOGIES PRIVATE LIMITED.</p>
           </div>
         </div>
       </div>

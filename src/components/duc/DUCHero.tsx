@@ -65,10 +65,10 @@ export default function DUCHero() {
                 href="#duc-join"
                 className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full text-lg font-bold group"
               >
-                <span className="relative z-10">Start for ₹99/month</span>
+                <span className="relative z-10">Start for ₹1 (7-day trial)</span>
                 <span className="relative z-10 text-xl group-hover:translate-x-1 transition-transform">→</span>
               </a>
-              <p className="text-foreground-subtle text-sm">Cancel anytime · No lock-in</p>
+              <p className="text-foreground-subtle text-sm">₹1 for 7 days, then ₹99/month · Cancel anytime</p>
             </div>
 
             {/* Reviews — replacing stats */}
@@ -103,7 +103,7 @@ export default function DUCHero() {
               </div>
             </div>
             <div className="absolute -right-8 bottom-1/3 z-20 sticky-note px-3 py-2 rounded-lg tilt-right">
-              <p className="font-serif italic text-amber-900 text-sm">₹99/month 📱</p>
+              <p className="font-serif italic text-amber-900 text-sm">₹1 trial 📱</p>
             </div>
           </div>
 

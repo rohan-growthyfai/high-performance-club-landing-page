@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 const faqs = [
-  { q: "Is it really ₹99/month?", a: "Yes. ₹99/month. No hidden charges, no upsells forced on you." },
+  { q: "How much does it cost?", a: "Start with a 7-day trial for just ₹1, then it's ₹99/month. No hidden charges, no upsells forced on you." },
   { q: "Can I cancel anytime?", a: "Yes. Cancel anytime. No questions asked, no lock-in period." },
   { q: "Where will I receive the habits?", a: "Directly on WhatsApp. That's the only place." },
   { q: "Do I need to install an app?", a: "No. Everything happens on WhatsApp. Nothing to download." },

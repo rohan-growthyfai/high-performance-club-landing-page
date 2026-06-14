@@ -191,16 +191,19 @@ body{font-family:'Inter',sans-serif;background:#faf8f3;color:#18181b;width:800px
     <div class="club-title">🚚 The Daily Upgrade Club</div>
     <div class="club-sub">The exact same system you just experienced — continued, for the next 30 days.</div>
     <div class="club-grid">
-      <div class="club-item">✅ One tiny habit delivered daily on WhatsApp</div>
-      <div class="club-item">✅ Gentle evening check-ins to keep you on track</div>
-      <div class="club-item">✅ Weekly progress check-ins</div>
-      <div class="club-item">✅ Monthly habit badge as you level up</div>
-      <div class="club-item">✅ A private community of people growing with you</div>
-      <div class="club-item">✅ No diets. No complicated routines. No pressure.</div>
+      <div class="club-item"><strong>✅ 30 Tiny Daily Habits</strong> — 1 carefully selected habit every day to improve your energy, health, focus & wellbeing</div>
+      <div class="club-item"><strong>✅ One Monthly Theme</strong> — go deeper into one area of your life each month and see significant changes</div>
+      <div class="club-item"><strong>✅ Daily Tracking & Accountability</strong> — simple daily check-in messages to keep you consistent</div>
+      <div class="club-item"><strong>✅ Weekly Progress Scorecard</strong> — measure your improvement and celebrate the small wins</div>
+      <div class="club-item"><strong>✅ High Performance Newsletter</strong> — practical ideas, insights & top habit strategies</div>
+      <div class="club-item"><strong>✅ Monthly Habit PDF Guide</strong> — all your habits in one place to revisit anytime</div>
+      <div class="club-item"><strong>✅ Monthly Habit Calendar</strong> — know exactly what to focus on each day</div>
+      <div class="club-item"><strong>✅ Complete Habit Vault</strong> — a growing library of powerful habits</div>
+      <div class="club-item"><strong>✅ Private WhatsApp Group</strong> — grow alongside others building a healthier, more productive life</div>
     </div>
   </div>
-  <a href="https://www.highperformanceclub.co/daily-upgrade-club" class="cta-btn">Join Daily Upgrade Club — ₹99/month →</a>
-  <div class="cta-sub">Cancel anytime. No long-term commitment. Just your next tiny win, every day.</div>
+  <a href="https://www.highperformanceclub.co/daily-upgrade-club" class="cta-btn">Start for ₹1 (7-day trial) →</a>
+  <div class="cta-sub">Just ₹1 for your first 7 days, then ₹99/month. Cancel anytime.</div>
 </div>
 <div class="footer">
   <div class="f-brand">High Performance Club</div>

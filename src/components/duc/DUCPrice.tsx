@@ -1,15 +1,15 @@
 import { ArrowRight } from "lucide-react";
 
 const included = [
-  "30 tiny daily habits",
-  "One monthly focus theme",
-  "Daily DONE tracking",
-  "Weekly progress scorecard",
+  "30 Tiny Daily Habits",
+  "One Monthly Theme",
+  "Daily Tracking & Accountability",
+  "Weekly Progress Scorecard",
   "High Performance Newsletter",
   "Monthly Habit PDF Guide",
   "Monthly Habit Calendar",
-  "Growing Habit Vault access",
-  "Private Accountability Group",
+  "Complete Habit Vault",
+  "Private WhatsApp Group",
 ];
 
 export default function DUCPrice() {
@@ -32,13 +32,14 @@ export default function DUCPrice() {
 
           <div className="p-8 sm:p-10 pt-10">
             {/* Price */}
-            <div className="flex items-end gap-3 mb-8">
-              <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#1da851" }}>₹99</p>
+            <div className="flex items-end gap-3 mb-2">
+              <p className="font-display font-black" style={{ fontSize: "6rem", lineHeight: 1, letterSpacing: "-0.04em", color: "#1da851" }}>₹1</p>
               <div className="mb-3">
-                <p className="text-foreground text-lg font-semibold">/month</p>
-                <p className="text-foreground-muted text-sm">Cancel anytime</p>
+                <p className="text-foreground text-lg font-semibold">for 7 days</p>
+                <p className="text-foreground-muted text-sm">then ₹99/month</p>
               </div>
             </div>
+            <p className="text-foreground-muted text-sm mb-8">Try the full experience for a week. Cancel anytime.</p>
 
             {/* Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
@@ -59,11 +60,11 @@ export default function DUCPrice() {
               rel="noopener noreferrer"
               className="btn-primary w-full flex items-center justify-center gap-3 py-5 rounded-2xl text-lg font-bold"
             >
-              Start for ₹99/month → <ArrowRight className="w-5 h-5" />
+              Start for ₹1 (7-day trial) → <ArrowRight className="w-5 h-5" />
             </a>
 
             <p className="text-center text-foreground-subtle text-xs mt-4">
-              Billed monthly. Cancel anytime. Starts on WhatsApp.
+              ₹1 for your first 7 days, then ₹99/month. Cancel anytime. Starts on WhatsApp.
             </p>
           </div>
         </div>

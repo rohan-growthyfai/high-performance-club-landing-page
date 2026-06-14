@@ -57,7 +57,7 @@ export default function DUCExitIntentPopup() {
               Build better habits for<br />less than a cup of chai
             </h2>
             <p className="text-white/80 text-sm mt-3 leading-relaxed">
-              Daily Upgrade Club · ₹99/month · Cancel anytime
+              Daily Upgrade Club · ₹1 for 7 days, then ₹99/month
             </p>
           </div>
 

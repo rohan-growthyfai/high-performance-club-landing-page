@@ -96,7 +96,7 @@ export default function DUCTracking() {
 
         <div className="mt-12 text-center">
           <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">
-            Start for ₹99/month →
+            Start for ₹1 (7-day trial) →
           </a>
         </div>
       </div>

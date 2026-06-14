@@ -26,11 +26,11 @@ import DUCEnrollmentPopup from "@/components/duc/DUCEnrollmentPopup";
 import DUCExitIntentPopup from "@/components/duc/DUCExitIntentPopup";
 
 export const metadata: Metadata = {
-  title: "Daily Upgrade Club — Build Better Habits Every Day on WhatsApp | ₹99/month",
-  description: "Join Daily Upgrade Club and get 1 tiny habit daily, weekly progress tracking, monthly themes, habit guides, and a private accountability group — all for just ₹99/month. No app needed. Delivered on WhatsApp.",
+  title: "Daily Upgrade Club — Build Better Habits Every Day on WhatsApp | ₹1 trial",
+  description: "Join Daily Upgrade Club and get 1 tiny habit daily, weekly progress tracking, monthly themes, habit guides, and a private accountability group. Start with a 7-day trial for just ₹1, then ₹99/month. No app needed. Delivered on WhatsApp.",
   openGraph: {
     title: "Daily Upgrade Club — Build Better Habits Every Day on WhatsApp",
-    description: "1 tiny habit daily. Weekly scorecards. Monthly themes. All on WhatsApp. ₹99/month.",
+    description: "1 tiny habit daily. Weekly scorecards. Monthly themes. All on WhatsApp. ₹1 for 7 days, then ₹99/month.",
     url: "https://highperformanceclub.co/daily-upgrade-club",
   },
 };

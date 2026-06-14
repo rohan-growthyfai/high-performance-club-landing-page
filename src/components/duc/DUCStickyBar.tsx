@@ -14,7 +14,7 @@ export default function DUCStickyBar() {
       <div className="bg-[#faf8f3] border-t border-border px-4 py-3 flex items-center justify-between gap-3">
         <div>
           <p className="text-foreground font-bold text-sm leading-none">Daily Upgrade Club</p>
-          <p className="text-[#71717a] text-xs mt-0.5">₹99/month · Cancel anytime</p>
+          <p className="text-[#71717a] text-xs mt-0.5">₹1 for 7 days, then ₹99/month</p>
         </div>
         <a
           href="https://rzp.io/l/daily-upgrade-club"

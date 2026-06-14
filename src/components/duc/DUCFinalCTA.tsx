@@ -13,7 +13,7 @@ export default function DUCFinalCTA() {
         <h2 style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)", lineHeight: 1.02, letterSpacing: "-0.03em", fontWeight: 800, color: "#18181b" }}>
           One habit.<br />
           Every day.<br />
-          <span style={{ color: "#25d366" }}>₹99/month.</span>
+          <span style={{ color: "#25d366" }}>₹1 for 7 days.</span>
         </h2>
 
         <p className="text-[#71717a] text-lg leading-relaxed mt-8 max-w-xl mx-auto">
@@ -41,7 +41,7 @@ export default function DUCFinalCTA() {
             Join Daily Upgrade Club
             <span className="text-xl group-hover:translate-x-1 transition-transform">→</span>
           </a>
-          <p className="text-foreground-subtle text-sm">Cancel anytime · No app needed · Starts instantly</p>
+          <p className="text-foreground-subtle text-sm">₹1 for 7 days, then ₹99/month · Cancel anytime · No app needed</p>
         </div>
       </div>
     </section>

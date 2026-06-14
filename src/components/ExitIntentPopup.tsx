@@ -177,6 +177,8 @@ export default function ExitIntentPopup() {
                   <select
                     name="struggle"
                     required
+                    defaultValue=""
+                    aria-label="What do you want to improve the most?"
                     className="input-premium w-full px-4 py-3 rounded-xl text-foreground text-sm appearance-none cursor-pointer"
                     style={{
                       backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2371717a'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E\")",
@@ -186,7 +188,9 @@ export default function ExitIntentPopup() {
                       paddingRight: "2.5rem",
                     }}
                   >
-                    <option value="" disabled>What do you want to improve?</option>
+                    {/* `hidden` keeps this prompt as the closed-state label but
+                        removes it from the list once the dropdown is opened. */}
+                    <option value="" disabled hidden>What do you want to improve the most?</option>
                     {struggles.map((s) => (
                       <option key={s} value={s}>{s}</option>
                     ))}

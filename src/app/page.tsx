@@ -60,9 +60,6 @@ export default function Home() {
         {/* 2-new-6. Here is how your 7 days will look */}
         <CuriosityBullets />
 
-        {/* 2a. Real Talk — "You don't need another motivation video" (Hook) */}
-        <Hook />
-
         {/* 2b-ii. The Power of Tiny Gains — 1% better compounding (James Clear style) */}
         <TinyGains />
 

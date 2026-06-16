@@ -1,14 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { Star, BadgeCheck } from "lucide-react";
 
-/**
- * Wall of Love — combines REAL-looking WhatsApp screenshot testimonials
- * (the majority) with a few text testimonials. The WhatsApp images are
- * AI-generated chat screenshots showing members sharing their results.
- *
- * ⚠️ Names + copy are placeholders until real soft-launch data is available.
- */
-
 type WaItem = {
   type: "whatsapp";
   img: string;
@@ -27,48 +19,18 @@ type TextItem = {
 type Item = WaItem | TextItem;
 
 const items: Item[] = [
-  { type: "whatsapp", img: "/wall/wa-ananya.png", result: "Afternoon energy crash — gone", name: "Ananya V." },
-  { type: "whatsapp", img: "/wall/wa-rohit.png", result: "Falling asleep faster, waking up fresh", name: "Rohit D." },
-  {
-    type: "text",
-    name: "Priya Sharma",
-    city: "Mumbai",
-    text:
-      "I assumed it'd be another generic self-help thing. By Day 3 my afternoons felt completely different. I cannot explain what changed — it just did. 🙌",
-    daysAgo: "2 weeks ago",
-  },
-  { type: "whatsapp", img: "/wall/wa-meera.png", result: "Lost 1.5kg without even trying", name: "Meera P." },
-  { type: "whatsapp", img: "/wall/wa-arjun.png", result: "Before → after score up in every area", name: "Arjun N." },
-  {
-    type: "text",
-    name: "Karan Mehta",
-    city: "Bengaluru",
-    text:
-      "Honestly joined for the certificate. Stayed because Day 5 broke me out of a 6-month productivity slump. I did not expect a 5-minute habit to change my whole workday.",
-    daysAgo: "3 weeks ago",
-  },
-  { type: "whatsapp", img: "/wall/wa-sneha.png", result: "3pm slump gone, doing more without extra coffee", name: "Sneha R." },
-  { type: "whatsapp", img: "/wall/wa-karthik.png", result: "Calmer mornings, sleeping through the night", name: "Karthik I." },
-  {
-    type: "text",
-    name: "Vikram Iyer",
-    city: "Pune",
-    text:
-      "I've been doing one of the Day-7 habits every night for 3 weeks now. Sleeping deeper than I have in years. My wife thinks I'm a different person at breakfast. 😄",
-    daysAgo: "1 month ago",
-  },
+  { type: "whatsapp", img: "/wall/Test1.png", result: "", name: "" },
+  { type: "whatsapp", img: "/wall/Test2.png", result: "", name: "" },
+  { type: "whatsapp", img: "/wall/Test3.png", result: "", name: "" },
+  { type: "whatsapp", img: "/wall/Test4.png", result: "", name: "" },
+  { type: "whatsapp", img: "/wall/Test5.png", result: "", name: "" },
+  { type: "whatsapp", img: "/wall/Test6.png", result: "", name: "" },
 ];
 
 function WhatsAppCard({ item }: { item: WaItem }) {
   return (
     <div className="break-inside-avoid mb-4 sm:mb-6 rounded-3xl overflow-hidden border border-border-subtle shadow-md bg-white">
-      <img src={item.img} alt={`WhatsApp message from ${item.name}`} className="w-full block" loading="lazy" />
-      <div className="flex items-center gap-2 px-4 py-3">
-        <BadgeCheck className="w-4 h-4 text-accent shrink-0" />
-        <p className="text-sm font-semibold text-foreground leading-snug">
-          {item.result}
-        </p>
-      </div>
+      <img src={item.img} alt="WhatsApp testimonial" className="w-full block" loading="lazy" />
     </div>
   );
 }

@@ -57,6 +57,9 @@ export default function Home() {
         {/* 2-new-5. How this challenge works */}
         <HowChallengeWorks />
 
+        {/* 2-new-6. Here is how your 7 days will look */}
+        <CuriosityBullets />
+
         {/* 2a. Real Talk — "You don't need another motivation video" (Hook) */}
         <Hook />
 
@@ -68,9 +71,6 @@ export default function Home() {
 
         {/* 3. Form #1 */}
         <InlineSignup id="signup-1" />
-
-        {/* 4b. Here is how your 7 days will look */}
-        <CuriosityBullets />
 
         {/* 6. Everything you're getting today — value ladder (₹999 → FREE) */}
         <ValueLadder />

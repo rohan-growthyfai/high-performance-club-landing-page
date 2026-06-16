@@ -66,11 +66,11 @@ export default function Home() {
         {/* 2c. Value props — zigzag big benefits */}
         <ValueProps />
 
-        {/* 3. Form #1 */}
-        <InlineSignup id="signup-1" />
-
         {/* 6. Everything you're getting today — value ladder (₹999 → FREE) */}
         <ValueLadder />
+
+        {/* 3. Form #1 */}
+        <InlineSignup id="signup-1" />
 
         {/* 7. Wall of Love — Testimonials */}
         <Testimonials />

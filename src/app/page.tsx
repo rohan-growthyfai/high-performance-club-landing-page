@@ -48,8 +48,11 @@ export default function Home() {
         {/* 2-new-2. Before/After — where you are now → where you'll be in 7 days */}
         <BeforeAfter />
 
-        {/* 2-new-3. Whoever you are, the system adapts to you */}
+        {/* 2-new-3. Whoever you are, the tiny habits challenge adapts to you */}
         <SystemAdapts />
+
+        {/* 2-new-4. What exactly is this challenge? */}
+        <WhatIsChallenge />
 
         {/* 2a. Real Talk — "You don't need another motivation video" (Hook) */}
         <Hook />
@@ -62,9 +65,6 @@ export default function Home() {
 
         {/* 3. Form #1 */}
         <InlineSignup id="signup-1" />
-
-        {/* 3b. What is this challenge */}
-        <WhatIsChallenge />
 
         {/* 4. How this challenge works */}
         <HowChallengeWorks />

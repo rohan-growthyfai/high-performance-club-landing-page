@@ -1,29 +1,21 @@
 import { X, Check } from "lucide-react";
 
-/**
- * BeforeAfter — "Where you are now → where you'll be in 7 days".
- *
- * Two side-by-side cards (Day 0 today vs Day 7) giving the user crystal-clear
- * before/after picture of the transformation. Adapted to the 7-Day WhatsApp
- * Habits Challenge (energy / health / sleep). Placed right after SoundsLikeYou.
- */
-
 const before = [
-  "Drained and foggy by 3pm every day",
-  "Sleep that leaves you tired in the morning",
-  "Starting habits on Monday, quitting by Wednesday",
-  "Trying to fix everything at once — and burning out",
-  "No clear proof that anything is actually working",
-  "Going it alone, with no one to keep you on track",
+  { emoji: "⚡", text: "Low energy — even after a full night's sleep" },
+  { emoji: "⚡", text: "Feeling tired in the afternoon, every single day" },
+  { emoji: "💚", text: "Small health issues that just keep coming back" },
+  { emoji: "💚", text: "No real routine — starting things but never finishing" },
+  { emoji: "🌙", text: "Taking too long to fall asleep at night" },
+  { emoji: "🌙", text: "Waking up and not feeling truly rested" },
 ];
 
 const after = [
-  "Steady energy that lasts the whole day",
-  "Falling asleep faster, waking up refreshed",
-  "One tiny habit a day — that actually sticks",
-  "A simple system that fits your real, busy life",
-  "Your own before → after score, in black and white",
-  "A daily nudge on WhatsApp keeping you consistent",
+  { emoji: "⚡", text: "More energy from the moment you wake up" },
+  { emoji: "⚡", text: "Staying alert and focused through the whole day" },
+  { emoji: "💚", text: "Feeling lighter and healthier from the inside" },
+  { emoji: "💚", text: "One small habit done every day — without missing" },
+  { emoji: "🌙", text: "Falling asleep more easily and naturally" },
+  { emoji: "🌙", text: "Waking up feeling fresh and ready to go" },
 ];
 
 export default function BeforeAfter() {
@@ -41,10 +33,11 @@ export default function BeforeAfter() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        {/* Cards + arrow */}
+        <div className="flex flex-col md:flex-row items-stretch gap-0">
 
           {/* DAY 0 — TODAY */}
-          <div className="rounded-3xl border border-border-subtle bg-zinc-50/70 p-6 sm:p-8">
+          <div className="flex-1 rounded-3xl border border-border-subtle bg-zinc-50/70 p-6 sm:p-8">
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-200/70 text-foreground-subtle text-xs sm:text-sm font-bold uppercase tracking-wide mb-6">
               Day 0 — Today
             </span>
@@ -54,14 +47,26 @@ export default function BeforeAfter() {
                   <span className="w-6 h-6 rounded-full bg-zinc-200 flex items-center justify-center shrink-0 mt-0.5">
                     <X className="w-3.5 h-3.5 text-zinc-500" strokeWidth={3} />
                   </span>
-                  <span className="text-base text-foreground-muted leading-snug">{b}</span>
+                  <span className="text-base text-foreground-muted leading-snug">
+                    <span className="mr-1.5">{b.emoji}</span>{b.text}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Arrow — horizontal on desktop, vertical on mobile */}
+          <div className="flex items-center justify-center md:flex-col py-4 md:py-0 md:px-4">
+            <div className="hidden md:flex flex-col items-center gap-2">
+              <div className="w-px flex-1 bg-accent/30" />
+              <span className="text-3xl font-black text-accent leading-none">→</span>
+              <div className="w-px flex-1 bg-accent/30" />
+            </div>
+            <span className="md:hidden text-3xl font-black text-accent leading-none">↓</span>
+          </div>
+
           {/* DAY 7 — TRANSFORMED */}
-          <div className="rounded-3xl border-2 border-accent/40 bg-accent/[0.06] p-6 sm:p-8 shadow-md relative overflow-hidden">
+          <div className="flex-1 rounded-3xl border-2 border-accent/40 bg-accent/[0.06] p-6 sm:p-8 shadow-md relative overflow-hidden">
             <div className="absolute -top-16 -right-16 w-44 h-44 rounded-full bg-accent/10" aria-hidden="true" />
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-accent text-white text-xs sm:text-sm font-bold uppercase tracking-wide mb-6 relative">
               Day 7 — Transformed
@@ -72,7 +77,9 @@ export default function BeforeAfter() {
                   <span className="w-6 h-6 rounded-full bg-accent flex items-center justify-center shrink-0 mt-0.5">
                     <Check className="w-3.5 h-3.5 text-white" strokeWidth={3} />
                   </span>
-                  <span className="text-base text-foreground leading-snug font-medium">{a}</span>
+                  <span className="text-base text-foreground leading-snug font-medium">
+                    <span className="mr-1.5">{a.emoji}</span>{a.text}
+                  </span>
                 </li>
               ))}
             </ul>

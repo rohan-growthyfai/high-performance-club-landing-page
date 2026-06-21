@@ -43,7 +43,7 @@ export default function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up" style={{ background: "rgba(37, 211, 102,0.1)", border: "1px solid rgba(37, 211, 102,0.3)" }}>
               <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ background: "#25d366" }} />
-              <span className="text-sm font-bold tracking-wide" style={{ color: "#1ea84f" }}>FREE 7-Day WhatsApp Challenge</span>
+              <span className="text-sm font-bold tracking-wide" style={{ color: "#1ea84f" }}>FREE 7-Day Healthy Habits Challenge</span>
             </div>
 
             {/* Headline */}
@@ -64,7 +64,9 @@ export default function Hero() {
             {/* CTA */}
             <div className="mt-6 animate-fade-up delay-300 inline-flex flex-col gap-2">
               <a
-                href="#signup-1"
+                href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold group"
               >
                 Join FREE on WhatsApp
@@ -104,7 +106,7 @@ export default function Hero() {
               <div className="absolute -right-4 lg:-right-56 top-1/3 z-20 sticky-note p-5 rounded-md tilt-right w-60 hidden lg:block">
                 <p className="font-serif italic text-amber-900 leading-snug">
                   <span className="text-xl font-bold not-italic block">FREE</span>
-                  <span className="text-base block">WhatsApp Challenge 📱</span>
+                  <span className="text-base block">Healthy Habits Challenge 📱</span>
                 </p>
               </div>
               <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">

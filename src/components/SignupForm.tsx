@@ -53,12 +53,12 @@ export default function SignupForm({ formId = "form" }: { testimonialVariant?: n
     const firePixelEvents = () => {
       if (typeof window !== "undefined" && (window as any).fbq) {
         (window as any).fbq("track", "Lead", {
-          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          content_name: "FREE 7-Day Healthy Habits Challenge",
           content_category: "Challenge Registration",
           status: "submitted",
         });
         (window as any).fbq("track", "CompleteRegistration", {
-          content_name: "FREE 7-Day WhatsApp Habits Challenge",
+          content_name: "FREE 7-Day Healthy Habits Challenge",
           status: "registered",
           currency: "INR",
           value: 0,

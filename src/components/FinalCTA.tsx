@@ -26,7 +26,7 @@ export default function FinalCTA() {
               Time to go 🚀
             </p>
             <h2 className="font-serif text-[1.6rem] sm:text-5xl lg:text-7xl font-medium leading-[1.1] mb-8 text-balance text-foreground">
-              Ready to try the Free 7-Day WhatsApp Challenge?
+              Ready to try the FREE 7-Day Healthy Habits Challenge?
             </h2>
 
             <p className="text-foreground-muted text-lg sm:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
@@ -48,10 +48,12 @@ export default function FinalCTA() {
             </div>
 
             <a
-              href="#signup-1"
+              href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl group w-full sm:w-auto"
             >
-              Join Free on WhatsApp
+              Join FREE on WhatsApp
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

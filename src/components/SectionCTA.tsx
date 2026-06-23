@@ -5,7 +5,7 @@ export default function SectionCTA({ text, sub }: { text: string; sub?: string }
         <p className="text-base text-foreground-muted text-center max-w-md">{sub}</p>
       )}
       <a
-        href="#signup-1"
+        href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
         className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
       >
         {text} →

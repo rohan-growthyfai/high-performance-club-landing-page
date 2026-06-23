@@ -52,7 +52,7 @@ export default function ExitIntentPopup() {
             </h2>
             <p className="text-sm opacity-90 mt-3 leading-relaxed">
               Join the FREE 7-Day Healthy Habits Challenge<br />
-              &amp; get 1 tiny habit delivered to your WhatsApp daily.
+              &amp; get 1 tiny healthy habit delivered to your WhatsApp daily.
             </p>
           </div>
 

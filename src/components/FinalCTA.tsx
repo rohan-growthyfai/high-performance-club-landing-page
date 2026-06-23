@@ -1,10 +1,13 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const points = [
-  "📱 Confirmation message within 2 minutes",
-  "⏱️ Less than 5 minutes/day",
-  "📊 Day 1 → Day 7 progress check",
-  "🏆 Completion certificate if you finish 5/7 days",
+  "⚡ Daily Healthy Habits Delivered on WhatsApp",
+  "🔥 Daily Accountability System with Check-Ins & Streak Tracking",
+  "📊 Personalized Before → After Health Progress Report",
+  "🏆 Official Challenge Completion Certificate",
+  "📚 Lifetime Access to the Healthy Habits Playbook",
+  "🚀 Exclusive Healthy Habit Vault (100+ Proven Habits)",
+  "🤝 Private Community of Like-Minded People Improving Together",
 ];
 
 export default function FinalCTA() {

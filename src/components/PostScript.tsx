@@ -42,7 +42,7 @@ export default function PostScript() {
 
           <div className="mt-12 flex flex-col sm:flex-row sm:items-center gap-5">
             <a
-              href="#signup-1"
+              href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
               Join for Free

@@ -42,7 +42,7 @@ const dailyLoop = [
   {
     icon: Sun,
     time: "6:00 AM — Morning",
-    label: "You get one tiny habit on WhatsApp.",
+    label: "You get one tiny healthy habit on WhatsApp.",
     desc: "",
     color: "text-amber-500",
     bg: "bg-amber-50 border-amber-200",
@@ -132,7 +132,7 @@ export default function HowChallengeWorks() {
               How this challenge works.
             </h2>
             <p className="text-sm sm:text-lg text-foreground-muted leading-relaxed mb-6">
-              For 7 days, we send you one tiny habit each morning on WhatsApp. Each one helps you feel more awake, healthy, and focused.
+              For 7 days, we send you one tiny healthy habit each morning on WhatsApp. Each one helps you feel more awake, healthy, and focused.
             </p>
 
             {/* Curiosity closer */}
@@ -147,7 +147,7 @@ export default function HowChallengeWorks() {
 
         <div className="flex flex-col items-center gap-3 pt-4 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Ready to try it yourself?</p>
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Yes!! Let&apos;s Get Started
           </a>
         </div>

@@ -7,7 +7,7 @@ const problems = [
 ];
 
 const solutions = [
-  { icon: "📩", text: "One tiny habit." },
+  { icon: "📩", text: "One tiny healthy habit." },
   { icon: "⏰", text: "One daily reminder." },
   { icon: "✅", text: "One DONE reply." },
   { icon: "📊", text: "One weekly scorecard." },

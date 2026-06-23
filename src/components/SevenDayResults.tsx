@@ -85,14 +85,14 @@ export default function SevenDayResults() {
         <div className="text-center max-w-xl mx-auto mb-12">
           <div className="w-12 h-px bg-border mx-auto mb-8" />
           <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
-            Just 7 tiny habits that fit easily into your day.
+            Just 7 tiny healthy habits that fit easily into your day.
           </p>
         </div>
 
         {/* CTA */}
         <div className="flex flex-col items-center gap-3">
           <a
-            href="#signup-1"
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold text-center"
           >
             I want these results — join free →

@@ -26,7 +26,7 @@ const notForYou = [
   "You want instant transformation in 7 days",
   "You want medical, diet, therapy, or financial advice",
   "You only want to read messages but never act",
-  "You're not willing to do even one tiny habit a day",
+  "You're not willing to do even one tiny healthy habit a day",
 ];
 
 export default function WhoItsFor() {

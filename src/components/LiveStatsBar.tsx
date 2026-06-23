@@ -86,10 +86,10 @@ export default function LiveStatsBar() {
           />
           <StatCard
             icon={Star}
-            value="4.9"
+            value="4.8"
             suffix="★"
-            label="Average rating"
-            sub="from 2,400+ members"
+            label="Member satisfaction"
+            sub="based on Day 7 feedback"
           />
         </div>
 

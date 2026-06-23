@@ -84,7 +84,7 @@ export default function Hook() {
           </p>
           <p className="text-foreground">
             You just{" "}
-            <span className="text-emphasis-yellow font-semibold">do 1 tiny habit per day</span>{" "}
+            <span className="text-emphasis-yellow font-semibold">do 1 tiny healthy habit per day</span>{" "}
             to improve your energy, health and sleep.
           </p>
 
@@ -100,7 +100,7 @@ export default function Hook() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Start the free 7-day challenge →
           </a>
         </div>

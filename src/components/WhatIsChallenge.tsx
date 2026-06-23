@@ -39,18 +39,23 @@ export default function WhatIsChallenge() {
               What exactly is this challenge?
             </h2>
             <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
-              It is a free 7-day challenge. Every morning, we send you one tiny habit on WhatsApp.
+              It is a free 7-day challenge. Every morning, we send you one tiny healthy habit on WhatsApp.
             </p>
-            <p className="text-base sm:text-lg text-foreground-muted font-medium mb-5">
+            <p className="text-base sm:text-lg text-foreground-muted font-medium mb-3">
               Each habit helps you get better at:
             </p>
+            <ul className="text-base sm:text-lg text-foreground-muted mb-5 space-y-1.5 pl-1">
+              <li className="flex items-center gap-2"><span className="text-accent font-bold">⚡</span> Having more energy through the day</li>
+              <li className="flex items-center gap-2"><span className="text-accent font-bold">💚</span> Building a healthier body — no gym needed</li>
+              <li className="flex items-center gap-2"><span className="text-accent font-bold">🌙</span> Sleeping better and waking up fresh</li>
+            </ul>
             <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-8">
               No app. No course login. No long videos.<br className="hidden sm:block" />
               Just one small action per day for 7 days.
             </p>
             <div className="flex justify-start">
               <a
-                href="#signup-1"
+                href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
                 className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-base sm:text-lg font-bold w-full sm:w-auto"
               >
                 I Want to Join This Challenge →

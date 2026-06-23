@@ -1,5 +1,5 @@
 const steps = [
-  { num: "01", title: "Habit lands at 6 AM", desc: "Every morning, one tiny habit arrives on your WhatsApp. Practical. Under 5 minutes.", color: "#25d366" },
+  { num: "01", title: "Habit lands at 6 AM", desc: "Every morning, one tiny healthy habit arrives on your WhatsApp. Practical. Under 5 minutes.", color: "#25d366" },
   { num: "02", title: "You do it", desc: "Read it. Do it. Could be 30 seconds. Could be 5 minutes. Never more.", color: "#60a5fa" },
   { num: "03", title: "Reply DONE", desc: "One word. Your streak updates. Your monthly count goes up. No app needed.", color: "#f59e0b" },
   { num: "04", title: "Weekly scorecard", desc: "Every week, a simple report. How consistent were you? What's your streak?", color: "#a78bfa" },

@@ -195,7 +195,7 @@ export default function FiveAreaScores() {
                   Imagine these bars 2-3 points higher in 7 days.
                 </p>
                 <a
-                  href="#signup-1"
+                  href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
                   className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full text-base"
                 >
                   Take the real challenge

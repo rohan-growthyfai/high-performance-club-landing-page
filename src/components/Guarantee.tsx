@@ -109,7 +109,7 @@ export default function Guarantee() {
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Nothing to lose. Everything to gain. Join in 30 seconds.</p>
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             YES, I AM IN!!
           </a>
         </div>

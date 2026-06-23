@@ -29,7 +29,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-base text-foreground-muted leading-relaxed max-w-sm mb-4">
-              One tiny habit each day. You can see your progress every week.
+              One tiny healthy habit each day. You can see your progress every week.
               Built in India, for Indians.
             </p>
             <p className="text-xs text-foreground-subtle mb-3">

@@ -47,7 +47,7 @@ export default function DUCHero() {
 
             {/* Subheadline — updated */}
             <p className="text-foreground-muted text-lg leading-relaxed max-w-xl">
-              Get 1 tiny habit every morning on WhatsApp to help you feel more energetic, focused, and consistent — with complete progress tracking built in.
+              Get 1 tiny healthy habit every morning on WhatsApp to help you feel more energetic, focused, and consistent — with complete progress tracking built in.
             </p>
 
             {/* Trust bullets */}

@@ -36,7 +36,7 @@ export default function DUCThemes() {
 
         <div className="text-center">
           <div className="inline-block bg-white border-2 border-accent/30 rounded-2xl px-6 py-5 shadow-sm">
-            <p className="text-base font-medium text-foreground">One month. One theme. Thirty tiny habits.</p>
+            <p className="text-base font-medium text-foreground">One month. One theme. Thirty tiny healthy habits.</p>
           </div>
         </div>
       </div>

@@ -65,7 +65,7 @@ export default function DUCExitIntentPopup() {
           <div className="px-6 py-6">
             <div className="space-y-3 mb-6">
               {[
-                "1 tiny habit every morning on WhatsApp",
+                "1 tiny healthy habit every morning on WhatsApp",
                 "Weekly scorecard to track your progress",
                 "Monthly PDF guide + Habit Vault",
                 "Private accountability group",

@@ -66,13 +66,13 @@ export default function TinyGains() {
         {/* Header */}
         <div className="text-center mb-10 lg:mb-12">
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
-            The power of tiny habits
+            The power of tiny healthy habits
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
             Get just <span className="gradient-text">1% better</span> every day…
           </h2>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
-            A tiny habit feels like nothing on Day 1. But small wins add up over time.
+            A tiny healthy habit feels like nothing on Day 1. But small wins add up over time.
             Keep going and the math is shocking — you can become a{" "}
             <span className="font-semibold text-foreground">37× better version of yourself</span> in just 1 year!
           </p>
@@ -166,10 +166,10 @@ export default function TinyGains() {
             If you do nothing, nothing changes. In fact, things can slowly get worse.
           </p>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed mb-8">
-            This challenge gives you your 1% — one tiny habit a day, on WhatsApp. The small wins do the rest.
+            This challenge gives you your 1% — one tiny healthy habit a day, on WhatsApp. The small wins do the rest.
           </p>
           <a
-            href="#signup-1"
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
           >
             Start My 1% Today — Free →

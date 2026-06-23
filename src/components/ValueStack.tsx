@@ -4,7 +4,7 @@ const items = [
   {
     emoji: "📱",
     title: "7 Daily WhatsApp Habit Messages",
-    detail: "1 tiny habit that really works, sent to your WhatsApp every morning for 7 days.",
+    detail: "1 tiny healthy habit that really works, sent to your WhatsApp every morning for 7 days.",
   },
   {
     emoji: "⏱️",
@@ -93,7 +93,7 @@ export default function ValueStack() {
               </p>
             </div>
             <a
-              href="#signup-1"
+              href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center gap-2 px-6 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl w-full sm:w-auto"
             >
               Join Completely FREE Today

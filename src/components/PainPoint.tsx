@@ -17,7 +17,7 @@ export default function PainPoint() {
           <span className="text-foreground-muted">burn you out</span>.{" "}
           <br className="hidden sm:block" />
           One{" "}
-          <span className="gradient-text">tiny habit a day</span> actually works.
+          <span className="gradient-text">tiny healthy habit a day</span> actually works.
         </h2>
 
         <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
@@ -42,7 +42,7 @@ export default function PainPoint() {
             </p>
           </div>
           <div className="rounded-2xl border-2 border-accent/40 bg-accent/5 p-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-accent mb-2">✅ Tiny Habits</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-accent mb-2">✅ Tiny Healthy Habits</p>
             <p className="text-sm text-foreground leading-relaxed">
               <span className="font-semibold">Just 1 tiny change a day</span> — so small you barely
               notice it. Easy to do. Easy to win.
@@ -60,7 +60,7 @@ export default function PainPoint() {
 
         <div className="flex justify-center">
           <a
-            href="#signup-1"
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
           >
             Show Me How It Works →

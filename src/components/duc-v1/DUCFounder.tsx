@@ -16,7 +16,7 @@ export default function DUCFounder() {
             <p>They fail because they forget, overthink, or try to change everything at once.</p>
             <p>Daily Upgrade Club is built for real life.</p>
             <div className="bg-section-cream rounded-xl p-5 space-y-2 border border-border-subtle text-foreground-muted">
-              <p>One tiny habit.</p>
+              <p>One tiny healthy habit.</p>
               <p>One daily reminder.</p>
               <p>One DONE reply.</p>
               <p>One weekly scorecard.</p>

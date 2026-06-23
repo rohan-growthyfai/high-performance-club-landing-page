@@ -12,7 +12,7 @@ const notForYou = [
   "You don't want WhatsApp messages",
   "You want 1-on-1 personal coaching for ₹99/month",
   "You want a strict gym or diet plan",
-  "You don't want to do even one tiny habit daily",
+  "You don't want to do even one tiny healthy habit daily",
   "You are looking for long video courses",
 ];
 

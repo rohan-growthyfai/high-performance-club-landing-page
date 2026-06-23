@@ -6,31 +6,31 @@ import { Plus, Minus } from "lucide-react";
 const faqs = [
   {
     q: "I have zero time. Can I still do it?",
-    a: "Yes! Most habits take under 2 minutes. The longest one is 10 minutes. Honestly, if 2 minutes is too much, the problem isn't time — it's not having a simple plan. We give you that plan. 🙌",
+    a: "Yes! Most habits take under 2 minutes. The longest one is 5 minutes. If you can check WhatsApp, you have enough time for this. 🙌",
   },
   {
     q: "What if I miss a day?",
-    a: "No big deal. No guilt. No restart. Just pick up the next day and keep going. The goal isn't to be perfect. The goal is to keep showing up. 💛",
+    a: "No problem. Just do the next day's habit and keep going. You don't need to restart. Missing one day doesn't ruin anything. 💛",
   },
   {
     q: "I've quit every challenge I've ever tried. Why is this different?",
-    a: "Because this one isn't built on willpower or motivation. It's tiny experiments. No big promises. No fake big promises. Just one small thing a day, and a score you can see at the end. Way easier to stick with. 🎯",
+    a: "Because the habits are so small, there is almost nothing to quit. It is one tiny action a day — not a whole routine. Much easier to stay consistent. 🎯",
   },
   {
     q: "Is it really free? What's the catch?",
-    a: "Yes, really free. After Day 7, you'll see our paid programs — but you don't have to join anything. Many people finish and never hear from us again. That's totally fine. 👋",
+    a: "It is 100% free. After Day 7, we may show you our paid programs. But you don't have to join anything. No pressure at all. 👋",
   },
   {
     q: "Will this give health or therapy advice?",
-    a: "Nope. This is a fun lifestyle habit challenge — not medical, therapy, diagnosis, treatment, or financial advice. If you need any of those, please see a real professional. 🩺",
+    a: "No. This is a simple lifestyle habit challenge, not medical or therapy advice. If you have a health condition, please check with your doctor first. 🩺",
   },
   {
     q: "Will you call me, spam me, or sell my number?",
-    a: "Never. We send WhatsApp messages only for 7 days + an optional weekly newsletter (one tap to unsubscribe). We never sell or share your number. Promise. 🤞",
+    a: "Never. You only get WhatsApp messages for the 7 days of the challenge. We do not sell or share your number with anyone. 🤞",
   },
   {
     q: "What happens after Day 7?",
-    a: "You get a personalized report showing what changed + your certificate 🏆. Then you'll see an invite to our paid programs. Joining is 100% optional.",
+    a: "You get your personalised progress report and your completion certificate. After that, you can choose to continue with our paid program or just move on. Totally up to you. 🏆",
   },
 ];
 
@@ -95,7 +95,7 @@ export default function FAQ() {
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center max-w-md">Still have a question? Just join and ask us directly on WhatsApp.</p>
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             Join the Challenge — It&apos;s FREE
           </a>
         </div>

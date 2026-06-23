@@ -22,7 +22,7 @@ export default function Header() {
 
         {/* CTA */}
         <a
-          href="#signup-1"
+          href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
           className="btn-primary inline-flex items-center gap-1.5 text-sm font-semibold px-4 py-2 rounded-full whitespace-nowrap"
         >
           Join FREE on WhatsApp

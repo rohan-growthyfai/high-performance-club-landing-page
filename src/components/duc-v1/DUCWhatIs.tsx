@@ -9,7 +9,7 @@ export default function DUCWhatIs() {
 
         <div className="text-left space-y-5 text-lg text-foreground leading-relaxed bg-white border border-border-subtle rounded-2xl p-8 shadow-sm mb-10">
           <p>Daily Upgrade Club is a <strong>monthly WhatsApp habit subscription</strong> designed to help you build better habits consistently.</p>
-          <p>Every day, you receive one tiny habit on WhatsApp.</p>
+          <p>Every day, you receive one tiny healthy habit on WhatsApp.</p>
           <p>Every week, you see your progress.</p>
           <p>Every month, you follow one clear theme like <strong>Energy, Health, Focus, Calmness, Sleep, or Discipline</strong>.</p>
 

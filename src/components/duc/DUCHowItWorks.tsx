@@ -1,9 +1,9 @@
 const steps = [
   { num: "01", title: "Start for ₹1 (7-day trial)", desc: "Begin your 7-day trial for just ₹1, then ₹99/month. Get your 1st WhatsApp message in 2 minutes." },
-  { num: "02", title: "Receive 1 habit daily", desc: "Every morning at 6 AM, get one tiny habit on WhatsApp." },
+  { num: "02", title: "Receive 1 habit daily", desc: "Every morning at 6 AM, get one tiny healthy habit on WhatsApp." },
   { num: "03", title: "Reply DONE", desc: "Complete the habit. Reply with one word \"DONE\". Progress gets tracked automatically." },
   { num: "04", title: "Get weekly scorecards", desc: "Every week, get a detailed personalized report showing your progress." },
-  { num: "05", title: "Complete the month", desc: "30 tiny habits. Detailed PDF guide. Move to the next theme." },
+  { num: "05", title: "Complete the month", desc: "30 tiny healthy habits. Detailed PDF guide. Move to the next theme." },
 ];
 
 export default function DUCHowItWorks() {

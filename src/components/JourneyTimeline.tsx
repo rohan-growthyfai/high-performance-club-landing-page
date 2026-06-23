@@ -127,7 +127,7 @@ export default function JourneyTimeline() {
               </p>
             </div>
             <a
-              href="#signup-1"
+              href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
               className="mt-5 btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-xl self-start"
             >
               Unlock Day 1 →

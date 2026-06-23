@@ -21,7 +21,7 @@ const rows = [
   { feature: "Where it happens", us: "Your WhatsApp", them: "Another app or website" },
   { feature: "Cost", us: "₹0", them: "Usually paid" },
   { feature: "Setup", us: "30 seconds", them: "Long forms or setup" },
-  { feature: "Habits per day", us: "1 tiny habit", them: "Too many tasks at once" },
+  { feature: "Habits per day", us: "1 tiny healthy habit", them: "Too many tasks at once" },
   { feature: "If you miss a day", us: "Continue tomorrow", them: "People often feel like restarting" },
 ];
 
@@ -93,7 +93,7 @@ export default function Comparison() {
         </div>
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold">
             I Want This!!!
           </a>
         </div>

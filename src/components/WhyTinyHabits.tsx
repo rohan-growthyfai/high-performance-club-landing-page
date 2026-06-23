@@ -15,7 +15,7 @@ export default function WhyTinyHabits() {
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <p className="text-xs uppercase tracking-[0.25em] text-accent font-bold mb-5">
-            Why Tiny Habits?
+            Why Tiny Healthy Habits?
           </p>
           <h2 className="font-serif text-4xl sm:text-4xl lg:text-6xl font-medium leading-[1.1] text-foreground mb-6">
             Big changes fail.
@@ -59,7 +59,7 @@ export default function WhyTinyHabits() {
         {/* CTA */}
         <div className="flex flex-col items-center gap-3">
           <a
-            href="#signup-1"
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
             className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
           >
             Start tiny today — join free →

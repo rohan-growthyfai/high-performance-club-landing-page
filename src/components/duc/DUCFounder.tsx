@@ -44,7 +44,7 @@ export default function DUCFounder() {
               <p>But the system I actually needed was simpler: one small habit, one daily reminder, one way to track it.</p>
               <p>So I built the smallest, simplest version I could think of:</p>
               <p className="text-foreground font-medium">
-                One tiny habit every day.<br />
+                One tiny healthy habit every day.<br />
                 Delivered straight to WhatsApp.<br />
                 Reply DONE when you&apos;re done.<br />
                 That&apos;s it.

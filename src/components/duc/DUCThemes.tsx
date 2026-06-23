@@ -1,9 +1,9 @@
 const themes = [
-  { icon: "⚡", name: "Energy Reset", desc: "Tiny habits that boost your energy. Feel more active and energized.", color: "#f59e0b", current: true },
+  { icon: "⚡", name: "Energy Reset", desc: "Tiny healthy habits that boost your energy. Feel more active and energized.", color: "#f59e0b", current: true },
   { icon: "💪", name: "Health Reset", desc: "Better health habits without gym routines or strict diets.", color: "#10b981" },
   { icon: "🎯", name: "Focus Reset", desc: "Live calmer, clearer, more productive days.", color: "#60a5fa" },
   { icon: "🧘", name: "Calmness Reset", desc: "Reduce mental clutter. Feel more balanced daily.", color: "#a78bfa" },
-  { icon: "🔥", name: "Discipline Reset", desc: "Tiny habits to stay consistent. No motivation required.", color: "#f87171" },
+  { icon: "🔥", name: "Discipline Reset", desc: "Tiny healthy habits to stay consistent. No motivation required.", color: "#f87171" },
   { icon: "🌙", name: "Sleep Reset", desc: "Habits for better and deeper sleep. Better recovery. Better mornings.", color: "#818cf8" },
 ];
 
@@ -28,7 +28,7 @@ export default function DUCThemes() {
           <span className="text-2xl">⚡</span>
           <div>
             <p className="text-foreground font-bold text-base">Your first month starts with: Energy Reset ⚡</p>
-            <p className="text-foreground-muted text-sm mt-0.5">30 tiny habits designed to help you feel more active and energized every day.</p>
+            <p className="text-foreground-muted text-sm mt-0.5">30 tiny healthy habits designed to help you feel more active and energized every day.</p>
           </div>
         </div>
 
@@ -50,7 +50,7 @@ export default function DUCThemes() {
 
         <div className="mt-10 text-center space-y-4">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-border-subtle">
-            <span className="text-sm text-foreground-muted">One month. One theme. Thirty tiny habits.</span>
+            <span className="text-sm text-foreground-muted">One month. One theme. Thirty tiny healthy habits.</span>
           </div>
           <div className="block">
             <a href="#duc-join" className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-lg font-bold">

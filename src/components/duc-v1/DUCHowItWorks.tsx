@@ -1,6 +1,6 @@
 const steps = [
   { num: "01", title: "Join for ₹99/month", desc: "Complete your subscription and get instant WhatsApp access." },
-  { num: "02", title: "Receive 1 habit daily", desc: "Every morning, you get one tiny habit on WhatsApp." },
+  { num: "02", title: "Receive 1 habit daily", desc: "Every morning, you get one tiny healthy habit on WhatsApp." },
   { num: "03", title: "Reply DONE", desc: "Complete the habit and reply DONE to track your progress." },
   { num: "04", title: "Get weekly scorecards", desc: "Every week, receive a simple progress update." },
   { num: "05", title: "Complete the monthly theme", desc: "At the end of 30 days, get your PDF guide and continue to the next theme." },

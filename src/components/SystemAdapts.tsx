@@ -7,7 +7,7 @@ const points = [
   {
     emoji: "🧑‍🤝‍🧑",
     title: "No matter your age",
-    body: "25 or 55, the habits are tiny and gentle — designed for real bodies and real schedules.",
+    body: "Whether you are 25 or 55, these habits are small and easy. Anyone can do them, no matter how out of shape or busy you feel.",
   },
   {
     emoji: "🚶",
@@ -22,12 +22,12 @@ const points = [
   {
     emoji: "💼",
     title: "No matter your profession",
-    body: "Working professional, parent, student or founder — the system fits around your day, not the other way around.",
+    body: "Job, kids, college, or running a business — these habits take under 5 minutes and fit into any day, no matter how packed it is.",
   },
   {
     emoji: "🌱",
     title: "You'll still see real progress",
-    body: "Energy, health and sleep — you'll feel the shift in 7 days, and your before/after score will prove it.",
+    body: "More energy, better health, better sleep — you will feel the difference in 7 days. Your before and after score will show it clearly.",
   },
 ];
 
@@ -42,7 +42,7 @@ export default function SystemAdapts() {
             Built for everyone
           </p>
           <h2 className="font-display text-section-title text-balance text-foreground mb-4">
-            Whoever you are, the tiny habits challenge <span className="gradient-text">adapts to you</span>
+            Whoever you are, the tiny healthy habits challenge <span className="gradient-text">adapts to you</span>
           </h2>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto">
             This isn&apos;t a one-size-fits-all program you have to keep up with. It&apos;s a tiny daily system that meets you exactly where you are.

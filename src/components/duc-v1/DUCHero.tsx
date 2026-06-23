@@ -40,7 +40,7 @@ export default function DUCHero() {
 
             {/* Subhead */}
             <p className="mt-4 text-base sm:text-lg text-foreground leading-relaxed animate-fade-up delay-100">
-              Join <strong>Daily Upgrade Club</strong> and get <strong>1 tiny habit daily</strong>, weekly progress tracking, monthly themes, habit guides, and a private accountability group — all for just <strong>₹99/month</strong>.
+              Join <strong>Daily Upgrade Club</strong> and get <strong>1 tiny healthy habit daily</strong>, weekly progress tracking, monthly themes, habit guides, and a private accountability group — all for just <strong>₹99/month</strong>.
             </p>
             <p className="mt-2 text-base text-foreground-muted italic animate-fade-up delay-150">
               No app. No long videos. No complicated routine.

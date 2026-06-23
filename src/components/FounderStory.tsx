@@ -61,7 +61,7 @@ export default function FounderStory() {
               </p>
               <p className="text-foreground font-medium">
                 7 days.<br />
-                1 tiny habit daily.<br />
+                1 tiny healthy habit daily.<br />
                 Delivered on WhatsApp.<br />
                 Free.
               </p>
@@ -85,7 +85,7 @@ export default function FounderStory() {
 
         <div className="flex flex-col items-center gap-3 pt-14 pb-2">
           <p className="text-base text-foreground-muted text-center">This challenge exists because it worked for me first. Now it&apos;s your turn.</p>
-          <a href="#signup-1" className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl font-bold w-full sm:w-auto text-center">
+          <a href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer" className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl font-bold w-full sm:w-auto text-center">
             Join the Challenge — Completely FREE →
           </a>
         </div>

@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 const steps = [
-  { icon: "📩", time: "Every Morning", title: "Daily Prompt", desc: "You receive one tiny habit every day on WhatsApp.", color: "bg-amber-50 border-amber-200", iconColor: "text-amber-500" },
+  { icon: "📩", time: "Every Morning", title: "Daily Prompt", desc: "You receive one tiny healthy habit every day on WhatsApp.", color: "bg-amber-50 border-amber-200", iconColor: "text-amber-500" },
   { icon: "✅", time: "5 Minutes", title: "Simple Action", desc: "You complete the habit in less than 5 minutes.", color: "bg-green-50 border-green-200", iconColor: "text-green-500" },
   { icon: "🔁", time: "Reply DONE", title: "DONE Tracking", desc: "You reply DONE and your progress gets tracked.", color: "bg-blue-50 border-blue-200", iconColor: "text-blue-500" },
   { icon: "📊", time: "Every Week", title: "Weekly Scorecard", desc: "You see your weekly consistency and monthly progress.", color: "bg-purple-50 border-purple-200", iconColor: "text-purple-500" },

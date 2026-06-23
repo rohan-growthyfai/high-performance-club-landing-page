@@ -6,19 +6,19 @@ const reviews = [
     avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "Something changed on Day 1. I am on Day 19 now.",
+    review: "My energy in the morning went from 3/10 to 8/10 by Day 5.",
   },
   {
     avatar: "/avatars/women/woman-3.avif",
     name: "Preethi R.",
     city: "Chennai",
-    review: "Did the habit before I even fully woke up.",
+    review: "Slept better from Day 2. No pills, no fuss.",
   },
   {
     avatar: "/avatars/women/woman-1.jpg",
     name: "Divya M.",
     city: "Mumbai",
-    review: "Day 3 genuinely surprised me.",
+    review: "Lost 1.5 kg and felt lighter by Day 7.",
   },
 ];
 
@@ -52,13 +52,18 @@ export default function Hero() {
               <span className="gradient-text">Energetic</span>,{" "}
               <span className="gradient-text">Healthier</span> &{" "}
               <span className="gradient-text">Sleep Better</span>{" "}
-              <span className="text-foreground-muted font-medium">with tiny habits that take</span>{" "}
+              <span className="text-foreground-muted font-medium">with tiny healthy habits that take</span>{" "}
               <span className="italic font-normal text-emphasis-yellow">less than 5 minutes a day</span>
             </h1>
 
             {/* Subhead — single line, uniform font */}
             <p className="mt-4 text-base sm:text-lg text-foreground-muted font-medium leading-relaxed animate-fade-up delay-100">
-              No 5 AM wake-ups. No complicated routine. Get 1 tiny habit delivered on WhatsApp every day. Takes less than 5 minutes to do.
+              No 5 AM wake-ups. No complicated routine. Get 1 tiny{" "}
+              <span className="relative inline-block text-foreground font-semibold">
+                healthy habit
+                <span className="absolute left-0 -bottom-0.5 w-full h-[3px] bg-accent rounded-full" aria-hidden="true" />
+              </span>{" "}
+              delivered on WhatsApp every day. Takes less than 5 minutes to do.
             </p>
 
             {/* CTA */}

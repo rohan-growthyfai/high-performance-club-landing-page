@@ -1,36 +1,13 @@
-import { Check, Gift, MessageCircle, Moon, FileText, Award, Users, BookOpen } from "lucide-react";
+import { Check, Gift } from "lucide-react";
 
 const items = [
-  {
-    icon: MessageCircle,
-    title: "7 daily habit messages",
-    description: "One tiny upgrade per day, delivered on WhatsApp every morning.",
-  },
-  {
-    icon: Moon,
-    title: "7 evening check-ins",
-    description: "A short nudge each night to lock in the day's habit.",
-  },
-  {
-    icon: FileText,
-    title: "Day 0 + Day 7 score system",
-    description: "Rate yourself in 5 areas — and see exactly what changed.",
-  },
-  {
-    icon: Award,
-    title: "Completion certificate",
-    description: "Earn the High Performance Lifestyle Starter Certificate (complete 5 of 7).",
-  },
-  {
-    icon: Users,
-    title: "Free challenge community",
-    description: "Optional WhatsApp space with others doing the same challenge.",
-  },
-  {
-    icon: BookOpen,
-    title: "Day 7 habit recap",
-    description: "All 7 habits documented in one short PDF you can keep.",
-  },
+  { emoji: "⚡", title: "Daily Healthy Habits Delivered on WhatsApp", description: "One tiny healthy habit every morning, straight to your WhatsApp. No app, no login." },
+  { emoji: "🔥", title: "Daily Accountability System with Check-Ins & Streak Tracking", description: "A quick evening check-in every day to keep you on track and build your streak." },
+  { emoji: "📊", title: "Personalized Before → After Health Progress Report", description: "You rate yourself on Day 0 and Day 7. See exactly what changed in black and white." },
+  { emoji: "🏆", title: "Official Challenge Completion Certificate", description: "Complete 5 out of 7 days and earn your certificate. Something to be proud of." },
+  { emoji: "📚", title: "Lifetime Access to the Healthy Habits Playbook", description: "All 7 habits plus tips, in one simple guide you keep forever." },
+  { emoji: "🚀", title: "Exclusive Healthy Habit Vault (100+ Proven Habits)", description: "A bonus collection of 100+ simple healthy habits you can use long after the challenge ends." },
+  { emoji: "🤝", title: "Private Community of Like-Minded People Improving Together", description: "Join others doing the challenge. Share progress, get motivated, stay accountable." },
 ];
 
 export default function BonusStack() {
@@ -56,25 +33,22 @@ export default function BonusStack() {
 
         <div className="premium-card rounded-2xl p-8 lg:p-12 border-glow">
           <div className="grid sm:grid-cols-2 gap-x-8 gap-y-7">
-            {items.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title} className="flex items-start gap-5">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-5 h-5 text-accent" />
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground mb-2 flex items-center gap-2 text-lg">
-                      {item.title}
-                      <Check className="w-5 h-5 text-accent" />
-                    </p>
-                    <p className="text-base text-foreground-muted leading-relaxed">
-                      {item.description}
-                    </p>
-                  </div>
+            {items.map((item) => (
+              <div key={item.title} className="flex items-start gap-5">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/30 flex items-center justify-center flex-shrink-0 text-2xl">
+                  {item.emoji}
                 </div>
-              );
-            })}
+                <div>
+                  <p className="font-medium text-foreground mb-2 flex items-center gap-2 text-lg">
+                    {item.title}
+                    <Check className="w-5 h-5 text-accent flex-shrink-0" />
+                  </p>
+                  <p className="text-base text-foreground-muted leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
 
           <div className="mt-12 pt-8 border-t border-border-subtle text-center">
@@ -92,7 +66,7 @@ export default function BonusStack() {
 
         <div className="text-center mt-12">
           <a
-            href="#signup-1"
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
             className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl"
           >
             Get All of This Free →

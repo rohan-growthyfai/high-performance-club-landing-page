@@ -76,13 +76,13 @@ export default function ValueLadder() {
               100% FREE · no credit card · no hidden charges
             </p>
             <a
-              href="#signup-1"
+              href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
               className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold w-full sm:w-auto"
             >
               Yes — start the challenge for FREE →
             </a>
             <p className="text-sm text-foreground-subtle mt-5 italic">
-              Our goal: help 1 million people live healthier, happier lives — one tiny habit at a time.
+              Our goal: help 1 million people live healthier, happier lives — one tiny healthy habit at a time.
             </p>
           </div>
 

@@ -1,5 +1,5 @@
 const lines = [
-  { icon: "📩", bold: "Every day", rest: " — one tiny habit lands in your WhatsApp." },
+  { icon: "📩", bold: "Every day", rest: " — one tiny healthy habit lands in your WhatsApp." },
   { icon: "📊", bold: "Every week", rest: " — a simple scorecard shows your progress." },
   { icon: "🗓️", bold: "Every month", rest: " — one clear theme: Energy, Focus, Sleep, Calmness, Discipline, or Health." },
 ];

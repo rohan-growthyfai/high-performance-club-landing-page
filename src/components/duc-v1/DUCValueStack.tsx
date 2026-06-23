@@ -1,7 +1,7 @@
 import { ArrowRight } from "lucide-react";
 
 const items = [
-  { emoji: "📩", title: "30 Tiny Daily Habits", detail: "Get 1 tiny habit every day for 30 days on WhatsApp. Each habit is practical, beginner-friendly, and takes less than 5 minutes." },
+  { emoji: "📩", title: "30 Tiny Daily Habits", detail: "Get 1 tiny healthy habit every day for 30 days on WhatsApp. Each habit is practical, beginner-friendly, and takes less than 5 minutes." },
   { emoji: "🎯", title: "One Monthly Theme", detail: "Every month follows one focused theme: Energy, Health, Focus, Calmness, Sleep, or Discipline. No random tips. One clear monthly journey." },
   { emoji: "✅", title: "Daily Tracking for Accountability", detail: "After completing your habit, reply DONE. Your progress gets counted automatically so you can see how consistent you are becoming." },
   { emoji: "📊", title: "Weekly Progress Scorecard", detail: "Every week, receive a simple report showing habits completed, monthly progress, current streak, and next target." },

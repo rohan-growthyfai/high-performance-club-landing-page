@@ -2,39 +2,39 @@ import { ArrowRight } from "lucide-react";
 
 const items = [
   {
-    emoji: "📱",
-    title: "7 Daily WhatsApp Habit Messages",
-    detail: "1 tiny healthy habit that really works, sent to your WhatsApp every morning for 7 days.",
+    emoji: "⚡",
+    title: "Daily Healthy Habits Delivered on WhatsApp",
+    detail: "One tiny healthy habit every morning, straight to your WhatsApp. No app, no login.",
   },
   {
-    emoji: "⏱️",
-    title: "Less Than 5 Minutes a Day",
-    detail: "Simple habits made for busy people.",
-  },
-  {
-    emoji: "🌙",
-    title: "Evening Check-ins",
-    detail: "A short reminder to help you keep going.",
-  },
-  {
-    emoji: "💬",
-    title: "Private WhatsApp Community",
-    detail: "Join others doing the challenge. Share your wins. Cheer each other on.",
+    emoji: "🔥",
+    title: "Daily Accountability System with Check-Ins & Streak Tracking",
+    detail: "A quick evening check-in every day to keep you on track and build your streak.",
   },
   {
     emoji: "📊",
-    title: "Personalized 7 Days Progress Report",
-    detail: "Compare your Energy, Health, and Sleep before and after the challenge.",
+    title: "Personalized Before → After Health Progress Report",
+    detail: "You rate yourself on Day 0 and Day 7. See exactly what changed in black and white.",
   },
   {
     emoji: "🏆",
-    title: "Completion Certificate",
-    detail: "Complete the challenge and receive your 7-Day Habits Starter Certificate.",
+    title: "Official Challenge Completion Certificate",
+    detail: "Complete 5 out of 7 days and earn your certificate. Something to be proud of.",
   },
   {
-    emoji: "📄",
-    title: "7-Habit Reference PDF",
-    detail: "Keep all 7 habits with you even after the challenge ends.",
+    emoji: "📚",
+    title: "Lifetime Access to the Healthy Habits Playbook",
+    detail: "All 7 habits plus tips, in one simple guide you keep forever.",
+  },
+  {
+    emoji: "🚀",
+    title: "Exclusive Healthy Habit Vault (100+ Proven Habits)",
+    detail: "A bonus collection of 100+ simple healthy habits you can use long after the challenge ends.",
+  },
+  {
+    emoji: "🤝",
+    title: "Private Community of Like-Minded People Improving Together",
+    detail: "Join others doing the challenge. Share progress, get motivated, stay accountable.",
   },
 ];
 

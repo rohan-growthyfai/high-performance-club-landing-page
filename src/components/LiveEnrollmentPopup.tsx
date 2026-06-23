@@ -114,7 +114,7 @@ export default function LiveEnrollmentPopup() {
 
   return (
     <div
-      className="fixed bottom-4 left-2 z-50 flex flex-col gap-2 pointer-events-none"
+      className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[80px] md:bottom-[68px]"
       aria-live="polite"
     >
       {toasts.map((toast, i) => (

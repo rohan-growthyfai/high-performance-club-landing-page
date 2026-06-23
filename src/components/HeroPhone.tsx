@@ -204,13 +204,13 @@ export default function HeroPhone() {
                 <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
                   <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
                   <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontWeight: 700, fontFamily: "var(--font-sans)", lineHeight: 1.4 }}>
-                    ⚡ Your Day 1 habit is ready!
+                    ⚡ Your Day 1 healthy habit is ready!
                   </p>
                   <p style={{ margin: "5px 0 0", color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
-                    It takes just 2 minutes to do.
+                    It takes just 30 seconds to do.
                   </p>
                   <p style={{ margin: "3px 0 0", color: "#111b21", fontSize: 11.5, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
-                    Most people feel an instant energy boost for the rest of the day — right after doing this. 🔥
+                    You will feel an instant energy boost for the rest of the day — right after doing this. 🔥
                   </p>
                   <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                     6:00 AM
@@ -239,7 +239,7 @@ export default function HeroPhone() {
                 <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
                   <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
                   <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontFamily: "var(--font-sans)", lineHeight: 1.5 }}>
-                    Register for the FREE challenge and you will receive all the habits directly on this WhatsApp. 🎯
+                    Register for the FREE Healthy Habits challenge &amp; you will receive all the habits directly on your WhatsApp. 💬
                   </p>
                   <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, fontFamily: "var(--font-sans)", textAlign: "right" }}>
                     6:01 AM

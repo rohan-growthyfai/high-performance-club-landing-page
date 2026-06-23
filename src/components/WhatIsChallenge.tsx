@@ -34,12 +34,12 @@ export default function WhatIsChallenge() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
           {/* LEFT — copy + CTA (left-aligned) */}
-          <div className="text-left">
+          <div className="text-center lg:text-left">
             <h2 className="font-display text-section-title text-foreground mb-5">
               What exactly is this challenge?
             </h2>
             <p className="text-base sm:text-lg text-foreground-muted leading-relaxed mb-5">
-              It is a free 7-day challenge. Every morning, we send you one tiny healthy habit on WhatsApp.
+              It is a free 7-day healthy habits challenge. Every morning, we send you one tiny healthy habit on WhatsApp.
             </p>
             <p className="text-base sm:text-lg text-foreground-muted font-medium mb-3">
               Each habit helps you get better at:

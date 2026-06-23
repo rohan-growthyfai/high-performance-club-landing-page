@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { MessageCircle, CheckCircle2, Users, Star } from "lucide-react";
+import { Heart, CheckCircle2, Users, TrendingUp } from "lucide-react";
 
 /**
  * Standalone LiveStatsBar — shown directly below Hero.
@@ -42,9 +42,9 @@ function useLiveCounter(
 const fmt = (n: number) => n.toLocaleString("en-IN");
 
 export default function LiveStatsBar() {
-  const messages  = useLiveCounter(12847, 4200, 9800, 2);
-  const habits    = useLiveCounter(3247,  6800, 13000, 1);
-  const activeNow = useLiveCounter(847,   8500, 17000, 1);
+  const messages  = useLiveCounter(12901, 4200, 9800, 2);
+  const habits    = useLiveCounter(3279,  6800, 13000, 1);
+  const activeNow = useLiveCounter(875,   8500, 17000, 1);
 
   return (
     <section className="bg-section-white border-y border-border-subtle py-8 lg:py-10">
@@ -64,9 +64,9 @@ export default function LiveStatsBar() {
         {/* 4 stats — equal columns, symmetrical */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           <StatCard
-            icon={MessageCircle}
+            icon={Heart}
             value={fmt(messages)}
-            label="WhatsApp messages sent"
+            label="Healthy habits sent on WhatsApp"
             sub="across all members"
             live
           />
@@ -85,11 +85,10 @@ export default function LiveStatsBar() {
             live
           />
           <StatCard
-            icon={Star}
-            value="4.8"
-            suffix="★"
-            label="Member satisfaction"
-            sub="based on Day 7 feedback"
+            icon={TrendingUp}
+            value="7 Days"
+            label="To feel the difference"
+            sub="results members report"
           />
         </div>
 

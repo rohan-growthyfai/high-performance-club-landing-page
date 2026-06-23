@@ -48,7 +48,11 @@ export default function SoundsLikeYou() {
         {/* Reframe */}
         <p className="text-center mt-10 lg:mt-12 text-lg sm:text-xl font-bold text-foreground text-balance max-w-2xl mx-auto leading-relaxed">
           None of this means you lack discipline. It means no one ever gave you a{" "}
-          <span className="gradient-text">simple system</span> that fits real life. That changes today.
+          <span className="relative inline-block">
+            <span className="gradient-text font-bold">simple system</span>
+            <span className="absolute left-0 -bottom-0.5 w-full h-[3px] bg-accent rounded-full" aria-hidden="true" />
+          </span>{" "}
+          that fits real life. That changes today.
         </p>
 
       </div>

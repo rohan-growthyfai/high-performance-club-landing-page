@@ -67,7 +67,7 @@ export default function Hero() {
             </p>
 
             {/* CTA */}
-            <div className="mt-6 animate-fade-up delay-300 inline-flex flex-col gap-2">
+            <div className="mt-6 animate-fade-up delay-300 flex flex-col gap-2 items-center sm:items-start">
               <a
                 href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge"
                 target="_blank"
@@ -113,11 +113,6 @@ export default function Hero() {
                   <span className="text-xl font-bold not-italic block">FREE</span>
                   <span className="text-base block">Healthy Habits Challenge 📱</span>
                 </p>
-              </div>
-              <div className="absolute -bottom-2 -right-2 lg:-right-6 z-10 animate-wiggle">
-                <div className="bg-accent text-white rounded-full px-3 py-1.5 shadow-xl tilt-right">
-                  <p className="text-[10px] font-bold uppercase">🏆 Win cert!</p>
-                </div>
               </div>
               <HeroPhone />
             </div>

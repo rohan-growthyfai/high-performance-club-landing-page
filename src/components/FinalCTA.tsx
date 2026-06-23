@@ -1,13 +1,13 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const points = [
-  "⚡ Daily Healthy Habits Delivered on WhatsApp",
-  "🔥 Daily Accountability System with Check-Ins & Streak Tracking",
-  "📊 Personalized Before → After Health Progress Report",
-  "🏆 Official Challenge Completion Certificate",
-  "📚 Lifetime Access to the Healthy Habits Playbook",
-  "🚀 Exclusive Healthy Habit Vault (100+ Proven Habits)",
-  "🤝 Private Community of Like-Minded People Improving Together",
+  "⚡ Daily Healthy Habits on WhatsApp",
+  "🔥 Accountability, Check-Ins & Streaks",
+  "📊 Personalized Progress Report",
+  "🏆 Official Completion Certificate",
+  "📚 Lifetime Healthy Habits Guide",
+  "🚀 Healthy Habit Vault (100+ Habits)",
+  "🤝 Private WhatsApp Community",
 ];
 
 export default function FinalCTA() {

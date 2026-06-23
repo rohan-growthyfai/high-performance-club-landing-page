@@ -67,7 +67,7 @@ export default function BonusStack() {
         <div className="text-center mt-12">
           <a
             href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge" target="_blank" rel="noopener noreferrer"
-            className="btn-primary inline-flex items-center gap-2 px-10 py-5 rounded-full text-xl"
+            className="btn-primary inline-flex items-center gap-2 px-7 py-3.5 sm:px-10 sm:py-5 rounded-full text-base sm:text-xl"
           >
             Get All of This Free →
           </a>

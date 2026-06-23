@@ -124,7 +124,7 @@ export default function HowChallengeWorks() {
           </div>
 
           {/* RIGHT — copy (left-aligned) */}
-          <div className="order-1 lg:order-2 text-left">
+          <div className="order-1 lg:order-2 text-center lg:text-left">
             <p className="text-sm uppercase tracking-[0.2em] text-accent font-bold mb-3">
               Simple. Tiny. Powerful.
             </p>

@@ -21,7 +21,7 @@ export default function StickyMobileCTA() {
       }`}
     >
       {/* Mobile */}
-      <div className="md:hidden px-4 pb-4 pt-3" style={{ background: "linear-gradient(to top, #fff 70%, transparent)", backdropFilter: "blur(8px)" }}>
+      <div className="md:hidden px-4 pb-3 pt-2" style={{ background: "linear-gradient(to top, #fff 70%, transparent)", backdropFilter: "blur(8px)" }}>
         <a
           href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge"
           target="_blank"

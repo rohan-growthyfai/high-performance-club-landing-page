@@ -1,19 +1,19 @@
 import { X, Check } from "lucide-react";
 
 const before = [
-  { emoji: "⚡", text: "Low energy — even after a full night's sleep" },
-  { emoji: "⚡", text: "Feeling tired in the afternoon, every single day" },
-  { emoji: "💚", text: "Small health issues that just keep coming back" },
-  { emoji: "💚", text: "No real routine — starting things but never finishing" },
-  { emoji: "🌙", text: "Taking too long to fall asleep at night" },
-  { emoji: "🌙", text: "Waking up and not feeling truly rested" },
+  { emoji: "⚡", text: "Low energy even after sleeping" },
+  { emoji: "⚡", text: "Tired every afternoon, every day" },
+  { emoji: "💚", text: "Small health issues that keep coming back" },
+  { emoji: "💚", text: "Starting things but never finishing" },
+  { emoji: "🌙", text: "Taking too long to fall asleep" },
+  { emoji: "🌙", text: "Waking up and not feeling rested" },
 ];
 
 const after = [
   { emoji: "⚡", text: "More energy from the moment you wake up" },
-  { emoji: "⚡", text: "Staying alert and focused through the whole day" },
-  { emoji: "💚", text: "Feeling lighter and healthier from the inside" },
-  { emoji: "💚", text: "One small habit done every day — without missing" },
+  { emoji: "⚡", text: "Alert and focused through the whole day" },
+  { emoji: "💚", text: "Feeling lighter and healthier from inside" },
+  { emoji: "💚", text: "One small habit done daily — without missing" },
   { emoji: "🌙", text: "Falling asleep more easily and naturally" },
   { emoji: "🌙", text: "Waking up feeling fresh and ready to go" },
 ];
@@ -21,7 +21,7 @@ const after = [
 export default function BeforeAfter() {
   return (
     <section className="py-16 lg:py-24 bg-section-white">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
 
         {/* Header */}
         <div className="text-center mb-12 lg:mb-16">

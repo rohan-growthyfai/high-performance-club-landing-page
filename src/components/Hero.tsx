@@ -6,19 +6,19 @@ const reviews = [
     avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "Felt an instant energy shift from Day 3. Never felt this refreshed before.",
+    review: "Instant energy shift from Day 3. Never felt this good.",
   },
   {
     avatar: "/avatars/women/woman-3.avif",
     name: "Preethi R.",
     city: "Chennai",
-    review: "Sleeping so much better now. The difference is very real.",
+    review: "Sleeping so much better. The difference is real.",
   },
   {
     avatar: "/avatars/women/woman-1.jpg",
     name: "Divya M.",
     city: "Mumbai",
-    review: "Genuinely felt healthier from within. Didn't expect such a clear change this fast.",
+    review: "Felt healthier from within. Didn't expect this in 7 days.",
   },
 ];
 

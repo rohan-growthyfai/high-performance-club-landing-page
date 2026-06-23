@@ -2,32 +2,32 @@ const points = [
   {
     emoji: "⏰",
     title: "No matter how busy you are",
-    body: "Each habit takes under 5 minutes. If you can send a WhatsApp, you have time for this.",
+    body: "Under 5 minutes a day. If you can check WhatsApp, you have time.",
   },
   {
     emoji: "🧑‍🤝‍🧑",
     title: "No matter your age",
-    body: "Whether you are 25 or 55, these habits are small and easy. Anyone can do them, no matter how out of shape or busy you feel.",
+    body: "Works for 25 or 55. Small, easy habits anyone can start today.",
   },
   {
     emoji: "🚶",
     title: "No matter your fitness level",
-    body: "No gym, no diet, no intense workouts. Just small daily actions anyone can do, starting from zero.",
+    body: "No gym. No diet. Just tiny daily actions — starting from zero.",
   },
   {
     emoji: "🔄",
     title: "No matter how many times you've quit",
-    body: "Failed 10 challenges before? Perfect. This one is built to be too easy to quit.",
+    body: "Quit 10 challenges before? Good. This one is too easy to quit.",
   },
   {
     emoji: "💼",
     title: "No matter your profession",
-    body: "Job, kids, college, or running a business — these habits take under 5 minutes and fit into any day, no matter how packed it is.",
+    body: "Job, kids, college, business — these habits fit any schedule.",
   },
   {
     emoji: "🌱",
     title: "You'll still see real progress",
-    body: "More energy, better health, better sleep — you will feel the difference in 7 days. Your before and after score will show it clearly.",
+    body: "More energy, better health, better sleep — in just 7 days.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function SystemAdapts() {
             Whoever you are, the tiny healthy habits challenge <span className="gradient-text">adapts to you</span>
           </h2>
           <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto">
-            This isn&apos;t a one-size-fits-all program you have to keep up with. It&apos;s a tiny daily system that meets you exactly where you are.
+            No big changes needed. Just one tiny habit a day that fits your life exactly as it is right now.
           </p>
         </div>
 

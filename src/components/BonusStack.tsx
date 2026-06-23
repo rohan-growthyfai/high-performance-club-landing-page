@@ -19,13 +19,13 @@ export default function BonusStack() {
             <Gift className="w-5 h-5" />
             Look what&apos;s in the box 🎁
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-8">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-8">
             Here&apos;s everything you get.
             <br />
             <span className="italic font-light">All free.</span>
           </h2>
-          <p className="text-2xl sm:text-3xl text-foreground-muted max-w-2xl mx-auto leading-[1.5]">
-            <span className="text-2xl sm:text-3xl text-foreground">
+          <p className="text-base sm:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
+            <span className="text-base sm:text-lg text-foreground">
               The Free 7-Day High Performance Lifestyle Challenge.
             </span>
           </p>

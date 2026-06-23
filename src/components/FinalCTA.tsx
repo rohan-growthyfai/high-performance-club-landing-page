@@ -28,7 +28,7 @@ export default function FinalCTA() {
             <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
               Time to go 🚀
             </p>
-            <h2 className="font-serif text-[1.6rem] sm:text-5xl lg:text-7xl font-medium leading-[1.1] mb-8 text-balance text-foreground">
+            <h2 className="font-display text-section-title mb-8 text-balance text-foreground">
               Ready to try the FREE 7-Day Healthy Habits Challenge?
             </h2>
 

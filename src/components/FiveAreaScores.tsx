@@ -75,12 +75,12 @@ export default function FiveAreaScores() {
           <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Quick game · 30 seconds ⏱️
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-8">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-8">
             How are you feeling
             <br />
             <span className="italic font-light">right now?</span>
           </h2>
-          <p className="text-2xl sm:text-3xl text-foreground-muted leading-[1.5]">
+          <p className="text-base sm:text-lg text-foreground-muted leading-relaxed">
             Drag the sliders. Get your starting score.
             <br />
             <span className="text-xl sm:text-2xl text-foreground-subtle">

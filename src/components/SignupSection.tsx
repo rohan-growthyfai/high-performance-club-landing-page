@@ -1,5 +1,4 @@
 import { Users } from "lucide-react";
-import SignupForm from "./SignupForm";
 
 export default function SignupSection() {
   return (
@@ -28,23 +27,24 @@ export default function SignupSection() {
           <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Final step ✨
           </p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-balance text-foreground mb-6">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-6">
             Send me the first habit on WhatsApp 🚀
           </h2>
-          <p className="text-sm sm:text-xl text-foreground-muted leading-relaxed text-center">
+          <p className="text-base sm:text-lg text-foreground-muted leading-relaxed text-center">
             Sign up free and get a tiny starter habit right away.<br />
             Your real Day 1 starts tomorrow morning.
           </p>
         </div>
 
-        <SignupForm formId="final" testimonialVariant={1} />
-
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-center">
-          <span className="text-accent text-xs sm:text-base font-bold">100% Free</span>
-          <span className="text-foreground-subtle text-xs sm:text-sm">·</span>
-          <span className="text-xs sm:text-base text-foreground-subtle">No credit card. No spam.</span>
-          <span className="text-foreground-subtle text-xs sm:text-sm">·</span>
-          <span className="text-xs sm:text-base text-foreground-subtle">Stop anytime.</span>
+        <div className="flex justify-center">
+          <a
+            href="https://wa.me/918956146485?text=Hi%21+I+want+to+start+my+Healthy+Habits+Challenge"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex items-center justify-center gap-2 px-10 py-5 rounded-full text-lg sm:text-xl font-bold"
+          >
+            Join FREE on WhatsApp →
+          </a>
         </div>
       </div>
     </section>

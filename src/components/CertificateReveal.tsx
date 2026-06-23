@@ -21,7 +21,7 @@ export default function CertificateReveal() {
               </span>
             </div>
 
-            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.08] text-foreground mb-6">
+            <h2 className="font-display text-section-title text-foreground mb-6">
               Finish the challenge.
               <br />
               <span className="italic font-medium gradient-text">Get your certificate.</span>

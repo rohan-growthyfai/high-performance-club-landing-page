@@ -33,7 +33,7 @@ export default function Comparison() {
           <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Built different 🚀
           </p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-6">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-6">
             Why This Is Different.
             <br />
           </h2>

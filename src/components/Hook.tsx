@@ -19,7 +19,7 @@ export default function Hook() {
           <p className="eyebrow-line text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             Real talk 👇
           </p>
-          <h2 className="font-serif text-3xl sm:text-5xl lg:text-7xl font-medium text-balance text-foreground">
+          <h2 className="font-display text-section-title text-balance text-foreground">
             You don&apos;t need
             <br />
             <span className="italic font-light">another motivation video.</span>

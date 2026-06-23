@@ -43,7 +43,7 @@ export default function Guarantee() {
               </p>
             </div>
 
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.1] text-balance text-foreground mb-8">
+            <h2 className="font-display text-section-title text-balance text-foreground mb-8">
               You have
               <br />
               <span className="italic font-light">nothing to lose.</span>

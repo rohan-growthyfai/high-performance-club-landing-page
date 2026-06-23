@@ -32,12 +32,12 @@ export default function HowItWorks() {
           <p className="text-sm uppercase tracking-[0.2em] text-accent font-semibold mb-6">
             How it works
           </p>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] text-balance text-foreground mb-8">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-8">
             3 easy steps.
             <br />
             <span className="italic font-medium">Nothing complicated.</span>
           </h2>
-          <p className="text-xl sm:text-2xl text-foreground-muted leading-relaxed">
+          <p className="text-base sm:text-lg text-foreground-muted leading-relaxed">
             No login. No app. No commitment. Just one habit, one day at a time.
           </p>
         </div>

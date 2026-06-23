@@ -65,12 +65,12 @@ export default function HabitTeasers() {
           <p className="text-base uppercase tracking-[0.2em] text-accent font-bold mb-6">
             What you&apos;ll actually try 🧪
           </p>
-          <h2 className="font-serif text-4xl sm:text-5xl lg:text-7xl font-medium leading-[1.1] text-balance text-foreground mb-8">
+          <h2 className="font-display text-section-title text-balance text-foreground mb-8">
             7 tiny <span className="gradient-text">high performance habits</span>.
             <br />
             <span className="italic font-light">Each under 5 minutes.</span>
           </h2>
-          <p className="text-2xl sm:text-3xl text-foreground-muted leading-[1.5]">
+          <p className="text-base sm:text-lg text-foreground-muted leading-relaxed">
             These aren&apos;t big life changes. They&apos;re tiny switches.
             <br />
             And sometimes one switch is all you need to feel different. 🔌

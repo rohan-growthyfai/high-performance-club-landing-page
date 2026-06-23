@@ -6,19 +6,19 @@ const reviews = [
     avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "I could feel an instant shift in my energy levels from Day 3. Never felt this refreshed in the mornings before.",
+    review: "Felt an instant energy shift from Day 3. Never felt this refreshed before.",
   },
   {
     avatar: "/avatars/women/woman-3.avif",
     name: "Preethi R.",
     city: "Chennai",
-    review: "I'm sleeping so much better now compared to before the challenge. The difference is very real.",
+    review: "Sleeping so much better now. The difference is very real.",
   },
   {
     avatar: "/avatars/women/woman-1.jpg",
     name: "Divya M.",
     city: "Mumbai",
-    review: "I have genuinely felt healthier from within during these 7 days. I didn't expect such a clear change this quickly.",
+    review: "Genuinely felt healthier from within. Didn't expect such a clear change this fast.",
   },
 ];
 
@@ -49,9 +49,8 @@ export default function Hero() {
             {/* Headline */}
             <h1 className="font-display text-[2.1rem] sm:text-4xl lg:text-5xl xl:text-[3.4rem] font-bold leading-[1.15] tracking-tight text-balance text-foreground animate-fade-up">
               Feel More{" "}
-              <span className="gradient-text">Energetic</span>,{" "}
-              <span className="gradient-text">Healthier</span> &{" "}
-              <span className="gradient-text">Sleep Better</span>{" "}
+              <span className="gradient-text">Energetic</span> &{" "}
+              <span className="gradient-text">Healthier</span>{" "}
               <span className="text-foreground-muted font-medium">with tiny healthy habits that take</span>{" "}
               <span className="italic font-normal text-emphasis-yellow">less than 5 minutes a day</span>
             </h1>

@@ -135,11 +135,9 @@ export default function HowChallengeWorks() {
               For 7 days, we send you one tiny healthy habit each morning on WhatsApp. Each one helps you feel more awake, healthy, and focused.
             </p>
 
-            {/* Curiosity closer */}
-            <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-5 py-5 sm:px-6 sm:py-5 shadow-md">
-              <p className="text-base text-foreground-muted leading-relaxed">
-                The habits are simple and easy. You get one new habit each day on WhatsApp.
-              </p>
+            <div className="inline-block bg-white border-2 border-accent/40 rounded-2xl px-6 py-5 shadow-md">
+              <p className="text-3xl sm:text-4xl font-bold text-foreground leading-tight gradient-text">1 Healthy Habit</p>
+              <p className="text-base text-foreground-muted mt-1">Per day to feel the difference</p>
             </div>
           </div>
 

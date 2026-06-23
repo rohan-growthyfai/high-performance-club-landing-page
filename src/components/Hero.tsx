@@ -6,19 +6,19 @@ const reviews = [
     avatar: "/avatars/men/man-1.jpg",
     name: "Arjun S.",
     city: "Bengaluru",
-    review: "My energy in the morning went from 3/10 to 8/10 by Day 5.",
+    review: "I could feel an instant shift in my energy levels from Day 3. Never felt this refreshed in the mornings before.",
   },
   {
     avatar: "/avatars/women/woman-3.avif",
     name: "Preethi R.",
     city: "Chennai",
-    review: "Slept better from Day 2. No pills, no fuss.",
+    review: "I'm sleeping so much better now compared to before the challenge. The difference is very real.",
   },
   {
     avatar: "/avatars/women/woman-1.jpg",
     name: "Divya M.",
     city: "Mumbai",
-    review: "Lost 1.5 kg and felt lighter by Day 7.",
+    review: "I have genuinely felt healthier from within during these 7 days. I didn't expect such a clear change this quickly.",
   },
 ];
 

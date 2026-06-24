@@ -60,7 +60,7 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   <div class="name"><b>${safe}</b> 🙏</div>
   <div class="cbox">
     <div class="small">You're registered for the</div>
-    <div class="big">FREE 7-Day<br>WhatsApp Habits Challenge</div>
+    <div class="big">FREE 7-Day<br>Healthy Habit Challenge</div>
     <div class="date">📅 Starts ${dateSafe}</div>
   </div>
   <div class="footer"><span>Click Button Below<span class="arrow">⬇</span></span></div>

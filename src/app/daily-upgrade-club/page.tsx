@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const JOIN_URL = "https://rzp.io/l/daily-upgrade-club";
 
@@ -155,10 +155,231 @@ function Avatar({ name, idx }: { name: string; idx: number }) {
   );
 }
 
+// ── Sticky bottom CTA ─────────────────────────────────────────────────────────
+function StickyBottomCTA() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > window.innerHeight * 0.8);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
+      {/* Mobile */}
+      <div className="md:hidden px-4 pb-3 pt-2" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
+        <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
+          className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3.5"
+          style={{ background: "linear-gradient(135deg,#1da851 0%,#25d366 100%)", boxShadow: "0 4px 24px rgba(37,211,102,0.40)" }}>
+          <div className="text-left">
+            <p className="text-white font-black text-sm leading-tight">Start My 7-Day Trial — ₹1 →</p>
+            <p className="text-xs leading-tight mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>Daily Upgrade Club · Then ₹99/month</p>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 flex-shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}>
+            <WAIcon size={16} />
+            <span className="text-white font-bold text-sm">Join</span>
+          </div>
+        </a>
+      </div>
+      {/* Desktop */}
+      <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
+        <div className="max-w-xl mx-auto">
+          <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
+            className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-4"
+            style={{ background: "linear-gradient(135deg,#1da851 0%,#25d366 100%)", boxShadow: "0 4px 24px rgba(37,211,102,0.40)" }}>
+            <div className="text-left">
+              <p className="text-white font-black text-base leading-tight">Start My 7-Day Trial — ₹1 →</p>
+              <p className="text-sm leading-tight mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>Daily Upgrade Club · Then just ₹99/month · Cancel anytime</p>
+            </div>
+            <div className="flex items-center gap-2 rounded-xl px-4 py-2 flex-shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}>
+              <WAIcon size={18} />
+              <span className="text-white font-bold text-sm">Join Now</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ── Back to top ───────────────────────────────────────────────────────────────
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 500);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <button type="button" aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className={`fixed bottom-20 right-3 z-50 w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1 cursor-pointer ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+      style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 16px rgba(37,211,102,0.45)" }}>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12 4l-8 8h5v8h6v-8h5z"/></svg>
+    </button>
+  );
+}
+
+// ── Live enrollment toast ─────────────────────────────────────────────────────
+const ENROLLMENT_NAMES = [
+  { name: "Rahul", city: "Delhi" }, { name: "Priya", city: "Mumbai" },
+  { name: "Aditya", city: "Bengaluru" }, { name: "Sneha", city: "Pune" },
+  { name: "Vikram", city: "Hyderabad" }, { name: "Anjali", city: "Chennai" },
+  { name: "Karan", city: "Jaipur" }, { name: "Divya", city: "Ahmedabad" },
+  { name: "Manish", city: "Kolkata" }, { name: "Meera", city: "Surat" },
+  { name: "Arjun", city: "Lucknow" }, { name: "Tanvi", city: "Nagpur" },
+  { name: "Saurabh", city: "Chandigarh" }, { name: "Pooja", city: "Noida" },
+  { name: "Nikhil", city: "Indore" }, { name: "Kavya", city: "Kochi" },
+  { name: "Ritesh", city: "Bhopal" }, { name: "Simran", city: "Amritsar" },
+  { name: "Devansh", city: "Gurgaon" }, { name: "Ruchika", city: "Jodhpur" },
+  { name: "Varun", city: "Ludhiana" }, { name: "Ishita", city: "Patna" },
+];
+
+let _toastId = 0;
+
+function timeAgoStr() {
+  const r = Math.random();
+  if (r < 0.3) return `${Math.floor(Math.random() * 50 + 5)} seconds ago`;
+  if (r < 0.55) return "just now";
+  if (r < 0.75) return `${Math.floor(Math.random() * 3 + 1)} min ago`;
+  return `${Math.floor(Math.random() * 7 + 2)} minutes ago`;
+}
+
+function LiveEnrollmentToast() {
+  interface Toast { id: number; name: string; city: string; time: string }
+  const [toasts, setToasts] = useState<Toast[]>([]);
+  const [scrolled, setScrolled] = useState(false);
+  const usedIdx = useRef<Set<number>>(new Set());
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => { if (window.scrollY > 300) setScrolled(true); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!scrolled) return;
+    const spawn = () => {
+      let idx: number;
+      do { idx = Math.floor(Math.random() * ENROLLMENT_NAMES.length); } while (usedIdx.current.has(idx));
+      usedIdx.current.add(idx);
+      if (usedIdx.current.size > 6) { const f = usedIdx.current.values().next().value as number; usedIdx.current.delete(f); }
+      const person = ENROLLMENT_NAMES[idx];
+      const id = ++_toastId;
+      setToasts(prev => [{ id, name: person.name, city: person.city, time: timeAgoStr() }, ...prev].slice(0, 3));
+      setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 5000);
+      timerRef.current = setTimeout(spawn, 7000 + Math.random() * 11000);
+    };
+    timerRef.current = setTimeout(spawn, 3000 + Math.random() * 3000);
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [scrolled]);
+
+  if (!scrolled || toasts.length === 0) return null;
+
+  return (
+    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[80px] md:bottom-[68px]" aria-live="polite">
+      {toasts.map((toast, i) => (
+        <div key={toast.id} className="pointer-events-auto"
+          style={{ opacity: i === 0 ? 1 : 0.7 - i * 0.2, transform: `scale(${1 - i * 0.03})`, transformOrigin: "bottom left", animation: "duc-fadein 0.35s ease" }}>
+          <div className="flex items-center gap-2.5 rounded-2xl px-3 py-2.5 w-[260px] sm:w-[300px]"
+            style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 4px 20px rgba(0,0,0,0.10)" }}>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0"
+              style={{ background: `hsl(${(toast.name.charCodeAt(0) * 37) % 360},55%,48%)` }}>
+              {toast.name[0]}
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-bold leading-snug truncate" style={{ color: "#18181b" }}>{toast.name} from {toast.city}</p>
+              <p className="text-xs leading-snug mt-0.5" style={{ color: "#71717a" }}>joined Daily Upgrade Club · {toast.time}</p>
+            </div>
+            <span className="relative flex w-2 h-2 flex-shrink-0">
+              <span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#25d366" }} />
+              <span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#25d366" }} />
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ── 15-second popup ───────────────────────────────────────────────────────────
+function TrialPopup() {
+  const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+  const shownRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (shownRef.current) return;
+      try { if (localStorage.getItem("duc_trial_popup") === "shown") return; } catch { /* */ }
+      shownRef.current = true;
+      setVisible(true);
+    }, 15000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const dismiss = () => {
+    setVisible(false);
+    setDismissed(true);
+    try { localStorage.setItem("duc_trial_popup", "shown"); } catch { /* */ }
+  };
+
+  if (!visible || dismissed) return null;
+
+  return (
+    <>
+      <div className="fixed inset-0 z-[100]" style={{ background: "rgba(0,0,0,0.6)", backdropFilter: "blur(4px)" }} onClick={dismiss} />
+      <div className="fixed inset-0 z-[101] flex items-center justify-center px-4 pointer-events-none">
+        <div className="pointer-events-auto w-full max-w-sm rounded-3xl overflow-hidden" onClick={e => e.stopPropagation()}
+          style={{ background: "#fff", boxShadow: "0 24px 64px rgba(0,0,0,0.25)", animation: "duc-fadein 0.4s ease" }}>
+          {/* Green header */}
+          <div className="relative px-6 pt-8 pb-6 text-center" style={{ background: "linear-gradient(135deg,#1da851 0%,#25d366 100%)" }}>
+            <button onClick={dismiss} aria-label="Close"
+              className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full cursor-pointer"
+              style={{ background: "rgba(255,255,255,0.2)" }}>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round"/></svg>
+            </button>
+            <p className="text-4xl mb-3">🌱</p>
+            <h2 className="text-white font-black text-xl leading-snug">
+              Still thinking about it?
+            </h2>
+            <p className="text-sm mt-2 leading-relaxed" style={{ color: "rgba(255,255,255,0.9)" }}>
+              7 days. 1 tiny healthy habit a day. Lands on your WhatsApp every morning. Starts for just ₹1.
+            </p>
+          </div>
+          {/* Body */}
+          <div className="px-6 py-6 text-center">
+            <div className="flex flex-col gap-2 mb-5">
+              {["Under 5 minutes a day","One habit. One WhatsApp message.","Cancel before Day 7 — pay ₹0 more"].map(t => (
+                <div key={t} className="flex items-center gap-2 text-sm" style={{ color: "#4a4a52" }}>
+                  <CheckIcon />{t}
+                </div>
+              ))}
+            </div>
+            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss}
+              className="w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-black text-white text-base"
+              style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 6px 24px rgba(37,211,102,0.4)" }}>
+              <WAIcon size={18} />
+              Yes — Start My Trial for ₹1 →
+            </a>
+            <button onClick={dismiss} className="mt-3 text-xs cursor-pointer" style={{ color: "#a1a1aa" }}>
+              No thanks, I&apos;ll skip this
+            </button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 export default function DailyUpgradeClubPage() {
   return (
-    <div style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "'Inter',-apple-system,BlinkMacSystemFont,sans-serif", color: "#18181b" }}>
+    <div id="duc-top" style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "'Inter',-apple-system,BlinkMacSystemFont,sans-serif", color: "#18181b" }}>
+      <style>{`@keyframes duc-fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}`}</style>
 
       {/* ══════════════════════════════════════════════════════
           1. HERO
@@ -705,6 +926,12 @@ export default function DailyUpgradeClubPage() {
         </p>
         <p className="text-xs mt-1" style={{ color: "#3f3f46" }}>7-day trial ₹1 · Then ₹99/month · Cancel anytime</p>
       </footer>
+
+      {/* ── Overlays ── */}
+      <StickyBottomCTA />
+      <BackToTop />
+      <LiveEnrollmentToast />
+      <TrialPopup />
     </div>
   );
 }

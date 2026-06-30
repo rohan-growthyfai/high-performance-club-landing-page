@@ -14,8 +14,11 @@ const WELCOME_MESSAGE: Message = {
   role: "assistant",
   id: "welcome",
   content:
-    "Namaste! 🌱 I'm your Habit Assistant for **Daily Upgrade Club**.\n\nI'm here to help you understand how DUC works, what you get inside, and whether it's the right fit for your health journey.\n\nWhat would you like to know? 😊",
+    "Namaste! 🌱 I'm your Habit Assistant for **Daily Upgrade Club**.\n\nI'm here to help you understand how Daily Upgrade Club works, what you get inside, and whether it's the right fit for your health journey.\n\nWhat would you like to know? 😊",
 };
+
+// Avatar image — a calm, premium wellness illustration
+const AVATAR_IMG = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=120&q=80";
 
 function MarkdownText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -45,11 +48,13 @@ export default function HabitChatbot() {
   const [messages, setMessages] = useState<Message[]>([WELCOME_MESSAGE]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [tooltipDismissed, setTooltipDismissed] = useState(false);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     if (open) {
+      setTooltipDismissed(true);
       setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 80);
       setTimeout(() => inputRef.current?.focus(), 120);
     }
@@ -100,26 +105,107 @@ export default function HabitChatbot() {
 
   return (
     <>
-      {/* Floating launcher */}
+      {/* Tooltip bubble — dismisses on open */}
+      {!open && !tooltipDismissed && (
+        <div
+          style={{
+            position: "fixed",
+            bottom: 96,
+            right: 24,
+            zIndex: 9997,
+            animation: "duc-tooltip-in 0.4s cubic-bezier(0.34,1.56,0.64,1)",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "16px 16px 4px 16px",
+              padding: "10px 14px 10px 12px",
+              boxShadow: "0 8px 32px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08)",
+              border: "1.5px solid #d1fae5",
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+              cursor: "pointer",
+              maxWidth: 230,
+            }}
+            onClick={() => setOpen(true)}
+          >
+            {/* Mini avatar */}
+            <div style={{
+              width: 34,
+              height: 34,
+              borderRadius: "50%",
+              overflow: "hidden",
+              border: "2px solid #25d366",
+              flexShrink: 0,
+            }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={AVATAR_IMG} alt="Habit Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+            </div>
+            <div>
+              <p style={{ fontSize: 12, fontWeight: 700, color: "#16a34a", margin: 0, lineHeight: 1.2 }}>
+                Habit Assistant
+              </p>
+              <p style={{ fontSize: 12, color: "#3f3f46", margin: 0, marginTop: 2, lineHeight: 1.4 }}>
+                Ask me anything about Daily Upgrade Club 👋
+              </p>
+            </div>
+            {/* Dismiss */}
+            <button
+              onClick={e => { e.stopPropagation(); setTooltipDismissed(true); }}
+              style={{
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 2,
+                color: "#9ca3af",
+                flexShrink: 0,
+                lineHeight: 1,
+              }}
+            >
+              <svg width="12" height="12" fill="none" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12" stroke="#9ca3af" strokeWidth="2.2" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+          {/* Tail */}
+          <div style={{
+            width: 0, height: 0,
+            borderLeft: "8px solid transparent",
+            borderTop: "8px solid #d1fae5",
+            position: "absolute",
+            bottom: -9,
+            right: 28,
+          }} />
+          <div style={{
+            width: 0, height: 0,
+            borderLeft: "7px solid transparent",
+            borderTop: "7px solid #fff",
+            position: "absolute",
+            bottom: -7,
+            right: 29,
+          }} />
+        </div>
+      )}
+
+      {/* Floating launcher — always shows chat icon, never X */}
       <button
         onClick={() => setOpen(o => !o)}
-        aria-label="Open Habit Assistant"
+        aria-label={open ? "Close Habit Assistant" : "Open Habit Assistant"}
         style={{
           position: "fixed",
           bottom: 24,
           right: 24,
           zIndex: 9999,
-          width: 60,
-          height: 60,
+          width: 64,
+          height: 64,
           borderRadius: "50%",
-          background: "linear-gradient(135deg, #16a34a 0%, #25d366 100%)",
-          boxShadow: "0 8px 32px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.18)",
+          background: "none",
           border: "none",
           cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          transition: "transform 0.2s, box-shadow 0.2s",
+          padding: 0,
+          transition: "transform 0.2s",
         }}
         onMouseEnter={e => {
           (e.currentTarget as HTMLButtonElement).style.transform = "scale(1.08)";
@@ -128,38 +214,36 @@ export default function HabitChatbot() {
           (e.currentTarget as HTMLButtonElement).style.transform = "scale(1)";
         }}
       >
-        {open ? (
-          <svg width="22" height="22" fill="none" viewBox="0 0 24 24">
-            <path d="M18 6L6 18M6 6l12 12" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" />
-          </svg>
-        ) : (
-          <svg width="26" height="26" fill="none" viewBox="0 0 24 24">
-            <path
-              d="M20 2H4a2 2 0 00-2 2v12a2 2 0 002 2h4l4 4 4-4h4a2 2 0 002-2V4a2 2 0 00-2-2z"
-              fill="#fff"
-              fillOpacity="0.95"
-            />
-            <circle cx="8" cy="10" r="1.2" fill="#25d366" />
-            <circle cx="12" cy="10" r="1.2" fill="#25d366" />
-            <circle cx="16" cy="10" r="1.2" fill="#25d366" />
-          </svg>
-        )}
-        {/* Ping animation when closed */}
-        {!open && (
-          <span
-            style={{
-              position: "absolute",
-              top: 2,
-              right: 2,
-              width: 14,
-              height: 14,
-              borderRadius: "50%",
-              background: "#f97316",
-              border: "2px solid #fff",
-              animation: "duc-ping 1.8s ease-in-out infinite",
-            }}
+        {/* Circular avatar image */}
+        <div style={{
+          width: 64,
+          height: 64,
+          borderRadius: "50%",
+          overflow: "hidden",
+          border: "3px solid #25d366",
+          boxShadow: "0 8px 28px rgba(37,211,102,0.45), 0 2px 8px rgba(0,0,0,0.18)",
+          background: "linear-gradient(135deg,#16a34a,#25d366)",
+          position: "relative",
+        }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={AVATAR_IMG}
+            alt="Habit Assistant"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
           />
-        )}
+          {/* Online green ring pulse */}
+          <div style={{
+            position: "absolute",
+            bottom: 2,
+            right: 2,
+            width: 14,
+            height: 14,
+            borderRadius: "50%",
+            background: "#22c55e",
+            border: "2.5px solid #fff",
+            animation: open ? "none" : "duc-ping 2s ease-in-out infinite",
+          }} />
+        </div>
       </button>
 
       {/* Chat window */}
@@ -167,11 +251,11 @@ export default function HabitChatbot() {
         <div
           style={{
             position: "fixed",
-            bottom: 96,
+            bottom: 100,
             right: 24,
             zIndex: 9998,
-            width: "min(380px, calc(100vw - 32px))",
-            height: "min(580px, calc(100vh - 120px))",
+            width: "min(390px, calc(100vw - 32px))",
+            height: "min(590px, calc(100vh - 120px))",
             borderRadius: 20,
             overflow: "hidden",
             display: "flex",
@@ -179,81 +263,74 @@ export default function HabitChatbot() {
             background: "#fff",
             boxShadow:
               "0 32px 80px rgba(0,0,0,0.22), 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.06)",
-            animation: "duc-slidein 0.22s cubic-bezier(0.34,1.56,0.64,1)",
+            animation: "duc-slidein 0.25s cubic-bezier(0.34,1.56,0.64,1)",
           }}
         >
           {/* Header */}
           <div
             style={{
-              background: "linear-gradient(135deg, #0f4c2a 0%, #16a34a 60%, #25d366 100%)",
-              padding: "16px 18px",
+              background: "linear-gradient(135deg, #0a3320 0%, #14532d 40%, #16a34a 80%, #22c55e 100%)",
+              padding: "14px 16px",
               display: "flex",
               alignItems: "center",
-              gap: 12,
+              gap: 11,
               flexShrink: 0,
             }}
           >
-            {/* Avatar */}
+            {/* Avatar image */}
             <div
               style={{
-                width: 44,
-                height: 44,
+                width: 46,
+                height: 46,
                 borderRadius: "50%",
-                background: "rgba(255,255,255,0.18)",
-                border: "2px solid rgba(255,255,255,0.4)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 22,
+                overflow: "hidden",
+                border: "2.5px solid rgba(255,255,255,0.5)",
                 flexShrink: 0,
+                boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
               }}
             >
-              🌱
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={AVATAR_IMG} alt="Habit Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: "#fff", fontWeight: 800, fontSize: 15, margin: 0, lineHeight: 1.2 }}>
                 Habit Assistant
               </p>
-              <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 12, margin: 0, marginTop: 2 }}>
+              <p style={{ color: "rgba(255,255,255,0.72)", fontSize: 12, margin: 0, marginTop: 3 }}>
                 Daily Upgrade Club · Always here
               </p>
             </div>
-            {/* Online dot */}
-            <div style={{ display: "flex", alignItems: "center", gap: 5 }}>
+            {/* Online indicator */}
+            <div style={{ display: "flex", alignItems: "center", gap: 5, marginRight: 6 }}>
               <div
                 style={{
                   width: 8,
                   height: 8,
                   borderRadius: "50%",
                   background: "#4ade80",
-                  boxShadow: "0 0 0 2px rgba(74,222,128,0.3)",
+                  boxShadow: "0 0 0 2.5px rgba(74,222,128,0.35)",
+                  animation: "duc-ping-sm 2s ease-in-out infinite",
                 }}
               />
-              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 11 }}>Online</span>
+              <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 11, fontWeight: 500 }}>Online</span>
             </div>
+            {/* Close button */}
             <button
               onClick={() => setOpen(false)}
               style={{
                 background: "rgba(255,255,255,0.15)",
-                border: "none",
+                border: "1px solid rgba(255,255,255,0.2)",
                 borderRadius: 8,
-                width: 28,
-                height: 28,
+                width: 30,
+                height: 30,
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                color: "#fff",
-                marginLeft: 4,
               }}
             >
-              <svg width="14" height="14" fill="none" viewBox="0 0 24 24">
-                <path
-                  d="M18 6L6 18M6 6l12 12"
-                  stroke="#fff"
-                  strokeWidth="2.2"
-                  strokeLinecap="round"
-                />
+              <svg width="13" height="13" fill="none" viewBox="0 0 24 24">
+                <path d="M18 6L6 18M6 6l12 12" stroke="#fff" strokeWidth="2.4" strokeLinecap="round" />
               </svg>
             </button>
           </div>
@@ -263,8 +340,8 @@ export default function HabitChatbot() {
             style={{
               flex: 1,
               overflowY: "auto",
-              padding: "16px 14px",
-              background: "#f8fdf9",
+              padding: "14px 13px",
+              background: "#f5fdf7",
               display: "flex",
               flexDirection: "column",
               gap: 10,
@@ -277,25 +354,23 @@ export default function HabitChatbot() {
                   display: "flex",
                   justifyContent: m.role === "user" ? "flex-end" : "flex-start",
                   alignItems: "flex-end",
-                  gap: 8,
+                  gap: 7,
                 }}
               >
                 {m.role === "assistant" && (
                   <div
                     style={{
-                      width: 28,
-                      height: 28,
+                      width: 30,
+                      height: 30,
                       borderRadius: "50%",
-                      background: "linear-gradient(135deg,#16a34a,#25d366)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: 13,
+                      overflow: "hidden",
+                      border: "1.5px solid #d1fae5",
                       flexShrink: 0,
-                      boxShadow: "0 2px 8px rgba(37,211,102,0.3)",
+                      boxShadow: "0 2px 6px rgba(37,211,102,0.2)",
                     }}
                   >
-                    🌱
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={AVATAR_IMG} alt="Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </div>
                 )}
                 <div
@@ -305,19 +380,19 @@ export default function HabitChatbot() {
                     borderRadius:
                       m.role === "user"
                         ? "18px 18px 4px 18px"
-                        : "18px 18px 18px 4px",
+                        : "4px 18px 18px 18px",
                     background:
                       m.role === "user"
-                        ? "linear-gradient(135deg,#16a34a,#25d366)"
+                        ? "linear-gradient(135deg,#15803d,#22c55e)"
                         : "#fff",
                     color: m.role === "user" ? "#fff" : "#18181b",
                     fontSize: 14,
                     lineHeight: 1.65,
                     boxShadow:
                       m.role === "user"
-                        ? "0 4px 14px rgba(37,211,102,0.35)"
-                        : "0 2px 8px rgba(0,0,0,0.08)",
-                    border: m.role === "assistant" ? "1px solid #e8f5e9" : "none",
+                        ? "0 4px 14px rgba(37,211,102,0.32)"
+                        : "0 2px 10px rgba(0,0,0,0.07)",
+                    border: m.role === "assistant" ? "1px solid #dcfce7" : "none",
                   }}
                 >
                   <MarkdownText text={m.content} />
@@ -327,29 +402,18 @@ export default function HabitChatbot() {
 
             {/* Typing indicator */}
             {loading && (
-              <div style={{ display: "flex", alignItems: "flex-end", gap: 8 }}>
-                <div
-                  style={{
-                    width: 28,
-                    height: 28,
-                    borderRadius: "50%",
-                    background: "linear-gradient(135deg,#16a34a,#25d366)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 13,
-                    flexShrink: 0,
-                  }}
-                >
-                  🌱
+              <div style={{ display: "flex", alignItems: "flex-end", gap: 7 }}>
+                <div style={{ width: 30, height: 30, borderRadius: "50%", overflow: "hidden", border: "1.5px solid #d1fae5", flexShrink: 0 }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={AVATAR_IMG} alt="Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                 </div>
                 <div
                   style={{
                     padding: "12px 16px",
-                    borderRadius: "18px 18px 18px 4px",
+                    borderRadius: "4px 18px 18px 18px",
                     background: "#fff",
-                    border: "1px solid #e8f5e9",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                    border: "1px solid #dcfce7",
+                    boxShadow: "0 2px 10px rgba(0,0,0,0.07)",
                     display: "flex",
                     gap: 5,
                     alignItems: "center",
@@ -362,8 +426,8 @@ export default function HabitChatbot() {
                         width: 7,
                         height: 7,
                         borderRadius: "50%",
-                        background: "#25d366",
-                        animation: `duc-bounce 1.2s ease-in-out ${i * 0.2}s infinite`,
+                        background: "#22c55e",
+                        animation: `duc-bounce 1.2s ease-in-out ${i * 0.18}s infinite`,
                       }}
                     />
                   ))}
@@ -378,7 +442,7 @@ export default function HabitChatbot() {
           {messages.length === 1 && !loading && (
             <div
               style={{
-                padding: "8px 12px",
+                padding: "8px 10px",
                 background: "#f0fdf4",
                 borderTop: "1px solid #d1fae5",
                 display: "flex",
@@ -394,8 +458,8 @@ export default function HabitChatbot() {
                     padding: "5px 11px",
                     borderRadius: 20,
                     background: "#fff",
-                    border: "1.5px solid #25d366",
-                    color: "#16a34a",
+                    border: "1.5px solid #22c55e",
+                    color: "#15803d",
                     fontSize: 12,
                     fontWeight: 600,
                     cursor: "pointer",
@@ -418,7 +482,7 @@ export default function HabitChatbot() {
           {/* Input area */}
           <div
             style={{
-              padding: "10px 12px",
+              padding: "10px 11px",
               background: "#fff",
               borderTop: "1px solid #f0f0f0",
               display: "flex",
@@ -446,7 +510,7 @@ export default function HabitChatbot() {
                 transition: "border-color 0.15s",
               }}
               onFocus={e => {
-                (e.target as HTMLInputElement).style.borderColor = "#25d366";
+                (e.target as HTMLInputElement).style.borderColor = "#22c55e";
                 (e.target as HTMLInputElement).style.background = "#fff";
               }}
               onBlur={e => {
@@ -463,7 +527,7 @@ export default function HabitChatbot() {
                 borderRadius: "50%",
                 background:
                   input.trim() && !loading
-                    ? "linear-gradient(135deg,#16a34a,#25d366)"
+                    ? "linear-gradient(135deg,#15803d,#22c55e)"
                     : "#e5e7eb",
                 border: "none",
                 cursor: input.trim() && !loading ? "pointer" : "not-allowed",
@@ -472,8 +536,7 @@ export default function HabitChatbot() {
                 justifyContent: "center",
                 flexShrink: 0,
                 transition: "background 0.2s, transform 0.15s",
-                boxShadow:
-                  input.trim() && !loading ? "0 4px 14px rgba(37,211,102,0.35)" : "none",
+                boxShadow: input.trim() && !loading ? "0 4px 14px rgba(34,197,94,0.38)" : "none",
               }}
               onMouseEnter={e => {
                 if (input.trim() && !loading)
@@ -496,14 +559,8 @@ export default function HabitChatbot() {
           </div>
 
           {/* Footer */}
-          <div
-            style={{
-              padding: "6px 14px 10px",
-              background: "#fff",
-              textAlign: "center",
-            }}
-          >
-            <p style={{ fontSize: 10.5, color: "#9ca3af", margin: 0 }}>
+          <div style={{ padding: "5px 14px 9px", background: "#fff", textAlign: "center" }}>
+            <p style={{ fontSize: 10.5, color: "#a1a1aa", margin: 0 }}>
               Conversations are stored to improve your experience
             </p>
           </div>
@@ -513,15 +570,23 @@ export default function HabitChatbot() {
       <style>{`
         @keyframes duc-ping {
           0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.4); opacity: 0.6; }
+          50% { transform: scale(1.5); opacity: 0.5; }
+        }
+        @keyframes duc-ping-sm {
+          0%, 100% { box-shadow: 0 0 0 2.5px rgba(74,222,128,0.35); }
+          50% { box-shadow: 0 0 0 4px rgba(74,222,128,0.15); }
         }
         @keyframes duc-slidein {
-          from { opacity: 0; transform: translateY(16px) scale(0.96); }
+          from { opacity: 0; transform: translateY(20px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
         @keyframes duc-bounce {
           0%, 80%, 100% { transform: translateY(0); }
           40% { transform: translateY(-5px); }
+        }
+        @keyframes duc-tooltip-in {
+          from { opacity: 0; transform: translateY(10px) scale(0.95); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
         }
       `}</style>
     </>

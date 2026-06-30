@@ -266,7 +266,7 @@ export async function POST(req: Request) {
     }
 
     const completion = await client.chat.completions.create({
-      model: "accounts/fireworks/models/kimi-k2-instruct",
+      model: "accounts/fireworks/models/kimi-k2p6",
       max_tokens: 512,
       temperature: 0.7,
       messages: [

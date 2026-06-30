@@ -500,24 +500,53 @@ export default function DailyUpgradeClubPage() {
               </div>
 
               {/* Headline */}
-              <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-4">
-                A Tiny Healthy Habit Every Morning. On WhatsApp. That Actually Changes How You Feel.
+              <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-5">
+                What if staying fit, healthy &amp; energetic needed only{" "}
+                <span className="gradient-text">5 minutes a day?</span>
               </h1>
 
-              {/* Subhead */}
-              <p className="duc-body animate-fade-up delay-150 mb-6 max-w-lg mx-auto lg:mx-0" style={{ fontSize: 16, lineHeight: 1.65, color: "#52525b" }}>
-                Every morning at 7 AM, one tiny healthy habit lands in your WhatsApp — science-backed, specific, done in under 5 minutes. No app. No gym. No willpower. Just reply DONE and your health is handled for the day.
-              </p>
+              {/* Subhead — with DUC bold+underline + WhatsApp visual callout */}
+              <div className="animate-fade-up delay-150 mb-7 max-w-lg mx-auto lg:mx-0 relative">
+                <p style={{ fontSize: 16, lineHeight: 1.75, color: "#52525b" }}>
+                  <span style={{ fontWeight: 800, color: "#18181b", position: "relative", display: "inline-block" }}>
+                    Daily Upgrade Club
+                    {/* hand-drawn underline */}
+                    <svg viewBox="0 0 200 10" aria-hidden="true" style={{ position: "absolute", bottom: -4, left: 0, width: "100%", height: 8, overflow: "visible" }}>
+                      <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                    </svg>
+                  </span>{" "}
+                  gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier every day.
+                </p>
 
-              {/* Trust chips */}
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-7 animate-fade-up delay-200">
-                {["📲 WhatsApp-only","⏱️ Under 5 min/day","🎯 Science-backed habits","💰 Start for just ₹1","❌ Cancel anytime"].map(t => (
-                  <span key={t} className="text-xs px-3 py-1.5 rounded-full font-semibold" style={{ background: "#fff", color: "#18181b", border: "1px solid #e2dfd6", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", fontSize: 12 }}>{t}</span>
-                ))}
+                {/* WhatsApp callout — curved arrow pointing right toward iPhone */}
+                <div className="hidden lg:flex absolute items-center gap-2 pointer-events-none"
+                  style={{ right: -160, bottom: -8, flexDirection: "column", alignItems: "flex-start" }}>
+                  {/* Label */}
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold"
+                    style={{ background: "#25d366", color: "#fff", fontSize: 12, whiteSpace: "nowrap", boxShadow: "0 4px 14px rgba(37,211,102,0.4)" }}>
+                    <WAIcon size={13} />
+                    All on WhatsApp
+                  </div>
+                  {/* Curved arrow SVG pointing right-upward toward phone */}
+                  <svg width="80" height="48" viewBox="0 0 80 48" fill="none" style={{ marginLeft: 20 }}>
+                    <path d="M4 44 Q20 10 72 8" stroke="#25d366" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="4 3" />
+                    {/* arrowhead */}
+                    <path d="M66 4 L72 8 L66 13" stroke="#25d366" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+
+                {/* Mobile version — inline WhatsApp badge below text */}
+                <div className="flex lg:hidden items-center gap-2 mt-3">
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold"
+                    style={{ background: "#25d366", color: "#fff", fontSize: 12, boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>
+                    <WAIcon size={13} />
+                    All on WhatsApp — no extra apps needed
+                  </div>
+                </div>
               </div>
 
               {/* CTA */}
-              <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-10">
+              <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-8">
                 <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
                   style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
@@ -526,23 +555,26 @@ export default function DailyUpgradeClubPage() {
                 <p style={{ fontSize: 13, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime before Day 7</p>
               </div>
 
-              {/* Social proof bar — real avatar images */}
-              <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start" style={{ borderTop: "1px solid #e2dfd6", paddingTop: 16 }}>
-                <div className="flex -space-x-1.5">
+              {/* Social proof — supercareer style */}
+              <div className="animate-fade-up delay-400 flex items-center gap-4 justify-center lg:justify-start">
+                {/* Stacked avatars */}
+                <div className="flex -space-x-2 shrink-0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white first:ml-0" style={{ marginLeft: 0 }} />
+                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/women/woman-3.avif" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  <img src="/avatars/women/woman-3.avif" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  <img src="/avatars/men/man-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  <img src="/avatars/men/man-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" />
                 </div>
                 <div>
-                  <div className="flex gap-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-                  <p style={{ fontSize: 12, color: "#52525b", marginTop: 2 }}><strong style={{ color: "#18181b" }}>400+ members</strong> — 78% complete their monthly habit</p>
+                  <div className="flex gap-0.5 mb-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
+                  <p style={{ fontSize: 13, color: "#52525b" }}>
+                    <strong style={{ color: "#18181b" }}>Loved by 2,800+ members</strong> across India
+                  </p>
                 </div>
               </div>
             </div>
@@ -550,11 +582,6 @@ export default function DailyUpgradeClubPage() {
             {/* RIGHT — full iPhone with animation */}
             <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10 mt-6">
               <div className="relative">
-                <div className="absolute -right-4 lg:-right-52 top-1/3 z-20 sticky-note p-4 rounded-md tilt-right w-52 hidden lg:block">
-                  <p className="font-serif italic leading-snug" style={{ color: "#92400e" }}>
-                    <span className="text-sm block mt-0.5">This is what lands in your WhatsApp 📱</span>
-                  </p>
-                </div>
                 <DUCPhone />
               </div>
             </div>

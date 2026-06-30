@@ -763,50 +763,100 @@ export default function DailyUpgradeClubPage() {
       {/* ══ WHAT YOU GET INSIDE ═══════════════════════════════════════════════ */}
       <section className="bg-section-cream py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-14">
             <p className="duc-label mb-3">What You Get Inside</p>
             <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Stay Consistent</h2>
             <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Daily Upgrade Club</strong> is designed to make healthy habits simple, trackable and easy to repeat every day.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          {/* Zigzag rows */}
+          <div className="flex flex-col gap-6">
             {[
-              { icon: "🎯", title: "Monthly Habit Tracks", desc: "Follow focused monthly themes like Health, Sleep, Energy, Focus and Calmness.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80" },
-              { icon: "🌅", title: "1 Tiny Habit Every Morning", desc: "Simple health habits delivered daily on WhatsApp.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80" },
-              { icon: "✅", title: "Daily Check-Ins", desc: "Reply DONE after completing your habit and stay accountable.", color: "#25d366", solidBg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=400&q=80" },
-              { icon: "🔥", title: "Streak Tracking", desc: "Build momentum by tracking your daily consistency.", color: "#ea580c", solidBg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80" },
-              { icon: "📊", title: "Weekly Progress Scorecards", desc: "See how your health, energy, focus and consistency are improving.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80" },
-              { icon: "📋", title: "Practical Habit Guides", desc: "Get simple guides and calendars to make habits easier to follow.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80" },
-            ].map(({ icon, title, desc, color, solidBg, border, img }) => (
-              <div key={title} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: solidBg, border: `2px solid ${border}` }}>
-                <div className="relative h-32 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={title} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 35%, ${solidBg} 100%)` }} />
-                  <span className="absolute bottom-2 left-3 text-2xl">{icon}</span>
+              {
+                num: "#1", label: "THE CORE HABIT",
+                icon: "🎯", title: "Monthly Habit Tracks",
+                value: "₹999 value",
+                desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated track of 30 daily habits built around that theme.",
+                bullets: ["5 focused monthly themes", "30 science-backed habits per track", "Progressive difficulty — each week builds on the last"],
+                color: "#059669", solidBg: "#ecfdf5", border: "#d1fae5", accentBg: "#059669",
+                img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80",
+              },
+              {
+                num: "#2", label: "YOUR DAILY DELIVERY",
+                icon: "🌅", title: "1 Tiny Healthy Habit Every Morning",
+                value: "₹799 value",
+                desc: "Every morning at 7 AM, one actionable habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
+                bullets: ["Delivered at 7 AM on WhatsApp", "Under 5 minutes to complete", "Clear why-it-works explanation with each habit"],
+                color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", accentBg: "#d97706",
+                img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+              },
+              {
+                num: "#3", label: "STAY ACCOUNTABLE",
+                icon: "✅", title: "Daily Check-Ins & Streak Tracking",
+                value: "₹499 value",
+                desc: "Reply DONE when you complete your habit. Your streak updates instantly. Miss a day? You get a gentle nudge — not a lecture.",
+                bullets: ["One-tap DONE check-in on WhatsApp", "Live streak counter updated daily", "Consistency score at the end of each week"],
+                color: "#25d366", solidBg: "#f0fdf4", border: "#bbf7d0", accentBg: "#16a34a",
+                img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80",
+              },
+              {
+                num: "#4", label: "SEE YOUR PROGRESS",
+                icon: "📊", title: "Weekly Progress Scorecards",
+                value: "₹399 value",
+                desc: "Every Sunday you get a personal scorecard showing exactly how consistent you were, which habits you nailed and where to improve next week.",
+                bullets: ["Weekly score out of 7 days", "Habit-by-habit breakdown", "Personalized tip for the week ahead"],
+                color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", accentBg: "#6366f1",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+              },
+              {
+                num: "#5", label: "NEVER FEEL ALONE",
+                icon: "👥", title: "Community Access + Practical Guides",
+                value: "₹599 value",
+                desc: "A private WhatsApp community of members doing exactly what you are. Share wins, ask questions, and stay motivated when it gets hard.",
+                bullets: ["Members-only community group", "Monthly habit guides and reference cards", "Weekly accountability challenges"],
+                color: "#db2777", solidBg: "#fdf2f8", border: "#fbcfe8", accentBg: "#db2777",
+                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80",
+              },
+            ].map(({ num, label, icon, title, value, desc, bullets, color, solidBg, border, accentBg, img }, idx) => {
+              const imgLeft = idx % 2 === 0;
+              return (
+                <div key={title} className="rounded-2xl overflow-hidden" style={{ background: "#fff", border: `1.5px solid ${border}`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+                  <div className={`flex flex-col ${imgLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
+                    {/* Image panel */}
+                    <div className="relative lg:w-2/5 h-56 lg:h-auto overflow-hidden shrink-0" style={{ minHeight: 240 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img} alt={title} className="w-full h-full object-cover" style={{ minHeight: 240 }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                      <div className="absolute inset-0" style={{ background: imgLeft ? `linear-gradient(to right, transparent 60%, #fff 100%)` : `linear-gradient(to left, transparent 60%, #fff 100%)` }} />
+                      {/* Mobile fade */}
+                      <div className="lg:hidden absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, #fff 100%)" }} />
+                    </div>
+
+                    {/* Content panel */}
+                    <div className="flex-1 p-7 lg:p-9 flex flex-col justify-center">
+                      <div className="flex items-center justify-between mb-3">
+                        <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.13em", color: accentBg }}>{num} · {label}</p>
+                        <span className="px-3 py-1 rounded-full font-bold" style={{ fontSize: 12, background: solidBg, color: accentBg, border: `1px solid ${border}` }}>{value}</span>
+                      </div>
+                      <h3 style={{ fontSize: "clamp(1.2rem,2.2vw,1.5rem)", fontWeight: 800, color: "#18181b", lineHeight: 1.2, marginBottom: 10 }}>
+                        <span style={{ marginRight: 8 }}>{icon}</span>{title}
+                      </h3>
+                      <p style={{ fontSize: 15, color: "#52525b", lineHeight: 1.75, marginBottom: 16 }}>{desc}</p>
+                      <div className="flex flex-col gap-2">
+                        {bullets.map(b => (
+                          <div key={b} className="flex items-start gap-2">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginTop: 2, flexShrink: 0 }}><circle cx="8" cy="8" r="8" fill={accentBg} opacity="0.12"/><path d="M4.5 8.5l2.5 2L11 6" stroke={accentBg} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                            <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.6 }}>{b}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div className="px-4 pb-4 pt-1 flex flex-col gap-1.5 flex-1">
-                  <p style={{ fontSize: 15, fontWeight: 800, color, lineHeight: 1.3 }}>{title}</p>
-                  <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{desc}</p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-          {/* Community Access — centered last row */}
-          <div className="flex justify-center mt-5">
-            <div className="duc-glow-card rounded-2xl overflow-hidden flex flex-col w-full sm:w-1/2 lg:w-1/3" style={{ background: "#fdf2f8", border: "2px solid #f9a8d4" }}>
-              <div className="relative h-32 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=400&q=80" alt="Community" className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 35%, #fdf2f8 100%)" }} />
-                <span className="absolute bottom-2 left-3 text-2xl">👥</span>
-              </div>
-              <div className="px-4 pb-4 pt-1 flex flex-col gap-1.5">
-                <p style={{ fontSize: 15, fontWeight: 800, color: "#db2777", lineHeight: 1.3 }}>Community Access</p>
-                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>Stay surrounded by people who are also building better daily habits.</p>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center mt-10">
+
+          <div className="flex justify-center mt-12">
             <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
           </div>
         </div>

@@ -360,17 +360,6 @@ function StickyBottomCTA() {
   );
 }
 
-function BackToTop() {
-  const [v, setV] = useState(false);
-  useEffect(() => { const f = () => setV(window.scrollY > 500); window.addEventListener("scroll", f, { passive: true }); f(); return () => window.removeEventListener("scroll", f); }, []);
-  return (
-    <button type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-20 right-3 z-50 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1 cursor-pointer ${v ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
-      style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.45)" }}>
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 4l-8 8h5v8h6v-8h5z" /></svg>
-    </button>
-  );
-}
 
 const NAMES = [
   { name: "Rahul", city: "Delhi" }, { name: "Priya", city: "Mumbai" }, { name: "Aditya", city: "Bengaluru" },
@@ -1508,7 +1497,6 @@ export default function DailyUpgradeClubPage() {
       </footer>
 
       <StickyBottomCTA />
-      <BackToTop />
       <LiveToast />
       <TrialPopup />
       <HabitChatbot />

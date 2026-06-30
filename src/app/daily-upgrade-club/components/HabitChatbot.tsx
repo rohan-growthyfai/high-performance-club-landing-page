@@ -148,7 +148,7 @@ export default function HabitChatbot() {
                 Habit Assistant
               </p>
               <p style={{ fontSize: 12, color: "#3f3f46", margin: 0, marginTop: 2, lineHeight: 1.4 }}>
-                Hi! I can help you find the right habit plan 👋
+                Hi! I can help you if you have any questions 👋
               </p>
             </div>
             {/* Dismiss */}

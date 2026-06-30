@@ -489,7 +489,7 @@ export default function DailyUpgradeClubPage() {
         <span className="emoji-deco float-2 top-8 right-8 text-3xl hidden lg:block" aria-hidden="true">🌿</span>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-10 lg:pt-12 lg:pb-0">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)] lg:min-h-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-72px)]">
 
             {/* LEFT */}
             <div className="lg:col-span-7 text-center lg:text-left">
@@ -651,18 +651,25 @@ export default function DailyUpgradeClubPage() {
             <h2 className="duc-h2 duc-section-title mb-3">Does this sound like you?</h2>
             <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy." },
-              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week." },
-              { icon: "😵", text: "You try fixing sleep, diet, and gym all at once — and end up doing none of them." },
-              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears." },
-              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic for you — but doing nothing feels wrong." },
-              { icon: "📱", text: "You've downloaded 5 apps, bought 3 courses, and bookmarked 40 articles. Nothing stuck." },
+              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", bg: "linear-gradient(135deg,#eef2ff,#e0e7ff)", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" },
+              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", bg: "linear-gradient(135deg,#fffbeb,#fef3c7)", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
+              { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", bg: "linear-gradient(135deg,#fdf2f8,#fce7f3)", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
+              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", bg: "linear-gradient(135deg,#f5f3ff,#ede9fe)", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" },
+              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", bg: "linear-gradient(135deg,#ecfdf5,#d1fae5)", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
+              { icon: "📱", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", bg: "linear-gradient(135deg,#f0f9ff,#e0f2fe)", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
             ].map((p, i) => (
-              <div key={i} className="duc-glow-card flex items-start gap-3 bg-white border rounded-xl px-4 py-4" style={{ borderColor: "#e2dfd6" }}>
-                <span style={{ fontSize: 22 }} className="shrink-0">{p.icon}</span>
-                <p className="duc-body">{p.text}</p>
+              <div key={i} className="duc-glow-card rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${p.border}` }}>
+                <div className="relative h-28 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.img} alt="" className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%)` }} />
+                  <span className="absolute bottom-2 left-3" style={{ fontSize: 28 }}>{p.icon}</span>
+                </div>
+                <div style={{ background: p.bg, padding: "14px 16px" }}>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.55 }}>{p.text}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -681,10 +688,10 @@ export default function DailyUpgradeClubPage() {
             <h2 className="duc-h2 duc-section-title mb-3">Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
             <p className="duc-body max-w-sm mx-auto">Same you. Same schedule. A completely different baseline.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
               <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3.5">
                 {[
                   "No direction on where to even start",
                   "Too much to fix, too little time",
@@ -694,7 +701,7 @@ export default function DailyUpgradeClubPage() {
                   "Low energy, poor sleep, digestion issues",
                   "\"I'll start properly next week\"",
                 ].map((b, i) => (
-                  <div key={i} className="flex items-center gap-3"><Check /><span className="duc-body">{b}</span></div>
+                  <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
                 ))}
               </div>
             </div>
@@ -702,7 +709,7 @@ export default function DailyUpgradeClubPage() {
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
               <div className="relative">
                 <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
-                <div className="flex flex-col gap-3">
+                <div className="flex flex-col gap-3.5">
                   {[
                     "A clear direction — one habit, one theme, every day",
                     "Under 5 minutes of your day — nothing more",
@@ -712,7 +719,7 @@ export default function DailyUpgradeClubPage() {
                     "More energy, better sleep, lighter digestion",
                     "\"I've been consistent for a whole month\"",
                   ].map((a, i) => (
-                    <div key={i} className="flex items-center gap-3"><Check green /><span className="duc-body font-medium" style={{ color: "#18181b" }}>{a}</span></div>
+                    <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
                   ))}
                 </div>
               </div>
@@ -961,14 +968,14 @@ export default function DailyUpgradeClubPage() {
 
       {/* ══ 9. VALUE STACK — premium dark card ═══════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-lg mx-auto px-6 lg:px-10">
+        <div className="max-w-2xl mx-auto px-6 lg:px-10">
           <div className="rounded-2xl overflow-hidden shadow-2xl" style={{
             background: "linear-gradient(145deg,#0d1f12 0%,#0a1a0f 50%,#061009 100%)",
             border: "1px solid rgba(37,211,102,0.2)",
           }}>
             <div className="text-center px-6 pt-8 pb-4">
               <p className="duc-label mb-2">Everything you get</p>
-              <h2 className="duc-h2" style={{ color: "#fff" }}>Your full membership</h2>
+              <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>Your full membership</h2>
             </div>
             <div className="px-5 sm:px-8">
               {[
@@ -982,10 +989,10 @@ export default function DailyUpgradeClubPage() {
               ].map(it => (
                 <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span style={{ fontSize: 18 }} className="shrink-0">{it.emoji}</span>
-                    <span style={{ fontSize: 13, color: "#d4f7e0" }}>{it.name}</span>
+                    <span style={{ fontSize: 22 }} className="shrink-0">{it.emoji}</span>
+                    <span style={{ fontSize: 15, color: "#d4f7e0" }}>{it.name}</span>
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#6ee7b7", flexShrink: 0 }}>{it.value}</span>
+                  <span style={{ fontSize: 15, fontWeight: 700, color: "#4ade80", flexShrink: 0 }}>{it.value}</span>
                 </div>
               ))}
               <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid rgba(37,211,102,0.2)", background: "rgba(0,0,0,0.3)" }}>
@@ -999,7 +1006,7 @@ export default function DailyUpgradeClubPage() {
                   <p key={s} style={{ fontSize: 14, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
                 ))}
               </div>
-              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,5.5rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹1</p>
+              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹1</p>
               <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">for your first 7 days · then ₹99/month</p>
               <CTA label="Get Everything — Start for ₹1 →" sub="Cancel before Day 7 · Pay nothing more" />
             </div>

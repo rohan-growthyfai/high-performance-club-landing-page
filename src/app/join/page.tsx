@@ -338,7 +338,7 @@ export default function JoinPage() {
           </h2>
 
           <div className="rounded-2xl overflow-hidden mb-6" style={{ background: "#1c1c1e", border: "1px solid rgba(255,255,255,0.1)" }}>
-            <div className="px-6 py-5 divide-y" style={{ divideColor: "rgba(255,255,255,0.08)" }}>
+            <div className="px-6 py-5 divide-y divide-white/[0.08]">
               {[
                 { emoji: "🌱", name: "30 Tiny Daily Habits", value: "2,999" },
                 { emoji: "🎯", name: "One Monthly Theme", value: "1,799" },

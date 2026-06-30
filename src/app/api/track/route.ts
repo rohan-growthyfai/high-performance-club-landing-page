@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { neon } from "@neondatabase/serverless";
+import { neon, NeonQueryFunction } from "@neondatabase/serverless";
 
 /**
  * Link tracking redirect.
@@ -13,7 +13,7 @@ import { neon } from "@neondatabase/serverless";
 
 const DUC_URL = "https://www.highperformanceclub.co/daily-upgrade-club";
 
-async function ensureTable(sql: ReturnType<typeof neon>) {
+async function ensureTable(sql: NeonQueryFunction<false, false>) {
   await sql`
     CREATE TABLE IF NOT EXISTS duc_link_clicks (
       id          SERIAL PRIMARY KEY,

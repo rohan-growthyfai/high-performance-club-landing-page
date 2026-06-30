@@ -31,11 +31,11 @@ function CTA({ label, sub }: { label: string; sub?: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
-        className="btn-primary inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full font-bold text-white"
-        style={{ fontSize: 16, boxShadow: "0 6px 24px rgba(37,211,102,0.40)" }}>
-        <WAIcon size={18} />{label}<span>→</span>
+        className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
+        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em" }}>
+        <WAIcon size={20} />{label}
       </a>
-      {sub && <p style={{ fontSize: 12, color: "#71717a", textAlign: "center" }}>{sub}</p>}
+      {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
     </div>
   );
 }
@@ -534,10 +534,16 @@ export default function DailyUpgradeClubPage() {
                     <WAIcon size={17} />
                     All on WhatsApp
                   </div>
-                  {/* Arrow: starts bottom-left of label, curves right and slightly down toward iPhone */}
-                  <svg width="180" height="100" viewBox="0 0 180 100" fill="none" style={{ marginLeft: 16 }}>
-                    <path d="M8 10 C10 40 30 70 80 80 C120 88 155 82 170 78" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
-                    <path d="M160 70 L170 78 L158 84" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Arrow curving right with "All on WhatsApp" text along the arc */}
+                  <svg width="200" height="110" viewBox="0 0 200 110" fill="none" style={{ marginLeft: 10 }}>
+                    {/* Curved dashed arrow path */}
+                    <path id="arrowArc" d="M10 15 C20 50 55 85 110 95 C145 101 175 94 190 88" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
+                    {/* Text along the curve */}
+                    <text style={{ fontSize: 11, fontWeight: 700, fill: "#1da851", letterSpacing: "0.04em" }}>
+                      <textPath href="#arrowArc" startOffset="8%">All on WhatsApp</textPath>
+                    </text>
+                    {/* Arrowhead at end */}
+                    <path d="M180 82 L190 88 L178 96" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
@@ -565,10 +571,10 @@ export default function DailyUpgradeClubPage() {
               <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-8">
                 <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-                  style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
-                  <WAIcon size={20} />Start 7-Day Trial for ₹1
+                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
+                  <WAIcon size={22} />Start 7-Day Trial for ₹1
                 </a>
-                <p style={{ fontSize: 13, color: "#71717a" }}>Then ₹99/month · Cancel anytime</p>
+                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>Then ₹99/month · Cancel anytime</p>
               </div>
 
               {/* Social proof — supercareer style */}
@@ -705,11 +711,11 @@ export default function DailyUpgradeClubPage() {
       </section>
 
       {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
+      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
-          <h2 className="duc-h2 duc-section-title mb-4">Not a Course. Not an App. Not Another Challenge.</h2>
-          <p className="duc-body max-w-2xl mx-auto mb-6">Daily Upgrade Club is a simple WhatsApp-based habit system that helps you build healthier daily routines through tiny actions, daily check-ins, streaks and accountability.</p>
-          <p style={{ fontSize: 14, color: "#71717a", fontStyle: "italic" }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
+          <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Course. Not an App. Not Another Challenge.</h2>
+          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}>Daily Upgrade Club is a simple WhatsApp-based habit system that helps you build healthier daily routines through tiny actions, daily check-ins, streaks and accountability.</p>
+          <p style={{ fontSize: 14, color: "rgba(37,211,102,0.85)", fontStyle: "italic" }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
         </div>
       </section>
 
@@ -719,7 +725,7 @@ export default function DailyUpgradeClubPage() {
           <div className="text-center mb-12">
             <p className="duc-label mb-3">Simple by design</p>
             <h2 className="duc-h2 duc-section-title mb-4">How Daily Upgrade Club Works</h2>
-            <p className="duc-body max-w-xl mx-auto">India&apos;s only healthy habit subscription designed to help you become more fitter, healthier &amp; energetic without complicated routines.<br className="hidden sm:block" />No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
+            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -766,13 +772,12 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
+              { icon: "🎯", title: "Monthly Habit Tracks", desc: "Follow focused monthly themes like Health, Sleep, Energy, Focus and Calmness." },
               { icon: "🌅", title: "1 Tiny Habit Every Morning", desc: "Simple health habits delivered daily on WhatsApp." },
               { icon: "✅", title: "Daily Check-Ins", desc: "Reply DONE after completing your habit and stay accountable." },
               { icon: "🔥", title: "Streak Tracking", desc: "Build momentum by tracking your daily consistency." },
               { icon: "📊", title: "Weekly Progress Scorecards", desc: "See how your health, energy, focus and consistency are improving." },
-              { icon: "🎯", title: "Monthly Habit Tracks", desc: "Follow focused monthly themes like Health, Sleep, Energy, Focus and Calmness." },
               { icon: "📋", title: "Practical Habit Guides", desc: "Get simple guides and calendars to make habits easier to follow." },
-              { icon: "👥", title: "Community Access", desc: "Stay surrounded by people who are also building better daily habits." },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="duc-glow-card bg-white rounded-2xl p-6 flex flex-col gap-3" style={{ border: "1px solid rgba(37,211,102,0.12)" }}>
                 <span style={{ fontSize: 32 }}>{icon}</span>
@@ -780,6 +785,14 @@ export default function DailyUpgradeClubPage() {
                 <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{desc}</p>
               </div>
             ))}
+          </div>
+          {/* Community Access — centered last row */}
+          <div className="flex justify-center mt-5">
+            <div className="duc-glow-card bg-white rounded-2xl p-6 flex flex-col gap-3 w-full sm:w-1/2 lg:w-1/3" style={{ border: "1px solid rgba(37,211,102,0.12)" }}>
+              <span style={{ fontSize: 32 }}>👥</span>
+              <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", lineHeight: 1.3 }}>Community Access</p>
+              <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>Stay surrounded by people who are also building better daily habits.</p>
+            </div>
           </div>
           <div className="flex justify-center mt-10">
             <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
@@ -988,49 +1001,65 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">What lands in your WhatsApp</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Real messages. Real habits.</h2>
-            <p className="duc-body max-w-sm mx-auto">Specific. Science-backed. Done in under 5 minutes. Explained so you actually understand why.</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Here&apos;s What a Daily Habit Looks Like</h2>
+            <p className="duc-body max-w-sm mx-auto">Every habit is simple, practical and designed to fit into your real day.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
-            <div className="flex justify-center tilt-left">
-              <StaticPhone>
-                <WAChatBg>
-                  <WADateSep label="⚡ Energy Month · Day 3" />
-                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets cortisol and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
-                  <WAOut text="✅ DONE — felt great already!" time="7:09 AM" />
-                  <WAIn title="" lines={["🔥 Day 3 streak! The shift builds by Day 5."]} time="7:10 AM" />
-                </WAChatBg>
-              </StaticPhone>
+            {/* Energy Track */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
+                ⚡ Energy Track Habits
+              </div>
+              <div className="tilt-left">
+                <StaticPhone>
+                  <WAChatBg>
+                    <WADateSep label="⚡ Energy Track · Day 3" />
+                    <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
+                    <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
+                    <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </div>
             </div>
 
-            <div className="flex justify-center">
+            {/* Sleep Track */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#eef2ff", border: "2px solid #c7d2fe", color: "#6366f1", fontSize: 13 }}>
+                😴 Sleep Track Habits
+              </div>
               <StaticPhone>
                 <WAChatBg>
-                  <WADateSep label="😴 Sleep Month · Day 11" />
+                  <WADateSep label="😴 Sleep Track · Day 11" />
                   <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
-                  <WAOut text="✅ Done — reminder is set" time="7:05 AM" />
-                  <WAIn title="" lines={["🔥 Day 11! Most members notice a difference within 3 nights."]} time="7:06 AM" />
+                  <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
+                  <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
                 </WAChatBg>
               </StaticPhone>
             </div>
 
-            <div className="flex justify-center tilt-right">
-              <StaticPhone>
-                <WAChatBg>
-                  <WADateSep label="🌿 Gut Health · Day 7" />
-                  <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch — today.","","Why: Lactobacillus in dahi reduces intestinal inflammation. 14 days of daily curd reduced bloating by 63% in clinical trials.","","Reply DONE 🙌"]} time="7:01 AM" />
-                  <WAOut text="✅ Done — had it with dal rice" time="1:22 PM" />
-                  <WAIn title="" lines={["Perfect 🙌 Day 7 done!"]} time="1:23 PM" />
-                </WAChatBg>
-              </StaticPhone>
+            {/* Focus Track */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
+                🧠 Focus Track Habits
+              </div>
+              <div className="tilt-right">
+                <StaticPhone>
+                  <WAChatBg>
+                    <WADateSep label="🧠 Focus Track · Day 7" />
+                    <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
+                    <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
+                    <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </div>
             </div>
           </div>
 
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Send My First Habit Tomorrow →" sub="₹1 for 7 days · Cancel before Day 7 · Pay nothing more" />
+            <CTA label="Send My First Habit Tomorrow" sub="₹1 for 7 days · Then ₹99/month" />
           </div>
         </div>
       </section>
@@ -1114,36 +1143,51 @@ export default function DailyUpgradeClubPage() {
       </section>
 
       {/* ══ WHY IT WORKS ════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">The Science of Simplicity</p>
-            <h2 className="duc-h2 duc-section-title mb-4">Why Daily Upgrade Club Works</h2>
-            <p className="duc-body max-w-xl mx-auto">Because it removes the biggest reason people fail — overwhelm.</p>
+      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 60%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3" style={{ color: "#25d366" }}>The Science of Simplicity</p>
+            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Why Daily Upgrade Club Works</h2>
+            <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 480, margin: "0 auto" }}>Because it removes the biggest reason people fail — overwhelm.</p>
           </div>
-          <div className="rounded-2xl p-8 mb-8" style={{ background: "#faf8f3", border: "1.5px solid #e2dfd6" }}>
-            <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.8, marginBottom: 20 }}>Most people try to change too much too quickly.</p>
-            <p style={{ fontSize: 15, fontWeight: 700, color: "#18181b", marginBottom: 14 }}>Daily Upgrade Club keeps it simple:</p>
-            <div className="flex flex-col gap-3">
-              {[
-                { icon: "🌱", text: "1 tiny habit" },
-                { icon: "⏱️", text: "Less than 5 minutes" },
-                { icon: "📲", text: "Delivered daily on WhatsApp" },
-                { icon: "✅", text: "DONE check-in" },
-                { icon: "🔥", text: "Streak tracking" },
-                { icon: "📊", text: "Weekly progress scorecard" },
-                { icon: "👥", text: "Community accountability" },
-              ].map(({ icon, text }) => (
-                <div key={text} className="flex items-center gap-3">
-                  <span style={{ fontSize: 20 }}>{icon}</span>
-                  <span style={{ fontSize: 15, color: "#18181b", fontWeight: 600 }}>{text}</span>
-                </div>
-              ))}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+            {/* Left — the problem */}
+            <div className="rounded-2xl p-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <p className="font-bold mb-3" style={{ fontSize: 13, color: "#f87171", textTransform: "uppercase", letterSpacing: "0.1em" }}>Why most people fail</p>
+              <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", lineHeight: 1.75 }}>Most people try to change <strong style={{ color: "#fff" }}>too much too quickly</strong> — gym, diet, sleep, meditation all at once. They burn out by Week 2. The habits never stick.</p>
+            </div>
+
+            {/* Right — the DUC system */}
+            <div className="rounded-2xl p-8" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.2)" }}>
+              <p className="font-bold mb-5" style={{ fontSize: 13, color: "#25d366", textTransform: "uppercase", letterSpacing: "0.1em" }}>The Daily Upgrade Club System</p>
+              <div className="flex flex-col gap-4">
+                {[
+                  { icon: "🌱", label: "1 tiny habit", sub: "Small enough to never skip" },
+                  { icon: "⏱️", label: "Less than 5 minutes", sub: "Fits into any schedule" },
+                  { icon: "📲", label: "Delivered on WhatsApp daily", sub: "No new app to remember" },
+                  { icon: "✅", label: "DONE check-in", sub: "Instant accountability" },
+                  { icon: "🔥", label: "Streak tracking", sub: "Momentum builds itself" },
+                  { icon: "📊", label: "Weekly progress scorecard", sub: "See how far you've come" },
+                  { icon: "👥", label: "Community accountability", sub: "You're never doing this alone" },
+                ].map(({ icon, label, sub }) => (
+                  <div key={label} className="flex items-center gap-4">
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(37,211,102,0.12)", fontSize: 18 }}>{icon}</div>
+                    <div>
+                      <p style={{ fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>{label}</p>
+                      <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>{sub}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
-          <div className="rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "2px solid rgba(37,211,102,0.3)" }}>
-            <p style={{ fontSize: 20, fontWeight: 900, color: "#18181b", lineHeight: 1.4 }}>Small enough to do daily. <span className="gradient-text">Powerful enough to change your routine.</span></p>
+
+          {/* Closing punchline */}
+          <div className="rounded-2xl p-7 text-center mt-8" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
+            <p style={{ fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.4 }}>Small enough to do daily. <span style={{ color: "#25d366" }}>Powerful enough to change your routine.</span></p>
           </div>
+
           <div className="flex justify-center mt-10">
             <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
           </div>

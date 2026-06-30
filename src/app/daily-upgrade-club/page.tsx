@@ -522,19 +522,19 @@ export default function DailyUpgradeClubPage() {
                   gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier every day.
                 </p>
 
-                {/* WhatsApp callout — label above, arrow curving FROM bottom toward iPhone */}
-                <div className="hidden lg:flex absolute items-center gap-2 pointer-events-none"
-                  style={{ right: -210, bottom: -20, flexDirection: "column", alignItems: "flex-start" }}>
+                {/* WhatsApp callout — anchored to right edge of description, arrow sweeps right to iPhone */}
+                <div className="hidden lg:block absolute pointer-events-none"
+                  style={{ right: -240, top: 0 }}>
                   {/* Label */}
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold mb-1"
                     style={{ background: "#25d366", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(37,211,102,0.45)", letterSpacing: "-0.01em" }}>
                     <WAIcon size={17} />
                     All on WhatsApp
                   </div>
-                  {/* Arrow: starts bottom-left, curves up and right toward phone — bigger */}
-                  <svg width="140" height="90" viewBox="0 0 140 90" fill="none" style={{ marginLeft: 10 }}>
-                    <path d="M10 80 C20 80 30 60 60 35 C90 10 120 12 132 14" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
-                    <path d="M122 8 L132 14 L122 22" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Arrow: starts bottom-left of label, curves right and slightly down toward iPhone */}
+                  <svg width="180" height="100" viewBox="0 0 180 100" fill="none" style={{ marginLeft: 16 }}>
+                    <path d="M8 10 C10 40 30 70 80 80 C120 88 155 82 170 78" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
+                    <path d="M160 70 L170 78 L158 84" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 

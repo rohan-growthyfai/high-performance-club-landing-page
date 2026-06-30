@@ -5,16 +5,16 @@ type Message = { role: "user" | "assistant"; content: string; id: string };
 
 const STARTER_QUESTIONS = [
   "What is Daily Upgrade Club?",
-  "How does the ₹1 trial work?",
-  "What habits will I get?",
-  "How is this different from apps?",
+  "How does it work?",
+  "I struggle with consistency",
+  "Tell me about the ₹1 trial",
 ];
 
 const WELCOME_MESSAGE: Message = {
   role: "assistant",
   id: "welcome",
   content:
-    "Namaste! 🌱 I'm your Habit Assistant for **Daily Upgrade Club**.\n\nI'm here to help you understand how Daily Upgrade Club works, what you get inside, and whether it's the right fit for your health journey.\n\nWhat would you like to know? 😊",
+    "Namaste! 🌱 Welcome to **Daily Upgrade Club**.\n\nBefore I dive in — I'd love to know who I'm talking to. What's your name?",
 };
 
 // Avatar image — a calm, premium wellness illustration
@@ -148,7 +148,7 @@ export default function HabitChatbot() {
                 Habit Assistant
               </p>
               <p style={{ fontSize: 12, color: "#3f3f46", margin: 0, marginTop: 2, lineHeight: 1.4 }}>
-                Ask me anything about Daily Upgrade Club 👋
+                Hi! I can help you find the right habit plan 👋
               </p>
             </div>
             {/* Dismiss */}

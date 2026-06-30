@@ -651,7 +651,58 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 3. WHAT IS DUC ════════════════════════════════════════════════════ */}
+      {/* ══ 3. THE SHIFT ══════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">THE SHIFT</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 30 days</h2>
+            <p className="duc-body max-w-md mx-auto">Same busy schedule. But a completely different version of yourself.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
+              <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
+              <div className="flex flex-col gap-3.5">
+                {[
+                  "No direction on where to even start",
+                  "Too much to fix, too little time",
+                  "Zero accountability — habits disappear with motivation",
+                  "Wellness apps collecting dust on your phone",
+                  "Good intentions that never survive a busy week",
+                  "Low energy, poor sleep, digestion issues",
+                  "\"I'll start properly next week\"",
+                ].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
+                ))}
+              </div>
+            </div>
+            <div className="duc-glow-card rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
+              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
+              <div className="relative">
+                <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
+                <div className="flex flex-col gap-3.5">
+                  {[
+                    "A clear direction — one habit, one theme, every day",
+                    "Under 5 minutes of your day — nothing more",
+                    "Built-in accountability that doesn't pressure you",
+                    "Results you feel, not just track on a dashboard",
+                    "A streak you actually want to protect",
+                    "More energy, better sleep, lighter digestion",
+                    "\"I've been consistent for a whole month\"",
+                  ].map((a, i) => (
+                    <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="I Want This Version of Myself →" sub="7 days for ₹1 · Then ₹99/month" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4. WHAT IS DUC ════════════════════════════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -710,57 +761,6 @@ export default function DailyUpgradeClubPage() {
                 <CTA label="Show Me My First Habit →" sub="₹1 for 7 days · Cancel anytime" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 5. BEFORE → AFTER ════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">The shift</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
-            <p className="duc-body max-w-sm mx-auto">Same you. Same schedule. A completely different baseline.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
-              <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
-              <div className="flex flex-col gap-3.5">
-                {[
-                  "No direction on where to even start",
-                  "Too much to fix, too little time",
-                  "Zero accountability — habits disappear with motivation",
-                  "Wellness apps collecting dust on your phone",
-                  "Good intentions that never survive a busy week",
-                  "Low energy, poor sleep, digestion issues",
-                  "\"I'll start properly next week\"",
-                ].map((b, i) => (
-                  <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
-                ))}
-              </div>
-            </div>
-            <div className="duc-glow-card rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
-              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
-              <div className="relative">
-                <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
-                <div className="flex flex-col gap-3.5">
-                  {[
-                    "A clear direction — one habit, one theme, every day",
-                    "Under 5 minutes of your day — nothing more",
-                    "Built-in accountability that doesn't pressure you",
-                    "Results you feel, not just track on a dashboard",
-                    "A streak you actually want to protect",
-                    "More energy, better sleep, lighter digestion",
-                    "\"I've been consistent for a whole month\"",
-                  ].map((a, i) => (
-                    <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex justify-center mt-10">
-            <CTA label="I Want This Version of Myself →" sub="7 days for ₹1 · Then ₹99/month · Cancel anytime before Day 7" />
           </div>
         </div>
       </section>

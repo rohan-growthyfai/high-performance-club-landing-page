@@ -483,6 +483,13 @@ export default function DailyUpgradeClubPage() {
         .duc-glow-card:hover{box-shadow:0 8px 32px rgba(37,211,102,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
       `}</style>
 
+      {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
+      <div style={{ background: "linear-gradient(90deg,#1da851 0%,#25d366 50%,#1da851 100%)", padding: "10px 16px" }}>
+        <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
+          ✦ The proven 5-minute daily habit system thousands have used to become fitter, healthier, more energetic — on WhatsApp ✦
+        </p>
+      </div>
+
       {/* ══ 1. HERO ═══════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
         <span className="emoji-deco float-1 top-14 left-5 text-3xl hidden lg:block" aria-hidden="true">✨</span>

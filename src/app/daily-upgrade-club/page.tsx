@@ -704,67 +704,36 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 4. WHAT IS DUC ════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">What exactly is this?</p>
-            <h2 className="duc-h2 duc-section-title mb-4">What exactly is Daily Upgrade Club?</h2>
-            <p className="duc-body max-w-xl mx-auto">India&apos;s only healthy habit subscription designed to help you become more fitter, healthier &amp; energetic without complicated routines.</p>
-          </div>
-          {/* 3 "Not a..." cards */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            {[
-              { emoji: "📚", label: "Not a Course" },
-              { emoji: "📱", label: "Not an App" },
-              { emoji: "🥗", label: "Not a Diet or Gym Plan" },
-            ].map(({ emoji, label }) => (
-              <div key={label} className="rounded-2xl p-6 flex flex-col items-center text-center gap-3" style={{ background: "#fafafa", border: "1.5px solid #e4e4e7" }}>
-                <span style={{ fontSize: 36 }}>{emoji}</span>
-                <p style={{ fontSize: 16, fontWeight: 800, color: "#3f3f46", textDecoration: "line-through", textDecorationColor: "#f87171", textDecorationThickness: 2 }}>{label}</p>
-              </div>
-            ))}
-          </div>
-          {/* Punchline */}
-          <div className="rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "2px solid rgba(37,211,102,0.3)" }}>
-            <p style={{ fontSize: 22, fontWeight: 900, color: "#18181b", lineHeight: 1.4 }}>
-              Just <span className="gradient-text">1 tiny healthy habit</span> every day on WhatsApp.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 5. HOW IT WORKS ══════════════════════════════════════════════════ */}
+      {/* ══ 4. HOW DUC WORKS ══════════════════════════════════════════════════ */}
       <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">Simple by design</p>
-            <h2 className="duc-h2 duc-section-title mb-3">How it works</h2>
-            <p className="duc-body max-w-sm mx-auto">No fluff, no overwhelm. Three simple steps:</p>
+            <h2 className="duc-h2 duc-section-title mb-4">How Daily Upgrade Club Works</h2>
+            <p className="duc-body max-w-xl mx-auto">India&apos;s only healthy habit subscription designed to help you become more fitter, healthier &amp; energetic without complicated routines.<br className="hidden sm:block" />No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 n: "1",
                 emoji: "📲",
-                title: "Join for ₹1",
-                body: "Sign up in 30 seconds. You're immediately added to your private WhatsApp group and choose your first monthly theme.",
+                title: "Join & Choose Your Monthly Track",
+                body: "Sign up for ₹1 and choose your first habit track — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
               },
               {
                 n: "2",
                 emoji: "🌅",
-                title: "Get your habit every morning",
-                body: "Every day at 7 AM, one science-backed healthy habit lands in your WhatsApp. Under 5 minutes. No app needed.",
+                title: "Get 1 Tiny Habit Every Morning",
+                body: "Every morning, you'll receive one science-backed healthy habit that takes under 5 minutes — with simple steps, why it works, and how to complete it.",
               },
               {
                 n: "3",
                 emoji: "🔥",
-                title: "Reply DONE. Build your streak.",
-                body: "Reply DONE when you complete it. Your streak updates, accountability kicks in, and you keep becoming a healthier version of yourself every day.",
+                title: "Reply DONE & Track Your Progress",
+                body: "Complete the habit, reply DONE, build your streak and get weekly progress scorecards to see how your health, energy and consistency are improving.",
               },
             ].map(({ n, emoji, title, body }) => (
               <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                {/* Number circle */}
                 <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
                 <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
                 <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>

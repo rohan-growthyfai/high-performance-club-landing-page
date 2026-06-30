@@ -1,10 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import IPhoneFrame from "@/components/IPhoneFrame";
 
 const JOIN_URL = "https://rzp.io/l/daily-upgrade-club";
 
-// ─── Icons ───────────────────────────────────────────────────────────────────
+// ─── Icons ────────────────────────────────────────────────────────────────────
 function WAIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden="true">
@@ -17,38 +16,39 @@ function Star() {
   return <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>;
 }
 function Check({ green }: { green?: boolean }) {
-  return <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0"><circle cx="10" cy="10" r="10" fill={green ? "#1da851" : "#e4e4e7"} />{green ? <path d="M6 10l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" /> : <path d="M7 7l6 6M13 7l-6 6" stroke="#a1a1aa" strokeWidth="1.8" strokeLinecap="round" />}</svg>;
-}
-
-// ─── CTA ─────────────────────────────────────────────────────────────────────
-function CTA({ label, sub }: { label: string; sub?: string }) {
   return (
-    <div className="flex flex-col items-center gap-1.5">
-      <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
-        className="btn-primary inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-bold text-white text-sm sm:text-base"
-        style={{ boxShadow: "0 6px 24px rgba(37,211,102,0.40)" }}>
-        <WAIcon size={16} />{label}<span>→</span>
-      </a>
-      {sub && <p className="text-xs text-center" style={{ color: "#71717a" }}>{sub}</p>}
-    </div>
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
+      <circle cx="10" cy="10" r="10" fill={green ? "#1da851" : "#e4e4e7"} />
+      {green
+        ? <path d="M6 10l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        : <path d="M7 7l6 6M13 7l-6 6" stroke="#a1a1aa" strokeWidth="1.8" strokeLinecap="round" />}
+    </svg>
   );
 }
 
-// ─── Section header ───────────────────────────────────────────────────────────
-function SH({ eyebrow, h, sub, center = true }: { eyebrow?: string; h: React.ReactNode; sub?: string; center?: boolean }) {
+// ─── CTA button ───────────────────────────────────────────────────────────────
+function CTA({ label, sub }: { label: string; sub?: string }) {
   return (
-    <div className={`mb-10 ${center ? "text-center" : ""}`}>
-      {eyebrow && <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366", letterSpacing: "0.16em" }}>{eyebrow}</p>}
-      <h2 className="font-bold text-balance leading-tight mb-3" style={{ fontSize: "clamp(1.5rem,3.5vw,2.25rem)", letterSpacing: "-0.02em", color: "#18181b" }}>{h}</h2>
-      {sub && <p className="text-sm leading-relaxed max-w-xl mx-auto" style={{ color: "#71717a" }}>{sub}</p>}
+    <div className="flex flex-col items-center gap-2">
+      <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
+        className="btn-primary inline-flex items-center justify-center gap-2.5 px-9 py-4 rounded-full font-bold text-white"
+        style={{ fontSize: 16, boxShadow: "0 6px 24px rgba(37,211,102,0.40)" }}>
+        <WAIcon size={18} />{label}<span>→</span>
+      </a>
+      {sub && <p style={{ fontSize: 12, color: "#71717a", textAlign: "center" }}>{sub}</p>}
     </div>
   );
 }
 
 // ─── WA chat primitives ───────────────────────────────────────────────────────
-function WAChatBg({ children }: { children: React.ReactNode }) {
+function WAChatBg({ children, minH = 340 }: { children: React.ReactNode; minH?: number }) {
   return (
-    <div style={{ background: "#efeae2", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")", padding: "10px 8px 8px", minHeight: 320 }}>
+    <div style={{
+      background: "#efeae2",
+      backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
+      padding: "10px 8px 8px",
+      minHeight: minH,
+    }}>
       {children}
     </div>
   );
@@ -59,8 +59,10 @@ function WAIn({ title, lines, time }: { title: string; lines: string[]; time: st
       <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "90%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.08)" }}>
         <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
         {title && <p style={{ margin: 0, color: "#111b21", fontSize: 11, fontWeight: 700, lineHeight: 1.4 }}>{title}</p>}
-        {lines.map((l, i) => l ? <p key={i} style={{ margin: "3px 0 0", color: "#111b21", fontSize: 10.5, lineHeight: 1.5 }}>{l}</p> : <div key={i} style={{ height: 4 }} />)}
-        <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 9, textAlign: "right" }}>{time} ✓✓</p>
+        {lines.map((l, i) => l
+          ? <p key={i} style={{ margin: "3px 0 0", color: "#111b21", fontSize: 11, lineHeight: 1.5 }}>{l}</p>
+          : <div key={i} style={{ height: 4 }} />)}
+        <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 9.5, textAlign: "right" }}>{time} ✓✓</p>
       </div>
     </div>
   );
@@ -68,18 +70,247 @@ function WAIn({ title, lines, time }: { title: string; lines: string[]; time: st
 function WAOut({ text, time }: { text: string; time: string }) {
   return (
     <div style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6, marginBottom: 4 }}>
-      <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "60%", position: "relative" }}>
+      <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "65%", position: "relative" }}>
         <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
-        <p style={{ margin: 0, color: "#111b21", fontSize: 10.5 }}>{text}</p>
-        <p style={{ margin: "2px 0 0", color: "#667781", fontSize: 9, textAlign: "right" }}>{time} <span style={{ color: "#53bdeb" }}>✓✓</span></p>
+        <p style={{ margin: 0, color: "#111b21", fontSize: 11 }}>{text}</p>
+        <p style={{ margin: "2px 0 0", color: "#667781", fontSize: 9.5, textAlign: "right" }}>{time} <span style={{ color: "#53bdeb" }}>✓✓</span></p>
       </div>
     </div>
   );
 }
 function WADateSep({ label }: { label: string }) {
   return (
-    <div style={{ textAlign: "center", margin: "5px 0 7px" }}>
-      <span style={{ fontSize: 9.5, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "2px 8px", borderRadius: 20 }}>{label}</span>
+    <div style={{ textAlign: "center", margin: "5px 0 8px" }}>
+      <span style={{ fontSize: 9.5, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 20 }}>{label}</span>
+    </div>
+  );
+}
+
+// ─── Full iPhone shell (same as HeroPhone.tsx, adapted for DUC) ───────────────
+type TickState = "none" | "single" | "double" | "blue";
+interface PhaseState {
+  headerStatus: string;
+  msg1Visible: boolean;
+  reply1Visible: boolean;
+  reply1Ticks: TickState;
+  msg2Visible: boolean;
+  reply2Visible: boolean;
+  reply2Ticks: TickState;
+}
+const INIT: PhaseState = { headerStatus: "online · 400+ members", msg1Visible: false, reply1Visible: false, reply1Ticks: "none", msg2Visible: false, reply2Visible: false, reply2Ticks: "none" };
+const FINAL: PhaseState = { headerStatus: "online · 400+ members", msg1Visible: true, reply1Visible: true, reply1Ticks: "blue", msg2Visible: true, reply2Visible: true, reply2Ticks: "blue" };
+const SEQ: { delay: number; patch: Partial<PhaseState> }[] = [
+  { delay: 800, patch: { headerStatus: "typing…" } },
+  { delay: 1400, patch: { headerStatus: "online · 400+ members", msg1Visible: true } },
+  { delay: 2600, patch: { reply1Visible: true, reply1Ticks: "single" } },
+  { delay: 600, patch: { reply1Ticks: "double" } },
+  { delay: 600, patch: { reply1Ticks: "blue" } },
+  { delay: 1200, patch: { headerStatus: "typing…" } },
+  { delay: 1200, patch: { headerStatus: "online · 400+ members", msg2Visible: true } },
+  { delay: 2400, patch: { reply2Visible: true, reply2Ticks: "single" } },
+  { delay: 600, patch: { reply2Ticks: "double" } },
+  { delay: 600, patch: { reply2Ticks: "blue" } },
+];
+function Tick({ state }: { state: TickState }) {
+  if (state === "none") return null;
+  const color = state === "blue" ? "#53bdeb" : "rgba(255,255,255,0.55)";
+  return <span style={{ color, fontSize: "0.65rem", lineHeight: 1 }}>{state === "single" ? "✓" : "✓✓"}</span>;
+}
+
+function DUCPhone() {
+  const [phase, setPhase] = useState<PhaseState>(INIT);
+  const [started, setStarted] = useState(false);
+  const timers = useRef<ReturnType<typeof setTimeout>[]>([]);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPhase(FINAL); return;
+    }
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting && !started) setStarted(true); }, { threshold: 0.2 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [started]);
+
+  useEffect(() => {
+    if (!started) return;
+    const clear = () => { timers.current.forEach(clearTimeout); timers.current = []; };
+    const run = () => {
+      clear(); setPhase(INIT);
+      let cur: PhaseState = INIT; let acc = 0;
+      SEQ.forEach(s => {
+        acc += s.delay;
+        const t = setTimeout(() => { cur = { ...cur, ...s.patch }; setPhase({ ...cur }); }, acc);
+        timers.current.push(t);
+      });
+      const restart = setTimeout(() => { setPhase(INIT); const r = setTimeout(run, 400); timers.current.push(r); }, acc + 5000);
+      timers.current.push(restart);
+    };
+    run(); return clear;
+  }, [started]);
+
+  return (
+    <div ref={ref} className="relative mx-auto select-none" style={{ width: 270 }}>
+      <div style={{
+        background: "linear-gradient(160deg,#2a2a2a 0%,#1a1a1a 40%,#111 100%)",
+        borderRadius: 44, padding: "10px 8px",
+        boxShadow: ["0 0 0 1px #3a3a3a","0 0 0 2px #111","0 32px 64px -12px rgba(0,0,0,0.55)","0 12px 32px -8px rgba(0,0,0,0.4)","inset 0 1px 0 rgba(255,255,255,0.08)"].join(", "),
+        position: "relative",
+      }}>
+        {/* Side buttons */}
+        <div style={{ position: "absolute", left: -3, top: 88, width: 3, height: 34, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", left: -3, top: 132, width: 3, height: 58, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", left: -3, top: 198, width: 3, height: 58, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", right: -3, top: 148, width: 3, height: 72, background: "#2a2a2a", borderRadius: "0 2px 2px 0" }} />
+        {/* Screen */}
+        <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
+          {/* Dynamic Island */}
+          <div style={{ position: "relative", background: "#1da851", paddingTop: 12, display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 120, height: 34, background: "#000", borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#1a1a1a", border: "1px solid #333", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#2a2a2a" }} />
+              </div>
+              <div style={{ width: 56, height: 16, borderRadius: 8, background: "#1a1a1a" }} />
+            </div>
+          </div>
+          {/* Status bar */}
+          <div style={{ background: "#1da851", padding: "8px 16px 6px", display: "flex", alignItems: "center", justifyContent: "space-between", fontSize: 11, color: "#fff", fontWeight: 600 }}>
+            <span>9:41</span>
+            <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+              <span style={{ fontSize: 10, fontWeight: 700 }}>100%</span>
+            </div>
+          </div>
+          {/* WA header */}
+          <div style={{ background: "#1da851", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 38, height: 38, borderRadius: "50%", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.3)", background: "#0a4d1f", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 16 }}>🌱</span>
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, letterSpacing: "-0.01em", display: "flex", alignItems: "center", gap: 4 }}>
+                Daily Upgrade Club
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ flexShrink: 0 }}>
+                  <circle cx="12" cy="12" r="12" fill="#4fc3f7" />
+                  <path d="M6.5 12.5l3.5 3.5 7-7" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </p>
+              <p style={{ margin: 0, color: phase.headerStatus === "typing…" ? "#e8f5e9" : "rgba(255,255,255,0.75)", fontSize: 11, marginTop: 2, transition: "color 0.3s" }}>
+                {phase.headerStatus}
+              </p>
+            </div>
+          </div>
+          {/* Chat */}
+          <div style={{ background: "#efeae2", backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")", minHeight: 440, padding: "12px 8px 16px", display: "flex", flexDirection: "column", gap: 6 }}>
+            <div style={{ textAlign: "center", marginBottom: 6 }}>
+              <span style={{ fontSize: 10, color: "#667781", background: "rgba(255,255,255,0.85)", padding: "3px 10px", borderRadius: 20 }}>Today · ⚡ Energy Month</span>
+            </div>
+            {phase.msg1Visible && (
+              <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
+                <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, fontWeight: 700, lineHeight: 1.4 }}>⚡ Day 3 habit is here!</p>
+                  <p style={{ margin: "5px 0 0", color: "#111b21", fontSize: 11.5, lineHeight: 1.5 }}>Step outside for 5 min of natural sunlight — within 30 min of waking up.</p>
+                  <p style={{ margin: "4px 0 0", color: "#111b21", fontSize: 11.5, lineHeight: 1.5 }}>Why: Resets your cortisol clock. Controls your energy for the entire day. 🌞</p>
+                  <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, textAlign: "right" }}>7:00 AM</p>
+                </div>
+              </div>
+            )}
+            {phase.reply1Visible && (
+              <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
+                <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "65%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12 }}>✅ DONE — felt amazing!</p>
+                  <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 10, textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
+                    <span>7:08 AM</span><Tick state={phase.reply1Ticks} />
+                  </p>
+                </div>
+              </div>
+            )}
+            {phase.msg2Visible && (
+              <div className="wa-anim-in-left" style={{ display: "flex", paddingLeft: 6 }}>
+                <div style={{ background: "#fff", borderRadius: "8px 8px 8px 0", padding: "8px 10px", maxWidth: "85%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, left: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #fff transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12, lineHeight: 1.5 }}>🔥 Day 3 streak! The energy shift starts tomorrow. See you at 7 AM.</p>
+                  <p style={{ margin: "4px 0 0", color: "#667781", fontSize: 10, textAlign: "right" }}>7:09 AM</p>
+                </div>
+              </div>
+            )}
+            {phase.reply2Visible && (
+              <div className="wa-anim-in-right" style={{ display: "flex", justifyContent: "flex-end", paddingRight: 6 }}>
+                <div style={{ background: "#d9fdd3", borderRadius: "8px 8px 0 8px", padding: "7px 10px", maxWidth: "70%", position: "relative", boxShadow: "0 1px 2px rgba(0,0,0,0.1)" }}>
+                  <div style={{ position: "absolute", bottom: 0, right: -7, width: 0, height: 0, borderStyle: "solid", borderWidth: "0 0 8px 8px", borderColor: "transparent transparent #d9fdd3 transparent" }} />
+                  <p style={{ margin: 0, color: "#111b21", fontSize: 12 }}>Can&apos;t wait for tomorrow 🚀</p>
+                  <p style={{ margin: "3px 0 0", color: "#667781", fontSize: 10, textAlign: "right", display: "flex", gap: 4, justifyContent: "flex-end", alignItems: "center" }}>
+                    <span>7:10 AM</span><Tick state={phase.reply2Ticks} />
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
+          {/* Home bar */}
+          <div style={{ background: "#efeae2", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 120, height: 5, background: "rgba(0,0,0,0.15)", borderRadius: 3 }} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ─── Static iPhone shell for 3-demo section ───────────────────────────────────
+function StaticPhone({ children, contact = "Daily Upgrade Club", status = "online" }: {
+  children: React.ReactNode;
+  contact?: string;
+  status?: string;
+}) {
+  return (
+    <div className="relative mx-auto select-none" style={{ width: 270 }}>
+      <div style={{
+        background: "linear-gradient(160deg,#2a2a2a 0%,#1a1a1a 40%,#111 100%)",
+        borderRadius: 44, padding: "10px 8px",
+        boxShadow: ["0 0 0 1px #3a3a3a","0 0 0 2px #111","0 28px 56px -12px rgba(0,0,0,0.5)","0 10px 28px -8px rgba(0,0,0,0.35)","inset 0 1px 0 rgba(255,255,255,0.08)"].join(", "),
+        position: "relative",
+      }}>
+        <div style={{ position: "absolute", left: -3, top: 88, width: 3, height: 34, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", left: -3, top: 132, width: 3, height: 58, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", left: -3, top: 198, width: 3, height: 58, background: "#2a2a2a", borderRadius: "2px 0 0 2px" }} />
+        <div style={{ position: "absolute", right: -3, top: 148, width: 3, height: 72, background: "#2a2a2a", borderRadius: "0 2px 2px 0" }} />
+        <div style={{ borderRadius: 36, overflow: "hidden", background: "#000" }}>
+          {/* Dynamic Island */}
+          <div style={{ background: "#1da851", paddingTop: 12, display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 120, height: 34, background: "#000", borderRadius: 20, display: "flex", alignItems: "center", justifyContent: "center", gap: 6 }}>
+              <div style={{ width: 12, height: 12, borderRadius: "50%", background: "#1a1a1a", border: "1px solid #333", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <div style={{ width: 5, height: 5, borderRadius: "50%", background: "#2a2a2a" }} />
+              </div>
+              <div style={{ width: 56, height: 16, borderRadius: 8, background: "#1a1a1a" }} />
+            </div>
+          </div>
+          {/* Status bar */}
+          <div style={{ background: "#1da851", padding: "8px 16px 6px", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: 11, color: "#fff", fontWeight: 600 }}>
+            <span>9:41</span><span style={{ fontSize: 10, fontWeight: 700 }}>100%</span>
+          </div>
+          {/* WA header */}
+          <div style={{ background: "#1da851", padding: "8px 12px 10px", display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 38, height: 38, borderRadius: "50%", flexShrink: 0, border: "1.5px solid rgba(255,255,255,0.3)", background: "#0a4d1f", display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <span style={{ fontSize: 16 }}>🌱</span>
+            </div>
+            <div style={{ flex: 1 }}>
+              <p style={{ margin: 0, color: "#fff", fontSize: 13, fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                {contact}
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="12" fill="#4fc3f7" /><path d="M6.5 12.5l3.5 3.5 7-7" stroke="#fff" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+              </p>
+              <p style={{ margin: 0, color: "rgba(255,255,255,0.75)", fontSize: 11, marginTop: 2 }}>{status}</p>
+            </div>
+          </div>
+          {/* Chat content */}
+          {children}
+          {/* Home bar */}
+          <div style={{ background: "#efeae2", padding: "8px 0 12px", display: "flex", justifyContent: "center" }}>
+            <div style={{ width: 120, height: 5, background: "rgba(0,0,0,0.15)", borderRadius: 3 }} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
@@ -89,11 +320,11 @@ function FAQ({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6" }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-4 py-3.5 text-left font-semibold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 13 }}>
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 14 }}>
         {q}
-        <span className="shrink-0 text-lg font-light" style={{ color: "#25d366", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+        <span className="shrink-0 text-xl font-light" style={{ color: "#25d366", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
       </button>
-      {open && <div className="px-4 pb-4 text-xs leading-relaxed bg-white" style={{ color: "#71717a" }}>{a}</div>}
+      {open && <div className="px-5 pb-5 leading-relaxed bg-white" style={{ fontSize: 13, color: "#71717a" }}>{a}</div>}
     </div>
   );
 }
@@ -110,7 +341,7 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
-          <div><p className="text-white font-black text-sm leading-tight">Start My Trial — ₹1 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>Then ₹99/month · Cancel anytime</p></div>
+          <div><p className="text-white font-black text-sm leading-tight">Start My ₹1 Trial →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>7 days · ₹1 · Cancel anytime</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Join</span></div>
         </a>
       </div>
@@ -131,7 +362,7 @@ function BackToTop() {
   useEffect(() => { const f = () => setV(window.scrollY > 500); window.addEventListener("scroll", f, { passive: true }); f(); return () => window.removeEventListener("scroll", f); }, []);
   return (
     <button type="button" aria-label="Back to top" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className={`fixed bottom-20 right-3 z-50 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1 cursor-pointer ${v ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
+      className={`fixed bottom-20 right-3 z-50 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1 cursor-pointer ${v ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}
       style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.45)" }}>
       <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 4l-8 8h5v8h6v-8h5z" /></svg>
     </button>
@@ -211,19 +442,19 @@ function TrialPopup() {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" /></svg>
             </button>
             <p className="text-3xl mb-2">🌱</p>
-            <h2 className="text-white font-black text-lg leading-snug">Still thinking about it?</h2>
-            <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "rgba(255,255,255,0.9)" }}>7 days · 1 tiny healthy habit/day · WhatsApp · ₹1</p>
+            <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>Still thinking about it?</h2>
+            <p className="mt-1.5 leading-relaxed" style={{ fontSize: 12, color: "rgba(255,255,255,0.9)" }}>7 days · 1 tiny healthy habit/day · WhatsApp · ₹1</p>
           </div>
           <div className="px-5 py-5 text-center">
             <div className="flex flex-col gap-1.5 mb-4 text-left">
-              {["Under 5 min a day", "One WhatsApp message per morning", "Cancel before Day 7 — pay ₹0 more"].map(t => (
-                <div key={t} className="flex items-center gap-2" style={{ fontSize: 12, color: "#4a4a52" }}><Check green />{t}</div>
+              {["Under 5 min a day","One WhatsApp message per morning","Cancel before Day 7 — pay ₹0 more"].map(t => (
+                <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}><Check green />{t}</div>
               ))}
             </div>
-            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full font-black text-white text-sm btn-primary">
+            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full font-black text-white btn-primary" style={{ fontSize: 14 }}>
               <WAIcon size={16} />Yes — Start My Trial for ₹1 →
             </a>
-            <button onClick={dismiss} className="mt-2.5 text-xs cursor-pointer" style={{ color: "#a1a1aa" }}>No thanks</button>
+            <button onClick={dismiss} className="mt-2.5 cursor-pointer" style={{ fontSize: 12, color: "#a1a1aa" }}>No thanks</button>
           </div>
         </div>
       </div>
@@ -236,145 +467,149 @@ function TrialPopup() {
 // ═════════════════════════════════════════════════════════════════════════════
 export default function DailyUpgradeClubPage() {
   return (
-    <div id="duc-top" style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "var(--font-sans),-apple-system,BlinkMacSystemFont,sans-serif", color: "#18181b", fontSize: 14 }}>
+    <div id="duc-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b", fontSize: 15 }}>
       <style>{`
         @keyframes duc-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        .duc-h1{font-size:clamp(1.9rem,4.5vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-0.025em}
-        .duc-h2{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;line-height:1.15;letter-spacing:-0.02em}
-        .duc-body{font-size:clamp(0.82rem,1.5vw,0.95rem);line-height:1.65;color:#4a4a52}
+        .duc-h1{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:900;line-height:1.12;letter-spacing:-0.025em}
+        .duc-h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.18;letter-spacing:-0.02em}
+        .duc-body{font-size:clamp(0.9rem,1.6vw,1rem);line-height:1.7;color:#52525b}
+        .duc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#25d366}
+        .duc-card{background:#fff;border:1px solid #e2dfd6;border-radius:16px;padding:20px}
       `}</style>
 
       {/* ══ 1. HERO ═══════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
-        <span className="emoji-deco float-1 top-14 left-5 text-2xl hidden lg:block" aria-hidden="true">✨</span>
-        <span className="emoji-deco float-2 top-8 right-8 text-2xl hidden lg:block" aria-hidden="true">🌿</span>
+        <span className="emoji-deco float-1 top-14 left-5 text-3xl hidden lg:block" aria-hidden="true">✨</span>
+        <span className="emoji-deco float-2 top-8 right-8 text-3xl hidden lg:block" aria-hidden="true">🌿</span>
 
-        <div className="max-w-6xl mx-auto px-5 lg:px-10 py-12 lg:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-10 lg:pt-12 lg:pb-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-80px)] lg:min-h-0">
 
             {/* LEFT */}
             <div className="lg:col-span-7 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5 text-xs font-bold uppercase tracking-widest accent-pill animate-fade-up">
-                <span className="w-1.5 h-1.5 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
-                Daily Upgrade Club · WhatsApp
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
+                <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
+                Daily Upgrade Club · Healthy Habit Subscription
               </div>
 
-              {/* HOOK — Brunson: interrupt the pattern first */}
+              {/* Headline — supercareer style: outcome-first, 3-second clarity */}
               <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-4">
-                You already know<br />
-                <span className="gradient-text">what a healthy life looks like.</span><br />
-                <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a", fontSize: "0.7em" }}>So why is it still not happening?</span>
+                Get Healthier in{" "}
+                <span className="gradient-text">5 Minutes a Day</span>
+                <br />
+                — with a tiny healthy habit<br />
+                delivered to your{" "}
+                <span className="gradient-text">WhatsApp</span>{" "}
+                every morning.
               </h1>
 
-              <p className="duc-body animate-fade-up delay-200 mb-6 max-w-lg mx-auto lg:mx-0">
-                Every morning at <strong style={{ color: "#18181b" }}>7 AM</strong>, one tiny healthy habit lands in your WhatsApp.
-                You do it in under 5 minutes. You reply <strong style={{ color: "#18181b" }}>DONE</strong>. That&apos;s your health done for the day.
+              {/* Subhead — crystal clear value prop */}
+              <p className="duc-body animate-fade-up delay-150 mb-6 max-w-lg mx-auto lg:mx-0" style={{ fontSize: 16, lineHeight: 1.65, color: "#52525b" }}>
+                One habit. Every day at 7 AM. Takes under 5 minutes. Reply{" "}
+                <strong style={{ color: "#18181b" }}>DONE</strong> and your health is handled for the day.
+                <br />No apps. No gym. No willpower required.
               </p>
 
-              {/* Visual: 3 trust chips */}
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-6 animate-fade-up delay-200">
-                {["📲 No app needed", "⏱️ Under 5 min/day", "🎯 One monthly theme", "💰 Starts at ₹1"].map(t => (
-                  <span key={t} className="text-xs px-3 py-1.5 rounded-full font-medium" style={{ background: "#fff", color: "#18181b", border: "1px solid #e2dfd6", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }}>{t}</span>
+              {/* Trust chips */}
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start mb-7 animate-fade-up delay-200">
+                {["📲 WhatsApp-only","⏱️ Under 5 min/day","🎯 Science-backed habits","💰 Start for just ₹1","❌ Cancel anytime"].map(t => (
+                  <span key={t} className="text-xs px-3 py-1.5 rounded-full font-semibold" style={{ background: "#fff", color: "#18181b", border: "1px solid #e2dfd6", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", fontSize: 12 }}>{t}</span>
                 ))}
               </div>
 
-              <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-1.5 mb-8">
+              {/* CTA */}
+              <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-10">
                 <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-2.5 px-8 py-4 rounded-full font-black text-white text-sm sm:text-base"
-                  style={{ boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
-                  <WAIcon size={18} />Start My 7-Day Trial — ₹1<span>→</span>
+                  className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
+                  style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
+                  <WAIcon size={20} />Yes — I Want Healthier Mornings →
                 </a>
-                <p className="text-xs" style={{ color: "#71717a" }}>7 days for ₹1 · Then ₹99/month · Cancel anytime before Day 7</p>
+                <p style={{ fontSize: 13, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime before Day 7</p>
               </div>
 
-              {/* 3 micro-testimonials */}
-              <div className="animate-fade-up delay-400 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x" style={{ borderColor: "#e2dfd6" }}>
-                {[
-                  { name: "Karan M., Pune", text: "No 3 PM energy crash by Day 5." },
-                  { name: "Priya T., Bengaluru", text: "Sleeping 45 min more. Tracked it." },
-                  { name: "Amit D., Delhi", text: "Zero bloating after 3 weeks." },
-                ].map(r => (
-                  <div key={r.name} className="flex flex-col gap-1 px-0 sm:px-4 py-2.5 sm:py-2 first:sm:pl-0 last:sm:pr-0 text-center lg:text-left">
-                    <div className="flex gap-0.5 justify-center lg:justify-start">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-                    <p className="text-xs leading-relaxed" style={{ color: "#4a4a52" }}>&ldquo;{r.text}&rdquo;</p>
-                    <p style={{ fontSize: 11, fontWeight: 700, color: "#18181b" }}>{r.name}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT — iPhone */}
-            <div className="lg:col-span-5 flex flex-col items-center gap-4 animate-fade-up delay-200">
-              <div className="relative">
-                <div className="absolute -top-3 -right-3 z-10 rounded-xl px-2.5 py-2 text-center" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 6px 20px rgba(0,0,0,0.1)" }}>
-                  <div className="flex gap-0.5 justify-center mb-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-                  <p style={{ fontSize: 11, fontWeight: 800, color: "#18181b" }}>400+ members</p>
+              {/* Social proof bar */}
+              <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start" style={{ borderTop: "1px solid #e2dfd6", paddingTop: 16 }}>
+                <div className="flex -space-x-1.5">
+                  {["🧑","👩","👨","👩","🧑"].map((e, i) => (
+                    <span key={i} className="w-8 h-8 rounded-full flex items-center justify-center text-sm border-2 border-white" style={{ background: `hsl(${i*60+40},55%,55%)` }}>{e}</span>
+                  ))}
                 </div>
-                <IPhoneFrame contactName="Daily Upgrade Club" contactStatus="online" width={256}>
-                  <WAChatBg>
-                    <WADateSep label="⚡ Energy Month · Day 3" />
-                    <WAIn title="⚡ Day 3 — Morning Sunlight" lines={["Good morning! Step outside for 5 min of natural sunlight within 30 min of waking.", "Why: Resets your cortisol rhythm. Controls energy all day.", "Reply DONE when you're back 💪"]} time="7:01 AM" />
-                    <WAOut text="✅ DONE — felt great!" time="7:09 AM" />
-                    <WAIn title="" lines={["🔥 Day 3 streak! See you tomorrow."]} time="7:10 AM" />
-                  </WAChatBg>
-                </IPhoneFrame>
+                <div>
+                  <div className="flex gap-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
+                  <p style={{ fontSize: 12, color: "#52525b", marginTop: 2 }}><strong style={{ color: "#18181b" }}>400+ members</strong> — 78% complete their monthly habit</p>
+                </div>
               </div>
             </div>
+
+            {/* RIGHT — full iPhone with animation */}
+            <div className="lg:col-span-5 flex justify-center items-start animate-fade-up delay-300 lg:-mt-10 mt-6">
+              <div className="relative">
+                <div className="absolute -right-4 lg:-right-52 top-1/3 z-20 sticky-note p-4 rounded-md tilt-right w-52 hidden lg:block">
+                  <p className="font-serif italic leading-snug" style={{ color: "#92400e" }}>
+                    <span className="text-2xl font-black not-italic block" style={{ fontFamily: "inherit" }}>₹1</span>
+                    <span className="text-sm block mt-0.5">for your first 7 days 🌱</span>
+                  </p>
+                </div>
+                <DUCPhone />
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* ══ 2. STATS BAR ═══════════════════════════════════════════════════════ */}
-      <section style={{ background: "#18181b", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-        <div className="max-w-4xl mx-auto px-5 py-4 grid grid-cols-2 sm:grid-cols-4 gap-px" style={{ background: "rgba(255,255,255,0.06)" }}>
-          {[["400+","Active Members"],["78%","Completion Rate"],["₹3/day","After Trial"],["5 min","Per Day Max"]].map(([v,l]) => (
-            <div key={l} className="text-center py-3 px-2" style={{ background: "#18181b" }}>
-              <p className="font-black text-xl sm:text-2xl" style={{ color: "#25d366" }}>{v}</p>
-              <p style={{ fontSize: 11, color: "#71717a" }}>{l}</p>
+      {/* ══ 2. STATS BAR ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#18181b" }}>
+        <div className="max-w-4xl mx-auto px-5 grid grid-cols-2 sm:grid-cols-4" style={{ gap: "1px", background: "rgba(255,255,255,0.06)" }}>
+          {[
+            ["400+","Active Members"],
+            ["78%","Monthly Completion"],
+            ["5 min","Per Day Maximum"],
+            ["₹3/day","After 7-Day Trial"],
+          ].map(([v, l]) => (
+            <div key={l} className="text-center py-5 px-3" style={{ background: "#18181b" }}>
+              <p className="font-black" style={{ fontSize: "clamp(1.8rem,4vw,2.4rem)", color: "#25d366", lineHeight: 1 }}>{v}</p>
+              <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 4 }}>{l}</p>
             </div>
           ))}
         </div>
       </section>
 
-      {/* ══ 3. WHAT IS DUC — visual-first ═══════════════════════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20">
-        <div className="max-w-5xl mx-auto px-5 lg:px-10">
+      {/* ══ 3. WHAT IS DUC ════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
-
             <div className="lg:col-span-6">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>What exactly is this?</p>
+              <p className="duc-label mb-3">What exactly is this?</p>
               <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>
-                A WhatsApp subscription that<br />
-                <span className="gradient-text">does the habit for you.</span>
+                India&apos;s only healthy habit subscription<br />
+                <span className="gradient-text">that works on WhatsApp.</span>
               </h2>
               <p className="duc-body mb-6">
-                Not a course. Not an app. Not a challenge.<br />
-                A system that <strong style={{ color: "#18181b" }}>shows up every morning</strong> so you don&apos;t have to rely on memory or motivation.
+                Not a course. Not an app. Not a challenge with a fancy PDF you never open.
+                A <strong style={{ color: "#18181b" }}>subscription that shows up for you every single morning</strong> — so you never have to rely on memory, motivation, or mood.
               </p>
-
-              {/* Visual 3-step flow */}
               <div className="flex flex-col gap-3">
                 {[
-                  { n: "1", icon: "🌅", bold: "7 AM", text: "One tiny healthy habit lands on WhatsApp" },
-                  { n: "2", icon: "✅", bold: "You do it", text: "Under 5 minutes. Any time of day." },
-                  { n: "3", icon: "💬", bold: "Reply DONE", text: "Streak updated. Tomorrow queued. Done." },
+                  { n: "1", icon: "🌅", bold: "7 AM every morning", text: "One tiny healthy habit arrives in your WhatsApp" },
+                  { n: "2", icon: "✅", bold: "Do it anytime", text: "Under 5 minutes. Before breakfast, during lunch, whenever." },
+                  { n: "3", icon: "💬", bold: "Reply DONE", text: "Your streak updates. Tomorrow's habit is already queued." },
                 ].map(s => (
-                  <div key={s.n} className="flex items-center gap-3 rounded-xl px-4 py-3" style={{ background: "#f8f8f6", border: "1px solid #e2dfd6" }}>
-                    <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0" style={{ background: "linear-gradient(135deg,#1da851,#25d366)" }}>{s.n}</div>
+                  <div key={s.n} className="flex items-center gap-3 rounded-xl px-4 py-3.5" style={{ background: "#f8f8f6", border: "1px solid #e2dfd6" }}>
+                    <div className="w-9 h-9 rounded-full flex items-center justify-center font-black text-white shrink-0" style={{ fontSize: 15, background: "linear-gradient(135deg,#1da851,#25d366)" }}>{s.n}</div>
                     <span className="text-xl">{s.icon}</span>
-                    <p style={{ fontSize: 13, color: "#18181b" }}><strong>{s.bold}</strong> — {s.text}</p>
+                    <p style={{ fontSize: 14, color: "#18181b" }}><strong>{s.bold}</strong> — {s.text}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-3 flex justify-center lg:justify-start">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border text-xs font-semibold" style={{ borderColor: "#e2dfd6", color: "#71717a" }}>🔁 Repeat 30 days. That&apos;s the whole system.</span>
+              <div className="mt-5 flex justify-center lg:justify-start">
+                <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border text-sm font-semibold" style={{ borderColor: "#e2dfd6", color: "#52525b" }}>🔁 Repeat 30 days. Watch your health transform.</span>
               </div>
             </div>
-
-            {/* At-a-glance card */}
             <div className="lg:col-span-6">
               <div className="rounded-2xl border p-5 sm:p-6" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.22)", boxShadow: "0 6px 24px rgba(37,211,102,0.07)" }}>
-                <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#1da851" }}>At a glance</p>
+                <p className="duc-label mb-4">At a glance</p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { icon: "📲", label: "Delivery", val: "WhatsApp only" },
@@ -387,124 +622,201 @@ export default function DailyUpgradeClubPage() {
                     { icon: "💰", label: "Price", val: "₹1 → ₹99/month" },
                   ].map(({ icon, label, val }) => (
                     <div key={label} className="flex items-center gap-2.5 rounded-xl px-3 py-2.5" style={{ background: "#fff", border: "1px solid rgba(37,211,102,0.12)" }}>
-                      <span className="text-base">{icon}</span>
+                      <span style={{ fontSize: 18 }}>{icon}</span>
                       <div>
                         <p style={{ fontSize: 10, color: "#71717a", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</p>
-                        <p style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>{val}</p>
+                        <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b" }}>{val}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
+              <div className="mt-5 flex justify-center lg:justify-start">
+                <CTA label="Show Me My First Habit →" sub="₹1 for 7 days · Cancel anytime" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 4. PAIN POINTS — Brunson "Does this sound like you?" ════════════════ */}
-      <section className="bg-section-cream py-14 lg:py-20">
-        <div className="max-w-3xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Be honest with yourself</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>Does this sound like you?</h2>
-            <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this was built for you.</p>
+      {/* ══ 4. PAIN POINTS ════════════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">Be honest with yourself</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Does this sound like you?</h2>
+            <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
               { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy." },
-              { icon: "🔄", text: "You start motivated, drop it by Day 4, and restart \"next Monday\"." },
-              { icon: "😵", text: "You try fixing diet, gym, and sleep all at once — and end up doing none." },
-              { icon: "🤷", text: "No accountability. The moment motivation dips, the habit disappears." },
-              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic. But doing nothing feels wrong." },
-              { icon: "📱", text: "You've downloaded the apps, bought the courses, bookmarked the articles." },
+              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week." },
+              { icon: "😵", text: "You try fixing sleep, diet, and gym all at once — and end up doing none of them." },
+              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears." },
+              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic for you — but doing nothing feels wrong." },
+              { icon: "📱", text: "You've downloaded 5 apps, bought 3 courses, and bookmarked 40 articles. Nothing stuck." },
             ].map((p, i) => (
-              <div key={i} className="flex items-start gap-3 bg-white border rounded-xl px-4 py-3.5 shadow-sm" style={{ borderColor: "#e2dfd6" }}>
-                <span className="text-xl shrink-0">{p.icon}</span>
+              <div key={i} className="flex items-start gap-3 bg-white border rounded-xl px-4 py-4 shadow-sm" style={{ borderColor: "#e2dfd6" }}>
+                <span style={{ fontSize: 22 }} className="shrink-0">{p.icon}</span>
                 <p className="duc-body">{p.text}</p>
               </div>
             ))}
           </div>
-          {/* Brunson reframe — "It's not your fault, it's the vehicle" */}
           <div className="mt-8 rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
-            <p className="font-bold" style={{ fontSize: 15, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
-            <p className="duc-body mt-1">It&apos;s a <strong style={{ color: "#1da851" }}>system problem</strong>. The right system makes discipline irrelevant.</p>
+            <p className="font-bold" style={{ fontSize: 16, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
+            <p className="duc-body mt-1.5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> The right system makes discipline irrelevant.</p>
           </div>
         </div>
       </section>
 
-      {/* ══ 5. BEFORE → AFTER ═════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20">
-        <div className="max-w-4xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>The shift</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
-            <p className="duc-body max-w-sm mx-auto">Same you. Same life. A completely different baseline.</p>
+      {/* ══ 5. BEFORE → AFTER ════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">The shift</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
+            <p className="duc-body max-w-sm mx-auto">Same you. Same schedule. A completely different baseline.</p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {/* Before */}
-            <div className="rounded-2xl border p-5" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
-              <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold mb-4" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5" }}>Day 0 — Today</div>
-              <div className="flex flex-col gap-2.5">
-                {["Low energy by 2 PM every day","Can't fall asleep — mind still racing","Bloating and gut issues that linger","Good intentions. Zero follow-through.","Stressed and reactive all morning","\"I'll start properly on Monday\""].map((b, i) => (
-                  <div key={i} className="flex items-center gap-2.5"><Check /><span className="duc-body">{b}</span></div>
+            <div className="rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
+              <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
+              <div className="flex flex-col gap-3">
+                {["Low energy by 2 PM daily","Can't fall asleep — mind racing at midnight","Bloating and gut discomfort that never leaves","Good intentions, zero follow-through on health","Stressed and reactive every morning","\"I'll start properly on Monday\""].map((b, i) => (
+                  <div key={i} className="flex items-center gap-3"><Check /><span className="duc-body">{b}</span></div>
                 ))}
               </div>
             </div>
-            {/* After */}
-            <div className="rounded-2xl border-2 p-5 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
+            <div className="rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
               <div className="relative">
-                <div className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold mb-4 badge-after">After 30 Days</div>
-                <div className="flex flex-col gap-2.5">
-                  {["Steady energy through the whole day","Falling asleep faster. Waking up rested.","Lighter digestion. No bloating.","One habit done daily — automatically.","Calmer, in control of your mornings.","You already started. And you kept going."].map((a, i) => (
-                    <div key={i} className="flex items-center gap-2.5"><Check green /><span className="duc-body" style={{ color: "#18181b", fontWeight: 500 }}>{a}</span></div>
+                <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
+                <div className="flex flex-col gap-3">
+                  {["Steady energy through 6 PM — no crash","Asleep in under 20 minutes. Waking rested.","Lighter digestion. Zero bloating. Finally.","One habit done daily — automatically.","Calmer, in control from the moment you wake.","You already started. And you kept going."].map((a, i) => (
+                    <div key={i} className="flex items-center gap-3"><Check green /><span className="duc-body font-medium" style={{ color: "#18181b" }}>{a}</span></div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="flex justify-center mt-8">
-            <CTA label="Start My 7-Day Trial — ₹1" sub="7 days for ₹1 · Then ₹99/month · Cancel anytime" />
+          <div className="flex justify-center mt-10">
+            <CTA label="I Want This Version of Myself →" sub="7 days for ₹1 · Then ₹99/month · Cancel anytime before Day 7" />
           </div>
         </div>
       </section>
 
-      {/* ══ 6. THE 8 MONTHLY THEMES — visual grid ════════════════════════════ */}
-      <section className="bg-section-cream py-14 lg:py-20">
-        <div className="max-w-5xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>8 Monthly Themes</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>You pick the area. We send the habits.</h2>
-            <p className="duc-body max-w-md mx-auto">One theme per month. 30 habits. Go deep — not wide.</p>
+      {/* ══ 6. 8 MONTHLY THEMES ═══════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">8 Monthly Themes</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Pick your area. Habits arrive daily.</h2>
+            <p className="duc-body max-w-md mx-auto">One theme per month. 30 habits. Go deep — not wide. Switch anytime.</p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { emoji: "😴", theme: "Sleep", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", tagline: "Fall asleep faster", habits: ["Phone outside bedroom","Wind-down breathing","Cold room trigger","No caffeine after 2"] },
-              { emoji: "⚡", theme: "Energy", color: "#d97706", bg: "#fffbeb", border: "#fde68a", tagline: "No 3 PM crash", habits: ["Morning sunlight 5 min","Cold water face splash","Protein-first breakfast","Stair walk after lunch"] },
-              { emoji: "🧠", theme: "Focus", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", tagline: "Sharper, deeper work", habits: ["1 priority each morning","Phone face-down at work","2-min task intention","Post-lunch walk"] },
-              { emoji: "🌿", theme: "Gut Health", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", tagline: "Less bloating", habits: ["1 spoon curd at lunch","Chew 20 times","Warm water on waking","No screen while eating"] },
-              { emoji: "🧘", theme: "Stress", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", tagline: "Calmer, less reactive", habits: ["Box breathing at desk","2-min gratitude note","No phone first 10 min","10-min outdoor walk"] },
-              { emoji: "💪", theme: "Fitness", color: "#ea580c", bg: "#fff7ed", border: "#fdba74", tagline: "Active without the gym", habits: ["10 pushups on waking","Stand every 45 min","Evening walk 20 min","1-min wall sit"] },
-              { emoji: "💧", theme: "Hydration", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", tagline: "More water, better all", habits: ["Water before coffee","Glass after toilet","3 PM hydration alarm","Track 8 glasses"] },
-              { emoji: "❤️", theme: "Heart", color: "#dc2626", bg: "#fff1f2", border: "#fecaca", tagline: "Long-term strength", habits: ["5-min brisk walk","Handful of nuts daily","Deep breathing 3×/day","Sit less, stand more"] },
-            ].map(({ emoji, theme, color, bg, border, tagline, habits }) => (
-              <div key={theme} className="rounded-xl border-2 p-3.5 flex flex-col gap-2.5 hover:shadow-sm transition-shadow" style={{ background: bg, borderColor: border }}>
-                <div className="flex items-center gap-2">
-                  <span className="text-xl">{emoji}</span>
-                  <div>
-                    <p style={{ fontSize: 12, fontWeight: 800, color }}>{theme}</p>
-                    <p style={{ fontSize: 10, color: "#71717a" }}>{tagline}</p>
+              {
+                emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested",
+                color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&q=80",
+                habits: [
+                  "The 90-second wind-down trigger that tells your brain 'sleep time' — even if you're on a screen till 10 PM",
+                  "The bedroom temperature secret top athletes use to fall asleep 37% faster",
+                  "Why sleeping with your phone nearby adds 47 minutes to your sleep onset",
+                  "The Japanese breathing technique that works better than melatonin",
+                ]
+              },
+              {
+                emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever",
+                color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80",
+                habits: [
+                  "The 5-min sunlight habit that controls your energy clock for the entire day (not vitamin D — something else)",
+                  "Why your first meal controls your energy till 4 PM — and the 1 change that fixes it",
+                  "The cold-water face trick Olympians use to kill the post-lunch slump in 60 seconds",
+                  "The exact staircase timing that resets your afternoon energy without caffeine",
+                ]
+              },
+              {
+                emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily",
+                color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80",
+                habits: [
+                  "The '1 priority rule' that Stanford researchers say doubles deep work output — takes 90 seconds every morning",
+                  "The posture shift that increases oxygen to your brain by 30% — without leaving your chair",
+                  "Why putting your phone face-down (not silent) changes your IQ score in cognitive tests",
+                  "The 2-minute 'intention ritual' before each task that makes procrastination neurologically impossible",
+                ]
+              },
+              {
+                emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy",
+                color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80",
+                habits: [
+                  "The one-spoon habit after lunch that eliminates bloating in 14 days — backed by 3 clinical trials",
+                  "Why chewing counts matter more than what you eat — the number that changes digestion completely",
+                  "The warm water timing on waking that activates your gut before food enters — used in Ayurveda and now in labs",
+                  "The screen-meal connection your doctor never told you about — and the fix takes zero effort",
+                ]
+              },
+              {
+                emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour",
+                color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80",
+                habits: [
+                  "The 4-count box breathing pattern Navy SEALs use before combat — works in 90 seconds at your desk",
+                  "Why your first 10 minutes with your phone every morning is setting your stress response for the whole day",
+                  "The 2-minute gratitude habit that changes your amygdala response — neuroscientists measured it",
+                  "How a 10-min outdoor walk after dinner does what 20mg of anxiety medication takes 4 weeks to do",
+                ]
+              },
+              {
+                emoji: "💪", theme: "Fitness", tagline: "Active without the gym",
+                color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80",
+                habits: [
+                  "The 10-pushup waking habit that fires up your metabolism before breakfast — takes 80 seconds",
+                  "The 'one flight rule' that burns the same calories as a 20-min jog over a week — no extra time needed",
+                  "Why standing for 5 mins every 45 mins adds 2 years to your life (Stanford longevity data)",
+                  "The 60-second wall sit that builds functional strength — used by marathoners and sedentary people alike",
+                ]
+              },
+              {
+                emoji: "💧", theme: "Hydration", tagline: "More water, better everything",
+                color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
+                habits: [
+                  "Why drinking water before your coffee is the single most impactful 30-second habit — backed by NHS data",
+                  "The toilet-water habit that takes 5 seconds and adds 500ml of daily hydration effortlessly",
+                  "The 3 PM hydration alarm trick that stops the afternoon energy drop before it starts",
+                  "Why tracking glasses isn't actually about water — it's about what dehydration does to your brain first",
+                ]
+              },
+              {
+                emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life",
+                color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=400&q=80",
+                habits: [
+                  "The 5-minute brisk walk that lowers your resting heart rate in 3 weeks — cardiologists prescribe this first",
+                  "Why a handful of walnuts daily does what 5 hours of cardio does for LDL cholesterol",
+                  "The deep breathing pattern that reduces blood pressure in 15 days — validated in a 2023 Harvard trial",
+                  "The sitting habit that's harming your cardiovascular system even if you exercise — and the 1-minute fix",
+                ]
+              },
+            ].map(({ emoji, theme, tagline, color, bg, border, img, habits }) => (
+              <div key={theme} className="rounded-2xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow" style={{ background: bg, border: `2px solid ${border}` }}>
+                {/* Image */}
+                <div className="relative h-36 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img} alt={theme} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${bg} 100%)` }} />
+                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                    <span style={{ fontSize: 22 }}>{emoji}</span>
+                    <div>
+                      <p style={{ fontSize: 14, fontWeight: 800, color, lineHeight: 1.1 }}>{theme}</p>
+                      <p style={{ fontSize: 11, color: "#52525b" }}>{tagline}</p>
+                    </div>
                   </div>
                 </div>
-                <div className="h-px" style={{ background: border }} />
-                <div className="flex flex-col gap-1">
-                  {habits.map(h => (
-                    <div key={h} className="flex items-start gap-1">
-                      <span style={{ fontSize: 9, color, flexShrink: 0, marginTop: 2 }}>→</span>
-                      <p style={{ fontSize: 10, color: "#52525b", lineHeight: 1.4 }}>{h}</p>
+                {/* Habits */}
+                <div className="p-3.5 flex flex-col gap-2 flex-1">
+                  <p style={{ fontSize: 11, fontWeight: 700, color: color, textTransform: "uppercase", letterSpacing: "0.08em" }}>Sample habits:</p>
+                  {habits.map((h, i) => (
+                    <div key={i} className="flex items-start gap-1.5">
+                      <span style={{ fontSize: 10, color, flexShrink: 0, marginTop: 3, fontWeight: 700 }}>→</span>
+                      <p style={{ fontSize: 11.5, color: "#3f3f46", lineHeight: 1.5 }}>{h}</p>
                     </div>
                   ))}
                 </div>
@@ -512,227 +824,181 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
 
-          <div className="mt-5 text-center">
-            <p className="text-xs" style={{ color: "#71717a" }}>📅 Pick your theme when you join. Switch every month — or stay on the same one. Your call.</p>
+          <p className="text-center mt-6" style={{ fontSize: 13, color: "#71717a" }}>📅 Pick your theme when you join. Switch every month or stay on the same one — completely your choice.</p>
+
+          <div className="flex justify-center mt-8">
+            <CTA label="Pick My First Theme →" sub="₹1 for 7 days · Then ₹99/month · Cancel before Day 7" />
           </div>
         </div>
       </section>
 
-      {/* ══ 7. REAL IPHONES — 3 themes ════════════════════════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-5 lg:px-10">
+      {/* ══ 7. REAL WA MESSAGES — 3 iPhones ════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>What lands in your WhatsApp</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>Real messages. Real days.</h2>
-            <p className="duc-body max-w-sm mx-auto">Specific. Science-backed. Doable in under 5 minutes.</p>
+            <p className="duc-label mb-3">What lands in your WhatsApp</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Real messages. Real habits.</h2>
+            <p className="duc-body max-w-sm mx-auto">Specific. Science-backed. Done in under 5 minutes. Explained so you actually understand why.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
             <div className="flex justify-center tilt-left">
-              <IPhoneFrame contactName="Daily Upgrade Club" contactStatus="online" width={256}>
-                <WAChatBg>
-                  <WADateSep label="⚡ Energy · Day 3" />
-                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight within 30 min of waking.","Why: Resets cortisol rhythm. Controls energy all day.","Reply DONE 💪"]} time="7:01 AM" />
-                  <WAOut text="✅ DONE — felt great!" time="7:08 AM" />
-                  <WAIn title="" lines={["🔥 Day 3 streak! See you tomorrow."]} time="7:09 AM" />
+              <StaticPhone>
+                <WAChatBg minH={400}>
+                  <WADateSep label="⚡ Energy Month · Day 3" />
+                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight hits the suprachiasmatic nucleus (your brain's clock). It resets cortisol and controls your energy rhythm for the entire day.","","💡 Not about Vitamin D. About timing.","Reply DONE when you're back 💪"]} time="7:01 AM" />
+                  <WAOut text="✅ DONE — felt great already!" time="7:09 AM" />
+                  <WAIn title="" lines={["🔥 Day 3 streak! The shift builds by Day 5. See you tomorrow."]} time="7:10 AM" />
                 </WAChatBg>
-              </IPhoneFrame>
+              </StaticPhone>
             </div>
+
             <div className="flex justify-center">
-              <IPhoneFrame contactName="Daily Upgrade Club" contactStatus="online" width={256}>
-                <WAChatBg>
-                  <WADateSep label="😴 Sleep · Day 11" />
-                  <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — phone charger outside the bedroom.","Why: Blue light suppresses melatonin for 2 hours. Just removing the phone improves sleep quality.","Set a reminder for 9:30 PM. Reply DONE 🌙"]} time="7:01 AM" />
-                  <WAOut text="✅ DONE — set the reminder" time="7:05 AM" />
-                  <WAIn title="" lines={["🔥 Day 11! Most notice a difference in 3–5 nights."]} time="7:06 AM" />
+              <StaticPhone>
+                <WAChatBg minH={400}>
+                  <WADateSep label="😴 Sleep Month · Day 11" />
+                  <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin production for up to 2 hours. But the real issue is the unconscious anticipation of notifications — it keeps your cortisol elevated even when the screen is off.","","Removing the device removes both problems. Set a 9:30 PM reminder now.","Reply DONE 🌙"]} time="7:01 AM" />
+                  <WAOut text="✅ Done — reminder is set" time="7:05 AM" />
+                  <WAIn title="" lines={["🔥 Day 11! Most members notice a difference within 3 nights."]} time="7:06 AM" />
                 </WAChatBg>
-              </IPhoneFrame>
+              </StaticPhone>
             </div>
+
             <div className="flex justify-center tilt-right">
-              <IPhoneFrame contactName="Daily Upgrade Club" contactStatus="online" width={256}>
-                <WAChatBg>
+              <StaticPhone>
+                <WAChatBg minH={400}>
                   <WADateSep label="🌿 Gut Health · Day 7" />
-                  <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch.","Why: Live cultures reduce bloating & improve digestion within 2 weeks.","Just one spoon. Reply DONE 🙌"]} time="7:01 AM" />
-                  <WAOut text="✅ DONE — with dal rice" time="1:22 PM" />
-                  <WAIn title="" lines={["Perfect 🙌 Day 7 complete! See you tomorrow."]} time="1:23 PM" />
+                  <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch — today.","","Why: The Lactobacillus strains in dahi reduce intestinal inflammation. Three clinical trials found 14 days of daily curd reduced bloating by 63% — comparable to probiotic supplements.","","One spoon. With lunch. That's it.","Reply DONE 🙌"]} time="7:01 AM" />
+                  <WAOut text="✅ Done — had it with dal rice" time="1:22 PM" />
+                  <WAIn title="" lines={["Perfect 🙌 Day 7 done! Same time tomorrow."]} time="1:23 PM" />
                 </WAChatBg>
-              </IPhoneFrame>
+              </StaticPhone>
             </div>
           </div>
 
-          <p className="text-center mt-8 text-xs" style={{ color: "#71717a" }}>
-            3 of 30 habits/month shown. Every habit: specific, explained, under 5 minutes.
-          </p>
-        </div>
-      </section>
-
-      {/* ══ 8. YOUR FIRST 7 DAYS ═══════════════════════════════════════════════ */}
-      <section style={{ background: "#18181b" }} className="py-14 lg:py-20 relative overflow-hidden">
-        <div className="absolute inset-0 sparkle-bg pointer-events-none opacity-20" />
-        <div className="max-w-4xl mx-auto px-5 lg:px-10 relative">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Your first 7 days</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#fff" }}>Day by day — what actually happens</h2>
-            <p style={{ fontSize: 13, color: "#a1a1aa" }}>Feel the difference by Day 7 or cancel — pay nothing more.</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {[
-              { day: "Day 1", emoji: "👋", title: "First habit arrives at 7 AM", feel: "\"That's it? That was easy.\"" },
-              { day: "Day 2", emoji: "🔥", title: "Streak begins. You see others post DONE.", feel: "\"I&apos;m not doing this alone.\"" },
-              { day: "Days 3–4", emoji: "⚡", title: "The habit starts feeling automatic", feel: "\"I'm already expecting it.\"" },
-              { day: "Day 5", emoji: "✨", title: "First physical shift noticed", feel: "\"Something actually changed.\"" },
-              { day: "Day 6", emoji: "🔔", title: "Trial reminder — cancel if you want", feel: "\"Full control. Zero pressure.\"" },
-              { day: "Day 7", emoji: "🎯", title: "You make your decision", feel: "\"Most people don&apos;t cancel.\"" },
-            ].map(({ day, emoji, title, feel }) => (
-              <div key={day} className="rounded-xl p-4 flex gap-3 items-center" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                <div className="w-10 h-10 rounded-full flex items-center justify-center text-base shrink-0" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 3px 10px rgba(37,211,102,0.3)" }}>{emoji}</div>
-                <div>
-                  <p style={{ fontSize: 10, fontWeight: 700, color: "#25d366", textTransform: "uppercase", letterSpacing: "0.08em" }}>{day}</p>
-                  <p style={{ fontSize: 13, fontWeight: 700, color: "#fff", marginTop: 1 }}>{title}</p>
-                  <p style={{ fontSize: 11, color: "#71717a", marginTop: 2, fontStyle: "italic" }}>{feel}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Start Day 1 Tomorrow — ₹1" sub="Cancel before Day 7 · Pay nothing more" />
+            <CTA label="Send My First Habit Tomorrow →" sub="₹1 for 7 days · Cancel before Day 7 · Pay nothing more" />
           </div>
         </div>
       </section>
 
-      {/* ══ 9. ROHAN'S STORY — Brunson Attractive Character / Epiphany Bridge ═ */}
-      <section className="bg-section-white py-16 lg:py-24 relative overflow-hidden">
-        <span className="emoji-deco float-1 top-20 right-6 text-2xl hidden lg:block" aria-hidden="true">👋</span>
-        <div className="max-w-5xl mx-auto px-5 lg:px-10">
+      {/* ══ 8. ROHAN'S STORY — Epiphany Bridge ══════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24 relative overflow-hidden">
+        <span className="emoji-deco float-2 top-20 right-6 text-3xl hidden lg:block" aria-hidden="true">👋</span>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-
-            {/* Photo */}
             <div className="lg:col-span-4">
               <div className="relative max-w-xs mx-auto lg:mx-0">
-                <div className="absolute -top-6 -right-3 z-20 sticky-note p-2.5 rounded-md tilt-right w-36 hidden sm:block">
-                  <p className="font-serif italic text-xs leading-snug" style={{ color: "#92400e" }}>&ldquo;Hi 👋 I built this!&rdquo;</p>
+                <div className="absolute -top-6 -right-3 z-20 sticky-note p-3 rounded-md tilt-right w-40 hidden sm:block">
+                  <p className="font-serif italic leading-snug" style={{ fontSize: 13, color: "#92400e" }}>&ldquo;Hi 👋 I built this!&rdquo;</p>
                 </div>
                 <div className="polaroid tilt-left">
                   <div className="aspect-square rounded-sm overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/rohan.png" alt="Rohan — Founder, Daily Upgrade Club" className="w-full h-full object-cover object-top" />
+                    <img src="/rohan.png" alt="Rohan — Founder" className="w-full h-full object-cover object-top" />
                   </div>
-                  <p className="text-center font-serif text-lg italic text-foreground mt-3">Rohan</p>
-                  <p className="text-center text-xs text-foreground-subtle mt-0.5">Founder, Daily Upgrade Club</p>
+                  <p className="text-center font-serif text-xl italic text-foreground mt-3">Rohan</p>
+                  <p className="text-center text-foreground-subtle mt-0.5" style={{ fontSize: 12 }}>Founder, Daily Upgrade Club</p>
                 </div>
               </div>
             </div>
-
-            {/* Epiphany Bridge copy — short, punchy, Brunson-style */}
             <div className="lg:col-span-8">
-              <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>👋 The founder</p>
+              <p className="duc-label mb-3">👋 The founder</p>
               <h2 className="duc-h2 mb-5" style={{ color: "#18181b" }}>
                 I built this because<br />
-                <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a" }}>I needed it first.</span>
+                <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a" }}>I was the problem I was trying to solve.</span>
               </h2>
-
-              {/* Brunson "False Belief #1" setup — their old story */}
-              <div className="space-y-3 duc-body">
-                <p>I was the person who <strong style={{ color: "#18181b" }}>knew everything about health and did none of it.</strong></p>
-                <p>47 bookmarked articles. Three abandoned apps. Every Monday was "the Monday I'd finally start."</p>
-                <p>I wasn&apos;t lazy. I was someone whose routines were always too big for real life.</p>
+              <div className="space-y-4 duc-body">
+                <p>I was the person who <strong style={{ color: "#18181b" }}>knew everything about health and did none of it.</strong> 47 bookmarked articles. Three abandoned apps. Every Monday was "the Monday I'd finally start."</p>
+                <p>I wasn&apos;t lazy. I was someone whose routines were always too big to survive real life.</p>
               </div>
-
-              {/* Epiphany — the aha moment */}
               <div className="my-5 pl-4 py-1" style={{ borderLeft: "3px solid #25d366" }}>
-                <p style={{ fontSize: 13, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.6 }}>
-                  &ldquo;BJ Fogg&apos;s Stanford research changed how I saw this: the people who built lasting habits made each one <em>so small it was impossible to fail.</em>&rdquo;
+                <p style={{ fontSize: 15, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.65 }}>
+                  &ldquo;BJ Fogg&apos;s Stanford research changed everything: the people who built lasting habits made each one so small it was <em>impossible to fail</em>. I tested this on myself — one habit, under 5 minutes, delivered to my phone at 7 AM. By Day 30 I hadn&apos;t broken the streak once.&rdquo;
                 </p>
               </div>
-
-              <div className="duc-body space-y-3">
-                <p>I tested it on myself. One habit. Under 5 minutes. Sent to my WhatsApp at 7 AM. By Day 30, I was sleeping better, more energetic, and hadn&apos;t broken the streak once.</p>
-                <p>I built Daily Upgrade Club to hand this system to you. <strong style={{ color: "#18181b" }}>400+ members</strong> have since done the same.</p>
-              </div>
-
+              <p className="duc-body">I built Daily Upgrade Club to hand this exact system to you. <strong style={{ color: "#18181b" }}>400+ members</strong> have since done the same thing — and reported changes they couldn&apos;t explain to their doctors.</p>
               <div className="mt-5 flex items-center gap-3">
-                <p className="font-serif italic text-lg" style={{ color: "#25d366" }}>— Rohan</p>
+                <p className="font-serif italic text-xl" style={{ color: "#25d366" }}>— Rohan</p>
                 <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
-                <p className="text-xs" style={{ color: "#71717a" }}>Founder, Daily Upgrade Club</p>
+                <p style={{ fontSize: 13, color: "#71717a" }}>Founder, Daily Upgrade Club</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 10. VALUE STACK — Brunson "The Stack" ══════════════════════════════ */}
-      <section className="bg-section-cream py-14 lg:py-20">
-        <div className="max-w-lg mx-auto px-5 lg:px-10">
+      {/* ══ 9. VALUE STACK — Brunson price cascade ═══════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-lg mx-auto px-6 lg:px-10">
           <div className="rounded-2xl border-2 bg-white overflow-hidden shadow-md" style={{ borderColor: "rgba(37,211,102,0.25)" }}>
-            <div className="text-center px-6 pt-7 pb-4">
-              <p className="text-xs font-bold uppercase tracking-widest mb-2" style={{ color: "#25d366" }}>Everything you get</p>
+            <div className="text-center px-6 pt-8 pb-4">
+              <p className="duc-label mb-2">Everything you get</p>
               <h2 className="duc-h2" style={{ color: "#18181b" }}>Your full membership</h2>
             </div>
             <div className="px-5 sm:px-8">
               {[
-                { emoji: "📲", name: "Daily habit on WhatsApp (30/month)", value: "₹2,999" },
+                { emoji: "📲", name: "Daily healthy habit on WhatsApp (30/month)", value: "₹2,999" },
                 { emoji: "🎯", name: "Monthly theme + 30-day habit calendar", value: "₹1,799" },
                 { emoji: "📊", name: "Weekly health scorecard", value: "₹999" },
                 { emoji: "👥", name: "Private WhatsApp accountability group", value: "₹999" },
-                { emoji: "🗓️", name: "Monthly PDF guide — all 30 habits", value: "₹499" },
-                { emoji: "🏆", name: "Full habit vault — 90+ habits forever", value: "₹999" },
+                { emoji: "🗓️", name: "Monthly PDF guide — all 30 habits explained", value: "₹499" },
+                { emoji: "🏆", name: "Full habit vault — 90+ habits, forever", value: "₹999" },
                 { emoji: "📩", name: "Weekly wellness newsletter", value: "₹199" },
               ].map(it => (
-                <div key={it.name} className="flex items-center justify-between gap-3 py-3" style={{ borderTop: "1px solid #efece4" }}>
+                <div key={it.name} className="flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid #efece4" }}>
                   <div className="flex items-center gap-2.5 min-w-0">
-                    <span className="text-base shrink-0">{it.emoji}</span>
-                    <span style={{ fontSize: 12, color: "#18181b" }}>{it.name}</span>
+                    <span style={{ fontSize: 18 }} className="shrink-0">{it.emoji}</span>
+                    <span style={{ fontSize: 13, color: "#18181b" }}>{it.name}</span>
                   </div>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#71717a", flexShrink: 0 }}>{it.value}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#71717a", flexShrink: 0 }}>{it.value}</span>
                 </div>
               ))}
               <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid #e2dfd6", background: "#fafafa" }}>
-                <span style={{ fontSize: 11, fontWeight: 700, color: "#71717a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
-                <span className="font-black line-through" style={{ fontSize: 16, color: "#71717a" }}>₹8,493/month</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#71717a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
+                <span className="font-black line-through" style={{ fontSize: 17, color: "#71717a" }}>₹8,493/month</span>
               </div>
             </div>
-
-            {/* Brunson price cascade */}
-            <div className="text-center px-5 sm:px-8 pt-5 pb-7">
+            <div className="text-center px-5 sm:px-8 pt-5 pb-8">
               <div className="flex flex-col gap-1 mb-4">
                 {["Not ₹8,493","Not ₹4,999","Not ₹299"].map(s => (
-                  <p key={s} style={{ fontSize: 13, color: "#a1a1aa", textDecoration: "line-through" }}>{s}</p>
+                  <p key={s} style={{ fontSize: 14, color: "#a1a1aa", textDecoration: "line-through" }}>{s}</p>
                 ))}
               </div>
-              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,6rem)", color: "#25d366", textShadow: "0 0 32px rgba(37,211,102,0.2)" }}>₹1</p>
-              <p style={{ fontSize: 12, color: "#71717a" }} className="mb-5">for your first 7 days · then ₹99/month</p>
-              <CTA label="Yes — Start My Trial for ₹1 →" sub="Cancel before Day 7 · Pay nothing more" />
+              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,5.5rem)", color: "#25d366", textShadow: "0 0 32px rgba(37,211,102,0.2)" }}>₹1</p>
+              <p style={{ fontSize: 13, color: "#71717a" }} className="mb-6">for your first 7 days · then ₹99/month</p>
+              <CTA label="Get Everything — Start for ₹1 →" sub="Cancel before Day 7 · Pay nothing more" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 11. 3 FALSE BELIEFS — Brunson core framework ═══════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20">
-        <div className="max-w-3xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Why you&apos;re still hesitating</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>3 beliefs that are holding you back</h2>
-            <p className="duc-body max-w-sm mx-auto">And exactly why none of them should stop you today.</p>
+      {/* ══ 10. 3 FALSE BELIEFS ══════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">Why you&apos;re still hesitating</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>3 beliefs holding you back</h2>
+            <p className="duc-body max-w-sm mx-auto">And exactly why none of them should stop you from starting today.</p>
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { n: "01", belief: "\"One tiny habit can't actually change my health.\"", truth: "A Stanford study found that habits done for 30 days straight rewire the brain. Members who started with just \"5 min of morning sunlight\" ended the month sleeping better and moving more — without being told to.", icon: "🧠" },
-              { n: "02", belief: "\"I've tried this before. I always quit.\"", truth: "You quit because the habit was too big, not because you're broken. When it takes under 5 minutes and arrives automatically — you don't need motivation. Our members average 78% completion. First month.", icon: "🔄" },
-              { n: "03", belief: "\"₹99/month feels risky if I don't use it.\"", truth: "That's why the trial is ₹1. You don't decide based on a description. You decide after 7 mornings of real habits. If nothing shifts — cancel. Pay nothing more. You risk ₹1. I risk my reputation.", icon: "💰" },
+              { n: "01", belief: "\"One tiny habit can't actually change my health.\"", truth: "A Stanford study found that habits done for 30 consecutive days rewire neural pathways — permanently. Members who started with just morning sunlight ended the month sleeping better, eating better, and moving more. None of those were the habit. The habit built the momentum.", icon: "🧠" },
+              { n: "02", belief: "\"I've tried this before. I always quit eventually.\"", truth: "You quit because the habit was too big, too vague, or required willpower you didn't have that day. When a habit takes under 5 minutes, arrives automatically, and you only need to reply DONE — there's nothing to quit. Our members average 78% completion in month one.", icon: "🔄" },
+              { n: "03", belief: "\"₹99/month feels risky if I don't stay consistent.\"", truth: "That's exactly why the trial is ₹1. You're not committing to ₹99 based on a description. You're committing ₹1 to experience 7 real mornings. If nothing shifts — cancel. Pay nothing more. You risk a single rupee. I risk my reputation.", icon: "💰" },
             ].map(({ n, belief, truth, icon }) => (
               <div key={n} className="rounded-xl overflow-hidden" style={{ border: "1px solid #e2dfd6" }}>
-                <div className="flex items-start gap-3 px-4 py-3.5" style={{ background: "#fff7f7", borderBottom: "1px solid #fecaca" }}>
-                  <span className="text-base shrink-0">{icon}</span>
+                <div className="flex items-start gap-3 px-5 py-4" style={{ background: "#fff7f7", borderBottom: "1px solid #fecaca" }}>
+                  <span style={{ fontSize: 20 }} className="shrink-0">{icon}</span>
                   <div>
-                    <span style={{ fontSize: 10, fontWeight: 700, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.08em" }}>False Belief {n}</span>
-                    <p style={{ fontSize: 13, fontWeight: 600, color: "#dc2626", marginTop: 2 }}>{belief}</p>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#dc2626", textTransform: "uppercase", letterSpacing: "0.08em" }}>False Belief {n}</span>
+                    <p style={{ fontSize: 14, fontWeight: 600, color: "#dc2626", marginTop: 2, lineHeight: 1.4 }}>{belief}</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 px-4 py-3.5 bg-white">
-                  <span className="text-base shrink-0">✅</span>
+                <div className="flex items-start gap-3 px-5 py-4 bg-white">
+                  <span style={{ fontSize: 18 }} className="shrink-0">✅</span>
                   <p className="duc-body">{truth}</p>
                 </div>
               </div>
@@ -741,22 +1007,22 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 12. "IF ALL THIS DID WAS" — Brunson close ══════════════════════════ */}
-      <section className="bg-section-cream py-14 lg:py-20">
-        <div className="max-w-3xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Think about this</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>Any one of these alone would be worth it.</h2>
+      {/* ══ 11. "IF ALL THIS DID WAS" ════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">Think about this</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Any one of these alone would be worth it.</h2>
           </div>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-4">
             {[
-              { icon: "⚡", bold: "give you steady energy to get through your day without needing caffeine every 2 hours", cta: "— would ₹1 to find out be worth it?" },
-              { icon: "🔄", bold: "make you the person who actually follows through on their health — every month, not just January", cta: "— would ₹99/month be worth it?" },
-              { icon: "🌱", bold: "help you wake up 6 months from now and say \"I'm genuinely taking care of myself\" — and mean it", cta: "— what would that be worth?" },
+              { icon: "⚡", bold: "give you steady energy from 7 AM to 6 PM — without needing caffeine every 2 hours", cta: "— would ₹1 to find out be worth it?" },
+              { icon: "🔄", bold: "make you the person who actually follows through on their health, every month — not just January", cta: "— would ₹99/month be worth it?" },
+              { icon: "🌱", bold: "help you wake up 6 months from now and genuinely say \"I take care of myself\" — and mean it", cta: "— what would that moment be worth to you?" },
             ].map(({ icon, bold, cta }, i) => (
-              <div key={i} className="rounded-xl px-5 py-4 bg-white flex gap-3 items-start shadow-sm" style={{ border: "1px solid #e2dfd6" }}>
-                <span className="text-2xl shrink-0">{icon}</span>
-                <p style={{ fontSize: 13, color: "#4a4a52", lineHeight: 1.6 }}>
+              <div key={i} className="rounded-xl px-6 py-5 bg-white flex gap-3 items-start shadow-sm" style={{ border: "1px solid #e2dfd6" }}>
+                <span style={{ fontSize: 26 }} className="shrink-0">{icon}</span>
+                <p style={{ fontSize: 15, color: "#4a4a52", lineHeight: 1.65 }}>
                   <span style={{ color: "#a1a1aa" }}>If all this did was </span>
                   <strong style={{ color: "#18181b" }}>{bold}</strong>
                   <span style={{ color: "#71717a" }}> {cta}</span>
@@ -767,12 +1033,12 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 13. TESTIMONIALS ════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20">
-        <div className="max-w-4xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Wall of love 💛</p>
-            <h2 className="duc-h2 mb-2" style={{ color: "#18181b" }}>Real people. Specific results.</h2>
+      {/* ══ 12. TESTIMONIALS ════════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">Wall of love 💛</p>
+            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Real people. Specific results.</h2>
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {[
@@ -783,138 +1049,136 @@ export default function DailyUpgradeClubPage() {
               { name: "Ravi S.", city: "Hyderabad", theme: "Stress Month", result: "Calmer mornings · Day 8", text: "2-minute box breathing before meetings changed everything. I start controlled now, not stressed." },
               { name: "Meera K.", city: "Chennai", theme: "Energy Month", result: "Back to gym · Day 19", text: "The morning sunlight habit made me feel like a healthy person again. By Day 19 I was back at the gym." },
             ].map(({ name, city, theme, result, text }) => (
-              <div key={name} className="break-inside-avoid mb-4 rounded-xl p-4 bg-white flex flex-col gap-2.5" style={{ border: "1px solid #e2dfd6", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+              <div key={name} className="break-inside-avoid mb-4 rounded-xl p-5 bg-white flex flex-col gap-3" style={{ border: "1px solid #e2dfd6", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
                 <div className="flex gap-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-                <div className="px-2.5 py-1.5 rounded-lg text-xs font-bold" style={{ background: "rgba(37,211,102,0.1)", color: "#1da851" }}>📌 {result}</div>
-                <p style={{ fontSize: 12.5, color: "#4a4a52", lineHeight: 1.6 }}>&ldquo;{text}&rdquo;</p>
-                <div className="flex items-center gap-2 pt-1.5" style={{ borderTop: "1px solid #f4f4f5" }}>
-                  <div className="w-7 h-7 rounded-full flex items-center justify-center font-bold text-white shrink-0" style={{ fontSize: 10, background: `hsl(${(name.charCodeAt(0) * 37) % 360},55%,48%)` }}>{name[0]}</div>
+                <div className="px-3 py-1.5 rounded-lg font-bold" style={{ background: "rgba(37,211,102,0.1)", color: "#1da851", fontSize: 12 }}>📌 {result}</div>
+                <p style={{ fontSize: 14, color: "#4a4a52", lineHeight: 1.65 }}>&ldquo;{text}&rdquo;</p>
+                <div className="flex items-center gap-2 pt-2" style={{ borderTop: "1px solid #f4f4f5" }}>
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-bold text-white shrink-0" style={{ fontSize: 11, background: `hsl(${(name.charCodeAt(0) * 37) % 360},55%,48%)` }}>{name[0]}</div>
                   <div>
-                    <p style={{ fontSize: 11, fontWeight: 700, color: "#18181b" }}>{name} · {city}</p>
-                    <p style={{ fontSize: 10, color: "#71717a" }}>{theme}</p>
+                    <p style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>{name} · {city}</p>
+                    <p style={{ fontSize: 11, color: "#71717a" }}>{theme}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="I Want Results Like These →" sub="₹1 for 7 days · Then ₹99/month · Cancel anytime" />
+          </div>
         </div>
       </section>
 
-      {/* ══ 14. GUARANTEE — Brunson risk reversal ══════════════════════════════ */}
-      <section className="bg-section-cream py-14 lg:py-20">
-        <div className="max-w-3xl mx-auto px-5 lg:px-10">
+      {/* ══ 13. GUARANTEE ════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="rounded-2xl premium-card p-7 sm:p-10 border-glow relative overflow-hidden">
             <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full" style={{ background: "rgba(37,211,102,0.07)" }} aria-hidden="true" />
             <div className="relative">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.2)" }}>🛡️</div>
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.2)", fontSize: 26 }}>🛡️</div>
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-widest" style={{ color: "#25d366" }}>Zero-risk promise</p>
-                  <h2 className="duc-h2 mt-0.5" style={{ color: "#18181b" }}>You have nothing to lose.</h2>
+                  <p className="duc-label mb-1">Zero-risk promise</p>
+                  <h2 className="duc-h2" style={{ color: "#18181b" }}>You have nothing to lose.</h2>
                 </div>
               </div>
-
-              <div className="grid grid-cols-2 gap-3 mb-6">
+              <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
                   { icon: "🔒", t: "No hidden charges", b: "₹1 trial. ₹99/month. Nothing else." },
-                  { icon: "📵", t: "No spam", b: "One WA message/morning. That's it." },
-                  { icon: "📞", t: "No pressure calls", b: "No one will call to upsell you." },
-                  { icon: "🚪", t: "One-tap cancel", b: "Reply STOP or cancel in Razorpay." },
+                  { icon: "📵", t: "No spam ever", b: "One WA message each morning. That's it." },
+                  { icon: "📞", t: "No pressure calls", b: "No one will call to upsell you. Ever." },
+                  { icon: "🚪", t: "One-tap cancel", b: "Reply STOP or cancel in Razorpay instantly." },
                 ].map(({ icon, t, b }) => (
-                  <div key={t} className="flex items-start gap-2.5">
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center text-base shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.15)" }}>{icon}</div>
+                  <div key={t} className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.15)" }}>{icon}</div>
                     <div>
-                      <p style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>{t}</p>
-                      <p style={{ fontSize: 11, color: "#71717a", marginTop: 1 }}>{b}</p>
+                      <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b" }}>{t}</p>
+                      <p style={{ fontSize: 12, color: "#71717a", marginTop: 2 }}>{b}</p>
                     </div>
                   </div>
                 ))}
               </div>
-
-              {/* Personal commitment */}
-              <div className="rounded-xl p-4 mb-6" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.18)" }}>
+              <div className="rounded-xl p-5 mb-7" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.18)" }}>
                 <div className="flex items-start gap-3">
-                  <span className="text-2xl shrink-0">🤝</span>
+                  <span style={{ fontSize: 24 }} className="shrink-0">🤝</span>
                   <div>
-                    <p className="text-xs font-bold uppercase tracking-widest mb-1.5" style={{ color: "#25d366" }}>Rohan&apos;s personal commitment</p>
-                    <p style={{ fontSize: 13, fontStyle: "italic", color: "#18181b", lineHeight: 1.6 }}>
-                      &ldquo;Do all 7 days. If you don&apos;t feel a single shift — message me directly. I&apos;ll refund your ₹1 and spend 20 minutes with you personally figuring out why.&rdquo;
+                    <p className="duc-label mb-1.5">Rohan&apos;s personal commitment</p>
+                    <p style={{ fontSize: 14, fontStyle: "italic", color: "#18181b", lineHeight: 1.65 }}>
+                      &ldquo;Do all 7 days. If you don&apos;t feel a single shift — message me directly. I&apos;ll refund your ₹1 and spend 20 minutes with you personally figuring out what happened.&rdquo;
                     </p>
-                    <p className="mt-1.5 text-xs" style={{ color: "#71717a" }}>— Rohan, Founder</p>
+                    <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>— Rohan, Founder</p>
                   </div>
                 </div>
               </div>
-
               <div className="text-center">
-                <p style={{ fontSize: 13, color: "#71717a", marginBottom: 16 }}>
+                <p style={{ fontSize: 14, color: "#71717a", marginBottom: 20 }}>
                   Worst case: 35 minutes over 7 days, 1–2 habits that stick for life, and you never hear from us again.
                 </p>
-                <CTA label="Yes — Start My 7-Day Trial for ₹1" sub="Cancel anytime before Day 7 · Pay nothing more" />
+                <CTA label="Yes — I Have Nothing to Lose →" sub="₹1 for 7 days · Cancel before Day 7 · Pay nothing more" />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 15. FAQ ═════════════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-14 lg:py-20">
-        <div className="max-w-2xl mx-auto px-5 lg:px-10">
-          <div className="text-center mb-8">
-            <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>FAQ</p>
+      {/* ══ 14. FAQ ══════════════════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-2xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">FAQ</p>
             <h2 className="duc-h2" style={{ color: "#18181b" }}>Every question answered</h2>
           </div>
           <div className="flex flex-col gap-2">
             {[
-              { q: "What exactly is a 'tiny healthy habit'?", a: "One specific, science-backed action under 5 minutes, tied to your monthly theme. E.g. 5 min morning sunlight (Energy), one spoon curd at lunch (Gut Health), phone outside bedroom (Sleep), box breathing before a meeting (Stress). Specific. Explained. Doable today." },
-              { q: "What happens on Day 1?", a: "The morning after you join, at 7 AM, your first habit lands on WhatsApp. Read it, do it, reply DONE. Your streak starts. That's it." },
-              { q: "How do I choose my monthly theme?", a: "After joining, you pick Sleep, Energy, Focus, Gut Health, Stress, Fitness, Hydration, or Heart Health. All 30 habits that month focus on that area. Switch next month or repeat." },
-              { q: "What if I miss a day?", a: "Nothing bad happens. One missed day doesn't end your streak or subscription. You get a gentle evening nudge if you haven't replied by 8 PM." },
-              { q: "What happens after 7 days?", a: "If you don't cancel before Day 7, ₹99/month begins. You'll get a Day 6 reminder so there's no surprise. Cancel anytime from Razorpay — one tap, no questions." },
-              { q: "Do I need to download anything?", a: "No. Everything is on WhatsApp. Save our number, habits arrive every morning." },
-              { q: "What does ₹99/month actually get me?", a: "30 daily WA habits, your chosen monthly theme + PDF guide, weekly health scorecard, private accountability group, full 90+ habit vault, and weekly wellness newsletter. Everything. Every month." },
-              { q: "I've failed at habits before. Why will this be different?", a: "The habit arrives automatically — you don't have to remember or plan. And it's small enough that even on your worst day, 5 minutes is always possible. The system does the heavy lifting. You just reply DONE." },
+              { q: "What exactly is a 'tiny healthy habit'?", a: "One specific, science-backed action under 5 minutes, tied to your monthly theme. For example: 5 min of morning sunlight (Energy Month), one spoon of plain curd at lunch (Gut Health Month), phone charger outside the bedroom (Sleep Month), box breathing before a meeting (Stress Month). Every habit is specific, explained, and doable today." },
+              { q: "What happens on Day 1?", a: "The morning after you join, at 7 AM, your first habit lands on WhatsApp. You read it, do it, reply DONE. Your streak begins. That's the entire Day 1." },
+              { q: "How do I choose my monthly theme?", a: "After joining, you pick from 8 themes: Sleep, Energy, Focus, Gut Health, Stress, Fitness, Hydration, or Heart Health. All 30 habits that month focus on that one area. You can switch next month or repeat the same theme." },
+              { q: "What if I miss a day?", a: "Nothing bad happens. One missed day doesn't end your streak or subscription. You get a gentle evening nudge if you haven't replied by 8 PM. Missing a day occasionally is normal — the system is designed for real life." },
+              { q: "What happens after 7 days?", a: "If you don't cancel before Day 7, ₹99/month begins. You'll get a Day 6 reminder so there's zero surprise. Cancel anytime from Razorpay — one tap, no questions asked, no calls." },
+              { q: "Do I need to download anything?", a: "No app. No download. Everything is on WhatsApp. Save the number when you join, and habits arrive every morning." },
+              { q: "Is this a 7-day or 30-day programme?", a: "It's a monthly healthy habit subscription — 30 habits per month, one per day, on your chosen theme. The 7-day trial is just so you can experience it before committing. After Day 7, your subscription continues as long as you want it to." },
+              { q: "I've failed at habits before. Why will this be different?", a: "The habit arrives automatically so you never have to remember or plan. It takes under 5 minutes so even on your worst day it's possible. You reply DONE so there's a completion signal. And the habit is so specific you never wonder what to do. That's why 78% of members complete their monthly habit — the system does the work, not willpower." },
             ].map(({ q, a }) => <FAQ key={q} q={q} a={a} />)}
           </div>
         </div>
       </section>
 
-      {/* ══ 16. FINAL CLOSE — Brunson urgency + P.S. ═══════════════════════════ */}
-      <section className="relative overflow-hidden py-16 lg:py-24" style={{ background: "#18181b" }}>
+      {/* ══ 15. FINAL CLOSE ═════════════════════════════════════════════════ */}
+      <section className="relative overflow-hidden py-20 lg:py-28" style={{ background: "#18181b" }}>
         <div className="absolute inset-0 sparkle-bg pointer-events-none opacity-30" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(37,211,102,0.08),transparent 70%)" }} />
-        <div className="max-w-xl mx-auto px-5 text-center relative">
-          <p className="text-4xl mb-5">🌱</p>
-          <h2 className="duc-h1 mb-4" style={{ color: "#fff" }}>
+        <div className="max-w-xl mx-auto px-6 text-center relative">
+          <p style={{ fontSize: 44 }} className="mb-5">🌱</p>
+          <h2 className="duc-h1 mb-5" style={{ color: "#fff" }}>
             One tiny healthy habit.<br />Tomorrow morning.<br />
             <span style={{ color: "#25d366" }}>On your WhatsApp.</span>
           </h2>
-          <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.7, marginBottom: 28 }}>
+          <p style={{ fontSize: 16, color: "#a1a1aa", lineHeight: 1.75, marginBottom: 32 }}>
             30 days from now, you could be the person who says<br />
-            <em style={{ color: "#e4e4e7" }}>&ldquo;I&apos;m actually taking care of myself.&rdquo;</em><br /><br />
+            <em style={{ color: "#e4e4e7" }}>&ldquo;I&apos;m actually taking care of myself.&rdquo;</em>
+            <br /><br />
             Or you could keep planning to start next Monday.<br />
             <strong style={{ color: "#e4e4e7" }}>₹1 decides which one.</strong>
           </p>
           <CTA label="Yes — Start My Trial for ₹1 →" sub="7 days for ₹1 · Then ₹99/month · Cancel before Day 7" />
-          <p className="text-xs mt-4" style={{ color: "#52525b" }}>
+          <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Questions?{" "}
             <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Daily+Upgrade+Club" className="underline" style={{ color: "#25d366" }}>Chat with Rohan on WhatsApp</a>
           </p>
-
-          {/* Brunson P.S. */}
-          <div className="mt-10 rounded-xl p-5 text-left" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
-            <p style={{ fontSize: 12.5, color: "#a1a1aa", lineHeight: 1.7 }}>
-              <strong style={{ color: "#e4e4e7" }}>P.S.</strong> — The cost of doing nothing is not ₹0. Every month you spend feeling low energy, sleeping poorly, or saying &ldquo;I&apos;ll start next week&rdquo; has a real cost in how you feel and what you&apos;re capable of. The trial costs ₹1. The real question isn&apos;t whether ₹1 is worth it. It&apos;s: how long do you want to keep waiting?
+          <div className="mt-10 rounded-xl p-6 text-left" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
+            <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.75 }}>
+              <strong style={{ color: "#e4e4e7" }}>P.S.</strong> — The cost of doing nothing is not ₹0. Every month you spend feeling low energy, sleeping poorly, or saying &ldquo;I&apos;ll start next week&rdquo; has a real cost — in how you feel, what you achieve, and who you become. The trial costs ₹1. The real question isn&apos;t whether ₹1 is worth it. It&apos;s: how long do you want to keep waiting?
             </p>
           </div>
         </div>
       </section>
 
       <footer className="px-5 py-6 text-center" style={{ background: "#0a0a0a", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
-        <p style={{ fontSize: 11, color: "#52525b" }}>
+        <p style={{ fontSize: 12, color: "#52525b" }}>
           © {new Date().getFullYear()} Daily Upgrade Club ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
-        <p style={{ fontSize: 11, color: "#3f3f46", marginTop: 4 }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
+        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
       </footer>
 
       <StickyBottomCTA />

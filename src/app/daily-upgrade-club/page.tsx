@@ -444,19 +444,23 @@ function TrialPopup() {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" /></svg>
             </button>
             <p className="text-3xl mb-2">🌱</p>
-            <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>Still thinking about it?</h2>
-            <p className="mt-1.5 leading-relaxed" style={{ fontSize: 12, color: "rgba(255,255,255,0.9)" }}>7 days · 1 tiny healthy habit/day · WhatsApp · ₹1</p>
+            <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>Your first healthy habit is waiting</h2>
           </div>
-          <div className="px-5 py-5 text-center">
-            <div className="flex flex-col gap-1.5 mb-4 text-left">
-              {["Under 5 min a day","One WhatsApp message per morning","Cancel before Day 7 — pay ₹0 more"].map(t => (
-                <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}><Check green />{t}</div>
+          <div className="px-6 py-5 text-center">
+            <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 16 }}>
+              Join Daily Upgrade Club for just <strong style={{ color: "#18181b" }}>₹1 today</strong> and get 1 science-backed tiny healthy habit every morning on WhatsApp — with accountability, streaks and guidance to keep you consistent.
+            </p>
+            <div className="flex flex-col gap-2 mb-5 text-left">
+              {["No complicated routines", "Under 5 minutes a day", "Cancel anytime"].map(t => (
+                <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}>
+                  <span style={{ color: "#25d366", fontWeight: 700 }}>✅</span>{t}
+                </div>
               ))}
             </div>
-            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-full font-black text-white btn-primary" style={{ fontSize: 14 }}>
-              <WAIcon size={16} />Yes — Start My Trial for ₹1 →
+            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)" }}>
+              <WAIcon size={18} />Start My ₹1 Trial →
             </a>
-            <button onClick={dismiss} className="mt-2.5 cursor-pointer" style={{ fontSize: 12, color: "#a1a1aa" }}>No thanks</button>
+            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>Then ₹99/month · Cancel anytime</p>
           </div>
         </div>
       </div>

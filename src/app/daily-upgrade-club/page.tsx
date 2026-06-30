@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const JOIN_URL = "https://rzp.io/l/daily-upgrade-club";
 
-// ── Primitives ─────────────────────────────────────────────────────────────
+// ── Icons ─────────────────────────────────────────────────────────────────────
 function WAIcon({ size = 20 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 32 32" fill="none" aria-hidden="true">
       <circle cx="16" cy="16" r="16" fill="#25d366" />
-      <path d="M22.94 9.06A9.75 9.75 0 0 0 16 6.25C10.89 6.25 6.75 10.39 6.75 15.5c0 1.63.43 3.21 1.24 4.62L6.6 25.4l5.42-1.42a9.75 9.75 0 0 0 4.97 1.37c5.11 0 9.25-4.14 9.25-9.25a9.2 9.2 0 0 0-3.3-7.04Zm-6.94 14.2a8.1 8.1 0 0 1-4.12-1.12l-.3-.17-3.06.8.82-2.98-.2-.31A8.1 8.1 0 0 1 7.9 15.5c0-4.47 3.63-8.1 8.1-8.1a8.1 8.1 0 0 1 8.1 8.1c0 4.47-3.63 8.1-8.1 8.1Zm4.44-6.07c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06a6.57 6.57 0 0 1-1.93-1.19 7.24 7.24 0 0 1-1.34-1.66c-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z" fill="#fff" />
+      <path d="M22.94 9.06A9.75 9.75 0 0 0 16 6.25C10.89 6.25 6.75 10.39 6.75 15.5c0 1.63.43 3.21 1.24 4.62L6.6 25.4l5.42-1.42a9.75 9.75 0 0 0 4.97 1.37c5.11 0 9.25-4.14 9.25-9.25a9.2 9.2 0 0 0-3.3-7.04Zm-6.94 14.2a8.1 8.1 0 0 1-4.12-1.12l-.3-.17-3.06.8.82-2.98-.2-.31A8.1 8.1 0 0 1 7.9 15.5c0-4.47 3.63-8.1 8.1-8.1a8.1 8.1 0 0 1 8.1 8.1c0 4.47-3.63 8.1-8.1 8.1Zm4.44-6.07c-.24-.12-1.43-.7-1.65-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06a6.57 6.57 0 0 1-1.93-1.19 7.24 7.24 0 0 1-1.34-1.66c-.14-.24-.01-.37.1-.49.1-.1.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.46-.4-.4-.54-.4h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.43-.59 1.63-1.15.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z" fill="#fff"/>
     </svg>
   );
 }
@@ -21,17 +21,27 @@ function Star() {
   );
 }
 
+function Check({ color = "#1da851" }: { color?: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+      <circle cx="10" cy="10" r="10" fill={color} />
+      <path d="M6 10l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+// ── CTA button ────────────────────────────────────────────────────────────────
 function CTA({ label, sub, size = "md" }: { label: string; sub?: string; size?: "sm" | "md" | "lg" }) {
   const py = size === "lg" ? "py-5" : size === "sm" ? "py-3" : "py-4";
-  const fontSize = size === "lg" ? "1.05rem" : "0.95rem";
+  const text = size === "lg" ? "text-lg" : "text-base";
   return (
     <div className="flex flex-col items-center gap-2">
       <a
         href={JOIN_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center justify-center gap-2.5 w-full max-w-sm px-7 ${py} rounded-full font-black text-white transition-transform active:scale-95`}
-        style={{ background: "linear-gradient(135deg,#1aad4e 0%,#25d366 100%)", boxShadow: "0 6px 30px rgba(37,211,102,0.42)", fontSize }}
+        className={`inline-flex items-center justify-center gap-3 w-full max-w-sm px-8 ${py} rounded-full font-black text-white ${text} transition-transform active:scale-95`}
+        style={{ background: "linear-gradient(135deg,#1aad4e 0%,#25d366 100%)", boxShadow: "0 6px 28px rgba(37,211,102,0.40)" }}
       >
         <WAIcon size={size === "lg" ? 22 : 18} />
         {label}
@@ -41,59 +51,82 @@ function CTA({ label, sub, size = "md" }: { label: string; sub?: string; size?: 
   );
 }
 
-function WABubble({ from, text, time }: { from: "them" | "me"; text: string; time: string }) {
-  const isMe = from === "me";
+// ── WhatsApp UI primitives ────────────────────────────────────────────────────
+function WAMsg({ text, time = "7:01 AM" }: { text: string; time?: string }) {
   return (
-    <div className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
-      <div
-        className="rounded-2xl px-3.5 py-2.5 max-w-[82%]"
-        style={{
-          background: isMe ? "#dcf8c6" : "#fff",
-          borderRadius: isMe ? "18px 4px 18px 18px" : "4px 18px 18px 18px",
-          boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-        }}
-      >
-        <p className="text-sm leading-snug whitespace-pre-line" style={{ color: "#111" }}>{text}</p>
-        <p className={`text-xs mt-1 ${isMe ? "text-right" : "text-right"}`} style={{ color: "#9ca3af" }}>{time} {isMe ? "✓✓" : "✓✓"}</p>
+    <div className="flex justify-start">
+      <div className="rounded-2xl rounded-tl-sm px-4 py-3 max-w-[88%]" style={{ background: "#fff", boxShadow: "0 1px 4px rgba(0,0,0,0.12)" }}>
+        <p className="text-sm leading-relaxed whitespace-pre-line" style={{ color: "#111" }}>{text}</p>
+        <p className="text-right text-xs mt-1.5" style={{ color: "#9ca3af" }}>{time} ✓✓</p>
       </div>
     </div>
   );
 }
 
-function PhoneDemo({ theme, day, messages }: {
-  theme: string;
-  day: string;
-  messages: { from: "them" | "me"; text: string; time: string }[];
-}) {
+function WAReply({ text, time = "7:06 AM" }: { text: string; time?: string }) {
   return (
-    <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(0,0,0,0.1)", boxShadow: "0 8px 32px rgba(0,0,0,0.12)", maxWidth: 360, margin: "0 auto" }}>
-      <div className="px-4 py-3 flex items-center gap-3" style={{ background: "#075e54" }}>
-        <div className="w-9 h-9 rounded-full flex items-center justify-center font-black text-white text-sm flex-shrink-0" style={{ background: "#1aad4e" }}>DU</div>
-        <div>
-          <p className="text-sm font-bold text-white leading-tight">Daily Upgrade Club</p>
-          <p className="text-xs" style={{ color: "#a7f3d0" }}>{theme} · {day}</p>
+    <div className="flex justify-end">
+      <div className="rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]" style={{ background: "#dcf8c6" }}>
+        <p className="text-sm" style={{ color: "#111" }}>{text}</p>
+        <p className="text-right text-xs mt-1" style={{ color: "#6b7280" }}>{time} ✓✓</p>
+      </div>
+    </div>
+  );
+}
+
+function PhoneShell({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <div className="rounded-2xl overflow-hidden mx-auto" style={{ maxWidth: 360, border: "1px solid rgba(0,0,0,0.08)", boxShadow: "0 8px 40px rgba(0,0,0,0.12)" }}>
+      <div className="flex items-center gap-3 px-4 py-3" style={{ background: "#075e54" }}>
+        <div className="w-9 h-9 rounded-full flex items-center justify-center font-black text-sm text-white flex-shrink-0" style={{ background: "#1aad4e" }}>DU</div>
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-semibold text-white">Daily Upgrade Club</p>
+          <p className="text-xs" style={{ color: "#a7f3d0" }}>{label}</p>
         </div>
       </div>
-      <div className="p-4 space-y-2.5" style={{ background: "#e5ddd5" }}>
-        {messages.map((m, i) => <WABubble key={i} {...m} />)}
+      <div className="p-4 space-y-3" style={{ background: "#e5ddd5", minHeight: 180 }}>
+        {children}
       </div>
     </div>
   );
 }
 
+// ── FAQ ───────────────────────────────────────────────────────────────────────
 function FAQ({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
+    <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left text-sm font-semibold"
-        style={{ background: "rgba(255,255,255,0.04)", color: "#e4e4e7" }}
+        className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-sm"
+        style={{ background: "rgba(255,255,255,0.05)", color: "#e4e4e7" }}
       >
         <span>{q}</span>
-        <span style={{ color: "#25d366", fontSize: "1.3rem", lineHeight: 1, flexShrink: 0, display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.18s" }}>+</span>
+        <span
+          className="flex-shrink-0 text-xl font-light"
+          style={{ color: "#25d366", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}
+        >+</span>
       </button>
-      {open && <div className="px-5 pb-5 pt-1 text-sm leading-relaxed" style={{ background: "rgba(255,255,255,0.02)", color: "#a1a1aa" }}>{a}</div>}
+      {open && (
+        <div className="px-5 pb-5 pt-1 text-sm leading-relaxed" style={{ background: "rgba(255,255,255,0.02)", color: "#a1a1aa" }}>
+          {a}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ── Testimonial card ──────────────────────────────────────────────────────────
+function Testimonial({ name, city, theme, result, quote }: { name: string; city: string; theme: string; result: string; quote: string }) {
+  return (
+    <div className="rounded-2xl p-5 bg-white" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
+      <div className="flex gap-0.5 mb-3">{[1,2,3,4,5].map(i => <Star key={i} />)}</div>
+      <p className="text-sm leading-relaxed mb-4" style={{ color: "#27272a" }}>&ldquo;{quote}&rdquo;</p>
+      <div className="pt-3" style={{ borderTop: "1px solid #f4f4f5" }}>
+        <p className="text-xs font-bold" style={{ color: "#18181b" }}>{name} · {city}</p>
+        <p className="text-xs mt-0.5" style={{ color: "#71717a" }}>{theme}</p>
+        <p className="text-xs font-semibold mt-1.5 px-2 py-0.5 rounded-full inline-block" style={{ background: "rgba(29,168,81,0.1)", color: "#1da851" }}>{result}</p>
+      </div>
     </div>
   );
 }
@@ -101,417 +134,513 @@ function FAQ({ q, a }: { q: string; a: string }) {
 // ─────────────────────────────────────────────────────────────────────────────
 export default function DailyUpgradeClubPage() {
   return (
-    <div style={{ fontFamily: "'Inter',-apple-system,BlinkMacSystemFont,sans-serif", color: "#18181b", background: "#fff" }}>
+    <div style={{ background: "#faf8f3", minHeight: "100vh", fontFamily: "'Inter',-apple-system,BlinkMacSystemFont,sans-serif", color: "#18181b" }}>
 
-      {/* ══════════════════════════════════════════════════════════════
-          HERO — Specific, painful, relatable opening moment.
-          Cold Meta traffic. They don't know this product.
-          The hook must make them say "that's exactly me."
-          Then immediately show them the product on their phone.
-          CTA within first scroll on mobile.
-      ══════════════════════════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(170deg,#f0fdf4 0%,#fff 70%)", borderBottom: "1px solid #e4e4e7" }}>
-        <div className="max-w-xl mx-auto px-5 pt-10 pb-12 text-center">
+      {/* ══════════════════════════════════════════════════════
+          SECTION 1 — HOOK
+          Speak to ONE person. The busy Indian professional who
+          keeps meaning to get healthy but never does.
+          Brunson: Hook must stop the scroll and make them say
+          "this person gets me."
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "linear-gradient(165deg,#edfff5 0%,#faf8f3 60%)", borderBottom: "1px solid #dde8dc" }}>
+        <div className="max-w-xl mx-auto px-5 pt-10 pb-14 text-center">
 
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-6 text-xs font-bold uppercase tracking-widest"
-            style={{ background: "rgba(37,211,102,0.1)", color: "#1aad4e", border: "1px solid rgba(37,211,102,0.22)" }}>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-7 text-xs font-bold uppercase tracking-widest"
+            style={{ background: "rgba(37,211,102,0.1)", color: "#1aad4e", border: "1px solid rgba(37,211,102,0.25)" }}>
             <span className="w-1.5 h-1.5 rounded-full animate-pulse inline-block" style={{ background: "#25d366" }} />
-            Daily Upgrade Club · WhatsApp
+            Daily Upgrade Club · 400+ Members Active
           </div>
 
-          {/* Specific hook — a scene, not a question */}
-          <h1 style={{ fontSize: "clamp(1.85rem, 6vw, 3.6rem)", lineHeight: 1.06, fontWeight: 900, letterSpacing: "-0.038em" }}>
-            Every Sunday night you<br />
-            plan to be healthier.<br />
-            <span style={{ color: "#1aad4e" }}>Every Monday it doesn&apos;t happen.</span>
+          <h1 style={{ fontSize: "clamp(2rem, 6.5vw, 3.8rem)", lineHeight: 1.05, fontWeight: 900, letterSpacing: "-0.038em" }}>
+            You know exactly what<br />
+            <span style={{ color: "#1aad4e" }}>a healthy life looks like.</span><br />
+            <span style={{ fontWeight: 400, fontStyle: "italic", color: "#71717a" }}>
+              So why isn&apos;t it happening?
+            </span>
           </h1>
 
-          <p className="text-base leading-relaxed mt-6 mb-2" style={{ color: "#52525b", maxWidth: 440, margin: "1.5rem auto 0.5rem" }}>
-            Not because you don&apos;t care. Because every method you&apos;ve tried required more discipline, more time, and more willpower than a full life can reliably give it.
+          <p className="text-lg leading-relaxed mt-7 mb-2" style={{ color: "#3f3f46" }}>
+            It&apos;s not laziness. It&apos;s not willpower. It&apos;s that <strong style={{ color: "#18181b" }}>every healthy habit you&apos;ve tried demanded more than your real life could give it.</strong>
           </p>
-          <p className="text-base leading-relaxed mb-7" style={{ color: "#52525b", maxWidth: 440, margin: "0.5rem auto 1.75rem" }}>
-            <strong style={{ color: "#18181b" }}>Daily Upgrade Club sends you one tiny healthy habit every morning on WhatsApp.</strong> Under 5 minutes. You reply DONE. That&apos;s it. The system does the rest.
+          <p className="text-lg leading-relaxed mb-8" style={{ color: "#3f3f46" }}>
+            What if the entire thing — the habit, the science, the accountability — was already waiting in your WhatsApp at 7 AM? And it only took <strong style={{ color: "#18181b" }}>5 minutes?</strong>
           </p>
 
-          <div className="flex items-center justify-center gap-2 mb-7 flex-wrap">
+          {/* ─ Proof strip near top ─ */}
+          <div className="flex items-center justify-center gap-3 mb-8 flex-wrap">
             <div className="flex gap-0.5">{[1,2,3,4,5].map(i => <Star key={i} />)}</div>
-            <p className="text-sm" style={{ color: "#71717a" }}><strong style={{ color: "#18181b" }}>400+ members</strong> active across India · avg. 78% habit completion</p>
+            <p className="text-sm" style={{ color: "#52525b" }}>
+              <strong style={{ color: "#18181b" }}>400+ members</strong> across India building daily
+            </p>
           </div>
 
           <CTA size="lg" label="Get My First Habit Tomorrow — ₹1 →" sub="7-day trial for ₹1 · Then ₹99/month (₹3/day) · Cancel anytime" />
 
-          <div className="flex flex-wrap justify-center gap-2 mt-5">
-            {["No app to download", "Works on WhatsApp you have", "Under 5 min/day", "Cancel with one message"].map(t => (
+          <div className="flex flex-wrap justify-center gap-2 mt-6">
+            {[
+              "No app to download",
+              "Works on WhatsApp you have",
+              "Under 5 min a day",
+              "Cancel anytime — no friction",
+            ].map(t => (
               <span key={t} className="inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-full"
-                style={{ background: "#f4f4f5", color: "#52525b", border: "1px solid #e4e4e7" }}>
-                ✓ {t}
+                style={{ background: "#fff", color: "#52525b", border: "1px solid #e4e4e7" }}>
+                <Check color="#1aad4e" /> {t}
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          PRODUCT DEMO — Show it before you explain it.
-          Real WhatsApp message format. Short, like real messages.
-          3 themes so they can see themselves in at least one.
-          Followed immediately by a CTA.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fafafa" }}>
-        <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>The Product — Live</p>
-          <h2 className="text-center font-black mb-2" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            This lands in your WhatsApp<br />every morning at 7 AM
-          </h2>
-          <p className="text-center text-sm mb-10" style={{ color: "#71717a" }}>
-            One habit. The science. Exactly what to do. Reply DONE. That&apos;s the whole product.
-          </p>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 2 — WHAT EXACTLY IS THIS?
+          The first question a cold visitor has.
+          Answer it immediately. Don't make them scroll to find out.
+          Show the actual product. Not bullet points — the product itself.
+      ══════════════════════════════════════════════════════ */}
+      <section className="max-w-xl mx-auto px-5 py-14">
+        <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>The Product — Exactly</p>
+        <h2 className="text-center font-bold mb-3" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          This is what lands in your<br />WhatsApp every morning
+        </h2>
+        <p className="text-center text-sm mb-10" style={{ color: "#71717a" }}>
+          One tiny healthy habit. The science behind why it works. Reply DONE when you&apos;re back. That&apos;s the entire product.
+        </p>
 
-          <div className="space-y-10">
-            <PhoneDemo
-              theme="Energy Month"
-              day="Day 3"
-              messages={[
-                { from: "them", text: "Good morning! ⚡ Day 3 habit:\n\n🌞 Step outside for 5 min of sunlight within 30 min of waking.\n\nWhy: Resets cortisol rhythm — controls energy all day. No sunlight = sluggish even after coffee.\n\nGo now, or stand by a bright window.\n\nReply DONE when you're back 💪", time: "7:01 AM" },
-                { from: "me", text: "DONE ✅ first time I've done this", time: "7:09 AM" },
-                { from: "them", text: "🔥 Day 3 streak! Body is already recalibrating. See you tomorrow.", time: "7:09 AM" },
-              ]}
-            />
-
-            <PhoneDemo
-              theme="Sleep Month"
-              day="Day 8"
-              messages={[
-                { from: "them", text: "Good morning! 😴 Day 8 habit:\n\n📵 Tonight — phone charger outside the bedroom.\n\nWhy: Blue light kills melatonin for 2 hours. Just removing the phone improves deep sleep in 3–5 nights.\n\nSet a reminder right now: move charger at 9:30 PM.\n\nReply DONE once reminder is set 🌙", time: "7:01 AM" },
-                { from: "me", text: "DONE ✅ reminder set", time: "7:05 AM" },
-                { from: "them", text: "🔥 Day 8! Most members feel it by Day 11. You're almost there.", time: "7:06 AM" },
-              ]}
-            />
-
-            <PhoneDemo
-              theme="Focus Month"
-              day="Day 14"
-              messages={[
-                { from: "them", text: "Good morning! 🧠 Day 14 habit:\n\n⏱️ One 25-min block today — phone down, one task only, zero tabs.\n\nWhy: Every distraction costs 23 min of recovery. One protected block trains focus on demand.\n\nStart within 2 hours of reading this.\n\nReply DONE after your block 🎯", time: "7:01 AM" },
-                { from: "me", text: "DONE ✅ finished something I've avoided for weeks", time: "9:41 AM" },
-                { from: "them", text: "That's exactly what Day 14 feels like. 🔥 See you tomorrow.", time: "9:41 AM" },
-              ]}
-            />
+        <div className="space-y-8">
+          {/* Sample 1 — Energy */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-3 pl-1" style={{ color: "#a1a1aa" }}>⚡ Energy Month · Day 3 · 7:01 AM</p>
+            <PhoneShell label="online">
+              <WAMsg text={"Good morning! ⚡ Today's tiny healthy habit:\n\n🌞 Step outside for 5 minutes of natural sunlight within 30 minutes of waking.\n\nWhy it works: Morning sunlight resets your cortisol rhythm — the hormone that controls energy all day. No sunlight = sluggish even after coffee.\n\nJust 5 minutes. By your window or outside. That's it.\n\nReply DONE when you're back 💪"} />
+              <WAReply text="DONE ✅ Felt surprisingly alert this morning" />
+              <WAMsg text="🔥 Day 3 streak! Your body is already recalibrating. See you tomorrow at 7." time="7:09 AM" />
+            </PhoneShell>
           </div>
 
-          <div className="mt-10">
-            <p className="text-center text-sm mb-6 font-medium" style={{ color: "#52525b" }}>
-              30 habits like these per month. You choose which health area to focus on.
-            </p>
-            <CTA label="Start Getting These Tomorrow — ₹1 →" sub="7-day trial · Cancel before Day 7, pay nothing more" />
+          {/* Sample 2 — Sleep */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-3 pl-1" style={{ color: "#a1a1aa" }}>😴 Sleep Month · Day 9 · 7:01 AM</p>
+            <PhoneShell label="online">
+              <WAMsg text={"Good morning! 😴 Today's tiny healthy habit:\n\n📵 Tonight — phone charger goes outside the bedroom.\n\nWhy it works: Blue light suppresses melatonin for up to 2 hours. Just moving the phone out (not avoiding it all day) improves deep sleep within 3–5 nights.\n\nSet a reminder now for 9:30 PM tonight to move it.\n\nReply DONE once you've set the reminder 🌙"} />
+              <WAReply text="DONE ✅ Reminder set, will try tonight" time="7:04 AM" />
+              <WAMsg text="🔥 Day 9! Most members notice the difference by Day 12. You're close." time="7:05 AM" />
+            </PhoneShell>
+          </div>
+
+          {/* Sample 3 — Focus */}
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-wider mb-3 pl-1" style={{ color: "#a1a1aa" }}>🧠 Focus Month · Day 14 · 7:01 AM</p>
+            <PhoneShell label="online">
+              <WAMsg text={"Good morning! 🧠 Today's tiny healthy habit:\n\n⏱️ Work in one 25-minute block today — phone face-down, no tabs, one task only.\n\nWhy it works: Deep work requires 23 minutes of recovery after every distraction. One protected block a day trains the brain to focus on demand.\n\nStart within 2 hours of reading this.\n\nReply DONE after your block 🎯"} />
+              <WAReply text="DONE ✅ Finished something I'd been avoiding for 3 days" time="9:38 AM" />
+              <WAMsg text="That's exactly what Day 14 is supposed to feel like. 🔥 See you tomorrow." time="9:39 AM" />
+            </PhoneShell>
           </div>
         </div>
+
+        <p className="text-center text-sm mt-8 font-medium" style={{ color: "#71717a" }}>
+          30 habits like these, every month, focused on one health area you choose.
+        </p>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          HOW IT WORKS — Exactly what happens step by step.
-          "What happens the moment I pay?" is the #1 reason
-          cold traffic doesn't convert. Answer it completely.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#18181b" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 3 — HOW IT ACTUALLY WORKS (mechanics)
+          The #1 anxiety killer. Cold visitors don't pay because
+          they don't know what happens the moment they click.
+          Remove that mystery completely.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#18181b", borderTop: "1px solid #111" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>How It Works</p>
-          <h2 className="text-center font-black mb-12 text-white" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            3 steps. No surprises. No app.
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>Exactly What Happens When You Join</p>
+          <h2 className="text-center font-bold mb-12" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#fff" }}>
+            3 steps. No surprises.
           </h2>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {[
               {
                 n: "1",
-                title: "Pay ₹1 via Razorpay",
-                body: "UPI, debit card, credit card. Takes 30 seconds. You see a confirmation page immediately after.",
+                title: "You pay ₹1 on this page",
+                desc: "Secure payment via Razorpay. Debit card, UPI, credit card — takes 30 seconds. You immediately see a confirmation screen with a WhatsApp link.",
               },
               {
                 n: "2",
-                title: "Tap the WhatsApp link on your confirmation page",
-                body: "One button opens WhatsApp with a pre-filled join message. You tap Send. That's it — you're added to the Daily Upgrade Club. No forms, no number sharing, no waiting.",
+                title: "You click the WhatsApp link and send one message",
+                desc: "The confirmation page shows a button: \"Join Daily Upgrade Club on WhatsApp.\" You click it. It opens WhatsApp with a pre-filled message. You press send. Done — you're in. No number sharing, no forms.",
               },
               {
                 n: "3",
                 title: "Tomorrow at 7 AM, your first habit arrives",
-                body: "One WhatsApp message. One tiny healthy habit. The science behind it. What to do. Reply DONE when you're back. Your streak starts. That's Day 1.",
+                desc: "You wake up. Your phone has a WhatsApp message from Daily Upgrade Club — your first tiny healthy habit, with the science behind it and exactly what to do. You do it. You reply DONE. Your streak starts. That's Day 1.",
               },
-            ].map(({ n, title, body }) => (
+            ].map(({ n, title, desc }) => (
               <div key={n} className="flex gap-5">
-                <div className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center font-black text-sm text-white" style={{ background: "#25d366" }}>
+                <div className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center font-black text-sm text-white" style={{ background: "#25d366" }}>
                   {n}
                 </div>
-                <div>
-                  <p className="font-bold text-base text-white mb-1">{title}</p>
-                  <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>{body}</p>
+                <div className="pt-1">
+                  <p className="font-bold text-base mb-1.5" style={{ color: "#fff" }}>{title}</p>
+                  <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>{desc}</p>
                 </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-10 rounded-2xl p-5 text-center" style={{ background: "rgba(37,211,102,0.08)", border: "1px solid rgba(37,211,102,0.18)" }}>
-            <p className="text-sm font-semibold" style={{ color: "#25d366" }}>
-              No app to download. No account to create. Just WhatsApp — which you already open every morning.
+          <div className="mt-10 p-5 rounded-2xl" style={{ background: "rgba(37,211,102,0.08)", border: "1px solid rgba(37,211,102,0.18)" }}>
+            <p className="text-sm font-semibold text-center" style={{ color: "#25d366" }}>
+              No app. No account. No password. Just WhatsApp — which you already have.
+            </p>
+          </div>
+
+          <div className="mt-8">
+            <CTA label="Get My First Habit Tomorrow → ₹1" sub="7 days for ₹1 · Then ₹99/month · Cancel before Day 7, pay nothing more" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════
+          SECTION 4 — EPIPHANY BRIDGE / ATTRACTIVE CHARACTER
+          Brunson's #1 principle: People don't buy from brands.
+          They buy from people whose story they see themselves in.
+          The Epiphany Bridge recreates the belief-shift moment.
+          Cold traffic needs a face. A person. A reason to trust.
+      ══════════════════════════════════════════════════════ */}
+      <section className="max-w-xl mx-auto px-5 py-14">
+        <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>From the Founder</p>
+        <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          I had 47 health articles bookmarked.<br />
+          <span style={{ color: "#1aad4e" }}>I acted on zero of them.</span>
+        </h2>
+
+        <div className="rounded-2xl p-6 mb-8 bg-white" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
+          <div className="flex items-center gap-3 mb-6 pb-5" style={{ borderBottom: "1px solid #f4f4f5" }}>
+            <div className="w-14 h-14 rounded-full flex items-center justify-center font-black text-xl text-white flex-shrink-0"
+              style={{ background: "linear-gradient(135deg,#1aad4e,#25d366)" }}>R</div>
+            <div>
+              <p className="font-bold" style={{ color: "#18181b" }}>Rohan Mote</p>
+              <p className="text-sm" style={{ color: "#71717a" }}>Founder, Daily Upgrade Club</p>
+              <p className="text-xs mt-0.5" style={{ color: "#a1a1aa" }}>iamrohitmote@gmail.com</p>
+            </div>
+          </div>
+
+          <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3f3f46" }}>
+            <p>
+              Two years ago I was a professional who genuinely cared about my health. I had three fitness apps, a gym membership I barely used, and a mental list of things I was going to start &ldquo;once things calmed down.&rdquo;
+            </p>
+            <p>
+              Things never calmed down. Life doesn&apos;t.
+            </p>
+            <p>
+              I came across BJ Fogg&apos;s research from Stanford. He&apos;d spent years studying why habits fail. His answer was simple and brutal: <strong style={{ color: "#18181b" }}>we consistently make the habit too big relative to the motivation available on any given day.</strong> When motivation is low — a hard week, a bad night — the habit disappears.
+            </p>
+            <p>
+              His solution: make the habit so small it&apos;s impossible to fail even on your worst day.
+            </p>
+            <p>
+              I tested it. I replaced my entire morning routine with one thing: drink one glass of water before touching my phone. Just that. Nothing else changed. By Day 10, I was sleeping better. By Day 20, I&apos;d started walking on my own — nobody told me to. The tiny habit had pulled everything else forward.
+            </p>
+            <div className="rounded-xl p-4 mt-2" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
+              <p className="font-semibold" style={{ color: "#15803d" }}>
+                I built the Daily Upgrade Club to do this for you — automatically. One tiny healthy habit, every morning on WhatsApp. You just reply DONE. The system does everything else.
+              </p>
+            </div>
+            <p>
+              400+ members later, the pattern is the same: one small habit, one month, one theme. Real changes that started ridiculously small.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          WHO IS THIS FOR / NOT FOR — Qualify the visitor.
-          Brunson: Disqualifying the wrong audience builds trust
-          with the right one. "This isn't for everyone" increases
-          desire in the people it IS for.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fff" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 5 — NEW OPPORTUNITY (Big Domino)
+          Brunson: Never position as improvement of old vehicle.
+          Always position as a NEW vehicle.
+          Old vehicle = apps, courses, gym routines
+          New vehicle = WhatsApp-delivered daily system
+          Install ONE belief: the system delivers it, not willpower
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#18181b" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Is This For You?</p>
-          <h2 className="text-center font-black mb-10" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            This is built for one type of person.
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>Why Everything Else Hasn&apos;t Worked</p>
+          <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#fff" }}>
+            The problem was never you.<br />
+            <span style={{ color: "#25d366" }}>It was the delivery system.</span>
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-            <div className="rounded-2xl p-5" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#15803d" }}>This IS for you if:</p>
+          <div className="grid grid-cols-2 gap-3 mb-10">
+            <div className="rounded-2xl p-4" style={{ background: "rgba(239,68,68,0.06)", border: "1px solid rgba(239,68,68,0.15)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#f87171" }}>The old way</p>
               <div className="space-y-3">
                 {[
-                  "You're a working professional with a full life and zero time for big routines",
-                  "You've started and quit health habits before — not from lack of care, but lack of a system",
-                  "You want real results in one health area (sleep, energy, focus, gut health…)",
-                  "You open WhatsApp every morning already",
-                  "₹3/day feels worth it if the habits actually work",
+                  "Requires you to remember",
+                  "Requires high motivation",
+                  "Big routines → big fail chance",
+                  "App you open, then forget",
+                  "Generic advice for everyone",
+                  "You plan, decide, execute alone",
                 ].map(t => (
-                  <div key={t} className="flex gap-2.5 items-start">
-                    <span className="text-sm flex-shrink-0 mt-0.5" style={{ color: "#15803d" }}>✓</span>
-                    <p className="text-sm leading-snug" style={{ color: "#166534" }}>{t}</p>
+                  <div key={t} className="flex gap-2 items-start">
+                    <span className="text-xs mt-0.5 flex-shrink-0" style={{ color: "#f87171" }}>✕</span>
+                    <p className="text-xs leading-snug" style={{ color: "#9ca3af" }}>{t}</p>
                   </div>
                 ))}
               </div>
             </div>
-
-            <div className="rounded-2xl p-5" style={{ background: "#fef2f2", border: "1px solid #fecaca" }}>
-              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#b91c1c" }}>This is NOT for you if:</p>
+            <div className="rounded-2xl p-4" style={{ background: "rgba(37,211,102,0.05)", border: "1px solid rgba(37,211,102,0.2)" }}>
+              <p className="text-xs font-bold uppercase tracking-widest mb-4" style={{ color: "#25d366" }}>Daily Upgrade Club</p>
               <div className="space-y-3">
                 {[
-                  "You want a full fitness or diet programme",
-                  "You're looking for instant dramatic transformation",
-                  "You want hour-long coaching or video content",
-                  "You already have a consistent daily health routine that's working",
-                  "You won't open WhatsApp in the morning",
+                  "Arrives in your WhatsApp — zero memory needed",
+                  "Works even on zero-motivation days",
+                  "5 min habit → nearly impossible to fail",
+                  "WhatsApp you open every morning",
+                  "One theme, 30 specific habits, your choice",
+                  "Habit + science + accountability delivered",
                 ].map(t => (
-                  <div key={t} className="flex gap-2.5 items-start">
-                    <span className="text-sm flex-shrink-0 mt-0.5" style={{ color: "#b91c1c" }}>✕</span>
-                    <p className="text-sm leading-snug" style={{ color: "#991b1b" }}>{t}</p>
+                  <div key={t} className="flex gap-2 items-start">
+                    <span className="text-xs mt-0.5 flex-shrink-0" style={{ color: "#25d366" }}>✓</span>
+                    <p className="text-xs leading-snug" style={{ color: "#e4e4e7" }}>{t}</p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
+
+          <div className="rounded-2xl p-6 text-center" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.1)" }}>
+            <p className="text-base font-semibold" style={{ color: "#fff" }}>
+              Willpower is the fuel. <span style={{ color: "#25d366" }}>System is the engine.</span><br />
+              Stop relying on fuel. Build the engine.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          FOUNDER — Epiphany Bridge + Attractive Character.
-          Brunson: People don't buy from brands. They buy from
-          people they believe went through the same thing they're
-          going through. The story must recreate the belief shift.
-          Credibility must be earned inside the story, not claimed.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fafafa" }}>
-        <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Why This Exists</p>
-          <h2 className="text-center font-black mb-8" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            I was you two years ago.
-          </h2>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 6 — YOUR FIRST 7 DAYS (Concrete Promise)
+          Removes the "unknown" fear that kills cold traffic.
+          Shows them the exact experience day by day.
+          Makes the ₹1 trial feel like a guided journey, not a gamble.
+      ══════════════════════════════════════════════════════ */}
+      <section className="max-w-xl mx-auto px-5 py-14">
+        <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>What Happens in 7 Days</p>
+        <h2 className="text-center font-bold mb-4" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          Here&apos;s exactly what your<br />
+          <span style={{ color: "#1aad4e" }}>first week looks like</span>
+        </h2>
+        <p className="text-center text-sm mb-10" style={{ color: "#71717a" }}>
+          By Day 7, you&apos;ll know whether this changes anything for you.<br />If it doesn&apos;t — cancel. Pay nothing more.
+        </p>
 
-          <div className="rounded-2xl bg-white p-6" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.06)" }}>
-            <div className="flex items-center gap-4 mb-6 pb-5" style={{ borderBottom: "1px solid #f4f4f5" }}>
-              <div className="w-14 h-14 rounded-full flex items-center justify-center font-black text-white text-xl flex-shrink-0"
-                style={{ background: "linear-gradient(135deg,#1aad4e,#25d366)" }}>R</div>
+        <div className="space-y-3">
+          {[
+            {
+              day: "Day 1",
+              title: "Your first habit lands at 7 AM",
+              body: "You wake up. WhatsApp has one message from Daily Upgrade Club. One habit. The why behind it. Exactly what to do. You do it — takes under 5 minutes. You reply DONE. You&apos;ll think: &ldquo;That&apos;s it?&rdquo; Yes. That&apos;s the whole product.",
+              feel: "Surprised how easy this feels",
+            },
+            {
+              day: "Day 2–3",
+              title: "The streak begins",
+              body: "Day 2 arrives automatically. You didn&apos;t have to plan anything. By Day 3, you notice you&apos;re expecting the message. You&apos;re no longer deciding whether to do a habit — it just appears. That&apos;s the system working.",
+              feel: "Momentum without effort",
+            },
+            {
+              day: "Day 4–5",
+              title: "First physical shift",
+              body: "Most members notice something by Day 5. More energy in the morning. Sleeping more soundly. A clearer head after lunch. Lighter digestion. It&apos;s not dramatic — but it&apos;s real. And nothing else changed.",
+              feel: "Something actually shifted",
+            },
+            {
+              day: "Day 6",
+              title: "You get your honest reminder",
+              body: "We message you: &ldquo;Your trial ends tomorrow. Cancel here if you want to stop — no guilt, no questions.&rdquo; You&apos;re never surprised by a charge. You&apos;re always in control.",
+              feel: "Zero pressure. Full control.",
+            },
+            {
+              day: "Day 7",
+              title: "You make a clear decision",
+              body: "After 7 mornings of real habits — you know. Most members don&apos;t cancel. Not because they forgot. Because they don&apos;t want to stop. At ₹99/month (₹3/day), the question answers itself.",
+              feel: "You already have your answer",
+            },
+          ].map(({ day, title, body, feel }) => (
+            <div key={day} className="rounded-2xl p-5 bg-white flex gap-4" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xs font-black text-white text-center leading-tight"
+                style={{ background: "linear-gradient(135deg,#1aad4e,#25d366)" }}>
+                {day.split("–")[0].replace("Day ", "D")}
+              </div>
               <div>
-                <p className="font-bold text-base" style={{ color: "#18181b" }}>Rohan Mote</p>
-                <p className="text-sm" style={{ color: "#71717a" }}>Founder, Daily Upgrade Club</p>
-                <p className="text-xs mt-0.5" style={{ color: "#a1a1aa" }}>Built and tested this with 400+ members before launch</p>
+                <p className="font-bold text-sm mb-1.5" style={{ color: "#18181b" }}>{title}</p>
+                <p className="text-sm leading-relaxed mb-2" style={{ color: "#71717a" }} dangerouslySetInnerHTML={{ __html: body.replace(/&apos;/g, "'").replace(/&ldquo;/g, '"').replace(/&rdquo;/g, '"') }} />
+                <span className="text-xs font-semibold px-2 py-0.5 rounded-full inline-block" style={{ background: "rgba(29,168,81,0.1)", color: "#1aad4e" }}>
+                  Feeling: {feel}
+                </span>
               </div>
             </div>
+          ))}
+        </div>
 
-            <div className="space-y-4 text-base leading-relaxed" style={{ color: "#3f3f46" }}>
-              <p>
-                I had 3 fitness apps installed, a gym membership I used twice, and 47 health articles bookmarked &ldquo;to read this weekend.&rdquo; I genuinely wanted to be healthier. I just couldn&apos;t make anything stick longer than 2 weeks.
-              </p>
-              <p>
-                Then I found BJ Fogg&apos;s research from Stanford — he spent a decade studying why habits fail. His finding was uncomfortable: <strong style={{ color: "#18181b" }}>we don&apos;t fail habits because we lack discipline. We fail them because we make them bigger than our worst day can handle.</strong>
-              </p>
-              <p>
-                I ran one experiment. I replaced my entire morning routine with one thing: drink a glass of water before touching my phone. That&apos;s it. No gym. No journaling. No 5 AM wake-up.
-              </p>
-              <p>
-                By Day 10, I was sleeping better. By Day 20, I started walking on my own — nobody told me to. The tiny habit had pulled everything forward. I hadn&apos;t changed my willpower. I had changed the size of the ask.
-              </p>
-              <div className="rounded-xl p-4 my-2" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                <p className="font-semibold text-base" style={{ color: "#15803d" }}>
-                  I built Daily Upgrade Club to do this automatically — for anyone with a full life and no time for another complicated routine. I tested it with 40 people before I charged a single rupee. Then 200. Now 400+.
-                </p>
-              </div>
-              <p>
-                The habits work. Not because I designed them. Because the research already proved they work at this scale. I just put them in WhatsApp.
-              </p>
-            </div>
-          </div>
+        <div className="mt-10">
+          <CTA size="lg" label="Start Day 1 Tomorrow → ₹1" sub="7 days for ₹1 · Then ₹99/month · Cancel before Day 7" />
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          YOUR FIRST 7 DAYS — concrete day-by-day journey.
-          Visitors must be able to mentally experience the trial
-          before they pay. If they can't picture Day 1 to Day 7,
-          they don't click.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fff" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 7 — FULL OFFER (What You Get)
+          Brunson's Stack: build perceived value item by item.
+          Each item gets a standalone value so the stack total
+          makes the real price feel absurd by comparison.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#f4fef7", borderTop: "1px solid #d1fae5", borderBottom: "1px solid #d1fae5" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Your 7-Day Trial</p>
-          <h2 className="text-center font-black mb-3" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            Here&apos;s exactly what<br />happens each day
-          </h2>
-          <p className="text-center text-sm mb-10" style={{ color: "#71717a" }}>
-            By Day 7 you&apos;ll have your answer. If it didn&apos;t work — cancel. Pay nothing more.
-          </p>
-
-          <div className="space-y-3">
-            {[
-              { day: "Day 1", title: "Your first habit arrives at 7 AM", body: "One WhatsApp message. One tiny healthy habit. Takes under 5 minutes. You reply DONE. You'll think: \"That's it?\" Yes. That's the whole thing. Streak starts.", feel: "Surprised how easy it is" },
-              { day: "Day 2", title: "Second habit lands automatically", body: "You did nothing to prepare. It just arrived. Streak = 2. The accountability group is alive — you'll see others reply DONE before 8 AM. You realise you're not doing this alone.", feel: "Momentum without any effort" },
-              { day: "Day 3–4", title: "The habit starts feeling expected", body: "You notice yourself checking WhatsApp at 7. The habit no longer feels like a decision — it's part of how your morning starts. That's the system working, not your willpower.", feel: "It's becoming automatic" },
-              { day: "Day 5", title: "Something physically shifts", body: "Most members notice something by Day 5 — steadier energy, falling asleep faster, lighter digestion, less afternoon fog. It's not dramatic. But it's real. And nothing else changed.", feel: "Something is actually different" },
-              { day: "Day 6", title: "You get an honest reminder", body: "We send you a direct message: \"Your trial ends tomorrow. To cancel, reply CANCEL now — no charge, no questions.\" You're never caught off guard.", feel: "Full control, zero pressure" },
-              { day: "Day 7", title: "You make a clear-eyed decision", body: "After 7 mornings of real habits — you know whether this works for you. Most members don't cancel. Not because they forgot. Because ₹3/day for something that's actually working is an obvious yes.", feel: "The answer is already obvious" },
-            ].map(({ day, title, body, feel }) => (
-              <div key={day} className="rounded-2xl p-5 flex gap-4 bg-white" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
-                <div className="w-12 h-12 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-black text-white text-center"
-                  style={{ background: "linear-gradient(135deg,#1aad4e,#25d366)" }}>
-                  {day.split("–")[0].replace("Day ", "D")}
-                </div>
-                <div>
-                  <p className="font-bold text-sm mb-1" style={{ color: "#18181b" }}>{title}</p>
-                  <p className="text-sm leading-relaxed mb-2" style={{ color: "#71717a" }}>{body}</p>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full" style={{ background: "rgba(29,168,81,0.1)", color: "#1aad4e" }}>Feeling: {feel}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10">
-            <CTA size="lg" label="Start Day 1 Tomorrow — ₹1 →" sub="7 days for ₹1 · Then ₹99/month · Cancel before Day 7" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          EVERYTHING YOU GET — Offer stack with honest framing.
-          Each item's value anchored to what it replaces in real life
-          (dietitian, coach, sleep clinic) not arbitrary numbers.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#f4fef7", borderTop: "1px solid #d1fae5" }}>
-        <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Everything You Get</p>
-          <h2 className="text-center font-black mb-10" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>Everything Included</p>
+          <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
             The complete Daily Upgrade Club
           </h2>
 
           <div className="space-y-3">
             {[
-              { emoji: "📲", title: "One science-backed tiny healthy habit — every morning on WhatsApp", desc: "At 7:01 AM, one habit arrives. The science behind why it works. Exactly what to do. Takes under 5 minutes. You reply DONE. 30 habits per month.", value: "₹2,999/mo", anchor: "A single session with a health coach costs ₹1,500–₹3,000" },
-              { emoji: "🎯", title: "One monthly health theme you choose", desc: "Sleep · Energy · Focus · Gut Health · Stress · Fitness · Hydration · Heart Health. Pick the area you want to change. 30 habits, one thread, real depth over 30 days.", value: "₹1,799/mo", anchor: "A dietitian consultation for a specific goal: ₹1,200–₹2,500" },
-              { emoji: "👥", title: "Private WhatsApp accountability group", desc: "Everyone in your group is on the same theme, same habit, same morning. When 30 people post DONE before 8 AM — you don't want to be the one who didn't.", value: "₹999/mo", anchor: "Accountability partner apps charge ₹500–₹1,000/month" },
-              { emoji: "📊", title: "Weekly health scorecard — every Sunday", desc: "Your streak, completion rate, and what's shifting in your chosen theme. Tracking is what turns 20% completion into 78%.", value: "₹799/mo", anchor: "Health tracking app subscriptions: ₹400–₹800/month" },
-              { emoji: "🗓️", title: "Full 30-habit calendar before Day 1", desc: "You see every habit before the month starts. No surprises. You know exactly what you're committing to.", value: "₹499", anchor: "" },
-              { emoji: "🏆", title: "Permanent habit vault — 90+ tiny healthy habits", desc: "Every habit from every month stays with you. Revisit what worked. Build on it. Never lose access.", value: "₹999", anchor: "" },
-              { emoji: "📩", title: "Weekly health insight — every Monday", desc: "One 3-minute read: research-backed insight on sleep, energy, gut health, or focus. Practical. No fluff.", value: "₹199/mo", anchor: "" },
-            ].map(({ emoji, title, desc, value, anchor }) => (
+              {
+                emoji: "📲",
+                title: "One tiny healthy habit — every morning on WhatsApp",
+                desc: "At 7:01 AM every day, one habit arrives. Science behind it. Exactly what to do. Takes under 5 minutes. Reply DONE. That&apos;s it. 30 habits a month.",
+                value: "₹2,999/mo",
+              },
+              {
+                emoji: "🎯",
+                title: "One dedicated monthly health theme you choose",
+                desc: "Sleep · Energy · Focus · Gut Health · Stress · Fitness · Hydration · Heart Health. You pick the area you want to improve. 30 habits, one thread, real depth. Switch every month.",
+                value: "₹1,799/mo",
+              },
+              {
+                emoji: "👥",
+                title: "Private WhatsApp accountability group",
+                desc: "Every member in your group is doing the same habit, same theme, same morning. When you see 30 people post DONE before 8 AM — you will too.",
+                value: "₹999/mo",
+              },
+              {
+                emoji: "📊",
+                title: "Weekly health scorecard (every Sunday)",
+                desc: "Your streak, your completion %, what&apos;s shifting in your chosen theme. Seeing the numbers go up is what makes the next week easier.",
+                value: "₹799/mo",
+              },
+              {
+                emoji: "🗓️",
+                title: "Full 30-habit calendar + PDF guide before Day 1",
+                desc: "You get all 30 habits in advance — so you see exactly what you&apos;re signing up for. No surprises. Just a clear 30-day path.",
+                value: "₹499/mo",
+              },
+              {
+                emoji: "🏆",
+                title: "Permanent access to the full habit vault (90+ habits)",
+                desc: "Every habit from every month is yours to keep. Revisit a month that worked. Go deeper. Combine themes. Build on what already changed things for you.",
+                value: "₹999",
+              },
+              {
+                emoji: "📩",
+                title: "Weekly health insights — every Monday",
+                desc: "One practical insight on sleep, energy, gut health, or focus — backed by current research. Plain language. No fluff. 3-minute read.",
+                value: "₹199/mo",
+              },
+            ].map(({ emoji, title, desc, value }) => (
               <div key={title} className="rounded-2xl p-5 bg-white" style={{ border: "1px solid #d1fae5", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <div className="flex items-start gap-3">
-                    <span className="text-xl flex-shrink-0 mt-0.5">{emoji}</span>
-                    <p className="font-bold text-sm leading-snug" style={{ color: "#18181b" }}>{title}</p>
+                    <span className="text-2xl flex-shrink-0">{emoji}</span>
+                    <p className="font-bold text-sm leading-snug pt-0.5" style={{ color: "#18181b" }}>{title}</p>
                   </div>
-                  <span className="text-xs font-bold flex-shrink-0 whitespace-nowrap px-2 py-1 rounded-full" style={{ background: "rgba(29,168,81,0.1)", color: "#1aad4e" }}>{value}</span>
+                  <span className="text-xs font-bold flex-shrink-0 whitespace-nowrap px-2 py-1 rounded-full mt-0.5" style={{ background: "rgba(29,168,81,0.1)", color: "#1aad4e" }}>{value}</span>
                 </div>
-                <p className="text-sm leading-relaxed pl-8 mb-1" style={{ color: "#71717a" }}>{desc}</p>
-                {anchor && <p className="text-xs pl-8 italic" style={{ color: "#a1a1aa" }}>Comparable: {anchor}</p>}
+                <p className="text-sm leading-relaxed pl-9" style={{ color: "#71717a" }} dangerouslySetInnerHTML={{ __html: desc.replace(/&apos;/g, "'") }} />
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          3 FALSE BELIEFS — Break each one with proof, not assertion.
-          Vehicle: tiny habits can't really work
-          Internal: I'm not a consistent person
-          External: ₹99/month is risky
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fff" }}>
-        <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>The 3 Objections</p>
-          <h2 className="text-center font-black mb-10" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            What&apos;s making you hesitate —<br />
-            <span style={{ color: "#1aad4e" }}>and why it shouldn&apos;t</span>
-          </h2>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 8 — 3 FALSE BELIEFS BROKEN
+          Brunson: Before anyone buys, they have 3 objections
+          locked in their head. Break each one with a story,
+          not a counter-argument. Make them feel understood first.
+          Vehicle = "tiny habits can't really work"
+          Internal = "I'm not a consistent person"
+          External = "₹99/month is not worth it"
+      ══════════════════════════════════════════════════════ */}
+      <section className="max-w-xl mx-auto px-5 py-14">
+        <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>The 3 Things Stopping You</p>
+        <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          And why not one of them<br />
+          <span style={{ color: "#1aad4e" }}>should stop you today</span>
+        </h2>
 
-          <div className="space-y-5">
-            {[
-              {
-                belief: "\"One tiny habit can't really change my health. I need a real programme.\"",
-                reframe: "BJ Fogg's Stanford research tracked 40,000+ people building habits. The consistent finding: people who start with tiny habits are more likely to still be at it 6 months later than people who start with big routines. Why? Because tiny habits survive bad weeks. Your big routine doesn't. Members who started with \"5 min morning sunlight\" ended the month also sleeping better, eating better, and moving more — without being told to. One habit pulls everything forward.",
-              },
-              {
-                belief: "\"I've tried habits before. I always quit. I'm just not a consistent person.\"",
-                reframe: "You quit because the habit was bigger than your worst day could handle. A habit that takes 5 minutes and arrives in your WhatsApp automatically doesn't ask for your motivation — the system provides the trigger. You just respond. The members who described themselves as \"chronically inconsistent\" averaged 78% completion in Month 1. Not because they changed. Because the system changed.",
-              },
-              {
-                belief: "\"₹99/month sounds like something I'll pay for and never use.\"",
-                reframe: "This is exactly why the trial is ₹1. You don't decide on this page. You decide after 7 mornings of real habits in your WhatsApp. If by Day 7 nothing shifted — message CANCEL. Nothing more owed. You risk ₹1. After the trial, if it works: ₹99/month is ₹3/day — less than one coffee, less than one gym visit, less than one supplement capsule. That math only looks bad before you've felt it working.",
-              },
-            ].map(({ belief, reframe }, i) => (
-              <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-                <div className="px-5 py-4" style={{ background: "#fef2f2", borderBottom: "1px solid #fecaca" }}>
-                  <p className="text-sm font-bold" style={{ color: "#b91c1c" }}>❌ {belief}</p>
-                </div>
-                <div className="px-5 py-4 bg-white">
-                  <p className="text-sm leading-relaxed" style={{ color: "#3f3f46" }}>
-                    <strong style={{ color: "#15803d" }}>The truth: </strong>{reframe}
-                  </p>
-                </div>
+        <div className="space-y-5">
+          {[
+            {
+              belief: "\"One tiny habit a day can't actually change my health. I need a real routine.\"",
+              truth: "The research says the opposite. BJ Fogg studied 40,000+ people building habits. The single most reliable predictor of long-term health change wasn't the size of the routine — it was consistency over time. One tiny healthy habit done for 30 days rewires the brain's reward circuit more reliably than a complex routine done 4 times. Members who started with just \"morning sunlight, 5 minutes\" ended the month sleeping better, eating better, and exercising more — with no instruction to do any of those things. One habit pulls the rest.",
+            },
+            {
+              belief: "\"I've started and quit things before. I'm just not a consistent person.\"",
+              truth: "You quit because the habits you tried required more consistency than was realistic. Nobody is consistently motivated. But a habit that takes under 5 minutes and arrives in your WhatsApp automatically doesn't need your motivation — the system provides the trigger. You just respond. Members who described themselves as \"the worst at follow-through\" in month 1 averaged 78% completion. The system does what willpower can't.",
+            },
+            {
+              belief: "\"₹99/month sounds like one more thing I'll pay for and not use.\"",
+              truth: "This is exactly why the trial is ₹1. You don't decide based on a sales page. You decide after 7 mornings of actual habits in your WhatsApp. If by Day 7 nothing shifted — cancel in one message. No forms, no calls, no guilt. You risk ₹1. I risk my reputation. And if it works? ₹99/month is ₹3/day — less than one chai. That's the bet I'm making on your behalf.",
+            },
+          ].map(({ belief, truth }, i) => (
+            <div key={i} className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+              <div className="px-5 py-4" style={{ background: "#fef2f2", borderBottom: "1px solid #fecaca" }}>
+                <p className="text-sm font-bold" style={{ color: "#b91c1c" }}>❌ {belief}</p>
               </div>
-            ))}
-          </div>
+              <div className="px-5 py-4 bg-white">
+                <p className="text-sm leading-relaxed" style={{ color: "#3f3f46" }}>
+                  <strong style={{ color: "#15803d" }}>The truth: </strong>{truth}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          IF ALL THIS DID WAS × 3 — Brunson's strongest close.
-          Isolate each outcome. One outcome should be worth the price.
-          All three together makes "no" feel irrational.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#18181b" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 9 — "IF ALL THIS DID WAS" × 3
+          Brunson's most powerful close technique.
+          Isolate each outcome. Show it would be worth the price alone.
+          Creates a "I'd be crazy to say no" moment.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#f4fef7", borderTop: "1px solid #d1fae5", borderBottom: "1px solid #d1fae5" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Think About This Honestly</p>
-          <h2 className="text-center font-black mb-10 text-white" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            Any one of these alone<br />
-            <span style={{ color: "#25d366", fontStyle: "italic", fontWeight: 400 }}>would be worth it.</span>
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>Think About This Honestly</p>
+          <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+            Any one of these would be<br />
+            <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a" }}>worth it on its own.</span>
           </h2>
 
           <div className="space-y-4">
             {[
-              { prefix: "If all this did was", bold: "give you steady energy from morning to evening — no 3 PM crash, no second coffee, no dragging yourself to 6 PM", suffix: "— would 7 days for ₹1 be worth finding out?" },
-              { prefix: "If all this did was", bold: "make you the kind of person who actually follows through on their health — every month, not just January", suffix: "— is ₹3/day too much to pay for that?" },
-              { prefix: "If all this did was", bold: "let you say six months from now, 'I'm actually taking care of myself' — and genuinely mean it, with proof", suffix: "— what would that be worth to you?" },
+              {
+                prefix: "If all this did was",
+                bold: "give you steady energy through the afternoon — no 3 PM crash, no second coffee, no dragging yourself to 6 PM",
+                suffix: "— would 7 days for ₹1 be worth finding out?",
+              },
+              {
+                prefix: "If all this did was",
+                bold: "make you the person who actually follows through on their health — not just in January, but every single month of the year",
+                suffix: "— is ₹3/day too much to pay for that identity?",
+              },
+              {
+                prefix: "If all this did was",
+                bold: "let you say, 6 months from now, 'I'm actually taking care of myself' — and genuinely mean it",
+                suffix: "— what would that be worth to you?",
+              },
             ].map(({ prefix, bold, suffix }, i) => (
-              <div key={i} className="rounded-2xl px-6 py-5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)" }}>
-                <p className="text-base leading-relaxed" style={{ color: "#d4d4d8" }}>
-                  <span style={{ color: "#71717a" }}>{prefix} </span>
-                  <strong style={{ color: "#fff" }}>{bold}</strong>
+              <div key={i} className="rounded-2xl px-6 py-5 bg-white" style={{ border: "1px solid #d1fae5", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
+                <p className="text-base leading-relaxed" style={{ color: "#3f3f46" }}>
+                  <span style={{ color: "#a1a1aa" }}>{prefix} </span>
+                  <strong style={{ color: "#18181b" }}>{bold}</strong>
                   <span style={{ color: "#71717a" }}> {suffix}</span>
                 </p>
               </div>
@@ -520,210 +649,242 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          PRICE REVEAL — Stack the value. Drop to real price.
-          Show ₹99 as ₹3/day. Compare to things they already spend.
-          Make the ₹1 trial feel risk-free by framing it explicitly.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#0f0f0f" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 10 — THE STACK + PRICE CASCADE
+          Show the full value. Drop the price dramatically.
+          ₹8,493 → ₹4,999 → ₹299 → ₹99 → ₹1 for 7 days.
+          Then reframe ₹99 against things they already spend.
+          This is the price reveal Brunson calls "the big drop."
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#0f0f0f" }} className="px-5 py-14">
         <div className="max-w-md mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>What It&apos;s Worth vs. What You Pay</p>
-          <h2 className="text-center font-black mb-10 text-white" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            Here&apos;s the real math.
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>What It&apos;s Worth vs. What You Pay</p>
+          <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em", color: "#fff" }}>
+            Here&apos;s the math.
           </h2>
 
           <div className="rounded-2xl overflow-hidden mb-8" style={{ background: "#1a1a1a", border: "1px solid rgba(255,255,255,0.08)" }}>
-            {[
-              ["📲", "Daily habit on WhatsApp × 30", "₹2,999"],
-              ["🎯", "Monthly health theme programme", "₹1,799"],
-              ["👥", "Private accountability group", "₹999"],
-              ["📊", "Weekly health scorecard", "₹799"],
-              ["🗓️", "30-habit calendar + PDF guide", "₹499"],
-              ["🏆", "Permanent habit vault (90+ habits)", "₹999"],
-              ["📩", "Weekly health insight newsletter", "₹199"],
-            ].map(([emoji, name, value], idx, arr) => (
-              <div key={idx} className="flex items-center justify-between gap-3 px-5 py-3"
-                style={{ borderBottom: idx < arr.length - 1 ? "1px solid rgba(255,255,255,0.06)" : "none" }}>
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base flex-shrink-0">{emoji}</span>
-                  <span className="text-sm" style={{ color: "#a1a1aa" }}>{name}</span>
+            <div className="divide-y" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+              {[
+                ["📲", "Daily tiny healthy habit × 30", "₹2,999"],
+                ["🎯", "Monthly health theme programme", "₹1,799"],
+                ["👥", "Private accountability group", "₹999"],
+                ["📊", "Weekly health scorecard", "₹799"],
+                ["🗓️", "30-habit calendar + PDF guide", "₹499"],
+                ["🏆", "Full habit vault (90+ habits)", "₹999"],
+                ["📩", "Weekly health insights", "₹199"],
+              ].map(([emoji, name, value], idx) => (
+                <div key={idx} className="flex items-center justify-between gap-3 px-5 py-3">
+                  <div className="flex items-center gap-2.5">
+                    <span className="text-base flex-shrink-0">{emoji}</span>
+                    <span className="text-sm" style={{ color: "#a1a1aa" }}>{name}</span>
+                  </div>
+                  <span className="text-sm font-semibold flex-shrink-0" style={{ color: "#4a4a52" }}>{value}</span>
                 </div>
-                <span className="text-sm font-semibold flex-shrink-0" style={{ color: "#4b5563" }}>{value}</span>
+              ))}
+              <div className="flex items-center justify-between gap-3 px-5 py-4">
+                <span className="font-bold" style={{ color: "#fff" }}>Total value</span>
+                <span className="font-bold" style={{ color: "#25d366" }}>₹8,493/month</span>
               </div>
-            ))}
-            <div className="flex items-center justify-between gap-3 px-5 py-4" style={{ borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-              <span className="font-bold text-white">Total value</span>
-              <span className="font-bold" style={{ color: "#25d366" }}>₹8,493/month</span>
             </div>
           </div>
 
-          <div className="text-center space-y-1.5 mb-8">
-            <p className="text-base" style={{ color: "#6b7280" }}>Not <span className="font-bold line-through" style={{ color: "#9ca3af" }}>₹8,493</span>.</p>
-            <p className="text-base" style={{ color: "#6b7280" }}>Not <span className="font-bold line-through" style={{ color: "#9ca3af" }}>₹4,999</span>.</p>
-            <p className="text-base" style={{ color: "#6b7280" }}>Not even <span className="font-bold line-through" style={{ color: "#9ca3af" }}>₹299</span>.</p>
+          <div className="space-y-2 text-center mb-8">
+            <p className="text-base" style={{ color: "#6b7280" }}>Not <strong style={{ color: "#fff", textDecoration: "line-through" }}>₹8,493.</strong></p>
+            <p className="text-base" style={{ color: "#6b7280" }}>Not <strong style={{ color: "#fff", textDecoration: "line-through" }}>₹4,999.</strong></p>
+            <p className="text-base" style={{ color: "#6b7280" }}>Not even <strong style={{ color: "#fff", textDecoration: "line-through" }}>₹299.</strong></p>
           </div>
 
-          <div className="rounded-2xl p-7 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.1),rgba(29,168,81,0.06))", border: "1px solid rgba(37,211,102,0.22)" }}>
+          <div className="rounded-2xl p-7 text-center mb-8" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.12),rgba(29,168,81,0.06))", border: "1px solid rgba(37,211,102,0.25)" }}>
             <p className="text-xs font-bold uppercase tracking-widest mb-3" style={{ color: "#25d366" }}>Your price</p>
             <div className="flex items-end justify-center gap-2 mb-1">
-              <span style={{ fontSize: "5.5rem", lineHeight: 1, fontWeight: 900, letterSpacing: "-0.04em", color: "#25d366" }}>₹1</span>
-              <span className="text-lg font-bold text-white mb-3">for 7 days</span>
+              <span style={{ fontSize: "5rem", lineHeight: 1, fontWeight: 900, letterSpacing: "-0.04em", color: "#25d366" }}>₹1</span>
+              <span className="text-lg mb-3 font-bold" style={{ color: "#fff" }}>for 7 days</span>
             </div>
-            <p className="text-sm mb-1" style={{ color: "#9ca3af" }}>Then ₹99/month — which is <strong style={{ color: "#fff" }}>₹3/day</strong></p>
+            <p className="text-sm mb-2" style={{ color: "#6b7280" }}>Then ₹99/month after your trial</p>
 
             <div className="flex flex-wrap justify-center gap-2 my-5">
               {[
-                ["₹150", "one coffee"],
-                ["₹500", "one gym visit"],
-                ["₹600", "one health supplement"],
+                ["vs ₹150", "one coffee"],
+                ["vs ₹500", "one gym visit"],
+                ["vs ₹1,200", "one health app/yr"],
               ].map(([price, vs]) => (
                 <div key={vs} className="text-xs px-3 py-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.07)", color: "#9ca3af" }}>
-                  ₹3 vs <span style={{ color: "#e5e7eb" }}>{price}</span> for {vs}
+                  <strong style={{ color: "#fff" }}>{price}</strong> for {vs}
                 </div>
               ))}
             </div>
 
-            <CTA size="lg" label="Start My 7-Day Trial — ₹1 →" sub="Cancel before Day 7 — pay nothing more" />
+            <CTA label="Start My Trial for ₹1 →" sub="Cancel before Day 7 — pay nothing more" />
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          SOCIAL PROOF — Specific people, specific results.
-          No vague positivity. Measurable outcomes only.
-          Format: person → what they tried before → specific result → timeframe
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#fff" }}>
-        <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>Member Results</p>
-          <h2 className="text-center font-black mb-10" style={{ fontSize: "clamp(1.4rem, 4.5vw, 2.4rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-            Specific people. Specific results.<br />
-            <span style={{ color: "#1aad4e" }}>Nothing vague.</span>
-          </h2>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 11 — SOCIAL PROOF
+          Place proof AFTER the offer because by now they want it
+          but need confirmation from people like them.
+          Testimonials must be: specific person, specific result,
+          specific timeframe, specific change. No vague positivity.
+      ══════════════════════════════════════════════════════ */}
+      <section className="max-w-xl mx-auto px-5 py-14">
+        <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>What Members Say</p>
+        <h2 className="text-center font-bold mb-10" style={{ fontSize: "clamp(1.5rem, 4.5vw, 2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+          Real people. Specific numbers.<br />
+          <span style={{ color: "#1aad4e" }}>Nothing vague.</span>
+        </h2>
 
-          <div className="space-y-4">
-            {[
-              {
-                name: "Karan M.", city: "Pune", job: "Software engineer, 10-hr days",
-                theme: "Energy Month", period: "May 2026",
-                result: "No 3 PM coffee hit since Day 6",
-                quote: "By Day 5 I stopped needing my afternoon coffee. I'm a software engineer who works 10-hour days — the 3 PM crash was just how life worked. One 5-minute morning sunlight habit. Nothing else changed. I still haven't had a 3 PM coffee in 3 weeks. My evenings have energy I haven't had in years.",
-              },
-              {
-                name: "Priya T.", city: "Bengaluru", job: "Product manager, 2 kids",
-                theme: "Sleep Month", period: "April 2026",
-                result: "Sleeping 47 minutes more — tracked on Samsung Health",
-                quote: "I've tried sleep podcasts, melatonin, blue-light glasses — none of it worked past week 2. The WhatsApp habit took 4 minutes. By Day 9, I was sleeping 47 minutes more per night. I know because I track it. My husband asked what I was doing differently. I showed him a WhatsApp message.",
-              },
-              {
-                name: "Sneha R.", city: "Mumbai", job: "Marketing consultant",
-                theme: "Focus Month", period: "March 2026",
-                result: "Cleared 6-week backlog in 14 days",
-                quote: "I was deeply skeptical. Day 12 — I finished a project that had been sitting for 6 weeks. Day 17 — my manager pulled me into a meeting to ask what had changed in my output. I showed her the 7 AM message from that morning. She asked for the link.",
-              },
-              {
-                name: "Vivek P.", city: "Hyderabad", job: "Finance professional",
-                theme: "Gut Health Month", period: "February 2026",
-                result: "Zero bloating after 18 days — gone for the first time in 4 years",
-                quote: "Four years of bloating. Tried 2 elimination diets, a GI specialist, two different probiotics. The gut habits here were embarrassingly simple — plain curd with lunch, chew slower, one glass of water before food. 18 days. Bloating is gone. My wife keeps asking what I'm taking. I show her my phone.",
-              },
-            ].map(({ name, city, job, theme, period, result, quote }) => (
-              <div key={name} className="rounded-2xl p-5 bg-white" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.05)" }}>
-                <div className="flex gap-0.5 mb-2">{[1,2,3,4,5].map(i => <Star key={i} />)}</div>
-                <p className="text-sm font-semibold mb-1" style={{ color: "#1aad4e" }}>📌 {result}</p>
-                <p className="text-sm leading-relaxed mb-4" style={{ color: "#3f3f46" }}>&ldquo;{quote}&rdquo;</p>
-                <div className="pt-3 flex items-center justify-between gap-2 flex-wrap" style={{ borderTop: "1px solid #f4f4f5" }}>
-                  <div>
-                    <p className="text-xs font-bold" style={{ color: "#18181b" }}>{name} · {city}</p>
-                    <p className="text-xs" style={{ color: "#a1a1aa" }}>{job}</p>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <span className="text-xs px-2 py-0.5 rounded-full font-medium" style={{ background: "rgba(29,168,81,0.1)", color: "#1aad4e" }}>{theme}</span>
-                    <span className="text-xs px-2 py-0.5 rounded-full" style={{ background: "#f4f4f5", color: "#71717a" }}>{period}</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
+        <div className="space-y-4">
+          <Testimonial
+            name="Karan M."
+            city="Pune"
+            theme="Energy Month · May 2026"
+            result="No 3 PM coffee since Day 6"
+            quote="By Day 5 I stopped needing my 3 PM coffee. I'm a software engineer who works 10-hour days — the afternoon crash was just 'how life was.' Nothing else changed. One morning sunlight habit. That's it. I haven't had a 3 PM coffee in 3 weeks."
+          />
+          <Testimonial
+            name="Priya T."
+            city="Bengaluru"
+            theme="Sleep Month · April 2026"
+            result="Sleeping 47 minutes more (tracked)"
+            quote="I've tried sleep podcasts, melatonin, blue-light glasses. This WhatsApp habit took 4 minutes. By Day 8 I was sleeping 47 minutes more per night — I tracked it on my Samsung Health app. Nothing else changed. My husband noticed before I told him."
+          />
+          <Testimonial
+            name="Sneha R."
+            city="Mumbai"
+            theme="Focus Month · March 2026"
+            result="Finished 6-week backlog in 14 days"
+            quote="I was skeptical. Deeply. Day 12 I finished a project I'd been avoiding for 6 weeks. Day 17 my manager asked what changed in my work. I showed her the WhatsApp message from that morning. She asked for the link."
+          />
+          <Testimonial
+            name="Vivek P."
+            city="Hyderabad"
+            theme="Gut Health Month · February 2026"
+            result="Zero bloating after 18 days"
+            quote="I've had bloating issues for 4 years. Three doctors, two diets, one elimination protocol. The gut habits here were embarrassingly simple — add curd, chew slower, morning water before food. 18 days in, bloating is gone. My wife keeps asking what I'm taking. I show her my WhatsApp."
+          />
+        </div>
 
-          <div className="mt-8 p-5 rounded-2xl text-center" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-            <p className="text-sm font-semibold" style={{ color: "#15803d" }}>
-              400+ active members · Average 78% habit completion rate in Month 1
-            </p>
-          </div>
+        <div className="mt-8 p-5 rounded-2xl text-center" style={{ background: "#f4fef7", border: "1px solid #d1fae5" }}>
+          <p className="text-sm font-semibold" style={{ color: "#15803d" }}>
+            400+ members active · Avg. 78% habit completion rate in Month 1
+          </p>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          GUARANTEE + THEME PICKER + URGENCY
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#18181b" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 12 — GUARANTEE + THEMES + URGENCY CTA
+          Brunson: Remove every remaining reason not to act.
+          The guarantee shifts all risk to the seller.
+          Scarcity adds the reason to act now vs tomorrow.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#18181b" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
 
+          {/* Guarantee */}
           <div className="rounded-2xl p-7 mb-8 text-center" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.2)" }}>
             <div className="text-5xl mb-4">🛡️</div>
-            <h3 className="font-black text-xl mb-3 text-white">7 Days. ₹1. Zero risk.</h3>
+            <h3 className="font-bold text-xl mb-3" style={{ color: "#fff" }}>7 Days for ₹1. Zero Risk.</h3>
             <p className="text-sm leading-relaxed" style={{ color: "#a1a1aa" }}>
-              Full access to everything — habits, group, scorecard, vault — for 7 mornings.<br /><br />
-              If by Day 7 you haven&apos;t noticed a single shift in how you feel: reply CANCEL. You&apos;re out immediately. No charge. No questions.<br /><br />
+              Try the full Daily Upgrade Club for 7 mornings. Real habits. Live accountability group. Weekly scorecard. Everything.<br /><br />
+              If by Day 7 you haven&apos;t noticed a single shift in how you feel — send me one message. Cancelled. Done. Pay nothing more.<br /><br />
               <strong style={{ color: "#fff" }}>You risk ₹1. I risk my reputation.</strong>
             </p>
           </div>
 
+          {/* Theme picker */}
           <div className="rounded-2xl p-5 mb-8" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
             <p className="text-xs font-bold uppercase tracking-widest text-center mb-5" style={{ color: "#25d366" }}>Pick Your First Month&apos;s Theme</p>
             <div className="grid grid-cols-4 gap-2">
               {[
-                { e: "😴", l: "Sleep" }, { e: "⚡", l: "Energy" }, { e: "🧠", l: "Focus" }, { e: "🫀", l: "Gut Health" },
-                { e: "🧘", l: "Stress" }, { e: "💪", l: "Fitness" }, { e: "💧", l: "Hydration" }, { e: "❤️", l: "Heart" },
-              ].map(({ e, l }) => (
-                <div key={l} className="rounded-xl p-2.5 text-center" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}>
-                  <div className="text-xl mb-1">{e}</div>
-                  <div className="text-xs" style={{ color: "#9ca3af" }}>{l}</div>
+                { emoji: "😴", label: "Sleep" },
+                { emoji: "⚡", label: "Energy" },
+                { emoji: "🧠", label: "Focus" },
+                { emoji: "🫀", label: "Gut Health" },
+                { emoji: "🧘", label: "Stress" },
+                { emoji: "💪", label: "Fitness" },
+                { emoji: "💧", label: "Hydration" },
+                { emoji: "❤️", label: "Heart" },
+              ].map(({ emoji, label }) => (
+                <div key={label} className="rounded-xl p-2.5 text-center" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                  <div className="text-xl mb-1">{emoji}</div>
+                  <div className="text-xs" style={{ color: "#9ca3af" }}>{label}</div>
                 </div>
               ))}
             </div>
-            <p className="text-xs text-center mt-4" style={{ color: "#4b5563" }}>You pick on joining. Switch every month.</p>
+            <p className="text-xs text-center mt-4" style={{ color: "#4a4a52" }}>You choose when you join. Switch every month.</p>
           </div>
 
-          <div className="rounded-xl px-5 py-4 mb-8" style={{ background: "rgba(251,191,36,0.07)", border: "1px solid rgba(251,191,36,0.18)" }}>
+          {/* Urgency block */}
+          <div className="rounded-2xl px-5 py-4 mb-8" style={{ background: "rgba(251,191,36,0.06)", border: "1px solid rgba(251,191,36,0.15)" }}>
             <p className="text-sm text-center font-semibold" style={{ color: "#fbbf24" }}>
-              ⏰ July group opens July 1st — 23 spots remaining for the Energy theme launch
+              ⏰ New member groups open monthly. The July group starts July 1st — 23 spots remaining.
             </p>
           </div>
 
           <div className="text-center">
-            <h2 className="font-black mb-3 text-white" style={{ fontSize: "clamp(1.4rem, 4vw, 2.2rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+            <h2 className="font-bold mb-4" style={{ fontSize: "clamp(1.5rem, 4vw, 2.2rem)", lineHeight: 1.1, letterSpacing: "-0.025em", color: "#fff" }}>
               Your health doesn&apos;t need<br />a bigger routine.<br />
               <span style={{ color: "#25d366" }}>It needs a better system.</span>
             </h2>
-            <p className="text-base mb-8" style={{ color: "#9ca3af" }}>One tiny healthy habit. Every morning. On WhatsApp.<br />Start for ₹1. Decide after you feel the difference.</p>
-            <CTA size="lg" label="Get My First Habit Tomorrow — ₹1 →" sub="7 days for ₹1 · Then ₹99/month (₹3/day) · Cancel before Day 7" />
+            <p className="text-base mb-8" style={{ color: "#9ca3af" }}>
+              One tiny healthy habit. Every morning. On WhatsApp.<br />
+              Start for ₹1. Decide after you feel the difference.
+            </p>
+            <CTA size="lg" label="Get My First Habit Tomorrow — ₹1 →" sub="7 days for ₹1 · Then ₹99/month (₹3/day) · Cancel anytime before Day 7" />
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          FAQ — Conversion rescue. Every objection that makes
-          someone stop and almost leave, answered completely.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-14" style={{ background: "#0a0a0a" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 13 — FAQ
+          Answer every objection that made someone stop scrolling
+          and almost leave. These are conversion rescue questions.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "#0a0a0a" }} className="px-5 py-14">
         <div className="max-w-xl mx-auto">
-          <p className="text-xs font-bold uppercase tracking-widest text-center mb-2" style={{ color: "#25d366" }}>FAQ</p>
-          <h2 className="text-center font-black mb-8 text-white" style={{ fontSize: "clamp(1.3rem, 4vw, 2rem)", lineHeight: 1.15 }}>
+          <p className="text-xs font-bold uppercase tracking-widest text-center mb-3" style={{ color: "#25d366" }}>FAQ</p>
+          <h2 className="text-center font-bold mb-8" style={{ fontSize: "clamp(1.4rem, 4vw, 2rem)", lineHeight: 1.2, color: "#fff" }}>
             Every question, answered.
           </h2>
-          <div className="space-y-2">
+          <div className="space-y-2.5">
             {[
-              { q: "What exactly is a tiny healthy habit?", a: "One specific, science-backed action under 5 minutes — tied to your monthly theme. Examples: 5 min morning sunlight (Energy), one spoon plain curd with lunch (Gut Health), phone charger outside bedroom tonight (Sleep), one 25-min focus block (Focus). Every habit comes with the why — the specific mechanism behind why this action produces the result." },
-              { q: "What happens the exact moment I pay?", a: "You pay ₹1 on Razorpay. Confirmation page appears immediately — with a WhatsApp join link. You tap it. WhatsApp opens with a pre-filled message. You hit Send. You're added to Daily Upgrade Club. Tomorrow at 7 AM, your first habit arrives. Total time from payment to joining: under 2 minutes." },
-              { q: "Do I need to share my WhatsApp number anywhere?", a: "No. The WhatsApp join link opens WhatsApp directly on your phone. You send one pre-filled message. We receive it and add you. No number forms, no manual data entry — it works exactly like clicking a WhatsApp link from a friend." },
-              { q: "What happens after 7 days? Will I be charged without warning?", a: "On Day 6 we send you a direct message: 'Your trial ends tomorrow. Reply CANCEL to stop — no charge.' If you don't cancel, ₹99 is charged on Day 8. You get a reminder before every charge, always. We don't trap people." },
-              { q: "How do I cancel?", a: "Reply CANCEL on WhatsApp. Done immediately. No forms, no calls, no explaining yourself. If you cancel mid-month after paying ₹99, you stay in until the month ends — no partial refunds, but no being cut off mid-streak either." },
-              { q: "What if I miss a day?", a: "Nothing bad happens. You get a gentle nudge if you haven't replied DONE by 8 PM. One missed day doesn't break your streak or your progress. We're building a long-term habit — not punishing you for being human." },
-              { q: "Can I choose a different theme each month?", a: "Yes. At the start of each month, we ask which theme you want next. Some people cycle through all 8. Some repeat the same theme to go deeper. Some do Sleep twice in a row because it worked. No wrong answer." },
-              { q: "Is this just generic health advice I could Google?", a: "No. Each habit is specific to your monthly theme, sequenced to build on the previous one over 30 days, and delivered at a time when you're most likely to do it — morning, before your phone owns you. You could find these habits by Googling. What you can't Google is a system that delivers them automatically, tracks your streak, and keeps you in a group of people doing the same thing." },
-              { q: "Why is the trial ₹1 and not free?", a: "Free trials have near-zero perceived value — people sign up and never show up. ₹1 is a commitment. It tells you this is real, and it tells us you're serious. It also means we're betting that once you feel 7 days of this, ₹99/month is an obvious yes." },
+              {
+                q: "What exactly is a tiny healthy habit?",
+                a: "One specific, science-backed action tied to your monthly theme — under 5 minutes. Examples: 5 minutes of morning sunlight (Energy Month), one spoon of plain curd with lunch (Gut Health), phone out of bedroom before 10 PM (Sleep Month), one 25-min deep-work block (Focus Month). Every habit comes with the why — the science behind why this specific action creates the result.",
+              },
+              {
+                q: "What happens the moment I pay?",
+                a: "You pay ₹1 via Razorpay. You see a confirmation page with a WhatsApp link. You click it, WhatsApp opens with a pre-filled message. You send it. You're added to the Daily Upgrade Club group. Tomorrow at 7 AM, your first habit arrives. That's the entire process.",
+              },
+              {
+                q: "Do I need to share my WhatsApp number?",
+                a: "No. When you click the WhatsApp link on the confirmation page, WhatsApp opens directly on your phone. You send one pre-filled message. We receive it. You're added. No forms, no number sharing, no manual steps.",
+              },
+              {
+                q: "What happens after 7 days? Will I be charged automatically?",
+                a: "On Day 6, we send you a direct message reminding you that your trial ends tomorrow. If you want to cancel, you reply CANCEL — done immediately, no charge. If you want to continue, do nothing. ₹99 is charged on Day 8. You're always told before any charge. We don't trap people.",
+              },
+              {
+                q: "What if I miss a day?",
+                a: "Nothing bad happens. If you haven't replied DONE by 8 PM, you get a gentle nudge. One missed day doesn't break your streak or your progress. Life happens. The system is built for real people with real lives — not for a perfect version of you that doesn't exist.",
+              },
+              {
+                q: "Can I change my theme each month?",
+                a: "Yes. At the start of each new month, you choose your next theme. Some members cycle through all 8. Some go deeper in the same one. Some do Sleep twice. There's no wrong answer.",
+              },
+              {
+                q: "How do I cancel if I want to?",
+                a: "Send one WhatsApp message: CANCEL. That's it. No forms, no calls, no guilt. Cancelled immediately. If you're in the middle of a month, you stay in until the month ends. No partial refunds needed because you paid ₹99 for a full month.",
+              },
+              {
+                q: "I've tried habits before and always quit. What's different here?",
+                a: "The system delivers the trigger, not you. Every other habit method depends on you remembering, deciding, and acting — all at the same time, every day. This arrives in your WhatsApp automatically. The decision is already made. You just reply DONE. The people who 'always quit' averaged 78% completion in Month 1 here — not because they changed, but because the system did.",
+              },
+              {
+                q: "Is ₹99/month really worth it?",
+                a: "₹3/day. Less than one chai. Less than 2 minutes of a private trainer. Less than one health supplement capsule. The question is whether the result is worth it — and that's exactly why the trial is ₹1. You don't decide based on this page. You decide after 7 mornings of actual habits.",
+              },
             ].map(({ q, a }) => (
               <FAQ key={q} q={q} a={a} />
             ))}
@@ -731,54 +892,51 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══════════════════════════════════════════════════════════════
-          FINAL CLOSE — Two futures. Emotional urgency.
-          The last thing they read before clicking must create
-          the feeling that NOT clicking has a real cost.
-          Brunson: Make the cost of inaction vivid.
-      ══════════════════════════════════════════════════════════════ */}
-      <section className="px-5 py-16" style={{ background: "linear-gradient(165deg,#f0fdf4 0%,#fff 70%)", borderTop: "1px solid #d1fae5" }}>
+      {/* ══════════════════════════════════════════════════════
+          SECTION 14 — FINAL CLOSE
+          Brunson: The last thing they read before clicking.
+          Paint the two futures. Make them feel the cost of inaction.
+          Then make the action feel obvious and small.
+      ══════════════════════════════════════════════════════ */}
+      <section style={{ background: "linear-gradient(165deg,#edfff5 0%,#faf8f3 100%)", borderTop: "1px solid #d1fae5" }} className="px-5 py-16">
         <div className="max-w-lg mx-auto text-center">
           <p className="text-4xl mb-6">🌱</p>
-          <h2 className="font-black mb-5" style={{ fontSize: "clamp(1.9rem, 5.5vw, 3.2rem)", lineHeight: 1.05, letterSpacing: "-0.04em" }}>
-            Six months from now,<br />you&apos;re going to be the same.<br />
-            <span style={{ color: "#1aad4e" }}>Or you&apos;re going to be different.</span>
+          <h2 className="font-bold mb-6" style={{ fontSize: "clamp(1.8rem, 5vw, 3rem)", lineHeight: 1.05, letterSpacing: "-0.035em" }}>
+            30 days from now,<br />you could be the person<br />
+            <span style={{ color: "#1aad4e" }}>who actually did it.</span>
           </h2>
-
-          <p className="text-base leading-relaxed mb-4" style={{ color: "#52525b", maxWidth: 420, margin: "0 auto 1rem" }}>
-            The version of you that didn&apos;t click: still planning to start, still meaning to sleep better, still at the same energy level, still saying &ldquo;once things calm down.&rdquo;
+          <p className="text-base leading-relaxed mb-6" style={{ color: "#52525b", maxWidth: 400, margin: "0 auto 1.5rem" }}>
+            Or you could keep planning to start next Monday.<br /><br />
+            Every Monday that passes is another week of the same energy, the same sleep, the same &ldquo;I should really take care of my health.&rdquo;<br /><br />
+            <strong style={{ color: "#18181b" }}>One tiny healthy habit. ₹1. Tomorrow morning at 7 AM.</strong>
           </p>
-          <p className="text-base leading-relaxed mb-8" style={{ color: "#52525b", maxWidth: 420, margin: "0 auto 2rem" }}>
-            The version that did: 180 tiny healthy habits later. One theme changed. Maybe two. The kind of person who actually follows through — not because willpower improved, but because the system made it automatic.
-          </p>
-          <p className="text-lg font-bold mb-8" style={{ color: "#18181b" }}>
-            ₹1. Tomorrow morning. 7 AM. One habit in your WhatsApp.<br />
-            <span style={{ color: "#1aad4e" }}>That&apos;s the only difference.</span>
-          </p>
-
           <CTA size="lg" label="Get My First Habit Tomorrow — ₹1 →" sub="7-day trial · Then ₹99/month (₹3/day) · Cancel before Day 7, pay nothing more" />
 
-          <div className="mt-8 pt-6" style={{ borderTop: "1px solid #d1fae5" }}>
+          <div className="mt-8 pt-6" style={{ borderTop: "1px solid #dde8dc" }}>
             <p className="text-sm" style={{ color: "#71717a" }}>
               Built by <strong style={{ color: "#18181b" }}>Rohan Mote</strong> · Questions?{" "}
-              <a href="https://wa.me/918956146485?text=Hi+Rohan%2C+I+have+a+question+about+the+Daily+Upgrade+Club"
-                className="underline font-medium" style={{ color: "#1aad4e" }}>
-                Chat directly on WhatsApp →
+              <a
+                href="https://wa.me/918956146485?text=Hi+Rohan%2C+I+have+a+question+about+the+Daily+Upgrade+Club"
+                className="underline font-medium"
+                style={{ color: "#1aad4e" }}
+              >
+                Chat directly on WhatsApp
               </a>
             </p>
           </div>
         </div>
       </section>
 
-      <footer className="px-5 py-7 text-center" style={{ background: "#050505", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
+      <footer className="px-5 py-8 text-center" style={{ background: "#050505", borderTop: "1px solid rgba(255,255,255,0.05)" }}>
         <p className="text-xs" style={{ color: "#3f3f46" }}>
           © {new Date().getFullYear()} Daily Upgrade Club ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
         <p className="text-xs mt-1" style={{ color: "#27272a" }}>
-          7-day trial ₹1 · Then ₹99/month · Cancel anytime — reply CANCEL on WhatsApp
+          7-day trial ₹1 · Then ₹99/month · Cancel anytime by messaging CANCEL on WhatsApp
         </p>
       </footer>
+
     </div>
   );
 }

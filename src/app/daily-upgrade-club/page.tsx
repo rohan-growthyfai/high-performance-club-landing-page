@@ -481,6 +481,8 @@ export default function DailyUpgradeClubPage() {
         .duc-glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9)}
         .duc-glow-card{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transition:box-shadow 0.2s,transform 0.2s}
         .duc-glow-card:hover{box-shadow:0 8px 32px rgba(37,211,102,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
+        @keyframes theme-pulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transform:translateY(0)}40%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}60%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}}
+        .theme-card-anim{animation:theme-pulse 1.6s ease-in-out infinite}
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
@@ -776,8 +778,8 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 5. WHAT IS DUC ════════════════════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
+      {/* ══ 5. WHAT IS DUC — DELETED ══════════════════════════════════════════ */}
+      {false && <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-6">
@@ -837,15 +839,15 @@ export default function DailyUpgradeClubPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ══ 6. 8 MONTHLY THEMES ═══════════════════════════════════════════════ */}
       <section className="bg-section-cream py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">8 Monthly Themes</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Pick your area. Habits arrive daily.</h2>
-            <p className="duc-body max-w-md mx-auto">One theme per month. 30 habits. Go deep — not wide. Switch anytime.</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Pick your monthly theme. Habits arrive daily.</h2>
+            <p className="duc-body max-w-md mx-auto">Go deeper into 1 area of your life every month. Start getting healthy habits for entire month.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -930,48 +932,44 @@ export default function DailyUpgradeClubPage() {
                   "The Anti-Sitting Protocol",
                 ]
               },
-            ].map(({ emoji, theme, tagline, color, bg, border, img, habits }) => (
-              <div key={theme} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: bg, border: `2px solid ${border}` }}>
+            ].map(({ emoji, theme, tagline, color, bg, border, img, habits }, idx) => (
+              <div key={theme}
+                className="theme-card-anim rounded-2xl overflow-hidden flex flex-col"
+                style={{
+                  background: bg,
+                  border: `2px solid ${border}`,
+                  animationDelay: `${idx * 0.2}s`,
+                  animationDuration: `${8 * 0.2 + 1.6}s`,
+                }}>
                 {/* Image */}
                 <div className="relative h-36 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={img} alt={theme} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                   <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${bg} 100%)` }} />
                   <div className="absolute bottom-2 left-3 flex items-center gap-2">
-                    <span style={{ fontSize: 22 }}>{emoji}</span>
+                    <span style={{ fontSize: 24 }}>{emoji}</span>
                     <div>
-                      <p style={{ fontSize: 14, fontWeight: 800, color, lineHeight: 1.1 }}>{theme}</p>
-                      <p style={{ fontSize: 11, color: "#52525b" }}>{tagline}</p>
+                      <p style={{ fontSize: 18, fontWeight: 900, color, lineHeight: 1.1 }}>{theme}</p>
+                      <p style={{ fontSize: 12, color: "#52525b", fontWeight: 500 }}>{tagline}</p>
                     </div>
                   </div>
                 </div>
-                {/* Habit name pills */}
-                <div className="p-3.5 flex flex-col gap-2 flex-1">
-                  <p style={{ fontSize: 11, fontWeight: 700, color: color, textTransform: "uppercase", letterSpacing: "0.08em" }}>Sample habits:</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {habits.map((h, i) => (
-                      <span key={i} style={{
-                        fontSize: 11,
-                        fontWeight: 600,
-                        color: color,
-                        background: `${color}15`,
-                        border: `1px solid ${color}30`,
-                        borderRadius: 999,
-                        padding: "3px 9px",
-                        lineHeight: 1.4,
-                        display: "inline-block",
-                      }}>{h}</span>
-                    ))}
-                  </div>
+                {/* Habit list — no boxes, simple dots */}
+                <div className="p-3.5 flex flex-col gap-1.5 flex-1">
+                  <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Sample habits:</p>
+                  {habits.map((h, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <span style={{ color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>●</span>
+                      <span style={{ fontSize: 12, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             ))}
           </div>
 
-          <p className="text-center mt-6" style={{ fontSize: 13, color: "#71717a" }}>📅 Pick your theme when you join. Switch every month or stay on the same one — completely your choice.</p>
-
           <div className="flex justify-center mt-8">
-            <CTA label="Pick My First Theme →" sub="₹1 for 7 days · Then ₹99/month · Cancel before Day 7" />
+            <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
           </div>
         </div>
       </section>

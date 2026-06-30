@@ -502,7 +502,7 @@ export default function DailyUpgradeClubPage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
                 <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
-                Monthly Healthy Habit Subscription
+                For busy people who want better health without complicated routines
               </div>
 
               {/* Headline */}
@@ -704,6 +704,15 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
+      {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+          <h2 className="duc-h2 duc-section-title mb-4">Not a Course. Not an App. Not Another Challenge.</h2>
+          <p className="duc-body max-w-2xl mx-auto mb-6">Daily Upgrade Club is a simple WhatsApp-based habit system that helps you build healthier daily routines through tiny actions, daily check-ins, streaks and accountability.</p>
+          <p style={{ fontSize: 14, color: "#71717a", fontStyle: "italic" }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
+        </div>
+      </section>
+
       {/* ══ 4. HOW DUC WORKS ══════════════════════════════════════════════════ */}
       <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
@@ -738,6 +747,37 @@ export default function DailyUpgradeClubPage() {
                 <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
                 <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
                 <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ WHAT YOU GET INSIDE ═══════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">What You Get Inside</p>
+            <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Stay Consistent</h2>
+            <p className="duc-body max-w-xl mx-auto">Daily Upgrade Club is designed to make healthy habits simple, trackable and easy to repeat every day.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {[
+              { icon: "🌅", title: "1 Tiny Habit Every Morning", desc: "Simple health habits delivered daily on WhatsApp." },
+              { icon: "✅", title: "Daily Check-Ins", desc: "Reply DONE after completing your habit and stay accountable." },
+              { icon: "🔥", title: "Streak Tracking", desc: "Build momentum by tracking your daily consistency." },
+              { icon: "📊", title: "Weekly Progress Scorecards", desc: "See how your health, energy, focus and consistency are improving." },
+              { icon: "🎯", title: "Monthly Habit Tracks", desc: "Follow focused monthly themes like Health, Sleep, Energy, Focus and Calmness." },
+              { icon: "📋", title: "Practical Habit Guides", desc: "Get simple guides and calendars to make habits easier to follow." },
+              { icon: "👥", title: "Community Access", desc: "Stay surrounded by people who are also building better daily habits." },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="duc-glow-card bg-white rounded-2xl p-6 flex flex-col gap-3" style={{ border: "1px solid rgba(37,211,102,0.12)" }}>
+                <span style={{ fontSize: 32 }}>{icon}</span>
+                <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", lineHeight: 1.3 }}>{title}</p>
+                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{desc}</p>
               </div>
             ))}
           </div>
@@ -815,8 +855,8 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">8 Monthly Themes</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Pick your monthly theme. Habits arrive daily.</h2>
-            <p className="duc-body max-w-md mx-auto">Go deeper into 1 area of your life every month. Start getting healthy habits for entire month.</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
+            <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit track designed to improve one area of your life without overwhelming your schedule.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -955,7 +995,7 @@ export default function DailyUpgradeClubPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
             <div className="flex justify-center tilt-left">
               <StaticPhone>
-                <WAChatBg height={320}>
+                <WAChatBg>
                   <WADateSep label="⚡ Energy Month · Day 3" />
                   <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets cortisol and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
                   <WAOut text="✅ DONE — felt great already!" time="7:09 AM" />
@@ -966,7 +1006,7 @@ export default function DailyUpgradeClubPage() {
 
             <div className="flex justify-center">
               <StaticPhone>
-                <WAChatBg height={320}>
+                <WAChatBg>
                   <WADateSep label="😴 Sleep Month · Day 11" />
                   <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
                   <WAOut text="✅ Done — reminder is set" time="7:05 AM" />
@@ -977,7 +1017,7 @@ export default function DailyUpgradeClubPage() {
 
             <div className="flex justify-center tilt-right">
               <StaticPhone>
-                <WAChatBg height={320}>
+                <WAChatBg>
                   <WADateSep label="🌿 Gut Health · Day 7" />
                   <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch — today.","","Why: Lactobacillus in dahi reduces intestinal inflammation. 14 days of daily curd reduced bloating by 63% in clinical trials.","","Reply DONE 🙌"]} time="7:01 AM" />
                   <WAOut text="✅ Done — had it with dal rice" time="1:22 PM" />
@@ -991,6 +1031,38 @@ export default function DailyUpgradeClubPage() {
 
           <div className="flex justify-center mt-8">
             <CTA label="Send My First Habit Tomorrow →" sub="₹1 for 7 days · Cancel before Day 7 · Pay nothing more" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ WHO THIS IS FOR ═════════════════════════════════════════════════ */}
+      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3" style={{ color: "#25d366" }}>Who This Is For</p>
+            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>This Is Built for You If…</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "You want to stay healthy but don't have time for long routines.",
+              "You keep starting and stopping every few days.",
+              "You want better energy, sleep, focus and discipline.",
+              "You don't want gym pressure or strict dieting.",
+              "You prefer simple WhatsApp reminders over complicated apps.",
+              "You want accountability to stay consistent every day.",
+            ].map((point, i) => (
+              <div key={i} className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(37,211,102,0.18)" }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", fontSize: 14, color: "#fff", fontWeight: 900 }}>✓</div>
+                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.88)", lineHeight: 1.65, fontWeight: 500 }}>{point}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <a href="https://rzp.io/l/daily-upgrade-club" target="_blank" rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
+              style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
+              Yes, This Is For Me →
+            </a>
           </div>
         </div>
       </section>
@@ -1037,6 +1109,43 @@ export default function DailyUpgradeClubPage() {
                 <p style={{ fontSize: 13, color: "#71717a" }}>Founder, Daily Upgrade Club</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ WHY IT WORKS ════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">The Science of Simplicity</p>
+            <h2 className="duc-h2 duc-section-title mb-4">Why Daily Upgrade Club Works</h2>
+            <p className="duc-body max-w-xl mx-auto">Because it removes the biggest reason people fail — overwhelm.</p>
+          </div>
+          <div className="rounded-2xl p-8 mb-8" style={{ background: "#faf8f3", border: "1.5px solid #e2dfd6" }}>
+            <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.8, marginBottom: 20 }}>Most people try to change too much too quickly.</p>
+            <p style={{ fontSize: 15, fontWeight: 700, color: "#18181b", marginBottom: 14 }}>Daily Upgrade Club keeps it simple:</p>
+            <div className="flex flex-col gap-3">
+              {[
+                { icon: "🌱", text: "1 tiny habit" },
+                { icon: "⏱️", text: "Less than 5 minutes" },
+                { icon: "📲", text: "Delivered daily on WhatsApp" },
+                { icon: "✅", text: "DONE check-in" },
+                { icon: "🔥", text: "Streak tracking" },
+                { icon: "📊", text: "Weekly progress scorecard" },
+                { icon: "👥", text: "Community accountability" },
+              ].map(({ icon, text }) => (
+                <div key={text} className="flex items-center gap-3">
+                  <span style={{ fontSize: 20 }}>{icon}</span>
+                  <span style={{ fontSize: 15, color: "#18181b", fontWeight: 600 }}>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "2px solid rgba(37,211,102,0.3)" }}>
+            <p style={{ fontSize: 20, fontWeight: 900, color: "#18181b", lineHeight: 1.4 }}>Small enough to do daily. <span className="gradient-text">Powerful enough to change your routine.</span></p>
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
           </div>
         </div>
       </section>

@@ -702,7 +702,51 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 4. WHAT IS DUC ════════════════════════════════════════════════════ */}
+      {/* ══ 4. HOW IT WORKS ══════════════════════════════════════════════════ */}
+      <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Simple by design</p>
+            <h2 className="duc-h2 duc-section-title mb-3">How it works</h2>
+            <p className="duc-body max-w-sm mx-auto">No fluff, no overwhelm. Three simple steps:</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                n: "1",
+                emoji: "📲",
+                title: "Join for ₹1",
+                body: "Sign up in 30 seconds. You're immediately added to your private WhatsApp group and choose your first monthly theme.",
+              },
+              {
+                n: "2",
+                emoji: "🌅",
+                title: "Get your habit every morning",
+                body: "Every day at 7 AM, one science-backed healthy habit lands in your WhatsApp. Under 5 minutes. No app needed.",
+              },
+              {
+                n: "3",
+                emoji: "🔥",
+                title: "Reply DONE. Build your streak.",
+                body: "Reply DONE when you complete it. Your streak updates, accountability kicks in, and you wake up tomorrow already ahead.",
+              },
+            ].map(({ n, emoji, title, body }) => (
+              <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
+                {/* Number circle */}
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
+                <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
+                <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
+                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 5. WHAT IS DUC ════════════════════════════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">

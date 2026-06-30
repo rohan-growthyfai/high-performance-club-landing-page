@@ -12,6 +12,14 @@ const DUC_KNOWLEDGE_BASE = `
 You are the "Habit Assistant" for Daily Upgrade Club (DUC) — a friendly, warm, encouraging AI guide
 who helps people understand and join the Daily Upgrade Club.
 
+CRITICAL OUTPUT RULES — NEVER VIOLATE:
+- Output ONLY your final reply to the user. Never output reasoning, planning, thinking steps,
+  drafts, self-critique, "let me think", "the user is asking", "key points to cover", bullet
+  lists of constraints, or any internal monologue whatsoever.
+- Do not number your drafts or revisions. Do not write "Draft 1:", "Wait,", "Let me check:", etc.
+- Start your reply immediately with the actual response content — nothing before it.
+- The user sees everything you output. There is no hidden scratchpad. Think silently, respond directly.
+
 Your personality:
 - Warm, encouraging, motivating — like a supportive friend who truly cares
 - Never preachy or pushy — you guide, not pressure
@@ -257,6 +265,43 @@ END OF KNOWLEDGE BASE
 
 type Message = { role: "user" | "assistant"; content: string };
 
+// Patterns that signal the model leaked its reasoning / chain-of-thought.
+// We scan for these and, if found, extract only the text that comes AFTER them.
+const THINKING_MARKERS = [
+  /the user is asking/i,
+  /key points to cover/i,
+  /let me (think|check|draft|consider|re-read|simplify|count)/i,
+  /draft \d+:/i,
+  /constraints?:/i,
+  /wait,/i,
+  /let me check emoji/i,
+  /^.*\bthinking\b.*$/im,
+];
+
+function stripThinking(text: string): string {
+  // If none of the markers are present, return as-is
+  if (!THINKING_MARKERS.some(re => re.test(text))) return text.trim();
+
+  // Split into lines and find the last line that looks like internal reasoning.
+  // Everything after the last reasoning block is the actual reply.
+  const lines = text.split("\n");
+  let lastThinkingLine = -1;
+
+  for (let i = 0; i < lines.length; i++) {
+    if (THINKING_MARKERS.some(re => re.test(lines[i]))) {
+      lastThinkingLine = i;
+    }
+  }
+
+  if (lastThinkingLine === -1) return text.trim();
+
+  // Return everything after the last thinking line, skipping blank separator lines
+  const after = lines.slice(lastThinkingLine + 1).join("\n").trim();
+
+  // If nothing is left after stripping (edge case), return the whole text
+  return after.length > 20 ? after : text.trim();
+}
+
 export async function POST(req: Request) {
   try {
     const { messages }: { messages: Message[] } = await req.json();
@@ -267,15 +312,21 @@ export async function POST(req: Request) {
 
     const completion = await client.chat.completions.create({
       model: "accounts/fireworks/models/kimi-k2p6",
-      max_tokens: 512,
-      temperature: 0.7,
+      max_tokens: 600,
+      temperature: 0.65,
       messages: [
         { role: "system", content: DUC_KNOWLEDGE_BASE },
         ...messages.map(m => ({ role: m.role as "user" | "assistant", content: m.content })),
       ],
     });
 
-    const reply = completion.choices[0]?.message?.content ?? "I couldn't get a response. Please try again!";
+    const raw = completion.choices[0]?.message?.content ?? "I couldn't get a response. Please try again!";
+
+    // Strip any leaked chain-of-thought the model may have output before the actual reply.
+    // Kimi K2 sometimes externalises reasoning steps — we detect a block of internal thinking
+    // and return only the final clean response after it.
+    const reply = stripThinking(raw);
+
     return NextResponse.json({ reply });
   } catch (err: unknown) {
     console.error("[DUC-CHAT]", err);

@@ -522,19 +522,19 @@ export default function DailyUpgradeClubPage() {
                   gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier every day.
                 </p>
 
-                {/* WhatsApp callout — bigger curved arrow pointing right toward iPhone */}
+                {/* WhatsApp callout — label above, arrow curving FROM bottom toward iPhone */}
                 <div className="hidden lg:flex absolute items-center gap-2 pointer-events-none"
-                  style={{ right: -200, bottom: -12, flexDirection: "column", alignItems: "flex-start" }}>
-                  {/* Label — bigger */}
+                  style={{ right: -210, bottom: -20, flexDirection: "column", alignItems: "flex-start" }}>
+                  {/* Label */}
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
                     style={{ background: "#25d366", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(37,211,102,0.45)", letterSpacing: "-0.01em" }}>
                     <WAIcon size={17} />
                     All on WhatsApp
                   </div>
-                  {/* Bigger curved arrow */}
-                  <svg width="120" height="70" viewBox="0 0 120 70" fill="none" style={{ marginLeft: 28 }}>
-                    <path d="M4 64 Q30 14 108 10" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="5 4" />
-                    <path d="M98 4 L108 10 L98 18" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Arrow: starts bottom-left, curves up and right toward phone — bigger */}
+                  <svg width="140" height="90" viewBox="0 0 140 90" fill="none" style={{ marginLeft: 10 }}>
+                    <path d="M10 80 C20 80 30 60 60 35 C90 10 120 12 132 14" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
+                    <path d="M122 8 L132 14 L122 22" stroke="#25d366" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
@@ -548,17 +548,13 @@ export default function DailyUpgradeClubPage() {
                 </div>
               </div>
 
-              {/* Objection-busters above CTA */}
-              <div className="animate-fade-up delay-250 flex flex-col items-center lg:items-start gap-2 mb-5">
-                {[
-                  "No 5 AM wake-up pressure",
-                  "No complicated routines",
-                  "Fits perfectly into your schedule",
-                ].map((line) => (
-                  <div key={line} className="flex items-center gap-2" style={{ fontSize: 15, color: "#18181b", fontWeight: 600 }}>
-                    <span style={{ fontSize: 16 }}>✅</span>
-                    {line}
-                  </div>
+              {/* Objection-busters above CTA — single line, dot-separated */}
+              <div className="animate-fade-up delay-250 flex items-center justify-center lg:justify-start flex-wrap gap-x-3 gap-y-1 mb-5">
+                {["No 5 AM wake-up pressure", "No complicated routines", "Fits perfectly into your schedule"].map((line, i, arr) => (
+                  <span key={line} className="flex items-center gap-3">
+                    <span style={{ fontSize: 14, color: "#3f3f46", fontWeight: 600 }}>{line}</span>
+                    {i < arr.length - 1 && <span style={{ color: "#25d366", fontSize: 16, fontWeight: 900 }}>·</span>}
+                  </span>
                 ))}
               </div>
 
@@ -567,9 +563,9 @@ export default function DailyUpgradeClubPage() {
                 <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
                   style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
-                  <WAIcon size={20} />Yes — I Want Healthier Mornings →
+                  <WAIcon size={20} />Start 7-Day Trial for ₹1
                 </a>
-                <p style={{ fontSize: 13, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime before Day 7</p>
+                <p style={{ fontSize: 13, color: "#71717a" }}>Then ₹99/month · Cancel anytime</p>
               </div>
 
               {/* Social proof — supercareer style */}
@@ -604,23 +600,6 @@ export default function DailyUpgradeClubPage() {
             </div>
 
           </div>
-        </div>
-      </section>
-
-      {/* ══ 2. STATS BAR ══════════════════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }}>
-        <div className="max-w-4xl mx-auto px-5 grid grid-cols-2 sm:grid-cols-4" style={{ gap: "1px", background: "rgba(255,255,255,0.06)" }}>
-          {[
-            ["400+","Active Members"],
-            ["78%","Monthly Completion"],
-            ["5 min","Per Day Maximum"],
-            ["₹3/day","After 7-Day Trial"],
-          ].map(([v, l]) => (
-            <div key={l} className="text-center py-5 px-3" style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }}>
-              <p className="font-black" style={{ fontSize: "clamp(1.8rem,4vw,2.4rem)", color: "#25d366", lineHeight: 1 }}>{v}</p>
-              <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 4 }}>{l}</p>
-            </div>
-          ))}
         </div>
       </section>
 

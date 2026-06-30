@@ -610,14 +610,14 @@ export default function DailyUpgradeClubPage() {
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Be honest with yourself</p>
             <h2 className="duc-h2 duc-section-title mb-3">Does this sound like you?</h2>
-            <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
+            <p className="duc-body max-w-sm mx-auto">If you nodded at one of these, Daily Upgrade Club was built for you!</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" },
+              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
               { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
               { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
-              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" },
+              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
               { icon: "⏰", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
               { icon: "📱", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
             ].map((p, i) => (
@@ -638,9 +638,15 @@ export default function DailyUpgradeClubPage() {
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
-            <p className="font-bold" style={{ fontSize: 16, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
-            <p className="duc-body mt-1.5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> The right system makes discipline irrelevant.</p>
+          <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
+            <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
+            <p className="duc-body mb-5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> Get the exact proven system to actually build healthier habits and stay consistent for lifetime</p>
+            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer"
+              className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
+              style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
+              <WAIcon size={18} />Start 7-Day Trial for ₹1
+            </a>
+            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>Then ₹99/month · Cancel anytime</p>
           </div>
         </div>
       </section>

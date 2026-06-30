@@ -702,7 +702,37 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 4. HOW IT WORKS ══════════════════════════════════════════════════ */}
+      {/* ══ 4. WHAT IS DUC ════════════════════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">What exactly is this?</p>
+            <h2 className="duc-h2 duc-section-title mb-4">What exactly is Daily Upgrade Club?</h2>
+            <p className="duc-body max-w-xl mx-auto">India&apos;s only healthy habit subscription designed to help you become more fitter, healthier &amp; energetic without complicated routines.</p>
+          </div>
+          {/* 3 "Not a..." cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {[
+              { emoji: "📚", label: "Not a Course" },
+              { emoji: "📱", label: "Not an App" },
+              { emoji: "🥗", label: "Not a Diet or Gym Plan" },
+            ].map(({ emoji, label }) => (
+              <div key={label} className="rounded-2xl p-6 flex flex-col items-center text-center gap-3" style={{ background: "#fafafa", border: "1.5px solid #e4e4e7" }}>
+                <span style={{ fontSize: 36 }}>{emoji}</span>
+                <p style={{ fontSize: 16, fontWeight: 800, color: "#3f3f46", textDecoration: "line-through", textDecorationColor: "#f87171", textDecorationThickness: 2 }}>{label}</p>
+              </div>
+            ))}
+          </div>
+          {/* Punchline */}
+          <div className="rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,#f0fdf4,#dcfce7)", border: "2px solid rgba(37,211,102,0.3)" }}>
+            <p style={{ fontSize: 22, fontWeight: 900, color: "#18181b", lineHeight: 1.4 }}>
+              Just <span className="gradient-text">1 tiny healthy habit</span> every day on WhatsApp.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 5. HOW IT WORKS ══════════════════════════════════════════════════ */}
       <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
@@ -728,7 +758,7 @@ export default function DailyUpgradeClubPage() {
                 n: "3",
                 emoji: "🔥",
                 title: "Reply DONE. Build your streak.",
-                body: "Reply DONE when you complete it. Your streak updates, accountability kicks in, and you wake up tomorrow already ahead.",
+                body: "Reply DONE when you complete it. Your streak updates, accountability kicks in, and you keep becoming a healthier version of yourself every day.",
               },
             ].map(({ n, emoji, title, body }) => (
               <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>

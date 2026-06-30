@@ -492,9 +492,6 @@ export default function DailyUpgradeClubPage() {
 
       {/* ══ 1. HERO ═══════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
-        <span className="emoji-deco float-1 top-14 left-5 text-3xl hidden lg:block" aria-hidden="true">✨</span>
-        <span className="emoji-deco float-2 top-8 right-8 text-3xl hidden lg:block" aria-hidden="true">🌿</span>
-
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-10 lg:pt-12 lg:pb-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-72px)]">
 
@@ -525,31 +522,44 @@ export default function DailyUpgradeClubPage() {
                   gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier every day.
                 </p>
 
-                {/* WhatsApp callout — curved arrow pointing right toward iPhone */}
+                {/* WhatsApp callout — bigger curved arrow pointing right toward iPhone */}
                 <div className="hidden lg:flex absolute items-center gap-2 pointer-events-none"
-                  style={{ right: -160, bottom: -8, flexDirection: "column", alignItems: "flex-start" }}>
-                  {/* Label */}
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold"
-                    style={{ background: "#25d366", color: "#fff", fontSize: 12, whiteSpace: "nowrap", boxShadow: "0 4px 14px rgba(37,211,102,0.4)" }}>
-                    <WAIcon size={13} />
+                  style={{ right: -200, bottom: -12, flexDirection: "column", alignItems: "flex-start" }}>
+                  {/* Label — bigger */}
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
+                    style={{ background: "#25d366", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(37,211,102,0.45)", letterSpacing: "-0.01em" }}>
+                    <WAIcon size={17} />
                     All on WhatsApp
                   </div>
-                  {/* Curved arrow SVG pointing right-upward toward phone */}
-                  <svg width="80" height="48" viewBox="0 0 80 48" fill="none" style={{ marginLeft: 20 }}>
-                    <path d="M4 44 Q20 10 72 8" stroke="#25d366" strokeWidth="2" fill="none" strokeLinecap="round" strokeDasharray="4 3" />
-                    {/* arrowhead */}
-                    <path d="M66 4 L72 8 L66 13" stroke="#25d366" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  {/* Bigger curved arrow */}
+                  <svg width="120" height="70" viewBox="0 0 120 70" fill="none" style={{ marginLeft: 28 }}>
+                    <path d="M4 64 Q30 14 108 10" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="5 4" />
+                    <path d="M98 4 L108 10 L98 18" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
-                {/* Mobile version — inline WhatsApp badge below text */}
+                {/* Mobile — inline badge */}
                 <div className="flex lg:hidden items-center gap-2 mt-3">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full font-bold"
-                    style={{ background: "#25d366", color: "#fff", fontSize: 12, boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>
-                    <WAIcon size={13} />
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
+                    style={{ background: "#25d366", color: "#fff", fontSize: 14, boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>
+                    <WAIcon size={15} />
                     All on WhatsApp — no extra apps needed
                   </div>
                 </div>
+              </div>
+
+              {/* Objection-busters above CTA */}
+              <div className="animate-fade-up delay-250 flex flex-col items-center lg:items-start gap-2 mb-5">
+                {[
+                  "No 5 AM wake-up pressure",
+                  "No complicated routines",
+                  "Fits perfectly into your schedule",
+                ].map((line) => (
+                  <div key={line} className="flex items-center gap-2" style={{ fontSize: 15, color: "#18181b", fontWeight: 600 }}>
+                    <span style={{ fontSize: 16 }}>✅</span>
+                    {line}
+                  </div>
+                ))}
               </div>
 
               {/* CTA */}

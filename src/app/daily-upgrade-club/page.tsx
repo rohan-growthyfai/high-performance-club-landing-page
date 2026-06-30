@@ -41,13 +41,15 @@ function CTA({ label, sub }: { label: string; sub?: string }) {
 }
 
 // ─── WA chat primitives ───────────────────────────────────────────────────────
-function WAChatBg({ children, minH = 340 }: { children: React.ReactNode; minH?: number }) {
+function WAChatBg({ children, height }: { children: React.ReactNode; height?: number }) {
   return (
     <div style={{
       background: "#efeae2",
       backgroundImage: "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cpath fill='%23000000' fill-opacity='0.03' d='M0 0h20v20H0V0zm20 20h20v20H20V20z'/%3E%3C/svg%3E\")",
       padding: "10px 8px 8px",
-      minHeight: minH,
+      height: height ?? undefined,
+      maxHeight: 480,
+      overflow: "hidden",
     }}>
       {children}
     </div>
@@ -319,7 +321,7 @@ function StaticPhone({ children, contact = "Daily Upgrade Club", status = "onlin
 function FAQ({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6" }}>
+    <div className="duc-glow-card rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6" }}>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 14 }}>
         {q}
         <span className="shrink-0 text-xl font-light" style={{ color: "#25d366", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
@@ -475,6 +477,10 @@ export default function DailyUpgradeClubPage() {
         .duc-body{font-size:clamp(0.9rem,1.6vw,1rem);line-height:1.7;color:#52525b}
         .duc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#25d366}
         .duc-card{background:#fff;border:1px solid #e2dfd6;border-radius:16px;padding:20px}
+        .duc-section-title{background:linear-gradient(135deg,#18181b 0%,#3f3f46 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .duc-glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9)}
+        .duc-glow-card{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transition:box-shadow 0.2s,transform 0.2s}
+        .duc-glow-card:hover{box-shadow:0 8px 32px rgba(37,211,102,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
       `}</style>
 
       {/* ══ 1. HERO ═══════════════════════════════════════════════════════════ */}
@@ -490,25 +496,17 @@ export default function DailyUpgradeClubPage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
                 <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
-                Daily Upgrade Club · Healthy Habit Subscription
+                Monthly Healthy Habit Subscription
               </div>
 
-              {/* Headline — supercareer style: outcome-first, 3-second clarity */}
+              {/* Headline */}
               <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-4">
-                Get Healthier in{" "}
-                <span className="gradient-text">5 Minutes a Day</span>
-                <br />
-                — with a tiny healthy habit<br />
-                delivered to your{" "}
-                <span className="gradient-text">WhatsApp</span>{" "}
-                every morning.
+                A Tiny Healthy Habit Every Morning. On WhatsApp. That Actually Changes How You Feel.
               </h1>
 
-              {/* Subhead — crystal clear value prop */}
+              {/* Subhead */}
               <p className="duc-body animate-fade-up delay-150 mb-6 max-w-lg mx-auto lg:mx-0" style={{ fontSize: 16, lineHeight: 1.65, color: "#52525b" }}>
-                One habit. Every day at 7 AM. Takes under 5 minutes. Reply{" "}
-                <strong style={{ color: "#18181b" }}>DONE</strong> and your health is handled for the day.
-                <br />No apps. No gym. No willpower required.
+                Every morning at 7 AM, one tiny healthy habit lands in your WhatsApp — science-backed, specific, done in under 5 minutes. No app. No gym. No willpower. Just reply DONE and your health is handled for the day.
               </p>
 
               {/* Trust chips */}
@@ -528,12 +526,19 @@ export default function DailyUpgradeClubPage() {
                 <p style={{ fontSize: 13, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime before Day 7</p>
               </div>
 
-              {/* Social proof bar */}
+              {/* Social proof bar — real avatar images */}
               <div className="animate-fade-up delay-400 flex flex-wrap items-center gap-x-5 gap-y-2 justify-center lg:justify-start" style={{ borderTop: "1px solid #e2dfd6", paddingTop: 16 }}>
                 <div className="flex -space-x-1.5">
-                  {["🧑","👩","👨","👩","🧑"].map((e, i) => (
-                    <span key={i} className="w-8 h-8 rounded-full flex items-center justify-center text-sm border-2 border-white" style={{ background: `hsl(${i*60+40},55%,55%)` }}>{e}</span>
-                  ))}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white first:ml-0" style={{ marginLeft: 0 }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/avatars/women/woman-3.avif" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" style={{ marginLeft: "-0.5rem" }} />
                 </div>
                 <div>
                   <div className="flex gap-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
@@ -547,8 +552,7 @@ export default function DailyUpgradeClubPage() {
               <div className="relative">
                 <div className="absolute -right-4 lg:-right-52 top-1/3 z-20 sticky-note p-4 rounded-md tilt-right w-52 hidden lg:block">
                   <p className="font-serif italic leading-snug" style={{ color: "#92400e" }}>
-                    <span className="text-2xl font-black not-italic block" style={{ fontFamily: "inherit" }}>₹1</span>
-                    <span className="text-sm block mt-0.5">for your first 7 days 🌱</span>
+                    <span className="text-sm block mt-0.5">This is what lands in your WhatsApp 📱</span>
                   </p>
                 </div>
                 <DUCPhone />
@@ -560,7 +564,7 @@ export default function DailyUpgradeClubPage() {
       </section>
 
       {/* ══ 2. STATS BAR ══════════════════════════════════════════════════════ */}
-      <section style={{ background: "#18181b" }}>
+      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }}>
         <div className="max-w-4xl mx-auto px-5 grid grid-cols-2 sm:grid-cols-4" style={{ gap: "1px", background: "rgba(255,255,255,0.06)" }}>
           {[
             ["400+","Active Members"],
@@ -568,7 +572,7 @@ export default function DailyUpgradeClubPage() {
             ["5 min","Per Day Maximum"],
             ["₹3/day","After 7-Day Trial"],
           ].map(([v, l]) => (
-            <div key={l} className="text-center py-5 px-3" style={{ background: "#18181b" }}>
+            <div key={l} className="text-center py-5 px-3" style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }}>
               <p className="font-black" style={{ fontSize: "clamp(1.8rem,4vw,2.4rem)", color: "#25d366", lineHeight: 1 }}>{v}</p>
               <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 4 }}>{l}</p>
             </div>
@@ -582,7 +586,7 @@ export default function DailyUpgradeClubPage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             <div className="lg:col-span-6">
               <p className="duc-label mb-3">What exactly is this?</p>
-              <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>
+              <h2 className="duc-h2 duc-section-title mb-4">
                 India&apos;s only healthy habit subscription<br />
                 <span className="gradient-text">that works on WhatsApp.</span>
               </h2>
@@ -621,7 +625,7 @@ export default function DailyUpgradeClubPage() {
                     { icon: "📊", label: "Tracking", val: "Weekly scorecard" },
                     { icon: "💰", label: "Price", val: "₹1 → ₹99/month" },
                   ].map(({ icon, label, val }) => (
-                    <div key={label} className="flex items-center gap-2.5 rounded-xl px-3 py-2.5" style={{ background: "#fff", border: "1px solid rgba(37,211,102,0.12)" }}>
+                    <div key={label} className="duc-glow-card flex items-center gap-2.5 rounded-xl px-3 py-2.5" style={{ background: "#fff", border: "1px solid rgba(37,211,102,0.12)" }}>
                       <span style={{ fontSize: 18 }}>{icon}</span>
                       <div>
                         <p style={{ fontSize: 10, color: "#71717a", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>{label}</p>
@@ -644,7 +648,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Be honest with yourself</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Does this sound like you?</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Does this sound like you?</h2>
             <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -656,7 +660,7 @@ export default function DailyUpgradeClubPage() {
               { icon: "⏰", text: "A 1-hour wellness routine isn't realistic for you — but doing nothing feels wrong." },
               { icon: "📱", text: "You've downloaded 5 apps, bought 3 courses, and bookmarked 40 articles. Nothing stuck." },
             ].map((p, i) => (
-              <div key={i} className="flex items-start gap-3 bg-white border rounded-xl px-4 py-4 shadow-sm" style={{ borderColor: "#e2dfd6" }}>
+              <div key={i} className="duc-glow-card flex items-start gap-3 bg-white border rounded-xl px-4 py-4" style={{ borderColor: "#e2dfd6" }}>
                 <span style={{ fontSize: 22 }} className="shrink-0">{p.icon}</span>
                 <p className="duc-body">{p.text}</p>
               </div>
@@ -674,24 +678,40 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">The shift</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Today <span style={{ color: "#25d366" }}>→</span> After 30 Days</h2>
             <p className="duc-body max-w-sm mx-auto">Same you. Same schedule. A completely different baseline.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
+            <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
               <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
               <div className="flex flex-col gap-3">
-                {["Low energy by 2 PM daily","Can't fall asleep — mind racing at midnight","Bloating and gut discomfort that never leaves","Good intentions, zero follow-through on health","Stressed and reactive every morning","\"I'll start properly on Monday\""].map((b, i) => (
+                {[
+                  "No direction on where to even start",
+                  "Too much to fix, too little time",
+                  "Zero accountability — habits disappear with motivation",
+                  "Wellness apps collecting dust on your phone",
+                  "Good intentions that never survive a busy week",
+                  "Low energy, poor sleep, digestion issues",
+                  "\"I'll start properly next week\"",
+                ].map((b, i) => (
                   <div key={i} className="flex items-center gap-3"><Check /><span className="duc-body">{b}</span></div>
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
+            <div className="duc-glow-card rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
               <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
               <div className="relative">
                 <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
                 <div className="flex flex-col gap-3">
-                  {["Steady energy through 6 PM — no crash","Asleep in under 20 minutes. Waking rested.","Lighter digestion. Zero bloating. Finally.","One habit done daily — automatically.","Calmer, in control from the moment you wake.","You already started. And you kept going."].map((a, i) => (
+                  {[
+                    "A clear direction — one habit, one theme, every day",
+                    "Under 5 minutes of your day — nothing more",
+                    "Built-in accountability that doesn't pressure you",
+                    "Results you feel, not just track on a dashboard",
+                    "A streak you actually want to protect",
+                    "More energy, better sleep, lighter digestion",
+                    "\"I've been consistent for a whole month\"",
+                  ].map((a, i) => (
                     <div key={i} className="flex items-center gap-3"><Check green /><span className="duc-body font-medium" style={{ color: "#18181b" }}>{a}</span></div>
                   ))}
                 </div>
@@ -709,7 +729,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">8 Monthly Themes</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Pick your area. Habits arrive daily.</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Pick your area. Habits arrive daily.</h2>
             <p className="duc-body max-w-md mx-auto">One theme per month. 30 habits. Go deep — not wide. Switch anytime.</p>
           </div>
 
@@ -719,84 +739,84 @@ export default function DailyUpgradeClubPage() {
                 emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested",
                 color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&q=80",
                 habits: [
-                  "The 90-second wind-down trigger that tells your brain 'sleep time' — even if you're on a screen till 10 PM",
-                  "The bedroom temperature secret top athletes use to fall asleep 37% faster",
-                  "Why sleeping with your phone nearby adds 47 minutes to your sleep onset",
-                  "The Japanese breathing technique that works better than melatonin",
+                  "The 90-Second Wind-Down Trigger",
+                  "Bedroom Temperature Reset",
+                  "The Phone-Free Sleep Protocol",
+                  "4-7-8 Navy Breathing Method",
                 ]
               },
               {
                 emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever",
                 color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80",
                 habits: [
-                  "The 5-min sunlight habit that controls your energy clock for the entire day (not vitamin D — something else)",
-                  "Why your first meal controls your energy till 4 PM — and the 1 change that fixes it",
-                  "The cold-water face trick Olympians use to kill the post-lunch slump in 60 seconds",
-                  "The exact staircase timing that resets your afternoon energy without caffeine",
+                  "The Cortisol Sunlight Reset",
+                  "Protein-First Plate Method",
+                  "60-Second Cold Water Flush",
+                  "The Staircase Energy Spike",
                 ]
               },
               {
                 emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily",
                 color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80",
                 habits: [
-                  "The '1 priority rule' that Stanford researchers say doubles deep work output — takes 90 seconds every morning",
-                  "The posture shift that increases oxygen to your brain by 30% — without leaving your chair",
-                  "Why putting your phone face-down (not silent) changes your IQ score in cognitive tests",
-                  "The 2-minute 'intention ritual' before each task that makes procrastination neurologically impossible",
+                  "The One Priority Rule",
+                  "Posture-Oxygen Protocol",
+                  "Phone Face-Down Focus Lock",
+                  "The 2-Minute Intention Ritual",
                 ]
               },
               {
                 emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy",
                 color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80",
                 habits: [
-                  "The one-spoon habit after lunch that eliminates bloating in 14 days — backed by 3 clinical trials",
-                  "Why chewing counts matter more than what you eat — the number that changes digestion completely",
-                  "The warm water timing on waking that activates your gut before food enters — used in Ayurveda and now in labs",
-                  "The screen-meal connection your doctor never told you about — and the fix takes zero effort",
+                  "The Dahi Lunch Protocol",
+                  "The 20-Chew Digestion Rule",
+                  "Morning Warm Water Activation",
+                  "The Screen-Free Meal Method",
                 ]
               },
               {
                 emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour",
                 color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80",
                 habits: [
-                  "The 4-count box breathing pattern Navy SEALs use before combat — works in 90 seconds at your desk",
-                  "Why your first 10 minutes with your phone every morning is setting your stress response for the whole day",
-                  "The 2-minute gratitude habit that changes your amygdala response — neuroscientists measured it",
-                  "How a 10-min outdoor walk after dinner does what 20mg of anxiety medication takes 4 weeks to do",
+                  "Box Breathing at Your Desk",
+                  "The Phone-Free First 10 Minutes",
+                  "2-Minute Gratitude Anchor",
+                  "The Post-Dinner Reset Walk",
                 ]
               },
               {
                 emoji: "💪", theme: "Fitness", tagline: "Active without the gym",
                 color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80",
                 habits: [
-                  "The 10-pushup waking habit that fires up your metabolism before breakfast — takes 80 seconds",
-                  "The 'one flight rule' that burns the same calories as a 20-min jog over a week — no extra time needed",
-                  "Why standing for 5 mins every 45 mins adds 2 years to your life (Stanford longevity data)",
-                  "The 60-second wall sit that builds functional strength — used by marathoners and sedentary people alike",
+                  "The Wake-Up Push Protocol",
+                  "One-Flight Rule",
+                  "45-Minute Stand Reset",
+                  "The 60-Second Wall Sit",
                 ]
               },
               {
                 emoji: "💧", theme: "Hydration", tagline: "More water, better everything",
                 color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
                 habits: [
-                  "Why drinking water before your coffee is the single most impactful 30-second habit — backed by NHS data",
-                  "The toilet-water habit that takes 5 seconds and adds 500ml of daily hydration effortlessly",
-                  "The 3 PM hydration alarm trick that stops the afternoon energy drop before it starts",
-                  "Why tracking glasses isn't actually about water — it's about what dehydration does to your brain first",
+                  "Pre-Coffee Water Protocol",
+                  "Post-Toilet Hydration Habit",
+                  "The 3 PM Water Alarm",
+                  "The 8-Glass Track Method",
                 ]
               },
               {
                 emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life",
                 color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=400&q=80",
                 habits: [
-                  "The 5-minute brisk walk that lowers your resting heart rate in 3 weeks — cardiologists prescribe this first",
-                  "Why a handful of walnuts daily does what 5 hours of cardio does for LDL cholesterol",
-                  "The deep breathing pattern that reduces blood pressure in 15 days — validated in a 2023 Harvard trial",
-                  "The sitting habit that's harming your cardiovascular system even if you exercise — and the 1-minute fix",
+                  "The 5-Minute Brisk Walk",
+                  "Walnut Heart Ritual",
+                  "Deep Breath Blood Pressure Reset",
+                  "The Anti-Sitting Protocol",
                 ]
               },
             ].map(({ emoji, theme, tagline, color, bg, border, img, habits }) => (
-              <div key={theme} className="rounded-2xl overflow-hidden flex flex-col shadow-sm hover:shadow-md transition-shadow" style={{ background: bg, border: `2px solid ${border}` }}>
+              <div key={theme} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: bg, border: `2px solid ${border}` }}>
                 {/* Image */}
                 <div className="relative h-36 overflow-hidden">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -810,15 +830,24 @@ export default function DailyUpgradeClubPage() {
                     </div>
                   </div>
                 </div>
-                {/* Habits */}
+                {/* Habit name pills */}
                 <div className="p-3.5 flex flex-col gap-2 flex-1">
                   <p style={{ fontSize: 11, fontWeight: 700, color: color, textTransform: "uppercase", letterSpacing: "0.08em" }}>Sample habits:</p>
-                  {habits.map((h, i) => (
-                    <div key={i} className="flex items-start gap-1.5">
-                      <span style={{ fontSize: 10, color, flexShrink: 0, marginTop: 3, fontWeight: 700 }}>→</span>
-                      <p style={{ fontSize: 11.5, color: "#3f3f46", lineHeight: 1.5 }}>{h}</p>
-                    </div>
-                  ))}
+                  <div className="flex flex-wrap gap-1.5">
+                    {habits.map((h, i) => (
+                      <span key={i} style={{
+                        fontSize: 11,
+                        fontWeight: 600,
+                        color: color,
+                        background: `${color}15`,
+                        border: `1px solid ${color}30`,
+                        borderRadius: 999,
+                        padding: "3px 9px",
+                        lineHeight: 1.4,
+                        display: "inline-block",
+                      }}>{h}</span>
+                    ))}
+                  </div>
                 </div>
               </div>
             ))}
@@ -837,27 +866,27 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">What lands in your WhatsApp</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Real messages. Real habits.</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Real messages. Real habits.</h2>
             <p className="duc-body max-w-sm mx-auto">Specific. Science-backed. Done in under 5 minutes. Explained so you actually understand why.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
             <div className="flex justify-center tilt-left">
               <StaticPhone>
-                <WAChatBg minH={400}>
+                <WAChatBg height={320}>
                   <WADateSep label="⚡ Energy Month · Day 3" />
-                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight hits the suprachiasmatic nucleus (your brain's clock). It resets cortisol and controls your energy rhythm for the entire day.","","💡 Not about Vitamin D. About timing.","Reply DONE when you're back 💪"]} time="7:01 AM" />
+                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets cortisol and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
                   <WAOut text="✅ DONE — felt great already!" time="7:09 AM" />
-                  <WAIn title="" lines={["🔥 Day 3 streak! The shift builds by Day 5. See you tomorrow."]} time="7:10 AM" />
+                  <WAIn title="" lines={["🔥 Day 3 streak! The shift builds by Day 5."]} time="7:10 AM" />
                 </WAChatBg>
               </StaticPhone>
             </div>
 
             <div className="flex justify-center">
               <StaticPhone>
-                <WAChatBg minH={400}>
+                <WAChatBg height={320}>
                   <WADateSep label="😴 Sleep Month · Day 11" />
-                  <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin production for up to 2 hours. But the real issue is the unconscious anticipation of notifications — it keeps your cortisol elevated even when the screen is off.","","Removing the device removes both problems. Set a 9:30 PM reminder now.","Reply DONE 🌙"]} time="7:01 AM" />
+                  <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
                   <WAOut text="✅ Done — reminder is set" time="7:05 AM" />
                   <WAIn title="" lines={["🔥 Day 11! Most members notice a difference within 3 nights."]} time="7:06 AM" />
                 </WAChatBg>
@@ -866,11 +895,11 @@ export default function DailyUpgradeClubPage() {
 
             <div className="flex justify-center tilt-right">
               <StaticPhone>
-                <WAChatBg minH={400}>
+                <WAChatBg height={320}>
                   <WADateSep label="🌿 Gut Health · Day 7" />
-                  <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch — today.","","Why: The Lactobacillus strains in dahi reduce intestinal inflammation. Three clinical trials found 14 days of daily curd reduced bloating by 63% — comparable to probiotic supplements.","","One spoon. With lunch. That's it.","Reply DONE 🙌"]} time="7:01 AM" />
+                  <WAIn title="🌿 Day 7 habit:" lines={["🥄 Add one spoon of plain curd (no sugar) to your lunch — today.","","Why: Lactobacillus in dahi reduces intestinal inflammation. 14 days of daily curd reduced bloating by 63% in clinical trials.","","Reply DONE 🙌"]} time="7:01 AM" />
                   <WAOut text="✅ Done — had it with dal rice" time="1:22 PM" />
-                  <WAIn title="" lines={["Perfect 🙌 Day 7 done! Same time tomorrow."]} time="1:23 PM" />
+                  <WAIn title="" lines={["Perfect 🙌 Day 7 done!"]} time="1:23 PM" />
                 </WAChatBg>
               </StaticPhone>
             </div>
@@ -930,13 +959,16 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 9. VALUE STACK — Brunson price cascade ═══════════════════════════ */}
+      {/* ══ 9. VALUE STACK — premium dark card ═══════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-lg mx-auto px-6 lg:px-10">
-          <div className="rounded-2xl border-2 bg-white overflow-hidden shadow-md" style={{ borderColor: "rgba(37,211,102,0.25)" }}>
+          <div className="rounded-2xl overflow-hidden shadow-2xl" style={{
+            background: "linear-gradient(145deg,#0d1f12 0%,#0a1a0f 50%,#061009 100%)",
+            border: "1px solid rgba(37,211,102,0.2)",
+          }}>
             <div className="text-center px-6 pt-8 pb-4">
               <p className="duc-label mb-2">Everything you get</p>
-              <h2 className="duc-h2" style={{ color: "#18181b" }}>Your full membership</h2>
+              <h2 className="duc-h2" style={{ color: "#fff" }}>Your full membership</h2>
             </div>
             <div className="px-5 sm:px-8">
               {[
@@ -948,27 +980,27 @@ export default function DailyUpgradeClubPage() {
                 { emoji: "🏆", name: "Full habit vault — 90+ habits, forever", value: "₹999" },
                 { emoji: "📩", name: "Weekly wellness newsletter", value: "₹199" },
               ].map(it => (
-                <div key={it.name} className="flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid #efece4" }}>
+                <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span style={{ fontSize: 18 }} className="shrink-0">{it.emoji}</span>
-                    <span style={{ fontSize: 13, color: "#18181b" }}>{it.name}</span>
+                    <span style={{ fontSize: 13, color: "#d4f7e0" }}>{it.name}</span>
                   </div>
-                  <span style={{ fontSize: 13, fontWeight: 600, color: "#71717a", flexShrink: 0 }}>{it.value}</span>
+                  <span style={{ fontSize: 13, fontWeight: 600, color: "#6ee7b7", flexShrink: 0 }}>{it.value}</span>
                 </div>
               ))}
-              <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid #e2dfd6", background: "#fafafa" }}>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#71717a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
-                <span className="font-black line-through" style={{ fontSize: 17, color: "#71717a" }}>₹8,493/month</span>
+              <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid rgba(37,211,102,0.2)", background: "rgba(0,0,0,0.3)" }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
+                <span className="font-black line-through" style={{ fontSize: 17, color: "#d97706" }}>₹8,493/month</span>
               </div>
             </div>
             <div className="text-center px-5 sm:px-8 pt-5 pb-8">
               <div className="flex flex-col gap-1 mb-4">
                 {["Not ₹8,493","Not ₹4,999","Not ₹299"].map(s => (
-                  <p key={s} style={{ fontSize: 14, color: "#a1a1aa", textDecoration: "line-through" }}>{s}</p>
+                  <p key={s} style={{ fontSize: 14, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
                 ))}
               </div>
-              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,5.5rem)", color: "#25d366", textShadow: "0 0 32px rgba(37,211,102,0.2)" }}>₹1</p>
-              <p style={{ fontSize: 13, color: "#71717a" }} className="mb-6">for your first 7 days · then ₹99/month</p>
+              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,5.5rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹1</p>
+              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">for your first 7 days · then ₹99/month</p>
               <CTA label="Get Everything — Start for ₹1 →" sub="Cancel before Day 7 · Pay nothing more" />
             </div>
           </div>
@@ -980,7 +1012,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Why you&apos;re still hesitating</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>3 beliefs holding you back</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">3 beliefs holding you back</h2>
             <p className="duc-body max-w-sm mx-auto">And exactly why none of them should stop you from starting today.</p>
           </div>
           <div className="flex flex-col gap-4">
@@ -989,7 +1021,7 @@ export default function DailyUpgradeClubPage() {
               { n: "02", belief: "\"I've tried this before. I always quit eventually.\"", truth: "You quit because the habit was too big, too vague, or required willpower you didn't have that day. When a habit takes under 5 minutes, arrives automatically, and you only need to reply DONE — there's nothing to quit. Our members average 78% completion in month one.", icon: "🔄" },
               { n: "03", belief: "\"₹99/month feels risky if I don't stay consistent.\"", truth: "That's exactly why the trial is ₹1. You're not committing to ₹99 based on a description. You're committing ₹1 to experience 7 real mornings. If nothing shifts — cancel. Pay nothing more. You risk a single rupee. I risk my reputation.", icon: "💰" },
             ].map(({ n, belief, truth, icon }) => (
-              <div key={n} className="rounded-xl overflow-hidden" style={{ border: "1px solid #e2dfd6" }}>
+              <div key={n} className="duc-glow-card rounded-xl overflow-hidden" style={{ border: "1px solid #e2dfd6" }}>
                 <div className="flex items-start gap-3 px-5 py-4" style={{ background: "#fff7f7", borderBottom: "1px solid #fecaca" }}>
                   <span style={{ fontSize: 20 }} className="shrink-0">{icon}</span>
                   <div>
@@ -1012,7 +1044,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Think about this</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Any one of these alone would be worth it.</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Any one of these alone would be worth it.</h2>
           </div>
           <div className="flex flex-col gap-4">
             {[
@@ -1020,7 +1052,7 @@ export default function DailyUpgradeClubPage() {
               { icon: "🔄", bold: "make you the person who actually follows through on their health, every month — not just January", cta: "— would ₹99/month be worth it?" },
               { icon: "🌱", bold: "help you wake up 6 months from now and genuinely say \"I take care of myself\" — and mean it", cta: "— what would that moment be worth to you?" },
             ].map(({ icon, bold, cta }, i) => (
-              <div key={i} className="rounded-xl px-6 py-5 bg-white flex gap-3 items-start shadow-sm" style={{ border: "1px solid #e2dfd6" }}>
+              <div key={i} className="duc-glow-card rounded-xl px-6 py-5 bg-white flex gap-3 items-start" style={{ border: "1px solid #e2dfd6" }}>
                 <span style={{ fontSize: 26 }} className="shrink-0">{icon}</span>
                 <p style={{ fontSize: 15, color: "#4a4a52", lineHeight: 1.65 }}>
                   <span style={{ color: "#a1a1aa" }}>If all this did was </span>
@@ -1038,7 +1070,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Wall of love 💛</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#18181b" }}>Real people. Specific results.</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Real people. Specific results.</h2>
           </div>
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
             {[
@@ -1049,7 +1081,7 @@ export default function DailyUpgradeClubPage() {
               { name: "Ravi S.", city: "Hyderabad", theme: "Stress Month", result: "Calmer mornings · Day 8", text: "2-minute box breathing before meetings changed everything. I start controlled now, not stressed." },
               { name: "Meera K.", city: "Chennai", theme: "Energy Month", result: "Back to gym · Day 19", text: "The morning sunlight habit made me feel like a healthy person again. By Day 19 I was back at the gym." },
             ].map(({ name, city, theme, result, text }) => (
-              <div key={name} className="break-inside-avoid mb-4 rounded-xl p-5 bg-white flex flex-col gap-3" style={{ border: "1px solid #e2dfd6", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+              <div key={name} className="duc-glow-card break-inside-avoid mb-4 rounded-xl p-5 bg-white flex flex-col gap-3" style={{ border: "1px solid #e2dfd6" }}>
                 <div className="flex gap-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
                 <div className="px-3 py-1.5 rounded-lg font-bold" style={{ background: "rgba(37,211,102,0.1)", color: "#1da851", fontSize: 12 }}>📌 {result}</div>
                 <p style={{ fontSize: 14, color: "#4a4a52", lineHeight: 1.65 }}>&ldquo;{text}&rdquo;</p>
@@ -1126,7 +1158,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-2xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">FAQ</p>
-            <h2 className="duc-h2" style={{ color: "#18181b" }}>Every question answered</h2>
+            <h2 className="duc-h2 duc-section-title">Every question answered</h2>
           </div>
           <div className="flex flex-col gap-2">
             {[

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
+import HabitChatbot from "./components/HabitChatbot";
 
 const JOIN_URL = "https://rzp.io/l/daily-upgrade-club";
 
@@ -1510,6 +1511,7 @@ export default function DailyUpgradeClubPage() {
       <BackToTop />
       <LiveToast />
       <TrialPopup />
+      <HabitChatbot />
     </div>
   );
 }

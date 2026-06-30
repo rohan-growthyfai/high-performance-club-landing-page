@@ -603,6 +603,47 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
+      {/* ══ 2. PAIN POINTS ════════════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">Be honest with yourself</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Does this sound like you?</h2>
+            <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" },
+              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
+              { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
+              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" },
+              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
+              { icon: "📱", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
+            ].map((p, i) => (
+              <div key={i} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: p.solidBg, border: `2px solid ${p.border}` }}>
+                {/* Image fading into card bg — same pattern as theme cards */}
+                <div className="relative h-36 overflow-hidden">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={p.img} alt="" className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 35%, ${p.solidBg} 100%)` }} />
+                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                    <span style={{ fontSize: 24 }}>{p.icon}</span>
+                  </div>
+                </div>
+                {/* Text below image, inside card bg */}
+                <div className="px-4 pb-4 pt-2 flex-1">
+                  <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{p.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8 rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
+            <p className="font-bold" style={{ fontSize: 16, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
+            <p className="duc-body mt-1.5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> The right system makes discipline irrelevant.</p>
+          </div>
+        </div>
+      </section>
+
       {/* ══ 3. WHAT IS DUC ════════════════════════════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
@@ -662,43 +703,6 @@ export default function DailyUpgradeClubPage() {
                 <CTA label="Show Me My First Habit →" sub="₹1 for 7 days · Cancel anytime" />
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 4. PAIN POINTS ════════════════════════════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">Be honest with yourself</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Does this sound like you?</h2>
-            <p className="duc-body max-w-sm mx-auto">If you nodded at even two of these, this subscription was built for you.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", bg: "linear-gradient(135deg,#eef2ff,#e0e7ff)", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80" },
-              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", bg: "linear-gradient(135deg,#fffbeb,#fef3c7)", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
-              { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", bg: "linear-gradient(135deg,#fdf2f8,#fce7f3)", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
-              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", bg: "linear-gradient(135deg,#f5f3ff,#ede9fe)", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80" },
-              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", bg: "linear-gradient(135deg,#ecfdf5,#d1fae5)", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
-              { icon: "📱", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", bg: "linear-gradient(135deg,#f0f9ff,#e0f2fe)", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
-            ].map((p, i) => (
-              <div key={i} className="duc-glow-card rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${p.border}` }}>
-                <div className="relative h-28 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={p.img} alt="" className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.45) 100%)` }} />
-                  <span className="absolute bottom-2 left-3" style={{ fontSize: 28 }}>{p.icon}</span>
-                </div>
-                <div style={{ background: p.bg, padding: "14px 16px" }}>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.55 }}>{p.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8 rounded-2xl p-5 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
-            <p className="font-bold" style={{ fontSize: 16, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
-            <p className="duc-body mt-1.5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> The right system makes discipline irrelevant.</p>
           </div>
         </div>
       </section>

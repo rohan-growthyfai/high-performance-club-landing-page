@@ -492,7 +492,7 @@ export default function DailyUpgradeClubPage() {
 
       {/* ══ 1. HERO ═══════════════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-8 pb-10 lg:pt-12 lg:pb-0">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 pt-4 pb-10 lg:pt-6 lg:pb-0">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-[calc(100vh-72px)]">
 
             {/* LEFT */}
@@ -505,7 +505,8 @@ export default function DailyUpgradeClubPage() {
 
               {/* Headline */}
               <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-5">
-                What if staying fit, healthy &amp; energetic needed only{" "}
+                What if staying fit, healthy &amp;<br />
+                energetic needed only<br />
                 <span className="gradient-text">5 minutes a day?</span>
               </h1>
 

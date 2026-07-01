@@ -986,7 +986,7 @@ export default function DailyUpgradeClubPage() {
                   ))}
                 </div>
 
-                {/* See More button */}
+                {/* See All Habit Tracks button */}
                 {!tickerOpen && (
                   <div className="flex justify-center mt-8">
                     <button
@@ -994,70 +994,70 @@ export default function DailyUpgradeClubPage() {
                       className="flex items-center gap-2 px-7 py-3 rounded-full font-bold transition-all"
                       style={{ background: "#18181b", color: "#fff", fontSize: 15, boxShadow: "0 4px 18px rgba(0,0,0,0.18)", border: "none", cursor: "pointer" }}
                     >
-                      See More Themes
+                      See All Habit Tracks
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
                     </button>
                   </div>
                 )}
+              </div>
 
+              {/* ── Ticker (hidden until button clicked, lives inside the cream section) ── */}
+              <div
+                style={{
+                  overflow: "hidden",
+                  maxHeight: tickerOpen ? "600px" : "0px",
+                  opacity: tickerOpen ? 1 : 0,
+                  marginTop: tickerOpen ? "32px" : "0px",
+                  transition: "max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, margin 0.5s ease",
+                }}
+              >
+                <div style={{ position: "relative", overflow: "hidden" }}>
+                  <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
+                    {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
+                      <div key={`${theme}-${i}`} style={{
+                        width: 300,
+                        flexShrink: 0,
+                        borderRadius: 20,
+                        overflow: "hidden",
+                        border: `2px solid ${border}`,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+                        background: bg,
+                        display: "flex",
+                        flexDirection: "column",
+                      }}>
+                        <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${bg} 100%)` }} />
+                          <div style={{ position: "absolute", bottom: 10, left: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontSize: 24 }}>{emoji}</span>
+                            <div>
+                              <p style={{ fontSize: 17, fontWeight: 900, color, lineHeight: 1.1, margin: 0 }}>{theme}</p>
+                              <p style={{ fontSize: 11.5, color: "#52525b", fontWeight: 500, margin: 0, marginTop: 1 }}>{tagline}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column" }}>
+                          <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>Sample habits:</p>
+                          {habits.map((h, hi) => (
+                            <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
+                              <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
+                              <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f7f5ef, transparent)", pointerEvents: "none" }} />
+                  <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f7f5ef, transparent)", pointerEvents: "none" }} />
+                </div>
+              </div>
+
+              <div className="max-w-5xl mx-auto px-6 lg:px-10">
                 <div className="flex justify-center mt-8">
                   <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
                 </div>
-              </div>
-            </section>
-
-            {/* ══ THEME CARDS TICKER (hidden until See More clicked) ══════════ */}
-            <section
-              className="overflow-hidden"
-              style={{
-                background: "#f4f4f0",
-                maxHeight: tickerOpen ? "600px" : "0px",
-                opacity: tickerOpen ? 1 : 0,
-                paddingTop: tickerOpen ? "40px" : "0px",
-                paddingBottom: tickerOpen ? "40px" : "0px",
-                transition: "max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, padding 0.5s ease",
-              }}
-            >
-              <div style={{ position: "relative", overflow: "hidden" }}>
-                <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
-                  {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
-                    <div key={`${theme}-${i}`} style={{
-                      width: 300,
-                      flexShrink: 0,
-                      borderRadius: 20,
-                      overflow: "hidden",
-                      border: `2px solid ${border}`,
-                      boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
-                      background: bg,
-                      display: "flex",
-                      flexDirection: "column",
-                    }}>
-                      <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${bg} 100%)` }} />
-                        <div style={{ position: "absolute", bottom: 10, left: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                          <span style={{ fontSize: 24 }}>{emoji}</span>
-                          <div>
-                            <p style={{ fontSize: 17, fontWeight: 900, color, lineHeight: 1.1, margin: 0 }}>{theme}</p>
-                            <p style={{ fontSize: 11.5, color: "#52525b", fontWeight: 500, margin: 0, marginTop: 1 }}>{tagline}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column" }}>
-                        <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>Sample habits:</p>
-                        {habits.map((h, hi) => (
-                          <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
-                            <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
-                            <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f4f4f0, transparent)", pointerEvents: "none" }} />
-                <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f4f4f0, transparent)", pointerEvents: "none" }} />
               </div>
             </section>
           </>

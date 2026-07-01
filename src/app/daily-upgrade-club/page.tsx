@@ -915,242 +915,154 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>}
 
-      {/* ══ 6. 8 MONTHLY THEMES ═══════════════════════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">Your Monthly Themes</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
-            <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit track designed to improve one area of your life without overwhelming your schedule.</p>
-          </div>
+      {/* ══ 6. MONTHLY THEMES ═══════════════════════════════════════════════ */}
+      {(() => {
+        const [tickerOpen, setTickerOpen] = useState(false);
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              {
-                emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested",
-                color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=400&q=80",
-                habits: [
-                  "The 90-Second Wind-Down Trigger",
-                  "Bedroom Temperature Reset",
-                  "The Phone-Free Sleep Protocol",
-                  "4-7-8 Navy Breathing Method",
-                ]
-              },
-              {
-                emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever",
-                color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=400&q=80",
-                habits: [
-                  "The Cortisol Sunlight Reset",
-                  "Protein-First Plate Method",
-                  "60-Second Cold Water Flush",
-                  "The Staircase Energy Spike",
-                ]
-              },
-              {
-                emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily",
-                color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80",
-                habits: [
-                  "The One Priority Rule",
-                  "Posture-Oxygen Protocol",
-                  "Phone Face-Down Focus Lock",
-                  "The 2-Minute Intention Ritual",
-                ]
-              },
-              {
-                emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy",
-                color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=400&q=80",
-                habits: [
-                  "The Dahi Lunch Protocol",
-                  "The 20-Chew Digestion Rule",
-                  "Morning Warm Water Activation",
-                  "The Screen-Free Meal Method",
-                ]
-              },
-              {
-                emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour",
-                color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=80",
-                habits: [
-                  "Box Breathing at Your Desk",
-                  "The Phone-Free First 10 Minutes",
-                  "2-Minute Gratitude Anchor",
-                  "The Post-Dinner Reset Walk",
-                ]
-              },
-              {
-                emoji: "💪", theme: "Fitness", tagline: "Active without the gym",
-                color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&q=80",
-                habits: [
-                  "The Wake-Up Push Protocol",
-                  "One-Flight Rule",
-                  "45-Minute Stand Reset",
-                  "The 60-Second Wall Sit",
-                ]
-              },
-              {
-                emoji: "💧", theme: "Hydration", tagline: "More water, better everything",
-                color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
-                habits: [
-                  "Pre-Coffee Water Protocol",
-                  "Post-Toilet Hydration Habit",
-                  "The 3 PM Water Alarm",
-                  "The 8-Glass Track Method",
-                ]
-              },
-              {
-                emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life",
-                color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=400&q=80",
-                habits: [
-                  "The 5-Minute Brisk Walk",
-                  "Walnut Heart Ritual",
-                  "Deep Breath Blood Pressure Reset",
-                  "The Anti-Sitting Protocol",
-                ]
-              },
-              {
-                emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits",
-                color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80",
-                habits: [
-                  "The 10-Minute Post-Meal Walk",
-                  "The Half-Plate Veg Rule",
-                  "The Slow First 5 Bites Method",
-                  "The Night Snacking Pause",
-                ]
-              },
-              {
-                emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger",
-                color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=400&q=80",
-                habits: [
-                  "The Morning Sunlight Habit",
-                  "The Colorful Plate Rule",
-                  "The Sleep Consistency Reset",
-                  "The Hygiene Before Meals Rule",
-                ]
-              },
-              {
-                emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin",
-                color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80",
-                habits: [
-                  "The Hydration Glow Rule",
-                  "The Sleep-for-Skin Wind-Down",
-                  "The Sugar Pause Method",
-                  "The Face-Touch Awareness Habit",
-                ]
-              },
-              {
-                emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes",
-                color: "#0284c7", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=400&q=80",
-                habits: [
-                  "The 3-Breath Reset",
-                  "The Box Breathing Method",
-                  "The Long Exhale Protocol",
-                  "The Pre-Meeting Calm Breath",
-                ]
-              },
-            ].map(({ emoji, theme, tagline, color, bg, border, img, habits }, idx) => (
-              <div key={theme}
-                className="theme-card-anim rounded-2xl overflow-hidden flex flex-col"
-                style={{
-                  background: bg,
-                  border: `2px solid ${border}`,
-                  animationDelay: `${idx * 0.2}s`,
-                  animationDuration: `${8 * 0.2 + 1.6}s`,
-                }}>
-                {/* Image */}
-                <div className="relative h-36 overflow-hidden">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={theme} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${bg} 100%)` }} />
-                  <div className="absolute bottom-2 left-3 flex items-center gap-2">
-                    <span style={{ fontSize: 24 }}>{emoji}</span>
-                    <div>
-                      <p style={{ fontSize: 18, fontWeight: 900, color, lineHeight: 1.1 }}>{theme}</p>
-                      <p style={{ fontSize: 12, color: "#52525b", fontWeight: 500 }}>{tagline}</p>
-                    </div>
-                  </div>
+        const TICKER_CARDS = [
+          { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80", habits: ["The 90-Second Wind-Down Trigger","Bedroom Temperature Reset","The Phone-Free Sleep Protocol","4-7-8 Navy Breathing Method"] },
+          { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80", habits: ["The Cortisol Sunlight Reset","Protein-First Plate Method","60-Second Cold Water Flush","The Staircase Energy Spike"] },
+          { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80", habits: ["The One Priority Rule","Posture-Oxygen Protocol","Phone Face-Down Focus Lock","The 2-Minute Intention Ritual"] },
+          { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80", habits: ["The Dahi Lunch Protocol","The 20-Chew Digestion Rule","Morning Warm Water Activation","The Screen-Free Meal Method"] },
+          { emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["Box Breathing at Your Desk","The Phone-Free First 10 Minutes","2-Minute Gratitude Anchor","The Post-Dinner Reset Walk"] },
+          { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80", habits: ["The Wake-Up Push Protocol","One-Flight Rule","45-Minute Stand Reset","The 60-Second Wall Sit"] },
+          { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The 10-Minute Post-Meal Walk","The Half-Plate Veg Rule","The Slow First 5 Bites Method","The Night Snacking Pause"] },
+          { emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=600&q=80", habits: ["The Morning Sunlight Habit","The Colorful Plate Rule","The Sleep Consistency Reset","The Hygiene Before Meals Rule"] },
+          { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80", habits: ["The Hydration Glow Rule","The Sleep-for-Skin Wind-Down","The Sugar Pause Method","The Face-Touch Awareness Habit"] },
+          { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80", habits: ["Pre-Coffee Water Protocol","Post-Toilet Hydration Habit","The 3 PM Water Alarm","The 8-Glass Track Method"] },
+          { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0369a1", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=600&q=80", habits: ["The 3-Breath Reset","The Box Breathing Method","The Long Exhale Protocol","The Pre-Meeting Calm Breath"] },
+          { emoji: "🥗", theme: "Mindful Eating", tagline: "Eat better without dieting", color: "#65a30d", bg: "#f7fee7", border: "#bef264", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80", habits: ["The 20-Chew Rule","The No-Phone Meal Method","The Hunger Check Pause","The Smaller Plate Habit"] },
+          { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=600&q=80", habits: ["The 5-Minute Brisk Walk","Walnut Heart Ritual","Deep Breath Blood Pressure Reset","The Anti-Sitting Protocol"] },
+          { emoji: "🌸", theme: "Women's Wellness", tagline: "Energy, movement and self-care", color: "#be185d", bg: "#fdf2f8", border: "#fbcfe8", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80", habits: ["The 5-Minute Self-Care Pause","The Cycle-Aware Energy Check","The Gentle Movement Reset","The Evening Calm Ritual"] },
+          { emoji: "💙", theme: "Men's Health", tagline: "Energy, strength and better routine", color: "#1d4ed8", bg: "#eff6ff", border: "#bfdbfe", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80", habits: ["The Calm Reset Walk","The Protein-First Meal Rule","The Posture Confidence Check","The No-Late-Snack Rule"] },
+          { emoji: "🤸", theme: "Mobility", tagline: "Move freely, feel less stiff", color: "#7c3aed", bg: "#faf5ff", border: "#d8b4fe", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["The Morning Joint Wake-Up","The Hip Unlock Routine","The Ankle Circle Reset","The 60-Second Stretch Break"] },
+        ];
+
+        // First 12 cards shown in grid (in specified order)
+        const GRID_CARDS = TICKER_CARDS.slice(0, 12);
+
+        return (
+          <>
+            <section className="bg-section-cream py-16 lg:py-24">
+              <div className="max-w-5xl mx-auto px-6 lg:px-10">
+                <div className="text-center mb-10">
+                  <p className="duc-label mb-3">Your Monthly Themes</p>
+                  <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
+                  <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit track designed to improve one area of your life without overwhelming your schedule.</p>
                 </div>
-                {/* Habit list — no boxes, simple dots */}
-                <div className="p-3.5 flex flex-col gap-1.5 flex-1">
-                  <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Sample habits:</p>
-                  {habits.map((h, i) => (
-                    <div key={i} className="flex items-start gap-2">
-                      <span style={{ color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>●</span>
-                      <span style={{ fontSize: 12, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {GRID_CARDS.map(({ emoji, theme, tagline, color, bg, border, img, habits }, idx) => (
+                    <div key={theme}
+                      className="theme-card-anim rounded-2xl overflow-hidden flex flex-col"
+                      style={{
+                        background: bg,
+                        border: `2px solid ${border}`,
+                        animationDelay: `${idx * 0.2}s`,
+                        animationDuration: `${8 * 0.2 + 1.6}s`,
+                      }}>
+                      <div className="relative h-36 overflow-hidden">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img} alt={theme} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                        <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${bg} 100%)` }} />
+                        <div className="absolute bottom-2 left-3 flex items-center gap-2">
+                          <span style={{ fontSize: 24 }}>{emoji}</span>
+                          <div>
+                            <p style={{ fontSize: 18, fontWeight: 900, color, lineHeight: 1.1 }}>{theme}</p>
+                            <p style={{ fontSize: 12, color: "#52525b", fontWeight: 500 }}>{tagline}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="p-3.5 flex flex-col gap-1.5 flex-1">
+                        <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Sample habits:</p>
+                        {habits.map((h, i) => (
+                          <div key={i} className="flex items-start gap-2">
+                            <span style={{ color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>●</span>
+                            <span style={{ fontSize: 12, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
-              </div>
-            ))}
-          </div>
 
-          <div className="flex justify-center mt-8">
-            <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ THEME CARDS TICKER ════════════════════════════════════════════════ */}
-      <section className="py-10 overflow-hidden" style={{ background: "#f4f4f0" }}>
-        <div style={{ position: "relative", overflow: "hidden" }}>
-          <div className="duc-ticker-track" style={{ animationDuration: "60s" }}>
-            {((): Array<{ emoji: string; theme: string; tagline: string; color: string; bg: string; border: string; img: string; habits: string[] }> => {
-              const cards = [
-                { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80", habits: ["The 90-Second Wind-Down Trigger","Bedroom Temperature Reset","The Phone-Free Sleep Protocol","4-7-8 Navy Breathing Method"] },
-                { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80", habits: ["The Cortisol Sunlight Reset","Protein-First Plate Method","60-Second Cold Water Flush","The Staircase Energy Spike"] },
-                { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80", habits: ["The One Priority Rule","Posture-Oxygen Protocol","Phone Face-Down Focus Lock","The 2-Minute Intention Ritual"] },
-                { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80", habits: ["The Dahi Lunch Protocol","The 20-Chew Digestion Rule","Morning Warm Water Activation","The Screen-Free Meal Method"] },
-                { emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["Box Breathing at Your Desk","The Phone-Free First 10 Minutes","2-Minute Gratitude Anchor","The Post-Dinner Reset Walk"] },
-                { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80", habits: ["The Wake-Up Push Protocol","One-Flight Rule","45-Minute Stand Reset","The 60-Second Wall Sit"] },
-                { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80", habits: ["Pre-Coffee Water Protocol","Post-Toilet Hydration Habit","The 3 PM Water Alarm","The 8-Glass Track Method"] },
-                { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=600&q=80", habits: ["The 5-Minute Brisk Walk","Walnut Heart Ritual","Deep Breath Blood Pressure Reset","The Anti-Sitting Protocol"] },
-                { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The 10-Minute Post-Meal Walk","The Half-Plate Veg Rule","The Slow First 5 Bites Method","The Night Snacking Pause"] },
-                { emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=600&q=80", habits: ["The Morning Sunlight Habit","The Colorful Plate Rule","The Sleep Consistency Reset","The Hygiene Before Meals Rule"] },
-                { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80", habits: ["The Hydration Glow Rule","The Sleep-for-Skin Wind-Down","The Sugar Pause Method","The Face-Touch Awareness Habit"] },
-                { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0284c7", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=600&q=80", habits: ["The 3-Breath Reset","The Box Breathing Method","The Long Exhale Protocol","The Pre-Meeting Calm Breath"] },
-              ];
-              return [...cards, ...cards];
-            })().map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
-              <div key={`${theme}-${i}`} style={{
-                width: 300,
-                flexShrink: 0,
-                borderRadius: 20,
-                overflow: "hidden",
-                border: `2px solid ${border}`,
-                boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
-                background: bg,
-                display: "flex",
-                flexDirection: "column",
-              }}>
-                {/* Image with gradient fade */}
-                <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${bg} 100%)` }} />
-                  <div style={{ position: "absolute", bottom: 10, left: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ fontSize: 24 }}>{emoji}</span>
-                    <div>
-                      <p style={{ fontSize: 17, fontWeight: 900, color, lineHeight: 1.1, margin: 0 }}>{theme}</p>
-                      <p style={{ fontSize: 11.5, color: "#52525b", fontWeight: 500, margin: 0, marginTop: 1 }}>{tagline}</p>
-                    </div>
+                {/* See More button */}
+                {!tickerOpen && (
+                  <div className="flex justify-center mt-8">
+                    <button
+                      onClick={() => setTickerOpen(true)}
+                      className="flex items-center gap-2 px-7 py-3 rounded-full font-bold transition-all"
+                      style={{ background: "#18181b", color: "#fff", fontSize: 15, boxShadow: "0 4px 18px rgba(0,0,0,0.18)", border: "none", cursor: "pointer" }}
+                    >
+                      See More Themes
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
                   </div>
+                )}
+
+                <div className="flex justify-center mt-8">
+                  <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
                 </div>
-                {/* Habit list */}
-                <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column", gap: 0 }}>
-                  <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8, margin: "0 0 8px 0" }}>Sample habits:</p>
-                  {habits.map((h, hi) => (
-                    <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
-                      <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
-                      <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+              </div>
+            </section>
+
+            {/* ══ THEME CARDS TICKER (hidden until See More clicked) ══════════ */}
+            <section
+              className="overflow-hidden"
+              style={{
+                background: "#f4f4f0",
+                maxHeight: tickerOpen ? "600px" : "0px",
+                opacity: tickerOpen ? 1 : 0,
+                paddingTop: tickerOpen ? "40px" : "0px",
+                paddingBottom: tickerOpen ? "40px" : "0px",
+                transition: "max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, padding 0.5s ease",
+              }}
+            >
+              <div style={{ position: "relative", overflow: "hidden" }}>
+                <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
+                  {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
+                    <div key={`${theme}-${i}`} style={{
+                      width: 300,
+                      flexShrink: 0,
+                      borderRadius: 20,
+                      overflow: "hidden",
+                      border: `2px solid ${border}`,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+                      background: bg,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}>
+                      <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                        <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${bg} 100%)` }} />
+                        <div style={{ position: "absolute", bottom: 10, left: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                          <span style={{ fontSize: 24 }}>{emoji}</span>
+                          <div>
+                            <p style={{ fontSize: 17, fontWeight: 900, color, lineHeight: 1.1, margin: 0 }}>{theme}</p>
+                            <p style={{ fontSize: 11.5, color: "#52525b", fontWeight: 500, margin: 0, marginTop: 1 }}>{tagline}</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column" }}>
+                        <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>Sample habits:</p>
+                        {habits.map((h, hi) => (
+                          <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
+                            <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
+                            <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   ))}
                 </div>
+                <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f4f4f0, transparent)", pointerEvents: "none" }} />
+                <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f4f4f0, transparent)", pointerEvents: "none" }} />
               </div>
-            ))}
-          </div>
-          {/* fade edges */}
-          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f4f4f0, transparent)", pointerEvents: "none" }} />
-          <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f4f4f0, transparent)", pointerEvents: "none" }} />
-        </div>
-      </section>
+            </section>
+          </>
+        );
+      })()}
 
       {/* ══ 7. REAL WA MESSAGES — 3 iPhones ════════════════════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24 overflow-hidden">

@@ -665,7 +665,7 @@ export default function DailyUpgradeClubPage() {
                   "Zero accountability — habits disappear with motivation",
                   "Wellness apps collecting dust on your phone",
                   "Good intentions that never survive a busy week",
-                  "Low energy, poor sleep, digestion issues",
+                  "Low energy, less focus, poor sleep",
                   "\"I'll start properly next week\"",
                 ].map((b, i) => (
                   <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
@@ -683,7 +683,7 @@ export default function DailyUpgradeClubPage() {
                     "Built-in accountability that doesn't pressure you",
                     "Results you feel, not just track on a dashboard",
                     "A streak you actually want to protect",
-                    "More energy, better sleep, lighter digestion",
+                    "More energy, sharper focus, better sleep",
                     "\"I've been consistent for a whole month\"",
                   ].map((a, i) => (
                     <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
@@ -693,7 +693,7 @@ export default function DailyUpgradeClubPage() {
             </div>
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="I Want This Version of Myself →" sub="7 days for ₹1 · Then ₹99/month" />
+            <CTA label="I Want This Version of Myself →" sub="Start 7 days trial for ₹1 · Then ₹99/month" />
           </div>
         </div>
       </section>
@@ -703,7 +703,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Course. Not an App. Not Another Challenge.</h2>
           <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Daily Upgrade Club</strong> is a simple WhatsApp-based habit system that helps you build healthier daily routines through tiny actions, daily check-ins, streaks and accountability.</p>
-          <p style={{ fontSize: 14, color: "rgba(37,211,102,0.85)", fontStyle: "italic" }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
+          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
         </div>
       </section>
 
@@ -712,7 +712,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">Simple by design</p>
-            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block">Daily Upgrade Club<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
+            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap" }}>Daily Upgrade Club<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
             <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -767,7 +767,7 @@ export default function DailyUpgradeClubPage() {
                 icon: "🎯", title: "Monthly Habit Tracks",
                 value: "₹999 value",
                 desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated track of 30 daily habits built around that theme.",
-                bullets: ["5 focused monthly themes", "30 science-backed habits per track", "Progressive difficulty — each week builds on the last"],
+                bullets: ["Pick the area you want to improve this month", "Get powerful habits around chosen area daily", "All habits designed to fit into your busy schedules"],
                 color: "#059669", solidBg: "#ecfdf5", border: "#d1fae5", accentBg: "#059669",
                 img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80",
               },
@@ -775,7 +775,7 @@ export default function DailyUpgradeClubPage() {
                 num: "#2", label: "YOUR DAILY DELIVERY",
                 icon: "🌅", title: "1 Tiny Healthy Habit Every Morning",
                 value: "₹799 value",
-                desc: "Every morning at 7 AM, one actionable habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
+                desc: "Every morning at 7 AM, one powerful habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
                 bullets: ["Delivered at 7 AM on WhatsApp", "Under 5 minutes to complete", "Clear why-it-works explanation with each habit"],
                 color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", accentBg: "#d97706",
                 img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
@@ -794,7 +794,7 @@ export default function DailyUpgradeClubPage() {
                 icon: "📊", title: "Weekly Progress Scorecards",
                 value: "₹399 value",
                 desc: "Every Sunday you get a personal scorecard showing exactly how consistent you were, which habits you nailed and where to improve next week.",
-                bullets: ["Weekly score out of 7 days", "Habit-by-habit breakdown", "Personalized tip for the week ahead"],
+                bullets: ["Weekly score to track your progress", "Habit-by-habit breakdown", "Personalized tip for the week ahead"],
                 color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", accentBg: "#6366f1",
                 img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
               },
@@ -919,7 +919,7 @@ export default function DailyUpgradeClubPage() {
       <section className="bg-section-cream py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
-            <p className="duc-label mb-3">8 Monthly Themes</p>
+            <p className="duc-label mb-3">Your Monthly Themes</p>
             <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
             <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit track designed to improve one area of your life without overwhelming your schedule.</p>
           </div>
@@ -1006,6 +1006,46 @@ export default function DailyUpgradeClubPage() {
                   "The Anti-Sitting Protocol",
                 ]
               },
+              {
+                emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits",
+                color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=400&q=80",
+                habits: [
+                  "The 10-Minute Post-Meal Walk",
+                  "The Half-Plate Veg Rule",
+                  "The Slow First 5 Bites Method",
+                  "The Night Snacking Pause",
+                ]
+              },
+              {
+                emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger",
+                color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=400&q=80",
+                habits: [
+                  "The Morning Sunlight Habit",
+                  "The Colorful Plate Rule",
+                  "The Sleep Consistency Reset",
+                  "The Hygiene Before Meals Rule",
+                ]
+              },
+              {
+                emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin",
+                color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80",
+                habits: [
+                  "The Hydration Glow Rule",
+                  "The Sleep-for-Skin Wind-Down",
+                  "The Sugar Pause Method",
+                  "The Face-Touch Awareness Habit",
+                ]
+              },
+              {
+                emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes",
+                color: "#0284c7", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=400&q=80",
+                habits: [
+                  "The 3-Breath Reset",
+                  "The Box Breathing Method",
+                  "The Long Exhale Protocol",
+                  "The Pre-Meeting Calm Breath",
+                ]
+              },
             ].map(({ emoji, theme, tagline, color, bg, border, img, habits }, idx) => (
               <div key={theme}
                 className="theme-card-anim rounded-2xl overflow-hidden flex flex-col"
@@ -1045,6 +1085,65 @@ export default function DailyUpgradeClubPage() {
           <div className="flex justify-center mt-8">
             <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
           </div>
+        </div>
+      </section>
+
+      {/* ══ THEME CARDS TICKER ════════════════════════════════════════════════ */}
+      <section className="py-10 overflow-hidden" style={{ background: "#f4f4f0" }}>
+        <div className="text-center mb-6">
+          <p className="duc-label">All Themes in Motion</p>
+        </div>
+        {/* Double the cards for seamless infinite loop */}
+        <div style={{ position: "relative", overflow: "hidden" }}>
+          <div className="duc-ticker-track">
+            {[
+              { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe" },
+              { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a" },
+              { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
+              { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7" },
+              { emoji: "🧘", theme: "Stress", tagline: "Calm without an hour of meditation", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4" },
+              { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74" },
+              { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd" },
+              { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca" },
+              { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac" },
+              { emoji: "🛡️", theme: "Immunity", tagline: "Build a stronger immunity daily", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
+              { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9" },
+              { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0284c7", bg: "#f0f9ff", border: "#7dd3fc" },
+              // duplicate for seamless loop
+              { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe" },
+              { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a" },
+              { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
+              { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7" },
+              { emoji: "🧘", theme: "Stress", tagline: "Calm without an hour of meditation", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4" },
+              { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74" },
+              { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd" },
+              { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca" },
+              { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac" },
+              { emoji: "🛡️", theme: "Immunity", tagline: "Build a stronger immunity daily", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc" },
+              { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9" },
+              { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0284c7", bg: "#f0f9ff", border: "#7dd3fc" },
+            ].map(({ emoji, theme, tagline, color, bg, border }, i) => (
+              <div key={`${theme}-${i}`} style={{
+                minWidth: 180,
+                borderRadius: 16,
+                padding: "18px 16px",
+                background: bg,
+                border: `2px solid ${border}`,
+                display: "flex",
+                flexDirection: "column",
+                gap: 6,
+                boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+                flexShrink: 0,
+              }}>
+                <span style={{ fontSize: 28 }}>{emoji}</span>
+                <p style={{ fontSize: 14, fontWeight: 800, color, lineHeight: 1.2, margin: 0 }}>{theme}</p>
+                <p style={{ fontSize: 11.5, color: "#52525b", lineHeight: 1.4, margin: 0 }}>{tagline}</p>
+              </div>
+            ))}
+          </div>
+          {/* fade edges */}
+          <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 80, background: "linear-gradient(to right, #f4f4f0, transparent)", pointerEvents: "none" }} />
+          <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 80, background: "linear-gradient(to left, #f4f4f0, transparent)", pointerEvents: "none" }} />
         </div>
       </section>
 

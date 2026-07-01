@@ -1074,13 +1074,13 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            {/* Energy Track */}
+            {/* Energy Month Habits */}
             <div className="flex flex-col items-center gap-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
-                ⚡ Energy Track Habits
+                ⚡ Energy Month Habits
               </div>
               <StaticPhone>
-                <WAChatBg>
+                <WAChatBg height={360}>
                   <WADateSep label="⚡ Energy Track · Day 3" />
                   <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
                   <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
@@ -1089,13 +1089,13 @@ export default function DailyUpgradeClubPage() {
               </StaticPhone>
             </div>
 
-            {/* Sleep Track */}
+            {/* Sleep Month Habits */}
             <div className="flex flex-col items-center gap-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#eef2ff", border: "2px solid #c7d2fe", color: "#6366f1", fontSize: 13 }}>
-                😴 Sleep Track Habits
+                😴 Sleep Month Habits
               </div>
               <StaticPhone>
-                <WAChatBg>
+                <WAChatBg height={360}>
                   <WADateSep label="😴 Sleep Track · Day 11" />
                   <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
                   <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
@@ -1104,13 +1104,13 @@ export default function DailyUpgradeClubPage() {
               </StaticPhone>
             </div>
 
-            {/* Focus Track */}
+            {/* Focus Month Habits */}
             <div className="flex flex-col items-center gap-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
-                🧠 Focus Track Habits
+                🧠 Focus Month Habits
               </div>
               <StaticPhone>
-                <WAChatBg>
+                <WAChatBg height={360}>
                   <WADateSep label="🧠 Focus Track · Day 7" />
                   <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
                   <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
@@ -1123,7 +1123,7 @@ export default function DailyUpgradeClubPage() {
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Send My First Habit Tomorrow" sub="₹1 for 7 days · Then ₹99/month" />
+            <CTA label="Send My First Habit Now" sub="7 days trial for ₹1 · Then ₹99/month" />
           </div>
         </div>
       </section>

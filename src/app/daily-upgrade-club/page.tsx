@@ -1236,7 +1236,7 @@ export default function DailyUpgradeClubPage() {
                 <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
                   <div className="flex items-center gap-2.5 min-w-0">
                     <span style={{ fontSize: 22 }} className="shrink-0">{it.emoji}</span>
-                    <span style={{ fontSize: 15, color: "#d4f7e0" }}>{it.name}</span>
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "#d4f7e0" }}>{it.name}</span>
                   </div>
                   <span style={{ fontSize: 15, fontWeight: 700, color: "#4ade80", flexShrink: 0 }}>{it.value}</span>
                 </div>
@@ -1249,12 +1249,12 @@ export default function DailyUpgradeClubPage() {
             <div className="text-center px-5 sm:px-8 pt-5 pb-8">
               <div className="flex flex-col gap-1 mb-4">
                 {["Not ₹8,493","Not ₹4,999","Not ₹299"].map(s => (
-                  <p key={s} style={{ fontSize: 14, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
+                  <p key={s} style={{ fontSize: 18, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
                 ))}
               </div>
               <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹1</p>
               <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">for your first 7 days · then ₹99/month</p>
-              <CTA label="Get Everything — Start for ₹1 →" sub="Cancel before Day 7 · Pay nothing more" />
+              <CTA label="Get Everything — Start for ₹1 →" sub="Cancel anytime" />
             </div>
           </div>
         </div>

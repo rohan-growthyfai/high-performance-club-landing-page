@@ -393,7 +393,7 @@ function LiveToast() {
   }, [scrolled]);
   if (!scrolled || toasts.length === 0) return null;
   return (
-    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[76px] md:bottom-[68px]" aria-live="polite">
+    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[100px] md:bottom-[90px]" aria-live="polite">
       {toasts.map((t, i) => (
         <div key={t.id} className="pointer-events-auto" style={{ opacity: i === 0 ? 1 : 0.65 - i * 0.15, transform: `scale(${1 - i * 0.03})`, transformOrigin: "bottom left", animation: "duc-fadein 0.3s ease" }}>
           <div className="flex items-center gap-2 rounded-2xl px-3 py-2 w-[240px]" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 4px 16px rgba(0,0,0,0.09)" }}>

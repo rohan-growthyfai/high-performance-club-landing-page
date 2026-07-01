@@ -1160,52 +1160,6 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
-      {/* ══ 8. ROHAN'S STORY — Epiphany Bridge ══════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24 relative overflow-hidden">
-        <span className="emoji-deco float-2 top-20 right-6 text-3xl hidden lg:block" aria-hidden="true">👋</span>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            <div className="lg:col-span-4">
-              <div className="relative max-w-xs mx-auto lg:mx-0">
-                <div className="absolute -top-6 -right-3 z-20 sticky-note p-3 rounded-md tilt-right w-40 hidden sm:block">
-                  <p className="font-serif italic leading-snug" style={{ fontSize: 13, color: "#92400e" }}>&ldquo;Hi 👋 I built this!&rdquo;</p>
-                </div>
-                <div className="polaroid tilt-left">
-                  <div className="aspect-square rounded-sm overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/rohan.png" alt="Rohan — Founder" className="w-full h-full object-cover object-top" />
-                  </div>
-                  <p className="text-center font-serif text-xl italic text-foreground mt-3">Rohan</p>
-                  <p className="text-center text-foreground-subtle mt-0.5" style={{ fontSize: 12 }}>Founder, Daily Upgrade Club</p>
-                </div>
-              </div>
-            </div>
-            <div className="lg:col-span-8">
-              <p className="duc-label mb-3">👋 The founder</p>
-              <h2 className="duc-h2 mb-5" style={{ color: "#18181b" }}>
-                I built this because<br />
-                <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a" }}>I was the problem I was trying to solve.</span>
-              </h2>
-              <div className="space-y-4 duc-body">
-                <p>I was the person who <strong style={{ color: "#18181b" }}>knew everything about health and did none of it.</strong> 47 bookmarked articles. Three abandoned apps. Every Monday was "the Monday I'd finally start."</p>
-                <p>I wasn&apos;t lazy. I was someone whose routines were always too big to survive real life.</p>
-              </div>
-              <div className="my-5 pl-4 py-1" style={{ borderLeft: "3px solid #25d366" }}>
-                <p style={{ fontSize: 15, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.65 }}>
-                  &ldquo;BJ Fogg&apos;s Stanford research changed everything: the people who built lasting habits made each one so small it was <em>impossible to fail</em>. I tested this on myself — one habit, under 5 minutes, delivered to my phone at 7 AM. By Day 30 I hadn&apos;t broken the streak once.&rdquo;
-                </p>
-              </div>
-              <p className="duc-body">I built <strong style={{ color: "#18181b" }}>Daily Upgrade Club</strong> to hand this exact system to you. <strong style={{ color: "#18181b" }}>400+ members</strong> have since done the same thing — and reported changes they couldn&apos;t explain to their doctors.</p>
-              <div className="mt-5 flex items-center gap-3">
-                <p className="font-serif italic text-xl" style={{ color: "#25d366" }}>— Rohan</p>
-                <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
-                <p style={{ fontSize: 13, color: "#71717a" }}>Founder, Daily Upgrade Club</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ══ WHY IT WORKS ════════════════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 60%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
@@ -1396,6 +1350,52 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="flex justify-center mt-10">
             <CTA label="I Want Results Like These →" sub="₹1 for 7 days · Then ₹99/month · Cancel anytime" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 8. ROHAN'S STORY — Epiphany Bridge ══════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24 relative overflow-hidden">
+        <span className="emoji-deco float-2 top-20 right-6 text-3xl hidden lg:block" aria-hidden="true">👋</span>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+            <div className="lg:col-span-4">
+              <div className="relative max-w-xs mx-auto lg:mx-0">
+                <div className="absolute -top-6 -right-3 z-20 sticky-note p-3 rounded-md tilt-right w-40 hidden sm:block">
+                  <p className="font-serif italic leading-snug" style={{ fontSize: 13, color: "#92400e" }}>&ldquo;Hi 👋 I built this!&rdquo;</p>
+                </div>
+                <div className="polaroid tilt-left">
+                  <div className="aspect-square rounded-sm overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src="/rohan.png" alt="Rohan — Founder" className="w-full h-full object-cover object-top" />
+                  </div>
+                  <p className="text-center font-serif text-xl italic text-foreground mt-3">Rohan</p>
+                  <p className="text-center text-foreground-subtle mt-0.5" style={{ fontSize: 12 }}>Founder, Daily Upgrade Club</p>
+                </div>
+              </div>
+            </div>
+            <div className="lg:col-span-8">
+              <p className="duc-label mb-3">👋 The founder</p>
+              <h2 className="duc-h2 mb-5" style={{ color: "#18181b" }}>
+                I built this because<br />
+                <span style={{ fontStyle: "italic", fontWeight: 400, color: "#71717a" }}>I was the problem I was trying to solve.</span>
+              </h2>
+              <div className="space-y-4 duc-body">
+                <p>I was the person who <strong style={{ color: "#18181b" }}>knew everything about health and did none of it.</strong> 47 bookmarked articles. Three abandoned apps. Every Monday was "the Monday I'd finally start."</p>
+                <p>I wasn&apos;t lazy. I was someone whose routines were always too big to survive real life.</p>
+              </div>
+              <div className="my-5 pl-4 py-1" style={{ borderLeft: "3px solid #25d366" }}>
+                <p style={{ fontSize: 15, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.65 }}>
+                  &ldquo;BJ Fogg&apos;s Stanford research changed everything: the people who built lasting habits made each one so small it was <em>impossible to fail</em>. I tested this on myself — one habit, under 5 minutes, delivered to my phone at 7 AM. By Day 30 I hadn&apos;t broken the streak once.&rdquo;
+                </p>
+              </div>
+              <p className="duc-body">I built <strong style={{ color: "#18181b" }}>Daily Upgrade Club</strong> to hand this exact system to you. <strong style={{ color: "#18181b" }}>400+ members</strong> have since done the same thing — and reported changes they couldn&apos;t explain to their doctors.</p>
+              <div className="mt-5 flex items-center gap-3">
+                <p className="font-serif italic text-xl" style={{ color: "#25d366" }}>— Rohan</p>
+                <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
+                <p style={{ fontSize: 13, color: "#71717a" }}>Founder, Daily Upgrade Club</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

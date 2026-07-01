@@ -61,7 +61,15 @@ export async function POST(request: Request) {
     const { firstName, startDate } = await request.json();
     if (!firstName) return NextResponse.json({ error: "firstName required" }, { status: 400 });
 
-    const html = buildDucWelcomeHTML(firstName, startDate || "tomorrow, 7 AM");
+    // Default: "Tomorrow, July 2" — same format as free challenge
+    const resolvedDate = startDate || (() => {
+      const d = new Date();
+      d.setDate(d.getDate() + 1);
+      const dateStr = d.toLocaleDateString("en-US", { timeZone: "Asia/Kolkata", month: "long", day: "numeric" });
+      return `Tomorrow, ${dateStr}`;
+    })();
+
+    const html = buildDucWelcomeHTML(firstName, resolvedDate);
 
     const form = new FormData();
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");

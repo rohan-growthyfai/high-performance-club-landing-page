@@ -1225,12 +1225,13 @@ export default function DailyUpgradeClubPage() {
             </div>
             <div className="px-5 sm:px-8">
               {[
-                { emoji: "📲", name: "Daily healthy habit on WhatsApp (30/month)", value: "₹2,999" },
-                { emoji: "🎯", name: "Monthly theme + 30-day habit calendar", value: "₹1,799" },
-                { emoji: "📊", name: "Weekly health scorecard", value: "₹999" },
+                { emoji: "📲", name: "Daily healthy habits on WhatsApp", value: "₹2,999" },
+                { emoji: "✔️", name: "Personalised tracking and accountability", value: "₹1,499" },
+                { emoji: "🎯", name: "Monthly themes + personal habit calendar", value: "₹1,799" },
+                { emoji: "📊", name: "Weekly progress scorecard", value: "₹999" },
                 { emoji: "👥", name: "Private WhatsApp accountability group", value: "₹999" },
-                { emoji: "🗓️", name: "Monthly PDF guide — all 30 habits explained", value: "₹499" },
-                { emoji: "🏆", name: "Full habit vault — 90+ habits, forever", value: "₹999" },
+                { emoji: "🗓️", name: "Monthly habit guides", value: "₹499" },
+                { emoji: "🏆", name: "Full habit vault — 100+ powerful habits, forever", value: "₹999" },
                 { emoji: "📩", name: "Weekly wellness newsletter", value: "₹199" },
               ].map(it => (
                 <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
@@ -1243,7 +1244,7 @@ export default function DailyUpgradeClubPage() {
               ))}
               <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid rgba(37,211,102,0.2)", background: "rgba(0,0,0,0.3)" }}>
                 <span style={{ fontSize: 12, fontWeight: 700, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
-                <span className="font-black line-through" style={{ fontSize: 17, color: "#d97706" }}>₹8,493/month</span>
+                <span className="font-black line-through" style={{ fontSize: 17, color: "#d97706" }}>₹9,992/month</span>
               </div>
             </div>
             <div className="text-center px-5 sm:px-8 pt-5 pb-8">

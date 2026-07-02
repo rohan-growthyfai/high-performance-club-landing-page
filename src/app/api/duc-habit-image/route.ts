@@ -19,7 +19,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "OPENROUTER_API_KEY not set" }, { status: 500 });
     }
 
-    const prompt = `Create a premium square wellness infographic image in the same visual format as the Daily Upgrade Club healthy habit challenge tutorial images.
+    const prompt = `Generate an image. Create a premium square wellness infographic image in the same visual format as the Daily Upgrade Club healthy habit challenge tutorial images.
 
 INPUT VARIABLES:
 Habit Name: ${habitTitle}
@@ -190,18 +190,30 @@ Do not create extra fingers, distorted hands, distorted eyes, broken anatomy, we
     }
 
     const data = await res.json();
-    const content = data.choices?.[0]?.message?.content;
+    const msg = data.choices?.[0]?.message;
 
-    if (!content) {
-      return NextResponse.json({ error: "No content in OpenRouter response" }, { status: 500 });
+    if (!msg) {
+      return NextResponse.json({ error: "No message in OpenRouter response" }, { status: 500 });
     }
 
-    // Extract base64 image — Gemini returns it as a data URL in an image_url content part
+    // Extract base64 image — Gemini Flash Image returns it in message.images[]
+    // Fallback: check message.content (array of parts or string with data URL)
     let base64Data: string | null = null;
-    let mimeType = "image/jpeg";
+    let mimeType = "image/png";
 
-    if (Array.isArray(content)) {
-      const imgPart = content.find((p: { type: string; image_url?: { url: string } }) =>
+    // Primary: message.images array (OpenRouter Gemini Flash Image format)
+    if (Array.isArray(msg.images) && msg.images.length > 0) {
+      const imgUrl: string = msg.images[0]?.image_url?.url || "";
+      if (imgUrl.startsWith("data:")) {
+        const [meta, b64] = imgUrl.split(",");
+        mimeType = meta.replace("data:", "").replace(";base64", "");
+        base64Data = b64;
+      }
+    }
+
+    // Fallback: content as array of parts
+    if (!base64Data && Array.isArray(msg.content)) {
+      const imgPart = msg.content.find((p: { type: string; image_url?: { url: string } }) =>
         p.type === "image_url" && p.image_url?.url?.startsWith("data:")
       );
       if (imgPart?.image_url?.url) {
@@ -209,8 +221,11 @@ Do not create extra fingers, distorted hands, distorted eyes, broken anatomy, we
         mimeType = meta.replace("data:", "").replace(";base64", "");
         base64Data = b64;
       }
-    } else if (typeof content === "string") {
-      const match = content.match(/data:(image\/\w+);base64,([A-Za-z0-9+/=\n]+)/);
+    }
+
+    // Fallback: content as string with embedded data URL
+    if (!base64Data && typeof msg.content === "string") {
+      const match = msg.content.match(/data:(image\/\w+);base64,([A-Za-z0-9+/=\n]+)/);
       if (match) {
         mimeType = match[1];
         base64Data = match[2].replace(/\n/g, "");

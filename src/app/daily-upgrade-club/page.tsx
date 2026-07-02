@@ -458,6 +458,104 @@ function TrialPopup() {
   );
 }
 
+// ─── TinyGainsDUC ────────────────────────────────────────────────────────────
+// "The power of tiny healthy habits — Get just 1% better every day"
+// Ported from src/components/TinyGains.tsx, re-skinned for DUC palette.
+const VW = 720, VH = 460, X0 = 90, Y0 = 360, XEND = 660, TOP = 40;
+const BETTER_PATH = `M ${X0} ${Y0} C ${X0 + 240} ${Y0 - 8}, ${XEND - 140} ${Y0 - 70}, ${XEND} ${TOP}`;
+
+function TinyGainsDUC() {
+  const [shown, setShown] = useState(false);
+  const [count, setCount] = useState(1);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setShown(true); }, { threshold: 0.3 });
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!shown) return;
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { setCount(37); return; }
+    let raf = 0;
+    const start = performance.now();
+    const dur = 1600;
+    const tick = (now: number) => {
+      const p = Math.min((now - start) / dur, 1);
+      setCount(1 + (1 - Math.pow(1 - p, 3)) * 36);
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [shown]);
+
+  return (
+    <section ref={ref} style={{ background: "#fff", borderTop: "1px solid #e4e4e7" }} className="py-16 lg:py-24 overflow-hidden">
+      <div className="max-w-5xl mx-auto px-6 lg:px-10">
+        <div className="text-center mb-10 lg:mb-12">
+          <p className="duc-label mb-3" style={{ color: "#25d366" }}>The power of tiny healthy habits</p>
+          <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>
+            Get just <span style={{ color: "#25d366" }}>1% better</span> every day…
+          </h2>
+          <p className="duc-body max-w-2xl mx-auto" style={{ color: "#52525b" }}>
+            A tiny healthy habit feels like nothing on Day 1. But small wins add up. Keep going and the math is shocking — you can become a{" "}
+            <strong style={{ color: "#18181b" }}>37× better version of yourself</strong> in just 1 year!
+          </p>
+        </div>
+        <div className="flex justify-center mb-10">
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl text-center" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
+            <span style={{ fontSize: 16, fontWeight: 700, color: "#18181b" }}>
+              1% better every day ={" "}
+              <span style={{ color: "#25d366" }}>37× better version of yourself in just 1 year</span> 🚀
+            </span>
+          </div>
+        </div>
+        <div className="relative max-w-3xl mx-auto">
+          <svg viewBox={`0 0 ${VW} ${VH}`} className="w-full" style={{ overflow: "visible" }}>
+            <line x1={X0} y1={TOP - 10} x2={X0} y2={Y0 + 60} stroke="#cbd5e1" strokeWidth={2.5} strokeLinecap="round" />
+            <line x1={X0} y1={Y0 + 60} x2={XEND + 20} y2={Y0 + 60} stroke="#cbd5e1" strokeWidth={2.5} strokeLinecap="round" />
+            <text x={X0 - 14} y={(TOP + Y0) / 2} textAnchor="middle" fontSize={15} fill="#64748b" transform={`rotate(-90 ${X0 - 56} ${(TOP + Y0) / 2})`}>Growth</text>
+            <text x={X0 - 16} y={Y0 + 5} textAnchor="end" fontSize={16} fontWeight={700} fill="#475569">1</text>
+            <text x={X0} y={Y0 + 84} textAnchor="middle" fontSize={14} fill="#64748b">Today</text>
+            <text x={XEND} y={Y0 + 84} textAnchor="middle" fontSize={14} fontWeight={700} fill="#475569">1 Year</text>
+            <line x1={X0} y1={Y0} x2={XEND} y2={Y0} stroke="#94a3b8" strokeWidth={2.5} strokeDasharray="8 8" style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.3s" }} />
+            <text x={XEND - 4} y={Y0 - 12} textAnchor="end" fontSize={13} fill="#94a3b8" style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.6s" }}>No change — stay the same</text>
+            <path d={BETTER_PATH} fill="none" stroke="#25d366" strokeWidth={4.5} strokeLinecap="round" pathLength={1}
+              style={{ strokeDasharray: 1, strokeDashoffset: shown ? 0 : 1, transition: "stroke-dashoffset 1.8s ease 0.3s" }} />
+            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.5s 1.7s" }}>
+              <rect x={XEND - 220} y={TOP + 4} width={120} height={46} rx={12} fill="#25d366" />
+              <text x={XEND - 160} y={TOP + 33} textAnchor="middle" fontSize={24} fontWeight={900} fill="#fff">{Math.round(count)}× 🚀</text>
+            </g>
+            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.2s" }}>
+              <image href="/value/before.png" x={X0 - 42} y={Y0 - 8} width={84} height={84} preserveAspectRatio="xMidYMid meet" />
+            </g>
+            <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 1.9s" }}>
+              <image href="/value/after.png" x={XEND - 30} y={TOP - 36} width={96} height={96} preserveAspectRatio="xMidYMid meet" />
+            </g>
+          </svg>
+          <div className="absolute" style={{ left: `${(X0 / VW) * 100}%`, top: `${(Y0 / VH) * 100}%`, transform: "translate(-50%, 64px)" }}>
+            <div className="whitespace-nowrap rounded-full text-xs font-bold px-3 py-1.5 shadow-lg" style={{ background: "#18181b", color: "#fff", opacity: shown ? 1 : 0, transform: shown ? "translateY(0)" : "translateY(6px)", transition: "all 0.5s 0.4s" }}>
+              👉 You are here
+            </div>
+          </div>
+        </div>
+        <div className="text-center mt-12 lg:mt-14">
+          <p style={{ fontSize: 19, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "0 auto 8px", lineHeight: 1.4 }}>
+            If you do nothing, nothing changes.
+          </p>
+          <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.7 }}>
+            Daily Upgrade Club gives you your 1% — one tiny healthy habit a day, on WhatsApp. The small wins do the rest.
+          </p>
+          <CTA label="Start My 1% Today →" sub="7-day trial for ₹1 · Then ₹99/month" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE
 // ═════════════════════════════════════════════════════════════════════════════
@@ -907,6 +1005,9 @@ export default function DailyUpgradeClubPage() {
 
         </div>
       </section>
+
+      {/* ══ 1% TINY GAINS ════════════════════════════════════════════════════ */}
+      <TinyGainsDUC />
 
       {/* ══ 4. HOW DUC WORKS ══════════════════════════════════════════════════ */}
       <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">

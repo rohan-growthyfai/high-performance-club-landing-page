@@ -2,9 +2,10 @@ import { NextResponse } from "next/server";
 
 export const maxDuration = 60;
 
-function buildDucHabitHTML(dayNumber: number, glimpse: string): string {
+function buildDucHabitHTML(dayNumber: number, glimpse: string, emoji: string): string {
   const safe    = String(dayNumber || 1);
   const glimpseSafe = (glimpse || "").replace(/[<>&"]/g, c => ({ "<":"&lt;",">":"&gt;","&":"&amp;",'"':"&quot;" }[c] || c)).slice(0, 80);
+  const emojiSafe   = (emoji  || "").replace(/[<>&"]/g, "").slice(0, 8);
   const logo    = "https://www.highperformanceclub.co/hpc-logo.png";
 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
@@ -12,60 +13,57 @@ function buildDucHabitHTML(dayNumber: number, glimpse: string): string {
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1080px;overflow:hidden}
-.card{width:1080px;height:1080px;background:#f7f9f8;font-family:'Inter',-apple-system,sans-serif;
+.card{width:1080px;height:1080px;background:#f5f5f0;font-family:'Inter',-apple-system,sans-serif;
   display:flex;flex-direction:column;align-items:center;justify-content:flex-start;
-  padding:64px 80px 0;position:relative;overflow:hidden}
-.blob1{position:absolute;top:-160px;right:-140px;width:480px;height:480px;border-radius:50%;
-  background:rgba(37,211,102,0.09)}
-.blob2{position:absolute;bottom:100px;left:-170px;width:440px;height:440px;border-radius:50%;
-  background:rgba(184,133,58,0.07)}
-.logo-row{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;margin-bottom:60px}
-.logo-row img{width:100px;height:100px;border-radius:50%;object-fit:cover}
+  padding:56px 80px 0;position:relative;overflow:hidden}
+.logo-row{position:relative;display:flex;flex-direction:column;align-items:center;margin-bottom:48px}
+.logo-row img{width:110px;height:110px;border-radius:50%;object-fit:cover}
 .daybox{position:relative;background:#18181b;border-radius:36px;
-  width:880px;padding:52px 60px 48px;text-align:center;margin-bottom:40px;
-  box-shadow:0 20px 60px -16px rgba(0,0,0,0.28)}
-.daybox .day-label{font-size:44px;font-weight:700;color:rgba(255,255,255,0.60);
-  letter-spacing:0.04em;text-transform:uppercase;margin-bottom:6px}
-.daybox .day-num{font-size:130px;font-weight:900;color:#f5c842;line-height:1.0;
-  letter-spacing:-0.03em}
-.daybox .sub{font-size:38px;font-weight:700;color:rgba(255,255,255,0.80);
-  letter-spacing:0.01em;margin-top:6px}
+  width:900px;padding:48px 60px 44px;text-align:center;margin-bottom:44px;
+  box-shadow:0 24px 64px -16px rgba(0,0,0,0.40)}
+.daybox .day-row{font-size:130px;font-weight:900;color:#f5c842;line-height:1.0;
+  letter-spacing:-0.02em;display:flex;align-items:baseline;justify-content:center;gap:24px}
+.daybox .day-word{font-size:130px;font-weight:900;color:#f5c842;letter-spacing:-0.02em}
+.daybox .sub{font-size:36px;font-weight:600;color:rgba(255,255,255,0.70);
+  letter-spacing:0.02em;margin-top:14px}
 .glimpse-box{position:relative;background:#fff;border-radius:28px;
-  width:880px;padding:36px 50px;text-align:center;
-  box-shadow:0 8px 32px -8px rgba(0,0,0,0.10);margin-bottom:0}
-.glimpse-box .glimpse-text{font-size:42px;font-weight:700;color:#18181b;
-  line-height:1.28;letter-spacing:-0.01em}
+  width:900px;padding:38px 52px;
+  box-shadow:0 8px 32px -8px rgba(0,0,0,0.10);
+  display:flex;align-items:center;gap:28px}
+.glimpse-emoji{font-size:64px;line-height:1;flex-shrink:0}
+.glimpse-text{font-size:44px;font-weight:800;color:#18181b;
+  line-height:1.22;letter-spacing:-0.01em;text-align:left}
 .footer{position:absolute;bottom:0;left:0;right:0;background:#1da851;
-  padding:42px;text-align:center}
-.footer span{font-size:40px;font-weight:800;color:#fff;letter-spacing:0.01em}
-.arrow{margin-left:8px;font-style:normal}
+  padding:48px 60px;text-align:center}
+.footer span{font-size:44px;font-weight:900;color:#fff;letter-spacing:0.01em}
 </style></head>
 <body>
 <div class="card">
-  <div class="blob1"></div><div class="blob2"></div>
   <div class="logo-row">
     <img src="${logo}" alt="HPC" />
   </div>
   <div class="daybox">
-    <div class="day-label">Day</div>
-    <div class="day-num">${safe}</div>
+    <div class="day-row">
+      <span class="day-word">DAY</span>
+      <span class="day-word">${safe}</span>
+    </div>
     <div class="sub">Daily Upgrade Club</div>
   </div>
-  <div style="height:40px"></div>
   <div class="glimpse-box">
+    ${emojiSafe ? `<span class="glimpse-emoji">${emojiSafe}</span>` : ""}
     <div class="glimpse-text">${glimpseSafe}</div>
   </div>
-  <div class="footer"><span>Type below to reveal today's tiny habit<i class="arrow">⬇</i></span></div>
+  <div class="footer"><span>Tap below to reveal today's tiny habit ⬇</span></div>
 </div>
 </body></html>`;
 }
 
 export async function POST(request: Request) {
   try {
-    const { dayNumber, glimpse } = await request.json();
+    const { dayNumber, glimpse, emoji } = await request.json();
     if (!dayNumber) return NextResponse.json({ error: "dayNumber required" }, { status: 400 });
 
-    const html = buildDucHabitHTML(Number(dayNumber), glimpse || "Today's tiny healthy habit is ready.");
+    const html = buildDucHabitHTML(Number(dayNumber), glimpse || "Today's tiny healthy habit is ready.", emoji || "");
 
     const form = new FormData();
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");

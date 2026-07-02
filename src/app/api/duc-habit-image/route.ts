@@ -178,7 +178,7 @@ Do not create extra fingers, distorted hands, distorted eyes, broken anatomy, we
         "X-Title": "Daily Upgrade Club",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash-preview-05-20:thinking",
+        model: "google/gemini-2.5-flash-image",
         messages: [{ role: "user", content: prompt }],
       }),
     });

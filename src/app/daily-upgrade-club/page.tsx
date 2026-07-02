@@ -821,186 +821,135 @@ export default function DailyUpgradeClubPage() {
             </p>
           </div>
 
-          {/* 3 Big Goals — the "overwhelming" view */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
-            {[
-              {
-                emoji: "⚖️",
-                goal: "Lose Weight",
-                color: "#ea580c",
-                bg: "#fff7ed",
-                border: "#fed7aa",
-                items: [
-                  "Count calories daily",
-                  "Cut carbs completely",
-                  "Go to the gym 5x/week",
-                  "Meal prep every Sunday",
-                  "Track macros religiously",
-                  "Avoid all sugar & junk",
-                  "Sleep 8 hours exactly",
-                  "Drink 3L water daily",
-                ],
-              },
-              {
-                emoji: "❤️",
-                goal: "Build Better Health",
-                color: "#db2777",
-                bg: "#fdf2f8",
-                border: "#fbcfe8",
-                items: [
-                  "Exercise every morning",
-                  "Meditate for 30 minutes",
-                  "Eat only whole foods",
-                  "Take 10,000 steps daily",
-                  "No screen time after 9pm",
-                  "Cold showers every day",
-                  "Quit coffee immediately",
-                  "Read health books weekly",
-                ],
-              },
-              {
-                emoji: "😴",
-                goal: "Sleep Better",
-                color: "#6366f1",
-                bg: "#eef2ff",
-                border: "#c7d2fe",
-                items: [
-                  "Fix your sleep schedule",
-                  "No phone in bed — ever",
-                  "Blackout curtains, earplugs",
-                  "Magnesium + melatonin",
-                  "Consistent 10pm bedtime",
-                  "No caffeine after 2pm",
-                  "Wind-down routine nightly",
-                  "White noise machine",
-                ],
-              },
-            ].map(({ emoji, goal, color, bg, border, items }) => (
-              <div key={goal} className="rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${border}`, background: bg }}>
-                <div className="px-5 py-4 flex items-center gap-3" style={{ borderBottom: `1.5px solid ${border}` }}>
-                  <span style={{ fontSize: 26 }}>{emoji}</span>
-                  <span style={{ fontSize: 16, fontWeight: 800, color: "#18181b" }}>{goal}</span>
-                </div>
-                <ul className="px-5 py-4 space-y-2">
-                  {items.map((item) => (
-                    <li key={item} className="flex items-start gap-2.5" style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>
-                      <span style={{ color, marginTop: 2, flexShrink: 0, fontSize: 11 }}>✕</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <div className="px-5 py-3" style={{ borderTop: `1.5px solid ${border}`, background: color + "14" }}>
-                  <p style={{ fontSize: 12, color, fontWeight: 700, textAlign: "center" }}>Overwhelming. Unsustainable. You quit by Week 2.</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* The bridge — transformation moment */}
-          <div className="relative flex flex-col items-center my-12">
-            <div className="w-px bg-gradient-to-b from-transparent via-stone-300 to-transparent" style={{ height: 48 }} />
-            <div className="rounded-2xl px-8 py-5 text-center my-2" style={{ background: "linear-gradient(135deg,#0f1f13,#18181b)", maxWidth: 560 }}>
-              <p style={{ fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.35 }}>
-                What if you didn't need to do all of that?
-              </p>
-              <p style={{ fontSize: 15, color: "rgba(255,255,255,0.65)", marginTop: 8, lineHeight: 1.6 }}>
-                What if breaking your big goal into <em style={{ color: "#25d366", fontStyle: "normal", fontWeight: 700 }}>tiny healthy habits</em> was the only thing that actually worked?
-              </p>
+          {/* Row labels */}
+          <div className="hidden md:grid mb-3" style={{ gridTemplateColumns: "1fr 56px 1fr", gap: "0 16px" }}>
+            <div className="text-center">
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#dc2626" }}>The overwhelming way</span>
             </div>
-            <div className="w-px bg-gradient-to-b from-transparent via-stone-300 to-transparent" style={{ height: 48 }} />
+            <div />
+            <div className="text-center">
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#15803d" }}>The tiny habit way ✓</span>
+            </div>
           </div>
 
-          {/* Tiny habits reframe — same 3 goals, now simple */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-14">
+          {/* 3 rows — one per goal */}
+          <div className="flex flex-col gap-4 mb-10">
             {[
               {
                 emoji: "⚖️",
                 goal: "Lose Weight",
+                badColor: "#ea580c",
+                badBg: "#fff7ed",
+                badBorder: "#fed7aa",
+                items: ["Count calories daily", "Cut carbs completely", "Gym 5× a week", "Meal prep Sundays", "Track macros", "Avoid all sugar & junk"],
                 habit: "Drink one glass of warm water before your first meal",
-                why: "Reduces appetite, boosts metabolism, and takes 10 seconds.",
-                color: "#ea580c",
-                bg: "#fff",
-                border: "#e4e4e7",
+                why: "Reduces appetite, boosts metabolism — takes 10 seconds.",
               },
               {
                 emoji: "❤️",
                 goal: "Build Better Health",
+                badColor: "#db2777",
+                badBg: "#fdf2f8",
+                badBorder: "#fbcfe8",
+                items: ["Exercise every morning", "Meditate 30 min", "Eat only whole foods", "10,000 steps daily", "No screens after 9pm", "Cold showers daily"],
                 habit: "Do 5 deep breaths the moment you wake up",
-                why: "Activates your parasympathetic system and sets a calm tone for the day.",
-                color: "#db2777",
-                bg: "#fff",
-                border: "#e4e4e7",
+                why: "Activates your calm nervous system and sets the tone for the day.",
               },
               {
                 emoji: "😴",
                 goal: "Sleep Better",
+                badColor: "#6366f1",
+                badBg: "#eef2ff",
+                badBorder: "#c7d2fe",
+                items: ["Fix your sleep schedule", "No phone in bed", "Blackout curtains + earplugs", "Magnesium + melatonin", "10pm bedtime sharp", "Wind-down routine nightly"],
                 habit: "Put your phone face-down 10 minutes before bed",
-                why: "Reduces blue light exposure and triggers your brain's sleep mode.",
-                color: "#6366f1",
-                bg: "#fff",
-                border: "#e4e4e7",
+                why: "Cuts blue light, signals your brain to enter sleep mode.",
               },
-            ].map(({ emoji, goal, habit, why, color }) => (
-              <div key={goal} className="rounded-2xl p-6 flex flex-col gap-4" style={{ background: "#fff", border: "1.5px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                <div className="flex items-center gap-2.5">
-                  <span style={{ fontSize: 22 }}>{emoji}</span>
-                  <span style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>{goal}</span>
+            ].map(({ emoji, goal, badColor, badBg, badBorder, items, habit, why }) => (
+              <div key={goal} className="grid grid-cols-1 md:grid-cols-[1fr_56px_1fr] items-center gap-3 md:gap-0">
+
+                {/* LEFT — overwhelming list */}
+                <div className="rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${badBorder}`, background: badBg }}>
+                  <div className="px-4 py-3 flex items-center gap-2.5" style={{ borderBottom: `1.5px solid ${badBorder}` }}>
+                    <span style={{ fontSize: 20 }}>{emoji}</span>
+                    <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
+                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: badColor, textTransform: "uppercase", letterSpacing: "0.08em" }}>overwhelming</span>
+                  </div>
+                  <div className="px-4 py-3 grid grid-cols-2 gap-x-3 gap-y-1.5">
+                    {items.map(item => (
+                      <div key={item} className="flex items-start gap-1.5">
+                        <span style={{ color: badColor, fontSize: 9, marginTop: 4, flexShrink: 0 }}>✕</span>
+                        <span style={{ fontSize: 12, color: "#52525b", lineHeight: 1.45 }}>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="px-4 py-2" style={{ borderTop: `1px solid ${badBorder}`, background: badColor + "10" }}>
+                    <p style={{ fontSize: 11, color: badColor, fontWeight: 700, textAlign: "center" }}>You quit by Week 2 😮‍💨</p>
+                  </div>
                 </div>
-                <div className="rounded-xl p-4" style={{ background: "#f4fef7", border: "1.5px solid #bbf7d0" }}>
-                  <p style={{ fontSize: 13, fontWeight: 700, color: "#15803d", marginBottom: 4 }}>Today's tiny healthy habit:</p>
-                  <p style={{ fontSize: 14, color: "#18181b", lineHeight: 1.55, fontWeight: 600 }}>"{habit}"</p>
+
+                {/* MIDDLE — arrow */}
+                <div className="flex flex-col items-center justify-center py-2 md:py-0" style={{ gap: 4 }}>
+                  {/* Mobile: down arrow; Desktop: right arrow */}
+                  <svg className="hidden md:block" width="40" height="20" viewBox="0 0 40 20" fill="none">
+                    <path d="M2 10h32M28 4l8 6-8 6" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <svg className="md:hidden" width="20" height="32" viewBox="0 0 20 32" fill="none">
+                    <path d="M10 2v26M4 22l6 8 6-8" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
                 </div>
-                <p style={{ fontSize: 12.5, color: "#6b7280", lineHeight: 1.6 }}>
-                  <strong style={{ color: "#374151" }}>Why it works:</strong> {why}
-                </p>
-                <div className="flex items-center gap-2 mt-auto">
-                  <span style={{ width: 20, height: 20, borderRadius: "50%", background: "linear-gradient(135deg,#1da851,#25d366)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none"><path d="M1 4l3 3 5-6" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                  </span>
-                  <span style={{ fontSize: 12, fontWeight: 700, color: "#15803d" }}>Done in 2 minutes. Zero disruption.</span>
+
+                {/* RIGHT — tiny habit */}
+                <div className="rounded-2xl overflow-hidden" style={{ border: "1.5px solid #bbf7d0", background: "#f0fdf4" }}>
+                  <div className="px-4 py-3 flex items-center gap-2.5" style={{ borderBottom: "1.5px solid #bbf7d0" }}>
+                    <span style={{ fontSize: 20 }}>{emoji}</span>
+                    <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
+                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>tiny habit ✓</span>
+                  </div>
+                  <div className="px-4 py-4 flex flex-col gap-2.5">
+                    <p style={{ fontSize: 11, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>Today's habit:</p>
+                    <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b", lineHeight: 1.5 }}>"{habit}"</p>
+                    <p style={{ fontSize: 12, color: "#52525b", lineHeight: 1.55 }}>{why}</p>
+                  </div>
+                  <div className="px-4 py-2 flex items-center gap-2" style={{ borderTop: "1px solid #bbf7d0", background: "rgba(37,211,102,0.06)" }}>
+                    <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#25d366", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                      <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2.5 2.5 4-4.5" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#15803d" }}>Done in 2 minutes. Every single day. ✅</span>
+                  </div>
                 </div>
+
               </div>
             ))}
+          </div>
+
+          {/* Bridge — the reframe */}
+          <div className="rounded-2xl px-8 py-7 text-center mb-10" style={{ background: "linear-gradient(135deg,#0f1f13,#18181b)" }}>
+            <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>
+              What if you didn't have to do all of that?
+            </p>
+            <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
+              What if breaking big goals into <span style={{ color: "#25d366", fontWeight: 700 }}>tiny healthy habits</span> was the only way it actually worked?
+            </p>
           </div>
 
           {/* The 3 pillars of tiny habits */}
-          <div className="rounded-2xl p-8 lg:p-10" style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 100%)" }}>
-            <p className="duc-label mb-3 text-center" style={{ color: "#25d366" }}>The DUC promise</p>
-            <h3 style={{ fontSize: "clamp(1.2rem,2.5vw,1.7rem)", fontWeight: 900, color: "#fff", textAlign: "center", marginBottom: 32, lineHeight: 1.3 }}>
-              Tiny Healthy Habits Win Because They Are…
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: "✅",
-                  title: "Easy to Do",
-                  desc: "Takes 2–3 minutes. No equipment. No planning. You can do it half-asleep on a Monday.",
-                  stat: "93% completion rate vs 12% for big routines",
-                },
-                {
-                  icon: "🔄",
-                  title: "No Big Lifestyle Changes",
-                  desc: "Fits into the life you already have. No gym membership, no diet overhaul, no morning alarm at 5am.",
-                  stat: "Stacks onto habits you already have",
-                },
-                {
-                  icon: "🎯",
-                  title: "Too Small to Miss",
-                  desc: "When the habit is tiny enough, there's no excuse not to do it. That's when the streak starts to matter.",
-                  stat: "21 days to automatic. 30 days to transformed.",
-                },
-              ].map(({ icon, title, desc, stat }) => (
-                <div key={title} className="flex flex-col gap-3">
-                  <span style={{ fontSize: 32 }}>{icon}</span>
-                  <p style={{ fontSize: 17, fontWeight: 800, color: "#fff" }}>{title}</p>
-                  <p style={{ fontSize: 14, color: "rgba(255,255,255,0.65)", lineHeight: 1.65 }}>{desc}</p>
-                  <p style={{ fontSize: 12, color: "#25d366", fontWeight: 700, borderTop: "1px solid rgba(255,255,255,0.08)", paddingTop: 10, marginTop: 4 }}>{stat}</p>
-                </div>
-              ))}
-            </div>
-            <div className="flex justify-center mt-10">
-              <CTA label="Start My Tiny Habit Journey →" sub="7-day trial for ₹1 · Then ₹99/month" />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
+            {[
+              { icon: "✅", title: "Easy to Do", desc: "2–3 minutes. No equipment. No planning. You can do it on the busiest Monday." },
+              { icon: "🔄", title: "No Lifestyle Overhaul", desc: "Fits into the life you already have. No gym, no diet change, no 5am alarm." },
+              { icon: "🎯", title: "Too Small to Miss", desc: "When it's tiny enough, there's no excuse. That's when the streak starts to matter." },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="rounded-2xl p-6 flex flex-col gap-3" style={{ background: "#fff", border: "1.5px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
+                <span style={{ fontSize: 28 }}>{icon}</span>
+                <p style={{ fontSize: 15, fontWeight: 800, color: "#18181b" }}>{title}</p>
+                <p style={{ fontSize: 13, color: "#52525b", lineHeight: 1.6 }}>{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center">
+            <CTA label="Start My Tiny Habit Journey →" sub="7-day trial for ₹1 · Then ₹99/month" />
           </div>
 
         </div>

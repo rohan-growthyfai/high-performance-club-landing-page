@@ -2,10 +2,68 @@ import { NextResponse } from "next/server";
 
 export const maxDuration = 60;
 
-function buildDucWelcomeHTML(firstName: string, startDate: string): string {
-  const safe     = (firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
-  const dateSafe = (startDate  || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
-  const logo     = "https://www.highperformanceclub.co/hpc-logo.png";
+// mode "welcome" — sent on payment confirmation
+// mode "teaser"  — sent at 7 AM with daily habit glimpse
+function buildDucImageHTML(opts: {
+  firstName: string;
+  mode: "welcome" | "teaser";
+  startDate?: string;   // welcome mode only
+  glimpse?: string;     // teaser mode only
+}): string {
+  const safe        = (opts.firstName || "Friend").replace(/[<>&]/g, "").slice(0, 24);
+  const logo        = "https://www.highperformanceclub.co/hpc-logo.png";
+
+  if (opts.mode === "teaser") {
+    const glimpseSafe = (opts.glimpse || "Today's tiny healthy habit").replace(/[<>&]/g, "").slice(0, 80);
+
+    return `<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1080px;overflow:hidden}
+.card{width:1080px;height:1080px;position:relative;overflow:hidden;
+  background:#f7f9f8;font-family:'Inter',-apple-system,sans-serif;
+  display:flex;flex-direction:column;padding:70px 80px 0;}
+.blob1{position:absolute;top:-140px;right:-120px;width:460px;height:460px;border-radius:50%;
+  background:rgba(37,211,102,0.10)}
+.blob2{position:absolute;bottom:120px;left:-160px;width:420px;height:420px;border-radius:50%;
+  background:rgba(184,133,58,0.07)}
+.head{position:relative;display:flex;align-items:center;gap:20px;margin-bottom:70px}
+.head img{width:78px;height:78px;border-radius:50%;object-fit:cover}
+.head .brand{font-size:34px;font-weight:800;color:#18181b;letter-spacing:-0.01em}
+.greeting{position:relative;font-size:64px;font-weight:600;color:#3f4a44;margin-bottom:6px}
+.name{position:relative;font-size:104px;font-weight:900;color:#18181b;line-height:1.0;
+  letter-spacing:-0.03em;margin-bottom:50px}
+.name b{color:#1da851}
+.cbox{position:relative;background:linear-gradient(135deg,#1da851,#16893f);border-radius:32px;
+  padding:46px 54px;box-shadow:0 24px 60px -20px rgba(29,168,81,0.5);max-width:840px}
+.cbox .small{font-size:34px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:8px}
+.cbox .big{font-size:54px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.10}
+.footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
+  padding:38px;text-align:center}
+.footer span{font-size:38px;font-weight:800;color:#fff;letter-spacing:0.01em}
+.footer .arrow{color:#4ade80;margin-left:6px}
+</style></head>
+<body>
+<div class="card">
+  <div class="blob1"></div><div class="blob2"></div>
+  <div class="head">
+    <img src="${logo}" alt="logo" />
+    <div class="brand">High Performance Club</div>
+  </div>
+  <div class="greeting">Good Morning,</div>
+  <div class="name"><b>${safe}</b> ☀️</div>
+  <div class="cbox">
+    <div class="small">Your today's tiny habit has arrived</div>
+    <div class="big">${glimpseSafe}</div>
+  </div>
+  <div class="footer"><span>Click Button Below to Reveal Today's Habit<span class="arrow">⬇</span></span></div>
+</div>
+</body></html>`;
+  }
+
+  // welcome mode (default)
+  const dateSafe = (opts.startDate || "tomorrow").replace(/[<>&]/g, "").slice(0, 40);
 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
@@ -58,10 +116,11 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 
 export async function POST(request: Request) {
   try {
-    const { firstName, startDate } = await request.json();
+    const { firstName, startDate, mode, glimpse } = await request.json();
     if (!firstName) return NextResponse.json({ error: "firstName required" }, { status: 400 });
 
-    // Default: "Tomorrow, July 2" — same format as free challenge
+    const resolvedMode = mode === "teaser" ? "teaser" : "welcome";
+
     const resolvedDate = startDate || (() => {
       const d = new Date();
       d.setDate(d.getDate() + 1);
@@ -69,7 +128,12 @@ export async function POST(request: Request) {
       return `Tomorrow, ${dateStr}`;
     })();
 
-    const html = buildDucWelcomeHTML(firstName, resolvedDate);
+    const html = buildDucImageHTML({
+      firstName,
+      mode: resolvedMode,
+      startDate: resolvedDate,
+      glimpse,
+    });
 
     const form = new FormData();
     form.append("files", new Blob([html], { type: "text/html" }), "index.html");
@@ -98,10 +162,12 @@ export async function POST(request: Request) {
 
     const { putFile } = await import("@/lib/fileStore");
     const safeName = firstName.replace(/\s+/g, "-").toLowerCase().replace(/[^a-z0-9-]/g, "");
-    const filename  = `duc-welcome-${safeName}-${Date.now()}.png`;
+    const filename  = resolvedMode === "teaser"
+      ? `duc-teaser-${safeName}-${Date.now()}.png`
+      : `duc-welcome-${safeName}-${Date.now()}.png`;
     const imageUrl  = await putFile(filename, pngBuffer, "image/png");
 
-    return NextResponse.json({ success: true, firstName, imageUrl });
+    return NextResponse.json({ success: true, firstName, mode: resolvedMode, imageUrl });
   } catch (err: unknown) {
     const message = err instanceof Error ? err.message : String(err);
     console.error("[duc-welcome-image]", message);

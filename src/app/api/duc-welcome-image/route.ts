@@ -37,8 +37,8 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .name b{color:#1da851}
 .cbox{position:relative;background:linear-gradient(135deg,#1da851,#16893f);border-radius:32px;
   padding:46px 54px;box-shadow:0 24px 60px -20px rgba(29,168,81,0.5);max-width:840px}
-.cbox .small{font-size:34px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:8px}
-.cbox .big{font-size:58px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05}
+.cbox .small{font-size:42px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:12px}
+.cbox .big{font-size:70px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05}
 .footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
   padding:38px;text-align:center}
 .footer span{font-size:42px;font-weight:800;color:#fff;letter-spacing:0.01em}

@@ -31,17 +31,17 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .head{position:relative;display:flex;align-items:center;gap:20px;margin-bottom:70px}
 .head img{width:78px;height:78px;border-radius:50%;object-fit:cover}
 .head .brand{font-size:34px;font-weight:800;color:#18181b;letter-spacing:-0.01em}
-.greeting{position:relative;font-size:64px;font-weight:600;color:#3f4a44;margin-bottom:6px}
+.welcome{position:relative;font-size:64px;font-weight:600;color:#3f4a44;margin-bottom:6px}
 .name{position:relative;font-size:104px;font-weight:900;color:#18181b;line-height:1.0;
   letter-spacing:-0.03em;margin-bottom:50px}
 .name b{color:#1da851}
 .cbox{position:relative;background:linear-gradient(135deg,#1da851,#16893f);border-radius:32px;
   padding:46px 54px;box-shadow:0 24px 60px -20px rgba(29,168,81,0.5);max-width:840px}
 .cbox .small{font-size:34px;font-weight:600;color:rgba(255,255,255,0.85);margin-bottom:8px}
-.cbox .big{font-size:54px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.10}
+.cbox .big{font-size:58px;font-weight:900;color:#fff;letter-spacing:-0.02em;line-height:1.05}
 .footer{position:absolute;bottom:0;left:0;right:0;background:#18181b;
   padding:38px;text-align:center}
-.footer span{font-size:38px;font-weight:800;color:#fff;letter-spacing:0.01em}
+.footer span{font-size:42px;font-weight:800;color:#fff;letter-spacing:0.01em}
 .footer .arrow{color:#4ade80;margin-left:6px}
 </style></head>
 <body>
@@ -49,9 +49,9 @@ html,body{width:1080px;height:1080px;overflow:hidden}
   <div class="blob1"></div><div class="blob2"></div>
   <div class="head">
     <img src="${logo}" alt="logo" />
-    <div class="brand">High Performance Club</div>
+    <div class="brand">Daily Upgrade Club</div>
   </div>
-  <div class="greeting">Good Morning,</div>
+  <div class="welcome">Good Morning,</div>
   <div class="name"><b>${safe}</b> ☀️</div>
   <div class="cbox">
     <div class="small">Your today's tiny habit has arrived</div>

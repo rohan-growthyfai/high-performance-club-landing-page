@@ -10,11 +10,17 @@ interface WeeklyReportPayload {
   weekNumber: number;
   currentDay: number;
   streak: number;
+  longestStreak?: number;
+  checkinsInWeek?: number;   // real count from DB
+  dayStart?: number;
+  dayEnd?: number;
   answers: {
     q_improvement?: string;
     q_consistency?: string;
     q_motivation?: string;
   };
+  onboardingAnswers?: Record<string, string>;  // from duc_members.flow_answers
+  aiDetails?: Record<string, string>;           // from duc_ai_conversations.memory.personalDetails
 }
 
 function scoreAnswer(val: string): number {
@@ -44,14 +50,58 @@ function motivationNote(score: number): string {
   return "You're on fire! This energy is exactly what transforms habits into identity.";
 }
 
+function focusForNextWeek(conScore: number, impScore: number): string {
+  if (conScore >= 3 && impScore >= 3) return `You're showing up AND feeling the difference. This week, go a level deeper — try doing the habit at the same time each day to lock it into your body clock.`;
+  if (conScore >= 3) return `You're already showing up consistently. This week, focus on the <strong>quality</strong> of each habit — go deeper, not just through the motion.`;
+  if (impScore >= 3) return `You can feel the improvement even on days you struggled to show up. Imagine what consistent days will do. This week: <strong>don't break the chain.</strong>`;
+  return `Your priority this week: <strong>don't break the chain.</strong> Even on your hardest day, do the habit once. One minute counts. Progress compounds.`;
+}
+
+function onboardingContext(onboarding: Record<string, string>, trackName: string): string {
+  if (!onboarding || !Object.keys(onboarding).length) return "";
+  const goalMap: Record<string, string> = {
+    goal_1: "build lasting daily habits", goal_2: "improve your energy",
+    goal_3: "reduce stress and anxiety", goal_4: "sleep better",
+    goal_5: "improve focus and productivity",
+  };
+  const goal = goalMap[onboarding.q_goal] || "upgrade your daily habits";
+  return `You joined to <strong>${goal}</strong> — and you're ${trackName} days into making that happen.`;
+}
+
+function personalContextNote(aiDetails: Record<string, string>): string {
+  if (!aiDetails || !Object.keys(aiDetails).length) return "";
+  const parts: string[] = [];
+  if (aiDetails.job) parts.push(`as a ${aiDetails.job}`);
+  if (aiDetails.city) parts.push(`based in ${aiDetails.city}`);
+  if (aiDetails.sleep_issue) parts.push(`working through ${aiDetails.sleep_issue}`);
+  if (aiDetails.kids) parts.push(`balancing life with ${aiDetails.kids}`);
+  if (!parts.length) return "";
+  return `Keeping in mind your life ${parts.join(", ")} — this consistency matters more than most people realise.`;
+}
+
 function buildHTML(d: WeeklyReportPayload): string {
-  const impScore  = scoreAnswer(d.answers.q_improvement || "");
-  const conScore  = scoreAnswer(d.answers.q_consistency || "");
-  const motScore  = scoreAnswer(d.answers.q_motivation  || "");
-  const imp       = improvementLabel(impScore);
-  const con       = consistencyLabel(conScore);
-  const motNote   = motivationNote(motScore);
+  const impScore    = scoreAnswer(d.answers.q_improvement || "");
+  const conScore    = scoreAnswer(d.answers.q_consistency || "");
+  const motScore    = scoreAnswer(d.answers.q_motivation  || "");
+  const imp         = improvementLabel(impScore);
+  const con         = consistencyLabel(conScore);
+  const motNote     = motivationNote(motScore);
   const overallScore = Math.round((impScore + conScore + motScore) / 3 * 25);
+  const focusNote   = focusForNextWeek(conScore, impScore);
+
+  const realCheckins   = d.checkinsInWeek ?? null;
+  const daysInWeek     = d.dayEnd && d.dayStart ? (d.dayEnd - d.dayStart + 1) : 7;
+  const selfConsistency = con.text;
+  const realCheckinLine = realCheckins !== null
+    ? `<div class="metric"><div class="metric-value" style="color:#10b981;">${realCheckins}/${daysInWeek}</div><div class="metric-label">Habits Done ✅</div></div>`
+    : "";
+
+  const onboardingLine = onboardingContext(d.onboardingAnswers || {}, d.trackName);
+  const personalLine   = personalContextNote(d.aiDetails || {});
+
+  const streakDots = Array.from({ length: 7 }, (_, i) =>
+    `<div class="streak-dot ${i < (d.streak || 0) ? 'done' : ''}">${i < (d.streak || 0) ? '✓' : ''}</div>`
+  ).join("");
 
   return `<!DOCTYPE html>
 <html>
@@ -82,9 +132,11 @@ function buildHTML(d: WeeklyReportPayload): string {
   .metric-label { font-size:12px; color:#6b7280; }
   .badge { display:inline-flex; align-items:center; gap:8px; border-radius:100px; padding:8px 20px; font-size:14px; font-weight:700; color:white; }
   .insight { background:#f0fdf4; border-left:4px solid #10b981; border-radius:0 12px 12px 0; padding:20px 24px; margin-top:16px; font-size:15px; line-height:1.6; color:#1a1a2e; }
+  .personal-note { background:#fefce8; border-left:4px solid #f59e0b; border-radius:0 12px 12px 0; padding:16px 20px; margin-top:12px; font-size:14px; line-height:1.6; color:#374151; font-style:italic; }
   .streak-bar { display:flex; gap:6px; margin-top:12px; }
-  .streak-dot { width:28px; height:28px; border-radius:50%; background:#e5e7eb; display:flex; align-items:center; justify-content:center; font-size:13px; }
-  .streak-dot.done { background:#10b981; color:white; }
+  .streak-dot { width:28px; height:28px; border-radius:50%; background:#e5e7eb; display:flex; align-items:center; justify-content:center; font-size:11px; color:#9ca3af; }
+  .streak-dot.done { background:#10b981; color:white; font-weight:700; }
+  .focus-box { background:linear-gradient(135deg,#ede9fe,#dbeafe); border-radius:12px; padding:20px 24px; font-size:15px; line-height:1.7; color:#374151; }
   .footer { text-align:center; padding:24px 0 0; color:#9ca3af; font-size:12px; }
 </style>
 </head>
@@ -108,44 +160,43 @@ function buildHTML(d: WeeklyReportPayload): string {
     <div class="ring-outer">
       <div class="ring-inner">
         <div class="ring-score">${overallScore}%</div>
-        <div class="ring-label">Overall</div>
+        <div class="ring-label">Week ${d.weekNumber}</div>
       </div>
     </div>
-    <p style="color:#6b7280;font-size:14px;">Week ${d.weekNumber} Performance Score</p>
+    <p style="color:#6b7280;font-size:14px;">Your Week ${d.weekNumber} Performance Score · Days ${d.dayStart || ""}–${d.dayEnd || ""}</p>
   </div>
 
   <div class="section">
-    <div class="section-title">This Week's Stats</div>
+    <div class="section-title">This Week's Numbers</div>
     <div class="metric-row">
       <div class="metric">
         <div class="metric-value" style="color:#f59e0b;">${d.streak}</div>
         <div class="metric-label">Day Streak 🔥</div>
       </div>
+      ${realCheckinLine}
       <div class="metric">
         <div class="metric-value" style="color:#3b82f6;">Week ${d.weekNumber}</div>
         <div class="metric-label">of 4 Weeks</div>
       </div>
       <div class="metric">
-        <div class="metric-value" style="color:#10b981;">${con.text}</div>
-        <div class="metric-label">Consistency</div>
+        <div class="metric-value" style="color:#10b981;font-size:18px;">${selfConsistency}</div>
+        <div class="metric-label">Self-Rated</div>
       </div>
     </div>
+    <div class="streak-bar">${streakDots}</div>
   </div>
 
   <div class="section">
     <div class="section-title">Progress on ${d.trackName}</div>
     <span class="badge" style="background:${imp.color}">${imp.emoji} ${imp.text}</span>
     <div class="insight">${motNote}</div>
+    ${onboardingLine ? `<div class="personal-note">${onboardingLine}</div>` : ""}
+    ${personalLine   ? `<div class="personal-note">${personalLine}</div>`   : ""}
   </div>
 
   <div class="section">
-    <div class="section-title">Focus for Next Week</div>
-    <p style="font-size:15px;line-height:1.7;color:#374151;">
-      ${conScore >= 3
-        ? `You're already showing up consistently. This week, focus on the <strong>quality</strong> of each habit — go deeper, not just through the motion.`
-        : `Your priority this week: <strong>don't break the chain.</strong> Even on your hardest day, do the habit once. One minute counts.`
-      }
-    </p>
+    <div class="section-title">Focus for Week ${d.weekNumber + 1}</div>
+    <div class="focus-box">${focusNote}</div>
   </div>
 
   <div class="footer">

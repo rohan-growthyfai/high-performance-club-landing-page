@@ -2,6 +2,12 @@
 import { useState, useEffect, useRef } from "react";
 import HabitChatbot from "./components/HabitChatbot";
 
+declare global {
+  interface Window {
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
 const JOIN_URL = "https://rzp.io/l/daily-upgrade-club";
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
@@ -556,10 +562,25 @@ function TinyGainsDUC() {
   );
 }
 
+// ─── Meta Pixel ViewContent event ────────────────────────────────────────────
+function useMetaPixelViewContent() {
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof window.fbq === "function") {
+      window.fbq("track", "ViewContent", {
+        content_name: "Daily Upgrade Club",
+        content_category: "WhatsApp Habit Club",
+        value: 1,
+        currency: "INR",
+      });
+    }
+  }, []);
+}
+
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE
 // ═════════════════════════════════════════════════════════════════════════════
 export default function DailyUpgradeClubPage() {
+  useMetaPixelViewContent();
   return (
     <div id="duc-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b", fontSize: 15 }}>
       <style>{`

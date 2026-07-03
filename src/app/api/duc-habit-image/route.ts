@@ -9,21 +9,27 @@ export const maxDuration = 60;
 // Uses OpenRouter → google/gemini-2.5-flash-image
 export async function POST(request: Request) {
   try {
-    const { habitTitle, actionLine } = await request.json();
+    const { habitTitle, actionLine, imageGlimpse } = await request.json();
     if (!habitTitle || !actionLine) {
       return NextResponse.json({ error: "habitTitle and actionLine required" }, { status: 400 });
     }
+    // imageGlimpse = 4-5 benefit keywords shown in the green highlight box in the image
+    // e.g. "Instantly feel active in 30 seconds" — shown INSTEAD of the habit name in the box
 
     const apiKey = process.env.OPENROUTER_API_KEY;
     if (!apiKey) {
       return NextResponse.json({ error: "OPENROUTER_API_KEY not set" }, { status: 500 });
     }
 
+    // Benefit keywords for the green highlight box — if not provided, derive from title
+    const benefitKeywords = imageGlimpse || habitTitle;
+
     const prompt = `Generate an image. Create a premium square wellness infographic image in the same visual format as the Daily Upgrade Club healthy habit challenge tutorial images.
 
 INPUT VARIABLES:
 Habit Name: ${habitTitle}
 How to Perform the Habit: ${actionLine}
+Benefit Keywords (for green highlight box): ${benefitKeywords}
 
 BRAND & LOGO:
 Place a premium black rounded-rectangle badge with a thin metallic gold border at the top center.
@@ -47,6 +53,13 @@ Visual style should be realistic, soft, warm, and aspirational.
 TITLE:
 Place "${habitTitle}" as a large elegant serif title below the logo badge.
 Use a premium serif font style, large and centered.
+
+GREEN BENEFIT BOX:
+Add a premium green rounded pill or highlight box prominently in the image.
+Inside it, write: "${benefitKeywords}"
+This is the key benefit the user gets — make it stand out clearly.
+Use a vibrant wellness green color with white text.
+Place it just below the title or at the top of the main visual panel.
 Color should match the habit mood:
 - Energy habits: warm orange / golden
 - Calm or breathing habits: soft blue / teal

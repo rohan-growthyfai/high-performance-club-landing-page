@@ -84,24 +84,52 @@ function buildHTML(d: WeeklyReportPayload): string {
   const conScore    = scoreAnswer(d.answers.q_consistency || "");
   const motScore    = scoreAnswer(d.answers.q_motivation  || "");
   const imp         = improvementLabel(impScore);
-  const con         = consistencyLabel(conScore);
-  const motNote     = motivationNote(motScore);
   const overallScore = Math.round((impScore + conScore + motScore) / 3 * 25);
   const focusNote   = focusForNextWeek(conScore, impScore);
 
-  const realCheckins   = d.checkinsInWeek ?? null;
-  const daysInWeek     = d.dayEnd && d.dayStart ? (d.dayEnd - d.dayStart + 1) : 7;
-  const selfConsistency = con.text;
-  const realCheckinLine = realCheckins !== null
-    ? `<div class="metric"><div class="metric-value" style="color:#10b981;">${realCheckins}/${daysInWeek}</div><div class="metric-label">Habits Done ✅</div></div>`
-    : "";
+  const daysInWeek  = d.dayEnd && d.dayStart ? (d.dayEnd - d.dayStart + 1) : 7;
+  const realDone    = d.checkinsInWeek ?? 0;
+  const realMissed  = Math.max(0, daysInWeek - realDone);
+  const completionPct = Math.round((realDone / daysInWeek) * 100);
 
   const onboardingLine = onboardingContext(d.onboardingAnswers || {}, d.trackName);
   const personalLine   = personalContextNote(d.aiDetails || {});
 
-  const streakDots = Array.from({ length: 7 }, (_, i) =>
-    `<div class="streak-dot ${i < (d.streak || 0) ? 'done' : ''}">${i < (d.streak || 0) ? '✓' : ''}</div>`
-  ).join("");
+  // Habit calendar for the week — green = done, grey = missed
+  const habitDots = Array.from({ length: daysInWeek }, (_, i) => {
+    const dayNum = (d.dayStart || 1) + i;
+    const done = i < realDone;
+    return `<div style="width:48px;height:48px;border-radius:12px;background:${done ? "#10b981" : "#e5e7eb"};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;">
+      <div style="font-size:11px;font-weight:700;color:${done ? "#fff" : "#9ca3af"};">Day</div>
+      <div style="font-size:16px;font-weight:800;color:${done ? "#fff" : "#9ca3af"};">${dayNum}</div>
+      ${done ? `<div style="font-size:10px;color:rgba(255,255,255,0.8);">✓</div>` : ""}
+    </div>`;
+  }).join("");
+
+  // Motivating opener based on completion
+  const openerEmoji = completionPct >= 86 ? "🔥" : completionPct >= 57 ? "💪" : "🌱";
+  const openerTitle = completionPct >= 86
+    ? `Incredible week, ${d.firstName}!`
+    : completionPct >= 57
+    ? `Great effort this week, ${d.firstName}!`
+    : `You showed up, ${d.firstName}!`;
+  const openerSub = completionPct >= 86
+    ? `You completed ${realDone} out of ${daysInWeek} habits this week. That's exceptional — most people never even start.`
+    : completionPct >= 57
+    ? `You completed ${realDone} out of ${daysInWeek} habits. More than half the week, you chose yourself. That matters.`
+    : `You completed ${realDone} out of ${daysInWeek} habits. Every single day you showed up counts — the habit is forming.`;
+
+  // Missed days message — always encouraging, never shaming
+  const missedMsg = realMissed === 0
+    ? `You didn't miss a single day this week. That's rare — and worth celebrating. 🎉`
+    : realMissed === 1
+    ? `You missed just 1 day out of ${daysInWeek}. That's not a failure — that's being human. What matters is you came back.`
+    : realMissed <= 3
+    ? `${realMissed} days were tough this week. Life gets in the way sometimes. The fact you're still here, reading this report, tells us everything about your commitment.`
+    : `This was a challenging week. But here's the truth — the fact that you're still in the programme, still tracking, still showing up? That puts you ahead of people who quit on Day 1.`;
+
+  // Progress note
+  const progressNote = motivationNote(motScore);
 
   return `<!DOCTYPE html>
 <html>
@@ -109,98 +137,135 @@ function buildHTML(d: WeeklyReportPayload): string {
 <meta charset="UTF-8"/>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family: 'Segoe UI', Arial, sans-serif; background:#f8f9fa; color:#1a1a2e; width:800px; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background:#f0fdf4; color:#1a1a2e; width:800px; }
   .page { padding:48px; }
-  .header { background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%); color:white; padding:40px 48px; border-radius:16px; margin-bottom:32px; }
-  .header-top { display:flex; justify-content:space-between; align-items:flex-start; }
-  .brand { font-size:13px; letter-spacing:2px; text-transform:uppercase; opacity:0.7; margin-bottom:8px; }
-  .report-title { font-size:28px; font-weight:800; line-height:1.2; }
-  .week-badge { background:rgba(255,255,255,0.15); border-radius:12px; padding:12px 20px; text-align:center; }
-  .week-num { font-size:32px; font-weight:800; }
-  .week-label { font-size:11px; opacity:0.7; text-transform:uppercase; letter-spacing:1px; }
-  .track-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.1); border-radius:100px; padding:8px 20px; margin-top:16px; font-size:15px; }
-  .score-ring { text-align:center; margin-bottom:32px; }
-  .ring-outer { width:140px; height:140px; border-radius:50%; background:linear-gradient(135deg,#8b5cf6,#3b82f6); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; }
-  .ring-inner { width:112px; height:112px; border-radius:50%; background:#f8f9fa; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-  .ring-score { font-size:36px; font-weight:800; color:#1a1a2e; }
-  .ring-label { font-size:11px; color:#6b7280; text-transform:uppercase; letter-spacing:1px; }
-  .section { background:white; border-radius:16px; padding:28px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.06); }
-  .section-title { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:#6b7280; margin-bottom:20px; }
-  .metric-row { display:flex; gap:16px; margin-bottom:0; }
-  .metric { flex:1; background:#f8f9fa; border-radius:12px; padding:20px; text-align:center; }
-  .metric-value { font-size:26px; font-weight:800; margin-bottom:4px; }
-  .metric-label { font-size:12px; color:#6b7280; }
-  .badge { display:inline-flex; align-items:center; gap:8px; border-radius:100px; padding:8px 20px; font-size:14px; font-weight:700; color:white; }
-  .insight { background:#f0fdf4; border-left:4px solid #10b981; border-radius:0 12px 12px 0; padding:20px 24px; margin-top:16px; font-size:15px; line-height:1.6; color:#1a1a2e; }
-  .personal-note { background:#fefce8; border-left:4px solid #f59e0b; border-radius:0 12px 12px 0; padding:16px 20px; margin-top:12px; font-size:14px; line-height:1.6; color:#374151; font-style:italic; }
-  .streak-bar { display:flex; gap:6px; margin-top:12px; }
-  .streak-dot { width:28px; height:28px; border-radius:50%; background:#e5e7eb; display:flex; align-items:center; justify-content:center; font-size:11px; color:#9ca3af; }
-  .streak-dot.done { background:#10b981; color:white; font-weight:700; }
-  .focus-box { background:linear-gradient(135deg,#ede9fe,#dbeafe); border-radius:12px; padding:20px 24px; font-size:15px; line-height:1.7; color:#374151; }
-  .footer { text-align:center; padding:24px 0 0; color:#9ca3af; font-size:12px; }
+  .header { background:linear-gradient(135deg,#064e3b 0%,#065f46 100%); color:white; padding:44px 48px; border-radius:20px; margin-bottom:28px; position:relative; overflow:hidden; }
+  .header::after { content:''; position:absolute; top:-60px; right:-60px; width:220px; height:220px; border-radius:50%; background:rgba(255,255,255,0.05); }
+  .brand { font-size:12px; letter-spacing:2.5px; text-transform:uppercase; opacity:0.65; margin-bottom:10px; }
+  .report-title { font-size:30px; font-weight:800; line-height:1.2; margin-bottom:6px; }
+  .report-sub { font-size:15px; opacity:0.75; }
+  .track-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.12); border-radius:100px; padding:8px 20px; margin-top:18px; font-size:14px; border:1px solid rgba(255,255,255,0.2); }
+  .day-badge { position:absolute; top:44px; right:48px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.25); border-radius:14px; padding:14px 20px; text-align:center; }
+  .day-num { font-size:34px; font-weight:800; line-height:1; }
+  .day-lbl { font-size:11px; opacity:0.65; text-transform:uppercase; letter-spacing:1px; margin-top:4px; }
+
+  .opener { background:white; border-radius:20px; padding:32px 36px; margin-bottom:24px; box-shadow:0 2px 12px rgba(0,0,0,0.06); border-left:5px solid #10b981; }
+  .opener-emoji { font-size:48px; margin-bottom:12px; }
+  .opener-title { font-size:24px; font-weight:800; color:#064e3b; margin-bottom:10px; }
+  .opener-body { font-size:16px; line-height:1.7; color:#374151; }
+
+  .stats-row { display:flex; gap:16px; margin-bottom:24px; }
+  .stat { flex:1; background:white; border-radius:16px; padding:24px 20px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+  .stat-value { font-size:36px; font-weight:900; margin-bottom:6px; }
+  .stat-label { font-size:13px; color:#6b7280; font-weight:600; }
+
+  .section { background:white; border-radius:16px; padding:28px 32px; margin-bottom:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05); }
+  .section-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:#6b7280; margin-bottom:18px; }
+
+  .habit-dots { display:flex; gap:8px; flex-wrap:wrap; }
+  .score-bar-wrap { margin-bottom:12px; }
+  .score-bar-label { display:flex; justify-content:space-between; font-size:14px; color:#374151; margin-bottom:6px; }
+  .score-bar-track { background:#e5e7eb; border-radius:100px; height:12px; overflow:hidden; }
+  .score-bar-fill { height:12px; border-radius:100px; }
+
+  .badge { display:inline-flex; align-items:center; gap:8px; border-radius:100px; padding:8px 20px; font-size:14px; font-weight:700; color:white; margin-bottom:14px; }
+  .callout { border-radius:14px; padding:20px 24px; font-size:15px; line-height:1.7; }
+  .callout-green { background:#f0fdf4; border-left:4px solid #10b981; color:#1a1a2e; }
+  .callout-yellow { background:#fefce8; border-left:4px solid #f59e0b; color:#374151; font-style:italic; }
+  .callout-blue { background:#eff6ff; border-left:4px solid #3b82f6; color:#1e3a5f; }
+  .callout-purple { background:linear-gradient(135deg,#ede9fe,#dbeafe); color:#374151; }
+  .missed-note { background:#fff7ed; border-left:4px solid #f97316; border-radius:0 14px 14px 0; padding:18px 22px; font-size:14px; line-height:1.7; color:#7c2d12; margin-top:14px; }
+
+  .footer { text-align:center; padding:28px 0 0; color:#9ca3af; font-size:12px; }
 </style>
 </head>
 <body>
 <div class="page">
+
+  <!-- Header -->
   <div class="header">
-    <div class="header-top">
-      <div>
-        <div class="brand">Daily Upgrade Club</div>
-        <div class="report-title">Week ${d.weekNumber}<br/>Progress Report</div>
-        <div class="track-pill">${d.trackEmoji} ${d.trackName}</div>
-      </div>
-      <div class="week-badge">
-        <div class="week-num">Day ${d.currentDay}</div>
-        <div class="week-label">of 30</div>
-      </div>
+    <div class="day-badge">
+      <div class="day-num">Day ${d.currentDay}</div>
+      <div class="day-lbl">of 30</div>
+    </div>
+    <div class="brand">Daily Upgrade Club</div>
+    <div class="report-title">Week ${d.weekNumber} Progress Report</div>
+    <div class="report-sub">Days ${d.dayStart || 1}–${d.dayEnd || 7} · Your personal summary</div>
+    <div class="track-pill">${d.trackEmoji} ${d.trackName}</div>
+  </div>
+
+  <!-- Motivating opener -->
+  <div class="opener">
+    <div class="opener-emoji">${openerEmoji}</div>
+    <div class="opener-title">${openerTitle}</div>
+    <div class="opener-body">${openerSub}</div>
+    ${onboardingLine ? `<div style="margin-top:12px;font-size:14px;color:#6b7280;font-style:italic;">${onboardingLine}</div>` : ""}
+  </div>
+
+  <!-- Stats row -->
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-value" style="color:#10b981;">${realDone}</div>
+      <div class="stat-label">Habits Done ✅</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="color:${realMissed === 0 ? "#10b981" : "#f97316"};">${realMissed}</div>
+      <div class="stat-label">Days Missed</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="color:#8b5cf6;">${completionPct}%</div>
+      <div class="stat-label">Completion Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-value" style="color:#f59e0b;">${d.streak || 0}🔥</div>
+      <div class="stat-label">Current Streak</div>
     </div>
   </div>
 
-  <div class="score-ring">
-    <div class="ring-outer">
-      <div class="ring-inner">
-        <div class="ring-score">${overallScore}%</div>
-        <div class="ring-label">Week ${d.weekNumber}</div>
-      </div>
+  <!-- Week calendar -->
+  <div class="section">
+    <div class="section-title">Your Week at a Glance</div>
+    <div class="habit-dots">${habitDots}</div>
+    ${realMissed > 0 ? `<div class="missed-note">💛 ${missedMsg}</div>` : `<div class="callout callout-green" style="margin-top:14px;">🎯 ${missedMsg}</div>`}
+  </div>
+
+  <!-- Score bars -->
+  <div class="section">
+    <div class="section-title">How You Rated Your Week</div>
+    <div class="score-bar-wrap">
+      <div class="score-bar-label"><span>Improvement noticed</span><span style="font-weight:700;color:#10b981;">${imp.emoji} ${imp.text}</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="background:#10b981;width:${impScore * 25}%;"></div></div>
     </div>
-    <p style="color:#6b7280;font-size:14px;">Your Week ${d.weekNumber} Performance Score · Days ${d.dayStart || ""}–${d.dayEnd || ""}</p>
-  </div>
-
-  <div class="section">
-    <div class="section-title">This Week's Numbers</div>
-    <div class="metric-row">
-      <div class="metric">
-        <div class="metric-value" style="color:#f59e0b;">${d.streak}</div>
-        <div class="metric-label">Day Streak 🔥</div>
-      </div>
-      ${realCheckinLine}
-      <div class="metric">
-        <div class="metric-value" style="color:#3b82f6;">Week ${d.weekNumber}</div>
-        <div class="metric-label">of 4 Weeks</div>
-      </div>
-      <div class="metric">
-        <div class="metric-value" style="color:#10b981;font-size:18px;">${selfConsistency}</div>
-        <div class="metric-label">Self-Rated</div>
-      </div>
+    <div class="score-bar-wrap" style="margin-top:14px;">
+      <div class="score-bar-label"><span>Self-rated consistency</span><span style="font-weight:700;color:#3b82f6;">${conScore * 25}%</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="background:#3b82f6;width:${conScore * 25}%;"></div></div>
     </div>
-    <div class="streak-bar">${streakDots}</div>
+    <div class="score-bar-wrap" style="margin-top:14px;">
+      <div class="score-bar-label"><span>Motivation level</span><span style="font-weight:700;color:#8b5cf6;">${motScore * 25}%</span></div>
+      <div class="score-bar-track"><div class="score-bar-fill" style="background:#8b5cf6;width:${motScore * 25}%;"></div></div>
+    </div>
+    <div style="margin-top:20px;background:#f8fafc;border-radius:12px;padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:12px;">
+      <div style="font-size:13px;color:#6b7280;">Overall Week Score</div>
+      <div style="font-size:28px;font-weight:900;color:#064e3b;">${overallScore}%</div>
+      <span class="badge" style="background:${imp.color};margin:0;">${imp.emoji} ${imp.text}</span>
+    </div>
   </div>
 
+  <!-- Progress note -->
   <div class="section">
-    <div class="section-title">Progress on ${d.trackName}</div>
-    <span class="badge" style="background:${imp.color}">${imp.emoji} ${imp.text}</span>
-    <div class="insight">${motNote}</div>
-    ${onboardingLine ? `<div class="personal-note">${onboardingLine}</div>` : ""}
-    ${personalLine   ? `<div class="personal-note">${personalLine}</div>`   : ""}
+    <div class="section-title">What This Week Tells Us</div>
+    <div class="callout callout-green">${progressNote}</div>
+    ${personalLine ? `<div class="callout callout-yellow" style="margin-top:12px;">${personalLine}</div>` : ""}
   </div>
 
+  <!-- Focus next week -->
   <div class="section">
-    <div class="section-title">Focus for Week ${d.weekNumber + 1}</div>
-    <div class="focus-box">${focusNote}</div>
+    <div class="section-title">Your Focus for Week ${d.weekNumber + 1}</div>
+    <div class="callout callout-purple" style="border-radius:14px;padding:22px 26px;">${focusNote}</div>
   </div>
 
   <div class="footer">
-    ${d.firstName}'s Daily Upgrade Club · ${d.trackEmoji} ${d.trackName} · Week ${d.weekNumber} of 4
+    Made with care for ${d.firstName} · Daily Upgrade Club · ${d.trackEmoji} ${d.trackName} · Week ${d.weekNumber} of 4
   </div>
 </div>
 </body>

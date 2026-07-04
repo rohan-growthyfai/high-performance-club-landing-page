@@ -18,11 +18,6 @@ function buildCheckinHTML(opts: {
   const streak      = opts.streak || 0;
   const logo        = "https://www.highperformanceclub.co/hpc-logo.png";
 
-  const streakBar = streak >= 2
-    ? Array.from({ length: Math.min(streak, 7) }, (_, i) =>
-        `<div class="dot ${i < streak ? 'filled' : ''}"></div>`
-      ).join("")
-    : Array.from({ length: 7 }, () => `<div class="dot"></div>`).join("");
 
   return `<!DOCTYPE html><html><head><meta charset="UTF-8">
 <style>
@@ -51,11 +46,6 @@ html,body{width:1080px;height:1080px;overflow:hidden}
 .cbox .label .daybadge{background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);
   border-radius:10px;padding:4px 18px;font-size:28px;font-weight:700;color:#4ade80}
 .cbox .habit{font-size:66px;font-weight:900;color:#f9fafb;line-height:1.08;letter-spacing:-0.02em}
-.streak-row{display:flex;align-items:center;gap:18px}
-.streak-label{font-size:32px;font-weight:700;color:#9ca3af}
-.dots{display:flex;gap:10px;align-items:center}
-.dot{width:42px;height:42px;border-radius:10px;background:rgba(255,255,255,0.08);border:2px solid rgba(255,255,255,0.12)}
-.dot.filled{background:#25d366;border-color:#25d366}
 .footer{position:absolute;bottom:0;left:0;right:0;
   background:linear-gradient(135deg,#1da851,#16893f);
   padding:40px;display:flex;align-items:center;justify-content:center;gap:16px}
@@ -77,10 +67,6 @@ html,body{width:1080px;height:1080px;overflow:hidden}
       <span class="daybadge">Day ${day}</span>
     </div>
     <div class="habit">${habitSafe}</div>
-  </div>
-  <div class="streak-row">
-    <div class="streak-label">Your Streak:</div>
-    <div class="dots">${streakBar}</div>
   </div>
   <div class="footer">
     <span>Reply ✅ DONE &amp; Continue Your Streak</span>

@@ -876,6 +876,8 @@ export default function DailyUpgradeClubPage() {
                 badColor: "#ea580c",
                 badBg: "#fff7ed",
                 badBorder: "#fed7aa",
+                badImg: "/goals/weight-bad.png",
+                goodImg: "/goals/weight-good.png",
                 items: ["Count calories daily", "Cut carbs completely", "Gym 5× a week", "Meal prep Sundays", "Track macros", "Avoid all sugar & junk"],
                 habit: "Drink one glass of warm water before your first meal",
                 why: "Reduces appetite, boosts metabolism — takes 10 seconds.",
@@ -886,6 +888,8 @@ export default function DailyUpgradeClubPage() {
                 badColor: "#db2777",
                 badBg: "#fdf2f8",
                 badBorder: "#fbcfe8",
+                badImg: "/goals/health-bad.png",
+                goodImg: "/goals/health-good.png",
                 items: ["Exercise every morning", "Meditate 30 min", "Eat only whole foods", "10,000 steps daily", "No screens after 9pm", "Cold showers daily"],
                 habit: "Do 5 deep breaths the moment you wake up",
                 why: "Activates your calm nervous system and sets the tone for the day.",
@@ -896,11 +900,13 @@ export default function DailyUpgradeClubPage() {
                 badColor: "#6366f1",
                 badBg: "#eef2ff",
                 badBorder: "#c7d2fe",
+                badImg: "/goals/sleep-bad.png",
+                goodImg: "/goals/sleep-good.png",
                 items: ["Fix your sleep schedule", "No phone in bed", "Blackout curtains + earplugs", "Magnesium + melatonin", "10pm bedtime sharp", "Wind-down routine nightly"],
                 habit: "Put your phone face-down 10 minutes before bed",
                 why: "Cuts blue light, signals your brain to enter sleep mode.",
               },
-            ].map(({ emoji, goal, badColor, badBg, badBorder, items, habit, why }) => (
+            ].map(({ emoji, goal, badColor, badBg, badBorder, badImg, goodImg, items, habit, why }) => (
               <div key={goal} className="grid grid-cols-1 md:grid-cols-[1fr_56px_1fr] items-center gap-3 md:gap-0">
 
                 {/* LEFT — overwhelming list */}
@@ -909,6 +915,10 @@ export default function DailyUpgradeClubPage() {
                     <span style={{ fontSize: 20 }}>{emoji}</span>
                     <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
                     <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: badColor, textTransform: "uppercase", letterSpacing: "0.08em" }}>overwhelming</span>
+                  </div>
+                  <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", borderBottom: `1.5px solid ${badBorder}` }}>
+                    <img src={badImg} alt={`${goal} the overwhelming way`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(0.25) contrast(0.96)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0) 45%," + badColor + "26 100%)" }} />
                   </div>
                   <div className="px-4 py-3 grid grid-cols-2 gap-x-3 gap-y-1.5">
                     {items.map(item => (
@@ -941,6 +951,10 @@ export default function DailyUpgradeClubPage() {
                     <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
                     <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>tiny habit ✓</span>
                   </div>
+                  <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", borderBottom: "1.5px solid #bbf7d0" }}>
+                    <img src={goodImg} alt={`${goal} the tiny habit way`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(37,211,102,0.18) 100%)" }} />
+                  </div>
                   <div className="px-4 py-4 flex flex-col gap-2.5">
                     <p style={{ fontSize: 11, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>Today's habit:</p>
                     <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b", lineHeight: 1.5 }}>"{habit}"</p>
@@ -961,10 +975,10 @@ export default function DailyUpgradeClubPage() {
           {/* Bridge — the reframe */}
           <div className="rounded-2xl px-8 py-7 text-center mb-10" style={{ background: "linear-gradient(135deg,#0f1f13,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>
-              What if you didn't have to do all of that?
+              This is how tiny habits work.
             </p>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
-              What if breaking big goals into <span style={{ color: "#25d366", fontWeight: 700 }}>tiny healthy habits</span> was the only way it actually worked?
+              You don't overhaul your life. You start with one small step you can't fail at — and let it compound. That's the <span style={{ color: "#25d366", fontWeight: 700 }}>power of tiny habits</span>.
             </p>
           </div>
 
@@ -1437,11 +1451,12 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <a href="https://rzp.io/l/daily-upgrade-club" target="_blank" rel="noopener noreferrer"
+            <button
+              onClick={() => window.openDUCCheckout?.()}
               className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
               style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
               Yes, This Is For Me →
-            </a>
+            </button>
           </div>
         </div>
       </section>

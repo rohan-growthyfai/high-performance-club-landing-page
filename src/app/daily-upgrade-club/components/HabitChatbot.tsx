@@ -17,8 +17,48 @@ const WELCOME_MESSAGE: Message = {
     "Namaste! 🌱 Welcome to **Daily Upgrade Club**.\n\nBefore I dive in — I'd love to know who I'm talking to. What's your name?",
 };
 
-// Avatar image — a calm, premium wellness illustration
-const AVATAR_IMG = "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=120&q=80";
+// Friendly animated mascot avatar — a welcoming character with a face + waving hand.
+// Self-contained inline SVG (no external image, CSP-safe). Blinks and waves gently.
+function AssistantMascot({ size = 64 }: { size?: number }) {
+  return (
+    <div
+      style={{ width: "100%", height: "100%", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(140deg,#d1fae5 0%,#a7f3d0 55%,#6ee7b7 100%)" }}
+    >
+      <svg width={size} height={size} viewBox="0 0 64 64" fill="none" style={{ display: "block" }} aria-hidden="true">
+        <defs>
+          <linearGradient id="mascotBody" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stopColor="#34d399" />
+            <stop offset="1" stopColor="#16a34a" />
+          </linearGradient>
+        </defs>
+        {/* little leaf sprout on top — ties to the wellness/growth theme */}
+        <path d="M32 12 C31 7 27 5 24 5 C25 9 28 12 32 13 Z" fill="#22c55e" />
+        <path d="M32 12 C33 7 37 5 40 5 C39 9 36 12 32 13 Z" fill="#4ade80" />
+        {/* head/body — friendly round character */}
+        <circle cx="32" cy="35" r="20" fill="url(#mascotBody)" />
+        {/* face highlight */}
+        <ellipse cx="32" cy="30" rx="15" ry="12" fill="#ffffff" opacity="0.14" />
+        {/* eyes — blink via scaleY */}
+        <g className="mascot-eyes" style={{ transformOrigin: "32px 33px" }}>
+          <circle cx="25.5" cy="33" r="3.2" fill="#0f2f1c" />
+          <circle cx="38.5" cy="33" r="3.2" fill="#0f2f1c" />
+          {/* eye sparkles */}
+          <circle cx="26.7" cy="31.8" r="1" fill="#fff" />
+          <circle cx="39.7" cy="31.8" r="1" fill="#fff" />
+        </g>
+        {/* rosy cheeks */}
+        <circle cx="22" cy="39" r="3" fill="#fb7185" opacity="0.5" />
+        <circle cx="42" cy="39" r="3" fill="#fb7185" opacity="0.5" />
+        {/* warm smile */}
+        <path d="M25 41 Q32 47 39 41" stroke="#0f2f1c" strokeWidth="2.4" strokeLinecap="round" fill="none" />
+        {/* waving hand */}
+        <g className="mascot-hand" style={{ transformOrigin: "50px 40px" }}>
+          <circle cx="52" cy="34" r="4.5" fill="#facc15" stroke="#0f2f1c" strokeWidth="0.5" />
+        </g>
+      </svg>
+    </div>
+  );
+}
 
 function MarkdownText({ text }: { text: string }) {
   const parts = text.split(/(\*\*[^*]+\*\*)/g);
@@ -140,8 +180,7 @@ export default function HabitChatbot() {
               border: "2px solid #25d366",
               flexShrink: 0,
             }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={AVATAR_IMG} alt="Habit Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <AssistantMascot size={34} />
             </div>
             <div>
               <p style={{ fontSize: 12, fontWeight: 700, color: "#16a34a", margin: 0, lineHeight: 1.2 }}>
@@ -225,12 +264,7 @@ export default function HabitChatbot() {
           background: "linear-gradient(135deg,#16a34a,#25d366)",
           position: "relative",
         }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={AVATAR_IMG}
-            alt="Habit Assistant"
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          <AssistantMascot size={64} />
           {/* Online green ring pulse */}
           <div style={{
             position: "absolute",
@@ -289,8 +323,7 @@ export default function HabitChatbot() {
                 boxShadow: "0 2px 12px rgba(0,0,0,0.2)",
               }}
             >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={AVATAR_IMG} alt="Habit Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+              <AssistantMascot size={46} />
             </div>
             <div style={{ flex: 1 }}>
               <p style={{ color: "#fff", fontWeight: 800, fontSize: 15, margin: 0, lineHeight: 1.2 }}>
@@ -369,8 +402,7 @@ export default function HabitChatbot() {
                       boxShadow: "0 2px 6px rgba(37,211,102,0.2)",
                     }}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={AVATAR_IMG} alt="Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <AssistantMascot size={30} />
                   </div>
                 )}
                 <div
@@ -404,8 +436,7 @@ export default function HabitChatbot() {
             {loading && (
               <div style={{ display: "flex", alignItems: "flex-end", gap: 7 }}>
                 <div style={{ width: 30, height: 30, borderRadius: "50%", overflow: "hidden", border: "1.5px solid #d1fae5", flexShrink: 0 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={AVATAR_IMG} alt="Assistant" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  <AssistantMascot size={30} />
                 </div>
                 <div
                   style={{
@@ -588,6 +619,18 @@ export default function HabitChatbot() {
           from { opacity: 0; transform: translateY(10px) scale(0.95); }
           to { opacity: 1; transform: translateY(0) scale(1); }
         }
+        @keyframes duc-blink {
+          0%, 92%, 100% { transform: scaleY(1); }
+          96% { transform: scaleY(0.1); }
+        }
+        @keyframes duc-wave {
+          0%, 60%, 100% { transform: rotate(0deg); }
+          70% { transform: rotate(-22deg); }
+          80% { transform: rotate(12deg); }
+          90% { transform: rotate(-12deg); }
+        }
+        .mascot-eyes { animation: duc-blink 4s ease-in-out infinite; }
+        .mascot-hand { animation: duc-wave 3.2s ease-in-out infinite; }
       `}</style>
     </>
   );

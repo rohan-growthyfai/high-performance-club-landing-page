@@ -813,69 +813,13 @@ export default function DailyUpgradeClubPage() {
             <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 30 days</h2>
             <p className="duc-body max-w-md mx-auto">Same busy schedule. But a completely different version of yourself.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
-            {/* Arrow between the two cards */}
-            <div
-              className="absolute left-1/2 top-1/2 z-10 flex items-center justify-center rounded-full"
-              style={{
-                transform: "translate(-50%, -50%)",
-                width: 52,
-                height: 52,
-                background: "#25d366",
-                boxShadow: "0 8px 22px rgba(37,211,102,0.5), 0 0 0 6px #fff",
-              }}
-              aria-hidden="true"
-            >
-              {/* Desktop: right arrow */}
-              <svg className="hidden md:block" width="26" height="26" viewBox="0 0 24 24" fill="none">
-                <path d="M4 12h14M13 6l6 6-6 6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              {/* Mobile: down arrow */}
-              <svg className="md:hidden" width="26" height="26" viewBox="0 0 24 24" fill="none">
-                <path d="M12 4v14M6 13l6 6 6-6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
-              <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
-              <div className="flex flex-col gap-3.5">
-                {[
-                  "No direction on where to even start",
-                  "Too much to fix, too little time",
-                  "Zero accountability — habits disappear with motivation",
-                  "Wellness apps collecting dust on your phone",
-                  "Good intentions that never survive a busy week",
-                  "Low energy, less focus, poor sleep",
-                  "\"I'll start properly next week\"",
-                ].map((b, i) => (
-                  <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
-                ))}
-              </div>
-            </div>
-            <div className="duc-glow-card rounded-2xl border-2 p-6 relative overflow-hidden" style={{ background: "#f0fdf4", borderColor: "rgba(37,211,102,0.35)" }}>
-              <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
-              <div className="relative">
-                <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
-                <div className="flex flex-col gap-3.5">
-                  {[
-                    "A clear direction — one habit, one theme, every day",
-                    "Under 5 minutes of your day — nothing more",
-                    "Built-in accountability that doesn't pressure you",
-                    "Results you feel, not just track on a dashboard",
-                    "A streak you actually want to protect",
-                    "More energy, sharper focus, better sleep",
-                    "\"I've been consistent for a whole month\"",
-                  ].map((a, i) => (
-                    <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Unified SHIFT card — image on top, before/after pointers at the bottom */}
+          <div className="rounded-2xl overflow-hidden border" style={{ borderColor: "#e4e4e7", background: "#fff", boxShadow: "0 12px 40px -14px rgba(0,0,0,0.15)" }}>
 
-          {/* Before / After visual — 3 life areas (energy, sleep, health) in one image */}
-          <div className="mt-10 rounded-2xl overflow-hidden border" style={{ borderColor: "#e4e4e7", background: "#fff", boxShadow: "0 12px 40px -14px rgba(0,0,0,0.15)" }}>
+            {/* Visual — 3 life areas (energy, sleep, health) in one image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/goals/shift-before-after-v2.png" alt="Before and after across energy, sleep and health after 30 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
+
             {/* Life-area legend */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-3" style={{ borderTop: "1px solid #e4e4e7", background: "#fafafa" }}>
               {[["⚡", "Energy"], ["😴", "Sleep"], ["❤️", "Health"]].map(([icon, label]) => (
@@ -883,6 +827,70 @@ export default function DailyUpgradeClubPage() {
                   <span style={{ fontSize: 15 }}>{icon}</span>{label}
                 </span>
               ))}
+            </div>
+
+            {/* Before / After pointers at the bottom of the image */}
+            <div className="grid grid-cols-1 md:grid-cols-2 relative" style={{ borderTop: "1px solid #e4e4e7" }}>
+              {/* Arrow between the two columns */}
+              <div
+                className="absolute left-1/2 top-1/2 z-10 flex items-center justify-center rounded-full"
+                style={{
+                  transform: "translate(-50%, -50%)",
+                  width: 52,
+                  height: 52,
+                  background: "#25d366",
+                  boxShadow: "0 8px 22px rgba(37,211,102,0.5), 0 0 0 6px #fff",
+                }}
+                aria-hidden="true"
+              >
+                {/* Desktop: right arrow */}
+                <svg className="hidden md:block" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 12h14M13 6l6 6-6 6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                {/* Mobile: down arrow */}
+                <svg className="md:hidden" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 4v14M6 13l6 6 6-6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </div>
+
+              {/* Day 0 — Today */}
+              <div className="p-6 md:border-r" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
+                <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
+                <div className="flex flex-col gap-3.5">
+                  {[
+                    "No direction on where to even start",
+                    "Too much to fix, too little time",
+                    "Zero accountability — habits disappear with motivation",
+                    "Wellness apps collecting dust on your phone",
+                    "Good intentions that never survive a busy week",
+                    "Low energy, less focus, poor sleep",
+                    "\"I'll start properly next week\"",
+                  ].map((b, i) => (
+                    <div key={i} className="flex items-center gap-3"><Check /><span style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6 }}>{b}</span></div>
+                  ))}
+                </div>
+              </div>
+
+              {/* After 30 Days */}
+              <div className="p-6 relative overflow-hidden" style={{ background: "#f0fdf4" }}>
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
+                <div className="relative">
+                  <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
+                  <div className="flex flex-col gap-3.5">
+                    {[
+                      "A clear direction — one habit, one theme, every day",
+                      "Under 5 minutes of your day — nothing more",
+                      "Built-in accountability that doesn't pressure you",
+                      "Results you feel, not just track on a dashboard",
+                      "A streak you actually want to protect",
+                      "More energy, sharper focus, better sleep",
+                      "\"I've been consistent for a whole month\"",
+                    ].map((a, i) => (
+                      <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 

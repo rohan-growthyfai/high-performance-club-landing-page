@@ -684,10 +684,10 @@ export default function DailyUpgradeClubPage() {
                     <WAIcon size={17} />
                     All on WhatsApp
                   </div>
-                  {/* Clean dashed arrow — no text on path */}
+                  {/* Clean dashed arrow — smooth curve with aligned arrowhead */}
                   <svg width="200" height="100" viewBox="0 0 200 100" fill="none" style={{ marginLeft: 10 }}>
-                    <path d="M10 10 C20 45 60 80 120 90 C155 96 182 88 194 82" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
-                    <path d="M184 75 L194 82 L182 89" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M12 12 C22 55 70 92 178 84" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
+                    <path d="M164 72 L182 84 L162 92" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 

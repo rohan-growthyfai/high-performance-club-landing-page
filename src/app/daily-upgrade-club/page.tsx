@@ -813,7 +813,28 @@ export default function DailyUpgradeClubPage() {
             <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 30 days</h2>
             <p className="duc-body max-w-md mx-auto">Same busy schedule. But a completely different version of yourself.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 relative">
+            {/* Arrow between the two cards */}
+            <div
+              className="absolute left-1/2 top-1/2 z-10 flex items-center justify-center rounded-full"
+              style={{
+                transform: "translate(-50%, -50%)",
+                width: 52,
+                height: 52,
+                background: "#25d366",
+                boxShadow: "0 8px 22px rgba(37,211,102,0.5), 0 0 0 6px #fff",
+              }}
+              aria-hidden="true"
+            >
+              {/* Desktop: right arrow */}
+              <svg className="hidden md:block" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12h14M13 6l6 6-6 6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {/* Mobile: down arrow */}
+              <svg className="md:hidden" width="26" height="26" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4v14M6 13l6 6 6-6" stroke="#fff" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
             <div className="duc-glow-card rounded-2xl border p-6" style={{ background: "#fafafa", borderColor: "#e4e4e7" }}>
               <div className="inline-flex items-center px-3 py-1 rounded-full mb-5" style={{ background: "#fee2e2", color: "#991b1b", border: "1px solid #fca5a5", fontSize: 12, fontWeight: 700 }}>Day 0 — Today</div>
               <div className="flex flex-col gap-3.5">
@@ -850,6 +871,32 @@ export default function DailyUpgradeClubPage() {
               </div>
             </div>
           </div>
+
+          {/* Before / After visual — 3 life areas in one image */}
+          <div className="mt-10 rounded-2xl overflow-hidden border" style={{ borderColor: "#e4e4e7", background: "#fff", boxShadow: "0 12px 40px -14px rgba(0,0,0,0.15)" }}>
+            {/* Caption bar */}
+            <div className="grid grid-cols-2" style={{ borderBottom: "1px solid #e4e4e7" }}>
+              <div className="flex items-center justify-center gap-2 py-2.5" style={{ background: "#f4f4f5" }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#a1a1aa" }} />
+                <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#71717a" }}>Before · Day 0</span>
+              </div>
+              <div className="flex items-center justify-center gap-2 py-2.5" style={{ background: "#ecfdf5" }}>
+                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#25d366" }} />
+                <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#15803d" }}>After · Day 30</span>
+              </div>
+            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/goals/shift-before-after.png" alt="Before and after across energy, sleep and health after 30 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
+            {/* Life-area legend */}
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-3" style={{ borderTop: "1px solid #e4e4e7", background: "#fafafa" }}>
+              {[["⚡", "Energy"], ["😴", "Sleep"], ["❤️", "Health"]].map(([icon, label]) => (
+                <span key={label} className="inline-flex items-center gap-1.5" style={{ fontSize: 13, fontWeight: 700, color: "#3f3f46" }}>
+                  <span style={{ fontSize: 15 }}>{icon}</span>{label}
+                </span>
+              ))}
+            </div>
+          </div>
+
           <div className="flex justify-center mt-10">
             <CTA label="I Want This Version of Myself →" sub="Start 7 days trial for ₹1 · Then ₹99/month" />
           </div>

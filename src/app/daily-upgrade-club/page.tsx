@@ -269,6 +269,31 @@ function DUCPhone() {
 }
 
 // ─── Static iPhone shell for 3-demo section ───────────────────────────────────
+function PhoneGlow({ children, from, to, accent }: {
+  children: React.ReactNode;
+  from: string;
+  to: string;
+  accent: string;
+}) {
+  return (
+    <div
+      className="relative w-full flex justify-center px-5 pt-9 pb-7"
+      style={{
+        borderRadius: 40,
+        background: `linear-gradient(160deg, ${from} 0%, ${to} 100%)`,
+        boxShadow: `0 24px 60px -18px ${accent}, inset 0 1px 0 rgba(255,255,255,0.25)`,
+        overflow: "hidden",
+      }}
+    >
+      {/* Soft radial glow highlights for a premium, dimensional feel */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(120% 80% at 50% -10%, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 55%)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", left: "-20%", bottom: "-25%", width: "70%", height: "60%", background: `radial-gradient(circle, ${accent} 0%, rgba(255,255,255,0) 70%)`, filter: "blur(24px)", pointerEvents: "none" }} />
+      <div style={{ position: "absolute", right: "-15%", top: "-10%", width: "55%", height: "50%", background: "radial-gradient(circle, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0) 70%)", filter: "blur(20px)", pointerEvents: "none" }} />
+      <div className="relative">{children}</div>
+    </div>
+  );
+}
+
 function StaticPhone({ children, contact = "Daily Upgrade Club", status = "online" }: {
   children: React.ReactNode;
   contact?: string;
@@ -1379,14 +1404,16 @@ export default function DailyUpgradeClubPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
                 ⚡ Energy Month Habits
               </div>
-              <StaticPhone>
-                <WAChatBg height={360}>
-                  <WADateSep label="⚡ Energy Track · Day 3" />
-                  <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
-                  <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
-                  <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
-                </WAChatBg>
-              </StaticPhone>
+              <PhoneGlow from="#fbbf24" to="#f97316" accent="rgba(251,191,36,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="⚡ Energy Track · Day 3" />
+                    <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
+                    <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
+                    <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
             </div>
 
             {/* Sleep Month Habits */}
@@ -1394,14 +1421,16 @@ export default function DailyUpgradeClubPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#eef2ff", border: "2px solid #c7d2fe", color: "#6366f1", fontSize: 13 }}>
                 😴 Sleep Month Habits
               </div>
-              <StaticPhone>
-                <WAChatBg height={360}>
-                  <WADateSep label="😴 Sleep Track · Day 11" />
-                  <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
-                  <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
-                  <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
-                </WAChatBg>
-              </StaticPhone>
+              <PhoneGlow from="#818cf8" to="#4338ca" accent="rgba(99,102,241,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="😴 Sleep Track · Day 11" />
+                    <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
+                    <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
+                    <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
             </div>
 
             {/* Focus Month Habits */}
@@ -1409,14 +1438,16 @@ export default function DailyUpgradeClubPage() {
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
                 🧠 Focus Month Habits
               </div>
-              <StaticPhone>
-                <WAChatBg height={360}>
-                  <WADateSep label="🧠 Focus Track · Day 7" />
-                  <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
-                  <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
-                  <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
-                </WAChatBg>
-              </StaticPhone>
+              <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="🧠 Focus Track · Day 7" />
+                    <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
+                    <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
+                    <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
             </div>
           </div>
 

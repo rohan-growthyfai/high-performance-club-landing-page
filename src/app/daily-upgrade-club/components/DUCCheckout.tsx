@@ -191,7 +191,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         {/* Form */}
         <form onSubmit={handleSubmit} className="px-6 py-5 flex flex-col gap-4">
           <p className="text-sm text-gray-500" style={{ marginTop: -4 }}>
-            Your habit is delivered on WhatsApp after payment.
+            🔒 Your details are encrypted. We never spam — promise.
           </p>
 
           <div className="flex flex-col gap-1">
@@ -256,18 +256,18 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
           >
             {loading ? (
               <>
-                <span className="animate-spin">⏳</span> Opening payment...
+                <span className="animate-spin inline-block" style={{ animation: "spin 1s linear infinite" }}>⏳</span> Opening secure checkout...
               </>
             ) : (
               <>
                 <WAIcon />
-                {ctaLabel || "Start My 7-Day Trial →  ₹1"}
+                {ctaLabel || "Join Daily Upgrade Club → ₹1"}
               </>
             )}
           </button>
 
           <p className="text-xs text-gray-400 text-center">
-            🔒 Secured by Razorpay · UPI, Cards, Netbanking accepted · Cancel anytime
+            Joining <strong className="text-gray-600">5,000+ members</strong> · 4.8/5 from 2,000+ reviews · Cancel anytime
           </p>
         </form>
       </div>

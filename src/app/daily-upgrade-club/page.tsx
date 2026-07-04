@@ -872,21 +872,10 @@ export default function DailyUpgradeClubPage() {
             </div>
           </div>
 
-          {/* Before / After visual — 3 life areas in one image */}
+          {/* Before / After visual — 3 life areas (energy, sleep, health) in one image */}
           <div className="mt-10 rounded-2xl overflow-hidden border" style={{ borderColor: "#e4e4e7", background: "#fff", boxShadow: "0 12px 40px -14px rgba(0,0,0,0.15)" }}>
-            {/* Caption bar */}
-            <div className="grid grid-cols-2" style={{ borderBottom: "1px solid #e4e4e7" }}>
-              <div className="flex items-center justify-center gap-2 py-2.5" style={{ background: "#f4f4f5" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#a1a1aa" }} />
-                <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#71717a" }}>Before · Day 0</span>
-              </div>
-              <div className="flex items-center justify-center gap-2 py-2.5" style={{ background: "#ecfdf5" }}>
-                <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#25d366" }} />
-                <span style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#15803d" }}>After · Day 30</span>
-              </div>
-            </div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/goals/shift-before-after.png" alt="Before and after across energy, sleep and health after 30 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
+            <img src="/goals/shift-before-after-v2.png" alt="Before and after across energy, sleep and health after 30 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
             {/* Life-area legend */}
             <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-3" style={{ borderTop: "1px solid #e4e4e7", background: "#fafafa" }}>
               {[["⚡", "Energy"], ["😴", "Sleep"], ["❤️", "Health"]].map(([icon, label]) => (

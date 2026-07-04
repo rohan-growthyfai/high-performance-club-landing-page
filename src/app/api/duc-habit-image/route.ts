@@ -128,10 +128,15 @@ Keep the habit feeling tiny, easy, and beginner-friendly.
 
 CHARACTER / SUBJECT STYLE:
 Use realistic, friendly, clean human visuals.
+ALL characters MUST be fully clothed at all times — no exceptions.
+Characters should wear appropriate casual wellness clothing: e.g. comfortable t-shirts, light tops, yoga wear, activewear, or everyday casual clothes.
+NEVER show bare torsos, bare chests, underwear, or any unclothed body parts except hands, forearms, face, and neck.
+If the habit involves the upper body (shoulders, back, posture), show the person wearing a fitted t-shirt or top.
+If the habit involves the lower body, show the person in pants, shorts, or leggings.
 People should look healthy, calm, approachable, and natural.
 Avoid overly dramatic fitness-model poses.
 Facial expressions should be peaceful, positive, and encouraging.
-For body-part habits, use clean close-up visuals like hands, eyes, shoulders, face, posture, feet, etc.
+For body-part habits, use clean close-up visuals like hands, eyes, shoulders, face, posture, feet, etc. — always with clothing visible on the body.
 Use soft skin tones, natural lighting, and polished photo-realistic detail.
 
 BACKGROUND COLOR:
@@ -180,6 +185,7 @@ Do not write "HP" anywhere.
 Do not make the image look cartoonish, childish, messy, dark, medical, scary, gym-heavy, or overly clinical.
 Do not add too much text.
 Do not use random symbols.
+ABSOLUTELY DO NOT show any naked, bare, or unclothed characters. All people must be fully dressed in appropriate wellness or casual clothing at all times. No bare torsos, no shirtless figures, no underwear, no nudity of any kind.
 Do not create extra fingers, distorted hands, distorted eyes, broken anatomy, weird faces, duplicate limbs, blurry text, misspelled words, watermark, stock photo watermark, low resolution, cluttered layout, harsh shadows, or poor alignment.`;
 
     const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {

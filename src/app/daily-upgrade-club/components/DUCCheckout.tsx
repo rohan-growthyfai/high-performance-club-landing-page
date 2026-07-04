@@ -267,7 +267,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
           </button>
 
           <p className="text-xs text-gray-400 text-center">
-            Joining <strong className="text-gray-600">5,000+ members</strong> · 4.8/5 from 2,000+ reviews · Cancel anytime
+            Join <strong className="text-gray-600">1,800+ members</strong> · Cancel anytime
           </p>
         </form>
       </div>

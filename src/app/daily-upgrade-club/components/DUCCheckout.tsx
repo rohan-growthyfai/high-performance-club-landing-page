@@ -10,14 +10,12 @@ declare global {
 
 interface RazorpayOptions {
   key: string;
-  order_id: string;
-  amount: number;
-  currency: string;
+  subscription_id: string;
   name: string;
   description: string;
   prefill: { name: string; email: string; contact: string };
   theme: { color: string };
-  handler: (response: { razorpay_payment_id: string; razorpay_order_id: string; razorpay_signature: string }) => void;
+  handler: (response: { razorpay_payment_id: string; razorpay_subscription_id: string; razorpay_signature: string }) => void;
   modal: { ondismiss: () => void };
 }
 
@@ -97,16 +95,14 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         body: JSON.stringify({ name: name.trim(), phone: trimmedPhone, email: email.trim() }),
       });
       const data = await resp.json();
-      if (!data.ok || !data.order_id) {
+      if (!data.ok || !data.subscription_id) {
         throw new Error(data.error || "Could not initiate payment. Please try again.");
       }
 
-      // ₹1 order checkout — subscription for ₹99/month starts automatically on day 8
+      // Subscription checkout — shows ₹1 now + ₹99/month mandate setup in one screen
       const rzp = new window.Razorpay({
         key: data.key_id,
-        order_id: data.order_id,
-        amount: 100,
-        currency: "INR",
+        subscription_id: data.subscription_id,
         name: "Daily Upgrade Club",
         description: "₹1 for 7 days · then ₹99/month",
         prefill: {

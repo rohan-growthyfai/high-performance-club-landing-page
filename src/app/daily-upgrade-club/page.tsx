@@ -633,6 +633,10 @@ export default function DailyUpgradeClubPage() {
         .duc-glow-card:hover{box-shadow:0 8px 32px rgba(37,211,102,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
         @keyframes theme-pulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transform:translateY(0)}40%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}60%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}}
         .theme-card-anim{animation:theme-pulse 1.6s ease-in-out infinite}
+        /* SHIFT pointers grid: split at the SAME point as the image's before/after divider (53.12%) */
+        .shift-split{display:grid;grid-template-columns:1fr}
+        .shift-arrow{left:50%}
+        @media (min-width:768px){.shift-split{grid-template-columns:53.12% 46.88%}.shift-arrow{left:53.12%}}
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
@@ -830,10 +834,10 @@ export default function DailyUpgradeClubPage() {
             </div>
 
             {/* Before / After pointers at the bottom of the image */}
-            <div className="grid grid-cols-1 md:grid-cols-2 relative" style={{ borderTop: "1px solid #e4e4e7" }}>
-              {/* Arrow between the two columns */}
+            <div className="shift-split relative" style={{ borderTop: "1px solid #e4e4e7" }}>
+              {/* Arrow between the two columns — aligned to the image divider (53.12%) */}
               <div
-                className="absolute left-1/2 top-1/2 z-10 flex items-center justify-center rounded-full"
+                className="shift-arrow absolute top-1/2 z-10 flex items-center justify-center rounded-full"
                 style={{
                   transform: "translate(-50%, -50%)",
                   width: 52,

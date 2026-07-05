@@ -98,8 +98,8 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         body: JSON.stringify({ name: name.trim(), phone: trimmedPhone, email: email.trim() }),
       });
       const data = await resp.json();
-      if (!data.ok || !data.subscription_id) {
-        throw new Error(data.error || "Could not create subscription. Please try again.");
+      if (!data.ok || !data.order_id) {
+        throw new Error(data.error || "Could not initiate payment. Please try again.");
       }
 
       // Open Razorpay checkout — ₹1 payment + mandate registration

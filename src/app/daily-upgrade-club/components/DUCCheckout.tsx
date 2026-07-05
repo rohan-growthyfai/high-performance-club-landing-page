@@ -13,6 +13,8 @@ interface RazorpayOptions {
   order_id: string;
   amount: number;
   currency: string;
+  customer_id: string;
+  recurring: number;
   name: string;
   description: string;
   prefill: { name: string; email: string; contact: string };
@@ -101,14 +103,16 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         throw new Error(data.error || "Could not create subscription. Please try again.");
       }
 
-      // Open Razorpay checkout for ₹1 order — subscription activates in 7 days separately
+      // Open Razorpay checkout — ₹1 + mandate registration for ₹99/month recurring
       const rzp = new window.Razorpay({
         key: data.key_id,
         order_id: data.order_id,
+        customer_id: data.customer_id,
+        recurring: 1,
         amount: 100,
         currency: "INR",
         name: "Daily Upgrade Club",
-        description: "7-day trial · then ₹99/month",
+        description: "₹1 today · ₹99/month after 7 days",
         prefill: {
           name: data.name,
           email: data.email,

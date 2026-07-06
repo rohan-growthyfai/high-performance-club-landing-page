@@ -87,6 +87,8 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
     if (trimmedPhone.length < 10) { setError("Please enter a valid 10-digit WhatsApp number."); return; }
 
     setLoading(true);
+    // Fire InitiateCheckout when user clicks the button
+    window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" });
     try {
       // Step 1: Create subscription on our server
       const resp = await fetch(`${ENGINE_URL}/duc/create-subscription`, {
@@ -113,7 +115,8 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         theme: { color: "#1da851" },
         handler: () => {
           setSuccess(true);
-          window.fbq?.("track", "Purchase", { value: 1, currency: "INR" });
+          window.fbq?.("track", "Purchase", { value: 1, currency: "INR", content_name: "Daily Upgrade Club", content_type: "product" });
+          window.fbq?.("track", "Lead", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" });
         },
         modal: {
           ondismiss: () => {

@@ -34,15 +34,20 @@ function Check({ green }: { green?: boolean }) {
 }
 
 // ─── CTA button ───────────────────────────────────────────────────────────────
+const DUC_WA_LINK = "https://wa.me/918956146485?text=Hi%2C+I+want+to+join+Daily+Upgrade+Club";
+
 function CTA({ label, sub }: { label: string; sub?: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
-      <button
-        onClick={() => window.openDUCCheckout?.()}
+      <a
+        href={DUC_WA_LINK}
+        target="_blank"
+        rel="noopener noreferrer"
         className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
-        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em" }}>
+        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em", textDecoration: "none" }}
+        onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" })}>
         <WAIcon size={20} />{label}
-      </button>
+      </a>
       {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
     </div>
   );
@@ -375,17 +380,17 @@ function StickyBottomCTA() {
   return (
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
-        <button onClick={() => window.openDUCCheckout?.()} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
-          <div><p className="text-white font-black text-sm leading-tight">Start My ₹1 Trial →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>7 days · ₹1 · Cancel anytime</p></div>
-          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Join</span></div>
-        </button>
+        <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+          <div><p className="text-white font-black text-sm leading-tight">Try Day 1 Habit Free →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>₹1 trial · 7 days · Cancel anytime</p></div>
+          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Try Free</span></div>
+        </a>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
-          <button onClick={() => window.openDUCCheckout?.()} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)" }}>
-            <div><p className="text-white font-black text-sm leading-tight">Start My 7-Day Trial — ₹1 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>Then ₹99/month · Cancel anytime before Day 7</p></div>
-            <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={16} /><span className="text-white font-bold text-sm">Join Now</span></div>
-          </button>
+          <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+            <div><p className="text-white font-black text-sm leading-tight">Try Day 1 Habit Free on WhatsApp →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>₹1 trial · Then ₹99/month · Cancel anytime before Day 7</p></div>
+            <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={16} /><span className="text-white font-bold text-sm">Try Free</span></div>
+          </a>
         </div>
       </div>
     </div>
@@ -479,10 +484,10 @@ function TrialPopup() {
                 </div>
               ))}
             </div>
-            <button onClick={() => { dismiss(); window.openDUCCheckout?.(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)" }}>
-              <WAIcon size={18} />Start My ₹1 Trial →
-            </button>
-            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>Then ₹99/month · Cancel anytime</p>
+            <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+              <WAIcon size={18} />Try Day 1 Habit Free →
+            </a>
+            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>₹1 trial · Then ₹99/month · Cancel anytime</p>
           </div>
         </div>
       </div>
@@ -717,13 +722,16 @@ export default function DailyUpgradeClubPage() {
 
               {/* CTA */}
               <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-8">
-                <button
-                  onClick={() => window.openDUCCheckout?.()}
+                <a
+                  href={DUC_WA_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
-                  <WAIcon size={22} />Start 7-Day Trial for ₹1
-                </button>
-                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>Then ₹99/month · Cancel anytime</p>
+                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}
+                  onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" })}>
+                  <WAIcon size={22} />Try Day 1 Habit Free →
+                </a>
+                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
               </div>
 
               {/* Social proof — supercareer style */}
@@ -798,13 +806,15 @@ export default function DailyUpgradeClubPage() {
           <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
             <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
             <p className="duc-body mb-5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> Get the exact proven system to actually build healthier habits and stay consistent for lifetime</p>
-            <button
-              onClick={() => window.openDUCCheckout?.()}
+            <a
+              href={DUC_WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
-              style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
-              <WAIcon size={18} />Start 7-Day Trial for ₹1
-            </button>
-            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>Then ₹99/month · Cancel anytime</p>
+              style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
+              <WAIcon size={18} />Try Day 1 Habit Free →
+            </a>
+            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
           </div>
         </div>
       </section>
@@ -1530,12 +1540,14 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <button
-              onClick={() => window.openDUCCheckout?.()}
+            <a
+              href={DUC_WA_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-              style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)" }}>
+              style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
               Yes, This Is For Me →
-            </button>
+            </a>
           </div>
         </div>
       </section>

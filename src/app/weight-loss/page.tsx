@@ -742,6 +742,61 @@ export default function WeightLossPage() {
         </div>
       </section>
 
+      {/* ══ 4b. SCIENCE — every habit is proven ══════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Research-Backed. No Guesswork.</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Every habit is proven to work</h2>
+            <p className="duc-body max-w-xl mx-auto">None of these are opinions or wellness trends. Each habit comes from peer-reviewed research — so you can trust what you&apos;re doing, and know it will work.</p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "1.5rem" }}>
+            {SCIENCE.map(({ logo, name, title, quote, color, tag }) => (
+              <div key={name} className="duc-glow-card rounded-2xl p-7" style={{ background: "#fff", border: "1px solid #e2dfd6" }}>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="rounded-xl flex items-center justify-center shrink-0" style={{ width: 44, height: 44, background: `${color}15`, fontSize: 22 }}>{logo}</div>
+                  <div>
+                    <p style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{name}</p>
+                    <p style={{ fontSize: 12, color: "#71717a", fontStyle: "italic", lineHeight: 1.4 }}>{title}</p>
+                  </div>
+                </div>
+                <blockquote style={{ margin: 0, borderLeft: `3px solid ${color}`, paddingLeft: "0.875rem", color: "#52525b", fontSize: 14, lineHeight: 1.7, fontStyle: "italic" }}>&ldquo;{quote}&rdquo;</blockquote>
+                <div className="inline-flex items-center rounded-md" style={{ marginTop: "0.875rem", padding: "0.25rem 0.625rem", background: `${color}12`, color, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{tag}</div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-center" style={{ color: "#71717a", fontSize: 13, marginTop: "1.5rem" }}>All 90 habits draw from established peer-reviewed research. Sources cited inside the E-Book.</p>
+        </div>
+      </section>
+
+      {/* ══ 4c. HOW THE 90-DAY SYSTEM WORKS ══════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-2xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Simple by Design</p>
+            <h2 className="duc-h2 duc-section-title mb-3">How the 90-Day System Works</h2>
+          </div>
+          <div className="flex flex-col gap-7">
+            {[
+              { step: "01", color: "#1ea84f", title: "Month 1 — Fix Your Eating", desc: "30 habits focused entirely on HOW and WHEN you eat. No diet plan. No food restrictions. Just tiny shifts in food order, timing, and mindfulness that change your metabolism from the inside." },
+              { step: "02", color: "#f97316", title: "Month 2 — Add Movement", desc: "With your eating habits now running on autopilot, you add 30 movement habits. Still no gym required. NEAT-based habits that burn 300–500 extra calories daily through stair sprints, desk squats, walking calls, and post-meal walks." },
+              { step: "03", color: "#6366f1", title: "Month 3 — Optimise Sleep", desc: "Now you add 30 sleep habits. Better sleep lowers cortisol, balances hunger hormones, and unlocks overnight fat burning. This is when the compound results from all 3 areas hit simultaneously." },
+              { step: "04", color: "#e8a020", title: "Day 90 — Your Personal System", desc: "By Day 90 you have 90 habits to choose from. The last habit in the guide asks you to write down the 5–7 that worked best. That's your permanent system — no app, no subscription, no renewal." },
+            ].map(({ step, color, title, desc }) => (
+              <div key={step} className="flex gap-5">
+                <div style={{ fontSize: 32, fontWeight: 900, color, minWidth: 48, lineHeight: 1, flexShrink: 0 }}>{step}</div>
+                <div>
+                  <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 6, lineHeight: 1.3 }}>{title}</p>
+                  <p className="duc-body" style={{ margin: 0 }}>{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ══ FOCUS ON ONE AREA EACH MONTH — tabbed tracks ═════════════════════ */}
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
@@ -1135,28 +1190,15 @@ export default function WeightLossPage() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            {/* Meal Plans */}
+            {/* Tiny Habits That Make You Fit */}
             <div className="flex flex-col items-center gap-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
-                🥗 Meal Plans
+                ⚡ Tiny Habits That Make You Fit
               </div>
               <PhoneGlow from="#fbbf24" to="#f97316" accent="rgba(251,191,36,0.55)">
                 <div style={{ width: 270, borderRadius: 20, overflow: "hidden", boxShadow: "0 18px 40px -12px rgba(0,0,0,0.4)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/ebook/page-meal-plan.png" alt="Meal plan page from the Slim & Strong guide" style={{ display: "block", width: "100%", height: 420, objectFit: "cover" }} loading="lazy" />
-                </div>
-              </PhoneGlow>
-            </div>
-
-            {/* No-Gym Workouts */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
-                💪 No-Gym Workouts
-              </div>
-              <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
-                <div style={{ width: 270, borderRadius: 20, overflow: "hidden", boxShadow: "0 18px 40px -12px rgba(0,0,0,0.4)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/ebook/page-workouts.png" alt="No-gym workout page from the Slim & Strong guide" style={{ display: "block", width: "100%", height: 420, objectFit: "cover" }} loading="lazy" />
+                  <img src="/ebook/page-tiny-habit.png" alt="Daily tiny habit page from the Slim & Strong guide" style={{ display: "block", width: "100%", height: 420, objectFit: "cover" }} loading="lazy" />
                 </div>
               </PhoneGlow>
             </div>
@@ -1173,67 +1215,25 @@ export default function WeightLossPage() {
                 </div>
               </PhoneGlow>
             </div>
+
+            {/* The Science Behind It */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
+                🔬 The Science Behind It
+              </div>
+              <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
+                <div style={{ width: 270, borderRadius: 20, overflow: "hidden", boxShadow: "0 18px 40px -12px rgba(0,0,0,0.4)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/ebook/page-science.png" alt="Science-behind-each-habit page from the Slim & Strong guide" style={{ display: "block", width: "100%", height: 420, objectFit: "cover" }} loading="lazy" />
+                </div>
+              </PhoneGlow>
+            </div>
           </div>
 
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 90+ pages shown. Every page: clear, practical and easy to follow.</p>
 
           <div className="flex justify-center mt-8">
             <CTA label="Download My Copy — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 4b. SCIENCE — every habit is proven ══════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">Research-Backed. No Guesswork.</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Every habit is proven to work</h2>
-            <p className="duc-body max-w-xl mx-auto">None of these are opinions or wellness trends. Each habit comes from peer-reviewed research — so you can trust what you&apos;re doing, and know it will work.</p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px,1fr))", gap: "1.5rem" }}>
-            {SCIENCE.map(({ logo, name, title, quote, color, tag }) => (
-              <div key={name} className="duc-glow-card rounded-2xl p-7" style={{ background: "#fff", border: "1px solid #e2dfd6" }}>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="rounded-xl flex items-center justify-center shrink-0" style={{ width: 44, height: 44, background: `${color}15`, fontSize: 22 }}>{logo}</div>
-                  <div>
-                    <p style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{name}</p>
-                    <p style={{ fontSize: 12, color: "#71717a", fontStyle: "italic", lineHeight: 1.4 }}>{title}</p>
-                  </div>
-                </div>
-                <blockquote style={{ margin: 0, borderLeft: `3px solid ${color}`, paddingLeft: "0.875rem", color: "#52525b", fontSize: 14, lineHeight: 1.7, fontStyle: "italic" }}>&ldquo;{quote}&rdquo;</blockquote>
-                <div className="inline-flex items-center rounded-md" style={{ marginTop: "0.875rem", padding: "0.25rem 0.625rem", background: `${color}12`, color, fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em" }}>{tag}</div>
-              </div>
-            ))}
-          </div>
-
-          <p className="text-center" style={{ color: "#71717a", fontSize: 13, marginTop: "1.5rem" }}>All 90 habits draw from established peer-reviewed research. Sources cited inside the E-Book.</p>
-        </div>
-      </section>
-
-      {/* ══ 4c. HOW THE 90-DAY SYSTEM WORKS ══════════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-2xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">Simple by Design</p>
-            <h2 className="duc-h2 duc-section-title mb-3">How the 90-Day System Works</h2>
-          </div>
-          <div className="flex flex-col gap-7">
-            {[
-              { step: "01", color: "#1ea84f", title: "Month 1 — Fix Your Eating", desc: "30 habits focused entirely on HOW and WHEN you eat. No diet plan. No food restrictions. Just tiny shifts in food order, timing, and mindfulness that change your metabolism from the inside." },
-              { step: "02", color: "#f97316", title: "Month 2 — Add Movement", desc: "With your eating habits now running on autopilot, you add 30 movement habits. Still no gym required. NEAT-based habits that burn 300–500 extra calories daily through stair sprints, desk squats, walking calls, and post-meal walks." },
-              { step: "03", color: "#6366f1", title: "Month 3 — Optimise Sleep", desc: "Now you add 30 sleep habits. Better sleep lowers cortisol, balances hunger hormones, and unlocks overnight fat burning. This is when the compound results from all 3 areas hit simultaneously." },
-              { step: "04", color: "#e8a020", title: "Day 90 — Your Personal System", desc: "By Day 90 you have 90 habits to choose from. The last habit in the guide asks you to write down the 5–7 that worked best. That's your permanent system — no app, no subscription, no renewal." },
-            ].map(({ step, color, title, desc }) => (
-              <div key={step} className="flex gap-5">
-                <div style={{ fontSize: 32, fontWeight: 900, color, minWidth: 48, lineHeight: 1, flexShrink: 0 }}>{step}</div>
-                <div>
-                  <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 6, lineHeight: 1.3 }}>{title}</p>
-                  <p className="duc-body" style={{ margin: 0 }}>{desc}</p>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>

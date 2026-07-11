@@ -263,13 +263,16 @@ function TinyGainsDUC() {
             <strong style={{ color: "#18181b" }}>37× fitter version of yourself</strong> in just 1 year!
           </p>
         </div>
-        <div className="flex justify-center mb-10">
+        <div className="flex flex-col items-center gap-2 mb-10">
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl text-center" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
             <span style={{ fontSize: 16, fontWeight: 700, color: "#18181b" }}>
-              1% better every day ={" "}
+              Research shows: 1% better every day ={" "}
               <span style={{ color: "#25d366" }}>37× fitter version of yourself in just 1 year</span> 🚀
             </span>
           </div>
+          <p style={{ fontSize: 12.5, color: "#71717a", fontWeight: 500 }}>
+            — popularized in <em>Atomic Habits</em> (James Clear) &amp; backed by Stanford&apos;s BJ Fogg Behavior Lab
+          </p>
         </div>
         <div className="relative max-w-3xl mx-auto">
           <svg viewBox={`0 0 ${VW} ${VH}`} className="w-full" style={{ overflow: "visible" }}>
@@ -506,12 +509,12 @@ export default function WeightLossPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "😮‍💨", text: "You know how to lose weight — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
-              { icon: "🔄", text: "You start a new diet every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
-              { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
-              { icon: "🤷", text: "The scale won't budge and you have no idea what you're doing wrong.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
-              { icon: "⏰", text: "A 1-hour gym routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
-              { icon: "📱", text: "5 diet apps downloaded. 3 programmes bought. 40 recipes saved. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
+              { icon: "😮‍💨", keyword: "Consistency Gap", text: "You know how to lose weight — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
+              { icon: "🔄", keyword: "Start-Stop Cycle", text: "You start a new diet every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
+              { icon: "😵", keyword: "All-or-Nothing", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
+              { icon: "🤷", keyword: "No Clear Plan", text: "The scale won't budge and you have no idea what you're doing wrong.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
+              { icon: "⏰", keyword: "No Time", text: "A 1-hour gym routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
+              { icon: "📱", keyword: "Information Overload", text: "5 diet apps downloaded. 3 programmes bought. 40 recipes saved. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
             ].map((p, i) => (
               <div key={i} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: p.solidBg, border: `2px solid ${p.border}` }}>
                 {/* Image fading into card bg — same pattern as theme cards */}
@@ -523,8 +526,9 @@ export default function WeightLossPage() {
                     <span style={{ fontSize: 24 }}>{p.icon}</span>
                   </div>
                 </div>
-                {/* Text below image, inside card bg */}
-                <div className="px-4 pb-4 pt-2 flex-1">
+                {/* Keyword headline + text below image, inside card bg */}
+                <div className="px-4 pb-4 pt-3 flex-1">
+                  <p style={{ fontSize: 19, fontWeight: 900, color: p.color, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.01em" }}>{p.keyword}</p>
                   <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{p.text}</p>
                 </div>
               </div>
@@ -555,18 +559,9 @@ export default function WeightLossPage() {
           {/* Unified SHIFT card — image on top, before/after pointers at the bottom */}
           <div className="rounded-2xl overflow-hidden border" style={{ borderColor: "#e4e4e7", background: "#fff", boxShadow: "0 12px 40px -14px rgba(0,0,0,0.15)" }}>
 
-            {/* Visual — 3 life areas (energy, sleep, health) in one image */}
+            {/* Visual — 3 life areas (energy, sleep, health) in one image with baked-in labels */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/goals/shift-before-after-v2.png" alt="Before and after across weight, energy and strength after 90 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
-
-            {/* Life-area legend */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-3" style={{ borderTop: "1px solid #e4e4e7", background: "#fafafa" }}>
-              {[["⚖️", "Weight"], ["⚡", "Energy"], ["💪", "Strength"]].map(([icon, label]) => (
-                <span key={label} className="inline-flex items-center gap-1.5" style={{ fontSize: 13, fontWeight: 700, color: "#3f3f46" }}>
-                  <span style={{ fontSize: 15 }}>{icon}</span>{label}
-                </span>
-              ))}
-            </div>
+            <img src="/goals/shift-before-after-v90.png" alt="Before and after across energy, sleep and health after 90 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
 
             {/* Before / After pointers at the bottom of the image */}
             <div className="shift-split relative" style={{ borderTop: "1px solid #e4e4e7" }}>

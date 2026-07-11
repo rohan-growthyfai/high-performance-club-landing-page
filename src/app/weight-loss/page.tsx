@@ -105,14 +105,14 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <button onClick={buy} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
-          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get the Guide — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time · Instant PDF · 7-day guarantee</p></div>
+          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get the Guide — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time · Instant E-Book · 7-day guarantee</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><DownloadIcon size={15} /><span className="text-white font-bold text-sm">Get It</span></div>
         </button>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
           <button onClick={buy} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
-            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get Instant Access — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time ₹199 · Instant PDF download · 7-day money-back</p></div>
+            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get Instant Access — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p></div>
             <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><DownloadIcon size={16} /><span className="text-white font-bold text-sm">Get It</span></div>
           </button>
         </div>
@@ -198,10 +198,10 @@ function TrialPopup() {
           </div>
           <div className="px-6 py-5 text-center">
             <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 16 }}>
-              Get <strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> — the complete 90-Day Weight Loss Guide — for a one-time <strong style={{ color: "#18181b" }}>₹199</strong>. All 90 habits, meal plans and no-gym workouts inside. Download the PDF instantly.
+              Get <strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> — the complete 90-Day Weight Loss Guide — for a one-time <strong style={{ color: "#18181b" }}>₹199</strong>. All 90 habits, meal plans and no-gym workouts inside. Download the E-Book instantly.
             </p>
             <div className="flex flex-col gap-2 mb-5 text-left">
-              {["Instant PDF download", "Lifetime access — read anytime", "7-day money-back guarantee"].map(t => (
+              {["Instant E-Book download", "Lifetime access — read anytime", "7-day money-back guarantee"].map(t => (
                 <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}>
                   <span style={{ color: "#25d366", fontWeight: 700 }}>✅</span>{t}
                 </div>
@@ -210,7 +210,7 @@ function TrialPopup() {
             <button onClick={() => { buy(); dismiss(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
               <DownloadIcon size={18} />Get the Guide — ₹199 →
             </button>
-            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>One-time ₹199 · Instant PDF · 7-day money-back</p>
+            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>One-time ₹199 · Instant E-Book · 7-day money-back guarantee</p>
           </div>
         </div>
       </div>
@@ -307,7 +307,7 @@ function TinyGainsDUC() {
           <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.7 }}>
             Slim &amp; Strong gives you your 1% — 90 tiny fat-loss habits, meal plans and no-gym workouts, all in one guide. The small wins do the rest.
           </p>
-          <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+          <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
         </div>
       </div>
     </section>
@@ -359,7 +359,7 @@ export default function WeightLossPage() {
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
       <div style={{ background: "linear-gradient(90deg,#1da851 0%,#25d366 50%,#1da851 100%)", padding: "10px 16px" }}>
         <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          ✦ The complete 90-Day Weight Loss Guide — 90 fat-loss habits, meal plans &amp; no-gym workouts. One-time ₹199. Instant PDF download ✦
+          ✦ The complete 90-Day Weight Loss Guide — 90 fat-loss habits, meal plans &amp; no-gym workouts. One-time ₹199. Instant E-Book download ✦
         </p>
       </div>
 
@@ -373,7 +373,7 @@ export default function WeightLossPage() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
                 <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
-                For busy people who want to lose weight without the gym or crash diets
+                For busy working professional who want to get fit without the gym pressure or crash diets
               </div>
 
               {/* Headline */}
@@ -393,7 +393,7 @@ export default function WeightLossPage() {
                       <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                     </svg>
                   </span>{" "}
-                  is the complete 90-Day Weight Loss Guide — 90 simple fat-loss habits, done-for-you meal plans, and no-gym workouts you can follow anywhere. It&apos;s all inside one PDF you download the moment you buy.
+                  is the complete 90-Day structured Weight Loss Guide — Get 90 hidden &amp; research-backed tiny fat-loss habits you can follow anywhere. Each habit takes less than 5 mins.
                 </p>
 
                 {/* Callout — label shifted right, clean arrow only */}
@@ -403,7 +403,7 @@ export default function WeightLossPage() {
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold mb-2"
                     style={{ background: "#25d366", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(37,211,102,0.45)", letterSpacing: "-0.01em", marginLeft: 20 }}>
                     <DownloadIcon size={17} />
-                    Instant PDF download
+                    Instant E-Book download
                   </div>
                   {/* Clean dashed arrow — smooth curve with aligned arrowhead */}
                   <svg width="200" height="100" viewBox="0 0 200 100" fill="none" style={{ marginLeft: 10 }}>
@@ -417,7 +417,7 @@ export default function WeightLossPage() {
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
                     style={{ background: "#25d366", color: "#fff", fontSize: 14, boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>
                     <DownloadIcon size={15} />
-                    Instant PDF — no app needed
+                    Instant E-Book — no app needed
                   </div>
                 </div>
               </div>
@@ -440,7 +440,7 @@ export default function WeightLossPage() {
                   style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
                   <DownloadIcon size={22} />Get the Guide — ₹199
                 </button>
-                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>One-time ₹199 · Instant PDF download · 7-day money-back</p>
+                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p>
               </div>
 
               {/* Social proof */}
@@ -461,7 +461,7 @@ export default function WeightLossPage() {
                 <div>
                   <div className="flex gap-0.5 mb-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
                   <p style={{ fontSize: 13, color: "#52525b" }}>
-                    <strong style={{ color: "#18181b" }}>Loved by 2,800+ readers</strong> across India
+                    <strong style={{ color: "#18181b" }}>Loved by 2,800+ working professionals</strong> across India
                   </p>
                 </div>
               </div>
@@ -539,7 +539,7 @@ export default function WeightLossPage() {
               style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
               <DownloadIcon size={18} />Get the Guide — ₹199
             </button>
-            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>One-time ₹199 · Instant PDF download · 7-day money-back</p>
+            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p>
           </div>
         </div>
       </section>
@@ -634,7 +634,7 @@ export default function WeightLossPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="I Want This Version of Myself →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="I Want This Version of Myself →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -643,7 +643,7 @@ export default function WeightLossPage() {
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Course. Not an App. Not Another Fad Diet.</h2>
-          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is a simple, complete PDF guide that walks you through 90 days of fat-loss habits, meal plans and no-gym workouts — everything in one place, ready to follow today.</p>
+          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is a simple, complete E-Book guide that walks you through 90 days of fat-loss habits, meal plans and no-gym workouts — everything in one place, ready to follow today.</p>
           <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No videos to watch. No app to download. No heavy routine to follow. Just one simple plan you actually stick to.</p>
         </div>
       </section>
@@ -806,7 +806,7 @@ export default function WeightLossPage() {
           </div>
 
           <div className="flex justify-center">
-            <CTA label="Start My Fat-Loss Journey →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="Start My Fat-Loss Journey →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
 
         </div>
@@ -829,7 +829,7 @@ export default function WeightLossPage() {
                 n: "1",
                 emoji: "💳",
                 title: "Buy Once & Download Instantly",
-                body: "Pay a one-time ₹199 and get instant access to the Slim & Strong PDF. Download it to your phone or laptop and open it anytime — lifetime access, no subscription.",
+                body: "Pay a one-time ₹199 and get instant access to the Slim & Strong E-Book. Download it to your phone or laptop and open it anytime — lifetime access, no subscription.",
               },
               {
                 n: "2",
@@ -853,7 +853,7 @@ export default function WeightLossPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -864,7 +864,7 @@ export default function WeightLossPage() {
           <div className="text-center mb-14">
             <p className="duc-label mb-3">What You Get Inside</p>
             <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Lose the Weight</h2>
-            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> is designed to make fat loss simple, followable and repeatable — all in one PDF.</p>
+            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> is designed to make fat loss simple, followable and repeatable — all in one E-Book.</p>
           </div>
 
           {/* Zigzag rows */}
@@ -955,7 +955,7 @@ export default function WeightLossPage() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -1093,7 +1093,7 @@ export default function WeightLossPage() {
 
               <div className="max-w-5xl mx-auto px-6 lg:px-10">
                 <div className="flex justify-center mt-8">
-                  <CTA label="Get the Full Guide — ₹199" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+                  <CTA label="Get the Full Guide — ₹199" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
                 </div>
               </div>
             </section>
@@ -1107,7 +1107,7 @@ export default function WeightLossPage() {
           <div className="text-center mb-12">
             <p className="duc-label mb-3">A peek inside the guide</p>
             <h2 className="duc-h2 duc-section-title mb-3">See Exactly What You&apos;re Getting</h2>
-            <p className="duc-body max-w-sm mx-auto">Clean, simple, and easy to follow — here are real pages from inside the PDF.</p>
+            <p className="duc-body max-w-sm mx-auto">Clean, simple, and easy to follow — here are real pages from inside the E-Book.</p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -1154,7 +1154,7 @@ export default function WeightLossPage() {
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 90+ pages shown. Every page: clear, practical and easy to follow.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Download My Copy — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="Download My Copy — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -1218,7 +1218,7 @@ export default function WeightLossPage() {
                   { icon: "🥗", label: "Done-for-you meal plans", sub: "No calorie counting or guessing" },
                   { icon: "💪", label: "No-gym home workouts", sub: "Zero equipment needed" },
                   { icon: "📊", label: "90-day progress tracker", sub: "Momentum builds itself" },
-                  { icon: "📖", label: "Everything in one PDF", sub: "No app, no subscription" },
+                  { icon: "📖", label: "Everything in one E-Book", sub: "No app, no subscription" },
                   { icon: "♾️", label: "Lifetime access", sub: "Re-read and restart anytime" },
                 ].map(({ icon, label, sub }) => (
                   <div key={label} className="flex items-center gap-4">
@@ -1239,7 +1239,7 @@ export default function WeightLossPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -1286,7 +1286,7 @@ export default function WeightLossPage() {
                 ))}
               </div>
               <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹199</p>
-              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">one-time · instant PDF download · lifetime access</p>
+              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">one-time · instant E-Book download · lifetime access</p>
               <CTA label="Get Everything — ₹199 →" sub="7-day money-back guarantee" />
             </div>
           </div>
@@ -1382,7 +1382,7 @@ export default function WeightLossPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="I Want Results Like These →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+            <CTA label="I Want Results Like These →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>
@@ -1442,14 +1442,14 @@ export default function WeightLossPage() {
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.2)", fontSize: 26 }}>🛡️</div>
                 <div>
-                  <p className="duc-label mb-1">7-day money-back promise</p>
+                  <p className="duc-label mb-1">7-day money-back guarantee promise</p>
                   <h2 className="duc-h2" style={{ color: "#18181b" }}>You have nothing to lose.</h2>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
                   { icon: "🔒", t: "One-time payment", b: "₹199 once. No subscription, no hidden charges." },
-                  { icon: "⚡", t: "Instant delivery", b: "Download the PDF the moment you pay." },
+                  { icon: "⚡", t: "Instant delivery", b: "Download the E-Book the moment you pay." },
                   { icon: "📞", t: "No pressure calls", b: "No one will call to upsell you. Ever." },
                   { icon: "↩️", t: "7-day refund", b: "Not for you? Message me for a full refund." },
                 ].map(({ icon, t, b }) => (
@@ -1478,7 +1478,7 @@ export default function WeightLossPage() {
                 <p style={{ fontSize: 14, color: "#71717a", marginBottom: 20 }}>
                   Worst case: you spend an evening reading, pick up 1–2 habits that stick for life, and get your ₹199 back.
                 </p>
-                <CTA label="Yes — I Have Nothing to Lose →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+                <CTA label="Yes — I Have Nothing to Lose →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
               </div>
             </div>
           </div>
@@ -1494,8 +1494,8 @@ export default function WeightLossPage() {
           </div>
           <div className="flex flex-col gap-2">
             {[
-              { q: "What exactly is Slim & Strong?", a: "It's a complete 90-Day Weight Loss Guide delivered as a PDF. Inside you get 90 daily fat-loss habits, done-for-you Indian meal plans, no-gym home workouts, and a printable 90-day progress tracker — everything you need to lose weight, all in one place." },
-              { q: "How do I get the guide after paying?", a: "The moment your ₹199 payment goes through, you get instant access to download the PDF. Save it to your phone or laptop and open it anytime — no app, no login, lifetime access." },
+              { q: "What exactly is Slim & Strong?", a: "It's a complete 90-Day Weight Loss Guide delivered as a E-Book. Inside you get 90 daily fat-loss habits, done-for-you Indian meal plans, no-gym home workouts, and a printable 90-day progress tracker — everything you need to lose weight, all in one place." },
+              { q: "How do I get the guide after paying?", a: "The moment your ₹199 payment goes through, you get instant access to download the E-Book. Save it to your phone or laptop and open it anytime — no app, no login, lifetime access." },
               { q: "Is this a subscription? Will I be charged again?", a: "No. It's a one-time payment of ₹199. There's no monthly fee, no auto-renewal, and nothing else to pay. You buy it once and it's yours forever." },
               { q: "Do I need a gym or any equipment?", a: "No. The workouts inside are all no-gym, bodyweight routines you can do at home with zero equipment. The meal plans use everyday Indian food — no special ingredients." },
               { q: "How much weight can I lose?", a: "Results vary from person to person, but readers who follow the 90-day plan consistently typically see steady, sustainable fat loss week after week. The plan is built around habits that compound — small daily wins that add up." },
@@ -1524,7 +1524,7 @@ export default function WeightLossPage() {
             Or you could keep planning to start next Monday.<br />
             <strong style={{ color: "#e4e4e7" }}>₹199 decides which one.</strong>
           </p>
-          <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant PDF download · 7-day money-back" />
+          <CTA label="Get the Guide — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Questions?{" "}
             <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Slim+%26+Strong+guide" className="underline" style={{ color: "#25d366" }}>Chat with Rohan on WhatsApp</a>
@@ -1542,7 +1542,7 @@ export default function WeightLossPage() {
           © {new Date().getFullYear()} Slim &amp; Strong ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
-        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>One-time ₹199 · Instant PDF download · 7-day money-back guarantee</p>
+        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p>
       </footer>
 
       <StickyBottomCTA />

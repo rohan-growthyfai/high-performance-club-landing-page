@@ -88,7 +88,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
 
     setLoading(true);
     // Fire InitiateCheckout when user clicks the button
-    window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" });
+    window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" });
     try {
       // Step 1: Create subscription on our server
       const resp = await fetch(`${ENGINE_URL}/duc/create-subscription`, {
@@ -106,7 +106,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         key: data.key_id,
         subscription_id: data.subscription_id,
         name: "Daily Upgrade Club",
-        description: "₹1 for 7 days · then ₹99/month",
+        description: "₹365 for 1 year · just ₹1/day · one-time payment",
         prefill: {
           name: data.name,
           email: data.email,
@@ -115,8 +115,8 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         theme: { color: "#1da851" },
         handler: () => {
           setSuccess(true);
-          window.fbq?.("track", "Purchase", { value: 1, currency: "INR", content_name: "Daily Upgrade Club", content_type: "product" });
-          window.fbq?.("track", "Lead", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" });
+          window.fbq?.("track", "Purchase", { value: 365, currency: "INR", content_name: "Daily Upgrade Club", content_type: "product" });
+          window.fbq?.("track", "Lead", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" });
         },
         modal: {
           ondismiss: () => {
@@ -187,7 +187,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             <WAIcon />
             <span className="font-black text-white text-lg">Daily Upgrade Club</span>
           </div>
-          <p className="text-white text-sm opacity-90">7-day trial for ₹1 · Then ₹99/month · Cancel anytime</p>
+          <p className="text-white text-sm opacity-90">One payment of ₹365 · Just ₹1/day for a full year · No renewals</p>
         </div>
 
         {/* Form */}
@@ -263,7 +263,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             ) : (
               <>
                 <WAIcon />
-                {ctaLabel || "Join Daily Upgrade Club → ₹1"}
+                {ctaLabel || "Join Daily Upgrade Club → ₹365"}
               </>
             )}
           </button>

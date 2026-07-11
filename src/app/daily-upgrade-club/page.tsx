@@ -45,7 +45,7 @@ function CTA({ label, sub }: { label: string; sub?: string }) {
         rel="noopener noreferrer"
         className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
         style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em", textDecoration: "none" }}
-        onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" })}>
+        onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" })}>
         <WAIcon size={20} />{label}
       </a>
       {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
@@ -381,15 +381,15 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
-          <div><p className="text-white font-black text-sm leading-tight">Try Day 1 Habit Free →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>₹1 trial · 7 days · Cancel anytime</p></div>
-          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Try Free</span></div>
+          <div><p className="text-white font-black text-sm leading-tight">Get 1 Year of Habits →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One payment ₹365 · Just ₹1/day</p></div>
+          <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Join ₹365</span></div>
         </a>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
           <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
-            <div><p className="text-white font-black text-sm leading-tight">Try Day 1 Habit Free on WhatsApp →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>₹1 trial · Then ₹99/month · Cancel anytime before Day 7</p></div>
-            <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={16} /><span className="text-white font-bold text-sm">Try Free</span></div>
+            <div><p className="text-white font-black text-sm leading-tight">Get 1 Full Year of Daily Habits on WhatsApp →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time payment of ₹365 · Just ₹1/day · No renewals</p></div>
+            <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={16} /><span className="text-white font-bold text-sm">Join ₹365</span></div>
           </a>
         </div>
       </div>
@@ -475,19 +475,19 @@ function TrialPopup() {
           </div>
           <div className="px-6 py-5 text-center">
             <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 16 }}>
-              Join Daily Upgrade Club for just <strong style={{ color: "#18181b" }}>₹1 today</strong> and get 1 science-backed tiny healthy habit every morning on WhatsApp — with accountability, streaks and guidance to keep you consistent.
+              Join Daily Upgrade Club for a one-time <strong style={{ color: "#18181b" }}>₹365 (just ₹1/day)</strong> and get 1 science-backed tiny healthy habit every morning on WhatsApp for a <strong style={{ color: "#18181b" }}>full year</strong> — with accountability, streaks and guidance to keep you consistent.
             </p>
             <div className="flex flex-col gap-2 mb-5 text-left">
-              {["No complicated routines", "Under 5 minutes a day", "Cancel anytime"].map(t => (
+              {["No complicated routines", "Under 5 minutes a day", "365 habits · One payment · No renewals"].map(t => (
                 <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}>
                   <span style={{ color: "#25d366", fontWeight: 700 }}>✅</span>{t}
                 </div>
               ))}
             </div>
             <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
-              <WAIcon size={18} />Try Day 1 Habit Free →
+              <WAIcon size={18} />Get 1 Year of Habits — ₹365 →
             </a>
-            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>₹1 trial · Then ₹99/month · Cancel anytime</p>
+            <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>One-time ₹365 · Just ₹1/day · No renewals</p>
           </div>
         </div>
       </div>
@@ -542,13 +542,16 @@ function TinyGainsDUC() {
             <strong style={{ color: "#18181b" }}>37× better version of yourself</strong> in just 1 year!
           </p>
         </div>
-        <div className="flex justify-center mb-10">
+        <div className="flex flex-col items-center gap-2 mb-10">
           <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl text-center" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
             <span style={{ fontSize: 16, fontWeight: 700, color: "#18181b" }}>
-              1% better every day ={" "}
+              Research shows: 1% better every day ={" "}
               <span style={{ color: "#25d366" }}>37× better version of yourself in just 1 year</span> 🚀
             </span>
           </div>
+          <p style={{ fontSize: 12.5, color: "#71717a", fontWeight: 500 }}>
+            — popularized in <em>Atomic Habits</em> (James Clear) &amp; backed by Stanford&apos;s BJ Fogg Behavior Lab
+          </p>
         </div>
         <div className="relative max-w-3xl mx-auto">
           <svg viewBox={`0 0 ${VW} ${VH}`} className="w-full" style={{ overflow: "visible" }}>
@@ -586,7 +589,7 @@ function TinyGainsDUC() {
           <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.7 }}>
             Daily Upgrade Club gives you your 1% — one tiny healthy habit a day, on WhatsApp. The small wins do the rest.
           </p>
-          <CTA label="Start My 1% Today →" sub="7-day trial for ₹1 · Then ₹99/month" />
+          <CTA label="Start My 1% Today →" sub="One payment of ₹365 · Just ₹1/day for a full year" />
         </div>
       </div>
     </section>
@@ -600,7 +603,7 @@ function useMetaPixelViewContent() {
       window.fbq("track", "ViewContent", {
         content_name: "Daily Upgrade Club",
         content_category: "WhatsApp Habit Club",
-        value: 1,
+        value: 365,
         currency: "INR",
       });
     }
@@ -666,7 +669,7 @@ export default function DailyUpgradeClubPage() {
 
               {/* Headline */}
               <h1 className="duc-h1 text-foreground animate-fade-up delay-100 mb-5">
-                What if staying fit, healthy &amp;<br />
+                What if staying fit, happy &amp;<br />
                 energetic needed only<br />
                 <span className="gradient-text">5 minutes a day?</span>
               </h1>
@@ -681,7 +684,7 @@ export default function DailyUpgradeClubPage() {
                       <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                     </svg>
                   </span>{" "}
-                  gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier every day.
+                  gives you 1 science-backed healthy habit every morning — plus personal accountability, streak tracking, monthly habit themes, and community access designed to help you become healthier &amp; happier every day.
                 </p>
 
                 {/* WhatsApp callout — label shifted right, clean arrow only */}
@@ -728,10 +731,10 @@ export default function DailyUpgradeClubPage() {
                   rel="noopener noreferrer"
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
                   style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}
-                  onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 1, currency: "INR", content_name: "Daily Upgrade Club" })}>
-                  <WAIcon size={22} />Try Day 1 Habit Free →
+                  onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" })}>
+                  <WAIcon size={22} />Get 1 Year of Habits — ₹365 →
                 </a>
-                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
+                <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>One-time payment of ₹365 · Just ₹1/day · No renewals</p>
               </div>
 
               {/* Social proof — supercareer style */}
@@ -779,12 +782,12 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { icon: "😮‍💨", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
-              { icon: "🔄", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
-              { icon: "😵", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
-              { icon: "🤷", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
-              { icon: "⏰", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
-              { icon: "📱", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
+              { icon: "😮‍💨", keyword: "Consistency Gap", text: "You know what's healthy — but can't make it stick when life gets busy.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
+              { icon: "🔄", keyword: "Start-Stop Cycle", text: "You start motivated every Monday, drop it by Thursday, restart next week.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
+              { icon: "😵", keyword: "All-or-Nothing", text: "You try fixing everything at once — diet, gym, sleep — and end up doing none of them.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
+              { icon: "🐝", keyword: "No Accountability", text: "Without accountability, the moment motivation dips the habit disappears.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
+              { icon: "⏰", keyword: "No Time", text: "A 1-hour wellness routine isn't realistic — but doing nothing feels wrong.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
+              { icon: "📱", keyword: "Information Overload", text: "5 apps downloaded. 3 courses bought. 40 articles bookmarked. Nothing stuck.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
             ].map((p, i) => (
               <div key={i} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: p.solidBg, border: `2px solid ${p.border}` }}>
                 {/* Image fading into card bg — same pattern as theme cards */}
@@ -796,8 +799,9 @@ export default function DailyUpgradeClubPage() {
                     <span style={{ fontSize: 24 }}>{p.icon}</span>
                   </div>
                 </div>
-                {/* Text below image, inside card bg */}
-                <div className="px-4 pb-4 pt-2 flex-1">
+                {/* Keyword headline + text below image, inside card bg */}
+                <div className="px-4 pb-4 pt-3 flex-1">
+                  <p style={{ fontSize: 19, fontWeight: 900, color: p.color, lineHeight: 1.2, marginBottom: 8, letterSpacing: "-0.01em" }}>{p.keyword}</p>
                   <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{p.text}</p>
                 </div>
               </div>
@@ -812,9 +816,9 @@ export default function DailyUpgradeClubPage() {
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
               style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
-              <WAIcon size={18} />Try Day 1 Habit Free →
+              <WAIcon size={18} />Get 1 Year of Habits — ₹365 →
             </a>
-            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
+            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>One-time ₹365 · Just ₹1/day · No renewals</p>
           </div>
         </div>
       </section>
@@ -824,7 +828,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">THE SHIFT</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 30 days</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 365 days</h2>
             <p className="duc-body max-w-md mx-auto">Same busy schedule. But a completely different version of yourself.</p>
           </div>
           {/* Unified SHIFT card — image on top, before/after pointers at the bottom */}
@@ -832,16 +836,7 @@ export default function DailyUpgradeClubPage() {
 
             {/* Visual — 3 life areas (energy, sleep, health) in one image */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/goals/shift-before-after-v2.png" alt="Before and after across energy, sleep and health after 30 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
-
-            {/* Life-area legend */}
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 px-4 py-3" style={{ borderTop: "1px solid #e4e4e7", background: "#fafafa" }}>
-              {[["⚡", "Energy"], ["😴", "Sleep"], ["❤️", "Health"]].map(([icon, label]) => (
-                <span key={label} className="inline-flex items-center gap-1.5" style={{ fontSize: 13, fontWeight: 700, color: "#3f3f46" }}>
-                  <span style={{ fontSize: 15 }}>{icon}</span>{label}
-                </span>
-              ))}
-            </div>
+            <img src="/goals/shift-before-after-v3.png" alt="Before and after across energy, sleep and health after 365 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
 
             {/* Before / After pointers at the bottom of the image */}
             <div className="shift-split relative" style={{ borderTop: "1px solid #e4e4e7" }}>
@@ -885,11 +880,11 @@ export default function DailyUpgradeClubPage() {
                 </div>
               </div>
 
-              {/* After 30 Days */}
+              {/* After 365 Days */}
               <div className="p-6 relative overflow-hidden" style={{ background: "#f0fdf4" }}>
                 <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
                 <div className="relative">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 30 Days</div>
+                  <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 365 Days</div>
                   <div className="flex flex-col gap-3.5">
                     {[
                       "A clear direction — one habit, one theme, every day",
@@ -898,7 +893,7 @@ export default function DailyUpgradeClubPage() {
                       "Results you feel, not just track on a dashboard",
                       "A streak you actually want to protect",
                       "More energy, sharper focus, better sleep",
-                      "\"I've been consistent for a whole month\"",
+                      "\"I've been consistent for a whole year\"",
                     ].map((a, i) => (
                       <div key={i} className="flex items-center gap-3"><Check green /><span style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.6 }}>{a}</span></div>
                     ))}
@@ -909,7 +904,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="I Want This Version of Myself →" sub="Start 7 days trial for ₹1 · Then ₹99/month" />
+            <CTA label="I Want This Version of Myself →" sub="One payment of ₹365 · Just ₹1/day for a full year" />
           </div>
         </div>
       </section>
@@ -1081,7 +1076,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center">
-            <CTA label="Start My Tiny Habit Journey →" sub="7-day trial for ₹1 · Then ₹99/month" />
+            <CTA label="Start My Tiny Habit Journey →" sub="One payment of ₹365 · Just ₹1/day for a full year" />
           </div>
 
         </div>
@@ -1103,8 +1098,8 @@ export default function DailyUpgradeClubPage() {
               {
                 n: "1",
                 emoji: "📲",
-                title: "Join & Choose Your Monthly Track",
-                body: "Sign up for ₹1 and choose your first habit track — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
+                title: "Join & Choose Your Monthly Theme",
+                body: "Sign up and choose your first habit theme — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
               },
               {
                 n: "2",
@@ -1128,7 +1123,7 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
+            <CTA label="Get My Full Year for ₹365" sub="One payment · Just ₹1/day · No renewals" />
           </div>
         </div>
       </section>
@@ -1147,9 +1142,9 @@ export default function DailyUpgradeClubPage() {
             {[
               {
                 num: "#1", label: "THE CORE HABIT",
-                icon: "🎯", title: "Monthly Habit Tracks",
+                icon: "🎯", title: "Monthly Habit Themes",
                 value: "₹999 value",
-                desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated track of 30 daily habits built around that theme.",
+                desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated theme of 30 daily habits built around that focus.",
                 bullets: ["Pick the area you want to improve this month", "Get powerful habits around chosen area daily", "All habits designed to fit into your busy schedules"],
                 color: "#059669", solidBg: "#ecfdf5", border: "#d1fae5", accentBg: "#059669",
                 img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80",
@@ -1230,7 +1225,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
+            <CTA label="Get My Full Year for ₹365" sub="One payment · Just ₹1/day · No renewals" />
           </div>
         </div>
       </section>
@@ -1278,7 +1273,7 @@ export default function DailyUpgradeClubPage() {
                     { icon: "🎯", label: "Focus", val: "1 theme/month" },
                     { icon: "👥", label: "Community", val: "Private WA group" },
                     { icon: "📊", label: "Tracking", val: "Weekly scorecard" },
-                    { icon: "💰", label: "Price", val: "₹1 → ₹99/month" },
+                    { icon: "💰", label: "Price", val: "₹365 / year (₹1/day)" },
                   ].map(({ icon, label, val }) => (
                     <div key={label} className="duc-glow-card flex items-center gap-2.5 rounded-xl px-3 py-2.5" style={{ background: "#fff", border: "1px solid rgba(37,211,102,0.12)" }}>
                       <span style={{ fontSize: 18 }}>{icon}</span>
@@ -1291,7 +1286,7 @@ export default function DailyUpgradeClubPage() {
                 </div>
               </div>
               <div className="mt-5 flex justify-center lg:justify-start">
-                <CTA label="Show Me My First Habit →" sub="₹1 for 7 days · Cancel anytime" />
+                <CTA label="Show Me My First Habit →" sub="One payment of ₹365 · Just ₹1/day for a full year" />
               </div>
             </div>
           </div>
@@ -1300,8 +1295,6 @@ export default function DailyUpgradeClubPage() {
 
       {/* ══ 6. MONTHLY THEMES ═══════════════════════════════════════════════ */}
       {(() => {
-        const [tickerOpen, setTickerOpen] = useState(false);
-
         const TICKER_CARDS = [
           { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80", habits: ["The 90-Second Wind-Down Trigger","Bedroom Temperature Reset","The Phone-Free Sleep Protocol","4-7-8 Navy Breathing Method"] },
           { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80", habits: ["The Cortisol Sunlight Reset","Protein-First Plate Method","60-Second Cold Water Flush","The Staircase Energy Spike"] },
@@ -1321,9 +1314,6 @@ export default function DailyUpgradeClubPage() {
           { emoji: "🤸", theme: "Mobility", tagline: "Move freely, feel less stiff", color: "#7c3aed", bg: "#faf5ff", border: "#d8b4fe", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["The Morning Joint Wake-Up","The Hip Unlock Routine","The Ankle Circle Reset","The 60-Second Stretch Break"] },
         ];
 
-        // First 12 cards shown in grid (in specified order)
-        const GRID_CARDS = TICKER_CARDS.slice(0, 12);
-
         return (
           <>
             <section className="bg-section-cream py-16 lg:py-24">
@@ -1331,69 +1321,12 @@ export default function DailyUpgradeClubPage() {
                 <div className="text-center mb-10">
                   <p className="duc-label mb-3">Your Monthly Themes</p>
                   <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
-                  <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit track designed to improve one area of your life without overwhelming your schedule.</p>
+                  <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit theme designed to improve one area of your life without overwhelming your schedule.</p>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                  {GRID_CARDS.map(({ emoji, theme, tagline, color, bg, border, img, habits }, idx) => (
-                    <div key={theme}
-                      className="theme-card-anim rounded-2xl overflow-hidden flex flex-col"
-                      style={{
-                        background: bg,
-                        border: `2px solid ${border}`,
-                        animationDelay: `${idx * 0.2}s`,
-                        animationDuration: `${8 * 0.2 + 1.6}s`,
-                      }}>
-                      <div className="relative h-36 overflow-hidden">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={img} alt={theme} className="w-full h-full object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                        <div className="absolute inset-0" style={{ background: `linear-gradient(to bottom, transparent 40%, ${bg} 100%)` }} />
-                        <div className="absolute bottom-2 left-3 flex items-center gap-2">
-                          <span style={{ fontSize: 24 }}>{emoji}</span>
-                          <div>
-                            <p style={{ fontSize: 18, fontWeight: 900, color, lineHeight: 1.1 }}>{theme}</p>
-                            <p style={{ fontSize: 12, color: "#52525b", fontWeight: 500 }}>{tagline}</p>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="p-3.5 flex flex-col gap-1.5 flex-1">
-                        <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 4 }}>Sample habits:</p>
-                        {habits.map((h, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <span style={{ color, fontSize: 10, marginTop: 3, flexShrink: 0 }}>●</span>
-                            <span style={{ fontSize: 12, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                {/* See All Habit Tracks button */}
-                {!tickerOpen && (
-                  <div className="flex justify-center mt-8">
-                    <button
-                      onClick={() => setTickerOpen(true)}
-                      className="flex items-center gap-2 px-7 py-3 rounded-full font-bold transition-all"
-                      style={{ background: "#18181b", color: "#fff", fontSize: 15, boxShadow: "0 4px 18px rgba(0,0,0,0.18)", border: "none", cursor: "pointer" }}
-                    >
-                      See All Habit Tracks
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9l6 6 6-6"/></svg>
-                    </button>
-                  </div>
-                )}
               </div>
 
-              {/* ── Ticker (hidden until button clicked, lives inside the cream section) ── */}
-              <div
-                style={{
-                  overflow: "hidden",
-                  maxHeight: tickerOpen ? "600px" : "0px",
-                  opacity: tickerOpen ? 1 : 0,
-                  marginTop: tickerOpen ? "32px" : "0px",
-                  transition: "max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.5s ease, margin 0.5s ease",
-                }}
-              >
+              {/* ── Continuously moving theme train (right → left) ── */}
+              <div style={{ overflow: "hidden" }}>
                 <div style={{ position: "relative", overflow: "hidden" }}>
                   <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
                     {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
@@ -1439,7 +1372,7 @@ export default function DailyUpgradeClubPage() {
 
               <div className="max-w-5xl mx-auto px-6 lg:px-10">
                 <div className="flex justify-center mt-8">
-                  <CTA label="I Want to Pick My First Theme" sub="₹1 for 7 days · Then ₹99/month" />
+                  <CTA label="I Want to Pick My First Theme" sub="One payment of ₹365 · Just ₹1/day for a full year" />
                 </div>
               </div>
             </section>
@@ -1465,7 +1398,7 @@ export default function DailyUpgradeClubPage() {
               <PhoneGlow from="#fbbf24" to="#f97316" accent="rgba(251,191,36,0.55)">
                 <StaticPhone>
                   <WAChatBg height={360}>
-                    <WADateSep label="⚡ Energy Track · Day 3" />
+                    <WADateSep label="⚡ Energy Theme · Day 3" />
                     <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
                     <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
                     <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
@@ -1482,7 +1415,7 @@ export default function DailyUpgradeClubPage() {
               <PhoneGlow from="#818cf8" to="#4338ca" accent="rgba(99,102,241,0.55)">
                 <StaticPhone>
                   <WAChatBg height={360}>
-                    <WADateSep label="😴 Sleep Track · Day 11" />
+                    <WADateSep label="😴 Sleep Theme · Day 11" />
                     <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
                     <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
                     <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
@@ -1499,7 +1432,7 @@ export default function DailyUpgradeClubPage() {
               <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
                 <StaticPhone>
                   <WAChatBg height={360}>
-                    <WADateSep label="🧠 Focus Track · Day 7" />
+                    <WADateSep label="🧠 Focus Theme · Day 7" />
                     <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
                     <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
                     <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
@@ -1512,7 +1445,7 @@ export default function DailyUpgradeClubPage() {
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Send My First Habit Now" sub="7 days trial for ₹1 · Then ₹99/month" />
+            <CTA label="Send My First Habit Now" sub="One payment of ₹365 · Just ₹1/day for a full year" />
           </div>
         </div>
       </section>
@@ -1599,7 +1532,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="Start 7-Day Trial for ₹1" sub="Then ₹99/month · Cancel anytime" />
+            <CTA label="Get My Full Year for ₹365" sub="One payment · Just ₹1/day · No renewals" />
           </div>
         </div>
       </section>
@@ -1641,13 +1574,14 @@ export default function DailyUpgradeClubPage() {
             </div>
             <div className="text-center px-5 sm:px-8 pt-5 pb-8">
               <div className="flex flex-col gap-1 mb-4">
-                {["Not ₹8,493","Not ₹4,999","Not ₹299"].map(s => (
+                {["Not ₹9,992/month","Not ₹4,999","Not ₹1,188/year"].map(s => (
                   <p key={s} style={{ fontSize: 18, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
                 ))}
               </div>
-              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹1</p>
-              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">for your first 7 days · then ₹99/month</p>
-              <CTA label="Get Everything — Start for ₹1 →" sub="Cancel anytime" />
+              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹365</p>
+              <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">for a full year — just ₹1/day</p>
+              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">One payment · 365 daily habits · No renewals, ever</p>
+              <CTA label="Get Everything — ₹365 for 1 Year →" sub="One payment · Less than a single meal" />
             </div>
           </div>
         </div>
@@ -1665,7 +1599,7 @@ export default function DailyUpgradeClubPage() {
             {[
               { n: "01", belief: "\"One tiny habit can't actually change my health.\"", truth: "A Stanford study found that habits done for 30 consecutive days rewire neural pathways — permanently. Members who started with just morning sunlight ended the month sleeping better, eating better, and moving more. None of those were the habit. The habit built the momentum.", icon: "🧠" },
               { n: "02", belief: "\"I've tried this before. I always quit eventually.\"", truth: "You quit because the habit was too big, too vague, or required willpower you didn't have that day. When a habit takes under 5 minutes, arrives automatically, and you only need to reply DONE — there's nothing to quit. Our members average 78% completion in month one.", icon: "🔄" },
-              { n: "03", belief: "\"₹99/month feels risky if I don't stay consistent.\"", truth: "That's exactly why the trial is ₹1. You're not committing to ₹99 based on a description. You're committing ₹1 to experience 7 real mornings. If nothing shifts — cancel. Pay nothing more. You risk a single rupee. I risk my reputation.", icon: "💰" },
+              { n: "03", belief: "\"What if I pay and don't stay consistent?\"", truth: "That's exactly why it's priced at ₹365 for the whole year — just ₹1 a day, less than a single meal. There's no monthly pressure and no renewal to worry about. Even if you complete just a fraction of the 365 habits, the few that stick are worth far more than a rupee a day. This is the cheapest bet you'll ever make on yourself.", icon: "💰" },
             ].map(({ n, belief, truth, icon }) => (
               <div key={n} className="duc-glow-card rounded-xl overflow-hidden" style={{ border: "1px solid #e2dfd6" }}>
                 <div className="flex items-start gap-3 px-5 py-4" style={{ background: "#fff7f7", borderBottom: "1px solid #fecaca" }}>
@@ -1694,8 +1628,8 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { icon: "⚡", bold: "give you steady energy from 7 AM to 6 PM — without needing caffeine every 2 hours", cta: "— would ₹1 to find out be worth it?" },
-              { icon: "🔄", bold: "make you the person who actually follows through on their health, every month — not just January", cta: "— would ₹99/month be worth it?" },
+              { icon: "⚡", bold: "give you steady energy from 7 AM to 6 PM — without needing caffeine every 2 hours", cta: "— would ₹1 a day be worth it?" },
+              { icon: "🔄", bold: "make you the person who actually follows through on their health, all year long — not just January", cta: "— would ₹365 for the whole year be worth it?" },
               { icon: "🌱", bold: "help you wake up 6 months from now and genuinely say \"I take care of myself\" — and mean it", cta: "— what would that moment be worth to you?" },
             ].map(({ icon, bold, cta }, i) => (
               <div key={i} className="duc-glow-card rounded-xl px-6 py-5 bg-white flex gap-3 items-start" style={{ border: "1px solid #e2dfd6" }}>
@@ -1742,7 +1676,7 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="I Want Results Like These →" sub="₹1 for 7 days · Then ₹99/month · Cancel anytime" />
+            <CTA label="I Want Results Like These →" sub="One payment of ₹365 · Just ₹1/day for a full year" />
           </div>
         </div>
       </section>
@@ -1808,10 +1742,10 @@ export default function DailyUpgradeClubPage() {
               </div>
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
-                  { icon: "🔒", t: "No hidden charges", b: "₹1 trial. ₹99/month. Nothing else." },
+                  { icon: "🔒", t: "One-time payment", b: "₹365 once. No renewals. No hidden charges." },
                   { icon: "📵", t: "No spam ever", b: "One WA message each morning. That's it." },
                   { icon: "📞", t: "No pressure calls", b: "No one will call to upsell you. Ever." },
-                  { icon: "🚪", t: "One-tap cancel", b: "Reply STOP or cancel in Razorpay instantly." },
+                  { icon: "🔁", t: "No auto-charges", b: "You pay once — never billed again automatically." },
                 ].map(({ icon, t, b }) => (
                   <div key={t} className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.15)" }}>{icon}</div>
@@ -1828,7 +1762,7 @@ export default function DailyUpgradeClubPage() {
                   <div>
                     <p className="duc-label mb-1.5">Rohan&apos;s personal commitment</p>
                     <p style={{ fontSize: 14, fontStyle: "italic", color: "#18181b", lineHeight: 1.65 }}>
-                      &ldquo;Do all 7 days. If you don&apos;t feel a single shift — message me directly. I&apos;ll refund your ₹1 and spend 20 minutes with you personally figuring out what happened.&rdquo;
+                      &ldquo;Do the first 7 days. If you don&apos;t feel a single shift — message me directly. I&apos;ll refund your ₹365 in full and spend 20 minutes with you personally figuring out what happened.&rdquo;
                     </p>
                     <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>— Rohan, Founder</p>
                   </div>
@@ -1836,9 +1770,9 @@ export default function DailyUpgradeClubPage() {
               </div>
               <div className="text-center">
                 <p style={{ fontSize: 14, color: "#71717a", marginBottom: 20 }}>
-                  Worst case: 35 minutes over 7 days, 1–2 habits that stick for life, and you never hear from us again.
+                  Worst case: a rupee a day, a few habits that stick for life, and a full-refund promise if the first week does nothing for you.
                 </p>
-                <CTA label="Yes — I Have Nothing to Lose →" sub="₹1 for 7 days · Cancel before Day 7 · Pay nothing more" />
+                <CTA label="Yes — I Have Nothing to Lose →" sub="One payment of ₹365 · Just ₹1/day · 7-day money-back promise" />
               </div>
             </div>
           </div>
@@ -1857,10 +1791,11 @@ export default function DailyUpgradeClubPage() {
               { q: "What exactly is a 'tiny healthy habit'?", a: "One specific, science-backed action under 5 minutes, tied to your monthly theme. For example: 5 min of morning sunlight (Energy Month), one spoon of plain curd at lunch (Gut Health Month), phone charger outside the bedroom (Sleep Month), box breathing before a meeting (Stress Month). Every habit is specific, explained, and doable today." },
               { q: "What happens on Day 1?", a: "The morning after you join, at 7 AM, your first habit lands on WhatsApp. You read it, do it, reply DONE. Your streak begins. That's the entire Day 1." },
               { q: "How do I choose my monthly theme?", a: "After joining, you pick from 8 themes: Sleep, Energy, Focus, Gut Health, Stress, Fitness, Hydration, or Heart Health. All 30 habits that month focus on that one area. You can switch next month or repeat the same theme." },
-              { q: "What if I miss a day?", a: "Nothing bad happens. One missed day doesn't end your streak or subscription. You get a gentle evening nudge if you haven't replied by 8 PM. Missing a day occasionally is normal — the system is designed for real life." },
-              { q: "What happens after 7 days?", a: "If you don't cancel before Day 7, ₹99/month begins. You'll get a Day 6 reminder so there's zero surprise. Cancel anytime from Razorpay — one tap, no questions asked, no calls." },
+              { q: "What if I miss a day?", a: "Nothing bad happens. One missed day doesn't end your membership — your habits keep arriving every morning. You get a gentle evening nudge if you haven't replied by 8 PM. Missing a day occasionally is normal — the system is designed for real life." },
+              { q: "How much does it cost?", a: "A one-time payment of ₹365 gives you a full year of daily habits — that's just ₹1 a day, less than one meal. There's no monthly subscription and no auto-renewal. You pay once and receive one tiny habit every morning for 365 days." },
+              { q: "Will I be charged again automatically?", a: "No. This is a single ₹365 payment, not a subscription. You will never be auto-charged. When your year ends, you simply choose whether to renew for another year — nothing happens automatically." },
               { q: "Do I need to download anything?", a: "No app. No download. Everything is on WhatsApp. Save the number when you join, and habits arrive every morning." },
-              { q: "Is this a 7-day or 30-day programme?", a: "It's a monthly healthy habit subscription — 30 habits per month, one per day, on your chosen theme. The 7-day trial is just so you can experience it before committing. After Day 7, your subscription continues as long as you want it to." },
+              { q: "Is this a 30-day or 1-year programme?", a: "It's a full 1-year healthy habit membership — 365 tiny habits, one every morning, on your chosen monthly theme. You pay once (₹365 — just ₹1 a day) and receive daily habits for a complete year. No monthly renewals, no auto-charges." },
               { q: "I've failed at habits before. Why will this be different?", a: "The habit arrives automatically so you never have to remember or plan. It takes under 5 minutes so even on your worst day it's possible. You reply DONE so there's a completion signal. And the habit is so specific you never wonder what to do. That's why 78% of members complete their monthly habit — the system does the work, not willpower." },
             ].map(({ q, a }) => <FAQ key={q} q={q} a={a} />)}
           </div>
@@ -1878,20 +1813,20 @@ export default function DailyUpgradeClubPage() {
             <span style={{ color: "#25d366" }}>On your WhatsApp.</span>
           </h2>
           <p style={{ fontSize: 16, color: "#a1a1aa", lineHeight: 1.75, marginBottom: 32 }}>
-            30 days from now, you could be the person who says<br />
+            365 days from now, you could be the person who says<br />
             <em style={{ color: "#e4e4e7" }}>&ldquo;I&apos;m actually taking care of myself.&rdquo;</em>
             <br /><br />
             Or you could keep planning to start next Monday.<br />
-            <strong style={{ color: "#e4e4e7" }}>₹1 decides which one.</strong>
+            <strong style={{ color: "#e4e4e7" }}>₹1 a day decides which one.</strong>
           </p>
-          <CTA label="Yes — Start My Trial for ₹1 →" sub="7 days for ₹1 · Then ₹99/month · Cancel before Day 7" />
+          <CTA label="Yes — Get My Full Year for ₹365 →" sub="One payment · Just ₹1/day · 365 daily habits · No renewals" />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Questions?{" "}
             <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Daily+Upgrade+Club" className="underline" style={{ color: "#25d366" }}>Chat with Rohan on WhatsApp</a>
           </p>
           <div className="mt-10 rounded-xl p-6 text-left" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
             <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.75 }}>
-              <strong style={{ color: "#e4e4e7" }}>P.S.</strong> — The cost of doing nothing is not ₹0. Every month you spend feeling low energy, sleeping poorly, or saying &ldquo;I&apos;ll start next week&rdquo; has a real cost — in how you feel, what you achieve, and who you become. The trial costs ₹1. The real question isn&apos;t whether ₹1 is worth it. It&apos;s: how long do you want to keep waiting?
+              <strong style={{ color: "#e4e4e7" }}>P.S.</strong> — The cost of doing nothing is not ₹0. Every month you spend feeling low energy, sleeping poorly, or saying &ldquo;I&apos;ll start next week&rdquo; has a real cost — in how you feel, what you achieve, and who you become. A full year of daily habits costs ₹365 — just ₹1 a day, less than a single meal. The real question isn&apos;t whether ₹1 a day is worth it. It&apos;s: how long do you want to keep waiting?
             </p>
           </div>
         </div>
@@ -1902,7 +1837,7 @@ export default function DailyUpgradeClubPage() {
           © {new Date().getFullYear()} Daily Upgrade Club ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
-        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>₹1 for 7 days · Then ₹99/month · Cancel anytime</p>
+        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>One payment of ₹365 · Just ₹1/day for a full year · No renewals</p>
       </footer>
 
       <StickyBottomCTA />

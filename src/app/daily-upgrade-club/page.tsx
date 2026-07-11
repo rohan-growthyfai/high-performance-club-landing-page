@@ -1344,12 +1344,12 @@ export default function DailyUpgradeClubPage() {
                         <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
                           <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 35%, ${bg} 100%)` }} />
-                          <div style={{ position: "absolute", bottom: 10, left: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontSize: 24 }}>{emoji}</span>
+                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 25%, ${bg} 92%)` }} />
+                          <div style={{ position: "absolute", bottom: 6, left: 14, right: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontSize: 28, flexShrink: 0 }}>{emoji}</span>
                             <div>
-                              <p style={{ fontSize: 17, fontWeight: 900, color, lineHeight: 1.1, margin: 0 }}>{theme}</p>
-                              <p style={{ fontSize: 11.5, color: "#52525b", fontWeight: 500, margin: 0, marginTop: 1 }}>{tagline}</p>
+                              <p style={{ fontSize: 22, fontWeight: 900, color, lineHeight: 1.1, margin: 0, letterSpacing: "-0.01em", textShadow: `0 1px 3px ${bg}` }}>{theme}</p>
+                              <p style={{ fontSize: 12, color: "#3f3f46", fontWeight: 600, margin: 0, marginTop: 2 }}>{tagline}</p>
                             </div>
                           </div>
                         </div>

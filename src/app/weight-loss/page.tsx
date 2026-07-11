@@ -362,7 +362,7 @@ export default function WeightLossPage() {
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
       <div style={{ background: "linear-gradient(90deg,#1da851 0%,#25d366 50%,#1da851 100%)", padding: "10px 16px" }}>
         <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          ✦ The complete 90-Day Weight Loss Guide — 90 fat-loss habits, meal plans &amp; no-gym workouts. One-time ₹199. Instant E-Book download ✦
+          ✦ Not another diet or workout plan — just 1 tiny 5-minute habit a day. No lifestyle overhaul. One-time ₹199. Instant E-Book download ✦
         </p>
       </div>
 
@@ -396,7 +396,7 @@ export default function WeightLossPage() {
                       <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                     </svg>
                   </span>{" "}
-                  is the complete 90-Day structured Weight Loss Guide — Get 90 hidden &amp; research-backed tiny fat-loss habits you can follow anywhere. Each habit takes less than 5 mins.
+                  is the complete 90-Day structured Weight Loss Guide — Get 90 secret &amp; research-backed tiny fat-loss habits you can follow anywhere. Each habit takes less than 5 mins.
                 </p>
 
                 {/* Callout — label shifted right, clean arrow only */}
@@ -486,7 +486,7 @@ export default function WeightLossPage() {
                   <div style={{ position: "absolute", left: "-20%", bottom: "-25%", width: "70%", height: "60%", background: "radial-gradient(circle, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 70%)", filter: "blur(24px)", pointerEvents: "none" }} />
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/ebook/cover-3d.png"
+                    src="/ebook/cover-3d-nobg.png"
                     alt="Slim & Strong — The 90-Day Weight Loss Guide"
                     className="relative w-full h-auto"
                     style={{ filter: "drop-shadow(0 26px 40px rgba(0,0,0,0.35))", animation: "ss-float 5s ease-in-out infinite" }}
@@ -535,8 +535,8 @@ export default function WeightLossPage() {
             ))}
           </div>
           <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
-            <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
-            <p className="duc-body mb-5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> Get the exact 90-day plan to actually lose the weight and keep it off for good.</p>
+            <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>You don&apos;t need more discipline. You need a smaller step.</p>
+            <p className="duc-body mb-5">Every crash diet fails because it asks for too much, too fast. <strong style={{ color: "#1da851" }}>Slim &amp; Strong</strong> asks for just <strong style={{ color: "#1da851" }}>one tiny habit a day</strong> — so small you can&apos;t fail, so easy you never have to overhaul your life.</p>
             <button
               onClick={buy}
               className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
@@ -637,9 +637,9 @@ export default function WeightLossPage() {
       {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
-          <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Course. Not an App. Not Another Fad Diet.</h2>
-          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is a simple, complete E-Book guide that walks you through 90 days of fat-loss habits, meal plans and no-gym workouts — everything in one place, ready to follow today.</p>
-          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No videos to watch. No app to download. No heavy routine to follow. Just one simple plan you actually stick to.</p>
+          <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Diet. Not a Workout Plan. Not Another Fad.</h2>
+          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}>Every other guide asks you to <strong style={{ color: "#fff" }}>overhaul your whole life</strong> on Day 1 — new diet, new gym routine, new everything. That&apos;s exactly why they fail. <strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is different: you change <strong style={{ color: "#fff" }}>one tiny habit a day</strong> — under 5 minutes — while your life stays exactly as it is.</p>
+          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No calorie counting. No gym. No giving up your favourite food. Just 1 small habit each day — small enough you&apos;ll never skip it.</p>
         </div>
       </section>
 
@@ -691,8 +691,8 @@ export default function WeightLossPage() {
                 badColor: "#db2777",
                 badBg: "#fdf2f8",
                 badBorder: "#fbcfe8",
-                badImg: "/goals/health-bad.png",
-                goodImg: "/goals/health-good.png",
+                badImg: "/goals/eat-bad.png",
+                goodImg: "/goals/eat-good.png",
                 items: ["Follow a strict diet", "Weigh every meal", "Eat only whole foods", "No carbs ever", "No eating out", "Give up all treats"],
                 habit: "Fill half your plate with vegetables at every meal",
                 why: "Cuts calories automatically while keeping you full and satisfied.",
@@ -703,8 +703,8 @@ export default function WeightLossPage() {
                 badColor: "#6366f1",
                 badBg: "#eef2ff",
                 badBorder: "#c7d2fe",
-                badImg: "/goals/sleep-bad.png",
-                goodImg: "/goals/sleep-good.png",
+                badImg: "/goals/strength-bad.png",
+                goodImg: "/goals/strength-good.png",
                 items: ["Join a gym", "1-hour workouts daily", "Buy equipment", "Hire a trainer", "Lift heavy 5× week", "Two-a-day sessions"],
                 habit: "Do a 5-minute no-gym bodyweight circuit at home",
                 why: "Builds lean muscle that burns fat even while you rest.",
@@ -859,7 +859,7 @@ export default function WeightLossPage() {
           <div className="text-center mb-14">
             <p className="duc-label mb-3">What You Get Inside</p>
             <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Lose the Weight</h2>
-            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> is designed to make fat loss simple, followable and repeatable — all in one E-Book.</p>
+            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> turns fat loss into 90 tiny habits — one a day, under 5 minutes each. No overhaul, no willpower, no changing your whole lifestyle. All in one E-Book.</p>
           </div>
 
           {/* Zigzag rows */}

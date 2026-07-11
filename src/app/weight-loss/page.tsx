@@ -699,6 +699,152 @@ export default function WeightLossPage() {
         </div>
       </section>
 
+      {/* ══ 4. HOW IT WORKS ═══════════════════════════════════════════════════ */}
+      <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Simple by design</p>
+            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
+            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just download the guide and follow one simple step a day.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                n: "1",
+                emoji: "💳",
+                title: "Buy Once & Download Instantly",
+                body: "Pay a one-time ₹199 and get instant access to the Slim & Strong E-Book. Download it to your phone or laptop and open it anytime — lifetime access, no subscription.",
+              },
+              {
+                n: "2",
+                emoji: "📖",
+                title: "Follow One Simple Step a Day",
+                body: "The guide lays out 90 days of fat-loss habits, done-for-you meal plans and no-gym workouts. Each day takes under 5 minutes to act on — no guessing what to do.",
+              },
+              {
+                n: "3",
+                emoji: "🔥",
+                title: "Track Your Progress & See Results",
+                body: "Use the built-in 90-day tracker to tick off each habit, watch your streak grow, and see the weight come off week after week.",
+              },
+            ].map(({ n, emoji, title, body }) => (
+              <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
+                <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
+                <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
+                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ FOCUS ON ONE AREA EACH MONTH — tabbed tracks ═════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">One month at a time</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Focus On Just One Area Each Month</h2>
+            <p className="duc-body max-w-xl mx-auto">Weight loss requires fixing eating, movement, AND sleep. Most people try to fix all 3 at once and fail. We fix them one by one — a full month each.</p>
+          </div>
+
+          {/* Area tabs */}
+          <div className="flex flex-wrap justify-center gap-2 mb-8">
+            {TRACKS.map((t, i) => (
+              <button key={i} onClick={() => setActiveTrack(i)}
+                className="rounded-full font-bold"
+                style={{
+                  padding: "10px 20px", fontSize: 14, cursor: "pointer",
+                  border: `2px solid ${t.color}`,
+                  background: activeTrack === i ? t.color : "transparent",
+                  color: activeTrack === i ? "#fff" : t.color,
+                  transition: "all 0.2s",
+                }}>
+                {t.icon} {t.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Active track detail */}
+          {TRACKS.map((t, i) => i === activeTrack && (
+            <div key={i} className="rounded-2xl mx-auto" style={{ background: t.colorLight, border: `1px solid ${t.colorBorder}`, padding: "2rem", maxWidth: 700 }}>
+              <div className="flex items-center gap-4 mb-5">
+                <span style={{ fontSize: 40 }}>{t.icon}</span>
+                <div>
+                  <p className="duc-label mb-1" style={{ color: t.color }}>{t.days}</p>
+                  <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b", lineHeight: 1.25 }}>Month {t.month}: {t.title}</p>
+                  <p style={{ fontSize: 14, color: "#52525b" }}>{t.subtitle}</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 mb-5">
+                {t.habits.map((h, hi) => (
+                  <div key={hi} className="flex items-center gap-3">
+                    <span style={{ color: t.color, fontWeight: 700, fontSize: 12, minWidth: 30 }}>D{(t.month - 1) * 30 + hi + 1}</span>
+                    <span style={{ fontSize: 14, color: "#52525b" }}>{h}</span>
+                  </div>
+                ))}
+                <p style={{ fontSize: 13, color: "#71717a", fontStyle: "italic", marginTop: 4 }}>+ 24 more habits inside the ebook...</p>
+              </div>
+              <div className="rounded-xl" style={{ background: t.color, color: "#fff", padding: "0.875rem 1rem", fontSize: 14, fontWeight: 700 }}>
+                Month {t.month} Result: {t.outcome}
+              </div>
+            </div>
+          ))}
+
+          <div className="flex justify-center mt-10">
+            <CTA label="Get My 90-Day Plan — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 4a. SAMPLE HABITS — 3 columns ════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Sample Habits From Inside</p>
+            <h2 className="duc-h2 duc-section-title mb-3">See How Your Habit Will Look Like</h2>
+            <p className="duc-body max-w-xl mx-auto">Every habit comes with what to do, the science behind why it works, and the best moment to use it in your day.</p>
+          </div>
+
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))", gap: "1.5rem" }}>
+            {SAMPLE_HABITS.map((area) => (
+              <div key={area.area} className="rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${area.colorBorder}`, background: "#fff" }}>
+                {/* Column header */}
+                <div className="flex items-center gap-2.5" style={{ background: area.color, padding: "1rem 1.25rem" }}>
+                  <span style={{ fontSize: 20 }}>{area.emoji}</span>
+                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 16 }}>{area.area}</span>
+                </div>
+                {/* Habits */}
+                <div className="p-4 flex flex-col gap-3">
+                  {area.habits.map((h, hi) => (
+                    <div key={hi} className="duc-glow-card rounded-xl p-4" style={{ background: "#fafaf9", border: "1px solid #e4e4e7" }}>
+                      <div className="flex items-center gap-3 mb-2.5">
+                        <div className="rounded-xl flex items-center justify-center shrink-0" style={{ width: 46, height: 46, background: area.colorLight, fontSize: 22 }}>{h.image}</div>
+                        <div>
+                          <p style={{ fontSize: 11, fontWeight: 700, color: area.color, textTransform: "uppercase", letterSpacing: "0.09em" }}>{h.day}</p>
+                          <p style={{ fontSize: 15, fontWeight: 800, color: "#18181b", lineHeight: 1.25 }}>{h.title}</p>
+                        </div>
+                      </div>
+                      <p style={{ fontSize: 13, color: "#52525b", lineHeight: 1.6, marginBottom: 8 }}>{h.desc}</p>
+                      <div className="rounded-lg" style={{ background: area.colorLight, borderLeft: `3px solid ${area.colorBorder}`, padding: "0.5rem 0.75rem", fontSize: 12.5, color: "#52525b", lineHeight: 1.6 }}>
+                        <span style={{ fontWeight: 700, color: area.color, textTransform: "uppercase", letterSpacing: "0.06em", fontSize: 11 }}>Why it works: </span>{h.why}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex justify-center mt-10">
+            <CTA label="Get All 90 Habits — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
+          </div>
+        </div>
+      </section>
+
       {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
@@ -872,109 +1018,8 @@ export default function WeightLossPage() {
         </div>
       </section>
 
-      {/* ══ FOCUS ON ONE AREA EACH MONTH — tabbed tracks ═════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">One month at a time</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Focus On Just One Area Each Month</h2>
-            <p className="duc-body max-w-xl mx-auto">Weight loss requires fixing eating, movement, AND sleep. Most people try to fix all 3 at once and fail. We fix them one by one — a full month each.</p>
-          </div>
-
-          {/* Area tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {TRACKS.map((t, i) => (
-              <button key={i} onClick={() => setActiveTrack(i)}
-                className="rounded-full font-bold"
-                style={{
-                  padding: "10px 20px", fontSize: 14, cursor: "pointer",
-                  border: `2px solid ${t.color}`,
-                  background: activeTrack === i ? t.color : "transparent",
-                  color: activeTrack === i ? "#fff" : t.color,
-                  transition: "all 0.2s",
-                }}>
-                {t.icon} {t.title}
-              </button>
-            ))}
-          </div>
-
-          {/* Active track detail */}
-          {TRACKS.map((t, i) => i === activeTrack && (
-            <div key={i} className="rounded-2xl mx-auto" style={{ background: t.colorLight, border: `1px solid ${t.colorBorder}`, padding: "2rem", maxWidth: 700 }}>
-              <div className="flex items-center gap-4 mb-5">
-                <span style={{ fontSize: 40 }}>{t.icon}</span>
-                <div>
-                  <p className="duc-label mb-1" style={{ color: t.color }}>{t.days}</p>
-                  <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b", lineHeight: 1.25 }}>Month {t.month}: {t.title}</p>
-                  <p style={{ fontSize: 14, color: "#52525b" }}>{t.subtitle}</p>
-                </div>
-              </div>
-              <div className="flex flex-col gap-2 mb-5">
-                {t.habits.map((h, hi) => (
-                  <div key={hi} className="flex items-center gap-3">
-                    <span style={{ color: t.color, fontWeight: 700, fontSize: 12, minWidth: 30 }}>D{(t.month - 1) * 30 + hi + 1}</span>
-                    <span style={{ fontSize: 14, color: "#52525b" }}>{h}</span>
-                  </div>
-                ))}
-                <p style={{ fontSize: 13, color: "#71717a", fontStyle: "italic", marginTop: 4 }}>+ 24 more habits inside the ebook...</p>
-              </div>
-              <div className="rounded-xl" style={{ background: t.color, color: "#fff", padding: "0.875rem 1rem", fontSize: 14, fontWeight: 700 }}>
-                Month {t.month} Result: {t.outcome}
-              </div>
-            </div>
-          ))}
-
-          <div className="flex justify-center mt-10">
-            <CTA label="Get My 90-Day Plan — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
-          </div>
-        </div>
-      </section>
-
       {/* ══ 1% TINY GAINS ════════════════════════════════════════════════════ */}
       <TinyGainsDUC />
-
-      {/* ══ 4. HOW IT WORKS ═══════════════════════════════════════════════════ */}
-      <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">Simple by design</p>
-            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
-            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just download the guide and follow one simple step a day.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                n: "1",
-                emoji: "💳",
-                title: "Buy Once & Download Instantly",
-                body: "Pay a one-time ₹199 and get instant access to the Slim & Strong E-Book. Download it to your phone or laptop and open it anytime — lifetime access, no subscription.",
-              },
-              {
-                n: "2",
-                emoji: "📖",
-                title: "Follow One Simple Step a Day",
-                body: "The guide lays out 90 days of fat-loss habits, done-for-you meal plans and no-gym workouts. Each day takes under 5 minutes to act on — no guessing what to do.",
-              },
-              {
-                n: "3",
-                emoji: "🔥",
-                title: "Track Your Progress & See Results",
-                body: "Use the built-in 90-day tracker to tick off each habit, watch your streak grow, and see the weight come off week after week.",
-              },
-            ].map(({ n, emoji, title, body }) => (
-              <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
-                <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
-                <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
-                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center mt-10">
-            <CTA label="Get Instant Access — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
-          </div>
-        </div>
-      </section>
 
       {/* ══ 4e. WHAT YOU GET FOR ₹199 (11-item grid) ═════════════════════════ */}
       <section className="bg-section-cream py-16 lg:py-24">
@@ -1134,51 +1179,6 @@ export default function WeightLossPage() {
 
           <div className="flex justify-center mt-8">
             <CTA label="Download My Copy — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 4a. SAMPLE HABITS — 3 columns ════════════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">Sample Habits From Inside</p>
-            <h2 className="duc-h2 duc-section-title mb-3">See How Your Habit Will Look Like</h2>
-            <p className="duc-body max-w-xl mx-auto">Every habit comes with what to do, the science behind why it works, and the best moment to use it in your day.</p>
-          </div>
-
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px,1fr))", gap: "1.5rem" }}>
-            {SAMPLE_HABITS.map((area) => (
-              <div key={area.area} className="rounded-2xl overflow-hidden" style={{ border: `1.5px solid ${area.colorBorder}`, background: "#fff" }}>
-                {/* Column header */}
-                <div className="flex items-center gap-2.5" style={{ background: area.color, padding: "1rem 1.25rem" }}>
-                  <span style={{ fontSize: 20 }}>{area.emoji}</span>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 16 }}>{area.area}</span>
-                </div>
-                {/* Habits */}
-                <div className="p-4 flex flex-col gap-3">
-                  {area.habits.map((h, hi) => (
-                    <div key={hi} className="duc-glow-card rounded-xl p-4" style={{ background: "#fafaf9", border: "1px solid #e4e4e7" }}>
-                      <div className="flex items-center gap-3 mb-2.5">
-                        <div className="rounded-xl flex items-center justify-center shrink-0" style={{ width: 46, height: 46, background: area.colorLight, fontSize: 22 }}>{h.image}</div>
-                        <div>
-                          <p style={{ fontSize: 11, fontWeight: 700, color: area.color, textTransform: "uppercase", letterSpacing: "0.09em" }}>{h.day}</p>
-                          <p style={{ fontSize: 15, fontWeight: 800, color: "#18181b", lineHeight: 1.25 }}>{h.title}</p>
-                        </div>
-                      </div>
-                      <p style={{ fontSize: 13, color: "#52525b", lineHeight: 1.6, marginBottom: 8 }}>{h.desc}</p>
-                      <div className="rounded-lg" style={{ background: area.colorLight, borderLeft: `3px solid ${area.colorBorder}`, padding: "0.5rem 0.75rem", fontSize: 12.5, color: "#52525b", lineHeight: 1.6 }}>
-                        <span style={{ fontWeight: 700, color: area.color, textTransform: "uppercase", letterSpacing: "0.06em", fontSize: 11 }}>Why it works: </span>{h.why}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex justify-center mt-10">
-            <CTA label="Get All 90 Habits — ₹199 →" sub="One-time ₹199 · Instant E-Book download · 7-day money-back guarantee" />
           </div>
         </div>
       </section>

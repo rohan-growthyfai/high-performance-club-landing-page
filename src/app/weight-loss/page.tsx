@@ -426,7 +426,7 @@ export default function WeightLossPage() {
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
       <div style={{ background: "linear-gradient(90deg,#1da851 0%,#25d366 50%,#1da851 100%)", padding: "10px 16px" }}>
         <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          ✦ Not another diet or workout plan — just 1 tiny 5-minute habit a day. No lifestyle overhaul. One-time ₹199. Instant E-Book download ✦
+          ✦ Not another diet or workout plan — just 1 tiny 5-minute habit a day. No big life changes. One-time ₹199. Instant E-Book download ✦
         </p>
       </div>
 
@@ -565,13 +565,13 @@ export default function WeightLossPage() {
 
       {/* ══ 2. PAIN POINTS ════════════════════════════════════════════════════ */}
       <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">Sound familiar?</p>
-            <h2 className="duc-h2 duc-section-title mb-3">This is why busy professionals struggle to lose weight</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">This is why busy professionals struggle to stay fit</h2>
             <p className="duc-body max-w-sm mx-auto">If you nodded at one of these, <strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong> was built for you!</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {[
               { icon: "😮‍💨", keyword: "Late-Night Eating", text: "You order food at 11 PM because dinner got cancelled for a client call — again.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "/goals/pain/late-night.png" },
               { icon: "💳", keyword: "Wasted Memberships", text: "You've paid for gym memberships this year. You went twice, total.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "/goals/pain/gym-wasted.png" },
@@ -601,7 +601,7 @@ export default function WeightLossPage() {
           </div>
           <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
             <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>You don&apos;t need more discipline. You need a smaller step.</p>
-            <p className="duc-body mb-5">Every crash diet fails because it asks for too much, too fast. <strong style={{ color: "#1da851" }}>Slim &amp; Strong</strong> asks for just <strong style={{ color: "#1da851" }}>one tiny habit a day</strong> — so small you can&apos;t fail, so easy you never have to overhaul your life.</p>
+            <p className="duc-body mb-5">Every crash diet fails because it asks for too much, too fast. <strong style={{ color: "#1da851" }}>Slim &amp; Strong</strong> asks for just <strong style={{ color: "#1da851" }}>one tiny habit a day</strong> — so small you can&apos;t fail, so easy you never have to change your whole routine.</p>
             <button
               onClick={buy}
               className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
@@ -626,7 +626,7 @@ export default function WeightLossPage() {
 
             {/* Visual — 3 life areas (energy, sleep, health) in one image with baked-in labels */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/goals/shift-before-after-v90.png" alt="Before and after across energy, sleep and health after 90 days" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
+            <img src="/goals/shift-before-after-v90b.png" alt="Your 90-day journey — before and after across energy, sleep and health for working professionals" style={{ display: "block", width: "100%", height: "auto" }} loading="lazy" />
 
             {/* Before / After pointers at the bottom of the image */}
             <div className="shift-split relative" style={{ borderTop: "1px solid #e4e4e7" }}>
@@ -703,7 +703,7 @@ export default function WeightLossPage() {
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Diet. Not a Workout Plan. Not Another Fad.</h2>
-          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}>Every other guide asks you to <strong style={{ color: "#fff" }}>overhaul your whole life</strong> on Day 1 — new diet, new gym routine, new everything. That&apos;s exactly why they fail. <strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is different: you change <strong style={{ color: "#fff" }}>one tiny habit a day</strong> — under 5 minutes — while your life stays exactly as it is.</p>
+          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}>Every other guide asks you to <strong style={{ color: "#fff" }}>change your whole life</strong> on Day 1 — new diet, new gym routine, new everything. That&apos;s exactly why they fail. <strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is different: you change <strong style={{ color: "#fff" }}>one tiny habit a day</strong> — under 5 minutes — while your life stays exactly as it is.</p>
           <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No calorie counting. No gym. No giving up your favourite food. Just 1 small habit each day — small enough you&apos;ll never skip it.</p>
         </div>
       </section>
@@ -716,11 +716,11 @@ export default function WeightLossPage() {
           <div className="text-center mb-14">
             <p className="duc-label mb-3" style={{ color: "#25d366" }}>The science behind the guide</p>
             <h2 className="duc-h2 mb-5" style={{ color: "#18181b" }}>
-              Why Big Diets Fail —<br />
+              Why Big Changes Fail —<br />
               <span style={{ color: "#25d366" }}>And What Actually Works</span>
             </h2>
             <p className="duc-body max-w-xl mx-auto" style={{ color: "#52525b" }}>
-              Most people know they want to lose weight. They just don&apos;t know how to get there without burning out.
+              Most people know they want to get fitter. They just don&apos;t know how to get there without burning out.
             </p>
           </div>
 
@@ -846,7 +846,7 @@ export default function WeightLossPage() {
               This is how lasting fat loss works.
             </p>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
-              You don&apos;t overhaul your life overnight. You start with one small habit you can&apos;t fail at — and let it compound. That&apos;s the <span style={{ color: "#25d366", fontWeight: 700 }}>power of tiny habits</span>.
+              You don&apos;t change your life overnight. You start with one small habit you can&apos;t fail at — and let it compound. That&apos;s the <span style={{ color: "#25d366", fontWeight: 700 }}>power of tiny habits</span>.
             </p>
           </div>
 
@@ -854,7 +854,7 @@ export default function WeightLossPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {[
               { icon: "✅", title: "Easy to Do", desc: "2–3 minutes. No equipment. No planning. You can do it on the busiest Monday." },
-              { icon: "🔄", title: "No Lifestyle Overhaul", desc: "Fits into the life you already have. No gym, no crash diet, no 5am alarm." },
+              { icon: "🔄", title: "No Big Life Changes", desc: "Fits into the life you already have. No gym, no crash diet, no 5am alarm." },
               { icon: "🎯", title: "Too Small to Miss", desc: "When it's tiny enough, there's no excuse. That's when the results start to show." },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="rounded-2xl p-6 flex flex-col gap-3" style={{ background: "#fff", border: "1.5px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>

@@ -30,7 +30,7 @@ function Star() {
 function Check({ green }: { green?: boolean }) {
   return (
     <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
-      <circle cx="10" cy="10" r="10" fill={green ? "#1da851" : "#e4e4e7"} />
+      <circle cx="10" cy="10" r="10" fill={green ? "#4f46e5" : "#e4e4e7"} />
       {green
         ? <path d="M6 10l3 3 5-5" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         : <path d="M7 7l6 6M13 7l-6 6" stroke="#a1a1aa" strokeWidth="1.8" strokeLinecap="round" />}
@@ -45,7 +45,7 @@ function CTA({ label, sub }: { label: string; sub?: string }) {
       <button
         onClick={buy}
         className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
-        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em", border: "none", cursor: "pointer" }}>
+        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(109,94,252,0.42)", letterSpacing: "-0.01em", border: "none", cursor: "pointer" }}>
         <DownloadIcon size={20} />{label}
       </button>
       {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
@@ -86,7 +86,7 @@ function FAQ({ q, a }: { q: string; a: string }) {
     <div className="duc-glow-card rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6" }}>
       <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 14 }}>
         {q}
-        <span className="shrink-0 text-xl font-light" style={{ color: "#25d366", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+        <span className="shrink-0 text-xl font-light" style={{ color: "#6d5efc", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
       </button>
       {open && <div className="px-5 pb-5 leading-relaxed bg-white" style={{ fontSize: 13, color: "#71717a" }}>{a}</div>}
     </div>
@@ -104,14 +104,14 @@ function StickyBottomCTA() {
   return (
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
-        <button onClick={buy} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
+        <button onClick={buy} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#4f46e5,#6d5efc)", boxShadow: "0 4px 20px rgba(109,94,252,0.4)", border: "none", cursor: "pointer" }}>
           <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get the Guide — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time · Instant E-Book · 7-day guarantee</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><DownloadIcon size={15} /><span className="text-white font-bold text-sm">Get It</span></div>
         </button>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
-          <button onClick={buy} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
+          <button onClick={buy} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#4f46e5,#6d5efc)", boxShadow: "0 4px 20px rgba(109,94,252,0.4)", border: "none", cursor: "pointer" }}>
             <div className="text-left"><p className="text-white font-black text-sm leading-tight">Get Instant Access — ₹199 →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p></div>
             <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><DownloadIcon size={16} /><span className="text-white font-bold text-sm">Get It</span></div>
           </button>
@@ -162,7 +162,7 @@ function LiveToast() {
               <p className="font-bold leading-snug truncate" style={{ fontSize: 11, color: "#18181b" }}>{t.name} from {t.city}</p>
               <p className="leading-snug mt-0.5" style={{ fontSize: 10, color: "#71717a" }}>bought Slim &amp; Strong · {t.time}</p>
             </div>
-            <span className="relative flex w-2 h-2 shrink-0"><span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#25d366" }} /><span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#25d366" }} /></span>
+            <span className="relative flex w-2 h-2 shrink-0"><span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#6d5efc" }} /><span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#6d5efc" }} /></span>
           </div>
         </div>
       ))}
@@ -189,7 +189,7 @@ function TrialPopup() {
       <div className="fixed inset-0 z-[100]" style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }} onClick={dismiss} />
       <div className="fixed inset-0 z-[101] flex items-center justify-center px-4 pointer-events-none">
         <div className="pointer-events-auto w-full max-w-sm rounded-3xl overflow-hidden" onClick={e => e.stopPropagation()} style={{ background: "#fff", boxShadow: "0 20px 60px rgba(0,0,0,0.22)", animation: "duc-fadein 0.35s ease" }}>
-          <div className="relative px-6 pt-7 pb-5 text-center" style={{ background: "linear-gradient(135deg,#1da851,#25d366)" }}>
+          <div className="relative px-6 pt-7 pb-5 text-center" style={{ background: "linear-gradient(135deg,#4f46e5,#6d5efc)" }}>
             <button onClick={dismiss} className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full cursor-pointer" style={{ background: "rgba(255,255,255,0.2)", border: "none" }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" /></svg>
             </button>
@@ -203,11 +203,11 @@ function TrialPopup() {
             <div className="flex flex-col gap-2 mb-5 text-left">
               {["Instant E-Book download", "Lifetime access — read anytime", "7-day money-back guarantee"].map(t => (
                 <div key={t} className="flex items-center gap-2" style={{ fontSize: 13, color: "#4a4a52" }}>
-                  <span style={{ color: "#25d366", fontWeight: 700 }}>✅</span>{t}
+                  <span style={{ color: "#6d5efc", fontWeight: 700 }}>✅</span>{t}
                 </div>
               ))}
             </div>
-            <button onClick={() => { buy(); dismiss(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", border: "none", cursor: "pointer" }}>
+            <button onClick={() => { buy(); dismiss(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(109,94,252,0.4)", border: "none", cursor: "pointer" }}>
               <DownloadIcon size={18} />Get the Guide — ₹199 →
             </button>
             <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>One-time ₹199 · Instant E-Book · 7-day money-back guarantee</p>
@@ -254,9 +254,9 @@ function TinyGainsDUC() {
     <section ref={ref} style={{ background: "#fff", borderTop: "1px solid #e4e4e7" }} className="py-16 lg:py-24 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-10 lg:mb-12">
-          <p className="duc-label mb-3" style={{ color: "#25d366" }}>The power of tiny fat-loss habits</p>
+          <p className="duc-label mb-3" style={{ color: "#6d5efc" }}>The power of tiny fat-loss habits</p>
           <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>
-            Lose just <span style={{ color: "#25d366" }}>1% more</span> fat every week…
+            Lose just <span style={{ color: "#6d5efc" }}>1% more</span> fat every week…
           </h2>
           <p className="duc-body max-w-2xl mx-auto" style={{ color: "#52525b" }}>
             One small fat-loss habit feels like nothing on Day 1. But small wins compound. Follow the 90-day plan and the math is shocking — you can become a{" "}
@@ -264,10 +264,10 @@ function TinyGainsDUC() {
           </p>
         </div>
         <div className="flex flex-col items-center gap-2 mb-10">
-          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl text-center" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
+          <div className="inline-flex items-center gap-3 px-5 py-3 rounded-2xl text-center" style={{ background: "rgba(109,94,252,0.08)", border: "1.5px solid rgba(109,94,252,0.3)" }}>
             <span style={{ fontSize: 16, fontWeight: 700, color: "#18181b" }}>
               Research shows: 1% better every day ={" "}
-              <span style={{ color: "#25d366" }}>37× fitter version of yourself in just 1 year</span> 🚀
+              <span style={{ color: "#6d5efc" }}>37× fitter version of yourself in just 1 year</span> 🚀
             </span>
           </div>
           <p style={{ fontSize: 12.5, color: "#71717a", fontWeight: 500 }}>
@@ -284,10 +284,10 @@ function TinyGainsDUC() {
             <text x={XEND} y={Y0 + 84} textAnchor="middle" fontSize={14} fontWeight={700} fill="#475569">1 Year</text>
             <line x1={X0} y1={Y0} x2={XEND} y2={Y0} stroke="#94a3b8" strokeWidth={2.5} strokeDasharray="8 8" style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.3s" }} />
             <text x={XEND - 4} y={Y0 - 12} textAnchor="end" fontSize={13} fill="#94a3b8" style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.6s" }}>No change — stay the same</text>
-            <path d={BETTER_PATH} fill="none" stroke="#25d366" strokeWidth={4.5} strokeLinecap="round" pathLength={1}
+            <path d={BETTER_PATH} fill="none" stroke="#6d5efc" strokeWidth={4.5} strokeLinecap="round" pathLength={1}
               style={{ strokeDasharray: 1, strokeDashoffset: shown ? 0 : 1, transition: "stroke-dashoffset 1.8s ease 0.3s" }} />
             <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.5s 1.7s" }}>
-              <rect x={XEND - 220} y={TOP + 4} width={120} height={46} rx={12} fill="#25d366" />
+              <rect x={XEND - 220} y={TOP + 4} width={120} height={46} rx={12} fill="#6d5efc" />
               <text x={XEND - 160} y={TOP + 33} textAnchor="middle" fontSize={24} fontWeight={900} fill="#fff">{Math.round(count)}× 🚀</text>
             </g>
             <g style={{ opacity: shown ? 1 : 0, transition: "opacity 0.6s 0.2s" }}>
@@ -333,7 +333,7 @@ function useMetaPixelViewContent() {
 
 // ─── Merged content data (re-skinned from /lose-weight) ──────────────────────
 const TRACKS = [
-  { month: 1, icon: "🥗", title: "Eating Habits", subtitle: "Transform HOW and WHEN you eat — without a diet", color: "#1ea84f", colorLight: "rgba(30,168,79,0.08)", colorBorder: "rgba(30,168,79,0.2)", days: "Days 1–30",
+  { month: 1, icon: "🥗", title: "Eating Habits", subtitle: "Transform HOW and WHEN you eat — without a diet", color: "#4f46e5", colorLight: "rgba(79,70,229,0.08)", colorBorder: "rgba(79,70,229,0.2)", days: "Days 1–30",
     habits: ["Drink 500ml water before checking your phone", "Eat protein before touching rice or roti", "One screen-free meal per day", "Pre-meal water 15 min before lunch", "Replace 3 PM chai with green tea", "Kitchen curfew 90 min before sleep"],
     outcome: "Better blood sugar, fewer cravings, automatic portion control" },
   { month: 2, icon: "🏃", title: "Movement & Activity", subtitle: "Add real calorie burn — without a gym membership", color: "#f97316", colorLight: "rgba(249,115,22,0.08)", colorBorder: "rgba(249,115,22,0.2)", days: "Days 31–60",
@@ -345,7 +345,7 @@ const TRACKS = [
 ];
 
 const SAMPLE_HABITS = [
-  { area: "🥗 Healthy Eating", color: "#1ea84f", colorLight: "rgba(30,168,79,0.08)", colorBorder: "rgba(30,168,79,0.25)", emoji: "🍽️",
+  { area: "🥗 Healthy Eating", color: "#4f46e5", colorLight: "rgba(79,70,229,0.08)", colorBorder: "rgba(79,70,229,0.25)", emoji: "🍽️",
     habits: [
       { day: "Day 1", title: "The 500ml Morning Reset", desc: "Keep a 500ml bottle on your bedside. Before you check your phone — drink it. Takes 90 seconds.", why: "Dehydration causes false hunger. 500ml before your phone gives 45 min of real appetite clarity.", image: "🚰" },
       { day: "Day 5", title: "Protein-First Plate Rule", desc: "Eat your protein — dal, paneer, chicken, curd — before touching rice or roti. Every meal.", why: "Reduces post-meal glucose spikes by 29% and insulin spikes by 37%. Same meal, better outcome.", image: "🥚" },
@@ -366,7 +366,7 @@ const SAMPLE_HABITS = [
 ];
 
 const SCIENCE = [
-  { logo: "📖", name: "BJ Fogg, PhD — Stanford", title: "Tiny Habits: The Small Changes That Change Everything", quote: "The most effective behaviour change happens through small, specific actions anchored to existing routines — not through motivation or willpower.", color: "#1ea84f", tag: "Behaviour Science" },
+  { logo: "📖", name: "BJ Fogg, PhD — Stanford", title: "Tiny Habits: The Small Changes That Change Everything", quote: "The most effective behaviour change happens through small, specific actions anchored to existing routines — not through motivation or willpower.", color: "#4f46e5", tag: "Behaviour Science" },
   { logo: "🏛️", name: "Harvard Medical School", title: "Journal of Clinical Endocrinology", quote: "Short bouts of movement after meals significantly improve insulin sensitivity and reduce post-meal glucose levels — effects comparable to longer exercise sessions.", color: "#6366f1", tag: "Metabolic Research" },
   { logo: "🧬", name: "University of Chicago Sleep Lab", title: "Annals of Internal Medicine", quote: "Sleep-deprived subjects lost 55% less fat and 60% more muscle than well-rested subjects on the same calorie-restricted diet — sleep is non-negotiable for fat loss.", color: "#f97316", tag: "Sleep & Weight Research" },
 ];
@@ -409,22 +409,30 @@ export default function WeightLossPage() {
         .duc-h1{font-size:clamp(2.1rem,5vw,3.2rem);font-weight:900;line-height:1.12;letter-spacing:-0.025em}
         .duc-h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.18;letter-spacing:-0.02em}
         .duc-body{font-size:clamp(1rem,1.8vw,1.0625rem);line-height:1.75;color:#52525b}
-        .duc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#25d366}
+        .duc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#6d5efc}
         .duc-card{background:#fff;border:1px solid #e2dfd6;border-radius:16px;padding:20px}
         .duc-section-title{background:linear-gradient(135deg,#18181b 0%,#3f3f46 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
         .duc-glass{background:rgba(255,255,255,0.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.9)}
-        .duc-glow-card{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transition:box-shadow 0.2s,transform 0.2s}
-        .duc-glow-card:hover{box-shadow:0 8px 32px rgba(37,211,102,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
-        @keyframes theme-pulse{0%,100%{box-shadow:0 4px 24px rgba(37,211,102,0.08),0 1px 3px rgba(0,0,0,0.06);transform:translateY(0)}40%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}60%{box-shadow:0 0 0 3px rgba(37,211,102,0.55),0 8px 32px rgba(37,211,102,0.22);transform:translateY(-4px)}}
+        .duc-glow-card{box-shadow:0 4px 24px rgba(109,94,252,0.08),0 1px 3px rgba(0,0,0,0.06);transition:box-shadow 0.2s,transform 0.2s}
+        .duc-glow-card:hover{box-shadow:0 8px 32px rgba(109,94,252,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
+        @keyframes theme-pulse{0%,100%{box-shadow:0 4px 24px rgba(109,94,252,0.08),0 1px 3px rgba(0,0,0,0.06);transform:translateY(0)}40%{box-shadow:0 0 0 3px rgba(109,94,252,0.55),0 8px 32px rgba(109,94,252,0.22);transform:translateY(-4px)}60%{box-shadow:0 0 0 3px rgba(109,94,252,0.55),0 8px 32px rgba(109,94,252,0.22);transform:translateY(-4px)}}
         .theme-card-anim{animation:theme-pulse 1.6s ease-in-out infinite}
         /* SHIFT pointers grid: split at the SAME point as the image's before/after divider (53.12%) */
         .shift-split{display:grid;grid-template-columns:1fr}
         .shift-arrow{left:50%}
         @media (min-width:768px){.shift-split{grid-template-columns:53.12% 46.88%}.shift-arrow{left:53.12%}}
+        /* ── Premium indigo/violet palette — page-scoped overrides of the shared (WhatsApp-green) global classes ── */
+        #ss-top .gradient-text{background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+        #ss-top .btn-primary{background:linear-gradient(135deg,#4f46e5 0%,#6d5efc 55%,#7c3aed 100%);color:#fff;box-shadow:0 8px 28px rgba(79,70,229,0.42)}
+        #ss-top .btn-primary:hover{background:linear-gradient(135deg,#4338ca 0%,#6d5efc 55%,#7c3aed 100%);box-shadow:0 10px 34px rgba(79,70,229,0.5)}
+        #ss-top .btn-primary:active{background:#4338ca}
+        #ss-top .accent-pill{background:rgba(109,94,252,0.1);color:#4f46e5;border:1px solid rgba(109,94,252,0.28)}
+        #ss-top .badge-after{background:linear-gradient(180deg,#e0e7ff 0%,#c7d2fe 100%);color:#3730a3;border:1px solid #a5b4fc}
+        #ss-top .mesh-bg{background:radial-gradient(60% 55% at 15% 10%,rgba(109,94,252,0.10) 0%,rgba(109,94,252,0) 60%),radial-gradient(55% 50% at 90% 15%,rgba(124,58,237,0.10) 0%,rgba(124,58,237,0) 60%),radial-gradient(60% 60% at 80% 90%,rgba(79,70,229,0.08) 0%,rgba(79,70,229,0) 60%),#faf8f3}
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
-      <div style={{ background: "linear-gradient(90deg,#1da851 0%,#25d366 50%,#1da851 100%)", padding: "10px 16px" }}>
+      <div style={{ background: "linear-gradient(90deg,#4f46e5 0%,#6d5efc 50%,#4f46e5 100%)", padding: "10px 16px" }}>
         <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
           ✦ Not another diet or workout plan — just 1 tiny 5-minute habit a day. No big life changes. One-time ₹199. Instant E-Book download ✦
         </p>
@@ -439,7 +447,7 @@ export default function WeightLossPage() {
             <div className="lg:col-span-7 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 animate-fade-up accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
-                <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#25d366" }} />
+                <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#6d5efc" }} />
                 For busy working professional who want to get fit without the gym pressure or crash diets
               </div>
 
@@ -457,7 +465,7 @@ export default function WeightLossPage() {
                     Slim &amp; Strong
                     {/* hand-drawn underline */}
                     <svg viewBox="0 0 200 10" aria-hidden="true" style={{ position: "absolute", bottom: -4, left: 0, width: "100%", height: 8, overflow: "visible" }}>
-                      <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+                      <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#6d5efc" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                     </svg>
                   </span>{" "}
                   is the complete 90-Day structured Weight Loss Guide — Get 90 secret &amp; research-backed tiny fat-loss habits you can follow anywhere. Each habit takes less than 5 mins.
@@ -468,21 +476,21 @@ export default function WeightLossPage() {
                   style={{ right: -260, top: 0 }}>
                   {/* Label */}
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold mb-2"
-                    style={{ background: "#25d366", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(37,211,102,0.45)", letterSpacing: "-0.01em", marginLeft: 20 }}>
+                    style={{ background: "#6d5efc", color: "#fff", fontSize: 15, whiteSpace: "nowrap", boxShadow: "0 6px 20px rgba(109,94,252,0.45)", letterSpacing: "-0.01em", marginLeft: 20 }}>
                     <DownloadIcon size={17} />
                     Instant E-Book download
                   </div>
                   {/* Clean dashed arrow — smooth curve with aligned arrowhead */}
                   <svg width="200" height="100" viewBox="0 0 200 100" fill="none" style={{ marginLeft: 10 }}>
-                    <path d="M12 12 C22 55 70 92 178 84" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
-                    <path d="M164 72 L182 84 L162 92" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M12 12 C22 55 70 92 178 84" stroke="#6d5efc" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="6 5" />
+                    <path d="M164 72 L182 84 L162 92" stroke="#6d5efc" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
 
                 {/* Mobile — inline badge */}
                 <div className="flex lg:hidden items-center gap-2 mt-3">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full font-bold"
-                    style={{ background: "#25d366", color: "#fff", fontSize: 14, boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>
+                    style={{ background: "#6d5efc", color: "#fff", fontSize: 14, boxShadow: "0 4px 14px rgba(109,94,252,0.35)" }}>
                     <DownloadIcon size={15} />
                     Instant E-Book — no app needed
                   </div>
@@ -494,7 +502,7 @@ export default function WeightLossPage() {
                 {["No gym required", "No crash diets", "Fits perfectly into your schedule"].map((line, i, arr) => (
                   <span key={line} className="flex items-center gap-3">
                     <span style={{ fontSize: 14, color: "#3f3f46", fontWeight: 600 }}>{line}</span>
-                    {i < arr.length - 1 && <span style={{ color: "#25d366", fontSize: 16, fontWeight: 900 }}>·</span>}
+                    {i < arr.length - 1 && <span style={{ color: "#6d5efc", fontSize: 16, fontWeight: 900 }}>·</span>}
                   </span>
                 ))}
               </div>
@@ -504,7 +512,7 @@ export default function WeightLossPage() {
                 <button
                   onClick={buy}
                   className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
+                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(109,94,252,0.42)", border: "none", cursor: "pointer" }}>
                   <DownloadIcon size={22} />Get the Guide — ₹199
                 </button>
                 <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p>
@@ -541,8 +549,8 @@ export default function WeightLossPage() {
                   className="relative w-full flex justify-center px-6 pt-10 pb-8"
                   style={{
                     borderRadius: 40,
-                    background: "linear-gradient(160deg,#25d366 0%,#1da851 100%)",
-                    boxShadow: "0 24px 60px -18px rgba(37,211,102,0.55), inset 0 1px 0 rgba(255,255,255,0.25)",
+                    background: "linear-gradient(160deg,#6d5efc 0%,#4f46e5 100%)",
+                    boxShadow: "0 24px 60px -18px rgba(109,94,252,0.55), inset 0 1px 0 rgba(255,255,255,0.25)",
                     overflow: "hidden",
                   }}
                 >
@@ -599,13 +607,13 @@ export default function WeightLossPage() {
               </div>
             ))}
           </div>
-          <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
+          <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(109,94,252,0.08),rgba(79,70,229,0.04))", border: "1px solid rgba(109,94,252,0.18)" }}>
             <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>You don&apos;t need more discipline. You need a smaller step.</p>
-            <p className="duc-body mb-5">Every crash diet fails because it asks for too much, too fast. <strong style={{ color: "#1da851" }}>Slim &amp; Strong</strong> asks for just <strong style={{ color: "#1da851" }}>one tiny habit a day</strong> — so small you can&apos;t fail, so easy you never have to change your whole routine.</p>
+            <p className="duc-body mb-5">Every crash diet fails because it asks for too much, too fast. <strong style={{ color: "#4f46e5" }}>Slim &amp; Strong</strong> asks for just <strong style={{ color: "#4f46e5" }}>one tiny habit a day</strong> — so small you can&apos;t fail, so easy you never have to change your whole routine.</p>
             <button
               onClick={buy}
               className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
-              style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
+              style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(109,94,252,0.42)", border: "none", cursor: "pointer" }}>
               <DownloadIcon size={18} />Get the Guide — ₹199
             </button>
             <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>One-time ₹199 · Instant E-Book download · 7-day money-back guarantee</p>
@@ -618,7 +626,7 @@ export default function WeightLossPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <p className="duc-label mb-3">THE SHIFT</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#25d366" }}>→</span> where you&apos;ll be in 90 days</h2>
+            <h2 className="duc-h2 duc-section-title mb-3">Where you are now <span style={{ color: "#6d5efc" }}>→</span> where you&apos;ll be in 90 days</h2>
             <p className="duc-body max-w-md mx-auto">Same busy schedule. But a lighter, stronger, more confident version of yourself.</p>
           </div>
           {/* Unified SHIFT card — image on top, before/after pointers at the bottom */}
@@ -637,8 +645,8 @@ export default function WeightLossPage() {
                   transform: "translate(-50%, -50%)",
                   width: 52,
                   height: 52,
-                  background: "#25d366",
-                  boxShadow: "0 8px 22px rgba(37,211,102,0.5), 0 0 0 6px #fff",
+                  background: "#6d5efc",
+                  boxShadow: "0 8px 22px rgba(109,94,252,0.5), 0 0 0 6px #fff",
                 }}
                 aria-hidden="true"
               >
@@ -672,7 +680,7 @@ export default function WeightLossPage() {
 
               {/* After 90 Days */}
               <div className="p-6 relative overflow-hidden" style={{ background: "#f0fdf4" }}>
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(37,211,102,0.08)" }} aria-hidden="true" />
+                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full" style={{ background: "rgba(109,94,252,0.08)" }} aria-hidden="true" />
                 <div className="relative">
                   <div className="inline-flex items-center px-3 py-1 rounded-full mb-5 badge-after" style={{ fontSize: 12, fontWeight: 700 }}>After 90 Days</div>
                   <div className="flex flex-col gap-3.5">
@@ -704,7 +712,7 @@ export default function WeightLossPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">Simple by design</p>
-            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
+            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#6d5efc" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
             <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just download the guide and follow one simple step a day.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -729,7 +737,7 @@ export default function WeightLossPage() {
               },
             ].map(({ n, emoji, title, body }) => (
               <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#4f46e5,#6d5efc)", boxShadow: "0 4px 14px rgba(109,94,252,0.35)" }}>{n}</div>
                 <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
                 <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
                 <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
@@ -780,7 +788,7 @@ export default function WeightLossPage() {
           </div>
           <div className="flex flex-col gap-7">
             {[
-              { step: "01", color: "#1ea84f", title: "Month 1 — Fix Your Eating", desc: "30 habits focused entirely on HOW and WHEN you eat. No diet plan. No food restrictions. Just tiny shifts in food order, timing, and mindfulness that change your metabolism from the inside." },
+              { step: "01", color: "#4f46e5", title: "Month 1 — Fix Your Eating", desc: "30 habits focused entirely on HOW and WHEN you eat. No diet plan. No food restrictions. Just tiny shifts in food order, timing, and mindfulness that change your metabolism from the inside." },
               { step: "02", color: "#f97316", title: "Month 2 — Add Movement", desc: "With your eating habits now running on autopilot, you add 30 movement habits. Still no gym required. NEAT-based habits that burn 300–500 extra calories daily through stair sprints, desk squats, walking calls, and post-meal walks." },
               { step: "03", color: "#6366f1", title: "Month 3 — Optimise Sleep", desc: "Now you add 30 sleep habits. Better sleep lowers cortisol, balances hunger hormones, and unlocks overnight fat burning. This is when the compound results from all 3 areas hit simultaneously." },
               { step: "04", color: "#e8a020", title: "Day 90 — Your Personal System", desc: "By Day 90 you have 90 habits to choose from. The last habit in the guide asks you to write down the 5–7 that worked best. That's your permanent system — no app, no subscription, no renewal." },
@@ -901,11 +909,11 @@ export default function WeightLossPage() {
       </section>
 
       {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+      <section style={{ background: "linear-gradient(135deg,#1e1b4b 0%,#18181b 50%,#1e1b4b 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Diet. Not a Workout Plan. Not Another Fad.</h2>
           <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}>Every other guide asks you to <strong style={{ color: "#fff" }}>change your whole life</strong> on Day 1 — new diet, new gym routine, new everything. That&apos;s exactly why they fail. <strong style={{ color: "#fff" }}>Slim &amp; Strong</strong> is different: you change <strong style={{ color: "#fff" }}>one tiny habit a day</strong> — under 5 minutes — while your life stays exactly as it is.</p>
-          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No calorie counting. No gym. No giving up your favourite food. Just 1 small habit each day — small enough you&apos;ll never skip it.</p>
+          <p style={{ fontSize: 17, color: "rgba(109,94,252,0.9)", fontStyle: "italic", fontWeight: 500 }}>No calorie counting. No gym. No giving up your favourite food. Just 1 small habit each day — small enough you&apos;ll never skip it.</p>
         </div>
       </section>
 
@@ -915,10 +923,10 @@ export default function WeightLossPage() {
 
           {/* Headline */}
           <div className="text-center mb-14">
-            <p className="duc-label mb-3" style={{ color: "#25d366" }}>The science behind the guide</p>
+            <p className="duc-label mb-3" style={{ color: "#6d5efc" }}>The science behind the guide</p>
             <h2 className="duc-h2 mb-5" style={{ color: "#18181b" }}>
               Why Big Changes Fail —<br />
-              <span style={{ color: "#25d366" }}>And What Actually Works</span>
+              <span style={{ color: "#6d5efc" }}>And What Actually Works</span>
             </h2>
             <p className="duc-body max-w-xl mx-auto" style={{ color: "#52525b" }}>
               Most people know they want to get fitter. They just don&apos;t know how to get there without burning out.
@@ -932,7 +940,7 @@ export default function WeightLossPage() {
             </div>
             <div />
             <div className="text-center">
-              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#15803d" }}>The tiny habit way ✓</span>
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#4338ca" }}>The tiny habit way ✓</span>
             </div>
           </div>
 
@@ -1006,10 +1014,10 @@ export default function WeightLossPage() {
                 <div className="flex flex-col items-center justify-center py-2 md:py-0" style={{ gap: 4 }}>
                   {/* Mobile: down arrow; Desktop: right arrow */}
                   <svg className="hidden md:block" width="40" height="20" viewBox="0 0 40 20" fill="none">
-                    <path d="M2 10h32M28 4l8 6-8 6" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M2 10h32M28 4l8 6-8 6" stroke="#6d5efc" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                   <svg className="md:hidden" width="20" height="32" viewBox="0 0 20 32" fill="none">
-                    <path d="M10 2v26M4 22l6 8 6-8" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M10 2v26M4 22l6 8 6-8" stroke="#6d5efc" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
 
@@ -1018,22 +1026,22 @@ export default function WeightLossPage() {
                   <div className="px-4 py-3 flex items-center gap-2.5" style={{ borderBottom: "1.5px solid #bbf7d0" }}>
                     <span style={{ fontSize: 20 }}>{emoji}</span>
                     <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
-                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>tiny habit ✓</span>
+                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#4338ca", textTransform: "uppercase", letterSpacing: "0.08em" }}>tiny habit ✓</span>
                   </div>
                   <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", borderBottom: "1.5px solid #bbf7d0" }}>
                     <img src={goodImg} alt={`${goal} the tiny habit way`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(37,211,102,0.18) 100%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(109,94,252,0.18) 100%)" }} />
                   </div>
                   <div className="px-4 py-4 flex flex-col gap-2.5">
-                    <p style={{ fontSize: 11, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>Inside the guide:</p>
+                    <p style={{ fontSize: 11, fontWeight: 700, color: "#4338ca", textTransform: "uppercase", letterSpacing: "0.08em" }}>Inside the guide:</p>
                     <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b", lineHeight: 1.5 }}>&ldquo;{habit}&rdquo;</p>
                     <p style={{ fontSize: 12, color: "#52525b", lineHeight: 1.55 }}>{why}</p>
                   </div>
-                  <div className="px-4 py-2 flex items-center gap-2" style={{ borderTop: "1px solid #bbf7d0", background: "rgba(37,211,102,0.06)" }}>
-                    <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#25d366", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                  <div className="px-4 py-2 flex items-center gap-2" style={{ borderTop: "1px solid #bbf7d0", background: "rgba(109,94,252,0.06)" }}>
+                    <span style={{ width: 16, height: 16, borderRadius: "50%", background: "#6d5efc", display: "inline-flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
                       <svg width="8" height="6" viewBox="0 0 8 6" fill="none"><path d="M1 3l2.5 2.5 4-4.5" stroke="#fff" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: "#15803d" }}>Done in 2 minutes. Every single day. ✅</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: "#4338ca" }}>Done in 2 minutes. Every single day. ✅</span>
                   </div>
                 </div>
 
@@ -1042,12 +1050,12 @@ export default function WeightLossPage() {
           </div>
 
           {/* Bridge — the reframe */}
-          <div className="rounded-2xl px-8 py-7 text-center mb-10" style={{ background: "linear-gradient(135deg,#0f1f13,#18181b)" }}>
+          <div className="rounded-2xl px-8 py-7 text-center mb-10" style={{ background: "linear-gradient(135deg,#1e1b4b,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>
               This is how lasting fat loss works.
             </p>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
-              You don&apos;t change your life overnight. You start with one small habit you can&apos;t fail at — and let it compound. That&apos;s the <span style={{ color: "#25d366", fontWeight: 700 }}>power of tiny habits</span>.
+              You don&apos;t change your life overnight. You start with one small habit you can&apos;t fail at — and let it compound. That&apos;s the <span style={{ color: "#6d5efc", fontWeight: 700 }}>power of tiny habits</span>.
             </p>
           </div>
 
@@ -1109,7 +1117,7 @@ export default function WeightLossPage() {
           { emoji: "🌿", theme: "Gut & Digestion", tagline: "Less bloating, flatter belly", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80", habits: ["The Dahi Lunch Protocol","The 20-Chew Digestion Rule","Morning Warm Water Activation","The Screen-Free Meal Method"] },
           { emoji: "😴", theme: "Sleep for Fat Loss", tagline: "Rest so your body burns fat", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["The 90-Second Wind-Down","Phone-Free Sleep Protocol","Bedroom Temperature Reset","The Consistent Wake-Up Rule"] },
           { emoji: "💧", theme: "Hydration", tagline: "More water, fewer cravings", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=600&q=80", habits: ["Pre-Meal Water Protocol","The 3 PM Water Alarm","Swap One Drink for Water","The 8-Glass Track Method"] },
-          { emoji: "🧠", theme: "Craving Control", tagline: "Beat late-night snacking", color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The Night Snacking Pause","The Hunger Check Method","Sugar Craving 10-Minute Rule","The Smaller Plate Habit"] },
+          { emoji: "🧠", theme: "Craving Control", tagline: "Beat late-night snacking", color: "#4338ca", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The Night Snacking Pause","The Hunger Check Method","Sugar Craving 10-Minute Rule","The Smaller Plate Habit"] },
           { emoji: "📊", theme: "Tracking & Habits", tagline: "See the weight come off", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "https://images.unsplash.com/photo-1616671276441-2f2c277b8bf6?w=600&q=80", habits: ["The Daily Tick-Box Habit","Weekly Weigh-In Ritual","Progress-Photo Method","The Streak-Protection Rule"] },
           { emoji: "🎯", theme: "Staying Consistent", tagline: "Make it stick for life", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80", habits: ["The Never-Miss-Twice Rule","Bounce-Back-in-a-Day Method","The Weekend Anchor Habit","Your Maintenance Blueprint"] },
         ];
@@ -1239,11 +1247,11 @@ export default function WeightLossPage() {
       </section>
 
       {/* ══ 4d. YOUTUBE vs ONE PLAN (dark compare) ═══════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+      <section style={{ background: "linear-gradient(135deg,#1e1b4b 0%,#18181b 50%,#1e1b4b 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3" style={{ color: "#e8a020" }}>Not Random Advice</p>
-            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>YouTube gives you 47 conflicting videos.<br /><span style={{ color: "#25d366" }}>This gives you one clear plan.</span></h2>
+            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>YouTube gives you 47 conflicting videos.<br /><span style={{ color: "#6d5efc" }}>This gives you one clear plan.</span></h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 560, margin: "0 auto", lineHeight: 1.75 }}>The internet has infinite fitness content. What it doesn&apos;t have is a structured system that tells you exactly what to do today, tomorrow, and on Day 90 — built for someone with a 10-hour workday.</p>
           </div>
 
@@ -1275,10 +1283,10 @@ export default function WeightLossPage() {
             </div>
 
             {/* Right — Structured */}
-            <div className="rounded-2xl overflow-hidden" style={{ background: "rgba(37,211,102,0.08)", border: "1px solid rgba(37,211,102,0.25)" }}>
-              <div className="flex items-center gap-2.5" style={{ padding: "1.25rem 1.5rem", borderBottom: "1px solid rgba(37,211,102,0.2)" }}>
+            <div className="rounded-2xl overflow-hidden" style={{ background: "rgba(109,94,252,0.08)", border: "1px solid rgba(109,94,252,0.25)" }}>
+              <div className="flex items-center gap-2.5" style={{ padding: "1.25rem 1.5rem", borderBottom: "1px solid rgba(109,94,252,0.2)" }}>
                 <span style={{ fontSize: 18 }}>📗</span>
-                <span style={{ color: "#25d366", fontWeight: 700, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em" }}>Slim &amp; Strong — Day by Day</span>
+                <span style={{ color: "#6d5efc", fontWeight: 700, fontSize: 13, textTransform: "uppercase", letterSpacing: "0.1em" }}>Slim &amp; Strong — Day by Day</span>
               </div>
               <div className="p-6">
                 {[
@@ -1293,8 +1301,8 @@ export default function WeightLossPage() {
                   { day: "", habit: "You always know exactly what to do next.", highlight: true },
                 ].map(({ day, habit, highlight }, i) => (
                   <div key={i} className="flex items-start gap-3 mb-3">
-                    <span style={{ color: "#25d366", fontSize: 13, marginTop: 2, flexShrink: 0 }}>✓</span>
-                    <span style={{ fontSize: 13, lineHeight: 1.55, color: highlight ? "#25d366" : "rgba(255,255,255,0.75)", fontWeight: highlight ? 800 : 400 }}>
+                    <span style={{ color: "#6d5efc", fontSize: 13, marginTop: 2, flexShrink: 0 }}>✓</span>
+                    <span style={{ fontSize: 13, lineHeight: 1.55, color: highlight ? "#6d5efc" : "rgba(255,255,255,0.75)", fontWeight: highlight ? 800 : 400 }}>
                       {day && <span style={{ color: "#e8a020", fontWeight: 700, marginRight: 6 }}>{day}:</span>}
                       {habit}
                     </span>
@@ -1313,7 +1321,7 @@ export default function WeightLossPage() {
               { n: "5 min", label: "Maximum time per day" },
             ].map(({ n, label }) => (
               <div key={label} className="text-center">
-                <div style={{ color: "#25d366", fontWeight: 900, fontSize: "clamp(1.5rem,3vw,2rem)", lineHeight: 1 }}>{n}</div>
+                <div style={{ color: "#6d5efc", fontWeight: 900, fontSize: "clamp(1.5rem,3vw,2rem)", lineHeight: 1 }}>{n}</div>
                 <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 12, marginTop: 4, maxWidth: 140 }}>{label}</div>
               </div>
             ))}
@@ -1326,10 +1334,10 @@ export default function WeightLossPage() {
       </section>
 
       {/* ══ WHO THIS IS FOR ═════════════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+      <section style={{ background: "linear-gradient(135deg,#1e1b4b 0%,#18181b 50%,#1e1b4b 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="duc-label mb-3" style={{ color: "#25d366" }}>Who This Is For</p>
+            <p className="duc-label mb-3" style={{ color: "#6d5efc" }}>Who This Is For</p>
             <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>This Is Built for You If…</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1341,8 +1349,8 @@ export default function WeightLossPage() {
               "You prefer a simple guide you can follow at your own pace.",
               "You want a proven system, not more scattered advice online.",
             ].map((point, i) => (
-              <div key={i} className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(37,211,102,0.18)" }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", fontSize: 14, color: "#fff", fontWeight: 900 }}>✓</div>
+              <div key={i} className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(109,94,252,0.18)" }}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg,#4f46e5,#6d5efc)", fontSize: 14, color: "#fff", fontWeight: 900 }}>✓</div>
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.88)", lineHeight: 1.65, fontWeight: 500 }}>{point}</p>
               </div>
             ))}
@@ -1351,7 +1359,7 @@ export default function WeightLossPage() {
             <button
               onClick={buy}
               className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-              style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
+              style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(109,94,252,0.42)", border: "none", cursor: "pointer" }}>
               Yes, This Is For Me →
             </button>
           </div>
@@ -1359,11 +1367,11 @@ export default function WeightLossPage() {
       </section>
 
       {/* ══ WHY IT WORKS ════════════════════════════════════════════════════ */}
-      <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 60%,#0f1f13 100%)" }} className="py-16 lg:py-24">
+      <section style={{ background: "linear-gradient(135deg,#1e1b4b 0%,#18181b 60%,#1e1b4b 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
-            <p className="duc-label mb-3" style={{ color: "#25d366" }}>The Science of Simplicity</p>
-            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Why <span className="relative inline-block">Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
+            <p className="duc-label mb-3" style={{ color: "#6d5efc" }}>The Science of Simplicity</p>
+            <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Why <span className="relative inline-block">Slim &amp; Strong<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#6d5efc" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
             <p style={{ fontSize: 16, color: "rgba(255,255,255,0.65)", maxWidth: 480, margin: "0 auto" }}>Because it removes the biggest reason people fail at weight loss — overwhelm.</p>
           </div>
 
@@ -1375,8 +1383,8 @@ export default function WeightLossPage() {
             </div>
 
             {/* Right — the system */}
-            <div className="rounded-2xl p-8" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.2)" }}>
-              <p className="font-bold mb-5" style={{ fontSize: 13, color: "#25d366", textTransform: "uppercase", letterSpacing: "0.1em" }}>The Slim &amp; Strong System</p>
+            <div className="rounded-2xl p-8" style={{ background: "rgba(109,94,252,0.06)", border: "1px solid rgba(109,94,252,0.2)" }}>
+              <p className="font-bold mb-5" style={{ fontSize: 13, color: "#6d5efc", textTransform: "uppercase", letterSpacing: "0.1em" }}>The Slim &amp; Strong System</p>
               <div className="flex flex-col gap-4">
                 {[
                   { icon: "🌱", label: "1 tiny habit a day", sub: "Small enough to never skip" },
@@ -1388,7 +1396,7 @@ export default function WeightLossPage() {
                   { icon: "♾️", label: "Lifetime access", sub: "Re-read and restart anytime" },
                 ].map(({ icon, label, sub }) => (
                   <div key={label} className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(37,211,102,0.12)", fontSize: 18 }}>{icon}</div>
+                    <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(109,94,252,0.12)", fontSize: 18 }}>{icon}</div>
                     <div>
                       <p style={{ fontSize: 15, fontWeight: 700, color: "#fff", lineHeight: 1.2 }}>{label}</p>
                       <p style={{ fontSize: 12, color: "rgba(255,255,255,0.5)" }}>{sub}</p>
@@ -1400,8 +1408,8 @@ export default function WeightLossPage() {
           </div>
 
           {/* Closing punchline */}
-          <div className="rounded-2xl p-7 text-center mt-8" style={{ background: "rgba(37,211,102,0.08)", border: "1.5px solid rgba(37,211,102,0.3)" }}>
-            <p style={{ fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.4 }}>Small enough to do daily. <span style={{ color: "#25d366" }}>Powerful enough to change your body.</span></p>
+          <div className="rounded-2xl p-7 text-center mt-8" style={{ background: "rgba(109,94,252,0.08)", border: "1.5px solid rgba(109,94,252,0.3)" }}>
+            <p style={{ fontSize: 22, fontWeight: 900, color: "#fff", lineHeight: 1.4 }}>Small enough to do daily. <span style={{ color: "#6d5efc" }}>Powerful enough to change your body.</span></p>
           </div>
 
           <div className="flex justify-center mt-10">
@@ -1415,7 +1423,7 @@ export default function WeightLossPage() {
         <div className="max-w-2xl mx-auto px-6 lg:px-10">
           <div className="rounded-2xl overflow-hidden shadow-2xl text-center" style={{
             background: "linear-gradient(145deg,#0d1f12 0%,#0a1a0f 50%,#061009 100%)",
-            border: "1px solid rgba(37,211,102,0.2)",
+            border: "1px solid rgba(109,94,252,0.2)",
             padding: "clamp(2rem,5vw,3.5rem)",
           }}>
             <p className="duc-label mb-3" style={{ color: "#e8a020" }}>ONE-TIME OFFER</p>
@@ -1444,12 +1452,12 @@ export default function WeightLossPage() {
 
             <div style={{ marginBottom: "0.5rem" }}>
               <span style={{ color: "rgba(255,255,255,0.3)", fontSize: "1.1rem", textDecoration: "line-through" }}>₹999</span>
-              <span style={{ color: "#25d366", fontSize: "3.5rem", fontWeight: 900, lineHeight: 1, margin: "0 0.5rem" }}>₹199</span>
+              <span style={{ color: "#6d5efc", fontSize: "3.5rem", fontWeight: 900, lineHeight: 1, margin: "0 0.5rem" }}>₹199</span>
             </div>
             <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 13, marginBottom: "2rem" }}>One-time · Instant E-Book download · Lifetime access</p>
 
             <div className="flex justify-center mb-4">
-              <button onClick={buy} className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", border: "none", cursor: "pointer" }}>
+              <button onClick={buy} className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(109,94,252,0.42)", border: "none", cursor: "pointer" }}>
                 <DownloadIcon size={20} />Get Instant Access — ₹199 →
               </button>
             </div>
@@ -1463,7 +1471,7 @@ export default function WeightLossPage() {
             <div style={{ textAlign: "left", maxWidth: 400, margin: "0 auto" }}>
               {["90 daily habits across 3 areas of your life", "Healthy Eating · Movement · Sleep — 30 habits per area", "Science explanation for every single habit", "Exact timing guide for working professionals", "Pro tip for each of the 90 habits", "5 powerful bonuses included", "Instant E-Book download + email copy", "Lifetime access — no expiry, no subscription"].map(item => (
                 <div key={item} className="flex gap-3" style={{ marginBottom: "0.75rem" }}>
-                  <span style={{ color: "#25d366", fontWeight: 700, flexShrink: 0 }}>✓</span>
+                  <span style={{ color: "#6d5efc", fontWeight: 700, flexShrink: 0 }}>✓</span>
                   <span style={{ color: "rgba(255,255,255,0.7)", fontSize: 14 }}>{item}</span>
                 </div>
               ))}
@@ -1549,7 +1557,7 @@ export default function WeightLossPage() {
                 </div>
                 <div className="flex gap-0.5 mb-3">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
                 <p style={{ fontSize: 14, color: "#4a4a52", lineHeight: 1.7, marginBottom: "1rem" }}>&ldquo;{text}&rdquo;</p>
-                <div className="mt-auto rounded-lg font-bold" style={{ background: "rgba(37,211,102,0.08)", border: "1px solid rgba(37,211,102,0.2)", padding: "0.5rem 0.875rem", fontSize: 12.5, color: "#1da851" }}>✓ {result}</div>
+                <div className="mt-auto rounded-lg font-bold" style={{ background: "rgba(109,94,252,0.08)", border: "1px solid rgba(109,94,252,0.2)", padding: "0.5rem 0.875rem", fontSize: 12.5, color: "#4f46e5" }}>✓ {result}</div>
               </div>
             ))}
           </div>
@@ -1589,14 +1597,14 @@ export default function WeightLossPage() {
                 <p>I was the person who <strong style={{ color: "#18181b" }}>knew everything about losing weight and did none of it.</strong> 47 saved recipes. Three abandoned diet apps. Every Monday was &ldquo;the Monday I&apos;d finally start.&rdquo;</p>
                 <p>I wasn&apos;t lazy. My plans were always too big to survive real life.</p>
               </div>
-              <div className="my-5 pl-4 py-1" style={{ borderLeft: "3px solid #25d366" }}>
+              <div className="my-5 pl-4 py-1" style={{ borderLeft: "3px solid #6d5efc" }}>
                 <p style={{ fontSize: 15, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.65 }}>
                   &ldquo;BJ Fogg&apos;s Stanford research changed everything: the people who lost weight and kept it off made each habit so small it was <em>impossible to fail</em>. I tested it on myself — one tiny fat-loss habit a day, under 5 minutes. Ninety days later the weight was gone, and it stayed gone.&rdquo;
                 </p>
               </div>
               <p className="duc-body">I put that exact 90-day system into <strong style={{ color: "#18181b" }}>Slim &amp; Strong</strong>. <strong style={{ color: "#18181b" }}>2,800+ readers</strong> have followed it since — and reported changes they couldn&apos;t believe.</p>
               <div className="mt-5 flex items-center gap-3">
-                <p className="font-serif italic text-xl" style={{ color: "#25d366" }}>— Rohan</p>
+                <p className="font-serif italic text-xl" style={{ color: "#6d5efc" }}>— Rohan</p>
                 <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
                 <p style={{ fontSize: 13, color: "#71717a" }}>Author, Slim &amp; Strong</p>
               </div>
@@ -1609,10 +1617,10 @@ export default function WeightLossPage() {
       <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="rounded-2xl premium-card p-7 sm:p-10 border-glow relative overflow-hidden">
-            <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full" style={{ background: "rgba(37,211,102,0.07)" }} aria-hidden="true" />
+            <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full" style={{ background: "rgba(109,94,252,0.07)" }} aria-hidden="true" />
             <div className="relative">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.2)", fontSize: 26 }}>🛡️</div>
+                <div className="w-14 h-14 rounded-full flex items-center justify-center shrink-0" style={{ background: "rgba(109,94,252,0.1)", border: "1px solid rgba(109,94,252,0.2)", fontSize: 26 }}>🛡️</div>
                 <div>
                   <p className="duc-label mb-1">7-day money-back guarantee promise</p>
                   <h2 className="duc-h2" style={{ color: "#18181b" }}>You have nothing to lose.</h2>
@@ -1626,7 +1634,7 @@ export default function WeightLossPage() {
                   { icon: "↩️", t: "7-day refund", b: "Not for you? Message me for a full refund." },
                 ].map(({ icon, t, b }) => (
                   <div key={t} className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: "rgba(37,211,102,0.1)", border: "1px solid rgba(37,211,102,0.15)" }}>{icon}</div>
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0" style={{ background: "rgba(109,94,252,0.1)", border: "1px solid rgba(109,94,252,0.15)" }}>{icon}</div>
                     <div>
                       <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b" }}>{t}</p>
                       <p style={{ fontSize: 12, color: "#71717a", marginTop: 2 }}>{b}</p>
@@ -1634,7 +1642,7 @@ export default function WeightLossPage() {
                   </div>
                 ))}
               </div>
-              <div className="rounded-xl p-5 mb-7" style={{ background: "rgba(37,211,102,0.06)", border: "1px solid rgba(37,211,102,0.18)" }}>
+              <div className="rounded-xl p-5 mb-7" style={{ background: "rgba(109,94,252,0.06)", border: "1px solid rgba(109,94,252,0.18)" }}>
                 <div className="flex items-start gap-3">
                   <span style={{ fontSize: 24 }} className="shrink-0">🤝</span>
                   <div>
@@ -1682,13 +1690,13 @@ export default function WeightLossPage() {
       {/* ══ 15. FINAL CLOSE ═════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden py-20 lg:py-28" style={{ background: "#18181b" }}>
         <div className="absolute inset-0 sparkle-bg pointer-events-none opacity-30" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(37,211,102,0.08),transparent 70%)" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(109,94,252,0.08),transparent 70%)" }} />
         <div className="max-w-xl mx-auto px-6 text-center relative">
           <p style={{ fontSize: 44 }} className="mb-5">📗</p>
-          <p className="duc-label mb-3" style={{ color: "#25d366" }}>Start Tonight</p>
+          <p className="duc-label mb-3" style={{ color: "#6d5efc" }}>Start Tonight</p>
           <h2 className="duc-h1 mb-5" style={{ color: "#fff" }}>
             90 days from now, you&apos;ll wish<br />
-            <span style={{ color: "#25d366" }}>you started today.</span>
+            <span style={{ color: "#6d5efc" }}>you started today.</span>
           </h2>
           <p style={{ fontSize: 16, color: "#a1a1aa", lineHeight: 1.75, marginBottom: 32 }}>
             ₹199. One time. 90 habits. 3 areas of your life. Instant E-Book download. Start Day 1 tonight.
@@ -1696,7 +1704,7 @@ export default function WeightLossPage() {
           <CTA label="Get Slim & Strong — ₹199 →" sub="Secure payment · Instant download · 7-day money-back guarantee" />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Questions?{" "}
-            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Slim+%26+Strong+guide" className="underline" style={{ color: "#25d366" }}>Chat with Rohan on WhatsApp</a>
+            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Slim+%26+Strong+guide" className="underline" style={{ color: "#6d5efc" }}>Chat with Rohan on WhatsApp</a>
           </p>
           <div className="mt-10 rounded-xl p-6 text-left" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.07)" }}>
             <p style={{ fontSize: 14, color: "#a1a1aa", lineHeight: 1.75 }}>

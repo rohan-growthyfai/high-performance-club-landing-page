@@ -34,7 +34,9 @@ function Check({ green }: { green?: boolean }) {
 }
 
 // ─── CTA button ───────────────────────────────────────────────────────────────
-const DUC_WA_LINK = "https://wa.me/918956146485?text=Hi%2C+I+want+to+join+Daily+Upgrade+Club";
+// ₹365 one-time Razorpay payment link (1 full year of daily habits · ₹1/day).
+// All primary CTAs open this directly instead of WhatsApp.
+const DUC_WA_LINK = "https://rzp.io/rzp/hrJooRfb";
 
 function CTA({ label, sub }: { label: string; sub?: string }) {
   return (

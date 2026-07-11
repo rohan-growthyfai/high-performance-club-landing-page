@@ -573,13 +573,13 @@ export default function WeightLossPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: "😮‍💨", keyword: "Late-Night Eating", text: "You order food at 11 PM because dinner got cancelled for a client call — again.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80" },
-              { icon: "💳", keyword: "Wasted Memberships", text: "You've paid for gym memberships this year. You went twice, total.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=400&q=80" },
-              { icon: "🍱", keyword: "Desk Lunches", text: "You eat lunch at your desk while on a Zoom, barely tasting anything.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1541199249251-f713e6145474?w=400&q=80" },
-              { icon: "🛏", keyword: "Broken Sleep", text: "You sleep at 1 AM, wake at 7, skip breakfast, and wonder why you're exhausted.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" },
-              { icon: "✈️", keyword: "Constant Travel", text: "You travel constantly. Hotel food, airport junk, zero routine.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1495364141860-b0d03eccd065?w=400&q=80" },
-              { icon: "😞", keyword: "Nothing Sticks", text: "You've tried keto, IF, calorie counting. Nothing stuck past Week 2.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&q=80" },
-              { icon: "⏰", keyword: "No Free Time", text: "A 1-hour gym routine was never realistic for a 10-hour workday.", color: "#ea580c", solidBg: "#fff7ed", border: "#fed7aa", img: "https://images.unsplash.com/photo-1434682881908-b43d0467b798?w=400&q=80" },
+              { icon: "😮‍💨", keyword: "Late-Night Eating", text: "You order food at 11 PM because dinner got cancelled for a client call — again.", color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", img: "/goals/pain/late-night.png" },
+              { icon: "💳", keyword: "Wasted Memberships", text: "You've paid for gym memberships this year. You went twice, total.", color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", img: "/goals/pain/gym-wasted.png" },
+              { icon: "🍱", keyword: "Desk Lunches", text: "You eat lunch at your desk while on a Zoom, barely tasting anything.", color: "#db2777", solidBg: "#fdf2f8", border: "#f9a8d4", img: "/goals/pain/desk-lunch.png" },
+              { icon: "🛏", keyword: "Broken Sleep", text: "You sleep at 1 AM, wake at 7, skip breakfast, and wonder why you're exhausted.", color: "#7c3aed", solidBg: "#f5f3ff", border: "#ddd6fe", img: "/goals/pain/broken-sleep.png" },
+              { icon: "✈️", keyword: "Constant Travel", text: "You travel constantly. Hotel food, airport junk, zero routine.", color: "#059669", solidBg: "#ecfdf5", border: "#6ee7b7", img: "/goals/pain/travel.png" },
+              { icon: "😞", keyword: "Nothing Sticks", text: "You've tried keto, IF, calorie counting. Nothing stuck past Week 2.", color: "#0284c7", solidBg: "#f0f9ff", border: "#bae6fd", img: "/goals/pain/nothing-sticks.png" },
+              { icon: "⏰", keyword: "No Free Time", text: "A 1-hour gym routine was never realistic for a 10-hour workday.", color: "#ea580c", solidBg: "#fff7ed", border: "#fed7aa", img: "/goals/pain/no-time.png" },
             ].map((p, i) => (
               <div key={i} className="duc-glow-card rounded-2xl overflow-hidden flex flex-col" style={{ background: p.solidBg, border: `2px solid ${p.border}` }}>
                 {/* Image fading into card bg — same pattern as theme cards */}

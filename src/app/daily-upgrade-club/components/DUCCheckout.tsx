@@ -3,19 +3,20 @@ import { useState, useEffect, useCallback } from "react";
 
 declare global {
   interface Window {
-    Razorpay: new (options: RazorpayOptions) => RazorpayInstance;
     fbq?: (...args: unknown[]) => void;
   }
 }
 
 interface RazorpayOptions {
   key: string;
-  subscription_id: string;
+  order_id: string;
+  amount: number;
+  currency: string;
   name: string;
   description: string;
   prefill: { name: string; email: string; contact: string };
   theme: { color: string };
-  handler: (response: { razorpay_payment_id: string; razorpay_subscription_id: string; razorpay_signature: string }) => void;
+  handler: (response: { razorpay_payment_id: string; razorpay_order_id: string; razorpay_signature: string }) => void;
   modal: { ondismiss: () => void };
 }
 
@@ -89,28 +90,34 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
     setLoading(true);
     // Fire InitiateCheckout when user clicks the button
     window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" });
+    // WhatsApp number with India country code (engine delivers habits here)
+    const waNumber = "91" + trimmedPhone.slice(-10);
     try {
-      // Step 1: Create subscription on our server
-      const resp = await fetch(`${ENGINE_URL}/duc/create-subscription`, {
+      // Step 1: Create a one-time ₹365 order on our server (notes carry the
+      // WhatsApp number so the payment webhook can onboard the buyer).
+      const resp = await fetch(`${ENGINE_URL}/duc/create-order`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), phone: trimmedPhone, email: email.trim() }),
+        body: JSON.stringify({ name: name.trim(), phone: waNumber, email: email.trim() }),
       });
       const data = await resp.json();
-      if (!data.ok || !data.subscription_id) {
+      if (!data.ok || !data.order_id) {
         throw new Error(data.error || "Could not initiate payment. Please try again.");
       }
 
-      // Subscription checkout — shows ₹1 now + ₹99/month mandate setup in one screen
-      const rzp = new window.Razorpay({
+      // One-time ₹365 checkout — 365 days of daily habits, no renewals
+      const RazorpayCtor = (window as unknown as { Razorpay: new (o: RazorpayOptions) => RazorpayInstance }).Razorpay;
+      const rzp = new RazorpayCtor({
         key: data.key_id,
-        subscription_id: data.subscription_id,
+        order_id: data.order_id,
+        amount: data.amount,
+        currency: data.currency || "INR",
         name: "Daily Upgrade Club",
-        description: "₹365 for 1 year · just ₹1/day · one-time payment",
+        description: "1 Year of Daily Habits · ₹365 one-time (just ₹1/day)",
         prefill: {
           name: data.name,
           email: data.email,
-          contact: data.phone,
+          contact: trimmedPhone.slice(-10),
         },
         theme: { color: "#1da851" },
         handler: () => {

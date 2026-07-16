@@ -34,23 +34,22 @@ function Check({ green }: { green?: boolean }) {
 }
 
 // ─── CTA button ───────────────────────────────────────────────────────────────
-// ₹365 one-time Razorpay payment link (1 full year of daily habits · ₹1/day).
-// All primary CTAs open this directly instead of WhatsApp.
-// v2: description leads with "Daily Upgrade Club" on the Razorpay checkout.
-const DUC_WA_LINK = "https://rzp.io/rzp/GrVqgn8";
+// Opens the ₹365 one-time checkout modal, which collects the buyer's WhatsApp
+// number (required — habits are delivered on WhatsApp) then opens Razorpay.
+function openDUCCheckout() {
+  if (typeof window !== "undefined" && window.openDUCCheckout) window.openDUCCheckout();
+}
 
 function CTA({ label, sub }: { label: string; sub?: string }) {
   return (
     <div className="flex flex-col items-center gap-2">
-      <a
-        href={DUC_WA_LINK}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
-        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em", textDecoration: "none" }}
-        onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" })}>
+      <button
+        type="button"
+        onClick={openDUCCheckout}
+        className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white cursor-pointer border-0"
+        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", letterSpacing: "-0.01em", textDecoration: "none" }}>
         <WAIcon size={20} />{label}
-      </a>
+      </button>
       {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
     </div>
   );
@@ -383,14 +382,14 @@ function StickyBottomCTA() {
   return (
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
-        <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+        <a href="#" onClick={(e) => { e.preventDefault(); openDUCCheckout(); }} className="cursor-pointer w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
           <div><p className="text-white font-black text-sm leading-tight">Get 1 Year of Habits →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One payment ₹365 · Just ₹1/day</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={15} /><span className="text-white font-bold text-sm">Join ₹365</span></div>
         </a>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
-          <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+          <a href="#" onClick={(e) => { e.preventDefault(); openDUCCheckout(); }} className="cursor-pointer w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
             <div><p className="text-white font-black text-sm leading-tight">Get 1 Full Year of Daily Habits on WhatsApp →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.8)" }}>One-time payment of ₹365 · Just ₹1/day · No renewals</p></div>
             <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><WAIcon size={16} /><span className="text-white font-bold text-sm">Join ₹365</span></div>
           </a>
@@ -487,7 +486,7 @@ function TrialPopup() {
                 </div>
               ))}
             </div>
-            <a href={DUC_WA_LINK} target="_blank" rel="noopener noreferrer" onClick={dismiss} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); dismiss(); openDUCCheckout(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary cursor-pointer" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(37,211,102,0.4)", textDecoration: "none" }}>
               <WAIcon size={18} />Get 1 Year of Habits — ₹365 →
             </a>
             <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>One-time ₹365 · Just ₹1/day · No renewals</p>
@@ -728,15 +727,13 @@ export default function DailyUpgradeClubPage() {
 
               {/* CTA */}
               <div className="animate-fade-up delay-300 flex flex-col items-center lg:items-start gap-2 mb-8">
-                <a
-                  href={DUC_WA_LINK}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}
-                  onClick={() => window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" })}>
+                <button
+                  type="button"
+                  onClick={openDUCCheckout}
+                  className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white cursor-pointer border-0"
+                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
                   <WAIcon size={22} />Get 1 Year of Habits — ₹365 →
-                </a>
+                </button>
                 <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>One-time payment of ₹365 · Just ₹1/day · No renewals</p>
               </div>
 
@@ -813,14 +810,13 @@ export default function DailyUpgradeClubPage() {
           <div className="mt-8 rounded-2xl p-6 text-center" style={{ background: "linear-gradient(135deg,rgba(37,211,102,0.08),rgba(29,168,81,0.04))", border: "1px solid rgba(37,211,102,0.18)" }}>
             <p className="font-bold mb-2" style={{ fontSize: 17, color: "#18181b" }}>This isn&apos;t a discipline problem.</p>
             <p className="duc-body mb-5">It&apos;s a <strong style={{ color: "#1da851" }}>system problem.</strong> Get the exact proven system to actually build healthier habits and stay consistent for lifetime</p>
-            <a
-              href={DUC_WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white"
+            <button
+              type="button"
+              onClick={openDUCCheckout}
+              className="btn-primary inline-flex items-center gap-3 px-8 py-4 rounded-full font-black text-white cursor-pointer border-0"
               style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
               <WAIcon size={18} />Get 1 Year of Habits — ₹365 →
-            </a>
+            </button>
             <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>One-time ₹365 · Just ₹1/day · No renewals</p>
           </div>
         </div>
@@ -1476,14 +1472,13 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <a
-              href={DUC_WA_LINK}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
+            <button
+              type="button"
+              onClick={openDUCCheckout}
+              className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white cursor-pointer border-0"
               style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
               Yes, This Is For Me →
-            </a>
+            </button>
           </div>
         </div>
       </section>

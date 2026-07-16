@@ -150,7 +150,7 @@ const THEMES = [
 const GAINS = [
   { icon: "💪", title: "More confident", body: "Every night your child is the one who is brave, who solves the problem, who saves the day. That feeling doesn't stay in the story — it comes with them into real life." },
   { icon: "🧭", title: "Stronger values", body: "Kindness, honesty, courage and fairness — shown through a story, not a lecture. Children absorb values through the heroes they admire, not through being told what's right." },
-  { icon: "🧠", title: "More knowledgeable", body: "Real history, real heroes, real ideas — woven gently into age-appropriate adventures. Your child learns without ever feeling like they're being taught." },
+  { icon: "🧠", title: "Full of ideas", body: "Real history, real heroes, real ideas — woven gently into age-appropriate adventures. Your child soaks it in without ever feeling like they're being taught." },
   { icon: "🌟", title: "A better version of themselves", body: "Every story ends with one warm question for you to ask your child — turning a screen habit into a nightly conversation that builds who they're becoming." },
 ];
 
@@ -205,10 +205,17 @@ export default function StoryVersePage() {
               </h1>
 
               <p className="sv-body mt-6 max-w-lg mx-auto lg:mx-0">
-                Every night, <b style={{ color: "#3a2f4a", fontWeight: 800 }}>StoryVerse</b> sends your child a brand-new, beautifully illustrated bedtime story on WhatsApp — where <b style={{ color: "#3a2f4a" }}>they are the hero</b>. Each adventure quietly builds confidence, values, and knowledge, so instead of dreading their screen time, you&apos;ll finally feel good about it.
+                Every night, <b style={{ color: "#3a2f4a", fontWeight: 800 }}>StoryVerse</b> sends your child a brand-new, beautifully illustrated bedtime story on WhatsApp — where <b style={{ color: "#3a2f4a" }}>they are the hero</b>. Each adventure quietly builds confidence, values, and imagination, so instead of dreading their screen time, you&apos;ll finally feel good about it.
               </p>
 
-              <div className="mt-8 flex flex-col items-center lg:items-start gap-3">
+              <div className="mt-5 inline-flex items-start gap-2.5 px-4 py-3 rounded-2xl max-w-lg mx-auto lg:mx-0" style={{ background: "#fff", border: "1.5px solid #e7dcf2" }}>
+                <span style={{ fontSize: 18 }}>🚫📱</span>
+                <p style={{ fontSize: 13.5, color: "#5c5068", lineHeight: 1.55, textAlign: "left" }}>
+                  <b style={{ color: "#3a2f4a" }}>Not another app to get lost in.</b> No algorithm, no autoplay, no infinite scroll — one story arrives, they read it with you, then it&apos;s goodnight.
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-col items-center lg:items-start gap-3">
                 <CTA label="Start Tonight — ₹99/month" sub="1 story every night · Cancel anytime · No hidden charges" onClick={openCheckout} />
               </div>
             </div>
@@ -237,9 +244,12 @@ export default function StoryVersePage() {
           <p className="sv-body max-w-2xl mx-auto mb-4">
             Kids today reach for a screen the moment they&apos;re bored — and taking it away every time just isn&apos;t realistic anymore. But what if, instead of fighting that habit, you made it work <i>for</i> your child?
           </p>
-          <p className="sv-body max-w-2xl mx-auto font-semibold" style={{ color: "#3a2f4a" }}>
+          <p className="sv-body max-w-2xl mx-auto font-semibold mb-6" style={{ color: "#3a2f4a" }}>
             StoryVerse turns 5 minutes of screen time into something you&apos;re actually proud of — a nightly story where your child learns to be brave, kind and curious, with themselves as the hero.
           </p>
+          <div className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full sv-font" style={{ fontSize: 13, fontWeight: 700, background: "#fff9f0", border: "1.5px solid #f0dcb8", color: "#92660f" }}>
+            🤝 No sales calls. No demo you have to sit through. Just ₹99/month, cancel anytime.
+          </div>
         </div>
       </section>
 
@@ -467,8 +477,8 @@ export default function StoryVersePage() {
             </div>
             <div className="text-center px-5 sm:px-8 pt-7 pb-8">
               <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(4rem,10vw,5.5rem)", color: "#fff", textShadow: "0 0 32px rgba(232,169,75,0.4)", fontFamily: "'Baloo 2'" }}>₹99</p>
-              <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">per month — less than one edtech app subscription</p>
-              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">Cancel anytime · No hidden charges · No upfront fee</p>
+              <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">per month — less than 2 cups of chai</p>
+              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">Cancel anytime · No hidden charges · No upfront fee · No sales calls, ever</p>
               <CTA label="Start StoryVerse Tonight →" sub="₹99/month · Cancel anytime" onClick={openCheckout} />
             </div>
           </div>

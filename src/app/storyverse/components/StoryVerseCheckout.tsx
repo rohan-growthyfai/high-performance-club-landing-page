@@ -45,7 +45,7 @@ export default function StoryVerseCheckout({ isOpen, onClose }: Props) {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [childName, setChildName] = useState("");
-  const [childGender, setChildGender] = useState("neutral");
+  const [childGender, setChildGender] = useState("boy");
   const [childAge, setChildAge] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -168,7 +168,7 @@ export default function StoryVerseCheckout({ isOpen, onClose }: Props) {
           <div className="flex flex-col gap-1">
             <label className="text-sm font-semibold text-gray-700">Your child is a…</label>
             <div className="flex gap-2">
-              {[{ v: "boy", l: "👦 Boy" }, { v: "girl", l: "👧 Girl" }, { v: "neutral", l: "🌟 Prefer not to say" }].map(g => (
+              {[{ v: "boy", l: "👦 Boy" }, { v: "girl", l: "👧 Girl" }].map(g => (
                 <button type="button" key={g.v} onClick={() => setChildGender(g.v)}
                   className="flex-1 rounded-xl px-2 py-2.5 text-sm font-semibold border"
                   style={{ borderColor: childGender === g.v ? "#e8a94b" : "#e5e7eb", background: childGender === g.v ? "#fff6ea" : "#fafafa", color: childGender === g.v ? "#92660f" : "#374151" }}>

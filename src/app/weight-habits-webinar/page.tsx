@@ -359,12 +359,12 @@ export default function WeightHabitsWebinarPage() {
           </h1>
 
           {/* One-line, 5-year-old-simple explainer */}
-          <p style={{ fontSize: 19, lineHeight: 1.6, color: "#3f3f46", maxWidth: 640, margin: "0 auto 10px", fontWeight: 500 }}>
-            In this <strong style={{ color: "#18181b" }}>free 90-minute class</strong>, you&apos;ll learn a simple way to build{" "}
-            <strong style={{ color: "#18181b" }}>tiny healthy habits</strong> — so small you never quit them.
+          <p style={{ fontSize: 19, lineHeight: 1.6, color: "#3f3f46", maxWidth: 660, margin: "0 auto 10px", fontWeight: 500 }}>
+            In this <strong style={{ color: "#18181b" }}>free 90-minute class</strong>, you&apos;ll learn a hidden but powerful system to lose weight and stay fit —{" "}
+            <strong style={{ color: "#18181b" }}>the &ldquo;1% better every day&rdquo; way</strong>.
           </p>
-          <p style={{ fontSize: 16, color: "#71717a", maxWidth: 560, margin: "0 auto 26px" }}>
-            No hard diets. No boring gym. Just one tiny habit a day that actually sticks.
+          <p style={{ fontSize: 16, color: "#71717a", maxWidth: 580, margin: "0 auto 26px" }}>
+            You&apos;ll learn how to break a big goal (like losing weight) into <strong style={{ color: "#52525b" }}>tiny daily habits</strong> that are easy to keep — for life. No hard diets. No boring gym.
           </p>
 
           {/* When / where — big clear badges */}
@@ -453,8 +453,8 @@ export default function WeightHabitsWebinarPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-12">
             <p className="duc-label mb-3">What this class is about</p>
-            <h2 className="duc-h2 duc-section-title mb-3">The tiny-habit way — in 3 simple steps</h2>
-            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 520, margin: "0 auto" }}>This is exactly what you&apos;ll learn to do, live, in the class.</p>
+            <h2 className="duc-h2 duc-section-title mb-3">How tiny habits actually work — in 3 simple steps</h2>
+            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 520, margin: "0 auto" }}>This is the heart of the 1%-better system — and exactly what you&apos;ll learn to do, live, in the class.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
@@ -480,6 +480,59 @@ export default function WeightHabitsWebinarPage() {
 
           <div className="flex justify-center mt-10">
             <CTA label="Yes — Teach Me This (Free) →" sub={`${WHEN_LINE}`} />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 3b. THE HIDDEN SYSTEM — 1% better every day ═════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">The hidden system you&apos;ll learn</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Just get <span className="gradient-text">1% better</span> every day</h2>
+            <p style={{ fontSize: 16.5, color: "#52525b", maxWidth: 560, margin: "0 auto", lineHeight: 1.6 }}>
+              You don&apos;t need a big change. You need one <strong style={{ color: "#18181b" }}>tiny</strong> change — repeated every day. Small steps stack up into big results.
+            </p>
+          </div>
+
+          {/* Simple visual: two paths */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-8">
+            <div className="rounded-3xl p-6 text-center" style={{ background: "#fff7f7", border: "2px solid #fecaca" }}>
+              <span style={{ fontSize: 44 }}>📉</span>
+              <p style={{ fontSize: 17, fontWeight: 900, color: "#dc2626", margin: "10px 0 6px" }}>Do nothing</p>
+              <p style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.55 }}>Same habits, same body. A year later, nothing has changed.</p>
+            </div>
+            <div className="rounded-3xl p-6 text-center" style={{ background: "#f0fdf4", border: "2px solid #bbf7d0" }}>
+              <span style={{ fontSize: 44 }}>📈</span>
+              <p style={{ fontSize: 17, fontWeight: 900, color: "#059669", margin: "10px 0 6px" }}>1% better daily</p>
+              <p style={{ fontSize: 14.5, color: "#18181b", fontWeight: 600, lineHeight: 1.55 }}>Tiny wins add up. A year later, you&apos;re a much fitter, healthier you.</p>
+            </div>
+          </div>
+
+          {/* Big goal → tiny habits: simple chain */}
+          <div className="rounded-3xl p-7 lg:p-8" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+            <p className="text-center mb-6" style={{ fontSize: 15, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+              How to break a BIG goal into TINY habits
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-2">
+              <div className="rounded-2xl px-5 py-4 text-center" style={{ background: "#18181b", minWidth: 150 }}>
+                <p style={{ fontSize: 12, color: "#e8a020", fontWeight: 700, marginBottom: 2 }}>BIG GOAL</p>
+                <p style={{ fontSize: 16, fontWeight: 900, color: "#fff" }}>🎯 Lose weight</p>
+              </div>
+              <span style={{ fontSize: 26, color: "#d4a017", fontWeight: 900 }}>→</span>
+              <div className="rounded-2xl px-5 py-4 text-center" style={{ background: "#fff", border: "1.5px solid #e6d9b0", minWidth: 150 }}>
+                <p style={{ fontSize: 12, color: "#9a6b0a", fontWeight: 700, marginBottom: 2 }}>TINY HABITS</p>
+                <p style={{ fontSize: 14.5, fontWeight: 700, color: "#18181b", lineHeight: 1.4 }}>🚶 2-min walk<br />🥗 veggies first<br />💧 water before meals</p>
+              </div>
+              <span style={{ fontSize: 26, color: "#d4a017", fontWeight: 900 }}>→</span>
+              <div className="rounded-2xl px-5 py-4 text-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", minWidth: 150 }}>
+                <p style={{ fontSize: 12, color: "rgba(255,255,255,0.85)", fontWeight: 700, marginBottom: 2 }}>THE RESULT</p>
+                <p style={{ fontSize: 16, fontWeight: 900, color: "#fff" }}>✅ Fit for life</p>
+              </div>
+            </div>
+            <p className="text-center mt-6" style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.6, maxWidth: 520, margin: "1.5rem auto 0" }}>
+              In the class, you&apos;ll learn to do this with <strong style={{ color: "#18181b" }}>your own</strong> goal — so you stay consistent and actually get results, without fancy diets or complex workouts.
+            </p>
           </div>
         </div>
       </section>
@@ -533,10 +586,12 @@ export default function WeightHabitsWebinarPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { icon: "❓", title: "Why you keep quitting", plain: "The real reason plans fall apart — it's not willpower." },
-              { icon: "🪄", title: "The simple habit trick", plain: "The easy 5-step way to make any habit stick." },
-              { icon: "📝", title: "Build your own habit", plain: "We pick one goal of yours and turn it into a tiny action — live." },
-              { icon: "🗺️", title: "Your 7-day plan", plain: "You leave knowing exactly what to do each day for a week." },
+              { icon: "📈", title: "The 1% better system", plain: "The hidden, powerful way to get fitter — tiny improvements that add up over time." },
+              { icon: "✂️", title: "Break big goals into tiny habits", plain: "Turn a scary goal like \"lose weight\" into small daily steps you can actually do." },
+              { icon: "❓", title: "Why you keep quitting", plain: "The real reason plans fall apart — and it's not that you lack willpower." },
+              { icon: "🪄", title: "The simple 5-step habit trick", plain: "An easy method to make any healthy habit stick, without diets or the gym." },
+              { icon: "📝", title: "Build your own habit — live", plain: "We take one of YOUR goals and turn it into a tiny action, together, in the class." },
+              { icon: "🗺️", title: "Your 7-day starter plan", plain: "You leave knowing exactly what to do each day — plus how to restart if you slip." },
             ].map(({ icon, title, plain }) => (
               <div key={title} className="pop-card rounded-2xl p-6 flex items-start gap-4" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
                 <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(212,160,23,0.1)", fontSize: 30 }}>{icon}</div>
@@ -549,6 +604,60 @@ export default function WeightHabitsWebinarPage() {
           </div>
           <div className="flex justify-center mt-10">
             <CTA label="Save My Free Seat →" sub={`${WHEN_LINE} · Free`} />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 5b. BEFORE vs AFTER THE CLASS ═══════════════════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">The change this class makes</p>
+            <h2 className="duc-h2 duc-section-title">Before this class → After this class</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* BEFORE */}
+            <div className="rounded-3xl overflow-hidden" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
+              <div className="px-6 py-4 flex items-center gap-2.5" style={{ background: "#fee2e2", borderBottom: "2px solid #fecaca" }}>
+                <span style={{ fontSize: 24 }}>😔</span>
+                <span style={{ fontSize: 16, fontWeight: 900, color: "#991b1b" }}>BEFORE the class</span>
+              </div>
+              <div className="p-6 flex flex-col gap-3">
+                {[
+                  "No idea where to even start",
+                  "Try everything at once, burn out fast",
+                  "Miss one day and quit completely",
+                  "Restart every Monday… again and again",
+                  "Feel stuck, low energy, frustrated",
+                ].map(t => (
+                  <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.5 }}>{t}</span></div>
+                ))}
+              </div>
+            </div>
+            {/* AFTER */}
+            <div className="rounded-3xl overflow-hidden" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 12px 34px -14px rgba(5,150,105,0.35)" }}>
+              <div className="px-6 py-4 flex items-center gap-2.5" style={{ background: "#dcfce7", borderBottom: "2px solid #bbf7d0" }}>
+                <span style={{ fontSize: 24 }}>😄</span>
+                <span style={{ fontSize: 16, fontWeight: 900, color: "#166534" }}>AFTER the class</span>
+              </div>
+              <div className="p-6 flex flex-col gap-3">
+                {[
+                  "Know the 1%-better system to get fit",
+                  "One tiny habit at a time — no burnout",
+                  "A restart rule, so a slip isn't a quit",
+                  "A clear 7-day plan for your own goal",
+                  "Confident you can finally stay consistent",
+                ].map(t => (
+                  <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 14.5, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <p className="text-center mt-8" style={{ fontSize: 17, fontWeight: 800, color: "#18181b", maxWidth: 560, margin: "2rem auto 0" }}>
+            Same you. Same busy life. <span style={{ color: "#a8790d" }}>Just a simple system that finally works.</span>
+          </p>
+          <div className="flex justify-center mt-8">
+            <CTA label="I Want the AFTER →" sub={`${WHEN_LINE} · Free`} />
           </div>
         </div>
       </section>
@@ -612,6 +721,7 @@ export default function WeightHabitsWebinarPage() {
           <div className="flex flex-col gap-2.5">
             {[
               { q: "Is it really free?", a: "Yes — totally free. Just add your name, email and WhatsApp number, and we'll send you the join link." },
+              { q: "What is the \"1% better\" system?", a: "It's a simple idea: instead of one big change, you improve just a tiny bit each day. Those tiny daily habits add up over time into big results — without diets or the gym. We teach you exactly how to use it." },
               { q: "When is it and how long?", a: `${WHEN_LINE}. We'll send the exact join link and reminders to your WhatsApp after you sign up.` },
               { q: "Will you give me a diet?", a: "No diet plans. This is about small, easy habits — you keep eating normal food, just a little smarter." },
               { q: "Do I need a gym?", a: "No gym and no equipment. Everything fits into a normal, busy day." },
@@ -633,7 +743,7 @@ export default function WeightHabitsWebinarPage() {
             <span style={{ color: "#a8790d" }}>Start something that lasts.</span>
           </h2>
           <p style={{ fontSize: 17, color: "#a1a1aa", lineHeight: 1.6, marginBottom: 8 }}>
-            A simple trick. One habit built with you. A 7-day plan you keep.
+            Learn the 1%-better system. Build one tiny habit with us. Leave with a 7-day plan you keep.
           </p>
           <p style={{ fontSize: 15, fontWeight: 800, color: "#e8a020", marginBottom: 28 }}>🗓 {WHEN_LINE} · 🎁 Free</p>
           <CTA label="Save My Free Seat →" sub={WEBINAR.seatsLine} />

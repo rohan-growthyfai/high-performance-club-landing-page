@@ -12,21 +12,18 @@ declare global {
 // ═════════════════════════════════════════════════════════════════════════════
 const WEBINAR = {
   title: "Stop Starting Over With Weight Loss",
-  // Leave dateSet=false until you have a confirmed date — the page shows a
-  // "next live session" style line instead of a hard (possibly wrong) date.
-  dateSet: false,
+  dateSet: false,                  // set true once you have a real date
   dateLabel: "This Sunday",        // e.g. "Sunday, 3 August"
   timeLabel: "7:00 PM IST",        // e.g. "7:00 PM IST"
   duration: "90 minutes",
-  platformLabel: "Live on Zoom + WhatsApp reminders",
-  seatsLine: "Limited seats — free to attend",
+  platformLabel: "Live on Zoom",
+  seatsLine: "100% free · Limited seats",
 };
-// Convenience string used in the hero pill / reminders.
 const WHEN_LINE = WEBINAR.dateSet
   ? `${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`
-  : `Next live session ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`;
+  : `Next session ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`;
 
-// ─── Registration modal context ────────────────────────────────────────────────
+// ─── Register modal context ─────────────────────────────────────────────────────
 const RegisterCtx = createContext<() => void>(() => {});
 function useRegister() { return useContext(RegisterCtx); }
 
@@ -40,18 +37,18 @@ function TicketIcon({ size = 20 }: { size?: number }) {
   );
 }
 function Star() {
-  return <svg width="13" height="13" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>;
+  return <svg width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b" aria-hidden="true"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>;
 }
 
 // ─── CTA button ───────────────────────────────────────────────────────────────
-function CTA({ label, sub }: { label: string; sub?: string }) {
+function CTA({ label = "Save My Free Seat", sub }: { label?: string; sub?: string }) {
   const register = useRegister();
   return (
     <div className="flex flex-col items-center gap-2">
       <button
         onClick={register}
         className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
-        style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(212,160,23,0.42)", letterSpacing: "-0.01em", border: "none", cursor: "pointer" }}>
+        style={{ fontSize: 19, boxShadow: "0 10px 30px rgba(212,160,23,0.45)", letterSpacing: "-0.01em", border: "none", cursor: "pointer" }}>
         <TicketIcon size={20} />{label}
       </button>
       {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
@@ -63,17 +60,17 @@ function CTA({ label, sub }: { label: string; sub?: string }) {
 function FAQ({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="duc-glow-card rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6" }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-semibold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 14 }}>
+    <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-bold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 15 }}>
         {q}
-        <span className="shrink-0 text-xl font-light" style={{ color: "#a8790d", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+        <span className="shrink-0 text-2xl font-light" style={{ color: "#a8790d", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
       </button>
-      {open && <div className="px-5 pb-5 leading-relaxed bg-white" style={{ fontSize: 13, color: "#71717a" }}>{a}</div>}
+      {open && <div className="px-5 pb-5 leading-relaxed bg-white" style={{ fontSize: 14, color: "#52525b" }}>{a}</div>}
     </div>
   );
 }
 
-// ─── Registration modal ─────────────────────────────────────────────────────────
+// ─── Register modal ─────────────────────────────────────────────────────────────
 function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -121,23 +118,23 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
             </button>
             <p className="text-3xl mb-2">🎟️</p>
             <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>
-              {status === "done" ? "You're registered! 🎉" : "Reserve your free seat"}
+              {status === "done" ? "You're in! See you live 🎉" : "Save your free seat"}
             </h2>
           </div>
 
           {status === "done" ? (
             <div className="px-6 py-7 text-center">
               <p style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.7, marginBottom: 14 }}>
-                Your seat for <strong style={{ color: "#18181b" }}>&ldquo;{WEBINAR.title}&rdquo;</strong> is booked.
+                Your seat is saved. 🎉
               </p>
               <div className="rounded-xl p-4 mb-4 text-center" style={{ background: "rgba(212,160,23,0.06)", border: "1px solid rgba(212,160,23,0.2)" }}>
                 <p style={{ fontSize: 12, fontWeight: 700, color: "#9a6b0a", marginBottom: 4, textTransform: "uppercase", letterSpacing: "0.08em" }}>When</p>
                 <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>{WHEN_LINE}</p>
-                <p style={{ fontSize: 12.5, color: "#71717a", marginTop: 4 }}>We&apos;ll send the joining link and reminders to your WhatsApp.</p>
+                <p style={{ fontSize: 12.5, color: "#71717a", marginTop: 4 }}>We&apos;ll send the join link on WhatsApp.</p>
               </div>
               <div className="rounded-xl p-4 mb-5 text-left" style={{ background: "#fafafa", border: "1px solid #e4e4e7" }}>
-                <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b", marginBottom: 6 }}>Your first tiny habit — start today:</p>
-                <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6 }}>Before your next second serving or unplanned snack, pause and take three slow breaths. That&apos;s it.</p>
+                <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b", marginBottom: 6 }}>🎁 Try this today:</p>
+                <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6 }}>Before your next snack, stop and take 3 slow breaths. That&apos;s your first tiny habit.</p>
               </div>
               <button onClick={onClose} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 15, border: "none", cursor: "pointer" }}>
                 Done
@@ -149,7 +146,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
                 <span style={{ fontSize: 13, fontWeight: 700, color: "#9a6b0a" }}>🗓 {WHEN_LINE}</span>
               </div>
               <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6, marginBottom: 16, textAlign: "center" }}>
-                Enter your details and we&apos;ll send the joining link and reminders on WhatsApp.
+                Add your details. We&apos;ll send the join link on WhatsApp.
               </p>
               <div className="flex flex-col gap-3">
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="Your name" autoComplete="name" style={inputStyle} />
@@ -158,13 +155,13 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
               </div>
               {status === "error" && (
                 <p style={{ fontSize: 12.5, color: "#dc2626", marginTop: 10, textAlign: "center" }}>
-                  Please enter your name, a valid email and WhatsApp number.
+                  Please add your name, a valid email and WhatsApp number.
                 </p>
               )}
               <button type="submit" disabled={status === "loading"} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary mt-4" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: status === "loading" ? "wait" : "pointer", opacity: status === "loading" ? 0.7 : 1 }}>
-                <TicketIcon size={18} />{status === "loading" ? "Reserving…" : "Reserve My Free Seat →"}
+                <TicketIcon size={18} />{status === "loading" ? "Saving…" : "Save My Free Seat →"}
               </button>
-              <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8, textAlign: "center" }}>Free · No spam · Unsubscribe anytime</p>
+              <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8, textAlign: "center" }}>Free · No spam · Leave anytime</p>
             </form>
           )}
         </div>
@@ -190,14 +187,14 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <button onClick={register} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE}</p></div>
+          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Save My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE}</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><TicketIcon size={15} /><span className="text-white font-bold text-sm">Join</span></div>
         </button>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
           <button onClick={register} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE} · Free</p></div>
+            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Save My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE} · Free</p></div>
             <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><TicketIcon size={16} /><span className="text-white font-bold text-sm">Join Free</span></div>
           </button>
         </div>
@@ -245,7 +242,7 @@ function LiveToast() {
             <div className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0" style={{ background: `hsl(${(t.name.charCodeAt(0) * 37) % 360},55%,48%)` }}>{t.name[0]}</div>
             <div className="flex-1 min-w-0">
               <p className="font-bold leading-snug truncate" style={{ fontSize: 11, color: "#18181b" }}>{t.name} from {t.city}</p>
-              <p className="leading-snug mt-0.5" style={{ fontSize: 10, color: "#71717a" }}>registered · {t.time}</p>
+              <p className="leading-snug mt-0.5" style={{ fontSize: 10, color: "#71717a" }}>saved a seat · {t.time}</p>
             </div>
             <span className="relative flex w-2 h-2 shrink-0"><span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#d4a017" }} /><span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#d4a017" }} /></span>
           </div>
@@ -266,7 +263,7 @@ function RegisterNudge() {
       if (shown.current) return;
       try { if (localStorage.getItem("whw_pop") === "1") return; } catch { /**/ }
       shown.current = true; setVisible(true);
-    }, 18000);
+    }, 20000);
     return () => clearTimeout(t);
   }, []);
   const dismiss = () => { setVisible(false); setDismissed(true); try { localStorage.setItem("whw_pop", "1"); } catch { /**/ } };
@@ -281,15 +278,15 @@ function RegisterNudge() {
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" /></svg>
             </button>
             <p className="text-3xl mb-2">🎟️</p>
-            <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>Grab your free seat before you go</h2>
+            <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>Grab your free seat 🎉</h2>
           </div>
           <div className="px-6 py-5 text-center">
             <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 12 }}>
-              The free webinar <strong style={{ color: "#18181b" }}>&ldquo;{WEBINAR.title}&rdquo;</strong> — learn the 5S system and leave with a 7-day plan you can actually keep.
+              A free class that shows you how to build <strong style={{ color: "#18181b" }}>small healthy habits that stick</strong> — no diet, no gym.
             </p>
             <p style={{ fontSize: 13, fontWeight: 700, color: "#9a6b0a", marginBottom: 16 }}>🗓 {WHEN_LINE}</p>
             <button onClick={() => { dismiss(); register(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-              <TicketIcon size={18} />Reserve My Free Seat →
+              <TicketIcon size={18} />Save My Free Seat →
             </button>
             <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>Free · No spam</p>
           </div>
@@ -312,7 +309,7 @@ function useMetaPixelViewContent() {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// PAGE — lean, conversion-focused webinar registration (7 sections)
+// PAGE — simple words, big visuals, understandable at a glance
 // ═════════════════════════════════════════════════════════════════════════════
 export default function WeightHabitsWebinarPage() {
   useMetaPixelViewContent();
@@ -324,277 +321,325 @@ export default function WeightHabitsWebinarPage() {
     <div id="ss-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b", fontSize: 15 }}>
       <style>{`
         @keyframes duc-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
-        @keyframes ss-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-        .duc-h1{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:900;line-height:1.1;letter-spacing:-0.025em}
-        .duc-h2{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:800;line-height:1.18;letter-spacing:-0.02em}
-        .duc-body{font-size:clamp(1rem,1.8vw,1.0625rem);line-height:1.75;color:#52525b}
-        .duc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#a8790d}
-        .duc-section-title{background:linear-gradient(135deg,#18181b 0%,#3f3f46 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-        .duc-glow-card{box-shadow:0 4px 24px rgba(212,160,23,0.08),0 1px 3px rgba(0,0,0,0.06);transition:box-shadow 0.2s,transform 0.2s}
-        .duc-glow-card:hover{box-shadow:0 8px 32px rgba(212,160,23,0.14),0 2px 8px rgba(0,0,0,0.08);transform:translateY(-2px)}
+        @keyframes ss-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        .duc-h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:900;line-height:1.08;letter-spacing:-0.025em}
+        .duc-h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;line-height:1.15;letter-spacing:-0.02em}
+        .duc-label{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#a8790d}
+        .duc-section-title{color:#18181b}
         #ss-top .gradient-text{background:linear-gradient(135deg,#b8860b 0%,#d4a017 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
         #ss-top .btn-primary{background:linear-gradient(135deg,#c8891a 0%,#e0b022 50%,#d4a017 100%);color:#171412;font-weight:900;box-shadow:0 8px 28px rgba(184,134,11,0.45),inset 0 1px 0 rgba(255,255,255,0.35)}
-        #ss-top .btn-primary:hover{background:linear-gradient(135deg,#b8860b 0%,#e6be3a 50%,#c8891a 100%);box-shadow:0 12px 36px rgba(184,134,11,0.55),inset 0 1px 0 rgba(255,255,255,0.4)}
+        #ss-top .btn-primary:hover{background:linear-gradient(135deg,#b8860b 0%,#e6be3a 50%,#c8891a 100%);box-shadow:0 12px 36px rgba(184,134,11,0.55)}
         #ss-top .btn-primary:active{background:#9a6b0a}
         #ss-top .accent-pill{background:rgba(212,160,23,0.12);color:#8a6508;border:1px solid rgba(212,160,23,0.35)}
-        #ss-top .mesh-bg{background:radial-gradient(60% 55% at 15% 10%,rgba(212,160,23,0.12) 0%,rgba(212,160,23,0) 60%),radial-gradient(55% 50% at 90% 15%,rgba(200,137,26,0.10) 0%,rgba(200,137,26,0) 60%),radial-gradient(60% 60% at 80% 90%,rgba(184,134,11,0.08) 0%,rgba(184,134,11,0) 60%),#faf8f3}
+        #ss-top .mesh-bg{background:radial-gradient(60% 55% at 15% 10%,rgba(212,160,23,0.12) 0%,rgba(212,160,23,0) 60%),radial-gradient(55% 50% at 90% 15%,rgba(200,137,26,0.10) 0%,rgba(200,137,26,0) 60%),#faf8f3}
+        .pop-card{transition:transform 0.2s, box-shadow 0.2s}
+        .pop-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px -12px rgba(184,134,11,0.3)}
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
       <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "10px 16px" }}>
-        <p className="text-center font-semibold text-white" style={{ fontSize: 13, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          ✦ FREE Live Webinar · {WHEN_LINE} · {WEBINAR.seatsLine} ✦
+        <p className="text-center font-bold text-white" style={{ fontSize: 13.5, letterSpacing: "0.01em", lineHeight: 1.4 }}>
+          🎟️ FREE Online Class · {WHEN_LINE} · {WEBINAR.seatsLine}
         </p>
       </div>
 
-      {/* ══ 1. HERO — the whole pitch, above the fold ════════════════════════ */}
+      {/* ══ 1. HERO — one simple promise + when + 3 things you get ═══════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-12 pb-14 lg:pt-16 text-center">
 
-            {/* LEFT — promise + when + CTA */}
-            <div className="text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5 accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
-                <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#d4a017" }} />
-                Free live webinar · For people who keep starting over
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 accent-pill" style={{ fontSize: 13, fontWeight: 800 }}>
+            <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#d4a017" }} />
+            A free online class · No diet · No gym
+          </div>
+
+          {/* Big simple headline */}
+          <h1 className="duc-h1 mb-5">
+            Tired of trying to lose weight<br className="hidden sm:block" />{" "}
+            and <span className="gradient-text">giving up every time?</span>
+          </h1>
+
+          {/* One-line, 5-year-old-simple explainer */}
+          <p style={{ fontSize: 19, lineHeight: 1.6, color: "#3f3f46", maxWidth: 640, margin: "0 auto 10px", fontWeight: 500 }}>
+            In this <strong style={{ color: "#18181b" }}>free 90-minute class</strong>, you&apos;ll learn a simple way to build{" "}
+            <strong style={{ color: "#18181b" }}>tiny healthy habits</strong> — so small you never quit them.
+          </p>
+          <p style={{ fontSize: 16, color: "#71717a", maxWidth: 560, margin: "0 auto 26px" }}>
+            No hard diets. No boring gym. Just one tiny habit a day that actually sticks.
+          </p>
+
+          {/* When / where — big clear badges */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+            {[
+              { icon: "🗓", label: WEBINAR.dateLabel },
+              { icon: "⏰", label: `${WEBINAR.timeLabel} · ${WEBINAR.duration}` },
+              { icon: "💻", label: WEBINAR.platformLabel },
+              { icon: "🎁", label: "100% Free" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 4px 14px rgba(0,0,0,0.05)" }}>
+                <span style={{ fontSize: 18 }}>{icon}</span>
+                <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{label}</span>
               </div>
+            ))}
+          </div>
 
-              <h1 className="duc-h1 text-foreground mb-4">
-                Stop Starting Over<br />
-                <span className="gradient-text">With Weight Loss</span>
-              </h1>
+          {/* CTA */}
+          <div className="flex flex-col items-center gap-2 mb-9">
+            <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-12 py-6 rounded-full font-black text-white" style={{ fontSize: 22, boxShadow: "0 12px 34px rgba(212,160,23,0.45)", border: "none", cursor: "pointer" }}>
+              <TicketIcon size={24} />Save My Free Seat
+            </button>
+            <p style={{ fontSize: 13, color: "#71717a" }}>Takes 30 seconds · Join link sent on WhatsApp</p>
+          </div>
 
-              <p style={{ fontSize: 17, lineHeight: 1.7, color: "#52525b", marginBottom: 22, maxWidth: 520 }} className="mx-auto lg:mx-0">
-                A free 90-minute live session that shows you how to turn healthy intentions into{" "}
-                <strong style={{ color: "#18181b" }}>tiny daily habits you can actually keep</strong> — without strict diets, complicated workouts, or rebuilding your whole life.
-              </p>
-
-              {/* When / where — the essential webinar facts */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2 mb-6">
-                <div className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>
-                  <span style={{ fontSize: 16 }}>🗓</span>{WEBINAR.dateLabel}
-                </div>
-                <div className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>
-                  <span style={{ fontSize: 16 }}>⏰</span>{WEBINAR.timeLabel} · {WEBINAR.duration}
-                </div>
-                <div className="flex items-center gap-2" style={{ fontSize: 14, fontWeight: 700, color: "#18181b" }}>
-                  <span style={{ fontSize: 16 }}>📍</span>{WEBINAR.platformLabel}
-                </div>
+          {/* The 3 things you'll walk away with — big icon cards */}
+          <p className="duc-label mb-4">🎁 You leave this class with 3 things</p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+            {[
+              { icon: "🪄", big: "A simple trick", small: "to build habits that stick" },
+              { icon: "📝", big: "1 real habit", small: "we build together, live" },
+              { icon: "🗺️", big: "A 7-day plan", small: "to start the very next morning" },
+            ].map(({ icon, big, small }) => (
+              <div key={big} className="pop-card rounded-2xl p-6 flex flex-col items-center text-center" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 6px 22px rgba(184,134,11,0.12)" }}>
+                <span style={{ fontSize: 42, marginBottom: 10 }}>{icon}</span>
+                <p style={{ fontSize: 17, fontWeight: 900, color: "#18181b", lineHeight: 1.2 }}>{big}</p>
+                <p style={{ fontSize: 13.5, color: "#71717a", marginTop: 4, lineHeight: 1.4 }}>{small}</p>
               </div>
+            ))}
+          </div>
 
-              {/* CTA */}
-              <div className="flex flex-col items-center lg:items-start gap-2 mb-7">
-                <button
-                  onClick={openRegister}
-                  className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white"
-                  style={{ fontSize: 20, boxShadow: "0 8px 28px rgba(212,160,23,0.42)", border: "none", cursor: "pointer" }}>
-                  <TicketIcon size={22} />Reserve My Free Seat
-                </button>
-                <p style={{ fontSize: 13, color: "#71717a" }}>Free to attend · Reminders on WhatsApp · No spam</p>
-              </div>
-
-              {/* Social proof */}
-              <div className="flex items-center gap-4 justify-center lg:justify-start">
-                <div className="flex -space-x-2 shrink-0">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/women/woman-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/women/woman-3.avif" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/avatars/men/man-1.jpg" alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                </div>
-                <div>
-                  <div className="flex gap-0.5 mb-0.5">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-                  <p style={{ fontSize: 13, color: "#52525b" }}><strong style={{ color: "#18181b" }}>Working professionals</strong> across India have joined</p>
-                </div>
-              </div>
+          {/* tiny social proof */}
+          <div className="flex items-center justify-center gap-3 mt-8">
+            <div className="flex -space-x-2">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/avatars/women/woman-3.avif" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
             </div>
-
-            {/* RIGHT — "what you'll walk away with" card (the outcome, up front) */}
-            <div className="flex justify-center">
-              <div className="relative w-full max-w-md">
-                <div className="rounded-3xl p-7 lg:p-8" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 24px 60px -20px rgba(184,134,11,0.35)" }}>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full mb-5" style={{ background: "rgba(212,160,23,0.1)", color: "#9a6b0a", fontSize: 12, fontWeight: 800, letterSpacing: "0.06em" }}>
-                    🎁 WHAT YOU&apos;LL WALK AWAY WITH
-                  </div>
-                  <div className="flex flex-col gap-4">
-                    {[
-                      { icon: "🎯", t: "The 5S Daily Upgrade System", s: "A simple, repeatable method for building any habit that sticks." },
-                      { icon: "📝", t: "One habit built live, with you", s: "Turn a real goal of yours into a tiny action you can start tomorrow." },
-                      { icon: "🧭", t: "A ready 7-day starter plan", s: "You leave knowing exactly what to do — including the days you slip." },
-                      { icon: "🔁", t: "The restart rule", s: "How to bounce back in a day instead of quitting for a month." },
-                    ].map(({ icon, t, s }) => (
-                      <div key={t} className="flex items-start gap-3.5">
-                        <div className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0" style={{ background: "rgba(212,160,23,0.1)", fontSize: 19 }}>{icon}</div>
-                        <div>
-                          <p style={{ fontSize: 15, fontWeight: 800, color: "#18181b", lineHeight: 1.3 }}>{t}</p>
-                          <p style={{ fontSize: 13, color: "#71717a", lineHeight: 1.5, marginTop: 2 }}>{s}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className="mt-6 pt-5 text-center" style={{ borderTop: "1px solid #eee" }}>
-                    <button onClick={openRegister} className="btn-primary w-full inline-flex items-center justify-center gap-2 px-6 py-4 rounded-full font-black text-white" style={{ fontSize: 16, border: "none", cursor: "pointer" }}>
-                      <TicketIcon size={18} />Reserve My Free Seat →
-                    </button>
-                    <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>{WEBINAR.seatsLine}</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
+            <div className="flex items-center gap-1">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
+            <p style={{ fontSize: 13, color: "#52525b" }}>Loved by busy people across India</p>
           </div>
         </div>
       </section>
 
-      {/* ══ 2. WHY THIS IS DIFFERENT (3 points) ══════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "#fff" }}>
+      {/* ══ 2. "IS THIS YOU?" — visual pain, almost no words ═════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
-            <p className="duc-label mb-3">Why this is different</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Not another diet. Not another workout plan.</h2>
-            <p className="duc-body max-w-xl mx-auto">You already know most of the advice. The problem was never information — it was a plan too big to survive a normal, busy week. This fixes that.</p>
+            <p className="duc-label mb-3">Does this sound like you?</p>
+            <h2 className="duc-h2 duc-section-title">You already know it&apos;s not your fault</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: "🔁", title: "Built to stop the restart cycle", body: "Most plans ask you to change everything on Day 1, so you burn out by Week 2 and start over on Monday. We do the opposite — one tiny habit at a time." },
-              { icon: "🧭", title: "You leave with a system, not a lecture", body: "This isn't 90 minutes of tips you'll forget. You build a real habit live and walk away with a 7-day plan you can actually follow." },
-              { icon: "🎯", title: "Small enough that you can't fail", body: "Every habit is shrunk to a version that survives your worst, busiest day — with a rule for restarting the moment you slip." },
-            ].map(({ icon, title, body }) => (
-              <div key={title} className="duc-glow-card rounded-2xl p-6 flex flex-col gap-3" style={{ background: "#fafafa", border: "1px solid #e4e4e7" }}>
-                <span style={{ fontSize: 30 }}>{icon}</span>
-                <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", lineHeight: 1.3 }}>{title}</p>
-                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
+              { emoji: "🔁", line: "You start every Monday… and quit by Thursday" },
+              { emoji: "💸", line: "Gym membership you paid for but never use" },
+              { emoji: "😩", line: "Miss one day → feel like a failure → give up" },
+              { emoji: "⏰", line: "No time for a 1-hour workout after work" },
+            ].map(({ emoji, line }) => (
+              <div key={line} className="rounded-2xl p-5 flex flex-col items-center text-center" style={{ background: "#faf8f3", border: "1.5px solid #eee7d6" }}>
+                <span style={{ fontSize: 40, marginBottom: 10 }}>{emoji}</span>
+                <p style={{ fontSize: 14, fontWeight: 600, color: "#3f3f46", lineHeight: 1.5 }}>{line}</p>
               </div>
             ))}
+          </div>
+          <p className="text-center mt-8" style={{ fontSize: 18, fontWeight: 800, color: "#18181b", maxWidth: 620, margin: "2rem auto 0" }}>
+            The problem was never you. <span style={{ color: "#a8790d" }}>Your plan was just too big.</span> 👇
+          </p>
+        </div>
+      </section>
+
+      {/* ══ 3. THE BIG IDEA — 3-step picture story (this IS the webinar) ═════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">What this class is about</p>
+            <h2 className="duc-h2 duc-section-title mb-3">The tiny-habit way — in 3 simple steps</h2>
+            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 520, margin: "0 auto" }}>This is exactly what you&apos;ll learn to do, live, in the class.</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+            {[
+              { n: "1", emoji: "🤏", title: "Make it TINY", plain: "Not \"walk 1 hour\". Just \"walk 2 minutes after dinner.\" So small you can't say no.", color: "#b8860b" },
+              { n: "2", emoji: "🔗", title: "Stick it to your day", plain: "Do it right after something you already do — like \"after dinner\". So you never forget.", color: "#f97316" },
+              { n: "3", emoji: "🔁", title: "Miss a day? Restart fast", plain: "Slipping is normal. You just come back the next day. No guilt. No quitting.", color: "#059669" },
+            ].map(({ n, emoji, title, plain, color }) => (
+              <div key={n} className="pop-card rounded-3xl p-7 flex flex-col items-center text-center relative" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px rgba(0,0,0,0.06)" }}>
+                <div className="w-11 h-11 rounded-full flex items-center justify-center font-black text-white mb-3" style={{ fontSize: 19, background: color }}>{n}</div>
+                <span style={{ fontSize: 52, marginBottom: 10 }}>{emoji}</span>
+                <p style={{ fontSize: 20, fontWeight: 900, color: "#18181b", marginBottom: 8 }}>{title}</p>
+                <p style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.6 }}>{plain}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="rounded-2xl px-6 py-6 text-center mt-8" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
+            <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.4rem)", fontWeight: 900, color: "#fff", lineHeight: 1.4 }}>
+              Tiny habits are easy to keep. <span style={{ color: "#e8a020" }}>And easy habits, done daily, change your body.</span>
+            </p>
+          </div>
+
+          <div className="flex justify-center mt-10">
+            <CTA label="Yes — Teach Me This (Free) →" sub={`${WHEN_LINE}`} />
           </div>
         </div>
       </section>
 
-      {/* ══ 3. WHAT WE'LL COVER (agenda) ═════════════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "#faf8f3" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+      {/* ══ 4. GOOD vs BAD — visual before/after with real images ═══════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
-            <p className="duc-label mb-3">Inside the 90 minutes</p>
-            <h2 className="duc-h2 duc-section-title mb-3">What we&apos;ll cover, step by step</h2>
+            <p className="duc-label mb-3">Old way vs new way</p>
+            <h2 className="duc-h2 duc-section-title">See the difference</h2>
           </div>
-          <div className="flex flex-col gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Old way */}
+            <div className="rounded-3xl overflow-hidden" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
+              <div className="relative" style={{ height: 190, overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/goals/weight-bad.png" alt="The hard old way" style={{ width: "100%", height: "100%", objectFit: "cover", filter: "grayscale(0.2)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(220,38,38,0.15) 100%)" }} />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full" style={{ background: "#dc2626", color: "#fff", fontSize: 12, fontWeight: 800 }}>😫 THE OLD WAY</div>
+              </div>
+              <div className="p-6 flex flex-col gap-2.5">
+                {["Strict diet — no tasty food", "1-hour gym, 5 days a week", "Count every calorie", "Change everything at once", "Quit by Week 2 😮‍💨"].map(t => (
+                  <div key={t} className="flex items-center gap-2.5"><span style={{ color: "#dc2626", fontSize: 15, fontWeight: 900 }}>✕</span><span style={{ fontSize: 14.5, color: "#52525b" }}>{t}</span></div>
+                ))}
+              </div>
+            </div>
+            {/* New way */}
+            <div className="rounded-3xl overflow-hidden" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4" }}>
+              <div className="relative" style={{ height: 190, overflow: "hidden" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/goals/weight-good.png" alt="The easy new way" style={{ width: "100%", height: "100%", objectFit: "cover" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(212,160,23,0.16) 100%)" }} />
+                <div className="absolute top-3 left-3 px-3 py-1 rounded-full" style={{ background: "#059669", color: "#fff", fontSize: 12, fontWeight: 800 }}>😄 THE TINY-HABIT WAY</div>
+              </div>
+              <div className="p-6 flex flex-col gap-2.5">
+                {["Eat normal food, just a bit smarter", "2-minute walk after meals", "No counting, no apps", "One tiny habit at a time", "Easy to keep going ✅"].map(t => (
+                  <div key={t} className="flex items-center gap-2.5"><span style={{ color: "#059669", fontSize: 15, fontWeight: 900 }}>✓</span><span style={{ fontSize: 14.5, color: "#18181b", fontWeight: 600 }}>{t}</span></div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 5. WHAT YOU'LL LEARN — big icon cards, few words ════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <p className="duc-label mb-3">In the 90 minutes</p>
+            <h2 className="duc-h2 duc-section-title">What you&apos;ll learn</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { step: "01", color: "#b8860b", title: "Why your plans keep collapsing", desc: "The four real reasons healthy routines fall apart — and why it's never been about willpower or discipline." },
-              { step: "02", color: "#f97316", title: "The 5S Daily Upgrade System", desc: "Select, Shrink, Stack, Score, Scale — the exact method for turning any health goal into a habit that sticks." },
-              { step: "03", color: "#6366f1", title: "Build your habit — live", desc: "Together, we turn one of your own goals into a tiny action, with a trigger and a difficult-day version." },
-              { step: "04", color: "#e8a020", title: "Your 7-day plan + the restart rule", desc: "You leave with a concrete week-one plan and a clear rule for bouncing back the day you slip." },
-              { step: "05", color: "#059669", title: "Live Q&A", desc: "Honest answers to the real questions — \"Will I get a diet?\", \"Do I need a gym?\", \"What if I miss days?\"" },
-            ].map(({ step, color, title, desc }) => (
-              <div key={step} className="flex gap-5 rounded-2xl p-5" style={{ background: "#fff", border: "1px solid #e4e4e7" }}>
-                <div style={{ fontSize: 28, fontWeight: 900, color, minWidth: 42, lineHeight: 1, flexShrink: 0 }}>{step}</div>
+              { icon: "❓", title: "Why you keep quitting", plain: "The real reason plans fall apart — it's not willpower." },
+              { icon: "🪄", title: "The simple habit trick", plain: "The easy 5-step way to make any habit stick." },
+              { icon: "📝", title: "Build your own habit", plain: "We pick one goal of yours and turn it into a tiny action — live." },
+              { icon: "🗺️", title: "Your 7-day plan", plain: "You leave knowing exactly what to do each day for a week." },
+            ].map(({ icon, title, plain }) => (
+              <div key={title} className="pop-card rounded-2xl p-6 flex items-start gap-4" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0" style={{ background: "rgba(212,160,23,0.1)", fontSize: 30 }}>{icon}</div>
                 <div>
-                  <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", marginBottom: 4, lineHeight: 1.3 }}>{title}</p>
-                  <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.6, margin: 0 }}>{desc}</p>
+                  <p style={{ fontSize: 17, fontWeight: 900, color: "#18181b", marginBottom: 4 }}>{title}</p>
+                  <p style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.55 }}>{plain}</p>
                 </div>
               </div>
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="Reserve My Free Seat →" sub={`${WHEN_LINE} · Free`} />
+            <CTA label="Save My Free Seat →" sub={`${WHEN_LINE} · Free`} />
           </div>
         </div>
       </section>
 
-      {/* ══ 4. WHO'S HOSTING (authority) ═════════════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            <div className="lg:col-span-4 flex justify-center">
-              <div className="relative max-w-[220px]">
-                <div className="rounded-2xl overflow-hidden" style={{ border: "4px solid #fff", boxShadow: "0 16px 40px -12px rgba(0,0,0,0.25)" }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/rohan.png" alt="Rohan — Host" className="w-full h-full object-cover object-top" style={{ aspectRatio: "1/1" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                </div>
+      {/* ══ 6. WHO'S TEACHING — photo + 2 short lines ═══════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="rounded-3xl p-7 lg:p-9 flex flex-col sm:flex-row items-center gap-7 text-center sm:text-left" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+            <div className="shrink-0">
+              <div className="rounded-2xl overflow-hidden" style={{ width: 130, height: 130, border: "4px solid #fff", boxShadow: "0 12px 30px -8px rgba(0,0,0,0.25)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/rohan.png" alt="Rohan — your teacher" className="w-full h-full object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
               </div>
             </div>
-            <div className="lg:col-span-8 text-center lg:text-left">
-              <p className="duc-label mb-3">Your host</p>
-              <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>Hi, I&apos;m Rohan 👋</h2>
-              <div className="space-y-4 duc-body">
-                <p>For years I was the person who <strong style={{ color: "#18181b" }}>knew everything about being healthier and did none of it consistently.</strong> Every Monday was &ldquo;the Monday I&apos;d finally start&rdquo; — and every Thursday it fell apart.</p>
-                <p>I wasn&apos;t lazy. My plans were just always too big to survive a real, busy week. What finally changed things was making each habit so small it was hard to say no — and having a simple rule to restart after a slip. I turned that into the <strong style={{ color: "#18181b" }}>5S system</strong>, and I&apos;ve since shared it with working professionals across India who were tired of starting over.</p>
-                <p style={{ fontStyle: "italic", color: "#71717a" }}>This free webinar is the clearest way I know to hand it to you — with a plan you leave holding, not just notes.</p>
-              </div>
+            <div>
+              <p className="duc-label mb-2">👋 Your teacher</p>
+              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#18181b", marginBottom: 8 }}>Hi, I&apos;m Rohan</h2>
+              <p style={{ fontSize: 15.5, color: "#52525b", lineHeight: 1.65 }}>
+                I used to start over every Monday too. Big plans, big fails. Then I learned to make habits <strong style={{ color: "#18181b" }}>tiny</strong> — and everything changed. Now I teach this to busy people across India.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══ 5. WHO THIS IS FOR ═══════════════════════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg,#171412 0%,#18181b 50%,#171412 100%)" }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Who this is for</p>
-            <h2 className="duc-h2 mb-3" style={{ color: "#fff" }}>This webinar is for you if…</h2>
+      {/* ══ 7. WHO IT'S FOR — quick tick list ═══════════════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "linear-gradient(135deg,#171412 0%,#18181b 50%,#171412 100%)" }}>
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-9">
+            <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Come if…</p>
+            <h2 className="duc-h2" style={{ color: "#fff" }}>This class is for you if…</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {[
-              "You want to manage your weight but have no time for long gym routines.",
-              "You keep starting and quitting healthy routines every few weeks.",
-              "You already know the advice — you just can't make it stick.",
-              "You don't want strict diets or extreme workout plans.",
-              "You want a simple system you can follow at your own pace.",
-              "You're ready to stop restarting and finally stay consistent.",
+              "You want to lose weight but have no time for the gym",
+              "You keep starting and quitting every few weeks",
+              "You hate strict diets and boring workouts",
+              "You want something simple you can actually keep",
             ].map((point, i) => (
-              <div key={i} className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.18)" }}>
-                <div className="w-8 h-8 rounded-full flex items-center justify-center shrink-0 mt-0.5" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", fontSize: 14, color: "#fff", fontWeight: 900 }}>✓</div>
-                <p style={{ fontSize: 15, color: "rgba(255,255,255,0.88)", lineHeight: 1.6, fontWeight: 500 }}>{point}</p>
+              <div key={i} className="flex items-center gap-3 rounded-2xl p-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.18)" }}>
+                <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", fontSize: 13, color: "#fff", fontWeight: 900 }}>✓</div>
+                <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.9)", lineHeight: 1.5, fontWeight: 500 }}>{point}</p>
               </div>
             ))}
           </div>
-          <div className="flex justify-center mt-10">
-            <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 18, boxShadow: "0 8px 28px rgba(212,160,23,0.42)", border: "none", cursor: "pointer" }}>
-              <TicketIcon size={20} />Yes — Reserve My Free Seat →
+          <div className="flex justify-center mt-9">
+            <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 18, border: "none", cursor: "pointer" }}>
+              <TicketIcon size={20} />That&apos;s Me — Save My Seat →
             </button>
           </div>
         </div>
       </section>
 
-      {/* ══ 6. FAQ ═══════════════════════════════════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "#faf8f3" }}>
+      {/* ══ 8. FAQ — short answers ══════════════════════════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-2xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-10">
-            <p className="duc-label mb-3">FAQ</p>
-            <h2 className="duc-h2 duc-section-title">Quick questions, answered</h2>
+          <div className="text-center mb-9">
+            <p className="duc-label mb-3">Quick questions</p>
+            <h2 className="duc-h2 duc-section-title">Good to know</h2>
           </div>
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2.5">
             {[
-              { q: "Is it really free?", a: "Yes — completely free to attend. We just ask for your name, email and WhatsApp number so we can send you the joining link and reminders." },
-              { q: "When is it and how long?", a: `${WHEN_LINE}. Once you register we'll send the exact joining details and reminders to your WhatsApp.` },
-              { q: "Will I get a diet plan?", a: "No. This isn't a diet — we don't hand out meal plans or tell everyone to eat the same food. It's about building small, consistent habits that support healthier weight management." },
-              { q: "Do I need a gym?", a: "No gym, no equipment. The movement habits are simple things that fit into a normal working day." },
-              { q: "Will I definitely lose weight?", a: "We can't promise a specific result — weight is influenced by many factors. What you get is a practical system to build the habits that support healthier weight management." },
-              { q: "What if I miss the live session?", a: "Register anyway — we'll let registrants know the options. Showing up live is best because you build your habit and plan with us in real time." },
-              { q: "Is there anything to buy?", a: "Not to attend. The webinar is genuinely useful on its own. If there's a paid program later, it's entirely optional and we'll explain it clearly — no pressure." },
+              { q: "Is it really free?", a: "Yes — totally free. Just add your name, email and WhatsApp number, and we'll send you the join link." },
+              { q: "When is it and how long?", a: `${WHEN_LINE}. We'll send the exact join link and reminders to your WhatsApp after you sign up.` },
+              { q: "Will you give me a diet?", a: "No diet plans. This is about small, easy habits — you keep eating normal food, just a little smarter." },
+              { q: "Do I need a gym?", a: "No gym and no equipment. Everything fits into a normal, busy day." },
+              { q: "What if I miss a day later?", a: "That's totally fine — we teach you a simple way to restart the next day instead of quitting." },
+              { q: "Is there anything to buy?", a: "Not to attend. The class is genuinely useful on its own. Anything paid later is optional, and we'll explain it clearly." },
             ].map(({ q, a }) => <FAQ key={q} q={q} a={a} />)}
           </div>
         </div>
       </section>
 
-      {/* ══ 7. FINAL CLOSE ═══════════════════════════════════════════════════ */}
+      {/* ══ 9. FINAL CLOSE ══════════════════════════════════════════════════ */}
       <section className="relative overflow-hidden py-20 lg:py-24" style={{ background: "#18181b" }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(212,160,23,0.1),transparent 70%)" }} />
         <div className="max-w-xl mx-auto px-6 text-center relative">
-          <p style={{ fontSize: 44 }} className="mb-4">🎟️</p>
-          <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Free live webinar</p>
+          <p style={{ fontSize: 46 }} className="mb-4">🎟️</p>
+          <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Free online class</p>
           <h2 className="duc-h1 mb-4" style={{ color: "#fff" }}>
             Stop starting over.<br />
-            <span style={{ color: "#a8790d" }}>Start staying consistent.</span>
+            <span style={{ color: "#a8790d" }}>Start something that lasts.</span>
           </h2>
-          <p style={{ fontSize: 16, color: "#a1a1aa", lineHeight: 1.7, marginBottom: 10 }}>
-            The 5S system. One habit you build with us. A 7-day plan you leave with.
+          <p style={{ fontSize: 17, color: "#a1a1aa", lineHeight: 1.6, marginBottom: 8 }}>
+            A simple trick. One habit built with you. A 7-day plan you keep.
           </p>
-          <p style={{ fontSize: 15, fontWeight: 700, color: "#e8a020", marginBottom: 28 }}>🗓 {WHEN_LINE}</p>
-          <CTA label="Reserve My Free Seat →" sub={`${WEBINAR.seatsLine}`} />
+          <p style={{ fontSize: 15, fontWeight: 800, color: "#e8a020", marginBottom: 28 }}>🗓 {WHEN_LINE} · 🎁 Free</p>
+          <CTA label="Save My Free Seat →" sub={WEBINAR.seatsLine} />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
-            Questions?{" "}
-            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+free+weight+habits+webinar" className="underline" style={{ color: "#a8790d" }}>Chat with Rohan on WhatsApp</a>
+            Have a question?{" "}
+            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+free+weight+habits+class" className="underline" style={{ color: "#a8790d" }}>Message Rohan on WhatsApp</a>
           </p>
         </div>
       </section>
@@ -604,7 +649,7 @@ export default function WeightHabitsWebinarPage() {
           © {new Date().getFullYear()} High Performance Club ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
-        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>Free live webinar · General wellness education · Results vary · Not medical advice</p>
+        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>Free online class · General wellness education · Results vary · Not medical advice</p>
       </footer>
 
       <StickyBottomCTA />

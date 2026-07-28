@@ -349,21 +349,21 @@ export default function DeskHealthSystemPage() {
 
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 accent-pill" style={{ fontSize: 13, fontWeight: 800 }}>
             <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#d4a017" }} />
-            A free class for people who sit 6+ hours a day
+            For busy people who have no time for the gym
           </div>
 
           {/* Big simple headline */}
           <h1 className="duc-h1 mb-5">
-            From Desk Body{" "}
-            <span className="gradient-text">to Strong Body.</span>
+            No time to get fit?{" "}
+            <span className="gradient-text">Get healthy at your desk.</span>
           </h1>
 
           {/* One-line explainer */}
           <p style={{ fontSize: 19, lineHeight: 1.6, color: "#3f3f46", maxWidth: 680, margin: "0 auto 10px", fontWeight: 500 }}>
-            In this <strong style={{ color: "#18181b" }}>free {WEBINAR.duration} class</strong>, learn how to <strong style={{ color: "#18181b" }}>reverse the hidden damage your desk job causes every day</strong> — neck pain, back pain, belly fat, low energy — <strong style={{ color: "#18181b" }}>without ever leaving your desk.</strong>
+            You want to be healthy and fit — but you <strong style={{ color: "#18181b" }}>don&apos;t have time</strong> for long workouts or fancy diets. So in this <strong style={{ color: "#18181b" }}>free {WEBINAR.duration} class</strong>, you&apos;ll learn how to bring health <strong style={{ color: "#18181b" }}>into the 8 hours you already spend at your desk.</strong>
           </p>
-          <p style={{ fontSize: 16, color: "#71717a", maxWidth: 600, margin: "0 auto 26px" }}>
-            No gym. No diet. No extra time. You&apos;ll discover the <strong style={{ color: "#52525b" }}>Desk Health System™</strong> — tiny daily upgrades that fit inside the workday you already have.
+          <p style={{ fontSize: 16, color: "#71717a", maxWidth: 620, margin: "0 auto 26px" }}>
+            No separate time. No gym. No diet. Just <strong style={{ color: "#52525b" }}>tiny healthy habits you do at your desk</strong> — so small they&apos;re easy to keep. Do them daily, and you slowly become fit and healthy. That&apos;s the <strong style={{ color: "#52525b" }}>Desk Health System™</strong>.
           </p>
 
           {/* When / where — big clear badges */}
@@ -393,9 +393,9 @@ export default function DeskHealthSystemPage() {
           <p className="duc-label mb-4">🎁 You leave this class with 3 things</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
             {[
-              { icon: "🩺", big: "A quick self-check", small: "spot the hidden damage desk work is doing to you" },
-              { icon: "🪄", big: "3 desk upgrades", small: "tiny fixes you can do at your desk today" },
-              { icon: "🗺️", big: "A 7-day plan", small: "to start reversing the damage this week" },
+              { icon: "⏱️", big: "The no-time method", small: "get healthy without any extra time in your day" },
+              { icon: "🪄", big: "3 desk habits", small: "tiny healthy habits you can do at your desk today" },
+              { icon: "🗺️", big: "A 7-day plan", small: "to start getting fit this week — from your chair" },
             ].map(({ icon, big, small }) => (
               <div key={big} className="pop-card rounded-2xl p-6 flex flex-col items-center text-center" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 6px 22px rgba(184,134,11,0.12)" }}>
                 <span style={{ fontSize: 42, marginBottom: 10 }}>{icon}</span>
@@ -425,15 +425,15 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
-            <p className="duc-label mb-3">By 6 PM, does this sound like you?</p>
-            <h2 className="duc-h2 duc-section-title">Your desk is quietly wearing you down</h2>
+            <p className="duc-label mb-3">Does this sound like you?</p>
+            <h2 className="duc-h2 duc-section-title">You want to be healthy. You just have no time.</h2>
           </div>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { emoji: "🦴", line: "Stiff neck & aching back by evening" },
-              { emoji: "👀", line: "Tired, dry, strained eyes from screens" },
-              { emoji: "🔋", line: "Energy crashes every afternoon" },
-              { emoji: "🍩", line: "Belly fat creeping up from all the sitting" },
+              { emoji: "⏰", line: "No time for a 1-hour workout after work" },
+              { emoji: "🏋️", line: "Gym membership you pay for but never use" },
+              { emoji: "🥗", line: "Diets feel too hard to stick with" },
+              { emoji: "😮‍💨", line: "You start every Monday… and quit by Thursday" },
             ].map(({ emoji, line }) => (
               <div key={line} className="rounded-2xl p-5 flex flex-col items-center text-center" style={{ background: "#faf8f3", border: "1.5px solid #eee7d6" }}>
                 <span style={{ fontSize: 40, marginBottom: 10 }}>{emoji}</span>
@@ -442,7 +442,7 @@ export default function DeskHealthSystemPage() {
             ))}
           </div>
           <p className="text-center mt-8" style={{ fontSize: 18, fontWeight: 800, color: "#18181b", maxWidth: 640, margin: "2rem auto 0" }}>
-            None of these come from one big mistake. <span style={{ color: "#a8790d" }}>They come from tiny habits you repeat 8 hours a day.</span> 👇
+            The problem was never you. <span style={{ color: "#a8790d" }}>You were just told health needs extra time you don&apos;t have.</span> 👇
           </p>
         </div>
       </section>
@@ -450,19 +450,34 @@ export default function DeskHealthSystemPage() {
       {/* ══ 3. THE BIG IDEA — make the desk the trigger, not the boundary ═══ */}
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
+          <div className="text-center mb-11">
             <p className="duc-label mb-3">The core idea of this class</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Don&apos;t fight your workday. Use it.</h2>
-            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto" }}>
-              Every workday already has hundreds of natural moments. We turn each one into a tiny health upgrade — so your desk becomes the <strong style={{ color: "#18181b" }}>trigger</strong>, not the problem.
+            <h2 className="duc-h2 duc-section-title mb-3">Don&apos;t find extra time. Use the time you already spend sitting.</h2>
+            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 580, margin: "0 auto" }}>
+              You already spend 8 hours at your desk. Instead of adding a workout on top, we hide tiny healthy habits <strong style={{ color: "#18181b" }}>inside</strong> those 8 hours — so getting healthy costs you <strong style={{ color: "#18181b" }}>zero extra time.</strong>
             </p>
+          </div>
+
+          {/* Zero-extra-time visual */}
+          <div className="rounded-3xl p-6 lg:p-7 mb-10 flex flex-col sm:flex-row items-stretch gap-4" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+            <div className="flex-1 rounded-2xl p-5 text-center" style={{ background: "#fff7f7", border: "2px solid #fecaca" }}>
+              <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#dc2626", marginBottom: 6 }}>The old way</p>
+              <p style={{ fontSize: 15.5, fontWeight: 700, color: "#18181b", lineHeight: 1.5 }}>8 hours of work <span style={{ color: "#dc2626" }}>+ 1 extra hour</span> you don&apos;t have</p>
+              <p style={{ fontSize: 13, color: "#71717a", marginTop: 6 }}>= you skip it, and quit 😮‍💨</p>
+            </div>
+            <div className="flex items-center justify-center px-1"><span style={{ fontSize: 24, color: "#d4a017", fontWeight: 900 }}>vs</span></div>
+            <div className="flex-1 rounded-2xl p-5 text-center" style={{ background: "#f0fdf4", border: "2px solid #bbf7d0" }}>
+              <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#059669", marginBottom: 6 }}>The desk-health way</p>
+              <p style={{ fontSize: 15.5, fontWeight: 700, color: "#18181b", lineHeight: 1.5 }}>The same 8 hours, <span style={{ color: "#059669" }}>with tiny habits tucked in</span></p>
+              <p style={{ fontSize: 13, color: "#166534", fontWeight: 600, marginTop: 6 }}>= 0 extra time, and you actually keep going ✅</p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
             {[
               { n: "1", emoji: "🎯", title: "Make it TINY", plain: "Not \"work out for an hour\". Just \"stand up and stretch after every meeting.\" So small you can't say no.", color: "#b8860b" },
-              { n: "2", emoji: "🖥️", title: "Anchor it to your desk", plain: "Do it right after something you already do — open your laptop, join a call, refill coffee. The desk reminds you.", color: "#f97316" },
-              { n: "3", emoji: "📈", title: "1% better, every day", plain: "One tiny upgrade a day, repeated. You barely notice it — until your body feels completely different.", color: "#059669" },
+              { n: "2", emoji: "🖥️", title: "Do it at your desk", plain: "Right after something you already do — open your laptop, join a call, refill coffee. No extra time, ever.", color: "#f97316" },
+              { n: "3", emoji: "💪", title: "Repeat it daily", plain: "One tiny habit a day, kept up. You barely notice it — until you slowly become fit and healthy.", color: "#059669" },
             ].map(({ n, emoji, title, plain, color }) => (
               <div key={n} className="pop-card rounded-3xl p-7 flex flex-col items-center text-center relative" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px rgba(0,0,0,0.06)" }}>
                 <div className="w-11 h-11 rounded-full flex items-center justify-center font-black text-white mb-3" style={{ fontSize: 19, background: color }}>{n}</div>
@@ -496,7 +511,7 @@ export default function DeskHealthSystemPage() {
 
           <div className="rounded-2xl px-6 py-6 text-center mt-8" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.4rem)", fontWeight: 900, color: "#fff", lineHeight: 1.4 }}>
-              Tiny upgrades are easy to keep. <span style={{ color: "#e8a020" }}>And easy upgrades, done daily, rebuild your body.</span>
+              Tiny habits are easy to keep. <span style={{ color: "#e8a020" }}>And easy habits, done daily at your desk, make you healthy.</span>
             </p>
           </div>
 
@@ -549,7 +564,7 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3">The journey you&apos;ll see mapped out</p>
             <h2 className="duc-h2 duc-section-title mb-3">Repair → Restore → Thrive</h2>
             <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto" }}>
-              A clear path from a tired desk body to a strong, energetic one — one tiny upgrade at a time.
+              A clear path from tired and sluggish to strong and energetic — all through tiny desk habits, one at a time.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -612,8 +627,8 @@ export default function DeskHealthSystemPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { icon: "🩺", title: "The hidden cost of desk work", plain: "The tiny daily habits that cause neck pain, back pain, low energy — and how to spot yours." },
-              { icon: "🖥️", title: "Turn your desk into a trigger", plain: "The simple mechanic that makes healthy actions automatic — no motivation needed." },
+              { icon: "⏱️", title: "How to get healthy with zero extra time", plain: "The simple shift that lets your existing 8-hour workday do the work — no gym, no diet, no separate program." },
+              { icon: "🖥️", title: "Turn your desk into your reminder", plain: "The simple mechanic that makes tiny healthy habits automatic — no motivation or willpower needed." },
               { icon: "🧩", title: "The Desk Health System™", plain: "How 7 pillars and 3 phases (Repair → Restore → Thrive) rebuild your body during work." },
               { icon: "📈", title: "The 1%-better method", plain: "Why tiny upgrades beat big overhauls — and actually stick for life." },
               { icon: "🪄", title: "Build your first upgrades — live", plain: "We turn your worst desk habits into 3 tiny missions you can do at your desk today." },
@@ -649,11 +664,11 @@ export default function DeskHealthSystemPage() {
               </div>
               <div className="p-6 flex flex-col gap-3">
                 {[
-                  "End the day stiff, drained and foggy",
-                  "Think staying healthy needs a gym & free time",
-                  "Try big changes, burn out, give up",
-                  "Watch the aches and belly fat slowly grow",
-                  "Feel your desk job is bad for you — but stuck",
+                  "Believe getting fit needs time you don't have",
+                  "Pay for a gym you never actually use",
+                  "Start big, burn out, quit by Thursday",
+                  "Feel guilty for \"not being disciplined\"",
+                  "Watch the low energy and belly fat grow",
                 ].map(t => (
                   <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 14.5, color: "#52525b", lineHeight: 1.5 }}>{t}</span></div>
                 ))}
@@ -666,11 +681,11 @@ export default function DeskHealthSystemPage() {
               </div>
               <div className="p-6 flex flex-col gap-3">
                 {[
-                  "Know exactly what your desk is doing to you",
-                  "See how to get healthy without extra time",
-                  "One tiny upgrade at a time — no burnout",
-                  "3 desk missions + a 7-day plan for your body",
-                  "Feel your workday can make you stronger, not weaker",
+                  "Get healthy inside your workday — 0 extra time",
+                  "No gym, no diet, no separate program to juggle",
+                  "One tiny habit at a time — no burnout",
+                  "3 desk habits + a 7-day plan you can actually keep",
+                  "Feel fitter and more energetic, week after week",
                 ].map(t => (
                   <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 14.5, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
                 ))}
@@ -678,7 +693,7 @@ export default function DeskHealthSystemPage() {
             </div>
           </div>
           <p className="text-center mt-8" style={{ fontSize: 17, fontWeight: 800, color: "#18181b", maxWidth: 580, margin: "2rem auto 0" }}>
-            Same desk. Same busy job. <span style={{ color: "#a8790d" }}>A body that finally works with you, not against you.</span>
+            Same desk. Same busy job. Same 8 hours. <span style={{ color: "#a8790d" }}>Just a body that finally gets healthier every day.</span>
           </p>
           <div className="flex justify-center mt-8">
             <CTA label="I Want the AFTER →" sub={`${WHEN_LINE} · Free`} />
@@ -700,7 +715,7 @@ export default function DeskHealthSystemPage() {
               <p className="duc-label mb-2">👋 Your teacher</p>
               <h2 style={{ fontSize: 24, fontWeight: 900, color: "#18181b", marginBottom: 8 }}>Hi, I&apos;m Rohan</h2>
               <p style={{ fontSize: 15.5, color: "#52525b", lineHeight: 1.65 }}>
-                I spent years at a desk racking up the exact aches, low energy and creeping weight you&apos;re feeling — and I kept failing at &ldquo;get to the gym&rdquo; fixes that never fit my day. So I built a different way: <strong style={{ color: "#18181b" }}>reverse the damage <em>inside</em> the workday</strong>, one tiny upgrade at a time. That&apos;s the Desk Health System™ — and I now teach it to desk professionals across India.
+                For years I wanted to be fit but genuinely had no time — every gym plan and diet died within weeks because it didn&apos;t fit my workday. So I stopped trying to <em>add</em> time and built a different way: <strong style={{ color: "#18181b" }}>tiny healthy habits I could do right at my desk</strong>, during work. Done daily, they quietly made me healthier — without a single extra hour. That&apos;s the Desk Health System™, and I now teach it to busy desk professionals across India.
               </p>
             </div>
           </div>
@@ -716,10 +731,10 @@ export default function DeskHealthSystemPage() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
             {[
+              "You want to be healthy but have no time",
               "You sit 6+ hours a day for work",
-              "Neck pain, back pain or eye strain by evening",
-              "Low energy and belly fat creeping up",
-              "No time or motivation for the gym",
+              "Long workouts and diets never stick for you",
+              "You want something simple you can actually keep",
             ].map((point, i) => (
               <div key={i} className="flex items-center gap-3 rounded-2xl p-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.18)" }}>
                 <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", fontSize: 13, color: "#fff", fontWeight: 900 }}>✓</div>
@@ -745,7 +760,7 @@ export default function DeskHealthSystemPage() {
           <div className="flex flex-col gap-2.5">
             {[
               { q: "Is it really free?", a: "Yes — totally free. Just add your full name, email and WhatsApp number, and we'll send you the Zoom join link." },
-              { q: "What is the Desk Health System™?", a: "It's a simple system that helps desk professionals reverse the hidden damage of desk work — through tiny daily upgrades that fit naturally inside the workday. No gym, no diet, no extra time. We walk you through the core idea in the class." },
+              { q: "What is the Desk Health System™?", a: "It's a simple system that helps busy desk professionals get healthy without any extra time — through tiny healthy habits you do right at your desk, during your normal workday. No gym, no diet, no separate program. Done daily, they slowly make you fit and healthy. We walk you through the core idea in the class." },
               { q: "When is it and how long?", a: `${WHEN_LINE}. It's live on Zoom. We'll send the exact join link and reminders to your WhatsApp after you register.` },
               { q: "Do I need a gym or equipment?", a: "No. Everything happens at your desk during a normal workday — no gym, no equipment, no changing clothes." },
               { q: "Will you give me a diet?", a: "No diet plans. The system is about small, easy upgrades — you keep eating normal food, just a little smarter." },
@@ -763,11 +778,11 @@ export default function DeskHealthSystemPage() {
           <p style={{ fontSize: 46 }} className="mb-4">🎟️</p>
           <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Free online class</p>
           <h2 className="duc-h1 mb-4" style={{ color: "#fff" }}>
-            From desk body,<br />
-            <span style={{ color: "#a8790d" }}>to strong body.</span>
+            No time for the gym?<br />
+            <span style={{ color: "#a8790d" }}>Get healthy at your desk.</span>
           </h2>
           <p style={{ fontSize: 17, color: "#a1a1aa", lineHeight: 1.6, marginBottom: 8 }}>
-            Learn the Desk Health System™. Build your first 3 upgrades with us. Leave with a 7-day plan you keep.
+            Learn the Desk Health System™. Build your first 3 desk habits with us. Leave with a 7-day plan you keep — no gym, no diet, no extra time.
           </p>
           <p style={{ fontSize: 15, fontWeight: 800, color: "#e8a020", marginBottom: 28 }}>🗓 {WHEN_LINE} · 🎁 Free</p>
           <CTA label="Save My Free Seat →" sub={WEBINAR.seatsLine} />

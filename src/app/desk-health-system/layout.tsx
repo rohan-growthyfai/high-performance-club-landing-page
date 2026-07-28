@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title:
-    "Free Class: From Desk Body to Strong Body | The Desk Health System™",
+    "Free Class: No Time to Get Fit? Get Healthy at Your Desk | Desk Health System™",
   description:
-    "A free online class for desk professionals. Reverse the hidden damage of desk work — neck pain, back pain, belly fat, low energy — without leaving your desk. Learn the Desk Health System™: tiny daily upgrades that fit inside your workday.",
+    "A free online class for busy desk professionals. No time for long workouts or fancy diets? Learn how to get healthy inside the 8 hours you already spend at your desk — with tiny daily habits. That's the Desk Health System™. No gym, no diet, no extra time.",
   keywords: [
     "desk health",
     "desk health system",
@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     "1% better habits",
   ],
   openGraph: {
-    title: "From Desk Body to Strong Body — Free Online Class",
+    title: "No Time to Get Fit? Get Healthy at Your Desk — Free Class",
     description:
-      "Reverse the hidden damage of desk work without leaving your desk. Free live class on the Desk Health System™.",
+      "Bring health into the 8 hours you already spend at your desk. Tiny daily habits, no gym, no diet, no extra time. Free live class on the Desk Health System™.",
     type: "website",
     locale: "en_IN",
     url: "https://highperformanceclub.co/desk-health-system",
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "From Desk Body to Strong Body — Free Online Class",
+    title: "No Time to Get Fit? Get Healthy at Your Desk — Free Class",
     description:
-      "Reverse the hidden damage of desk work without leaving your desk. Free live class on the Desk Health System™.",
+      "Bring health into the 8 hours you already spend at your desk. Tiny daily habits, no gym, no diet, no extra time. Free live class on the Desk Health System™.",
   },
   alternates: {
     canonical: "https://highperformanceclub.co/desk-health-system",

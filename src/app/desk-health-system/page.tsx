@@ -177,10 +177,11 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name: name.trim(), email: email.trim(), whatsapp: whatsapp.trim() }),
       });
-      setStatus("done");
     } catch {
-      setStatus("done");
+      /* saved best-effort; never block the user */
     }
+    // Send them to the Thank-You page (confirmation + WhatsApp group).
+    if (typeof window !== "undefined") window.location.href = "/desk-health-system/thank-you";
   };
 
   return (
@@ -445,16 +446,16 @@ export default function DeskHealthSystemPage() {
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
-      <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "10px 16px" }}>
-        <p className="text-center font-bold text-white" style={{ fontSize: 13.5, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          🎟️ FREE Live Masterclass · {DATE_LINE} · {WEBINAR.duration}
+      <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "11px 16px" }}>
+        <p className="text-center font-black text-white" style={{ fontSize: 15.5, letterSpacing: "0.005em", lineHeight: 1.35 }}>
+          ✨ Finally! A Simple Way to Become Healthier Without Finding Extra Time.
         </p>
       </div>
 
       {/* ══ 1. HERO — the problem + the free-masterclass promise ════════════════ */}
       {/* Fills exactly one screen (minus the ~40px announcement bar); the next
           section starts right when you scroll past it. */}
-      <section className="relative overflow-hidden mesh-bg flex flex-col lg:min-h-[calc(100svh-40px)]" style={{ borderBottom: "1px solid #e2dfd6" }}>
+      <section className="relative overflow-hidden mesh-bg flex flex-col lg:min-h-[calc(100svh-48px)]" style={{ borderBottom: "1px solid #e2dfd6" }}>
         <div className="flex-1 flex items-center">
         <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 pt-7 pb-8 lg:py-6 grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
 
@@ -939,6 +940,58 @@ export default function DeskHealthSystemPage() {
             </p>
             <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula.</p>
           </div>
+        </div>
+      </section>
+
+      {/* ══ 6b. FREE BONUSES ════════════════════════════════════════════════ */}
+      <section className="py-14 lg:py-20 relative overflow-hidden" style={{ background: "linear-gradient(180deg,#fff 0%,#faf8f3 100%)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10 relative">
+          <Reveal className="text-center mb-3">
+            <p className="duc-label mb-3">🎁 Attend live &amp; get these free</p>
+            <h2 className="duc-h2 duc-section-title">Free bonuses worth <span className="gradient-text">₹4,500+</span></h2>
+          </Reveal>
+          <Reveal className="text-center mb-11">
+            <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 560, margin: "0 auto", fontWeight: 500 }}>
+              Show up live on the masterclass and you&apos;ll walk away with this complete Desk Fit starter kit — <strong style={{ color: "#18181b" }}>yours free.</strong>
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { img: "/desk/gem/bonus-guide.jpg", tag: "Bonus #1", title: "The Desk Fit Playbook", worth: "₹1,500", desc: "A simple guide with the exact tiny habits for all 7 pillars — so you know precisely what to do at your desk each day." },
+              { img: "/desk/gem/bonus-tracker.jpg", tag: "Bonus #2", title: "7-Day Habit Tracker", worth: "₹1,000", desc: "A printable tracker to lock in your new desk habits in your first week — the fastest way to actually stay consistent." },
+              { img: "/desk/gem/bonus-cards.jpg", tag: "Bonus #3", title: "Desk Reminder Cards", worth: "₹2,000", desc: "Quick posture, eye-care &amp; stretch cheat-cards you keep at your desk — gentle nudges that turn healthy actions into habit." },
+            ].map(({ img, tag, title, worth, desc }, i) => (
+              <Reveal key={title} delay={i * 90}>
+                <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 10px 30px -12px rgba(184,134,11,0.25)" }}>
+                  <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img} alt={title} className="w-full h-48 object-cover" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                    <span className="absolute top-3 left-3 rounded-full px-3 py-1.5" style={{ background: "#18181b", color: "#e8a020", fontSize: 12, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em" }}>{tag}</span>
+                    <span className="absolute top-3 right-3 rounded-full px-3 py-1.5" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>Worth {worth}</span>
+                  </div>
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 style={{ fontSize: 19, fontWeight: 800, color: "#18181b", marginBottom: 8, fontFamily: "'Poppins',sans-serif" }}>{title}</h3>
+                    <p style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.6, fontWeight: 500 }} dangerouslySetInnerHTML={{ __html: desc }} />
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* value bar */}
+          <Reveal delay={100}>
+            <div className="rounded-2xl mt-9 px-6 py-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
+              <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
+                Total bonus value: <span style={{ textDecoration: "line-through", color: "#a1a1aa" }}>₹4,500</span>
+              </p>
+              <span className="hidden sm:inline" style={{ color: "#3f3f46" }}>|</span>
+              <p style={{ fontSize: 20, fontWeight: 900, color: "#e8a020", fontFamily: "'Poppins',sans-serif" }}>Yours FREE today 🎉</p>
+            </div>
+            <div className="flex justify-center mt-8">
+              <CTA sub="Bonuses delivered on WhatsApp after the masterclass" />
+            </div>
+          </Reveal>
         </div>
       </section>
 

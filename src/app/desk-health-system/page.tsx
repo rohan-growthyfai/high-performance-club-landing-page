@@ -430,6 +430,9 @@ export default function DeskHealthSystemPage() {
         @keyframes dhs-rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
         #ss-top{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
         #ss-top h1,#ss-top h2,#ss-top .duc-h1,#ss-top .duc-h2{font-family:'Poppins','Plus Jakarta Sans',sans-serif}
+        /* comfortable, readable body copy: more breathing room between words & lines */
+        #ss-top p{letter-spacing:0.012em;word-spacing:0.06em;line-height:1.75}
+        #ss-top .duc-label{word-spacing:normal;line-height:1.4}
         .duc-h1{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-0.03em}
         .duc-h2{font-size:clamp(1.7rem,4vw,2.55rem);font-weight:800;line-height:1.18;letter-spacing:-0.025em}
         .duc-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:#a8790d;font-family:'Poppins',sans-serif}
@@ -454,63 +457,58 @@ export default function DeskHealthSystemPage() {
 
       {/* ══ 1. HERO — the problem + the free-masterclass promise ════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-14 lg:pt-16 grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-7 pb-8 lg:pt-9 lg:pb-9 grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
 
           {/* Left: copy */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
               <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#d4a017" }} />
               For anyone who works 6+ hours a day at a desk
             </div>
 
-            <h1 className="duc-h1 mb-5">
+            <h1 className="mb-4" style={{ fontSize: "clamp(1.9rem,3.6vw,2.9rem)", fontWeight: 800, lineHeight: 1.12, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
               Your desk job is slowly damaging your health.{" "}
               <span className="gradient-text">Without you even realizing it.</span>
             </h1>
 
-            <p style={{ fontSize: 18, lineHeight: 1.6, color: "#3f3f46", maxWidth: 560, margin: "0 auto 14px", fontWeight: 500 }} className="lg:mx-0">
-              Every workday, tiny unhealthy habits quietly lead to <strong style={{ color: "#18181b" }}>poor posture, low energy, eye strain, stiffness</strong> and <strong style={{ color: "#18181b" }}>stress</strong>.
-            </p>
-            <p style={{ fontSize: 17, color: "#52525b", maxWidth: 560, margin: "0 auto 24px", lineHeight: 1.6 }} className="lg:mx-0">
-              Join our <strong style={{ color: "#18181b" }}>FREE live masterclass</strong> and discover how to improve your health <strong style={{ color: "#18181b" }}>naturally while you work</strong> — no gym, no diets, no extra hours.
+            <p style={{ fontSize: 16.5, color: "#3f3f46", maxWidth: 560, margin: "0 auto 16px", lineHeight: 1.6 }} className="lg:mx-0">
+              Every workday, tiny unhealthy habits quietly lead to <strong style={{ color: "#18181b" }}>poor posture, low energy, eye strain, stiffness</strong> and <strong style={{ color: "#18181b" }}>stress</strong>. Join our <strong style={{ color: "#18181b" }}>FREE live masterclass</strong> and learn how to improve your health <strong style={{ color: "#18181b" }}>naturally while you work</strong> — no gym, no diets, no extra hours.
             </p>
 
-            {/* Date — big, bold, clearly visible */}
-            <div className="inline-flex items-center gap-3 rounded-2xl px-5 py-3 mb-5" style={{ background: "#18181b", boxShadow: "0 10px 26px -10px rgba(0,0,0,0.4)" }}>
-              <span style={{ fontSize: 26 }}>📅</span>
-              <div className="text-left">
-                <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", lineHeight: 1.15, fontFamily: "'Poppins',sans-serif" }}>{WEBINAR.dayLabel}, {WEBINAR.dateLabel}</p>
-                <p style={{ fontSize: 13.5, fontWeight: 600, color: "#e8a020" }}>{WEBINAR.timeLabel}</p>
+            {/* Date + format badges row */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-5">
+              <div className="inline-flex items-center gap-2.5 rounded-2xl px-4 py-2.5" style={{ background: "#18181b", boxShadow: "0 10px 26px -10px rgba(0,0,0,0.4)" }}>
+                <span style={{ fontSize: 22 }}>📅</span>
+                <div className="text-left">
+                  <p style={{ fontSize: 16, fontWeight: 800, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>{WEBINAR.dayLabel}, {WEBINAR.dateLabel}</p>
+                  <p style={{ fontSize: 12.5, fontWeight: 600, color: "#e8a020" }}>{WEBINAR.timeLabel}</p>
+                </div>
               </div>
-            </div>
-
-            {/* format badges */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-7">
               {[
                 { icon: "⏱️", label: WEBINAR.duration },
-                { icon: "💻", label: "Live on Zoom" },
+                { icon: "💻", label: "Zoom" },
                 { icon: "🎟️", label: "100% FREE" },
               ].map(({ icon, label }) => (
                 <div key={label} className="flex items-center gap-1.5 rounded-full px-3.5 py-2" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 4px 14px rgba(0,0,0,0.05)" }}>
-                  <span style={{ fontSize: 16 }}>{icon}</span>
-                  <span style={{ fontSize: 13.5, fontWeight: 700, color: "#18181b" }}>{label}</span>
+                  <span style={{ fontSize: 15 }}>{icon}</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: "#18181b" }}>{label}</span>
                 </div>
               ))}
             </div>
 
             {/* CTA — Reserve My Seat for ₹1,999 FREE */}
-            <div className="flex flex-col items-center lg:items-start gap-2 mb-7">
-              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-2.5 rounded-full font-black text-white" style={{ fontSize: 19, padding: "18px 32px", boxShadow: "0 12px 34px rgba(212,160,23,0.45)", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
-                <TicketIcon size={22} />
+            <div className="flex flex-col items-center lg:items-start gap-1.5 mb-4">
+              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-2.5 rounded-full font-black text-white" style={{ fontSize: 18, padding: "15px 30px", boxShadow: "0 12px 34px rgba(212,160,23,0.45)", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
+                <TicketIcon size={20} />
                 <span className="inline-flex flex-wrap items-baseline gap-1.5">Reserve My Seat for <PriceTag /></span>
               </button>
-              <p style={{ fontSize: 13.5, color: "#71717a" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
+              <p style={{ fontSize: 13, color: "#71717a" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
 
             {/* tiny social proof — real professional faces */}
             <div className="flex items-center justify-center lg:justify-start gap-3">
               <div className="flex -space-x-2.5">
-                {["/desk/pro/woman-1.jpg", "/desk/pro/man-1.jpg", "/desk/pro/woman-2.jpg", "/desk/pro/man-2.jpg"].map((src) => (
+                {["/desk/gem/woman-1.jpg", "/desk/gem/man-1.jpg", "/desk/gem/woman-2.jpg", "/desk/gem/man-2.jpg"].map((src) => (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img key={src} src={src} alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" style={{ objectPosition: "center top", boxShadow: "0 2px 6px rgba(0,0,0,0.12)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 ))}
@@ -524,10 +522,10 @@ export default function DeskHealthSystemPage() {
 
           {/* Right: shocking-reaction photo of a professional at his desk */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 500, width: "100%" }}>
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 430, width: "100%" }}>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/real/hero-shock.jpg" alt="A shocked professional realising how his desk job is affecting his health" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/gem/hero-shock.jpg" alt="A shocked professional realising how his desk job is affecting his health" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               {/* floating callout chips */}
               <div className="absolute -left-3 top-8 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
@@ -542,8 +540,8 @@ export default function DeskHealthSystemPage() {
 
         {/* Countdown timer bar — sits at the bottom of the hero, below the CTA */}
         <div className="border-t" style={{ borderColor: "#e6d9b0", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(4px)" }}>
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-            <p className="text-center sm:text-right" style={{ fontSize: 15.5, fontWeight: 700, color: "#18181b" }}>
+          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-3.5 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6">
+            <p className="text-center sm:text-right" style={{ fontSize: 15, fontWeight: 700, color: "#18181b" }}>
               ⏳ Masterclass starts in
             </p>
             <Countdown />
@@ -631,7 +629,7 @@ export default function DeskHealthSystemPage() {
           <Reveal className="mb-9">
             <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid #faf8f3", boxShadow: "0 18px 44px -16px rgba(0,0,0,0.2)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/desk/real/damage-neck.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              <img src="/desk/gem/damage-neck.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
             </div>
           </Reveal>
           <Reveal>
@@ -699,7 +697,7 @@ export default function DeskHealthSystemPage() {
             <div className="grid sm:grid-cols-2 gap-6 items-center mt-11 rounded-3xl p-5 sm:p-6" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
               <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 14px 36px -14px rgba(184,134,11,0.35)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/real/working.jpg" alt="A professional improving their health during the workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/gem/working.jpg" alt="A professional improving their health during the workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="text-center sm:text-left">
                 <span className="inline-block rounded-full px-3 py-1 mb-3" style={{ background: "rgba(212,160,23,0.14)", color: "#a8790d", fontSize: 12, fontWeight: 800 }}>✨ The missing piece</span>
@@ -783,7 +781,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #faf8f3", boxShadow: "0 20px 50px -18px rgba(184,134,11,0.35)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/real/after-f.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/gem/after-f.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* cards */}
@@ -822,7 +820,7 @@ export default function DeskHealthSystemPage() {
           {/* professional faces strip */}
           <Reveal className="flex justify-center mb-9">
             <div className="flex -space-x-3">
-              {["/desk/pro/man-1.jpg", "/desk/pro/woman-1.jpg", "/desk/pro/man-2.jpg", "/desk/pro/woman-2.jpg"].map((src) => (
+              {["/desk/gem/man-1.jpg", "/desk/gem/woman-1.jpg", "/desk/gem/man-2.jpg", "/desk/gem/woman-2.jpg"].map((src) => (
                 // eslint-disable-next-line @next/next/no-img-element
                 <img key={src} src={src} alt="" className="w-14 h-14 rounded-full object-cover" style={{ objectPosition: "center top", border: "3px solid #18181b", boxShadow: "0 4px 12px rgba(0,0,0,0.4)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
               ))}
@@ -879,7 +877,7 @@ export default function DeskHealthSystemPage() {
               <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
                 <div className="relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/real/before.jpg" alt="A tired, low-energy professional before the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src="/desk/gem/before.jpg" alt="A tired, low-energy professional before the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                   <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#dc2626", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😔 BEFORE</div>
                 </div>
                 <div className="p-6 flex flex-col gap-2.5 flex-1">
@@ -901,7 +899,7 @@ export default function DeskHealthSystemPage() {
               <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
                 <div className="relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/real/after.jpg" alt="An energetic, healthy professional after the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src="/desk/gem/after.jpg" alt="An energetic, healthy professional after the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                   <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#059669", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😄 AFTER</div>
                 </div>
                 <div className="p-6 flex flex-col gap-2.5 flex-1">

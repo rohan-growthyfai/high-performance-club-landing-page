@@ -465,8 +465,8 @@ export default function DeskHealthSystemPage() {
               For busy professionals who sit 6+ hours a day
             </div>
 
-            <h1 className="mb-4" style={{ fontSize: "clamp(1.9rem,3.6vw,2.9rem)", fontWeight: 800, lineHeight: 1.14, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
-              Want to stay healthy…{" "}
+            <h1 className="mb-4" style={{ fontSize: "clamp(1.75rem,3.3vw,2.7rem)", fontWeight: 800, lineHeight: 1.14, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
+              Want to build a healthier lifestyle…{" "}
               <span className="gradient-text">but can&apos;t find time because of work?</span>
             </h1>
 
@@ -513,7 +513,7 @@ export default function DeskHealthSystemPage() {
             <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 440, width: "100%" }}>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/hero-tense.jpg" alt="A busy professional wishing they had time to stay healthy at work" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/gem/hero-tense2.jpg" alt="A busy professional wishing they had time to stay healthy at work" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               {/* floating callout chips */}
               <div className="absolute -left-3 top-8 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
@@ -862,38 +862,43 @@ export default function DeskHealthSystemPage() {
       {/* ══ 6. IMAGINE THIS… — the philosophy ═══════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-10">
+          <Reveal className="text-center mb-4">
             <p className="duc-label mb-3">Imagine this…</p>
             <h2 className="duc-h2 duc-section-title">What if your workday actually<br className="hidden sm:block" /> made you <span style={{ color: "#a8790d" }}>healthier?</span></h2>
           </Reveal>
-          <div className="grid lg:grid-cols-2 gap-8 items-center mb-9">
-            {/* image */}
-            <Reveal>
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #faf8f3", boxShadow: "0 20px 50px -18px rgba(184,134,11,0.35)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/after-f.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-              </div>
-            </Reveal>
-            {/* cards */}
-            <div className="flex flex-col gap-3.5">
-              {[
-                { icon: "📞", line: "Every meeting reminded you to improve your posture." },
-                { icon: "💧", line: "Every water break became a healthy habit." },
-                { icon: "👀", line: "Every screen break protected your eyes." },
-                { icon: "🚶", line: "Every task switch encouraged you to move." },
-              ].map(({ icon, line }, i) => (
-                <Reveal key={line} delay={i * 70}>
-                  <div className="flex items-start gap-3.5 rounded-2xl p-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-                    <span style={{ fontSize: 30 }} className="shrink-0">{icon}</span>
-                    <p style={{ fontSize: 16.5, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{line}</p>
+          <Reveal className="mb-9">
+            <p className="text-center" style={{ fontSize: 17, color: "#52525b", maxWidth: 620, margin: "0 auto", lineHeight: 1.6 }}>
+              You don&apos;t need big goals you never keep. Just swap them for <strong style={{ color: "#18181b" }}>tiny actions that fit inside your workday</strong> 👇
+            </p>
+          </Reveal>
+
+          {/* Instead of X → do Y swap cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-9">
+            {[
+              { icon: "🚶", big: "Walk 10 minutes", tiny: "After every meeting, walk for just 2 minutes." },
+              { icon: "💧", big: "Drink 3 litres of water", tiny: "Every time you return to your desk, drink a sip of water." },
+              { icon: "🧘", big: "Stretch daily", tiny: "Do one quick stretch before you open Outlook or Slack." },
+              { icon: "😮‍💨", big: "Meditate every day", tiny: "Take three deep breaths before every meeting." },
+            ].map(({ icon, big, tiny }, i) => (
+              <Reveal key={big} delay={i * 70}>
+                <div className="pop-card rounded-2xl p-5 h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="inline-flex items-center justify-center rounded-xl shrink-0" style={{ width: 40, height: 40, background: "rgba(212,160,23,0.1)", fontSize: 22 }}>{icon}</span>
+                    <span className="rounded-full px-2.5 py-1" style={{ background: "#fff1f1", color: "#b91c1c", fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Instead of</span>
+                    <span style={{ fontSize: 14.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#fca5a5" }}>{big}</span>
                   </div>
-                </Reveal>
-              ))}
-            </div>
+                  <div className="flex items-start gap-2.5 rounded-xl p-3 mt-auto" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
+                    <span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: 1 }}>✓</span>
+                    <p style={{ fontSize: 16, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{tiny}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
           </div>
+
           <div className="rounded-2xl px-6 py-6 text-center" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-              Instead of interrupting your work, <span style={{ color: "#e8a020" }}>your workday itself becomes the reason your health improves.</span>
+              These changes are so small you can&apos;t say no — <span style={{ color: "#e8a020" }}>yet done daily, they quietly rebuild your health.</span>
             </p>
             <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula.</p>
           </div>

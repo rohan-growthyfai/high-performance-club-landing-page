@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     locale: "en_IN",
     url: "https://highperformanceclub.co/desk-health-system",
     siteName: "High Performance Club",
+    images: [{ url: "/desk/hero.jpg", width: 1152, height: 896, alt: "Get healthy while you work — Desk Health System webinar" }],
   },
   twitter: {
     card: "summary_large_image",

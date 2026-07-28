@@ -61,40 +61,6 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
   );
 }
 
-// ─── Hero illustration: professional at a work desk, health orbiting ────────────
-function HeroDeskArt() {
-  return (
-    <svg viewBox="0 0 420 340" className="w-full h-auto" role="img" aria-label="A professional working at a desk with healthy habits around them" style={{ maxWidth: 440 }}>
-      <defs>
-        <linearGradient id="dhsG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#e0b022" /><stop offset="1" stopColor="#b8860b" /></linearGradient>
-        <linearGradient id="dhsScreen" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#fff" /><stop offset="1" stopColor="#fef7e6" /></linearGradient>
-      </defs>
-      {/* soft blob */}
-      <ellipse cx="210" cy="180" rx="170" ry="150" fill="rgba(212,160,23,0.10)" />
-      {/* desk */}
-      <rect x="70" y="252" width="280" height="12" rx="6" fill="#e6d9b0" />
-      <rect x="96" y="264" width="12" height="52" rx="4" fill="#d9c99a" />
-      <rect x="312" y="264" width="12" height="52" rx="4" fill="#d9c99a" />
-      {/* monitor */}
-      <rect x="150" y="150" width="120" height="82" rx="10" fill="url(#dhsScreen)" stroke="#e6d9b0" strokeWidth="3" />
-      <rect x="150" y="150" width="120" height="20" rx="10" fill="url(#dhsG)" opacity="0.9" />
-      <rect x="164" y="182" width="70" height="7" rx="3.5" fill="#e6d9b0" />
-      <rect x="164" y="196" width="52" height="7" rx="3.5" fill="#efe6cd" />
-      <rect x="200" y="232" width="20" height="14" fill="#e6d9b0" /><rect x="184" y="246" width="52" height="7" rx="3.5" fill="#d9c99a" />
-      {/* person */}
-      <circle cx="118" cy="196" r="22" fill="url(#dhsG)" />
-      <path d="M86 252c0-20 15-34 32-34s32 14 32 34z" fill="#171412" />
-      <circle cx="118" cy="196" r="22" fill="none" stroke="#fff" strokeWidth="0" />
-      {/* healthy-habit chips orbiting */}
-      <g fontSize="19">
-        <circle cx="330" cy="120" r="20" fill="#fff" stroke="#e6d9b0" strokeWidth="2" /><text x="330" y="127" textAnchor="middle">💧</text>
-        <circle cx="86" cy="120" r="20" fill="#fff" stroke="#e6d9b0" strokeWidth="2" /><text x="86" y="127" textAnchor="middle">🧘</text>
-        <circle cx="356" cy="210" r="20" fill="#fff" stroke="#e6d9b0" strokeWidth="2" /><text x="356" y="217" textAnchor="middle">👀</text>
-        <circle cx="60" cy="206" r="20" fill="#fff" stroke="#e6d9b0" strokeWidth="2" /><text x="60" y="213" textAnchor="middle">🚶</text>
-      </g>
-    </svg>
-  );
-}
 
 // ─── CTA button ───────────────────────────────────────────────────────────────
 function CTA({ label = "Reserve My Free Seat", sub }: { label?: string; sub?: string }) {
@@ -466,8 +432,20 @@ export default function DeskHealthSystemPage() {
           </div>
 
           {/* Right: illustration */}
-          <div className="flex justify-center lg:justify-end" style={{ animation: "ss-float 5s ease-in-out infinite" }}>
-            <HeroDeskArt />
+          <div className="flex justify-center lg:justify-end">
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 500, width: "100%" }}>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/hero.jpg" alt="A professional staying healthy while working at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+              {/* floating health chips */}
+              <div className="absolute -left-3 top-8 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
+                <span style={{ fontSize: 18 }}>💧</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Hydrate</span>
+              </div>
+              <div className="absolute -right-2 bottom-10 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
+                <span style={{ fontSize: 18 }}>🧘</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Good posture</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -549,6 +527,12 @@ export default function DeskHealthSystemPage() {
       {/* ══ 4. WHY THIS HAPPENS ═════════════════════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+          <Reveal className="mb-9">
+            <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid #faf8f3", boxShadow: "0 18px 44px -16px rgba(0,0,0,0.2)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/desk/problem.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+            </div>
+          </Reveal>
           <Reveal>
             <p className="duc-label mb-3">Why this happens</p>
             <h2 className="duc-h2 duc-section-title mb-7">
@@ -610,10 +594,19 @@ export default function DeskHealthSystemPage() {
               </Reveal>
             ))}
           </div>
-          <Reveal delay={120}>
-            <p className="text-center mt-9" style={{ fontSize: 17, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "2.25rem auto 0" }}>
-              Your workday is where you spend most of your waking life. <span style={{ color: "#a8790d" }}>So that&apos;s where your health should improve.</span>
-            </p>
+          <Reveal delay={100}>
+            <div className="grid sm:grid-cols-2 gap-6 items-center mt-11 rounded-3xl p-5 sm:p-6" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+              <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 14px 36px -14px rgba(184,134,11,0.35)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/during-work.jpg" alt="A professional improving their health during the workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+              <div className="text-center sm:text-left">
+                <span className="inline-block rounded-full px-3 py-1 mb-3" style={{ background: "rgba(212,160,23,0.14)", color: "#a8790d", fontSize: 12, fontWeight: 800 }}>✨ The missing piece</span>
+                <p style={{ fontSize: 19, fontWeight: 700, color: "#18181b", lineHeight: 1.45 }}>
+                  Your workday is where you spend most of your waking life. <span style={{ color: "#a8790d" }}>So that&apos;s where your health should improve.</span>
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -684,20 +677,30 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3">Imagine this…</p>
             <h2 className="duc-h2 duc-section-title">What if your workday actually<br className="hidden sm:block" /> made you <span style={{ color: "#a8790d" }}>healthier?</span></h2>
           </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-9">
-            {[
-              { icon: "📞", line: "Every meeting reminded you to improve your posture." },
-              { icon: "💧", line: "Every water break became a healthy habit." },
-              { icon: "👀", line: "Every screen break protected your eyes." },
-              { icon: "🚶", line: "Every task switch encouraged you to move." },
-            ].map(({ icon, line }, i) => (
-              <Reveal key={line} delay={i * 70}>
-                <div className="flex items-start gap-3.5 rounded-2xl p-5 h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
-                  <span style={{ fontSize: 30 }} className="shrink-0">{icon}</span>
-                  <p style={{ fontSize: 15.5, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{line}</p>
-                </div>
-              </Reveal>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-8 items-center mb-9">
+            {/* image */}
+            <Reveal>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #faf8f3", boxShadow: "0 20px 50px -18px rgba(184,134,11,0.35)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/thrive.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+            </Reveal>
+            {/* cards */}
+            <div className="flex flex-col gap-3.5">
+              {[
+                { icon: "📞", line: "Every meeting reminded you to improve your posture." },
+                { icon: "💧", line: "Every water break became a healthy habit." },
+                { icon: "👀", line: "Every screen break protected your eyes." },
+                { icon: "🚶", line: "Every task switch encouraged you to move." },
+              ].map(({ icon, line }, i) => (
+                <Reveal key={line} delay={i * 70}>
+                  <div className="flex items-start gap-3.5 rounded-2xl p-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+                    <span style={{ fontSize: 30 }} className="shrink-0">{icon}</span>
+                    <p style={{ fontSize: 15.5, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{line}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
           <div className="rounded-2xl px-6 py-6 text-center" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>

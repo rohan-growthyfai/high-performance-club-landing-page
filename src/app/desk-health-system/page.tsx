@@ -550,7 +550,7 @@ export default function DeskHealthSystemPage() {
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
-              { icon: "💻", text: <>You <strong style={{ color: "#fff" }}>sit 6+ hours a day</strong> at a desk — coding, meetings, emails — and by evening your neck, back and eyes are paying the price.</> },
+              { icon: "💻", text: <>You <strong style={{ color: "#fff" }}>sit 6+ hours a day</strong> at a desk — coding, calls, meetings, emails, reports, spreadsheets, designing or studying — and by evening your neck, back and eyes are paying the price.</> },
               { icon: "⏰", text: <>You <strong style={{ color: "#fff" }}>want to be healthy</strong> but genuinely have no time for the gym or diets. Every plan you start dies within a couple of weeks.</> },
               { icon: "🔋", text: <>You&apos;re tired of the <strong style={{ color: "#fff" }}>afternoon crashes, stiffness and low energy</strong> — and you want a simple way to feel better <em>without</em> leaving your work.</> },
             ].map(({ icon, text }, i) => (
@@ -725,7 +725,61 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-{/* ══ 8b. BEFORE vs AFTER THE MASTERCLASS ═════════════════════════════ */}
+      {/* ══ 5b. 3 SECRETS OF THE DESK FIT FORMULA ═══════════════════════════ */}
+      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg,#141b2e 0%,#0f1626 50%,#141b2e 100%)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-11">
+            <h2 className="duc-h2" style={{ color: "#fff" }}>What you&apos;ll learn in <span style={{ color: "#e8a020" }}>{WEBINAR.duration}</span></h2>
+            <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.72)", maxWidth: 620, margin: "0.75rem auto 0", fontWeight: 500 }}>
+              The 3 core secrets of the Desk Fit Formula — the exact system busy professionals use to get healthier <em>while they work.</em>
+            </p>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-start">
+            {/* LEFT — image + script + CTA */}
+            <Reveal>
+              <div className="rounded-3xl overflow-hidden mb-6" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/gem/secrets.jpg" alt="Your host teaching the Desk Fit Formula masterclass" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+              <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
+                <p>This isn&apos;t just another &ldquo;free session.&rdquo; It&apos;s the turning point where your workday <strong style={{ color: "#fff" }}>stops damaging your health and starts improving it.</strong></p>
+                <p>The Desk Fit Formula is a <strong style={{ color: "#fff" }}>practical framework built for people who sit long hours</strong> — no gym, no diets, no extra time. Just small daily actions that fit naturally into the work you already do.</p>
+                <p>In this <strong style={{ color: "#fff" }}>{WEBINAR.duration} masterclass</strong>, I&apos;ll hand you the exact system — so you finally feel energetic, pain-free and focused at your desk. <strong style={{ color: "#e8a020" }}>This is your moment. Don&apos;t let it slip.</strong></p>
+              </div>
+              <div className="mt-7">
+                <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
+                  <TicketIcon size={22} />
+                  <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Reserve My Seat for <PriceTag /></span>
+                </button>
+              </div>
+            </Reveal>
+
+            {/* RIGHT — 3 secret cards */}
+            <div className="flex flex-col gap-5">
+              {[
+                { n: "Secret 1", title: "The Trigger Method", body: "How to turn things you already do at your desk — opening your laptop, joining a call, refilling coffee — into automatic healthy habits. No willpower, no reminders needed." },
+                { n: "Secret 2", title: "The 7 Desk Health Pillars", body: "The 7 areas that quietly decide how you feel — posture, eyes, hydration, movement, energy, focus and stress — and the one tiny action that fixes each, in seconds." },
+                { n: "Secret 3", title: "The 1% Daily System", body: "How stacking tiny 30-second habits compounds into a stronger, more energetic body — a simple 7-day plan you start the very next workday." },
+              ].map(({ n, title, body }, i) => (
+                <Reveal key={n} delay={i * 90}>
+                  <div className="rounded-3xl p-6 lg:p-7 flex items-start gap-4" style={{ background: "#fff", boxShadow: "0 12px 34px -14px rgba(0,0,0,0.4)" }}>
+                    <span className="shrink-0 inline-flex items-center justify-center rounded-full" style={{ width: 40, height: 40, border: "3px solid #e0592c" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7.5" stroke="#e0592c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                    <div>
+                      <p style={{ fontSize: 18.5, fontWeight: 900, color: "#e0592c", marginBottom: 6, fontFamily: "'Poppins',sans-serif" }}>{n}: {title}</p>
+                      <p style={{ fontSize: 16, color: "#1f2937", lineHeight: 1.6, fontWeight: 600 }}>{body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 8b. BEFORE vs AFTER THE MASTERCLASS ═════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-10">
@@ -1136,6 +1190,40 @@ export default function DeskHealthSystemPage() {
               ⭐ Loved by <strong style={{ color: "#18181b" }}>2,000+ desk professionals</strong> across India
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ══ 9c. STILL THINKING? — BENEFITS OF ATTENDING ═════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-3xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-11">
+            <p style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.14em", color: "#e0592c", marginBottom: 8 }}>Still thinking?</p>
+            <h2 className="duc-h2 duc-section-title">Benefits of attending this masterclass</h2>
+          </Reveal>
+          <div className="flex flex-col gap-7">
+            {[
+              { t: "Feel better by the end of the very first day.", d: "You'll learn the exact tiny habits that ease neck, back and eye strain — small resets you can do at your desk from tomorrow. Relief leads to momentum, and momentum keeps you going." },
+              { t: "Get healthy without adding a single extra hour.", d: "No gym, no diets, no separate program to juggle. You'll discover how to fit health into the 6–8 hours you already spend working — so it actually sticks." },
+              { t: "Beat the afternoon energy crash for good.", d: "You'll learn simple habits that keep your energy steady all day — so you stop reaching for a third coffee and stay sharp right through to evening." },
+              { t: "Fix your posture and protect your body.", d: "Understand what long sitting is quietly doing to your spine, shoulders and eyes — and the effortless corrections that prevent it, without a physio or gadgets." },
+              { t: "Turn healthy actions into automatic habits.", d: "You'll get the Trigger Method — a simple way to attach tiny healthy actions to things you already do, so they happen on autopilot without willpower." },
+              { t: "Walk away with a done-for-you 7-day plan.", d: "No guesswork. You'll leave knowing exactly what to do each day for a week to start reversing the damage — plus how to restart if you slip." },
+              { t: "Build a healthier lifestyle that lasts.", d: "This isn't a quick fix. It's a simple, repeatable system that keeps improving your health year after year — while you keep doing the work you love." },
+            ].map(({ t, d }, i) => (
+              <Reveal key={t} delay={i * 55}>
+                <div className="flex items-start gap-4">
+                  <span className="shrink-0 inline-flex items-center justify-center rounded-lg font-black" style={{ width: 30, height: 30, background: "rgba(212,160,23,0.14)", color: "#a8790d", fontSize: 15, fontFamily: "'Poppins',sans-serif" }}>{i + 1}</span>
+                  <div>
+                    <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b", marginBottom: 4, fontFamily: "'Poppins',sans-serif" }}>{t}</p>
+                    <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.65, fontWeight: 500 }}>{d}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+          <div className="flex justify-center mt-11">
+            <CTA big sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
+          </div>
         </div>
       </section>
 

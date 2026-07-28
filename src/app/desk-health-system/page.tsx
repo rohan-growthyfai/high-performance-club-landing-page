@@ -507,18 +507,18 @@ export default function DeskHealthSystemPage() {
               <p style={{ fontSize: 13.5, color: "#71717a" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
 
-            {/* tiny social proof */}
+            {/* tiny social proof — real professional faces */}
             <div className="flex items-center justify-center lg:justify-start gap-3">
-              <div className="flex -space-x-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/avatars/men/man-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/avatars/women/woman-1.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/avatars/men/man-2.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              <div className="flex -space-x-2.5">
+                {["/desk/pro/woman-1.jpg", "/desk/pro/man-1.jpg", "/desk/pro/woman-2.jpg", "/desk/pro/man-2.jpg"].map((src) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={src} src={src} alt="" className="w-9 h-9 rounded-full object-cover border-2 border-white" style={{ objectPosition: "center top", boxShadow: "0 2px 6px rgba(0,0,0,0.12)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                ))}
               </div>
-              <div className="flex items-center gap-1">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-              <p style={{ fontSize: 13.5, color: "#52525b" }}>Loved by desk professionals across India</p>
+              <div>
+                <div className="flex items-center gap-1">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
+                <p style={{ fontSize: 13, color: "#52525b", marginTop: 2 }}>Loved by desk professionals across India</p>
+              </div>
             </div>
           </div>
 
@@ -815,9 +815,19 @@ export default function DeskHealthSystemPage() {
       {/* ══ 7. WHO SHOULD ATTEND ════════════════════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "linear-gradient(135deg,#171412 0%,#18181b 50%,#171412 100%)" }}>
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-9">
+          <Reveal className="text-center mb-8">
             <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Who should attend?</p>
             <h2 className="duc-h2" style={{ color: "#fff" }}>For anyone who spends<br className="hidden sm:block" /> 6+ hours a day at a desk</h2>
+          </Reveal>
+          {/* professional faces strip */}
+          <Reveal className="flex justify-center mb-9">
+            <div className="flex -space-x-3">
+              {["/desk/pro/man-1.jpg", "/desk/pro/woman-1.jpg", "/desk/pro/man-2.jpg", "/desk/pro/woman-2.jpg"].map((src) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img key={src} src={src} alt="" className="w-14 h-14 rounded-full object-cover" style={{ objectPosition: "center top", border: "3px solid #18181b", boxShadow: "0 4px 12px rgba(0,0,0,0.4)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+              ))}
+              <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", border: "3px solid #18181b", fontSize: 12, fontWeight: 800, color: "#fff" }}>+2k</div>
+            </div>
           </Reveal>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {[

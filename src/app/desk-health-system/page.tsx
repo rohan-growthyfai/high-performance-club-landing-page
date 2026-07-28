@@ -8,20 +8,23 @@ declare global {
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// EDIT THIS when the webinar date is set. Everything on the page reads from here.
+// EDIT THIS when the next masterclass date is set. Everything reads from here.
+// When you give me the next date, update dateLabel/dayLabel + startISO below.
+// startISO drives the countdown timer (IST = +05:30).
 // ═════════════════════════════════════════════════════════════════════════════
 const WEBINAR = {
   title: "Get Healthy While You Work",
-  dateSet: false,                    // set true once you have a fixed date
-  dateLabel: "This Sunday",          // e.g. "Sunday, 3 August"
+  dayLabel: "Sunday",
+  dateLabel: "2 August 2026",        // shown clearly in the hero
   timeLabel: "11:00 AM IST",
   duration: "60 minutes",
   platformLabel: "Live on Zoom",
   seatsLine: "100% free · Limited seats",
+  price: "₹1,999",                   // struck-through on CTAs → FREE
+  startISO: "2026-08-02T11:00:00+05:30", // countdown target (IST)
 };
-const WHEN_LINE = WEBINAR.dateSet
-  ? `${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`
-  : `Next session ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`;
+const WHEN_LINE = `${WEBINAR.dayLabel}, ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`;
+const DATE_LINE = `${WEBINAR.dayLabel}, ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel}`;
 
 // ─── Register modal context ─────────────────────────────────────────────────────
 const RegisterCtx = createContext<() => void>(() => {});
@@ -62,18 +65,69 @@ function Reveal({ children, delay = 0, className = "" }: { children: React.React
 }
 
 
-// ─── CTA button ───────────────────────────────────────────────────────────────
-function CTA({ label = "Reserve My Free Seat", sub }: { label?: string; sub?: string }) {
+// ─── Price tag: struck-through ₹1,999 → FREE ───────────────────────────────────
+function PriceTag({ dark = false }: { dark?: boolean }) {
+  return (
+    <span className="inline-flex items-baseline gap-1.5">
+      <span style={{ position: "relative", fontWeight: 700, color: dark ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.85)", textDecoration: "line-through", textDecorationColor: "#ef4444", textDecorationThickness: 2 }}>{WEBINAR.price}</span>
+      <span style={{ fontWeight: 900, letterSpacing: "0.02em" }}>FREE</span>
+    </span>
+  );
+}
+
+// ─── CTA button — "Reserve My Seat for ₹1,999 FREE" ─────────────────────────────
+function CTA({ label, sub, big = false }: { label?: string; sub?: string; big?: boolean }) {
   const register = useRegister();
   return (
     <div className="flex flex-col items-center gap-2">
       <button
         onClick={register}
-        className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black text-white"
-        style={{ fontSize: 19, boxShadow: "0 10px 30px rgba(212,160,23,0.45)", letterSpacing: "-0.01em", border: "none", cursor: "pointer" }}>
-        <TicketIcon size={20} />{label}
+        className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full font-black text-white"
+        style={{ fontSize: big ? 20 : 18, padding: big ? "20px 40px" : "17px 34px", boxShadow: "0 10px 30px rgba(212,160,23,0.45)", letterSpacing: "-0.01em", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
+        <TicketIcon size={big ? 22 : 20} />
+        {label ? <span>{label}</span> : <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Reserve My Seat for <PriceTag /></span>}
       </button>
-      {sub && <p style={{ fontSize: 13, color: "#71717a", textAlign: "center" }}>{sub}</p>}
+      {sub && <p style={{ fontSize: 13.5, color: "#71717a", textAlign: "center" }}>{sub}</p>}
+    </div>
+  );
+}
+
+// ─── Countdown timer to the masterclass ────────────────────────────────────────
+function useCountdown(targetISO: string) {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const target = new Date(targetISO).getTime();
+  if (now === null) return null; // avoid SSR/client mismatch until mounted
+  let diff = Math.max(0, target - now);
+  const days = Math.floor(diff / 86400000); diff -= days * 86400000;
+  const hours = Math.floor(diff / 3600000); diff -= hours * 3600000;
+  const minutes = Math.floor(diff / 60000); diff -= minutes * 60000;
+  const seconds = Math.floor(diff / 1000);
+  return { days, hours, minutes, seconds, done: target - now <= 0 };
+}
+
+function Countdown({ dark = false }: { dark?: boolean }) {
+  const t = useCountdown(WEBINAR.startISO);
+  const cells: Array<[string, number]> = t
+    ? [["Days", t.days], ["Hours", t.hours], ["Mins", t.minutes], ["Secs", t.seconds]]
+    : [["Days", 0], ["Hours", 0], ["Mins", 0], ["Secs", 0]];
+  return (
+    <div className="inline-flex items-center gap-2 sm:gap-3" aria-label="Time left until the masterclass" suppressHydrationWarning>
+      {cells.map(([lbl, val], i) => (
+        <div key={lbl} className="flex items-center gap-2 sm:gap-3">
+          <div className="flex flex-col items-center">
+            <div className="flex items-center justify-center rounded-xl tabular-nums" style={{ minWidth: 52, padding: "8px 10px", background: dark ? "rgba(255,255,255,0.08)" : "#18181b", border: dark ? "1px solid rgba(212,160,23,0.3)" : "none", fontSize: 24, fontWeight: 900, color: dark ? "#fff" : "#e8a020", fontFamily: "'Poppins',sans-serif", lineHeight: 1 }}>
+              {String(val).padStart(2, "0")}
+            </div>
+            <span style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: dark ? "rgba(255,255,255,0.6)" : "#a8790d", marginTop: 5 }}>{lbl}</span>
+          </div>
+          {i < cells.length - 1 && <span style={{ fontSize: 22, fontWeight: 900, color: dark ? "rgba(255,255,255,0.35)" : "#d4a017", marginBottom: 14 }}>:</span>}
+        </div>
+      ))}
     </div>
   );
 }
@@ -83,7 +137,7 @@ function FAQ({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#e2dfd6", boxShadow: "0 2px 10px rgba(0,0,0,0.04)" }}>
-      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-bold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 15 }}>
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-bold bg-white hover:bg-stone-50 transition-colors" style={{ color: "#18181b", fontSize: 16 }}>
         {q}
         <span className="shrink-0 text-2xl font-light" style={{ color: "#a8790d", display: "inline-block", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
       </button>
@@ -116,7 +170,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
     }
     setStatus("loading");
     if (typeof window !== "undefined" && typeof window.fbq === "function")
-      window.fbq("track", "CompleteRegistration", { content_name: "Desk Health System Webinar" });
+      window.fbq("track", "CompleteRegistration", { content_name: "Desk Health System Masterclass" });
     try {
       await fetch("/api/desk-health-register", {
         method: "POST",
@@ -133,20 +187,25 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
     <>
       <div className="fixed inset-0 z-[110]" style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }} onClick={onClose} />
       <div className="fixed inset-0 z-[111] flex items-center justify-center px-4 pointer-events-none">
-        <div className="pointer-events-auto w-full max-w-sm rounded-3xl overflow-hidden" onClick={e => e.stopPropagation()} style={{ background: "#fff", boxShadow: "0 20px 60px rgba(0,0,0,0.22)", animation: "duc-fadein 0.35s ease" }}>
+        <div className="pointer-events-auto w-full max-w-md rounded-3xl overflow-hidden max-h-[92vh] overflow-y-auto" onClick={e => e.stopPropagation()} style={{ background: "#fff", boxShadow: "0 20px 60px rgba(0,0,0,0.22)", animation: "duc-fadein 0.35s ease" }}>
           <div className="relative px-6 pt-7 pb-5 text-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)" }}>
             <button onClick={onClose} className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full cursor-pointer" style={{ background: "rgba(255,255,255,0.2)", border: "none" }}>
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12" stroke="white" strokeWidth="2.5" strokeLinecap="round" /></svg>
             </button>
             <p className="text-3xl mb-2">🎟️</p>
             <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>
-              {status === "done" ? "You're in! See you live 🎉" : "Save your free seat"}
+              {status === "done" ? "You're in! See you live 🎉" : "Reserve your FREE seat"}
             </h2>
+            {status !== "done" && (
+              <p className="text-white" style={{ fontSize: 13, opacity: 0.9, marginTop: 4 }}>
+                <span style={{ textDecoration: "line-through", opacity: 0.8 }}>{WEBINAR.price}</span> today <strong>FREE</strong>
+              </p>
+            )}
           </div>
 
           {status === "done" ? (
             <div className="px-6 py-7 text-center">
-              <p style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.7, marginBottom: 14 }}>
+              <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.7, marginBottom: 14 }}>
                 Your seat is saved. 🎉
               </p>
               <div className="rounded-xl p-4 mb-4 text-center" style={{ background: "rgba(212,160,23,0.06)", border: "1px solid rgba(212,160,23,0.2)" }}>
@@ -158,17 +217,38 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
                 <p style={{ fontSize: 13, fontWeight: 700, color: "#18181b", marginBottom: 6 }}>🎁 Try this right now, at your work desk:</p>
                 <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6 }}>Sit tall, drop your shoulders, and take 3 slow breaths. That&apos;s a healthy desk habit — done in 10 seconds.</p>
               </div>
-              <button onClick={onClose} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 15, border: "none", cursor: "pointer" }}>
+              <button onClick={onClose} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, border: "none", cursor: "pointer" }}>
                 Done
               </button>
             </div>
           ) : (
             <form onSubmit={submit} className="px-6 py-5">
-              <div className="rounded-lg px-3 py-2 mb-4 text-center" style={{ background: "rgba(212,160,23,0.08)", border: "1px solid rgba(212,160,23,0.2)" }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: "#9a6b0a" }}>🗓 {WHEN_LINE}</span>
+              {/* 3-point summary */}
+              <div className="rounded-2xl p-4 mb-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+                <div className="flex items-start gap-3 mb-3">
+                  <span style={{ fontSize: 18 }} className="shrink-0">🎓</span>
+                  <div>
+                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>What you&apos;ll learn</p>
+                    <p style={{ fontSize: 13.5, color: "#3f3f46", lineHeight: 1.5 }}>How to improve your health while you work — better posture, energy, focus & less stress — with tiny daily desk habits.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 mb-3">
+                  <span style={{ fontSize: 18 }} className="shrink-0">📅</span>
+                  <div>
+                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>When</p>
+                    <p style={{ fontSize: 13.5, color: "#18181b", fontWeight: 700, lineHeight: 1.5 }}>{DATE_LINE} · {WEBINAR.duration} · Live on Zoom</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span style={{ fontSize: 18 }} className="shrink-0">🎟️</span>
+                  <div>
+                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Your seat</p>
+                    <p style={{ fontSize: 13.5, color: "#18181b", lineHeight: 1.5 }}><span style={{ textDecoration: "line-through", color: "#dc2626" }}>{WEBINAR.price}</span> <strong>100% FREE</strong> — limited seats</p>
+                  </div>
+                </div>
               </div>
-              <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6, marginBottom: 16, textAlign: "center" }}>
-                Add your details. We&apos;ll send the Zoom join link on WhatsApp.
+              <p style={{ fontSize: 13.5, color: "#52525b", lineHeight: 1.6, marginBottom: 14, textAlign: "center" }}>
+                Add your details — we&apos;ll send the Zoom join link on WhatsApp.
               </p>
               <div className="flex flex-col gap-3">
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="Full name" autoComplete="name" style={inputStyle} />
@@ -180,7 +260,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
                   Please add your full name, a valid email and WhatsApp number.
                 </p>
               )}
-              <button type="submit" disabled={status === "loading"} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary mt-4" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: status === "loading" ? "wait" : "pointer", opacity: status === "loading" ? 0.7 : 1 }}>
+              <button type="submit" disabled={status === "loading"} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary mt-4" style={{ fontSize: 17, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: status === "loading" ? "wait" : "pointer", opacity: status === "loading" ? 0.7 : 1 }}>
                 <TicketIcon size={18} />{status === "loading" ? "Saving…" : "Reserve My Free Seat →"}
               </button>
               <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8, textAlign: "center" }}>Free · No spam · Leave anytime</p>
@@ -193,7 +273,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
 }
 const inputStyle: React.CSSProperties = {
   width: "100%", padding: "13px 16px", borderRadius: 12, border: "1.5px solid #e4e4e7",
-  fontSize: 15, color: "#18181b", outline: "none", background: "#fafafa",
+  fontSize: 16, color: "#18181b", outline: "none", background: "#fafafa",
 };
 
 // ─── Sticky bottom CTA ──────────────────────────────────────────────────────────
@@ -209,14 +289,14 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
       <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <button onClick={register} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE}</p></div>
+          <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Seat <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", opacity: 0.85 }}>{WEBINAR.price}</span> FREE</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{DATE_LINE}</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><TicketIcon size={15} /><span className="text-white font-bold text-sm">Join</span></div>
         </button>
       </div>
       <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
         <div className="max-w-lg mx-auto">
           <button onClick={register} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Free Seat →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE} · Free</p></div>
+            <div className="text-left"><p className="text-white font-black text-sm leading-tight">Reserve My Seat <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", opacity: 0.85 }}>{WEBINAR.price}</span> FREE</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{DATE_LINE} · {WEBINAR.duration}</p></div>
             <div className="flex items-center gap-2 rounded-xl px-4 py-2 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><TicketIcon size={16} /><span className="text-white font-bold text-sm">Join Free</span></div>
           </button>
         </div>
@@ -233,7 +313,8 @@ const NAMES = [
   { name: "Meera", city: "Surat" }, { name: "Arjun", city: "Lucknow" }, { name: "Tanvi", city: "Nagpur" },
 ];
 let _tid = 0;
-function tAgo() { const r = Math.random(); return r < 0.3 ? `${Math.floor(r * 150 + 10)}s ago` : r < 0.6 ? "just now" : `${Math.floor(r * 5 + 1)} min ago`; }
+const AGO_OPTIONS = ["just now", "20 seconds ago", "30 seconds ago", "45 seconds ago", "1 minute ago", "2 minutes ago", "3 minutes ago", "5 minutes ago"];
+function tAgo() { return AGO_OPTIONS[Math.floor(Math.random() * AGO_OPTIONS.length)]; }
 
 function LiveToast() {
   interface T { id: number; name: string; city: string; time: string }
@@ -257,16 +338,17 @@ function LiveToast() {
   }, [scrolled]);
   if (!scrolled || toasts.length === 0) return null;
   return (
-    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[100px] md:bottom-[90px]" aria-live="polite">
+    // Raised well above the sticky bottom CTA so it never gets cropped.
+    <div className="fixed left-3 z-40 flex flex-col gap-2 pointer-events-none bottom-[168px] md:bottom-[150px]" aria-live="polite">
       {toasts.map((t, i) => (
         <div key={t.id} className="pointer-events-auto" style={{ opacity: i === 0 ? 1 : 0.65 - i * 0.15, transform: `scale(${1 - i * 0.03})`, transformOrigin: "bottom left", animation: "duc-fadein 0.3s ease" }}>
-          <div className="flex items-center gap-2 rounded-2xl px-3 py-2 w-[240px]" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 4px 16px rgba(0,0,0,0.09)" }}>
-            <div className="w-7 h-7 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0" style={{ background: `hsl(${(t.name.charCodeAt(0) * 37) % 360},55%,48%)` }}>{t.name[0]}</div>
+          <div className="flex items-center gap-2.5 rounded-2xl px-3 py-2.5 w-[262px]" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}>
+            <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0" style={{ background: `hsl(${(t.name.charCodeAt(0) * 37) % 360},55%,48%)` }}>{t.name[0]}</div>
             <div className="flex-1 min-w-0">
-              <p className="font-bold leading-snug truncate" style={{ fontSize: 11, color: "#18181b" }}>{t.name} from {t.city}</p>
-              <p className="leading-snug mt-0.5" style={{ fontSize: 10, color: "#71717a" }}>saved a seat · {t.time}</p>
+              <p className="font-bold leading-snug truncate" style={{ fontSize: 12, color: "#18181b" }}>{t.name} from {t.city}</p>
+              <p className="leading-snug mt-0.5" style={{ fontSize: 11, color: "#71717a" }}>registered for the masterclass · {t.time}</p>
             </div>
-            <span className="relative flex w-2 h-2 shrink-0"><span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#d4a017" }} /><span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#d4a017" }} /></span>
+            <span className="relative flex w-2 h-2 shrink-0"><span className="absolute inline-flex w-full h-full rounded-full animate-ping opacity-75" style={{ background: "#22c55e" }} /><span className="relative inline-flex w-2 h-2 rounded-full" style={{ background: "#22c55e" }} /></span>
           </div>
         </div>
       ))}
@@ -304,10 +386,10 @@ function RegisterNudge() {
           </div>
           <div className="px-6 py-5 text-center">
             <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 12 }}>
-              A free live webinar on how to <strong style={{ color: "#18181b" }}>get healthier and more energetic while you work</strong> — no gym, no diet, no extra time.
+              A free live masterclass on how to <strong style={{ color: "#18181b" }}>get healthier and more energetic while you work</strong> — no gym, no diet, no extra time.
             </p>
             <p style={{ fontSize: 13, fontWeight: 700, color: "#9a6b0a", marginBottom: 16 }}>🗓 {WHEN_LINE}</p>
-            <button onClick={() => { dismiss(); register(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 16, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
+            <button onClick={() => { dismiss(); register(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 17, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
               <TicketIcon size={18} />Reserve My Free Seat →
             </button>
             <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>Free · No spam</p>
@@ -323,15 +405,15 @@ function useMetaPixelViewContent() {
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.fbq === "function") {
       window.fbq("track", "ViewContent", {
-        content_name: "Desk Health System Webinar",
-        content_category: "Webinar Registration",
+        content_name: "Desk Health System Masterclass",
+        content_category: "Masterclass Registration",
       });
     }
   }, []);
 }
 
 // ═════════════════════════════════════════════════════════════════════════════
-// PAGE — one goal: webinar registrations. Simple words, big visuals.
+// PAGE — one goal: masterclass registrations. Simple words, big visuals.
 // ═════════════════════════════════════════════════════════════════════════════
 export default function DeskHealthSystemPage() {
   useMetaPixelViewContent();
@@ -340,7 +422,7 @@ export default function DeskHealthSystemPage() {
 
   return (
     <RegisterCtx.Provider value={openRegister}>
-    <div id="ss-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b", fontSize: 15 }}>
+    <div id="ss-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b", fontSize: 16 }}>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Poppins:wght@500;600;700;800;900&display=swap');
         @keyframes duc-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
@@ -366,11 +448,11 @@ export default function DeskHealthSystemPage() {
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
       <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "10px 16px" }}>
         <p className="text-center font-bold text-white" style={{ fontSize: 13.5, letterSpacing: "0.01em", lineHeight: 1.4 }}>
-          🎟️ FREE Live Webinar · {WHEN_LINE} · {WEBINAR.seatsLine}
+          🎟️ FREE Live Masterclass · {DATE_LINE} · {WEBINAR.duration}
         </p>
       </div>
 
-      {/* ══ 1. HERO — the problem + the free-webinar promise ════════════════ */}
+      {/* ══ 1. HERO — the problem + the free-masterclass promise ════════════════ */}
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-12 pb-14 lg:pt-16 grid lg:grid-cols-2 gap-10 lg:gap-8 items-center">
 
@@ -389,31 +471,40 @@ export default function DeskHealthSystemPage() {
             <p style={{ fontSize: 18, lineHeight: 1.6, color: "#3f3f46", maxWidth: 560, margin: "0 auto 14px", fontWeight: 500 }} className="lg:mx-0">
               Every workday, tiny unhealthy habits quietly lead to <strong style={{ color: "#18181b" }}>poor posture, low energy, eye strain, stiffness</strong> and <strong style={{ color: "#18181b" }}>stress</strong>.
             </p>
-            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto 24px", lineHeight: 1.6 }} className="lg:mx-0">
-              Join our <strong style={{ color: "#18181b" }}>FREE live webinar</strong> and discover how to improve your health <strong style={{ color: "#18181b" }}>naturally while you work</strong> — no gym, no diets, no extra hours.
+            <p style={{ fontSize: 17, color: "#52525b", maxWidth: 560, margin: "0 auto 24px", lineHeight: 1.6 }} className="lg:mx-0">
+              Join our <strong style={{ color: "#18181b" }}>FREE live masterclass</strong> and discover how to improve your health <strong style={{ color: "#18181b" }}>naturally while you work</strong> — no gym, no diets, no extra hours.
             </p>
 
-            {/* When / where — clean badge row (LIVE | 60 min | FREE) */}
+            {/* Date — big, bold, clearly visible */}
+            <div className="inline-flex items-center gap-3 rounded-2xl px-5 py-3 mb-5" style={{ background: "#18181b", boxShadow: "0 10px 26px -10px rgba(0,0,0,0.4)" }}>
+              <span style={{ fontSize: 26 }}>📅</span>
+              <div className="text-left">
+                <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", lineHeight: 1.15, fontFamily: "'Poppins',sans-serif" }}>{WEBINAR.dayLabel}, {WEBINAR.dateLabel}</p>
+                <p style={{ fontSize: 13.5, fontWeight: 600, color: "#e8a020" }}>{WEBINAR.timeLabel}</p>
+              </div>
+            </div>
+
+            {/* format badges */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 mb-7">
               {[
-                { icon: "🔴", label: "LIVE" },
                 { icon: "⏱️", label: WEBINAR.duration },
-                { icon: "💻", label: "Zoom" },
+                { icon: "💻", label: "Live on Zoom" },
                 { icon: "🎟️", label: "100% FREE" },
               ].map(({ icon, label }) => (
                 <div key={label} className="flex items-center gap-1.5 rounded-full px-3.5 py-2" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 4px 14px rgba(0,0,0,0.05)" }}>
-                  <span style={{ fontSize: 15 }}>{icon}</span>
+                  <span style={{ fontSize: 16 }}>{icon}</span>
                   <span style={{ fontSize: 13.5, fontWeight: 700, color: "#18181b" }}>{label}</span>
                 </div>
               ))}
             </div>
 
-            {/* CTA */}
+            {/* CTA — Reserve My Seat for ₹1,999 FREE */}
             <div className="flex flex-col items-center lg:items-start gap-2 mb-7">
-              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 20, boxShadow: "0 12px 34px rgba(212,160,23,0.45)", border: "none", cursor: "pointer" }}>
-                <TicketIcon size={22} />Reserve My Free Seat
+              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-2.5 rounded-full font-black text-white" style={{ fontSize: 19, padding: "18px 32px", boxShadow: "0 12px 34px rgba(212,160,23,0.45)", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
+                <TicketIcon size={22} />
+                <span className="inline-flex flex-wrap items-baseline gap-1.5">Reserve My Seat for <PriceTag /></span>
               </button>
-              <p style={{ fontSize: 13, color: "#71717a" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
+              <p style={{ fontSize: 13.5, color: "#71717a" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
 
             {/* tiny social proof */}
@@ -427,25 +518,35 @@ export default function DeskHealthSystemPage() {
                 <img src="/avatars/men/man-2.jpg" alt="" className="w-8 h-8 rounded-full object-cover border-2 border-white" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
               </div>
               <div className="flex items-center gap-1">{[1,2,3,4,5].map(i=><Star key={i}/>)}</div>
-              <p style={{ fontSize: 13, color: "#52525b" }}>Loved by desk professionals across India</p>
+              <p style={{ fontSize: 13.5, color: "#52525b" }}>Loved by desk professionals across India</p>
             </div>
           </div>
 
-          {/* Right: illustration */}
+          {/* Right: shocking-reaction photo of a professional at his desk */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 500, width: "100%" }}>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/hero.jpg" alt="A professional staying healthy while working at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/real/hero-shock.jpg" alt="A shocked professional realising how his desk job is affecting his health" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
-              {/* floating health chips */}
+              {/* floating callout chips */}
               <div className="absolute -left-3 top-8 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 18 }}>💧</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Hydrate</span>
+                <span style={{ fontSize: 18 }}>😖</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Neck &amp; back pain</span>
               </div>
               <div className="absolute -right-2 bottom-10 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 18 }}>🧘</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Good posture</span>
+                <span style={{ fontSize: 18 }}>🔋</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Low energy</span>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Countdown timer bar — sits at the bottom of the hero, below the CTA */}
+        <div className="border-t" style={{ borderColor: "#e6d9b0", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(4px)" }}>
+          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+            <p className="text-center sm:text-right" style={{ fontSize: 15.5, fontWeight: 700, color: "#18181b" }}>
+              ⏳ Masterclass starts in
+            </p>
+            <Countdown />
           </div>
         </div>
       </section>
@@ -454,7 +555,7 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-10">
-            <p className="duc-label mb-3">🎓 On the free webinar</p>
+            <p className="duc-label mb-3">🎓 On the free masterclass</p>
             <h2 className="duc-h2 duc-section-title">In just {WEBINAR.duration},<br className="hidden sm:block" /> you&apos;ll discover…</h2>
           </Reveal>
           <div className="flex flex-col gap-3.5">
@@ -467,8 +568,8 @@ export default function DeskHealthSystemPage() {
             ].map((t, i) => (
               <Reveal key={t} delay={i * 70}>
                 <div className="pop-card flex items-center gap-4 rounded-2xl px-5 py-4" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-                  <span className="shrink-0 inline-flex items-center justify-center rounded-full text-white" style={{ width: 32, height: 32, background: "linear-gradient(135deg,#059669,#10b981)", fontSize: 16, fontWeight: 900 }}>✓</span>
-                  <p style={{ fontSize: 15.5, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }}>{t}</p>
+                  <span className="shrink-0 inline-flex items-center justify-center rounded-full text-white" style={{ width: 32, height: 32, background: "linear-gradient(135deg,#059669,#10b981)", fontSize: 17, fontWeight: 900 }}>✓</span>
+                  <p style={{ fontSize: 16.5, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }}>{t}</p>
                 </div>
               </Reveal>
             ))}
@@ -477,14 +578,14 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={120}>
             <div className="flex flex-wrap items-center justify-center gap-3 mt-8">
               {["No workouts", "No diets", "No major lifestyle changes"].map(t => (
-                <span key={t} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff7f7", border: "1.5px solid #fecaca", fontSize: 14.5, fontWeight: 700, color: "#991b1b" }}>
+                <span key={t} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff7f7", border: "1.5px solid #fecaca", fontSize: 15.5, fontWeight: 700, color: "#991b1b" }}>
                   <span style={{ color: "#dc2626", fontWeight: 900 }}>✕</span>{t}
                 </span>
               ))}
             </div>
           </Reveal>
           <div className="flex justify-center mt-10">
-            <CTA label="Reserve My Free Seat →" sub={`${WHEN_LINE} · Free`} />
+            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
           </div>
         </div>
       </section>
@@ -511,14 +612,14 @@ export default function DeskHealthSystemPage() {
               <Reveal key={t} delay={i * 45}>
                 <div className="pop-card flex items-center gap-3 rounded-2xl px-4 py-4 h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
                   <span className="shrink-0 inline-flex items-center justify-center rounded-xl" style={{ width: 42, height: 42, background: "rgba(212,160,23,0.1)", fontSize: 22 }}>{icon}</span>
-                  <span style={{ fontSize: 14.5, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{t}</span>
+                  <span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{t}</span>
                 </div>
               </Reveal>
             ))}
           </div>
           <Reveal delay={120}>
             <p className="text-center mt-9" style={{ fontSize: 17, fontWeight: 700, color: "#18181b", maxWidth: 520, margin: "2.25rem auto 0" }}>
-              Relate to even a few of these? <span style={{ color: "#a8790d" }}>This webinar is for you.</span>
+              Relate to even a few of these? <span style={{ color: "#a8790d" }}>This masterclass is for you.</span>
             </p>
           </Reveal>
         </div>
@@ -530,7 +631,7 @@ export default function DeskHealthSystemPage() {
           <Reveal className="mb-9">
             <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid #faf8f3", boxShadow: "0 18px 44px -16px rgba(0,0,0,0.2)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/desk/problem.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              <img src="/desk/real/damage-neck.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
             </div>
           </Reveal>
           <Reveal>
@@ -551,7 +652,7 @@ export default function DeskHealthSystemPage() {
               ].map(({ icon, t }, i, arr) => (
                 <div key={t} className="flex items-center gap-2.5">
                   <span className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0", fontSize: 14, fontWeight: 700, color: "#3f3f46" }}>
-                    <span style={{ fontSize: 16 }}>{icon}</span>{t}
+                    <span style={{ fontSize: 17 }}>{icon}</span>{t}
                   </span>
                   {i < arr.length - 1 && <span className="hidden sm:inline" style={{ color: "#d4a017", fontWeight: 900 }}>→</span>}
                 </div>
@@ -559,7 +660,7 @@ export default function DeskHealthSystemPage() {
             </div>
           </Reveal>
           <Reveal delay={140}>
-            <p style={{ fontSize: 16.5, color: "#52525b", lineHeight: 1.7, maxWidth: 560, margin: "0 auto 18px" }}>
+            <p style={{ fontSize: 17.5, color: "#52525b", lineHeight: 1.7, maxWidth: 560, margin: "0 auto 18px" }}>
               Tiny unhealthy habits slowly become your daily routine. The problem isn&apos;t working long hours.
             </p>
             <p style={{ fontSize: 20, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "0 auto" }}>
@@ -588,7 +689,7 @@ export default function DeskHealthSystemPage() {
                   : { background: "linear-gradient(135deg,#171412,#18181b)", border: "1.5px solid #b8860b", boxShadow: "0 14px 40px -12px rgba(184,134,11,0.5)" }}>
                   <span style={{ fontSize: 40, marginBottom: 8 }}>{emoji}</span>
                   <p style={{ fontSize: 12, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: dim ? "#a1a1aa" : "#e8a020", marginBottom: 6 }}>{when}</p>
-                  <p style={{ fontSize: 15, fontWeight: 600, color: dim ? "#71717a" : "#fff", lineHeight: 1.5 }}>{note}</p>
+                  <p style={{ fontSize: 16, fontWeight: 600, color: dim ? "#71717a" : "#fff", lineHeight: 1.5 }}>{note}</p>
                   {!dim && <span className="mt-4 inline-block rounded-full px-3 py-1" style={{ background: "rgba(212,160,23,0.2)", color: "#e8a020", fontSize: 12, fontWeight: 800 }}>✨ The missing piece</span>}
                 </div>
               </Reveal>
@@ -598,7 +699,7 @@ export default function DeskHealthSystemPage() {
             <div className="grid sm:grid-cols-2 gap-6 items-center mt-11 rounded-3xl p-5 sm:p-6" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
               <div className="rounded-2xl overflow-hidden" style={{ boxShadow: "0 14px 36px -14px rgba(184,134,11,0.35)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/during-work.jpg" alt="A professional improving their health during the workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/real/working.jpg" alt="A professional improving their health during the workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="text-center sm:text-left">
                 <span className="inline-block rounded-full px-3 py-1 mb-3" style={{ background: "rgba(212,160,23,0.14)", color: "#a8790d", fontSize: 12, fontWeight: 800 }}>✨ The missing piece</span>
@@ -618,7 +719,7 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3">Introducing</p>
             <h2 className="duc-h2 duc-section-title mb-3">The Desk Health System™</h2>
             <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to stay healthy while you work.</p>
-            <p style={{ fontSize: 16, color: "#52525b", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
+            <p style={{ fontSize: 17, color: "#52525b", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
               A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it improves your health through <strong style={{ color: "#18181b" }}>small daily actions that fit naturally into your workday.</strong>
             </p>
           </Reveal>
@@ -627,7 +728,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={60}>
             <div className="flex flex-wrap items-center justify-center gap-3 mb-11">
               {["No gym", "No strict diets", "No complicated routines", "No extra hours"].map(t => (
-                <span key={t} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", fontSize: 14.5, fontWeight: 700, color: "#18181b" }}>
+                <span key={t} className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", fontSize: 15.5, fontWeight: 700, color: "#18181b" }}>
                   <span style={{ color: "#dc2626", fontWeight: 900 }}>✕</span>{t}
                 </span>
               ))}
@@ -658,14 +759,14 @@ export default function DeskHealthSystemPage() {
             {/* filler CTA tile to complete the grid */}
             <div className="rounded-2xl p-5 flex flex-col items-center justify-center text-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)" }}>
               <span style={{ fontSize: 26, marginBottom: 4 }}>🎓</span>
-              <p style={{ fontSize: 13, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>All 7 explained on the webinar</p>
+              <p style={{ fontSize: 13, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>All 7 explained on the masterclass</p>
             </div>
           </div>
-          <p className="text-center mt-8" style={{ fontSize: 15, color: "#71717a", maxWidth: 580, margin: "1.5rem auto 0" }}>
+          <p className="text-center mt-8" style={{ fontSize: 16, color: "#71717a", maxWidth: 580, margin: "1.5rem auto 0" }}>
             Together, these seven pillars address the most common health challenges faced by desk professionals.
           </p>
           <div className="flex justify-center mt-8">
-            <CTA label="Reserve My Free Seat →" sub={`${WHEN_LINE} · Free`} />
+            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
           </div>
         </div>
       </section>
@@ -682,7 +783,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #faf8f3", boxShadow: "0 20px 50px -18px rgba(184,134,11,0.35)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/thrive.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/real/after-f.jpg" alt="An energetic, healthy professional stretching at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* cards */}
@@ -696,7 +797,7 @@ export default function DeskHealthSystemPage() {
                 <Reveal key={line} delay={i * 70}>
                   <div className="flex items-start gap-3.5 rounded-2xl p-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
                     <span style={{ fontSize: 30 }} className="shrink-0">{icon}</span>
-                    <p style={{ fontSize: 15.5, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{line}</p>
+                    <p style={{ fontSize: 16.5, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{line}</p>
                   </div>
                 </Reveal>
               ))}
@@ -739,35 +840,149 @@ export default function DeskHealthSystemPage() {
             ))}
           </div>
           <Reveal delay={120}>
-            <p className="text-center mt-8" style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", maxWidth: 520, margin: "2rem auto 0", lineHeight: 1.6 }}>
-              If your workday revolves around a laptop or computer… <strong style={{ color: "#e8a020" }}>this webinar is for you.</strong>
+            <p className="text-center mt-8" style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", maxWidth: 520, margin: "2rem auto 0", lineHeight: 1.6 }}>
+              If your workday revolves around a laptop or computer… <strong style={{ color: "#e8a020" }}>this masterclass is for you.</strong>
             </p>
             <div className="flex justify-center mt-8">
               <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black text-white" style={{ fontSize: 18, border: "none", cursor: "pointer" }}>
-                <TicketIcon size={20} />That&apos;s Me — Reserve My Seat →
+                <TicketIcon size={20} />That&apos;s Me — Reserve My Seat <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", opacity: 0.85, marginLeft: 4 }}>{WEBINAR.price}</span> FREE
               </button>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ══ 9. WHO'S TEACHING — founder (Rohan) ═════════════════════════════ */}
+      {/* ══ 8b. BEFORE vs AFTER THE MASTERCLASS ═════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <div className="rounded-3xl p-7 lg:p-9 flex flex-col sm:flex-row items-center gap-7 text-center sm:text-left" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px rgba(0,0,0,0.05)" }}>
-            <div className="shrink-0">
-              <div className="rounded-2xl overflow-hidden" style={{ width: 140, height: 140, border: "4px solid #fff", boxShadow: "0 12px 30px -8px rgba(0,0,0,0.25)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/rohan.png" alt="Rohan — your host" className="w-full h-full object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-10">
+            <p className="duc-label mb-3">The transformation</p>
+            <h2 className="duc-h2 duc-section-title">Before vs after this masterclass</h2>
+            <p style={{ fontSize: 17, color: "#52525b", maxWidth: 560, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
+              Same desk. Same job. Same 8 hours. Here&apos;s how your workday feels once you apply the Desk Health System™.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {/* BEFORE */}
+            <Reveal>
+              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/real/before.jpg" alt="A tired, low-energy professional before the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#dc2626", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😔 BEFORE</div>
+                </div>
+                <div className="p-6 flex flex-col gap-2.5 flex-1">
+                  {[
+                    "Stiff neck & aching back by evening",
+                    "Tired, strained eyes from screens",
+                    "Energy crashes every afternoon",
+                    "Feeling your health slowly slipping",
+                    "No idea how to fix it without extra time",
+                  ].map(t => (
+                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 15.5, color: "#52525b", lineHeight: 1.5 }}>{t}</span></div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* AFTER */}
+            <Reveal delay={90}>
+              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/real/after.jpg" alt="An energetic, healthy professional after the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#059669", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😄 AFTER</div>
+                </div>
+                <div className="p-6 flex flex-col gap-2.5 flex-1">
+                  {[
+                    "Better posture — less neck & back pain",
+                    "Fresher eyes and clearer focus",
+                    "Steady energy right through the day",
+                    "Calmer, less stressed at work",
+                    "Simple daily habits that fit your workday",
+                  ].map(t => (
+                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 15.5, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* What you'll be able to do */}
+          <Reveal delay={80}>
+            <div className="rounded-3xl p-6 lg:p-8 mt-8" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+              <p className="text-center duc-label mb-6">✨ After the masterclass, you&apos;ll be able to…</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { icon: "🪑", t: "Fix your posture & sitting", d: "Simple resets that protect your neck, back and spine all day." },
+                  { icon: "⚡", t: "Keep energy up all day", d: "Beat the afternoon slump without more coffee." },
+                  { icon: "🧩", t: "Run the Desk Health System™", d: "Know the 7 pillars and a 7-day plan to start this week." },
+                ].map(({ icon, t, d }) => (
+                  <div key={t} className="rounded-2xl p-5 text-center h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+                    <span style={{ fontSize: 32 }}>{icon}</span>
+                    <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", margin: "8px 0 4px" }}>{t}</p>
+                    <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.5 }}>{d}</p>
+                  </div>
+                ))}
               </div>
             </div>
-            <div>
-              <p className="duc-label mb-2">👋 Your host</p>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#18181b", marginBottom: 8 }}>Hi, I&apos;m Rohan</h2>
-              <p style={{ fontSize: 15.5, color: "#52525b", lineHeight: 1.65 }}>
-                Like you, I spend long hours at a desk — and I felt the low energy, the stiff neck and the slow slide in my health. Every &ldquo;go to the gym&rdquo; fix failed because it never fit my workday. So I built a different way: <strong style={{ color: "#18181b" }}>small healthy habits that fit right into the work I&apos;m already doing.</strong> That became the Desk Health System™, and I now teach it to desk professionals across India.
-              </p>
-            </div>
+          </Reveal>
+
+          <div className="flex justify-center mt-10">
+            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 9. WHO'S TEACHING — founder story (Rohan) ═══════════════════════ */}
+      <section className="py-16 lg:py-24" style={{ background: "linear-gradient(180deg,#faf8f3 0%,#fff 100%)" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-11">
+            <p className="duc-label mb-3">👋 Meet your host</p>
+            <h2 className="duc-h2 duc-section-title">The story behind the Desk Health System™</h2>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-12 gap-9 lg:gap-12 items-start">
+            {/* Big image */}
+            <Reveal className="lg:col-span-5">
+              <div className="relative mx-auto" style={{ maxWidth: 380 }}>
+                <div className="rounded-3xl overflow-hidden" style={{ border: "8px solid #fff", boxShadow: "0 26px 60px -18px rgba(0,0,0,0.3)" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/rohan.png" alt="Rohan — creator of the Desk Health System" className="w-full h-auto object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                </div>
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-2.5 text-center whitespace-nowrap" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 12px 28px -8px rgba(184,134,11,0.6)" }}>
+                  <p style={{ fontSize: 16, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>Rohan</p>
+                  <p style={{ fontSize: 11.5, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>Creator, Desk Health System™</p>
+                </div>
+              </div>
+            </Reveal>
+
+            {/* Story */}
+            <Reveal delay={80} className="lg:col-span-7">
+              <div className="space-y-4" style={{ fontSize: 16.5, color: "#3f3f46", lineHeight: 1.75 }}>
+                <p>A few years ago, I was living the exact life you are — <strong style={{ color: "#18181b" }}>8 to 10 hours a day glued to a desk.</strong> Back-to-back meetings, endless emails, one deadline after another.</p>
+                <p>On paper I was doing great. But my body was quietly falling apart. My neck ached every evening. My back was stiff. My eyes burned by 4 PM. My energy crashed after lunch, and by night I was too drained to do anything.</p>
+                <p>So I did what everyone tells you to do — <em>&ldquo;just go to the gym,&rdquo; &ldquo;follow a diet,&rdquo; &ldquo;wake up early and exercise.&rdquo;</em> I tried them all. And every single one failed within weeks, because none of them fit into my actual workday. I simply didn&apos;t have the time or energy left over.</p>
+                <div className="my-5 pl-5 py-2" style={{ borderLeft: "4px solid #d4a017" }}>
+                  <p style={{ fontSize: 18, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.6 }}>
+                    Then it hit me: the problem wasn&apos;t that I lacked discipline. The problem was that I was trying to fix my health <em>outside</em> the one place I spent most of my life — my desk.
+                  </p>
+                </div>
+                <p>So I flipped it. Instead of adding health <em>on top of</em> work, I started hiding tiny healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday — triggered by things I already did. A posture reset before every email. Water after every meeting. A 20-second eye break between tasks. A quick stretch before each call.</p>
+                <p>No gym. No diet. No extra time. And slowly, everything changed — my posture, my energy, my focus, my mood. I felt <strong style={{ color: "#18181b" }}>years younger at the same desk.</strong></p>
+                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Health System™</strong> — 7 pillars and a set of tiny daily &ldquo;desk missions.&rdquo; Since then I&apos;ve taught it to <strong style={{ color: "#18181b" }}>thousands of desk professionals across India</strong>, and the results speak for themselves.</p>
+                <p style={{ fontWeight: 700, color: "#18181b" }}>In this free masterclass, I&apos;ll hand you the exact same system — so your workday starts working <em>for</em> your health, instead of against it. 🙌</p>
+              </div>
+              <div className="mt-6 flex items-center gap-3">
+                <p style={{ fontSize: 22, color: "#a8790d", fontWeight: 900, fontFamily: "'Poppins',sans-serif" }}>— Rohan</p>
+                <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
+                <p style={{ fontSize: 14, color: "#71717a" }}>Creator, Desk Health System™</p>
+              </div>
+              <div className="mt-7">
+                <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -781,13 +996,13 @@ export default function DeskHealthSystemPage() {
           </div>
           <div className="flex flex-col gap-2.5">
             {[
-              { q: "Is it really free?", a: "Yes — the webinar is 100% free. Just add your full name, email and WhatsApp number, and we'll send you the Zoom join link." },
+              { q: "Is it really free?", a: "Yes — the masterclass is 100% free. Just add your full name, email and WhatsApp number, and we'll send you the Zoom join link." },
               { q: "What is the Desk Health System™?", a: "It's a practical workplace wellness framework for people who work long hours at a desk. Instead of asking you to change your whole lifestyle, it improves your health through small daily actions that fit naturally into your workday — no gym, no diet, no complicated routines, no extra hours." },
               { q: "Do I need a special desk or any equipment?", a: "Not at all. It works with the normal desk and laptop or computer you already use for work. Nothing to buy, install or set up." },
               { q: "Is this about losing weight?", a: "No. This is about becoming healthier and more energetic — better posture, less stiffness, less eye strain, more energy and less stress. Feeling and looking better follows naturally, but weight loss is not the goal." },
               { q: "When is it and how long?", a: `${WHEN_LINE}. It's live on Zoom. We'll send the exact join link and reminders to your WhatsApp after you register.` },
               { q: "Who is it for?", a: "Anyone who spends 6+ hours a day working at a desk — IT and software professionals, corporate employees, designers, managers, founders, remote workers and students." },
-              { q: "Is there anything to buy?", a: "Not to attend. The webinar is genuinely useful on its own. Anything paid later is optional, and we'll explain it clearly." },
+              { q: "Is there anything to buy?", a: "Not to attend. The masterclass is genuinely useful on its own. Anything paid later is optional, and we'll explain it clearly." },
             ].map(({ q, a }) => <FAQ key={q} q={q} a={a} />)}
           </div>
         </div>
@@ -798,7 +1013,7 @@ export default function DeskHealthSystemPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(212,160,23,0.1),transparent 70%)" }} />
         <div className="max-w-xl mx-auto px-6 text-center relative">
           <p style={{ fontSize: 46 }} className="mb-4">🎓</p>
-          <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Free live webinar</p>
+          <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Free live masterclass</p>
           <h2 className="duc-h1 mb-4" style={{ color: "#fff" }}>
             Your job pays your bills.<br />
             <span style={{ color: "#a8790d" }}>It shouldn&apos;t cost you your health.</span>
@@ -811,10 +1026,10 @@ export default function DeskHealthSystemPage() {
               <span key={t} className="rounded-full px-4 py-2" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,160,23,0.25)", fontSize: 14, fontWeight: 800, color: "#fff" }}>{t}</span>
             ))}
           </div>
-          <CTA label="Reserve My Free Seat →" sub={WEBINAR.seatsLine} />
+          <CTA big sub={WEBINAR.seatsLine} />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Have a question?{" "}
-            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+free+Desk+Health+webinar" className="underline" style={{ color: "#a8790d" }}>Message us on WhatsApp</a>
+            <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+free+Desk+Health+masterclass" className="underline" style={{ color: "#a8790d" }}>Message us on WhatsApp</a>
           </p>
         </div>
       </section>
@@ -825,7 +1040,7 @@ export default function DeskHealthSystemPage() {
           © {new Date().getFullYear()} High Performance Club ·{" "}
           <a href="https://www.highperformanceclub.co" className="underline" style={{ color: "#3f3f46" }}>highperformanceclub.co</a>
         </p>
-        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>Free live webinar · General wellness education · Results vary · Not medical advice</p>
+        <p style={{ fontSize: 12, color: "#3f3f46", marginTop: 4 }}>Free live masterclass · General wellness education · Results vary · Not medical advice</p>
       </footer>
 
       <StickyBottomCTA />

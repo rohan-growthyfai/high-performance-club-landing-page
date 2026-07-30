@@ -75,7 +75,7 @@ function PriceTag({ dark = false }: { dark?: boolean }) {
   );
 }
 
-// ─── CTA button — "Reserve My Seat for ₹1,999 FREE" ─────────────────────────────
+// ─── CTA button — "Register for ₹1,999 FREE" ─────────────────────────────
 function CTA({ label, sub, big = false }: { label?: string; sub?: string; big?: boolean }) {
   const register = useRegister();
   return (
@@ -85,7 +85,7 @@ function CTA({ label, sub, big = false }: { label?: string; sub?: string; big?: 
         className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full font-black text-white"
         style={{ fontSize: big ? 20 : 18, padding: big ? "20px 40px" : "17px 34px", boxShadow: "0 10px 30px rgba(212,160,23,0.45)", letterSpacing: "-0.01em", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
         <TicketIcon size={big ? 22 : 20} />
-        {label ? <span>{label}</span> : <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Reserve My Seat for <PriceTag /></span>}
+        {label ? <span>{label}</span> : <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>}
       </button>
       {sub && <p style={{ fontSize: 13.5, color: "#3f3f46", textAlign: "center" }}>{sub}</p>}
     </div>
@@ -195,7 +195,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
             </button>
             <p className="text-3xl mb-2">🎟️</p>
             <h2 className="text-white font-black leading-snug" style={{ fontSize: 18 }}>
-              {status === "done" ? "You're in! See you live 🎉" : "Reserve your FREE seat"}
+              {status === "done" ? "You're in! See you live 🎉" : "Register your FREE seat"}
             </h2>
             {status !== "done" && (
               <p className="text-white" style={{ fontSize: 13, opacity: 0.9, marginTop: 4 }}>
@@ -238,7 +238,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
                 </p>
               )}
               <button type="submit" disabled={status === "loading"} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary mt-4" style={{ fontSize: 17, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: status === "loading" ? "wait" : "pointer", opacity: status === "loading" ? 0.7 : 1 }}>
-                <TicketIcon size={18} />{status === "loading" ? "Saving…" : "Reserve My Free Seat →"}
+                <TicketIcon size={18} />{status === "loading" ? "Saving…" : "Register My Free Seat →"}
               </button>
               <p style={{ fontSize: 12.5, color: "#71717a", marginTop: 10, textAlign: "center", lineHeight: 1.5 }}>Can&apos;t attend live? <strong style={{ color: "#3f3f46" }}>Register anyway</strong> — we&apos;ll send you the recording.</p>
               <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 4, textAlign: "center" }}>Free · No spam · Leave anytime</p>
@@ -269,7 +269,7 @@ function StickyBottomCTA() {
     <div className={`fixed bottom-4 inset-x-0 z-50 flex justify-center px-4 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-[130%] opacity-0 pointer-events-none"}`}>
       <button onClick={register} className="flex items-center justify-between gap-4 rounded-full pl-6 pr-3 py-3 w-full max-w-md" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 10px 30px rgba(212,160,23,0.5)", border: "none", cursor: "pointer" }}>
         <div className="text-left">
-          <p className="text-white font-black leading-tight" style={{ fontSize: 15 }}>Reserve My Seat <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", opacity: 0.85 }}>{WEBINAR.price}</span> FREE</p>
+          <p className="text-white font-black leading-tight" style={{ fontSize: 15 }}>Register My Seat <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", opacity: 0.85 }}>{WEBINAR.price}</span> FREE</p>
           <p className="mt-0.5" style={{ fontSize: 12, color: "rgba(255,255,255,0.9)" }}>{DATE_LINE} · {WEBINAR.duration}</p>
         </div>
         <div className="flex items-center gap-1.5 rounded-full px-4 py-2.5 shrink-0" style={{ background: "rgba(255,255,255,0.22)" }}><TicketIcon size={16} /><span className="text-white font-bold" style={{ fontSize: 14 }}>Join</span></div>
@@ -364,7 +364,7 @@ function RegisterNudge() {
             </p>
             <p style={{ fontSize: 13, fontWeight: 700, color: "#9a6b0a", marginBottom: 16 }}>🗓 {WHEN_LINE}</p>
             <button onClick={() => { dismiss(); register(); }} className="w-full inline-flex items-center justify-center gap-2 px-5 py-4 rounded-full font-black text-white btn-primary" style={{ fontSize: 17, boxShadow: "0 6px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
-              <TicketIcon size={18} />Reserve My Free Seat →
+              <TicketIcon size={18} />Register My Free Seat →
             </button>
             <p style={{ fontSize: 12, color: "#a1a1aa", marginTop: 8 }}>Free · No spam</p>
           </div>
@@ -442,9 +442,9 @@ export default function DeskHealthSystemPage() {
 
           {/* Left: copy */}
           <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 accent-pill" style={{ fontSize: 13, fontWeight: 700 }}>
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 accent-pill" style={{ fontSize: 12.5, fontWeight: 700 }}>
               <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#d4a017" }} />
-              For busy professionals who sit 6+ hours a day
+              Built for People Who Spend Most of Their Day at a Desk
             </div>
 
             <h1 className="mb-4" style={{ fontSize: "clamp(1.75rem,3.3vw,2.7rem)", fontWeight: 800, lineHeight: 1.14, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
@@ -453,7 +453,7 @@ export default function DeskHealthSystemPage() {
             </h1>
 
             <p style={{ fontSize: 16.5, color: "#3f3f46", maxWidth: 560, margin: "0 auto 18px", lineHeight: 1.6 }} className="lg:mx-0">
-              Discover how the <strong style={{ color: "#18181b" }}>Desk Fit Formula</strong> helps busy professionals like you become healthier <strong style={{ color: "#18181b" }}>while you work</strong> — without leaving your work desk. No gym, no diets, no extra hours.
+              Discover the <strong style={{ color: "#18181b" }}>Desk Fit Formula</strong> — a practical system that helps busy professionals like you improve your health during the <strong style={{ color: "#18181b" }}>workday you already have.</strong> No gym, no diets, no extra hours.
             </p>
 
             {/* Date — compact box that fits its content */}
@@ -470,7 +470,7 @@ export default function DeskHealthSystemPage() {
             <div className="flex flex-col items-center lg:items-start gap-2 mb-4">
               <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 rounded-2xl font-black text-white w-full sm:w-auto" style={{ fontSize: 22, padding: "22px 44px", boxShadow: "0 16px 40px rgba(212,160,23,0.5)", border: "none", cursor: "pointer", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
                 <TicketIcon size={26} />
-                <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Reserve My Seat for <PriceTag /></span>
+                <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
               </button>
               <p style={{ fontSize: 13, color: "#3f3f46" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
@@ -478,9 +478,9 @@ export default function DeskHealthSystemPage() {
             {/* honest trust signals */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2">
               {[
-                { icon: "✅", label: "100% Free · No card needed" },
+                { icon: "✅", label: "100% Free" },
                 { icon: "🔴", label: "Live on Zoom" },
-                { icon: "🚫", label: "No gym · No diet" },
+                { icon: "💼", label: "Designed for Busy Professionals" },
               ].map(({ icon, label }) => (
                 <div key={label} className="flex items-center gap-1.5">
                   <span style={{ fontSize: 14 }}>{icon}</span>
@@ -490,19 +490,47 @@ export default function DeskHealthSystemPage() {
             </div>
           </div>
 
-          {/* Right: relatable photo — professional wishing they had time to be healthy */}
+          {/* Right: SPLIT before/after visual — the image itself explains the product */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 440, width: "100%" }}>
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/hero-tense2.jpg" alt="A busy professional wishing they had time to stay healthy at work" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 470, width: "100%" }}>
+              <div className="grid grid-cols-2 rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
+                {/* BEFORE half */}
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/gem/before.jpg" alt="A professional with neck pain and low energy from desk work" className="w-full h-full object-cover" style={{ aspectRatio: "3/4", filter: "grayscale(0.25)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute inset-0 flex flex-col" style={{ background: "linear-gradient(180deg,rgba(120,20,20,0.15) 0%,rgba(60,10,10,0.82) 100%)" }}>
+                    <span className="m-2.5 self-start rounded-full px-2.5 py-1" style={{ background: "#dc2626", color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.03em" }}>DESK LIFE</span>
+                    <div className="mt-auto p-3 flex flex-col gap-1.5">
+                      {["Neck pain", "Low energy", "Tight hips", "Stress"].map(t => (
+                        <span key={t} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}><span style={{ color: "#fca5a5" }}>✕</span>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                {/* AFTER half */}
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/gem/after.jpg" alt="The same professional energized and healthy at their desk" className="w-full h-full object-cover" style={{ aspectRatio: "3/4" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute inset-0 flex flex-col" style={{ background: "linear-gradient(180deg,rgba(16,120,70,0.12) 0%,rgba(6,70,44,0.8) 100%)" }}>
+                    <span className="m-2.5 self-start rounded-full px-2.5 py-1" style={{ background: "#059669", color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.03em" }}>DESK FIT</span>
+                    <div className="mt-auto p-3 flex flex-col gap-1.5">
+                      {["Better posture", "Better energy", "Better focus"].map(t => (
+                        <span key={t} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}><span style={{ color: "#86efac" }}>✓</span>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
-              {/* floating callout chips */}
-              <div className="absolute -left-3 top-8 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 18 }}>⏰</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>No time for gym</span>
+              {/* center divider arrow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center" style={{ width: 46, height: 46, background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 6px 18px rgba(184,134,11,0.6)", border: "3px solid #fff" }}>
+                <span style={{ fontSize: 20, color: "#fff", fontWeight: 900 }}>→</span>
               </div>
-              <div className="absolute -right-2 bottom-10 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.12)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 18 }}>💪</span><span style={{ fontSize: 12.5, fontWeight: 700, color: "#18181b" }}>Healthy at work</span>
+              {/* floating callout chips — clearer story */}
+              <div className="absolute -left-3 top-6 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.14)", border: "1px solid #eee7d6" }}>
+                <span style={{ fontSize: 16 }}>😩</span><span style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>Neck Pain · No Time</span>
+              </div>
+              <div className="absolute -right-3 -bottom-4 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.14)", border: "1px solid #eee7d6" }}>
+                <span style={{ fontSize: 16 }}>⚡</span><span style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>Healthy While You Work</span>
               </div>
             </div>
           </div>
@@ -607,7 +635,7 @@ export default function DeskHealthSystemPage() {
             <div className="flex justify-center mt-8">
               <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
                 <TicketIcon size={22} />
-                <span className="inline-flex flex-wrap items-baseline gap-1.5">Reserve My Seat for <PriceTag /></span>
+                <span className="inline-flex flex-wrap items-baseline gap-1.5">Register for <PriceTag /></span>
               </button>
             </div>
           </Reveal>
@@ -693,7 +721,7 @@ export default function DeskHealthSystemPage() {
               <div className="mt-7">
                 <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
                   <TicketIcon size={22} />
-                  <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Reserve My Seat for <PriceTag /></span>
+                  <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
                 </button>
               </div>
             </Reveal>

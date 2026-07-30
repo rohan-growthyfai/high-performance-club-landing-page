@@ -534,14 +534,17 @@ export default function DeskHealthSystemPage() {
             {/* facts */}
             <div className="flex flex-col gap-4">
               {[
-                { stat: "🪑 Long Sitting", t: "Your body isn't designed to sit for 6+ hours a day — the effects quietly build up over time." },
-                { stat: "🖥️ Too Much Screen Time", t: "Staring at a screen all day strains your eyes and affects your posture." },
-                { stat: "🍟 Stress Eating", t: "Stress and mindless snacking quietly become a daily habit." },
-                { stat: "⏰ Poor Meal Routine", t: "Skipping meals and relying on coffee leads to energy crashes, cravings, and stress." },
-              ].map(({ stat, t }, i) => (
-                <Reveal key={stat} delay={i * 70}>
+                { icon: "🪑", label: "Long Sitting", t: "Your body isn't designed to sit for 6+ hours a day — the effects quietly build up over time." },
+                { icon: "🖥️", label: "Too Much Screen Time", t: "Staring at a screen all day strains your eyes and affects your posture." },
+                { icon: "🍟", label: "Stress Eating", t: "Stress and mindless snacking quietly become a daily habit." },
+                { icon: "⏰", label: "Poor Meal Routine", t: "Skipping meals and relying on coffee leads to energy crashes, cravings, and stress." },
+              ].map(({ icon, label, t }, i) => (
+                <Reveal key={label} delay={i * 70}>
                   <div className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.22)" }}>
-                    <span className="shrink-0 inline-flex items-center justify-center rounded-xl whitespace-nowrap" style={{ padding: "8px 12px", background: "linear-gradient(135deg,#b8860b,#d4a017)", color: "#171412", fontSize: 14.5, fontWeight: 800, fontFamily: "'Poppins',sans-serif", lineHeight: 1 }}>{stat}</span>
+                    <span className="shrink-0 inline-flex items-center gap-1.5 rounded-xl" style={{ width: 150, minHeight: 46, padding: "8px 12px", background: "linear-gradient(135deg,#b8860b,#d4a017)", color: "#171412", fontSize: 14.5, fontWeight: 800, fontFamily: "'Poppins',sans-serif", lineHeight: 1.2 }}>
+                      <span className="shrink-0" style={{ fontSize: 16 }}>{icon}</span>
+                      <span>{label}</span>
+                    </span>
                     <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.55, fontWeight: 500 }}>{t}</p>
                   </div>
                 </Reveal>

@@ -520,7 +520,7 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3" style={{ color: "#e8a020" }}>The uncomfortable truth</p>
             <h2 className="duc-h2" style={{ color: "#fff" }}>Sitting is the <span style={{ color: "#e8a020" }}>new smoking!</span></h2>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.72)", maxWidth: 640, margin: "0.75rem auto 0", fontWeight: 500 }}>
-              You might not be smoking. But sitting 8+ hours is quietly doing similar damage to your health — even if you feel fine right now.
+              You might not be smoking. But sitting 6+ hours is quietly doing similar damage to your health — even if you feel fine right now.
             </p>
           </Reveal>
           <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-center">

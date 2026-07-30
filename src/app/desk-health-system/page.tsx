@@ -518,7 +518,7 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-11">
             <p className="duc-label mb-3" style={{ color: "#e8a020" }}>The uncomfortable truth</p>
-            <h2 className="duc-h2" style={{ color: "#fff" }}>Sitting is the <span style={{ color: "#e8a020" }}>new smoking</span></h2>
+            <h2 className="duc-h2" style={{ color: "#fff" }}>Sitting is the <span style={{ color: "#e8a020" }}>new smoking!</span></h2>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.72)", maxWidth: 640, margin: "0.75rem auto 0", fontWeight: 500 }}>
               You might not be smoking. But sitting 8+ hours is quietly doing similar damage to your health — even if you feel fine right now.
             </p>
@@ -534,10 +534,10 @@ export default function DeskHealthSystemPage() {
             {/* facts */}
             <div className="flex flex-col gap-4">
               {[
-                { stat: "🪑 Sitting", t: "Sitting 8+ hours a day is linked to a shorter lifespan — and no evening gym session fully cancels it out." },
-                { stat: "📱 Screens", t: "Staring at a screen all day quietly wrecks your posture and eyesight — most people blink 60% less, drying out and straining the eyes." },
-                { stat: "🍟 Snacking", t: "Stress + a desk full of quick snacks trains you to eat mindlessly — slowly adding belly fat without a single \"big\" meal." },
-                { stat: "⏰ No routine", t: "Skipped meals, late lunches and running on coffee spike your energy crashes, cravings and stress — every single workday." },
+                { stat: "🪑 Sitting", t: "Your body isn't designed to sit for 6+ hours a day — and the damage of it quietly builds up over time." },
+                { stat: "📱 Screens", t: "Staring at a screen all day quietly impacts your posture and eyesight — most people blink 60% less, drying out and straining the eyes." },
+                { stat: "🍟 Snacking", t: "Stress and mindless snacking quietly train your brain to keep eating — even when you're not hungry." },
+                { stat: "⏰ No routine", t: "Skipped meals, late lunches, and running on coffee leads to energy crashes, cravings, and stress — every single workday." },
               ].map(({ stat, t }, i) => (
                 <Reveal key={stat} delay={i * 70}>
                   <div className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.22)" }}>
@@ -564,16 +564,16 @@ export default function DeskHealthSystemPage() {
             <h2 className="duc-h2 duc-section-title">Does your typical workday feel like this?</h2>
           </Reveal>
           {/* 60% image / 40% checklist */}
-          <div className="grid lg:grid-cols-5 gap-9 lg:gap-12 items-start">
-            {/* LEFT — larger image (60%) */}
-            <Reveal className="lg:col-span-3 lg:sticky lg:top-8">
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 56px -18px rgba(0,0,0,0.28)" }}>
+          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-center">
+            {/* LEFT — image (50%) */}
+            <Reveal className="lg:sticky lg:top-8">
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.25)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/hf/does.jpg" alt="A drained professional rubbing tired eyes at their desk, an unopened water bottle beside them" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/hf/does.jpg" alt="A drained professional rubbing tired eyes at their desk, an unopened water bottle beside them" className="w-full block object-cover object-center" style={{ maxHeight: 440 }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
-            {/* RIGHT — one flat checklist (40%) */}
-            <div className="lg:col-span-2 flex flex-col gap-2.5">
+            {/* RIGHT — one flat checklist (50%) */}
+            <div className="flex flex-col gap-2.5">
               {[
                 "Neck or back pain after work",
                 "Low energy after lunch",

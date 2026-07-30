@@ -17,7 +17,7 @@ const WEBINAR = {
   dayLabel: "Sunday",
   dateLabel: "2 August 2026",
   timeLabel: "11:00 AM IST",
-  duration: "60 minutes",
+  duration: "90 minutes",
 };
 
 function CheckIcon({ size = 44 }: { size?: number }) {

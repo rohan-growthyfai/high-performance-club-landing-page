@@ -17,7 +17,7 @@ const WEBINAR = {
   dayLabel: "Sunday",
   dateLabel: "2 August 2026",        // shown clearly in the hero
   timeLabel: "11:00 AM IST",
-  duration: "60 minutes",
+  duration: "90 minutes",
   platformLabel: "Live on Zoom",
   seatsLine: "100% free · Limited seats",
   price: "₹1,999",                   // struck-through on CTAs → FREE
@@ -688,96 +688,7 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-      
-
-
-
-{/* ══ 5b. 3 SECRETS OF THE DESK FIT FORMULA ═══════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg,#141b2e 0%,#0f1626 50%,#141b2e 100%)" }}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-11">
-            <h2 className="duc-h2" style={{ color: "#fff" }}>What you&apos;ll learn in <span style={{ color: "#e8a020" }}>{WEBINAR.duration}</span></h2>
-            <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.72)", maxWidth: 620, margin: "0.75rem auto 0", fontWeight: 500 }}>
-              The <strong style={{ color: "#fff" }}>3 secrets</strong> of the Desk Fit Framework — the simple system busy people use to get healthier <em>while they work.</em>
-            </p>
-          </Reveal>
-
-          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-start">
-            {/* LEFT — host image + script + CTA */}
-            <Reveal>
-              <div className="relative rounded-3xl overflow-hidden mb-6" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/rohan.png" alt="Rohan — your host for the Desk Fit Formula masterclass" className="w-full h-auto block object-cover object-top" style={{ aspectRatio: "4/3" }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-                <div className="absolute bottom-3 left-3 rounded-full px-3.5 py-1.5 flex items-center gap-2" style={{ background: "rgba(15,22,38,0.82)", backdropFilter: "blur(4px)" }}>
-                  <span className="w-2 h-2 rounded-full inline-block" style={{ background: "#22c55e" }} />
-                  <span style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}>Your host · Rohan</span>
-                </div>
-              </div>
-              <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
-                <p>This is <strong style={{ color: "#fff" }}>not</strong> just another &ldquo;free session.&rdquo; In one hour, I&apos;ll hand you the <strong style={{ color: "#fff" }}>3 simple secrets</strong> that quietly make your body healthier — <strong style={{ color: "#fff" }}>while you work.</strong></p>
-                <p>No gym. No diet. No extra time. Just a small, proven framework that fits inside the workday you already have.</p>
-                <p>By the end, you&apos;ll know <strong style={{ color: "#fff" }}>exactly what to do</strong> to feel more energetic, pain-free and focused at your desk. <strong style={{ color: "#e8a020" }}>This is your moment. Don&apos;t let it slip.</strong></p>
-              </div>
-              <div className="mt-7">
-                <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
-                  <TicketIcon size={22} />
-                  <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
-                </button>
-              </div>
-            </Reveal>
-
-            {/* RIGHT — 3 secret cards */}
-            <div className="flex flex-col gap-5">
-              {[
-                { n: "Secret 1", title: "The Trigger Trick", body: "The clever trick that turns things you ALREADY do — opening your laptop, joining a call, sipping coffee — into healthy habits. It happens on its own. No willpower. No reminders." },
-                { n: "Secret 2", title: "The 7-Pillar Framework", body: "The 7 hidden things that decide how you feel every day — posture, eyes, water, movement, energy, focus and stress. Plus the ONE tiny move that fixes each, in seconds." },
-                { n: "Secret 3", title: "The 1% Formula", body: "Why tiny 30-second habits beat big plans every time — and the simple 7-day framework you can start the very next morning, right at your desk." },
-              ].map(({ n, title, body }, i) => (
-                <Reveal key={n} delay={i * 90}>
-                  <div className="rounded-3xl p-6 lg:p-7 flex items-start gap-4" style={{ background: "#fff", boxShadow: "0 12px 34px -14px rgba(0,0,0,0.4)" }}>
-                    <span className="shrink-0 inline-flex items-center justify-center rounded-full" style={{ width: 40, height: 40, border: "3px solid #e0592c" }}>
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7.5" stroke="#e0592c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    </span>
-                    <div>
-                      <p style={{ fontSize: 18.5, fontWeight: 900, color: "#e0592c", marginBottom: 6, fontFamily: "'Poppins',sans-serif" }}>{n}: {title}</p>
-                      <p style={{ fontSize: 16, color: "#1f2937", lineHeight: 1.6, fontWeight: 600 }}>{body}</p>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-
-          {/* mini agenda */}
-          <Reveal delay={80}>
-            <div className="rounded-3xl mt-11 p-6 lg:p-8" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.22)" }}>
-              <p className="text-center mb-7" style={{ fontSize: 14, fontWeight: 800, color: "#e8a020", textTransform: "uppercase", letterSpacing: "0.1em" }}>Here&apos;s how the {WEBINAR.duration} will flow</p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {[
-                  { t: "0–10 min", h: "The hidden cost", d: "What sitting all day is really doing to your body — and why willpower never fixes it." },
-                  { t: "10–30 min", h: "The Desk Fit Formula", d: "The Trigger Method + the 7 pillars, with the exact tiny action for each." },
-                  { t: "30–50 min", h: "Build it live", d: "We turn your worst desk habits into simple 30-second missions, together." },
-                  { t: "50–60 min", h: "Your 7-day plan", d: "Walk away knowing exactly what to do each day this week — plus Q&A." },
-                ].map(({ t, h, d }, i) => (
-                  <div key={t} className="rounded-2xl p-5 h-full" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                    <span className="inline-block rounded-full px-3 py-1 mb-3" style={{ background: "rgba(212,160,23,0.16)", color: "#e8a020", fontSize: 12.5, fontWeight: 800 }}>{t}</span>
-                    <p style={{ fontSize: 16, fontWeight: 800, color: "#fff", marginBottom: 4, fontFamily: "'Poppins',sans-serif" }}>{h}</p>
-                    <p style={{ fontSize: 14.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.55, fontWeight: 500 }}>{d}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      
-
-      
-
-
-
-{/* ══ 5. INTRODUCING THE DESK HEALTH SYSTEM™ + 7 PILLARS ══════════════ */}
+      {/* ══ 5. INTRODUCING THE DESK HEALTH SYSTEM™ + 7 PILLARS ══════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-9">
@@ -834,6 +745,156 @@ export default function DeskHealthSystemPage() {
           </div>
         </div>
       </section>
+
+      
+
+
+
+{/* ══ 5b. 3 SECRETS OF THE DESK FIT FORMULA ═══════════════════════════ */}
+      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg,#141b2e 0%,#0f1626 50%,#141b2e 100%)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-11">
+            <h2 className="duc-h2" style={{ color: "#fff" }}>What you&apos;ll learn in <span style={{ color: "#e8a020" }}>{WEBINAR.duration}</span></h2>
+            <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.72)", maxWidth: 620, margin: "0.75rem auto 0", fontWeight: 500 }}>
+              The <strong style={{ color: "#fff" }}>3 secrets</strong> of the Desk Fit Framework — the simple system busy people use to get healthier <em>while they work.</em>
+            </p>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-start">
+            {/* LEFT — Desk Fit branded image + script + CTA */}
+            <Reveal>
+              <div className="relative rounded-3xl overflow-hidden mb-6" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/DeskFit.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full block object-cover object-center" style={{ maxHeight: 300, height: "auto" }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+              <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
+                <p>This is <strong style={{ color: "#fff" }}>not</strong> just another &ldquo;free session.&rdquo; In one hour, I&apos;ll hand you the <strong style={{ color: "#fff" }}>3 simple secrets</strong> that quietly make your body healthier — <strong style={{ color: "#fff" }}>while you work.</strong></p>
+                <p>No gym. No diet. No extra time. Just a small, proven framework that fits inside the workday you already have.</p>
+                <p>By the end, you&apos;ll know <strong style={{ color: "#fff" }}>exactly what to do</strong> to feel more energetic, pain-free and focused at your desk. <strong style={{ color: "#e8a020" }}>This is your moment. Don&apos;t let it slip.</strong></p>
+              </div>
+              <div className="mt-7">
+                <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
+                  <TicketIcon size={22} />
+                  <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
+                </button>
+              </div>
+            </Reveal>
+
+            {/* RIGHT — 3 secret cards */}
+            <div className="flex flex-col gap-5">
+              {[
+                { n: "Secret 1", title: "The Trigger Trick", body: "The clever trick that turns things you ALREADY do — opening your laptop, joining a call, sipping coffee — into healthy habits. It happens on its own. No willpower. No reminders." },
+                { n: "Secret 2", title: "The 7-Pillar Framework", body: "The 7 hidden things that decide how you feel every day — posture, eyes, water, movement, energy, focus and stress. Plus the ONE tiny move that fixes each, in seconds." },
+                { n: "Secret 3", title: "The 1% Formula", body: "Why tiny 30-second habits beat big plans every time — and the simple 7-day framework you can start the very next morning, right at your desk." },
+              ].map(({ n, title, body }, i) => (
+                <Reveal key={n} delay={i * 90}>
+                  <div className="rounded-3xl p-6 lg:p-7 flex items-start gap-4" style={{ background: "#fff", boxShadow: "0 12px 34px -14px rgba(0,0,0,0.4)" }}>
+                    <span className="shrink-0 inline-flex items-center justify-center rounded-full" style={{ width: 40, height: 40, border: "3px solid #e0592c" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4L19 7.5" stroke="#e0592c" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    </span>
+                    <div>
+                      <p style={{ fontSize: 18.5, fontWeight: 900, color: "#e0592c", marginBottom: 6, fontFamily: "'Poppins',sans-serif" }}>{n}: {title}</p>
+                      <p style={{ fontSize: 16, color: "#1f2937", lineHeight: 1.6, fontWeight: 600 }}>{body}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══ 8b. BEFORE vs AFTER THE MASTERCLASS ═════════════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-10">
+            <p className="duc-label mb-3">The transformation</p>
+            <h2 className="duc-h2 duc-section-title">Before vs after this masterclass</h2>
+            <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 560, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
+              Same desk. Same job. Same 8 hours. Here&apos;s how your workday feels once you apply the Desk Fit Formula.
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {/* BEFORE */}
+            <Reveal>
+              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/gem/before.jpg" alt="A tired, low-energy professional before the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#dc2626", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😔 BEFORE</div>
+                </div>
+                <div className="p-6 flex flex-col gap-2.5 flex-1">
+                  {[
+                    "Stiff neck & aching back by evening",
+                    "Tired, strained eyes from screens",
+                    "Energy crashes every afternoon",
+                    "Feeling your health slowly slipping",
+                    "No idea how to fix it without extra time",
+                  ].map(t => (
+                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.5 }}>{t}</span></div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+
+            {/* AFTER */}
+            <Reveal delay={90}>
+              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
+                <div className="relative">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src="/desk/gem/after.jpg" alt="An energetic, healthy professional after the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#059669", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😄 AFTER</div>
+                </div>
+                <div className="p-6 flex flex-col gap-2.5 flex-1">
+                  {[
+                    "Better posture — less neck & back pain",
+                    "Fresher eyes and clearer focus",
+                    "Steady energy right through the day",
+                    "Calmer, less stressed at work",
+                    "Simple daily habits that fit your workday",
+                  ].map(t => (
+                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 15.5, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* What you'll be able to do */}
+          <Reveal delay={80}>
+            <div className="rounded-3xl p-6 lg:p-8 mt-8" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+              <p className="text-center duc-label mb-6">✨ After the masterclass, you&apos;ll be able to…</p>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {[
+                  { icon: "🪑", t: "Fix your posture & sitting", d: "Simple resets that protect your neck, back and spine all day." },
+                  { icon: "⚡", t: "Keep energy up all day", d: "Beat the afternoon slump without more coffee." },
+                  { icon: "🧩", t: "Run the Desk Fit Formula", d: "Know the 7 pillars and a 7-day plan to start this week." },
+                ].map(({ icon, t, d }) => (
+                  <div key={t} className="rounded-2xl p-5 text-center h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+                    <span style={{ fontSize: 32 }}>{icon}</span>
+                    <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", margin: "8px 0 4px" }}>{t}</p>
+                    <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.5 }}>{d}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="flex justify-center mt-10">
+            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
+          </div>
+        </div>
+      </section>
+
+      
+
+      
+
+
+
+
 
 
 
@@ -999,88 +1060,7 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-{/* ══ 8b. BEFORE vs AFTER THE MASTERCLASS ═════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-10">
-            <p className="duc-label mb-3">The transformation</p>
-            <h2 className="duc-h2 duc-section-title">Before vs after this masterclass</h2>
-            <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 560, margin: "0.75rem auto 0", lineHeight: 1.6 }}>
-              Same desk. Same job. Same 8 hours. Here&apos;s how your workday feels once you apply the Desk Fit Formula.
-            </p>
-          </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-            {/* BEFORE */}
-            <Reveal>
-              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
-                <div className="relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/gem/before.jpg" alt="A tired, low-energy professional before the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#dc2626", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😔 BEFORE</div>
-                </div>
-                <div className="p-6 flex flex-col gap-2.5 flex-1">
-                  {[
-                    "Stiff neck & aching back by evening",
-                    "Tired, strained eyes from screens",
-                    "Energy crashes every afternoon",
-                    "Feeling your health slowly slipping",
-                    "No idea how to fix it without extra time",
-                  ].map(t => (
-                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.5 }}>{t}</span></div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-
-            {/* AFTER */}
-            <Reveal delay={90}>
-              <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
-                <div className="relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/gem/after.jpg" alt="An energetic, healthy professional after the masterclass" className="w-full h-56 object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full flex items-center gap-1.5" style={{ background: "#059669", color: "#fff", fontSize: 12.5, fontWeight: 800 }}>😄 AFTER</div>
-                </div>
-                <div className="p-6 flex flex-col gap-2.5 flex-1">
-                  {[
-                    "Better posture — less neck & back pain",
-                    "Fresher eyes and clearer focus",
-                    "Steady energy right through the day",
-                    "Calmer, less stressed at work",
-                    "Simple daily habits that fit your workday",
-                  ].map(t => (
-                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 15.5, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
-                  ))}
-                </div>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* What you'll be able to do */}
-          <Reveal delay={80}>
-            <div className="rounded-3xl p-6 lg:p-8 mt-8" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-              <p className="text-center duc-label mb-6">✨ After the masterclass, you&apos;ll be able to…</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                {[
-                  { icon: "🪑", t: "Fix your posture & sitting", d: "Simple resets that protect your neck, back and spine all day." },
-                  { icon: "⚡", t: "Keep energy up all day", d: "Beat the afternoon slump without more coffee." },
-                  { icon: "🧩", t: "Run the Desk Fit Formula", d: "Know the 7 pillars and a 7-day plan to start this week." },
-                ].map(({ icon, t, d }) => (
-                  <div key={t} className="rounded-2xl p-5 text-center h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
-                    <span style={{ fontSize: 32 }}>{icon}</span>
-                    <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b", margin: "8px 0 4px" }}>{t}</p>
-                    <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.5 }}>{d}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="flex justify-center mt-10">
-            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
-          </div>
-        </div>
-      </section>
 
 {/* ══ 6b. FREE BONUSES ════════════════════════════════════════════════ */}
       <section className="py-14 lg:py-20 relative overflow-hidden" style={{ background: "linear-gradient(180deg,#fff 0%,#faf8f3 100%)" }}>
@@ -1173,10 +1153,10 @@ export default function DeskHealthSystemPage() {
           <div className="grid lg:grid-cols-12 gap-9 lg:gap-12 items-start">
             {/* Big image */}
             <Reveal className="lg:col-span-5">
-              <div className="relative mx-auto" style={{ maxWidth: 380 }}>
+              <div className="relative mx-auto" style={{ maxWidth: 440 }}>
                 <div className="rounded-3xl overflow-hidden" style={{ border: "8px solid #fff", boxShadow: "0 26px 60px -18px rgba(0,0,0,0.3)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/rohan.png" alt="Rohan — creator of the Desk Fit Formula" className="w-full h-auto object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src="/desk/DeskFit.jpg" alt="Rohan — creator of the Desk Fit Formula" className="w-full h-auto object-cover object-center" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-2.5 text-center whitespace-nowrap" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 12px 28px -8px rgba(184,134,11,0.6)" }}>
                   <p style={{ fontSize: 16, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>Rohan</p>

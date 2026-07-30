@@ -534,10 +534,10 @@ export default function DeskHealthSystemPage() {
             {/* facts */}
             <div className="flex flex-col gap-4">
               {[
-                { stat: "🪑 Sitting", t: "Your body isn't designed to sit for 6+ hours a day — and the damage of it quietly builds up over time." },
-                { stat: "📱 Screens", t: "Staring at a screen all day quietly impacts your posture and eyesight — most people blink 60% less, drying out and straining the eyes." },
-                { stat: "🍟 Snacking", t: "Stress and mindless snacking quietly train your brain to keep eating — even when you're not hungry." },
-                { stat: "⏰ No routine", t: "Skipped meals, late lunches, and running on coffee leads to energy crashes, cravings, and stress — every single workday." },
+                { stat: "🪑 Long Sitting", t: "Your body isn't designed to sit for 6+ hours a day — the effects quietly build up over time." },
+                { stat: "🖥️ Too Much Screen Time", t: "Staring at a screen all day strains your eyes and affects your posture." },
+                { stat: "🍟 Stress Eating", t: "Stress and mindless snacking quietly become a daily habit." },
+                { stat: "⏰ Poor Meal Routine", t: "Skipping meals and relying on coffee leads to energy crashes, cravings, and stress." },
               ].map(({ stat, t }, i) => (
                 <Reveal key={stat} delay={i * 70}>
                   <div className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.22)" }}>

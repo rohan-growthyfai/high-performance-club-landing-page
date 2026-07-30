@@ -592,7 +592,54 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-{/* ══ 1b. WHO IS THIS MASTERCLASS FOR? ════════════════════════════════ */}
+{/* ══ 3. DOES THIS SOUND LIKE YOU? — image left, checklist right ═══════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-11">
+            <p className="duc-label mb-3">A quick gut-check</p>
+            <h2 className="duc-h2 duc-section-title">Does your typical workday feel like this?</h2>
+          </Reveal>
+          {/* 60% image / 40% checklist */}
+          <div className="grid lg:grid-cols-5 gap-9 lg:gap-12 items-start">
+            {/* LEFT — larger image (60%) */}
+            <Reveal className="lg:col-span-3 lg:sticky lg:top-8">
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 56px -18px rgba(0,0,0,0.28)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/sdxl/does-sound.jpg" alt="A drained professional at their desk at the end of a long workday, water untouched" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+            </Reveal>
+            {/* RIGHT — one flat checklist (40%) */}
+            <div className="lg:col-span-2 flex flex-col gap-2.5">
+              {[
+                "Neck or back pain after work",
+                "Low energy after lunch",
+                "Sitting for hours without breaks",
+                "Eyes feel dry or strained",
+                "Feeling stiff after sitting",
+                "You rarely drink enough water",
+                "Exhausted after work",
+                "“I never find time to exercise.”",
+              ].map((t, i) => (
+                <Reveal key={t} delay={i * 45}>
+                  <div className="pop-card flex items-center gap-3 rounded-2xl px-4 py-3.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
+                    <span className="shrink-0 inline-flex items-center justify-center rounded-md" style={{ width: 24, height: 24, border: "2px solid #d4a017", color: "#a8790d", fontSize: 13, fontWeight: 900 }}>✓</span>
+                    <span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{t}</span>
+                  </div>
+                </Reveal>
+              ))}
+              <Reveal delay={100}>
+                <div className="rounded-2xl p-5 mt-2" style={{ background: "#18181b" }}>
+                  <p style={{ fontSize: 16, fontWeight: 600, color: "rgba(255,255,255,0.9)", lineHeight: 1.6 }}>
+                    If any of these feel familiar, the problem isn&apos;t a lack of motivation — <span style={{ color: "#e8a020", fontWeight: 800 }}>it&apos;s that your workday is working against you.</span> In this masterclass, you&apos;ll learn how to make it work <em>for</em> your health instead.
+                  </p>
+                </div>
+              </Reveal>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 1b. WHO IS THIS MASTERCLASS FOR? ════════════════════════════════ */}
       <section className="py-16 lg:py-20" style={{ background: "linear-gradient(135deg,#141b2e 0%,#0f1626 50%,#141b2e 100%)" }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-3">
@@ -642,53 +689,7 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-      {/* ══ 3. DOES THIS SOUND LIKE YOU? — image left, checklist right ═══════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-11">
-            <p className="duc-label mb-3">A quick gut-check</p>
-            <h2 className="duc-h2 duc-section-title">Are you experiencing these every day?</h2>
-          </Reveal>
-          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-start">
-            {/* LEFT — image */}
-            <Reveal className="lg:sticky lg:top-8">
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.25)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/sdxl/does-sound.jpg" alt="A drained professional at their desk at the end of a long workday, water untouched" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-              </div>
-            </Reveal>
-            {/* RIGHT — grouped checklist */}
-            <div className="flex flex-col gap-6">
-              {[
-                { group: "😣 Physical", items: ["Neck or back pain after work", "Feeling stiff after sitting", "Sitting for long hours without breaks"] },
-                { group: "⚡ Energy", items: ["Low energy after lunch", "Exhausted after work", "Losing focus and feeling mentally drained by afternoon"] },
-                { group: "👀 Daily habits", items: ["Eyes feel dry or strained", "You rarely drink enough water", "“I know I should exercise… but I never find the time.”"] },
-              ].map(({ group, items }, gi) => (
-                <Reveal key={group} delay={gi * 90}>
-                  <div>
-                    <p style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: "#a8790d", marginBottom: 10 }}>{group}</p>
-                    <div className="flex flex-col gap-2.5">
-                      {items.map((t) => (
-                        <div key={t} className="pop-card flex items-center gap-3 rounded-2xl px-4 py-3" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
-                          <span className="shrink-0 inline-flex items-center justify-center rounded-md" style={{ width: 24, height: 24, border: "2px solid #d4a017", color: "#a8790d", fontSize: 13, fontWeight: 900 }}>✓</span>
-                          <span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{t}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-              <Reveal delay={120}>
-                <div className="rounded-2xl p-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-                  <p style={{ fontSize: 17, fontWeight: 700, color: "#18181b", lineHeight: 1.55 }}>
-                    If you nodded to even <span style={{ color: "#a8790d" }}>3 of these</span>, this masterclass could completely change the way you look after your health.
-                  </p>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
 
 

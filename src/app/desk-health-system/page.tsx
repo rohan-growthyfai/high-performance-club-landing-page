@@ -687,6 +687,13 @@ export default function DeskHealthSystemPage() {
             ))}
           </div>
 
+          {/* if you said yes to even one */}
+          <Reveal delay={120}>
+            <p className="text-center mt-10" style={{ fontSize: "clamp(1.15rem,2.4vw,1.5rem)", fontWeight: 800, color: "#fff", lineHeight: 1.4, maxWidth: 620, margin: "2.5rem auto 0", fontFamily: "'Poppins',sans-serif" }}>
+              If you said &ldquo;Yes&rdquo; to even one… <span style={{ color: "#e8a020" }}>you&apos;re exactly who this masterclass was built for.</span>
+            </p>
+          </Reveal>
+
           {/* job roles chips */}
           <Reveal delay={100}>
             <p className="text-center mt-11 mb-4" style={{ fontSize: 14, fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Perfect if you&apos;re a…</p>
@@ -1028,7 +1035,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={100}>
             <div className="rounded-2xl px-6 py-6 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-                Four tiny habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, they quietly rebuild your health.</span>
+                Tiny healthy habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, starts rebuilding your health.</span>
               </p>
               <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula. (You&apos;ll get many more on the masterclass.)</p>
             </div>

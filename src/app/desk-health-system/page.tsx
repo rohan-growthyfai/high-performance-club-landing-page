@@ -572,7 +572,7 @@ export default function DeskHealthSystemPage() {
             <Reveal className="lg:sticky lg:top-8">
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.25)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/hf/does.jpg" alt="A drained professional rubbing tired eyes at their desk, an unopened water bottle beside them" className="w-full block object-cover object-center" style={{ maxHeight: 440 }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/hf/does.jpg" alt="A drained professional rubbing tired eyes at their desk, an unopened water bottle beside them" className="w-full block object-cover object-bottom" style={{ maxHeight: 560 }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* RIGHT — one flat checklist (50%) */}
@@ -610,7 +610,7 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-9">
-            <h2 className="duc-h2 duc-section-title mb-3">Learn the Desk Fit Formula</h2>
+            <h2 className="duc-h2 duc-section-title mb-3" style={{ fontSize: "clamp(2.1rem,5vw,3.4rem)" }}>Learn the Desk Fit Formula</h2>
             <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to become healthier while you work.</p>
             <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
               A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it improves your health through <strong style={{ color: "#18181b" }}>small daily actions that fit naturally into your workday.</strong>
@@ -630,7 +630,7 @@ export default function DeskHealthSystemPage() {
 
           {/* 7 Things Your Body Needs Every Day */}
           <div className="text-center mb-6">
-            <p style={{ fontSize: "clamp(1.25rem,2.6vw,1.65rem)", fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif", letterSpacing: "-0.01em" }}>7 Things Your Body Needs Every Day</p>
+            <p style={{ fontSize: "clamp(1.25rem,2.6vw,1.65rem)", fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif", letterSpacing: "-0.01em" }}>Desk Fit Formula Helps to Improve All 7 Things Your Body Needs Every Day</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
@@ -655,9 +655,6 @@ export default function DeskHealthSystemPage() {
               <p style={{ fontSize: 12.5, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>Learn How Desk Fit Formula Makes Them Work Together</p>
             </div>
           </div>
-          <p className="text-center mt-8" style={{ fontSize: 17, color: "#18181b", fontWeight: 600, maxWidth: 620, margin: "1.5rem auto 0", lineHeight: 1.6 }}>
-            And… the <strong style={{ color: "#a8790d" }}>Desk Fit Formula</strong> helps you improve all 7 of these areas of your health — without gym, diets, or extra time.
-          </p>
           <div className="flex justify-center mt-8">
             <CTA label="I Want to Learn the Desk Fit Formula →" sub={`Free · ${DATE_LINE}`} />
           </div>
@@ -680,10 +677,10 @@ export default function DeskHealthSystemPage() {
           {/* 4 pillars — image-topped cards: Instead of this… ⬇️ Try this… + tiny pointers */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
-              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", img: "/desk/gem/swap-energy.jpg", big: "Drink more coffee", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch.", points: ["Beats the afternoon slump without caffeine", "Keeps you alert through back-to-back calls"] },
-              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", img: "/desk/gem/swap-movement.jpg", big: "Walk 10,000 steps", tiny: "Walk for just 2 minutes after every meeting — that&apos;s enough to undo hours of sitting.", points: ["Loosens a stiff neck, back and hips", "No gym, no step goal — fits between tasks"] },
-              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", img: "/desk/gem/swap-nutrition.jpg", big: "Drink 3 litres of water", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort.", points: ["Curbs mindless mid-morning snacking", "One glass, done before work even begins"] },
-              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", img: "/desk/gem/swap-mind.jpg", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus.", points: ["Melts work stress in under 30 seconds", "Sharper focus for the conversation ahead"] },
+              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", img: "/desk/gem/swap-energy.jpg", big: "Drink more coffee", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch.", points: ["Feel less tired in the afternoon", "Stay awake during long meetings"] },
+              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", img: "/desk/gem/swap-movement.jpg", big: "Walk 10,000 steps", tiny: "Walk for just 2 minutes after every meeting — that&apos;s enough to undo hours of sitting.", points: ["Less neck and back pain", "No gym needed — do it between tasks"] },
+              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", img: "/desk/gem/swap-nutrition.jpg", big: "Drink 3 litres of water", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort.", points: ["Snack less through the morning", "Just one glass — takes a few seconds"] },
+              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", img: "/desk/gem/swap-mind.jpg", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus.", points: ["Feel calmer in a few seconds", "Focus better on your work"] },
             ].map(({ icon, pillar, bar, tint, img, big, tiny, points }, i) => (
               <Reveal key={pillar} delay={i * 80}>
                 <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 10px 30px -14px rgba(0,0,0,0.16)" }}>

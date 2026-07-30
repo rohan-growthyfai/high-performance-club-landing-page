@@ -770,9 +770,9 @@ export default function DeskHealthSystemPage() {
                 <img src="/desk/DeskFit.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
-                <p>This is <strong style={{ color: "#fff" }}>not</strong> just another &ldquo;free session.&rdquo; In one hour, I&apos;ll hand you the <strong style={{ color: "#fff" }}>3 simple secrets</strong> that quietly make your body healthier — <strong style={{ color: "#fff" }}>while you work.</strong></p>
-                <p>No gym. No diet. No extra time. Just a small, proven framework that fits inside the workday you already have.</p>
-                <p>By the end, you&apos;ll know <strong style={{ color: "#fff" }}>exactly what to do</strong> to feel more energetic, pain-free and focused at your desk. <strong style={{ color: "#e8a020" }}>This is your moment. Don&apos;t let it slip.</strong></p>
+                <p>This is <strong style={{ color: "#fff" }}>not</strong> just another &ldquo;diet or workout session.&rdquo; In just <strong style={{ color: "#fff" }}>90 minutes</strong>, you&apos;ll learn the <strong style={{ color: "#fff" }}>Desk Fit Formula</strong> — a simple framework that fits healthy habits into your workday <strong style={{ color: "#fff" }}>without changing your busy schedule.</strong></p>
+                <p>No gym. No diet. No extra time.</p>
+                <p><strong style={{ color: "#e8a020" }}>This one session could completely change the way you look after your health.</strong></p>
               </div>
               <div className="mt-7">
                 <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>

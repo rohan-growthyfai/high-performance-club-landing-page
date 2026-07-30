@@ -490,47 +490,12 @@ export default function DeskHealthSystemPage() {
             </div>
           </div>
 
-          {/* Right: SPLIT before/after visual — the image itself explains the product */}
+          {/* Right: AI split before/after image — the image itself explains the product */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 470, width: "100%" }}>
-              <div className="grid grid-cols-2 rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
-                {/* BEFORE half */}
-                <div className="relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/gem/before.jpg" alt="A professional with neck pain and low energy from desk work" className="w-full h-full object-cover" style={{ aspectRatio: "3/4", filter: "grayscale(0.25)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute inset-0 flex flex-col" style={{ background: "linear-gradient(180deg,rgba(120,20,20,0.15) 0%,rgba(60,10,10,0.82) 100%)" }}>
-                    <span className="m-2.5 self-start rounded-full px-2.5 py-1" style={{ background: "#dc2626", color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.03em" }}>DESK LIFE</span>
-                    <div className="mt-auto p-3 flex flex-col gap-1.5">
-                      {["Neck pain", "Low energy", "Tight hips", "Stress"].map(t => (
-                        <span key={t} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}><span style={{ color: "#fca5a5" }}>✕</span>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-                {/* AFTER half */}
-                <div className="relative">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/gem/after.jpg" alt="The same professional energized and healthy at their desk" className="w-full h-full object-cover" style={{ aspectRatio: "3/4" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  <div className="absolute inset-0 flex flex-col" style={{ background: "linear-gradient(180deg,rgba(16,120,70,0.12) 0%,rgba(6,70,44,0.8) 100%)" }}>
-                    <span className="m-2.5 self-start rounded-full px-2.5 py-1" style={{ background: "#059669", color: "#fff", fontSize: 11, fontWeight: 800, letterSpacing: "0.03em" }}>DESK FIT</span>
-                    <div className="mt-auto p-3 flex flex-col gap-1.5">
-                      {["Better posture", "Better energy", "Better focus"].map(t => (
-                        <span key={t} className="flex items-center gap-1.5" style={{ fontSize: 12.5, fontWeight: 700, color: "#fff" }}><span style={{ color: "#86efac" }}>✓</span>{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              {/* center divider arrow */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center" style={{ width: 46, height: 46, background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 6px 18px rgba(184,134,11,0.6)", border: "3px solid #fff" }}>
-                <span style={{ fontSize: 20, color: "#fff", fontWeight: 900 }}>→</span>
-              </div>
-              {/* floating callout chips — clearer story */}
-              <div className="absolute -left-3 top-6 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.14)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 16 }}>😩</span><span style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>Neck Pain · No Time</span>
-              </div>
-              <div className="absolute -right-3 -bottom-4 rounded-2xl px-3 py-2 flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 22px rgba(0,0,0,0.14)", border: "1px solid #eee7d6" }}>
-                <span style={{ fontSize: 16 }}>⚡</span><span style={{ fontSize: 12, fontWeight: 700, color: "#18181b" }}>Healthy While You Work</span>
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 560, width: "100%" }}>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/hf/split-hero.jpg" alt="Desk Life vs Desk Fit — from neck pain, low energy and stress to better posture, energy and focus" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </div>
           </div>
@@ -563,7 +528,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/sdxl/sitting-smoking.jpg" alt="A professional hunched at a desk after hours of sitting, showing the toll of prolonged sitting" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/hf/sitting.jpg" alt="A professional hunched at a desk after long hours of sitting, showing the hidden toll of prolonged sitting" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* facts */}
@@ -604,7 +569,7 @@ export default function DeskHealthSystemPage() {
             <Reveal className="lg:col-span-3 lg:sticky lg:top-8">
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 56px -18px rgba(0,0,0,0.28)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/damage-neck.jpg" alt="A professional feeling neck and back strain from a long day at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/hf/does.jpg" alt="A drained professional rubbing tired eyes at their desk, an unopened water bottle beside them" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* RIGHT — one flat checklist (40%) */}
@@ -958,10 +923,18 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3">The foundation of a healthy body</p>
             <h2 className="duc-h2 duc-section-title">A healthy life stands on <span className="gradient-text">4 pillars</span></h2>
           </Reveal>
-          <Reveal className="mb-11">
+          <Reveal className="mb-8">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 600, margin: "0 auto", fontWeight: 500, lineHeight: 1.6 }}>
               Get these four right, and your body simply <em>works</em> better — more energy, less pain, a calmer mind.
             </p>
+          </Reveal>
+
+          {/* AI 4-pillars infographic */}
+          <Reveal className="mb-10">
+            <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 720, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.18)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/desk/hf/pillars.jpg" alt="The 4 pillars of a healthy body for a desk worker — Energy, Movement, Nutrition & Hydration, Relaxed Mind" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+            </div>
           </Reveal>
 
           {/* the 4 pillars — visual cards */}

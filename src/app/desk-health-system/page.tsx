@@ -767,7 +767,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="relative rounded-3xl overflow-hidden mb-6" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/DeskFit.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full block object-cover object-center" style={{ maxHeight: 300, height: "auto" }} onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/DeskFit.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
                 <p>This is <strong style={{ color: "#fff" }}>not</strong> just another &ldquo;free session.&rdquo; In one hour, I&apos;ll hand you the <strong style={{ color: "#fff" }}>3 simple secrets</strong> that quietly make your body healthier — <strong style={{ color: "#fff" }}>while you work.</strong></p>
@@ -1017,12 +1017,12 @@ export default function DeskHealthSystemPage() {
             </p>
           </Reveal>
 
-          {/* 4 pillars — struck typical advice → tiny desk habit */}
+          {/* 4 pillars — Instead of this… (typical advice) ⬇️ Try this… (tiny habit) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", big: "Push through the afternoon slump", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch." },
-              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", big: "Hit the gym for an hour", tiny: "After every meeting, walk for just 2 minutes — that&apos;s enough to undo hours of sitting." },
-              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", big: "Follow a strict diet plan", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort." },
+              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", big: "Drink more coffee", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch." },
+              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", big: "Walk 10,000 steps", tiny: "Walk for just 2 minutes after every meeting — that&apos;s enough to undo hours of sitting." },
+              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", big: "Drink 3 litres of water", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort." },
               { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus." },
             ].map(({ icon, pillar, bar, tint, big, tiny }, i) => (
               <Reveal key={pillar} delay={i * 80}>
@@ -1034,15 +1034,19 @@ export default function DeskHealthSystemPage() {
                       <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>{pillar}</p>
                     </div>
                   </div>
-                  <div className="p-5 flex flex-col gap-3 flex-1">
-                    {/* struck typical advice */}
-                    <div className="flex items-center gap-2">
-                      <span className="shrink-0 rounded-full px-2.5 py-1" style={{ background: "#fff1f1", color: "#b91c1c", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Instead of</span>
-                      <span style={{ fontSize: 14.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#fca5a5" }}>{big}</span>
+                  <div className="p-5 flex flex-col flex-1">
+                    {/* Instead of this… */}
+                    <div className="rounded-xl px-4 py-3" style={{ background: "#fff7f7", border: "1px solid #fde0e0" }}>
+                      <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#b91c1c", marginBottom: 3 }}>Instead of this…</p>
+                      <p style={{ fontSize: 15.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#f5a3a3" }}>{big}</p>
                     </div>
-                    {/* the tiny habit */}
-                    <div className="flex items-start gap-3 rounded-xl p-3 mt-auto" style={{ background: `${bar}12`, border: `1px solid ${bar}33` }}>
-                      <span className="shrink-0 rounded-lg px-2 py-1" style={{ background: bar, color: "#fff", fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.03em", lineHeight: 1.2 }}>Tiny habit<br />you can do</span>
+                    {/* arrow */}
+                    <div className="flex justify-center" style={{ margin: "6px 0" }}>
+                      <span className="inline-flex items-center justify-center rounded-full" style={{ width: 28, height: 28, background: bar, color: "#fff", fontSize: 15, fontWeight: 900 }}>↓</span>
+                    </div>
+                    {/* Try this… */}
+                    <div className="rounded-xl px-4 py-3 mt-auto" style={{ background: `${bar}12`, border: `1px solid ${bar}44` }}>
+                      <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: bar, marginBottom: 4 }}>✓ Try this…</p>
                       <p style={{ fontSize: 15.5, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: tiny }} />
                     </div>
                   </div>

@@ -14,14 +14,14 @@ declare global {
 // ═════════════════════════════════════════════════════════════════════════════
 const WEBINAR = {
   title: "Get Healthy While You Work",
-  dayLabel: "Sunday",
-  dateLabel: "2 August 2026",        // shown clearly in the hero
-  timeLabel: "11:00 AM IST",
+  dayLabel: "Wednesday",
+  dateLabel: "5 August 2026",        // shown clearly in the hero
+  timeLabel: "7:00 PM IST",
   duration: "90 minutes",
   platformLabel: "Live on Zoom",
   seatsLine: "100% free · Limited seats",
   price: "₹1,999",                   // struck-through on CTAs → FREE
-  startISO: "2026-08-02T11:00:00+05:30", // countdown target (IST)
+  startISO: "2026-08-05T19:00:00+05:30", // countdown target (IST)
 };
 const WHEN_LINE = `${WEBINAR.dayLabel}, ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel} · ${WEBINAR.duration}`;
 const DATE_LINE = `${WEBINAR.dayLabel}, ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel}`;
@@ -994,65 +994,7 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-      {/* ══ 5d. THE 4 PILLARS OF HEALTHY LIVING ═════════════════════════════ */}
-      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(180deg,#faf8f3 0%,#fff 100%)" }}>
-        <div className="max-w-6xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-4">
-            <p className="duc-label mb-3">The foundation of a healthy body</p>
-            <h2 className="duc-h2 duc-section-title">A healthy life stands on <span className="gradient-text">4 pillars</span></h2>
-          </Reveal>
-          <Reveal className="mb-8">
-            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 600, margin: "0 auto", fontWeight: 500, lineHeight: 1.6 }}>
-              Get these four right, and your body simply <em>works</em> better — more energy, less pain, a calmer mind.
-            </p>
-          </Reveal>
-
-          {/* AI 4-pillars infographic */}
-          <Reveal className="mb-10">
-            <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 720, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.18)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/desk/hf/pillars.jpg" alt="The 4 pillars of a healthy body for a desk worker — Energy, Movement, Nutrition & Hydration, Relaxed Mind" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-            </div>
-          </Reveal>
-
-          {/* the 4 pillars — visual cards */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-            {[
-              { icon: "⚡", name: "Energy", sub: "Feel awake &amp; alert all day", tint: "#fff5e6", ring: "#f5d98a", bar: "#e0a020" },
-              { icon: "🚶", name: "Movement", sub: "Keep your body loose &amp; strong", tint: "#eafaf0", ring: "#a7e5c1", bar: "#10b981" },
-              { icon: "🥗", name: "Nutrition &amp; Hydration", sub: "Fuel &amp; water your body right", tint: "#eaf3ff", ring: "#b9d6fb", bar: "#3b82f6" },
-              { icon: "🧘", name: "Relaxed Mind", sub: "Stay calm, focused &amp; clear", tint: "#f4ecff", ring: "#d8c4fb", bar: "#8b5cf6" },
-            ].map(({ icon, name, sub, tint, ring, bar }, i) => (
-              <Reveal key={i} delay={i * 80}>
-                <div className="pop-card rounded-3xl overflow-hidden h-full text-center" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px -12px rgba(0,0,0,0.12)" }}>
-                  <div style={{ height: 6, background: bar }} />
-                  <div className="p-5 lg:p-6 flex flex-col items-center">
-                    <span className="inline-flex items-center justify-center rounded-2xl mb-3" style={{ width: 64, height: 64, background: tint, border: `1.5px solid ${ring}`, fontSize: 32 }}>{icon}</span>
-                    <p style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b", lineHeight: 1.2, fontFamily: "'Poppins',sans-serif" }} dangerouslySetInnerHTML={{ __html: name }} />
-                    <p style={{ fontSize: 13.5, color: "#71717a", marginTop: 5, lineHeight: 1.4 }} dangerouslySetInnerHTML={{ __html: sub }} />
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
-          {/* the problem → the fix */}
-          <div className="grid md:grid-cols-2 gap-5 mt-8">
-            <Reveal>
-              <div className="rounded-3xl p-6 lg:p-7 h-full" style={{ background: "#fff7f7", border: "2px solid #fecaca" }}>
-                <p className="flex items-center gap-2 mb-2" style={{ fontSize: 16.5, fontWeight: 900, color: "#991b1b", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 20 }}>😔</span> The problem</p>
-                <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.6, fontWeight: 500 }}>Your busy workday quietly knocks out <strong style={{ color: "#18181b" }}>all four pillars</strong> — you sit still for hours, skip water, grab whatever&apos;s quick, and run on stress. No wonder you feel drained.</p>
-              </div>
-            </Reveal>
-            <Reveal delay={90}>
-              <div className="rounded-3xl p-6 lg:p-7 h-full" style={{ background: "#f0fdf4", border: "2px solid #bbf7d0", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
-                <p className="flex items-center gap-2 mb-2" style={{ fontSize: 16.5, fontWeight: 900, color: "#166534", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 20 }}>✅</span> The Desk Fit Formula fix</p>
-                <p style={{ fontSize: 16, color: "#18181b", lineHeight: 1.6, fontWeight: 600 }}>It weaves all four pillars <strong>directly into your workday</strong> — with tiny habits you barely notice. No finding extra time. Your work itself keeps you healthy.</p>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
+      
 
       
 

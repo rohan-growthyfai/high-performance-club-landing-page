@@ -874,25 +874,27 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-4xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-10">
             <p className="duc-label mb-3">Before you decide…</p>
-            <h2 className="duc-h2 duc-section-title">Here&apos;s exactly what you&apos;re <span className="gradient-text">(and aren&apos;t)</span> signing up for</h2>
+            <h2 className="duc-h2 duc-section-title">What makes this masterclass <span className="gradient-text">different?</span></h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* IS NOT */}
             <Reveal>
               <div className="rounded-3xl overflow-hidden h-full" style={{ border: "2px solid #fecaca", background: "#fff7f7" }}>
                 <div className="px-6 py-4 flex items-center gap-2.5" style={{ background: "#fee2e2", borderBottom: "2px solid #fecaca" }}>
-                  <span style={{ fontSize: 22 }}>🚫</span>
-                  <span style={{ fontSize: 16.5, fontWeight: 900, color: "#991b1b", fontFamily: "'Poppins',sans-serif" }}>It&apos;s NOT this</span>
+                  <span style={{ fontSize: 22 }}>❌</span>
+                  <span style={{ fontSize: 16.5, fontWeight: 900, color: "#991b1b", fontFamily: "'Poppins',sans-serif" }}>What This ISN&apos;T</span>
                 </div>
                 <div className="p-6 flex flex-col gap-3">
                   {[
-                    "Not a 6 AM bootcamp or sweaty workout",
-                    "Not a strict diet you have to follow",
-                    "Not one more thing to squeeze in after work",
-                    "Not boring theory or complicated science",
-                    "Not a gym or any equipment to buy",
+                    "No 6 AM workouts",
+                    "No calorie counting",
+                    "No expensive gadgets or equipment",
+                    "No complicated meal plans",
+                    "No impossible routines",
+                    "No confusing health advice",
+                    "No guilt when you miss a day",
                   ].map(t => (
-                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✕</span><span style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.5, fontWeight: 500 }}>{t}</span></div>
+                    <div key={t} className="flex items-center gap-2.5"><span style={{ color: "#dc2626", fontSize: 16, fontWeight: 900 }}>✕</span><span style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{t}</span></div>
                   ))}
                 </div>
               </div>
@@ -902,22 +904,31 @@ export default function DeskHealthSystemPage() {
               <div className="rounded-3xl overflow-hidden h-full" style={{ border: "2px solid #bbf7d0", background: "#f0fdf4", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
                 <div className="px-6 py-4 flex items-center gap-2.5" style={{ background: "#dcfce7", borderBottom: "2px solid #bbf7d0" }}>
                   <span style={{ fontSize: 22 }}>✅</span>
-                  <span style={{ fontSize: 16.5, fontWeight: 900, color: "#166534", fontFamily: "'Poppins',sans-serif" }}>It IS this</span>
+                  <span style={{ fontSize: 16.5, fontWeight: 900, color: "#166534", fontFamily: "'Poppins',sans-serif" }}>What It IS</span>
                 </div>
                 <div className="p-6 flex flex-col gap-3">
                   {[
                     "A simple framework you can use today",
                     "Tiny 30-second habits you do at your desk",
                     "Health that fits inside your normal workday",
-                    "Zero extra time — no gym, no diet, no fuss",
+                    "Practical, easy actions — no willpower needed",
                     "A 7-day plan you start the very next morning",
+                    "Habits so small they're easy to keep",
+                    "Progress you actually feel, week after week",
                   ].map(t => (
-                    <div key={t} className="flex items-start gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: -1 }}>✓</span><span style={{ fontSize: 16, color: "#18181b", fontWeight: 600, lineHeight: 1.5 }}>{t}</span></div>
+                    <div key={t} className="flex items-center gap-2.5"><span style={{ color: "#059669", fontSize: 16, fontWeight: 900 }}>✓</span><span style={{ fontSize: 16, color: "#18181b", fontWeight: 600, lineHeight: 1.4 }}>{t}</span></div>
                   ))}
                 </div>
               </div>
             </Reveal>
           </div>
+
+          {/* one-line philosophy summary */}
+          <Reveal delay={80}>
+            <p className="text-center mt-9" style={{ fontSize: 18, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "2.25rem auto 0", lineHeight: 1.5 }}>
+              It&apos;s designed to fit <span style={{ color: "#a8790d" }}>around your work — not interrupt it.</span>
+            </p>
+          </Reveal>
         </div>
       </section>
 

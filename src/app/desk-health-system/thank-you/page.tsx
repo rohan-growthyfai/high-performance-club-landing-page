@@ -132,7 +132,6 @@ export default function DeskHealthThankYouPage() {
             style={{ fontSize: 20, padding: "20px 44px", border: "none", cursor: "pointer" }}>
             <WhatsAppIcon size={26} />Join the WhatsApp Group
           </a>
-          <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 12 }}>Free · Takes 5 seconds · Leave anytime</p>
         </div>
 
         <p className="mt-8" style={{ fontSize: 13, color: "#71717a" }}>

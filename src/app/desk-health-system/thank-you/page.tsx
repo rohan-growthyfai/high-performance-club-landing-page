@@ -13,13 +13,6 @@ declare global {
 // ═══════════════════════════════════════════════════════════════════════════
 const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/REPLACE_WITH_YOUR_GROUP_INVITE";
 
-const WEBINAR = {
-  dayLabel: "Sunday",
-  dateLabel: "2 August 2026",
-  timeLabel: "11:00 AM IST",
-  duration: "90 minutes",
-};
-
 function CheckIcon({ size = 44 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -88,8 +81,6 @@ export default function DeskHealthThankYouPage() {
     }
   }, []);
 
-  const DATE_LINE = `${WEBINAR.dayLabel}, ${WEBINAR.dateLabel} · ${WEBINAR.timeLabel}`;
-
   return (
     <div id="ty-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b" }}>
       <Confetti />
@@ -126,13 +117,6 @@ export default function DeskHealthThankYouPage() {
         <p style={{ fontSize: 17.5, color: "#3f3f46", lineHeight: 1.65, fontWeight: 500, maxWidth: 540, margin: "0 auto 26px" }}>
           Your seat is confirmed. Please check your <strong style={{ color: "#18181b" }}>WhatsApp &amp; Email</strong> to find session joining details!
         </p>
-
-        {/* when */}
-        <div className="rounded-2xl px-6 py-5 mb-8 inline-block" style={{ background: "#18181b" }}>
-          <p style={{ fontSize: 12, fontWeight: 700, color: "#e8a020", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>🗓 Save the date</p>
-          <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{DATE_LINE}</p>
-          <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 2 }}>{WEBINAR.duration} · Live on Zoom</p>
-        </div>
 
         {/* WhatsApp group CTA */}
         <div className="rounded-3xl p-6 lg:p-8" style={{ background: "linear-gradient(135deg,#0b3d2e,#0f5138)", border: "1px solid rgba(37,211,102,0.3)" }}>

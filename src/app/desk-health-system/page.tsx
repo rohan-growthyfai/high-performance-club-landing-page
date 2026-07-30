@@ -705,18 +705,17 @@ export default function DeskHealthSystemPage() {
           <Reveal className="flex justify-center mb-11">
             <span style={{ display: "block", width: 54, height: 4, borderRadius: 4, background: "#d4a017" }} />
           </Reveal>
-          {/* 3 distinct personas */}
+          {/* 3 huge instant-recognition statements ("that's me" in 2-3s) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {[
-              { icon: "🧑‍💻", title: "The always-on professional", text: <>You spend <strong style={{ color: "#fff" }}>6+ hours a day at a desk</strong> — meetings, emails, code, reports, spreadsheets. You&apos;re productive, but by evening your neck, back and eyes are wrecked.</> },
-              { icon: "⏰", title: "The &ldquo;no-time-for-health&rdquo; one", text: <>You <strong style={{ color: "#fff" }}>want to be healthy</strong> but genuinely can&apos;t fit the gym or a diet into your day. Every plan you start quietly dies within a couple of weeks.</> },
-              { icon: "🔋", title: "The drained-by-6pm one", text: <>You&apos;re done with <strong style={{ color: "#fff" }}>afternoon crashes, stiffness and low energy</strong>. You want to feel good again — <em>without</em> overhauling your whole life.</> },
-            ].map(({ icon, title, text }, i) => (
+              { icon: "💻", line: "I sit most of the day." },
+              { icon: "⏰", line: "I don't have time for the gym." },
+              { icon: "😩", line: "I feel exhausted after work." },
+            ].map(({ icon, line }, i) => (
               <Reveal key={i} delay={i * 90}>
-                <div className="rounded-3xl p-7 h-full text-center md:text-left" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.2)" }}>
-                  <div className="inline-flex items-center justify-center rounded-full mb-4" style={{ width: 64, height: 64, background: "#fff", fontSize: 30 }}>{icon}</div>
-                  <p style={{ fontSize: 17.5, fontWeight: 800, color: "#e8a020", marginBottom: 8, fontFamily: "'Poppins',sans-serif" }} dangerouslySetInnerHTML={{ __html: title }} />
-                  <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.86)", lineHeight: 1.65, fontWeight: 500 }}>{text}</p>
+                <div className="rounded-3xl px-6 py-10 h-full flex flex-col items-center text-center" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.2)" }}>
+                  <span style={{ fontSize: 56, marginBottom: 18, lineHeight: 1 }}>{icon}</span>
+                  <p style={{ fontSize: "clamp(1.35rem,2.6vw,1.7rem)", fontWeight: 800, color: "#fff", lineHeight: 1.25, fontFamily: "'Poppins',sans-serif" }}>{line}</p>
                 </div>
               </Reveal>
             ))}
@@ -726,7 +725,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={100}>
             <p className="text-center mt-11 mb-4" style={{ fontSize: 14, fontWeight: 700, color: "rgba(255,255,255,0.55)", textTransform: "uppercase", letterSpacing: "0.1em" }}>Perfect if you&apos;re a…</p>
             <div className="flex flex-wrap items-center justify-center gap-2.5">
-              {["Software Engineer", "IT Professional", "Corporate Employee", "Designer", "HR Professional", "Manager", "Founder", "Finance / Accounts", "Remote Worker", "Student"].map(r => (
+              {["Software Engineer", "IT Professional", "Corporate Employee", "Designer", "HR Professional", "Manager", "Founder", "Finance / Accounts", "🏠 Work From Home", "Remote Worker", "Student"].map(r => (
                 <span key={r} className="rounded-full px-3.5 py-2" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.2)", fontSize: 13.5, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>{r}</span>
               ))}
             </div>

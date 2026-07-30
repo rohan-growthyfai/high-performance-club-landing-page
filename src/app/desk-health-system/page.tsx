@@ -643,7 +643,7 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-9">
             <h2 className="duc-h2 duc-section-title mb-3">Learn the Desk Fit Formula</h2>
-            <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to stay healthy while you work.</p>
+            <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to become healthier while you work.</p>
             <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
               A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it improves your health through <strong style={{ color: "#18181b" }}>small daily actions that fit naturally into your workday.</strong>
             </p>
@@ -660,19 +660,19 @@ export default function DeskHealthSystemPage() {
             </div>
           </Reveal>
 
-          {/* 7 Pillars */}
+          {/* 7 Things Your Body Needs Every Day */}
           <div className="text-center mb-6">
-            <p className="duc-label">Built around 7 essential pillars</p>
+            <p className="duc-label">7 Things Your Body Needs Every Day</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              { icon: "🪑", name: "Posture & Spine", tint: "#eaf3ff", ring: "#cfe2fb" },
-              { icon: "👀", name: "Eye Care", tint: "#f0ecff", ring: "#ddd4fb" },
-              { icon: "💧", name: "Hydration", tint: "#e8f7fb", ring: "#c7ebf3" },
-              { icon: "🚶", name: "Desk Mobility", tint: "#eafaf0", ring: "#c9eed7" },
-              { icon: "⚡", name: "Energy", tint: "#fff5e6", ring: "#f5e2bd" },
-              { icon: "🧠", name: "Focus", tint: "#fdeef0", ring: "#f7d4da" },
-              { icon: "😌", name: "Stress Management", tint: "#eefaf3", ring: "#c9edd9" },
+              { icon: "🪑", name: "Better Posture", tint: "#eaf3ff", ring: "#cfe2fb" },
+              { icon: "👀", name: "Healthier Eyes", tint: "#f0ecff", ring: "#ddd4fb" },
+              { icon: "💧", name: "Better Hydration", tint: "#e8f7fb", ring: "#c7ebf3" },
+              { icon: "🚶", name: "More Movement", tint: "#eafaf0", ring: "#c9eed7" },
+              { icon: "⚡", name: "All-Day Energy", tint: "#fff5e6", ring: "#f5e2bd" },
+              { icon: "🧠", name: "Better Focus", tint: "#fdeef0", ring: "#f7d4da" },
+              { icon: "😌", name: "Less Stress", tint: "#eefaf3", ring: "#c9edd9" },
             ].map(({ icon, name, tint, ring }, i) => (
               <Reveal key={name} delay={i * 55}>
                 <div className="pop-card rounded-2xl p-5 flex flex-col items-center text-center h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
@@ -683,15 +683,15 @@ export default function DeskHealthSystemPage() {
             ))}
             {/* filler CTA tile to complete the grid */}
             <div className="rounded-2xl p-5 flex flex-col items-center justify-center text-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)" }}>
-              <span style={{ fontSize: 26, marginBottom: 4 }}>🎓</span>
-              <p style={{ fontSize: 13, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>All 7 explained on the masterclass</p>
+              <span style={{ fontSize: 24, marginBottom: 4 }}>🎓</span>
+              <p style={{ fontSize: 12.5, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>Learn How Desk Fit Formula Makes Them Work Together</p>
             </div>
           </div>
-          <p className="text-center mt-8" style={{ fontSize: 16, color: "#3f3f46", maxWidth: 580, margin: "1.5rem auto 0" }}>
-            Together, these seven pillars address the most common health challenges faced by desk professionals.
+          <p className="text-center mt-8" style={{ fontSize: 17, color: "#18181b", fontWeight: 600, maxWidth: 620, margin: "1.5rem auto 0", lineHeight: 1.6 }}>
+            And… the <strong style={{ color: "#a8790d" }}>Desk Fit Formula</strong> helps you improve all 7 of these areas of your health — without gym, diets, or extra time.
           </p>
           <div className="flex justify-center mt-8">
-            <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
+            <CTA label="I Want to Learn the Desk Fit Formula →" sub={`Free · ${DATE_LINE}`} />
           </div>
         </div>
       </section>

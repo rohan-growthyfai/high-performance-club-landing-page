@@ -560,7 +560,7 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-11">
-            <p className="duc-label mb-3">A quick gut-check</p>
+            <p className="duc-label mb-3">Can you relate?</p>
             <h2 className="duc-h2 duc-section-title">Does your typical workday feel like this?</h2>
           </Reveal>
           {/* 60% image / 40% checklist */}
@@ -575,14 +575,14 @@ export default function DeskHealthSystemPage() {
             {/* RIGHT — one flat checklist (50%) */}
             <div className="flex flex-col gap-2.5">
               {[
-                "Neck or back pain after work",
-                "Low energy after lunch",
-                "Sitting for hours without breaks",
-                "Eyes feel dry or strained",
-                "Feeling stiff after sitting",
+                "You keep planning to work out, but work gets in the way",
+                "You sit for hours without breaks",
                 "You rarely drink enough water",
-                "Exhausted after work",
-                "“I never find time to exercise.”",
+                "You get tired from simple daily activities",
+                "You rely on coffee to get through the day",
+                "Neck or back pain after work",
+                "You feel physically drained by the end of the day",
+                "You gain weight more easily now",
               ].map((t, i) => (
                 <Reveal key={t} delay={i * 45}>
                   <div className="pop-card flex items-center gap-3 rounded-2xl px-4 py-3.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>

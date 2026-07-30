@@ -225,7 +225,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
           ) : (
             <form onSubmit={submit} className="px-6 py-5">
               <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.6, marginBottom: 16, textAlign: "center", fontWeight: 500 }}>
-                Add your details — we&apos;ll send the Zoom join link on WhatsApp.
+                We&apos;ll send your Zoom joining link along with some exciting bonuses to the details below.
               </p>
               <div className="flex flex-col gap-3">
                 <input value={name} onChange={e => setName(e.target.value)} placeholder="Full name" autoComplete="name" style={inputStyle} />

@@ -1,5 +1,5 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 declare global {
   interface Window {
@@ -36,6 +36,51 @@ function WhatsAppIcon({ size = 24 }: { size?: number }) {
   );
 }
 
+// ─── One-time confetti / party-popper burst ────────────────────────────────
+function Confetti() {
+  const [pieces, setPieces] = useState<Array<{ id: number; left: number; delay: number; dur: number; color: string; size: number; rot: number; drift: number }> | null>(null);
+  useEffect(() => {
+    const colors = ["#d4a017", "#e8a020", "#22c55e", "#3b82f6", "#8b5cf6", "#ef4444", "#f59e0b", "#10b981"];
+    // Deterministic-ish spread (avoids SSR; runs only on client)
+    const arr = Array.from({ length: 110 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      delay: Math.random() * 0.6,
+      dur: 2.6 + Math.random() * 1.8,
+      color: colors[i % colors.length],
+      size: 7 + Math.random() * 8,
+      rot: Math.random() * 360,
+      drift: (Math.random() - 0.5) * 220,
+    }));
+    setPieces(arr);
+    const t = setTimeout(() => setPieces([]), 5200); // remove after it finishes
+    return () => clearTimeout(t);
+  }, []);
+  if (!pieces || pieces.length === 0) return null;
+  return (
+    <div aria-hidden="true" style={{ position: "fixed", inset: 0, pointerEvents: "none", overflow: "hidden", zIndex: 60 }}>
+      {pieces.map((p) => (
+        <span
+          key={p.id}
+          style={{
+            position: "absolute",
+            top: "-20px",
+            left: `${p.left}%`,
+            width: p.size,
+            height: p.size * 0.6,
+            background: p.color,
+            borderRadius: p.id % 3 === 0 ? "50%" : "2px",
+            opacity: 0.95,
+            transform: `rotate(${p.rot}deg)`,
+            animation: `ty-confetti ${p.dur}s cubic-bezier(0.2,0.6,0.4,1) ${p.delay}s forwards`,
+            ["--drift" as string]: `${p.drift}px`,
+          } as React.CSSProperties}
+        />
+      ))}
+    </div>
+  );
+}
+
 export default function DeskHealthThankYouPage() {
   useEffect(() => {
     if (typeof window !== "undefined" && typeof window.fbq === "function") {
@@ -47,9 +92,11 @@ export default function DeskHealthThankYouPage() {
 
   return (
     <div id="ty-top" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b" }}>
+      <Confetti />
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap');
         @keyframes ty-pop{0%{transform:scale(0.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1);opacity:1}}
+        @keyframes ty-confetti{0%{transform:translate(0,0) rotate(0deg);opacity:1}100%{transform:translate(var(--drift),105vh) rotate(720deg);opacity:0.9}}
         #ty-top{font-family:'Plus Jakarta Sans',-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
         #ty-top h1,#ty-top h2{font-family:'Poppins','Plus Jakarta Sans',sans-serif;letter-spacing:-0.02em}
         #ty-top .wa-btn{background:linear-gradient(135deg,#1fa855,#25D366);box-shadow:0 14px 34px rgba(37,211,102,0.45)}
@@ -76,8 +123,8 @@ export default function DeskHealthThankYouPage() {
           You&apos;re in! 🎉<br />
           <span style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", WebkitBackgroundClip: "text", backgroundClip: "text", WebkitTextFillColor: "transparent" }}>See you at the masterclass.</span>
         </h1>
-        <p style={{ fontSize: 17.5, color: "#3f3f46", lineHeight: 1.65, fontWeight: 500, maxWidth: 520, margin: "0 auto 26px" }}>
-          Your free seat is saved. We can&apos;t wait to show you how to become healthier — without finding any extra time.
+        <p style={{ fontSize: 17.5, color: "#3f3f46", lineHeight: 1.65, fontWeight: 500, maxWidth: 540, margin: "0 auto 26px" }}>
+          Your seat is confirmed. Please check your <strong style={{ color: "#18181b" }}>WhatsApp &amp; Email</strong> to find session joining details!
         </p>
 
         {/* when */}
@@ -85,25 +132,6 @@ export default function DeskHealthThankYouPage() {
           <p style={{ fontSize: 12, fontWeight: 700, color: "#e8a020", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 4 }}>🗓 Save the date</p>
           <p style={{ fontSize: 18, fontWeight: 800, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{DATE_LINE}</p>
           <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 2 }}>{WEBINAR.duration} · Live on Zoom</p>
-        </div>
-
-        {/* check email + whatsapp */}
-        <div className="rounded-3xl p-6 lg:p-7 mb-8 text-left" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 10px 30px -14px rgba(0,0,0,0.15)" }}>
-          <h2 style={{ fontSize: 19, fontWeight: 800, marginBottom: 14, textAlign: "center" }}>👉 One important step</h2>
-          <div className="flex items-start gap-4 mb-4">
-            <span className="shrink-0 inline-flex items-center justify-center rounded-xl" style={{ width: 46, height: 46, background: "rgba(212,160,23,0.12)", fontSize: 24 }}>📧</span>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b" }}>Check your Email</p>
-              <p style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.55, fontWeight: 500 }}>Your confirmation and the <strong style={{ color: "#18181b" }}>Zoom joining link</strong> are on their way. (Check spam/promotions too.)</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-4">
-            <span className="shrink-0 inline-flex items-center justify-center rounded-xl" style={{ width: 46, height: 46, background: "rgba(37,211,102,0.12)", fontSize: 24 }}>💬</span>
-            <div>
-              <p style={{ fontSize: 16, fontWeight: 800, color: "#18181b" }}>Check your WhatsApp</p>
-              <p style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.55, fontWeight: 500 }}>We&apos;ll send your <strong style={{ color: "#18181b" }}>joining link and reminders</strong> to your WhatsApp number so you never miss it.</p>
-            </div>
-          </div>
         </div>
 
         {/* WhatsApp group CTA */}
@@ -121,12 +149,6 @@ export default function DeskHealthThankYouPage() {
             <WhatsAppIcon size={26} />Join the WhatsApp Group
           </a>
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.6)", marginTop: 12 }}>Free · Takes 5 seconds · Leave anytime</p>
-        </div>
-
-        {/* try now */}
-        <div className="rounded-2xl p-5 mt-8 text-left" style={{ background: "#fff", border: "1px solid #e6d9b0" }}>
-          <p style={{ fontSize: 14, fontWeight: 800, color: "#18181b", marginBottom: 6 }}>🎯 Try your first desk habit right now:</p>
-          <p style={{ fontSize: 14.5, color: "#3f3f46", lineHeight: 1.6, fontWeight: 500 }}>Sit tall, drop your shoulders, and take 3 slow breaths. That&apos;s it — your first tiny Desk Fit habit, done in 10 seconds.</p>
         </div>
 
         <p className="mt-8" style={{ fontSize: 13, color: "#71717a" }}>

@@ -563,7 +563,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/damage-neck.jpg" alt="A professional feeling the strain of sitting all day at a desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/sdxl/sitting-smoking.jpg" alt="A professional hunched at a desk after hours of sitting, showing the toll of prolonged sitting" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* facts */}
@@ -654,7 +654,7 @@ export default function DeskHealthSystemPage() {
             <Reveal className="lg:sticky lg:top-8">
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.25)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/gem/damage-eyes.jpg" alt="A tired professional rubbing strained eyes at their desk, unopened water bottle beside them" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/sdxl/does-sound.jpg" alt="A drained professional at their desk at the end of a long workday, water untouched" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* RIGHT — grouped checklist */}

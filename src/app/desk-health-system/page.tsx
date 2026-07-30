@@ -587,7 +587,6 @@ export default function DeskHealthSystemPage() {
             <p className="text-center mt-10" style={{ fontSize: 17.5, fontWeight: 700, color: "#fff", maxWidth: 620, margin: "2.5rem auto 0", lineHeight: 1.55 }}>
               The good news? <span style={{ color: "#e8a020" }}>You can undo most of it in seconds a day</span> — without a gym, a diet, or any extra time. That&apos;s exactly what the masterclass shows you.
             </p>
-            <p className="text-center mt-4" style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>General wellness education based on widely-reported research on prolonged sitting. Not medical advice.</p>
           </Reveal>
         </div>
       </section>
@@ -605,7 +604,7 @@ export default function DeskHealthSystemPage() {
             <Reveal className="lg:col-span-3 lg:sticky lg:top-8">
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 56px -18px rgba(0,0,0,0.28)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/sdxl/does-sound.jpg" alt="A drained professional at their desk at the end of a long workday, water untouched" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/gem/damage-neck.jpg" alt="A professional feeling neck and back strain from a long day at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </Reveal>
             {/* RIGHT — one flat checklist (40%) */}
@@ -677,7 +676,7 @@ export default function DeskHealthSystemPage() {
 
           <Reveal delay={140}>
             <p className="text-center mt-9" style={{ fontSize: 17, color: "rgba(255,255,255,0.75)", maxWidth: 560, margin: "2rem auto 0", lineHeight: 1.6 }}>
-              If you spend long hours on your work desk… <strong style={{ color: "#e8a020" }}>this masterclass was made for you.</strong>
+              Or if you&apos;re someone who spends long hours on a work desk… <strong style={{ color: "#e8a020" }}>then this masterclass was made just for you.</strong>
             </p>
             <div className="flex justify-center mt-8">
               <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
@@ -776,74 +775,7 @@ export default function DeskHealthSystemPage() {
 
       
 
-{/* ══ 4. WHY THIS HAPPENS ═════════════════════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-10 text-center">
-          <Reveal className="mb-9">
-            <div className="mx-auto rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid #faf8f3", boxShadow: "0 18px 44px -16px rgba(0,0,0,0.2)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/desk/gem/damage-neck.jpg" alt="A tired professional with a stiff neck at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-            </div>
-          </Reveal>
-          <Reveal>
-            <p className="duc-label mb-3">Why this happens</p>
-            <h2 className="duc-h2 duc-section-title mb-7">
-              It&apos;s not your job.<br />
-              <span style={{ color: "#a8790d" }}>It&apos;s the tiny habits your job creates.</span>
-            </h2>
-          </Reveal>
-          {/* visual chain */}
-          <Reveal delay={80}>
-            <div className="flex flex-wrap items-center justify-center gap-2.5 mb-8">
-              {[
-                { icon: "📅", t: "Every meeting" },
-                { icon: "📧", t: "Every email" },
-                { icon: "✅", t: "Every task" },
-                { icon: "🪑", t: "Every hour at your desk" },
-              ].map(({ icon, t }, i, arr) => (
-                <div key={t} className="flex items-center gap-2.5">
-                  <span className="inline-flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0", fontSize: 14, fontWeight: 700, color: "#3f3f46" }}>
-                    <span style={{ fontSize: 17 }}>{icon}</span>{t}
-                  </span>
-                  {i < arr.length - 1 && <span className="hidden sm:inline" style={{ color: "#d4a017", fontWeight: 900 }}>→</span>}
-                </div>
-              ))}
-            </div>
-          </Reveal>
-          <Reveal delay={140}>
-            <p style={{ fontSize: 17.5, color: "#3f3f46", lineHeight: 1.7, maxWidth: 560, margin: "0 auto 18px" }}>
-              Tiny unhealthy habits slowly become your daily routine. The problem isn&apos;t working long hours.
-            </p>
-            <p style={{ fontSize: 20, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "0 auto" }}>
-              The problem is working <span style={{ color: "#a8790d" }}>without healthy habits.</span>
-            </p>
-          </Reveal>
 
-          {/* the missing piece: during work */}
-          <Reveal delay={80}>
-            <div className="rounded-3xl p-6 lg:p-7 mt-10 text-left" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-              <p className="text-center mb-5" style={{ fontSize: 15, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Here&apos;s the part almost everyone misses</p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {[
-                  { when: "Before work", note: "Wake up early to exercise… then snooze it.", dim: true },
-                  { when: "After work", note: "Hit the gym later… but you're drained.", dim: true },
-                  { when: "During work", note: "Almost nobody fixes health here — and that's the missing piece.", dim: false },
-                ].map(({ when, note, dim }) => (
-                  <div key={when} className="rounded-2xl p-4 text-center h-full flex flex-col justify-center" style={dim
-                    ? { background: "#fff", border: "1.5px solid #eee7d6", opacity: 0.85 }
-                    : { background: "linear-gradient(135deg,#171412,#18181b)", border: "1.5px solid #b8860b" }}>
-                    <p style={{ fontSize: 11.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: dim ? "#a1a1aa" : "#e8a020", marginBottom: 5 }}>{when}</p>
-                    <p style={{ fontSize: 14, fontWeight: 600, color: dim ? "#71717a" : "#fff", lineHeight: 1.5 }}>{note}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-center mt-5" style={{ fontSize: 16.5, fontWeight: 700, color: "#18181b" }}>
-                Your workday is where you spend most of your waking life. <span style={{ color: "#a8790d" }}>So that&apos;s exactly where your health should improve.</span>
-              </p>
-            </div>
-          </Reveal>
-        </div>
-      </section>
 
 {/* ══ 5. INTRODUCING THE DESK HEALTH SYSTEM™ + 7 PILLARS ══════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
@@ -1018,20 +950,20 @@ export default function DeskHealthSystemPage() {
           </Reveal>
           <Reveal className="mb-11">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
-              One tiny mission for each pillar — small enough to never skip, powerful enough to change how you feel 👇
+              Skip the big goals you never keep. For each pillar, just swap in <strong style={{ color: "#18181b" }}>one tiny habit</strong> that fits your workday 👇
             </p>
           </Reveal>
 
-          {/* 4 pillars, each with a tiny mission */}
+          {/* 4 pillars — struck typical advice → tiny desk habit */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             {[
-              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", mission: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch." },
-              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", mission: "After every meeting, walk for just 2 minutes — that&apos;s enough to undo hours of sitting." },
-              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", mission: "Before your first coffee, drink one glass of water — a healthy start with zero effort." },
-              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", mission: "Before every video call, take three slow deep breaths — instant calm, sharper focus." },
-            ].map(({ icon, pillar, bar, tint, mission }, i) => (
+              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", big: "Push through the afternoon slump", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch." },
+              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", big: "Hit the gym for an hour", tiny: "After every meeting, walk for just 2 minutes — that&apos;s enough to undo hours of sitting." },
+              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", big: "Follow a strict diet plan", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort." },
+              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus." },
+            ].map(({ icon, pillar, bar, tint, big, tiny }, i) => (
               <Reveal key={pillar} delay={i * 80}>
-                <div className="pop-card rounded-3xl overflow-hidden h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px -14px rgba(0,0,0,0.12)" }}>
+                <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px -14px rgba(0,0,0,0.12)" }}>
                   <div className="flex items-center gap-3 px-5 py-4" style={{ background: tint, borderBottom: `1px solid ${bar}33` }}>
                     <span className="inline-flex items-center justify-center rounded-xl shrink-0" style={{ width: 44, height: 44, background: "#fff", fontSize: 24, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>{icon}</span>
                     <div>
@@ -1039,9 +971,17 @@ export default function DeskHealthSystemPage() {
                       <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>{pillar}</p>
                     </div>
                   </div>
-                  <div className="p-5 flex items-start gap-3">
-                    <span className="shrink-0 rounded-lg px-2 py-1" style={{ background: `${bar}1a`, color: bar, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Mission</span>
-                    <p style={{ fontSize: 16, color: "#18181b", lineHeight: 1.55, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: mission }} />
+                  <div className="p-5 flex flex-col gap-3 flex-1">
+                    {/* struck typical advice */}
+                    <div className="flex items-center gap-2">
+                      <span className="shrink-0 rounded-full px-2.5 py-1" style={{ background: "#fff1f1", color: "#b91c1c", fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Instead of</span>
+                      <span style={{ fontSize: 14.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#fca5a5" }}>{big}</span>
+                    </div>
+                    {/* the tiny habit */}
+                    <div className="flex items-start gap-3 rounded-xl p-3 mt-auto" style={{ background: `${bar}12`, border: `1px solid ${bar}33` }}>
+                      <span className="shrink-0 rounded-lg px-2 py-1" style={{ background: bar, color: "#fff", fontSize: 10.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.03em", lineHeight: 1.2 }}>Tiny habit<br />you can do</span>
+                      <p style={{ fontSize: 15.5, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: tiny }} />
+                    </div>
                   </div>
                 </div>
               </Reveal>
@@ -1051,7 +991,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={100}>
             <div className="rounded-2xl px-6 py-6 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-                Four tiny missions. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, they quietly rebuild your health.</span>
+                Four tiny habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, they quietly rebuild your health.</span>
               </p>
               <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula. (You&apos;ll get many more on the masterclass.)</p>
             </div>
@@ -1274,43 +1214,7 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-      {/* ══ 9b. WHAT YOU CAN EXPECT TO FEEL ═════════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-3">
-            <p className="duc-label mb-3">Within your first week</p>
-            <h2 className="duc-h2 duc-section-title">What you can expect to feel</h2>
-          </Reveal>
-          <Reveal className="flex justify-center mb-4">
-            <span style={{ display: "block", width: 54, height: 4, borderRadius: 4, background: "#d4a017" }} />
-          </Reveal>
-          <Reveal className="mb-11">
-            <p className="text-center" style={{ fontSize: 16.5, color: "#3f3f46", maxWidth: 600, margin: "0 auto", fontWeight: 500 }}>
-              These aren&apos;t hype promises — they&apos;re the natural results of doing a few tiny desk habits, consistently, every workday.
-            </p>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { icon: "🧘", title: "Less pain by evening", body: "As your posture and movement habits kick in, the stiff neck, aching back and tired eyes you feel by 5 PM start to ease." },
-              { icon: "⚡", title: "Steadier energy", body: "With better hydration, movement and breaks woven into your day, the afternoon slump loosens its grip and you stay sharper for longer." },
-              { icon: "🎯", title: "Calmer, clearer focus", body: "Small resets between tasks help you feel less frazzled and more in control — so work feels a little lighter, day after day." },
-            ].map(({ icon, title, body }, i) => (
-              <Reveal key={title} delay={i * 90}>
-                <div className="rounded-3xl p-7 h-full text-center" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px rgba(0,0,0,0.05)" }}>
-                  <span className="inline-flex items-center justify-center rounded-2xl mb-4" style={{ width: 58, height: 58, background: "rgba(212,160,23,0.12)", fontSize: 30 }}>{icon}</span>
-                  <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b", marginBottom: 8, fontFamily: "'Poppins',sans-serif" }}>{title}</p>
-                  <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.6, fontWeight: 500 }}>{body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={120}>
-            <p className="text-center mt-9" style={{ fontSize: 13.5, color: "#71717a", maxWidth: 560, margin: "2rem auto 0" }}>
-              Individual results vary and depend on consistency. This is general wellness education, not medical advice.
-            </p>
-          </Reveal>
-        </div>
-      </section>
+      
 
       {/* ══ 9c. STILL THINKING? — BENEFITS OF ATTENDING ═════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
@@ -1350,8 +1254,8 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-2xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-9">
-            <p className="duc-label mb-3">Quick questions</p>
-            <h2 className="duc-h2 duc-section-title">Good to know</h2>
+            <p className="duc-label mb-3">Questions &amp; answers</p>
+            <h2 className="duc-h2 duc-section-title">Frequently asked questions</h2>
           </div>
           <div className="flex flex-col gap-2.5">
             {[

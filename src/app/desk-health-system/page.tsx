@@ -224,31 +224,7 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
             </div>
           ) : (
             <form onSubmit={submit} className="px-6 py-5">
-              {/* 3-point summary */}
-              <div className="rounded-2xl p-4 mb-5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
-                <div className="flex items-start gap-3 mb-3">
-                  <span style={{ fontSize: 18 }} className="shrink-0">🎓</span>
-                  <div>
-                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>What you&apos;ll learn</p>
-                    <p style={{ fontSize: 13.5, color: "#3f3f46", lineHeight: 1.5 }}>How to improve your health while you work — better posture, energy, focus & less stress — with tiny daily desk habits.</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3 mb-3">
-                  <span style={{ fontSize: 18 }} className="shrink-0">📅</span>
-                  <div>
-                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>When</p>
-                    <p style={{ fontSize: 13.5, color: "#18181b", fontWeight: 700, lineHeight: 1.5 }}>{DATE_LINE} · {WEBINAR.duration} · Live on Zoom</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <span style={{ fontSize: 18 }} className="shrink-0">🎟️</span>
-                  <div>
-                    <p style={{ fontSize: 11.5, fontWeight: 800, color: "#9a6b0a", textTransform: "uppercase", letterSpacing: "0.06em" }}>Your seat</p>
-                    <p style={{ fontSize: 13.5, color: "#18181b", lineHeight: 1.5 }}><span style={{ textDecoration: "line-through", color: "#dc2626" }}>{WEBINAR.price}</span> <strong>100% FREE</strong> — limited seats</p>
-                  </div>
-                </div>
-              </div>
-              <p style={{ fontSize: 13.5, color: "#3f3f46", lineHeight: 1.6, marginBottom: 14, textAlign: "center" }}>
+              <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.6, marginBottom: 16, textAlign: "center", fontWeight: 500 }}>
                 Add your details — we&apos;ll send the Zoom join link on WhatsApp.
               </p>
               <div className="flex flex-col gap-3">
@@ -947,49 +923,105 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
-      {/* ══ 6. IMAGINE THIS… — the philosophy ═══════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+      {/* ══ 5d. THE 4 PILLARS OF HEALTHY LIVING ═════════════════════════════ */}
+      <section className="py-16 lg:py-20" style={{ background: "linear-gradient(180deg,#faf8f3 0%,#fff 100%)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-4">
-            <p className="duc-label mb-3">Imagine this…</p>
-            <h2 className="duc-h2 duc-section-title">What if your workday actually<br className="hidden sm:block" /> made you <span style={{ color: "#a8790d" }}>healthier?</span></h2>
+            <p className="duc-label mb-3">The foundation of a healthy body</p>
+            <h2 className="duc-h2 duc-section-title">A healthy life stands on <span className="gradient-text">4 pillars</span></h2>
           </Reveal>
-          <Reveal className="mb-9">
-            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6 }}>
-              You don&apos;t need big goals you never keep. Just swap them for <strong style={{ color: "#18181b" }}>tiny actions that fit inside your workday</strong> 👇
+          <Reveal className="mb-11">
+            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 600, margin: "0 auto", fontWeight: 500, lineHeight: 1.6 }}>
+              Get these four right, and your body simply <em>works</em> better — more energy, less pain, a calmer mind.
             </p>
           </Reveal>
 
-          {/* Instead of X → do Y swap cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-9">
+          {/* the 4 pillars — visual cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
             {[
-              { icon: "🚶", big: "Walk 10 minutes", tiny: "After every meeting, walk for just 2 minutes." },
-              { icon: "💧", big: "Drink 3 litres of water", tiny: "Every time you return to your desk, drink a sip of water." },
-              { icon: "🧘", big: "Stretch daily", tiny: "Do one quick stretch before you open Outlook or Slack." },
-              { icon: "😮‍💨", big: "Meditate every day", tiny: "Take three deep breaths before every meeting." },
-            ].map(({ icon, big, tiny }, i) => (
-              <Reveal key={big} delay={i * 70}>
-                <div className="pop-card rounded-2xl p-5 h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="inline-flex items-center justify-center rounded-xl shrink-0" style={{ width: 40, height: 40, background: "rgba(212,160,23,0.1)", fontSize: 22 }}>{icon}</span>
-                    <span className="rounded-full px-2.5 py-1" style={{ background: "#fff1f1", color: "#b91c1c", fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Instead of</span>
-                    <span style={{ fontSize: 14.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#fca5a5" }}>{big}</span>
-                  </div>
-                  <div className="flex items-start gap-2.5 rounded-xl p-3 mt-auto" style={{ background: "#f0fdf4", border: "1px solid #bbf7d0" }}>
-                    <span style={{ color: "#059669", fontSize: 16, fontWeight: 900, marginTop: 1 }}>✓</span>
-                    <p style={{ fontSize: 16, fontWeight: 600, color: "#18181b", lineHeight: 1.5 }}>{tiny}</p>
+              { icon: "⚡", name: "Energy", sub: "Feel awake &amp; alert all day", tint: "#fff5e6", ring: "#f5d98a", bar: "#e0a020" },
+              { icon: "🚶", name: "Movement", sub: "Keep your body loose &amp; strong", tint: "#eafaf0", ring: "#a7e5c1", bar: "#10b981" },
+              { icon: "🥗", name: "Nutrition &amp; Hydration", sub: "Fuel &amp; water your body right", tint: "#eaf3ff", ring: "#b9d6fb", bar: "#3b82f6" },
+              { icon: "🧘", name: "Relaxed Mind", sub: "Stay calm, focused &amp; clear", tint: "#f4ecff", ring: "#d8c4fb", bar: "#8b5cf6" },
+            ].map(({ icon, name, sub, tint, ring, bar }, i) => (
+              <Reveal key={i} delay={i * 80}>
+                <div className="pop-card rounded-3xl overflow-hidden h-full text-center" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px -12px rgba(0,0,0,0.12)" }}>
+                  <div style={{ height: 6, background: bar }} />
+                  <div className="p-5 lg:p-6 flex flex-col items-center">
+                    <span className="inline-flex items-center justify-center rounded-2xl mb-3" style={{ width: 64, height: 64, background: tint, border: `1.5px solid ${ring}`, fontSize: 32 }}>{icon}</span>
+                    <p style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b", lineHeight: 1.2, fontFamily: "'Poppins',sans-serif" }} dangerouslySetInnerHTML={{ __html: name }} />
+                    <p style={{ fontSize: 13.5, color: "#71717a", marginTop: 5, lineHeight: 1.4 }} dangerouslySetInnerHTML={{ __html: sub }} />
                   </div>
                 </div>
               </Reveal>
             ))}
           </div>
 
-          <div className="rounded-2xl px-6 py-6 text-center" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
-            <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-              These changes are so small you can&apos;t say no — <span style={{ color: "#e8a020" }}>yet done daily, they quietly rebuild your health.</span>
-            </p>
-            <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula.</p>
+          {/* the problem → the fix */}
+          <div className="grid md:grid-cols-2 gap-5 mt-8">
+            <Reveal>
+              <div className="rounded-3xl p-6 lg:p-7 h-full" style={{ background: "#fff7f7", border: "2px solid #fecaca" }}>
+                <p className="flex items-center gap-2 mb-2" style={{ fontSize: 16.5, fontWeight: 900, color: "#991b1b", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 20 }}>😔</span> The problem</p>
+                <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.6, fontWeight: 500 }}>Your busy workday quietly knocks out <strong style={{ color: "#18181b" }}>all four pillars</strong> — you sit still for hours, skip water, grab whatever&apos;s quick, and run on stress. No wonder you feel drained.</p>
+              </div>
+            </Reveal>
+            <Reveal delay={90}>
+              <div className="rounded-3xl p-6 lg:p-7 h-full" style={{ background: "#f0fdf4", border: "2px solid #bbf7d0", boxShadow: "0 14px 36px -16px rgba(5,150,105,0.4)" }}>
+                <p className="flex items-center gap-2 mb-2" style={{ fontSize: 16.5, fontWeight: 900, color: "#166534", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 20 }}>✅</span> The Desk Fit Formula fix</p>
+                <p style={{ fontSize: 16, color: "#18181b", lineHeight: 1.6, fontWeight: 600 }}>It weaves all four pillars <strong>directly into your workday</strong> — with tiny habits you barely notice. No finding extra time. Your work itself keeps you healthy.</p>
+              </div>
+            </Reveal>
           </div>
+        </div>
+      </section>
+
+      {/* ══ 6. WHAT IF YOUR WORKDAY MADE YOU HEALTHIER — pillar missions ═════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-4">
+            <p className="duc-label mb-3">Imagine this…</p>
+            <h2 className="duc-h2 duc-section-title">What if your workday actually<br className="hidden sm:block" /> made you <span style={{ color: "#a8790d" }}>healthier?</span></h2>
+          </Reveal>
+          <Reveal className="mb-11">
+            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
+              One tiny mission for each pillar — small enough to never skip, powerful enough to change how you feel 👇
+            </p>
+          </Reveal>
+
+          {/* 4 pillars, each with a tiny mission */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            {[
+              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", mission: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch." },
+              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", mission: "After every meeting, walk for just 2 minutes — that&apos;s enough to undo hours of sitting." },
+              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", mission: "Before your first coffee, drink one glass of water — a healthy start with zero effort." },
+              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", mission: "Before every video call, take three slow deep breaths — instant calm, sharper focus." },
+            ].map(({ icon, pillar, bar, tint, mission }, i) => (
+              <Reveal key={pillar} delay={i * 80}>
+                <div className="pop-card rounded-3xl overflow-hidden h-full" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 8px 26px -14px rgba(0,0,0,0.12)" }}>
+                  <div className="flex items-center gap-3 px-5 py-4" style={{ background: tint, borderBottom: `1px solid ${bar}33` }}>
+                    <span className="inline-flex items-center justify-center rounded-xl shrink-0" style={{ width: 44, height: 44, background: "#fff", fontSize: 24, boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}>{icon}</span>
+                    <div>
+                      <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.1em", color: bar }}>Pillar</p>
+                      <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>{pillar}</p>
+                    </div>
+                  </div>
+                  <div className="p-5 flex items-start gap-3">
+                    <span className="shrink-0 rounded-lg px-2 py-1" style={{ background: `${bar}1a`, color: bar, fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.04em" }}>Mission</span>
+                    <p style={{ fontSize: 16, color: "#18181b", lineHeight: 1.55, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: mission }} />
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={100}>
+            <div className="rounded-2xl px-6 py-6 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
+              <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
+                Four tiny missions. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, they quietly rebuild your health.</span>
+              </p>
+              <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula. (You&apos;ll get many more on the masterclass.)</p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

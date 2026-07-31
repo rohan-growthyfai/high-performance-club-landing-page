@@ -812,7 +812,7 @@ export default function DeskHealthSystemPage() {
             <Reveal>
               <div className="relative rounded-3xl overflow-hidden mb-6" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/DeskFit.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/professional.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
                 <p>This is <strong style={{ color: "#fff" }}>not</strong> another session telling you to exercise more or follow a strict diet. In just <strong style={{ color: "#fff" }}>90 minutes</strong>, you&apos;ll learn the <strong style={{ color: "#fff" }}>Desk Fit Formula</strong> — a simple framework that fits healthy habits into your workday <strong style={{ color: "#fff" }}>without changing your busy schedule.</strong></p>
@@ -1097,7 +1097,7 @@ export default function DeskHealthSystemPage() {
               <div className="relative mx-auto" style={{ maxWidth: 440 }}>
                 <div className="rounded-3xl overflow-hidden" style={{ border: "8px solid #fff", boxShadow: "0 26px 60px -18px rgba(0,0,0,0.3)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/DeskFit.jpg" alt="Rohan — creator of the Desk Fit Formula" className="w-full h-auto object-cover object-center" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src="/desk/professional.jpg" alt="Rohan — creator of the Desk Fit Formula" className="w-full h-auto object-cover object-center" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-2.5 text-center whitespace-nowrap" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 12px 28px -8px rgba(184,134,11,0.6)" }}>
                   <p style={{ fontSize: 16, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>Rohan</p>

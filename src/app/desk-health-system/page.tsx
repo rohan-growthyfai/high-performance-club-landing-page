@@ -601,7 +601,7 @@ export default function DeskHealthSystemPage() {
                   <div className="relative">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={img} alt={`Where ${label.toLowerCase()} leads over time`} className="w-full h-56 object-cover block" style={{ filter: "saturate(0.9)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "#18181b", color: "#fff", fontSize: 13.5, fontWeight: 800, fontFamily: "'Poppins',sans-serif" }}>
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "linear-gradient(135deg,#e8a020,#d4a017)", color: "#171412", fontSize: 13.5, fontWeight: 800, fontFamily: "'Poppins',sans-serif", boxShadow: "0 4px 12px rgba(0,0,0,0.25)" }}>
                       <span style={{ fontSize: 15 }}>{icon}</span>{label}
                     </span>
                   </div>

@@ -511,7 +511,7 @@ export default function BlogsPage() {
         </div>
 
         {/* Featured */}
-        <Link href={`/blogs/${featured.slug}`} style={{ textDecoration:"none", display:"block", marginBottom:32 }}>
+        <Link href={`/blogs/${featured.slug}`} prefetch={false} style={{ textDecoration:"none", display:"block", marginBottom:32 }}>
           <div style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", display:"grid", gridTemplateColumns:"minmax(0,1fr)", transition:"all 0.3s" }}
             onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(184,133,58,0.12)"; (e.currentTarget as HTMLElement).style.borderColor="#f5d78e"; }}
             onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
@@ -554,13 +554,13 @@ export default function BlogsPage() {
           {filtered.filter(p => !(p.slug === featured.slug && active === "All")).map(post => {
             const m = cm(post.category);
             return (
-              <Link key={post.slug} href={`/blogs/${post.slug}`} style={{ textDecoration:"none" }}>
+              <Link key={post.slug} href={`/blogs/${post.slug}`} prefetch={false} style={{ textDecoration:"none" }}>
                 <article style={{ background:"#fff", border:"1.5px solid #e5e7eb", borderRadius:20, overflow:"hidden", transition:"all 0.3s", cursor:"pointer", display:"flex", flexDirection:"column", height:"100%" }}
                   onMouseEnter={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="0 12px 40px rgba(0,0,0,0.10)"; (e.currentTarget as HTMLElement).style.transform="translateY(-4px)"; (e.currentTarget as HTMLElement).style.borderColor=m.color+"55"; }}
                   onMouseLeave={e=>{ (e.currentTarget as HTMLElement).style.boxShadow="none"; (e.currentTarget as HTMLElement).style.transform="translateY(0)"; (e.currentTarget as HTMLElement).style.borderColor="#e5e7eb"; }}>
                   {/* Image — taller */}
                   <div style={{ overflow:"hidden", height:"clamp(160px,35vw,240px)", flexShrink:0 }}>
-                    <img src={post.image} alt={post.title} style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
+                    <img src={post.image} alt={post.title} loading="lazy" decoding="async" style={{ width:"100%", height:"100%", objectFit:"cover", display:"block", transition:"transform 0.5s" }}
                       onMouseEnter={e=>(e.currentTarget as HTMLElement).style.transform="scale(1.05)"}
                       onMouseLeave={e=>(e.currentTarget as HTMLElement).style.transform="scale(1)"} />
                   </div>

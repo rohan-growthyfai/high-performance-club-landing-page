@@ -559,6 +559,95 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
+      {/* ══ 3c. WHERE IT ALL LEADS — consequence stacks ═════════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-4">
+            <p className="duc-label mb-3" style={{ color: "#b91c1c" }}>The part no one warns you about</p>
+            <h2 className="duc-h2 duc-section-title">Small daily habits… <span style={{ color: "#b91c1c" }}>big long-term cost.</span></h2>
+          </Reveal>
+          <Reveal className="mb-11">
+            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
+              Each one feels harmless today. But repeated every workday for years, here&apos;s where they quietly lead 👇
+            </p>
+          </Reveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-7">
+            {[
+              {
+                icon: "🪑", label: "Long Sitting", img: "/desk/gem/leads-sitting.jpg",
+                chain: ["Sitting 6+ hours a day", "Almost no movement", "Weak muscles & stiff joints", "Weight gain & back pain"],
+                end: "A body that feels old before its time.",
+              },
+              {
+                icon: "🖥️", label: "Constant Screen Time", img: "/desk/gem/leads-screen.jpg",
+                chain: ["Staring at screens all day", "Eye strain & rounded shoulders", "Headaches & poor posture", "Constant fatigue & tension"],
+                end: "Tired eyes and an aching neck — every single day.",
+              },
+              {
+                icon: "💧", label: "Too Little Water", img: "/desk/gem/leads-water.jpg",
+                chain: ["Barely drinking water", "Mild dehydration all day", "Low energy & brain fog", "More coffee, more crashes"],
+                end: "Drained by afternoon, running on caffeine.",
+              },
+              {
+                icon: "🍟", label: "Poor Meal Routine", img: "/desk/gem/leads-meals.jpg",
+                chain: ["Skipped meals & stress snacking", "Blood-sugar spikes & crashes", "Cravings & slow metabolism", "Steady weight gain"],
+                end: "Sluggish, heavier, and low on energy over time.",
+              },
+            ].map(({ icon, label, img, chain, end }, i) => (
+              <Reveal key={label} delay={i * 90}>
+                <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #f0d9d9", boxShadow: "0 12px 34px -16px rgba(185,28,28,0.22)" }}>
+                  {/* result image */}
+                  <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img} alt={`Where ${label.toLowerCase()} leads over time`} className="w-full h-56 object-cover block" style={{ filter: "saturate(0.9)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "#18181b", color: "#fff", fontSize: 13.5, fontWeight: 800, fontFamily: "'Poppins',sans-serif" }}>
+                      <span style={{ fontSize: 15 }}>{icon}</span>{label}
+                    </span>
+                  </div>
+                  {/* consequence chain */}
+                  <div className="p-5 lg:p-6 flex flex-col flex-1">
+                    <div className="flex flex-col">
+                      {chain.map((step, si) => (
+                        <div key={si}>
+                          <div className="flex items-start gap-2.5">
+                            <span className="shrink-0 inline-flex items-center justify-center rounded-full mt-0.5" style={{ width: 20, height: 20, background: si === chain.length - 1 ? "#fee2e2" : "#f4f0e6", color: si === chain.length - 1 ? "#b91c1c" : "#a8790d", fontSize: 11, fontWeight: 900 }}>{si + 1}</span>
+                            <span style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.4, fontWeight: 600 }}>{step}</span>
+                          </div>
+                          {si < chain.length - 1 && (
+                            <div style={{ marginLeft: 9, height: 14, borderLeft: "2px dashed #e6d9b0" }} />
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                    {/* end result */}
+                    <div className="rounded-xl px-4 py-3 mt-4" style={{ background: "#fff7f7", border: "1px solid #fde0e0" }}>
+                      <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#b91c1c", marginBottom: 3 }}>⚠️ Where it ends up</p>
+                      <p style={{ fontSize: 15.5, color: "#18181b", lineHeight: 1.45, fontWeight: 700 }}>{end}</p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* pivot to hope */}
+          <Reveal delay={120}>
+            <div className="rounded-2xl px-6 py-7 text-center mt-10" style={{ background: "linear-gradient(135deg,#0b3d2e,#0f5138)" }}>
+              <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.45rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
+                The good news: none of this is set in stone. 🌱
+              </p>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", marginTop: 10, maxWidth: 620, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6, fontWeight: 500 }}>
+                Reverse the tiny habits and you reverse the outcome — that&apos;s exactly what the Desk Fit Formula masterclass shows you how to do.
+              </p>
+              <div className="flex justify-center mt-6">
+                <CTA />
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
 {/* ══ 3. DOES THIS SOUND LIKE YOU? — image left, checklist right ═══════ */}
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-10">

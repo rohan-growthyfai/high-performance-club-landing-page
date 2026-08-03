@@ -478,18 +478,18 @@ export default function DeskHealthSystemPage() {
               <p style={{ fontSize: 13, color: "#3f3f46" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
 
-            {/* honest trust signals */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-5 gap-y-2">
-              {[
-                { icon: "✅", label: "100% Free" },
-                { icon: "🔴", label: "Live on Zoom" },
-                { icon: "💼", label: "Designed for Busy Professionals" },
-              ].map(({ icon, label }) => (
-                <div key={label} className="flex items-center gap-1.5">
-                  <span style={{ fontSize: 14 }}>{icon}</span>
-                  <span style={{ fontSize: 13.5, fontWeight: 600, color: "#3f3f46" }}>{label}</span>
-                </div>
-              ))}
+            {/* social proof — avatars + loved-by count */}
+            <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="flex items-center">
+                {["avatar-1", "avatar-2", "avatar-3", "avatar-4"].map((a, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={a} src={`/desk/gem/${a}.jpg`} alt="Happy professional" className="rounded-full object-cover" style={{ width: 40, height: 40, border: "2.5px solid #fff", marginLeft: i === 0 ? 0 : -12, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                ))}
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-1" style={{ color: "#e8a020", fontSize: 13, lineHeight: 1 }}>★★★★★</div>
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b", marginTop: 3, lineHeight: 1.2 }}>Loved by <span style={{ color: "#a8790d" }}>2,000+ professionals</span> across India</p>
+              </div>
             </div>
           </div>
 

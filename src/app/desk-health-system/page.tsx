@@ -1118,39 +1118,7 @@ export default function DeskHealthSystemPage() {
 
       
 
-      {/* ══ 9c. STILL THINKING? — BENEFITS OF ATTENDING ═════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-11">
-            <p style={{ fontSize: 13, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.14em", color: "#e0592c", marginBottom: 8 }}>Still thinking?</p>
-            <h2 className="duc-h2 duc-section-title">Benefits of attending this masterclass</h2>
-          </Reveal>
-          <div className="flex flex-col gap-7">
-            {[
-              { t: "Feel better by the end of the very first day.", d: "You'll learn the exact tiny habits that ease neck, back and eye strain — small resets you can do at your desk from tomorrow. Relief leads to momentum, and momentum keeps you going." },
-              { t: "Get healthy without adding a single extra hour.", d: "No gym, no diets, no separate program to juggle. You'll discover how to fit health into the 6–8 hours you already spend working — so it actually sticks." },
-              { t: "Beat the afternoon energy crash for good.", d: "You'll learn simple habits that keep your energy steady all day — so you stop reaching for a third coffee and stay sharp right through to evening." },
-              { t: "Fix your posture and protect your body.", d: "Understand what long sitting is quietly doing to your spine, shoulders and eyes — and the effortless corrections that prevent it, without a physio or gadgets." },
-              { t: "Turn healthy actions into automatic habits.", d: "You'll get the Trigger Method — a simple way to attach tiny healthy actions to things you already do, so they happen on autopilot without willpower." },
-              { t: "Walk away with a done-for-you 7-day plan.", d: "No guesswork. You'll leave knowing exactly what to do each day for a week to start reversing the damage — plus how to restart if you slip." },
-              { t: "Build a healthier lifestyle that lasts.", d: "This isn't a quick fix. It's a simple, repeatable system that keeps improving your health year after year — while you keep doing the work you love." },
-            ].map(({ t, d }, i) => (
-              <Reveal key={t} delay={i * 55}>
-                <div className="flex items-start gap-4">
-                  <span className="shrink-0 inline-flex items-center justify-center rounded-lg font-black" style={{ width: 30, height: 30, background: "rgba(212,160,23,0.14)", color: "#a8790d", fontSize: 15, fontFamily: "'Poppins',sans-serif" }}>{i + 1}</span>
-                  <div>
-                    <p style={{ fontSize: 18, fontWeight: 800, color: "#18181b", marginBottom: 4, fontFamily: "'Poppins',sans-serif" }}>{t}</p>
-                    <p style={{ fontSize: 16, color: "#3f3f46", lineHeight: 1.65, fontWeight: 500 }}>{d}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div className="flex justify-center mt-11">
-            <CTA big sub={`${DATE_LINE} · ${WEBINAR.duration}`} />
-          </div>
-        </div>
-      </section>
+      
 
       {/* ══ 10. FAQ ═════════════════════════════════════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>

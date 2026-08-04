@@ -759,10 +759,7 @@ export default function DeskHealthSystemPage() {
             <h2 className="duc-h2 duc-section-title mb-3" style={{ fontSize: "clamp(2.1rem,5vw,3.4rem)" }}>Learn the Desk Fit Formula</h2>
             <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to become healthier while you work.</p>
             <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
-              A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it improves your health through <strong style={{ color: "#18181b" }}>small daily actions that fit naturally into your workday.</strong>
-            </p>
-            <p style={{ fontSize: 16.5, color: "#3f3f46", maxWidth: 660, margin: "14px auto 0", lineHeight: 1.65 }}>
-              Desk Fit is a practical way to integrate healthier actions into moments that already happen during your workday — such as <strong style={{ color: "#18181b" }}>starting work, finishing meetings, taking calls, eating lunch and moving between tasks.</strong>
+              A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it integrates <strong style={{ color: "#18181b" }}>healthier habits that fit naturally into your daily work schedule.</strong>
             </p>
           </Reveal>
 

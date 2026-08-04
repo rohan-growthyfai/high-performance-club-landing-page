@@ -516,6 +516,78 @@ export default function DeskHealthSystemPage() {
         </div>
       </section>
 
+      {/* ══ 2. WORK vs HEALTH BALANCE — the modern struggle ═════════════════ */}
+      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-10">
+          <Reveal className="text-center mb-3">
+            <p className="duc-label mb-3">The modern struggle</p>
+            <h2 className="duc-h2 duc-section-title">Work keeps winning.<br className="hidden sm:block" /> <span className="gradient-text">Your health keeps losing.</span></h2>
+          </Reveal>
+          <Reveal className="mb-11">
+            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
+              With today&apos;s packed schedules, deadlines and back-to-back calls, taking care of your health always ends up last on the list. You&apos;re not lazy — the day just runs out.
+            </p>
+          </Reveal>
+
+          <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-center">
+            {/* image */}
+            <Reveal>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #faf8f3", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.22)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/gem/balance.jpg" alt="A busy professional torn between piled-up work and neglected healthy habits" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+            </Reveal>
+
+            {/* the tug-of-war */}
+            <div>
+              {/* balance bar: Work vs Health */}
+              <Reveal>
+                <div className="rounded-2xl p-5 mb-6" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+                  <div className="flex items-center justify-between mb-2" style={{ fontSize: 14, fontWeight: 800, fontFamily: "'Poppins',sans-serif" }}>
+                    <span style={{ color: "#18181b" }}>💼 Work</span>
+                    <span style={{ color: "#a8790d" }}>Health 🌱</span>
+                  </div>
+                  <div className="rounded-full overflow-hidden flex" style={{ height: 16, background: "#eee" }}>
+                    <div style={{ width: "82%", background: "linear-gradient(90deg,#18181b,#3f3f46)" }} />
+                    <div style={{ width: "18%", background: "linear-gradient(90deg,#e8a020,#d4a017)" }} />
+                  </div>
+                  <p className="text-center mt-2" style={{ fontSize: 12.5, color: "#71717a", fontWeight: 600 }}>Where your energy actually goes on a typical day</p>
+                </div>
+              </Reveal>
+
+              {/* the daily reality points */}
+              <div className="flex flex-col gap-3">
+                {[
+                  { icon: "⏳", t: "“I’ll start from Monday” — that never quite arrives." },
+                  { icon: "📉", t: "Gym memberships bought with good intentions, rarely used." },
+                  { icon: "😴", t: "By the time work ends, you’re too drained to exercise." },
+                  { icon: "🔁", t: "The cycle repeats — and quietly, your health slips further." },
+                ].map(({ icon, t }, i) => (
+                  <Reveal key={i} delay={i * 70}>
+                    <div className="flex items-start gap-3 rounded-2xl px-4 py-3.5" style={{ background: "#faf8f3", border: "1.5px solid #e6d9b0" }}>
+                      <span className="shrink-0" style={{ fontSize: 20 }}>{icon}</span>
+                      <span style={{ fontSize: 15.5, color: "#3f3f46", lineHeight: 1.45, fontWeight: 600 }}>{t}</span>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* pivot line */}
+          <Reveal delay={120}>
+            <div className="rounded-2xl px-6 py-7 text-center mt-10" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
+              <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.45rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
+                What if you didn&apos;t have to <span style={{ color: "#e8a020" }}>choose between the two?</span>
+              </p>
+              <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 12, maxWidth: 620, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
+                Desk Fit removes the trade-off — it builds your health <strong style={{ color: "#fff" }}>into</strong> the workday you&apos;re already living, so getting healthier no longer competes with getting work done.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ══ 3b. SITTING IS THE NEW SMOKING — facts ══════════════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "linear-gradient(135deg,#1a1206 0%,#14100a 50%,#1a1206 100%)" }}>
         <div className="max-w-6xl mx-auto px-6 lg:px-10">

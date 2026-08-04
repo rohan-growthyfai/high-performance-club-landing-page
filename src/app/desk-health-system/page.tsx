@@ -495,10 +495,10 @@ export default function DeskHealthSystemPage() {
 
           {/* Right: AI split before/after image — the image itself explains the product */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 560, width: "100%" }}>
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 620, width: "100%" }}>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/hf/split-hero.jpg" alt="Desk Life vs Desk Fit — from neck pain, low energy and stress to better posture, energy and focus" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <img src="/desk/hf/approach.jpg" alt="Traditional Approach vs Desk Fit Approach — from separate gym, diet and walks to healthy habits woven into your workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
             </div>
           </div>

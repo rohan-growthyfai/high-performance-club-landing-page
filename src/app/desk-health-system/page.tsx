@@ -621,31 +621,33 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-4">
-            <p className="duc-label mb-3">The gap no one talks about</p>
-            <h2 className="duc-h2 duc-section-title">Almost Every Health Plan Starts <span className="gradient-text">Before Work or After Work.</span></h2>
+            <p className="duc-label mb-3">The biggest health opportunity</p>
+            <h2 className="duc-h2 duc-section-title">Almost Every Health Plan Focuses on <span className="gradient-text">Before Work or After Work.</span></h2>
           </Reveal>
           <Reveal className="mb-11">
-            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
-              Look at where your health efforts actually happen 👇
+            <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 660, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
+              But almost none of them teach you how to use the <strong style={{ color: "#18181b" }}>6–8 hours you&apos;re already working</strong> to improve your health.
             </p>
           </Reveal>
 
+          {/* 3 columns: before ✓ / during ✗ (ignored) / after ✓ */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
             {[
-              { tag: "Before Work", tint: "#eaf3ff", ring: "#cfe2fb", dot: "#3b82f6", items: ["Gym", "Walking", "Meditation"] },
-              { tag: "During Work", tint: "#fff7f7", ring: "#fde0e0", dot: "#b91c1c", highlight: true, items: ["Sitting", "Screens", "Meetings", "Coffee", "Stress"] },
-              { tag: "After Work", tint: "#eafaf0", ring: "#c9eed7", dot: "#10b981", items: ["Workout", "Meal planning", "Evening walk"] },
-            ].map(({ tag, tint, ring, dot, items, highlight }, i) => (
+              { tag: "Before Work", badge: "✅ Covered", tint: "#eaf3ff", ring: "#cfe2fb", dot: "#3b82f6", tone: "#3f3f46", items: ["Gym", "Walking", "Meditation"] },
+              { tag: "During Work", badge: "❌ Ignored", tint: "#fff7f7", ring: "#fde0e0", dot: "#b91c1c", tone: "#991b1b", highlight: true, items: ["Sitting", "Screens", "Meetings", "Coffee", "Stress"] },
+              { tag: "After Work", badge: "✅ Covered", tint: "#eafaf0", ring: "#c9eed7", dot: "#10b981", tone: "#3f3f46", items: ["Workout", "Meal planning", "Evening walk"] },
+            ].map(({ tag, badge, tint, ring, dot, tone, items, highlight }, i) => (
               <Reveal key={tag} delay={i * 90}>
-                <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: highlight ? "2px solid #f5b5b5" : "1.5px solid #e6d9b0", boxShadow: highlight ? "0 14px 34px -16px rgba(185,28,28,0.3)" : "0 8px 24px -14px rgba(0,0,0,0.12)" }}>
+                <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: highlight ? "2px solid #f5b5b5" : "1.5px solid #e6d9b0", boxShadow: highlight ? "0 14px 34px -16px rgba(185,28,28,0.3)" : "0 8px 24px -14px rgba(0,0,0,0.12)", transform: highlight ? "scale(1.02)" : "none" }}>
                   <div className="px-5 py-4 text-center" style={{ background: tint, borderBottom: `1px solid ${ring}` }}>
                     <p style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif" }}>{tag}</p>
+                    <p style={{ fontSize: 12.5, fontWeight: 800, color: highlight ? "#b91c1c" : "#059669", marginTop: 3 }}>{badge}</p>
                   </div>
                   <div className="p-6 flex flex-col gap-3 flex-1">
                     {items.map(it => (
                       <div key={it} className="flex items-center gap-2.5">
                         <span className="shrink-0 rounded-full" style={{ width: 8, height: 8, background: dot }} />
-                        <span style={{ fontSize: 15.5, color: highlight ? "#991b1b" : "#3f3f46", fontWeight: highlight ? 700 : 600, lineHeight: 1.4 }}>{it}</span>
+                        <span style={{ fontSize: 15.5, color: tone, fontWeight: highlight ? 700 : 600, lineHeight: 1.4 }}>{it}</span>
                       </div>
                     ))}
                     {highlight && (
@@ -657,14 +659,21 @@ export default function DeskHealthSystemPage() {
             ))}
           </div>
 
-          {/* the missing question */}
+          {/* short build-up line */}
+          <Reveal delay={100}>
+            <p className="text-center mt-9" style={{ fontSize: 17.5, color: "#18181b", fontWeight: 700, maxWidth: 640, margin: "2.25rem auto 0", lineHeight: 1.55 }}>
+              Every plan you&apos;ve tried expects you to find <span style={{ color: "#b91c1c" }}>extra time.</span> Yet the place you spend most of your day — <span style={{ color: "#a8790d" }}>💻 your workday</span> — is almost always ignored.
+            </p>
+          </Reveal>
+
+          {/* the answer — black section */}
           <Reveal delay={120}>
-            <div className="rounded-2xl px-6 py-7 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
-              <p style={{ fontSize: "clamp(1.15rem,2.6vw,1.55rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-                But what about the <span style={{ color: "#e8a020" }}>6–8 hours in between?</span>
+            <div className="rounded-2xl px-6 py-8 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
+              <p style={{ fontSize: "clamp(1.2rem,2.8vw,1.65rem)", fontWeight: 900, color: "#fff", lineHeight: 1.45 }}>
+                That&apos;s Exactly Why We Created the <span style={{ color: "#e8a020" }}>Desk Fit Formula.</span>
               </p>
-              <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 12, maxWidth: 640, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
-                Desk Fit shows you how to make those working hours <strong style={{ color: "#fff" }}>support your health</strong> instead of continually working against it.
+              <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 14, maxWidth: 660, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
+                Instead of asking you to find more time, it helps you turn the hours you&apos;re already spending at your desk into <strong style={{ color: "#fff" }}>opportunities to build healthier habits</strong> — without interrupting your work.
               </p>
             </div>
           </Reveal>

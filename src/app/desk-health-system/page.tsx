@@ -630,38 +630,9 @@ export default function DeskHealthSystemPage() {
             </p>
           </Reveal>
 
-          {/* 3 columns: before ✓ / during ✗ (ignored) / after ✓ */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch">
-            {[
-              { tag: "Before Work", badge: "✅ Covered", tint: "#eaf3ff", ring: "#cfe2fb", dot: "#3b82f6", tone: "#3f3f46", items: ["Gym", "Walking", "Meditation"] },
-              { tag: "During Work", badge: "❌ Ignored", tint: "#fff7f7", ring: "#fde0e0", dot: "#b91c1c", tone: "#991b1b", highlight: true, items: ["Sitting", "Screens", "Meetings", "Coffee", "Stress"] },
-              { tag: "After Work", badge: "✅ Covered", tint: "#eafaf0", ring: "#c9eed7", dot: "#10b981", tone: "#3f3f46", items: ["Workout", "Meal planning", "Evening walk"] },
-            ].map(({ tag, badge, tint, ring, dot, tone, items, highlight }, i) => (
-              <Reveal key={tag} delay={i * 90}>
-                <div className="rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: highlight ? "2px solid #f5b5b5" : "1.5px solid #e6d9b0", boxShadow: highlight ? "0 14px 34px -16px rgba(185,28,28,0.3)" : "0 8px 24px -14px rgba(0,0,0,0.12)", transform: highlight ? "scale(1.02)" : "none" }}>
-                  <div className="px-5 py-4 text-center" style={{ background: tint, borderBottom: `1px solid ${ring}` }}>
-                    <p style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif" }}>{tag}</p>
-                    <p style={{ fontSize: 12.5, fontWeight: 800, color: highlight ? "#b91c1c" : "#059669", marginTop: 3 }}>{badge}</p>
-                  </div>
-                  <div className="p-6 flex flex-col gap-3 flex-1">
-                    {items.map(it => (
-                      <div key={it} className="flex items-center gap-2.5">
-                        <span className="shrink-0 rounded-full" style={{ width: 8, height: 8, background: dot }} />
-                        <span style={{ fontSize: 15.5, color: tone, fontWeight: highlight ? 700 : 600, lineHeight: 1.4 }}>{it}</span>
-                      </div>
-                    ))}
-                    {highlight && (
-                      <p style={{ fontSize: 12.5, color: "#b91c1c", fontWeight: 700, marginTop: 4 }}>← where you spend most of your day</p>
-                    )}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-
           {/* short build-up line */}
           <Reveal delay={100}>
-            <p className="text-center mt-9" style={{ fontSize: 17.5, color: "#18181b", fontWeight: 700, maxWidth: 640, margin: "2.25rem auto 0", lineHeight: 1.55 }}>
+            <p className="text-center" style={{ fontSize: 17.5, color: "#18181b", fontWeight: 700, maxWidth: 640, margin: "0 auto", lineHeight: 1.55 }}>
               Every plan you&apos;ve tried expects you to find <span style={{ color: "#b91c1c" }}>extra time.</span> Yet the place you spend most of your day — <span style={{ color: "#a8790d" }}>💻 your workday</span> — is almost always ignored.
             </p>
           </Reveal>

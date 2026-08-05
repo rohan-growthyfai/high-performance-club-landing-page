@@ -624,16 +624,16 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3">The biggest health opportunity</p>
             <h2 className="duc-h2 duc-section-title">Almost Every Health Plan Focuses on <span className="gradient-text">Before Work or After Work.</span></h2>
           </Reveal>
-          <Reveal className="mb-11">
+          <Reveal className="mb-8">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 660, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
-              But almost none of them teach you how to use the <strong style={{ color: "#18181b" }}>6–8 hours you&apos;re already working</strong> to improve your health.
+              Every plan you&apos;ve tried expects you to find <strong style={{ color: "#b91c1c", fontWeight: 900 }}>EXTRA TIME.</strong>
             </p>
           </Reveal>
 
-          {/* short build-up line */}
+          {/* build-up line */}
           <Reveal delay={100}>
-            <p className="text-center" style={{ fontSize: 17.5, color: "#18181b", fontWeight: 700, maxWidth: 640, margin: "0 auto", lineHeight: 1.55 }}>
-              Every plan you&apos;ve tried expects you to find <span style={{ color: "#b91c1c" }}>extra time.</span> Yet the place you spend most of your day — <span style={{ color: "#a8790d" }}>💻 your workday</span> — is almost always ignored.
+            <p className="text-center" style={{ fontSize: 17.5, color: "#18181b", fontWeight: 700, maxWidth: 660, margin: "0 auto", lineHeight: 1.55 }}>
+              But almost none of them teach you how to use the <span style={{ color: "#a8790d" }}>6–8 hours you&apos;re already working</span> to improve your health.
             </p>
           </Reveal>
 

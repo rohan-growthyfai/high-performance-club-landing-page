@@ -996,58 +996,7 @@ export default function DeskHealthSystemPage() {
 
 
 
-      {/* ══ 5c. WHAT MAKES THIS DIFFERENT — comparison table ════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-10">
-            <p className="duc-label mb-3">Before you decide…</p>
-            <h2 className="duc-h2 duc-section-title">What makes this masterclass <span className="gradient-text">different?</span></h2>
-          </Reveal>
-
-          <Reveal>
-            <div style={{ overflowX: "auto" }}>
-            <div className="rounded-3xl overflow-hidden" style={{ border: "1.5px solid #e6d9b0", background: "#fff", boxShadow: "0 16px 40px -20px rgba(0,0,0,0.18)", minWidth: 420 }}>
-              {/* header row */}
-              <div className="grid" style={{ gridTemplateColumns: "1fr 1fr", background: "#f7f2e4", borderBottom: "1.5px solid #e6d9b0" }}>
-                <div className="px-4 py-4 lg:px-6 flex items-center gap-2" style={{ fontSize: 13, fontWeight: 900, letterSpacing: "0.02em", color: "#166534", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 17 }}>✅</span> What It IS</div>
-                <div className="px-4 py-4 lg:px-6 flex items-center gap-2" style={{ fontSize: 13, fontWeight: 900, letterSpacing: "0.02em", color: "#991b1b", fontFamily: "'Poppins',sans-serif" }}><span style={{ fontSize: 17 }}>❌</span> What This ISN&apos;T</div>
-              </div>
-              {/* rows */}
-              {[
-                { yes: "A simple framework you can use today", no: "No 6 AM workouts" },
-                { yes: "Tiny 30-second habits you do at your desk", no: "No calorie counting" },
-                { yes: "Health that fits inside your normal workday", no: "No expensive gadgets or equipment" },
-                { yes: "Practical, easy actions — no willpower needed", no: "No complicated meal plans" },
-                { yes: "A 7-day plan you start the very next morning", no: "No impossible routines" },
-                { yes: "Habits so small they're easy to keep", no: "No confusing health advice" },
-                { yes: "Progress you actually feel, week after week", no: "No guilt when you miss a day" },
-              ].map(({ yes, no }, i) => (
-                <div key={i} className="grid items-stretch" style={{ gridTemplateColumns: "1fr 1fr", borderTop: i === 0 ? "none" : "1px solid #f0ebdd" }}>
-                  <div className="px-4 py-4 lg:px-6 flex items-start gap-2.5" style={{ background: "#f4fbf6" }}>
-                    <span className="shrink-0 inline-flex items-center justify-center rounded-full" style={{ width: 20, height: 20, background: "#dcfce7", marginTop: 1 }}><span style={{ color: "#059669", fontSize: 12, fontWeight: 900 }}>✓</span></span>
-                    <span style={{ fontSize: 15, color: "#166534", fontWeight: 600, lineHeight: 1.45 }}>{yes}</span>
-                  </div>
-                  <div className="px-4 py-4 lg:px-6 flex items-start gap-2.5">
-                    <span className="shrink-0 inline-flex items-center justify-center rounded-full" style={{ width: 20, height: 20, background: "#fee2e2", marginTop: 1 }}><span style={{ color: "#dc2626", fontSize: 12, fontWeight: 900 }}>✕</span></span>
-                    <span style={{ fontSize: 15, color: "#71717a", fontWeight: 500, lineHeight: 1.45 }}>{no}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-            </div>
-          </Reveal>
-
-          {/* one-line philosophy summary + CTA */}
-          <Reveal delay={80}>
-            <p className="text-center mt-9" style={{ fontSize: 18, fontWeight: 700, color: "#18181b", maxWidth: 560, margin: "2.25rem auto 0", lineHeight: 1.5 }}>
-              It&apos;s designed to fit <span style={{ color: "#a8790d" }}>around your work — not interrupt it.</span>
-            </p>
-            <div className="flex justify-center mt-8">
-              <CTA />
-            </div>
-          </Reveal>
-        </div>
-      </section>
+      
 
       
 

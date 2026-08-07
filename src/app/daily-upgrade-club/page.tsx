@@ -908,6 +908,308 @@ export default function DailyUpgradeClubPage() {
         </div>
       </section>
 
+      {/* ══ 4. HOW DUC WORKS ══════════════════════════════════════════════════ */}
+      <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">Simple by design</p>
+            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Daily Upgrade Club<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
+            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                n: "1",
+                emoji: "📲",
+                title: "Join & Choose Your Monthly Theme",
+                body: "Sign up and choose your first habit theme — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
+              },
+              {
+                n: "2",
+                emoji: "🌅",
+                title: "Get 1 Tiny Habit Every Morning",
+                body: "Every morning, you'll receive one science-backed healthy habit that takes under 5 minutes — with simple steps, why it works, and how to complete it.",
+              },
+              {
+                n: "3",
+                emoji: "🔥",
+                title: "Reply DONE & Track Your Progress",
+                body: "Complete the habit, reply DONE, build your streak and get weekly progress scorecards to see how your health, energy and consistency are improving.",
+              },
+            ].map(({ n, emoji, title, body }) => (
+              <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
+                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
+                <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
+                <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
+                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center mt-10">
+            <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 6. MONTHLY THEMES ═══════════════════════════════════════════════ */}
+      {(() => {
+        const TICKER_CARDS = [
+          { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80", habits: ["The 90-Second Wind-Down Trigger","Bedroom Temperature Reset","The Phone-Free Sleep Protocol","4-7-8 Navy Breathing Method"] },
+          { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80", habits: ["The Cortisol Sunlight Reset","Protein-First Plate Method","60-Second Cold Water Flush","The Staircase Energy Spike"] },
+          { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80", habits: ["The One Priority Rule","Posture-Oxygen Protocol","Phone Face-Down Focus Lock","The 2-Minute Intention Ritual"] },
+          { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80", habits: ["The Dahi Lunch Protocol","The 20-Chew Digestion Rule","Morning Warm Water Activation","The Screen-Free Meal Method"] },
+          { emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["Box Breathing at Your Desk","The Phone-Free First 10 Minutes","2-Minute Gratitude Anchor","The Post-Dinner Reset Walk"] },
+          { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "/goals/theme-fitness.png", habits: ["The Wake-Up Push Protocol","One-Flight Rule","45-Minute Stand Reset","The 60-Second Wall Sit"] },
+          { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The 10-Minute Post-Meal Walk","The Half-Plate Veg Rule","The Slow First 5 Bites Method","The Night Snacking Pause"] },
+          { emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "/goals/theme-immunity.png", habits: ["The Morning Sunlight Habit","The Colorful Plate Rule","The Sleep Consistency Reset","The Hygiene Before Meals Rule"] },
+          { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80", habits: ["The Hydration Glow Rule","The Sleep-for-Skin Wind-Down","The Sugar Pause Method","The Face-Touch Awareness Habit"] },
+          { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "/goals/theme-hydration.png", habits: ["Pre-Coffee Water Protocol","Post-Toilet Hydration Habit","The 3 PM Water Alarm","The 8-Glass Track Method"] },
+          { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0369a1", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=600&q=80", habits: ["The 3-Breath Reset","The Box Breathing Method","The Long Exhale Protocol","The Pre-Meeting Calm Breath"] },
+          { emoji: "🥗", theme: "Mindful Eating", tagline: "Eat better without dieting", color: "#65a30d", bg: "#f7fee7", border: "#bef264", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80", habits: ["The 20-Chew Rule","The No-Phone Meal Method","The Hunger Check Pause","The Smaller Plate Habit"] },
+          { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=600&q=80", habits: ["The 5-Minute Brisk Walk","Walnut Heart Ritual","Deep Breath Blood Pressure Reset","The Anti-Sitting Protocol"] },
+          { emoji: "🌸", theme: "Women's Wellness", tagline: "Energy, movement and self-care", color: "#be185d", bg: "#fdf2f8", border: "#fbcfe8", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80", habits: ["The 5-Minute Self-Care Pause","The Cycle-Aware Energy Check","The Gentle Movement Reset","The Evening Calm Ritual"] },
+          { emoji: "💙", theme: "Men's Health", tagline: "Energy, strength and better routine", color: "#1d4ed8", bg: "#eff6ff", border: "#bfdbfe", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80", habits: ["The Calm Reset Walk","The Protein-First Meal Rule","The Posture Confidence Check","The No-Late-Snack Rule"] },
+          { emoji: "🤸", theme: "Mobility", tagline: "Move freely, feel less stiff", color: "#7c3aed", bg: "#faf5ff", border: "#d8b4fe", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["The Morning Joint Wake-Up","The Hip Unlock Routine","The Ankle Circle Reset","The 60-Second Stretch Break"] },
+        ];
+
+        return (
+          <>
+            <section className="bg-section-cream py-16 lg:py-24">
+              <div className="max-w-5xl mx-auto px-6 lg:px-10">
+                <div className="text-center mb-10">
+                  <p className="duc-label mb-3">Your Monthly Themes</p>
+                  <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
+                  <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit theme designed to improve one area of your life without overwhelming your schedule.</p>
+                </div>
+              </div>
+
+              {/* ── Continuously moving theme train (right → left) ── */}
+              <div style={{ overflow: "hidden" }}>
+                <div style={{ position: "relative", overflow: "hidden" }}>
+                  <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
+                    {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
+                      <div key={`${theme}-${i}`} style={{
+                        width: 300,
+                        flexShrink: 0,
+                        borderRadius: 20,
+                        overflow: "hidden",
+                        border: `2px solid ${border}`,
+                        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+                        background: bg,
+                        display: "flex",
+                        flexDirection: "column",
+                      }}>
+                        <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 25%, ${bg} 92%)` }} />
+                          <div style={{ position: "absolute", bottom: 6, left: 14, right: 14, display: "flex", alignItems: "center", gap: 8 }}>
+                            <span style={{ fontSize: 28, flexShrink: 0 }}>{emoji}</span>
+                            <div>
+                              <p style={{ fontSize: 22, fontWeight: 900, color, lineHeight: 1.1, margin: 0, letterSpacing: "-0.01em", textShadow: `0 1px 3px ${bg}` }}>{theme}</p>
+                              <p style={{ fontSize: 12, color: "#3f3f46", fontWeight: 600, margin: 0, marginTop: 2 }}>{tagline}</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column" }}>
+                          <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>Sample habits:</p>
+                          {habits.map((h, hi) => (
+                            <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
+                              <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
+                              <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f7f5ef, transparent)", pointerEvents: "none" }} />
+                  <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f7f5ef, transparent)", pointerEvents: "none" }} />
+                </div>
+              </div>
+
+              <div className="max-w-5xl mx-auto px-6 lg:px-10">
+                <div className="flex justify-center mt-8">
+                  <CTA label="I Want to Pick My First Theme" sub="1 healthy habit every morning for the next 90 days" />
+                </div>
+              </div>
+            </section>
+          </>
+        );
+      })()}
+
+      {/* ══ 7. REAL WA MESSAGES — 3 iPhones ════════════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24 overflow-hidden">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-12">
+            <p className="duc-label mb-3">What lands in your WhatsApp</p>
+            <h2 className="duc-h2 duc-section-title mb-3">Here&apos;s What a Daily Habit Looks Like</h2>
+            <p className="duc-body max-w-sm mx-auto">Every habit is simple, practical and designed to fit into your real day.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+            {/* Energy Month Habits */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
+                ⚡ Energy Month Habits
+              </div>
+              <PhoneGlow from="#fbbf24" to="#f97316" accent="rgba(251,191,36,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="⚡ Energy Theme · Day 3" />
+                    <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
+                    <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
+                    <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
+            </div>
+
+            {/* Sleep Month Habits */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#eef2ff", border: "2px solid #c7d2fe", color: "#6366f1", fontSize: 13 }}>
+                😴 Sleep Month Habits
+              </div>
+              <PhoneGlow from="#818cf8" to="#4338ca" accent="rgba(99,102,241,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="😴 Sleep Theme · Day 11" />
+                    <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
+                    <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
+                    <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
+            </div>
+
+            {/* Focus Month Habits */}
+            <div className="flex flex-col items-center gap-4">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
+                🧠 Focus Month Habits
+              </div>
+              <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
+                <StaticPhone>
+                  <WAChatBg height={360}>
+                    <WADateSep label="🧠 Focus Theme · Day 7" />
+                    <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
+                    <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
+                    <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
+                  </WAChatBg>
+                </StaticPhone>
+              </PhoneGlow>
+            </div>
+          </div>
+
+          <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
+
+          <div className="flex justify-center mt-8">
+            <CTA label="Send My First Habit Now" sub="1 healthy habit every morning for the next 90 days" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ WHAT YOU GET INSIDE ═══════════════════════════════════════════════ */}
+      <section className="bg-section-cream py-16 lg:py-24">
+        <div className="max-w-5xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-14">
+            <p className="duc-label mb-3">What You Get Inside</p>
+            <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Stay Consistent</h2>
+            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Daily Upgrade Club</strong> is designed to make healthy habits simple, trackable and easy to repeat every day.</p>
+          </div>
+
+          {/* Zigzag rows */}
+          <div className="flex flex-col gap-6">
+            {[
+              {
+                num: "#1", label: "THE CORE HABIT",
+                icon: "🎯", title: "Monthly Habit Themes",
+                value: "₹999 value",
+                desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated theme of 30 daily habits built around that focus.",
+                bullets: ["Pick the area you want to improve this month", "Get powerful habits around chosen area daily", "All habits designed to fit into your busy schedules"],
+                color: "#059669", solidBg: "#ecfdf5", border: "#d1fae5", accentBg: "#059669",
+                img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80",
+              },
+              {
+                num: "#2", label: "YOUR DAILY DELIVERY",
+                icon: "🌅", title: "1 Tiny Healthy Habit Every Morning",
+                value: "₹799 value",
+                desc: "Every morning at 7 AM, one powerful habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
+                bullets: ["Delivered at 7 AM on WhatsApp", "Under 5 minutes to complete", "Clear why-it-works explanation with each habit"],
+                color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", accentBg: "#d97706",
+                img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
+              },
+              {
+                num: "#3", label: "STAY ACCOUNTABLE",
+                icon: "✅", title: "Daily Check-Ins & Streak Tracking",
+                value: "₹499 value",
+                desc: "Reply DONE when you complete your habit. Your streak updates instantly. Miss a day? You get a gentle nudge — not a lecture.",
+                bullets: ["One-tap DONE check-in on WhatsApp", "Live streak counter updated daily", "Consistency score at the end of each week"],
+                color: "#25d366", solidBg: "#f0fdf4", border: "#bbf7d0", accentBg: "#16a34a",
+                img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80",
+              },
+              {
+                num: "#4", label: "SEE YOUR PROGRESS",
+                icon: "📊", title: "Weekly Progress Scorecards",
+                value: "₹399 value",
+                desc: "Every Sunday you get a personal scorecard showing exactly how consistent you were, which habits you nailed and where to improve next week.",
+                bullets: ["Weekly score to track your progress", "Habit-by-habit breakdown", "Personalized tip for the week ahead"],
+                color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", accentBg: "#6366f1",
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+              },
+              {
+                num: "#5", label: "NEVER FEEL ALONE",
+                icon: "👥", title: "Community Access + Practical Guides",
+                value: "₹599 value",
+                desc: "A private WhatsApp community of members doing exactly what you are. Share wins, ask questions, and stay motivated when it gets hard.",
+                bullets: ["Members-only community group", "Monthly habit guides and reference cards", "Weekly accountability challenges"],
+                color: "#db2777", solidBg: "#fdf2f8", border: "#fbcfe8", accentBg: "#db2777",
+                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80",
+              },
+            ].map(({ num, label, icon, title, value, desc, bullets, color, solidBg, border, accentBg, img }, idx) => {
+              const imgLeft = idx % 2 === 0;
+              return (
+                <div key={title} className="rounded-2xl overflow-hidden" style={{ background: "#fff", border: `1.5px solid ${border}`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
+                  <div className={`flex flex-col ${imgLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
+                    {/* Image panel */}
+                    <div className="relative lg:w-2/5 h-56 lg:h-auto overflow-hidden shrink-0" style={{ minHeight: 240 }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img} alt={title} className="w-full h-full object-cover" style={{ minHeight: 240 }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                      <div className="absolute inset-0" style={{ background: imgLeft ? `linear-gradient(to right, transparent 60%, #fff 100%)` : `linear-gradient(to left, transparent 60%, #fff 100%)` }} />
+                      {/* Mobile fade */}
+                      <div className="lg:hidden absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, #fff 100%)" }} />
+                    </div>
+
+                    {/* Content panel */}
+                    <div className="flex-1 p-7 lg:p-9 flex flex-col justify-center">
+                      <div className="flex items-center justify-between mb-3">
+                        <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.13em", color: accentBg }}>{num} · {label}</p>
+                        <span className="px-3 py-1 rounded-full font-bold" style={{ fontSize: 12, background: solidBg, color: accentBg, border: `1px solid ${border}` }}>{value}</span>
+                      </div>
+                      <h3 style={{ fontSize: "clamp(1.2rem,2.2vw,1.5rem)", fontWeight: 800, color: "#18181b", lineHeight: 1.2, marginBottom: 10 }}>
+                        <span style={{ marginRight: 8 }}>{icon}</span>{title}
+                      </h3>
+                      <p style={{ fontSize: 15, color: "#52525b", lineHeight: 1.75, marginBottom: 16 }}>{desc}</p>
+                      <div className="flex flex-col gap-2">
+                        {bullets.map(b => (
+                          <div key={b} className="flex items-start gap-2">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginTop: 2, flexShrink: 0 }}><circle cx="8" cy="8" r="8" fill={accentBg} opacity="0.12"/><path d="M4.5 8.5l2.5 2L11 6" stroke={accentBg} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                            <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.6 }}>{b}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="flex justify-center mt-12">
+            <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
+          </div>
+        </div>
+      </section>
+
       {/* ══ NOT A COURSE ═══════════════════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
@@ -1084,151 +1386,6 @@ export default function DailyUpgradeClubPage() {
       {/* ══ 1% TINY GAINS ════════════════════════════════════════════════════ */}
       <TinyGainsDUC />
 
-      {/* ══ 4. HOW DUC WORKS ══════════════════════════════════════════════════ */}
-      <section style={{ background: "#f4f4f0" }} className="py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">Simple by design</p>
-            <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Daily Upgrade Club<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
-            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                n: "1",
-                emoji: "📲",
-                title: "Join & Choose Your Monthly Theme",
-                body: "Sign up and choose your first habit theme — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
-              },
-              {
-                n: "2",
-                emoji: "🌅",
-                title: "Get 1 Tiny Habit Every Morning",
-                body: "Every morning, you'll receive one science-backed healthy habit that takes under 5 minutes — with simple steps, why it works, and how to complete it.",
-              },
-              {
-                n: "3",
-                emoji: "🔥",
-                title: "Reply DONE & Track Your Progress",
-                body: "Complete the habit, reply DONE, build your streak and get weekly progress scorecards to see how your health, energy and consistency are improving.",
-              },
-            ].map(({ n, emoji, title, body }) => (
-              <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
-                <div className="w-12 h-12 rounded-full flex items-center justify-center font-black text-white mb-4" style={{ fontSize: 20, background: "linear-gradient(135deg,#1da851,#25d366)", boxShadow: "0 4px 14px rgba(37,211,102,0.35)" }}>{n}</div>
-                <span style={{ fontSize: 36, marginBottom: 12, display: "block" }}>{emoji}</span>
-                <p style={{ fontSize: 17, fontWeight: 800, color: "#18181b", marginBottom: 10, lineHeight: 1.3 }}>{title}</p>
-                <p style={{ fontSize: 14, color: "#52525b", lineHeight: 1.65 }}>{body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex justify-center mt-10">
-            <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ WHAT YOU GET INSIDE ═══════════════════════════════════════════════ */}
-      <section className="bg-section-cream py-16 lg:py-24">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-14">
-            <p className="duc-label mb-3">What You Get Inside</p>
-            <h2 className="duc-h2 duc-section-title mb-4">Everything You Need to Stay Consistent</h2>
-            <p className="duc-body max-w-xl mx-auto"><strong style={{ color: "#18181b" }}>Daily Upgrade Club</strong> is designed to make healthy habits simple, trackable and easy to repeat every day.</p>
-          </div>
-
-          {/* Zigzag rows */}
-          <div className="flex flex-col gap-6">
-            {[
-              {
-                num: "#1", label: "THE CORE HABIT",
-                icon: "🎯", title: "Monthly Habit Themes",
-                value: "₹999 value",
-                desc: "Each month focuses on one health area — Energy, Sleep, Focus, Calmness or Digestion. You follow a curated theme of 30 daily habits built around that focus.",
-                bullets: ["Pick the area you want to improve this month", "Get powerful habits around chosen area daily", "All habits designed to fit into your busy schedules"],
-                color: "#059669", solidBg: "#ecfdf5", border: "#d1fae5", accentBg: "#059669",
-                img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80",
-              },
-              {
-                num: "#2", label: "YOUR DAILY DELIVERY",
-                icon: "🌅", title: "1 Tiny Healthy Habit Every Morning",
-                value: "₹799 value",
-                desc: "Every morning at 7 AM, one powerful habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
-                bullets: ["Delivered at 7 AM on WhatsApp", "Under 5 minutes to complete", "Clear why-it-works explanation with each habit"],
-                color: "#d97706", solidBg: "#fffbeb", border: "#fde68a", accentBg: "#d97706",
-                img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80",
-              },
-              {
-                num: "#3", label: "STAY ACCOUNTABLE",
-                icon: "✅", title: "Daily Check-Ins & Streak Tracking",
-                value: "₹499 value",
-                desc: "Reply DONE when you complete your habit. Your streak updates instantly. Miss a day? You get a gentle nudge — not a lecture.",
-                bullets: ["One-tap DONE check-in on WhatsApp", "Live streak counter updated daily", "Consistency score at the end of each week"],
-                color: "#25d366", solidBg: "#f0fdf4", border: "#bbf7d0", accentBg: "#16a34a",
-                img: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&q=80",
-              },
-              {
-                num: "#4", label: "SEE YOUR PROGRESS",
-                icon: "📊", title: "Weekly Progress Scorecards",
-                value: "₹399 value",
-                desc: "Every Sunday you get a personal scorecard showing exactly how consistent you were, which habits you nailed and where to improve next week.",
-                bullets: ["Weekly score to track your progress", "Habit-by-habit breakdown", "Personalized tip for the week ahead"],
-                color: "#6366f1", solidBg: "#eef2ff", border: "#c7d2fe", accentBg: "#6366f1",
-                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
-              },
-              {
-                num: "#5", label: "NEVER FEEL ALONE",
-                icon: "👥", title: "Community Access + Practical Guides",
-                value: "₹599 value",
-                desc: "A private WhatsApp community of members doing exactly what you are. Share wins, ask questions, and stay motivated when it gets hard.",
-                bullets: ["Members-only community group", "Monthly habit guides and reference cards", "Weekly accountability challenges"],
-                color: "#db2777", solidBg: "#fdf2f8", border: "#fbcfe8", accentBg: "#db2777",
-                img: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80",
-              },
-            ].map(({ num, label, icon, title, value, desc, bullets, color, solidBg, border, accentBg, img }, idx) => {
-              const imgLeft = idx % 2 === 0;
-              return (
-                <div key={title} className="rounded-2xl overflow-hidden" style={{ background: "#fff", border: `1.5px solid ${border}`, boxShadow: "0 4px 24px rgba(0,0,0,0.06)" }}>
-                  <div className={`flex flex-col ${imgLeft ? "lg:flex-row" : "lg:flex-row-reverse"}`}>
-                    {/* Image panel */}
-                    <div className="relative lg:w-2/5 h-56 lg:h-auto overflow-hidden shrink-0" style={{ minHeight: 240 }}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={img} alt={title} className="w-full h-full object-cover" style={{ minHeight: 240 }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                      <div className="absolute inset-0" style={{ background: imgLeft ? `linear-gradient(to right, transparent 60%, #fff 100%)` : `linear-gradient(to left, transparent 60%, #fff 100%)` }} />
-                      {/* Mobile fade */}
-                      <div className="lg:hidden absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 50%, #fff 100%)" }} />
-                    </div>
-
-                    {/* Content panel */}
-                    <div className="flex-1 p-7 lg:p-9 flex flex-col justify-center">
-                      <div className="flex items-center justify-between mb-3">
-                        <p style={{ fontSize: 11, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.13em", color: accentBg }}>{num} · {label}</p>
-                        <span className="px-3 py-1 rounded-full font-bold" style={{ fontSize: 12, background: solidBg, color: accentBg, border: `1px solid ${border}` }}>{value}</span>
-                      </div>
-                      <h3 style={{ fontSize: "clamp(1.2rem,2.2vw,1.5rem)", fontWeight: 800, color: "#18181b", lineHeight: 1.2, marginBottom: 10 }}>
-                        <span style={{ marginRight: 8 }}>{icon}</span>{title}
-                      </h3>
-                      <p style={{ fontSize: 15, color: "#52525b", lineHeight: 1.75, marginBottom: 16 }}>{desc}</p>
-                      <div className="flex flex-col gap-2">
-                        {bullets.map(b => (
-                          <div key={b} className="flex items-start gap-2">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ marginTop: 2, flexShrink: 0 }}><circle cx="8" cy="8" r="8" fill={accentBg} opacity="0.12"/><path d="M4.5 8.5l2.5 2L11 6" stroke={accentBg} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/></svg>
-                            <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.6 }}>{b}</p>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="flex justify-center mt-12">
-            <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
-          </div>
-        </div>
-      </section>
-
       {/* ══ 5. WHAT IS DUC — DELETED ══════════════════════════════════════════ */}
       {false && <section className="bg-section-white py-16 lg:py-24">
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
@@ -1291,163 +1448,6 @@ export default function DailyUpgradeClubPage() {
           </div>
         </div>
       </section>}
-
-      {/* ══ 6. MONTHLY THEMES ═══════════════════════════════════════════════ */}
-      {(() => {
-        const TICKER_CARDS = [
-          { emoji: "😴", theme: "Sleep", tagline: "Wake up actually rested", color: "#6366f1", bg: "#eef2ff", border: "#c7d2fe", img: "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80", habits: ["The 90-Second Wind-Down Trigger","Bedroom Temperature Reset","The Phone-Free Sleep Protocol","4-7-8 Navy Breathing Method"] },
-          { emoji: "⚡", theme: "Energy", tagline: "No 3 PM crash, ever", color: "#d97706", bg: "#fffbeb", border: "#fde68a", img: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=600&q=80", habits: ["The Cortisol Sunlight Reset","Protein-First Plate Method","60-Second Cold Water Flush","The Staircase Energy Spike"] },
-          { emoji: "🧠", theme: "Focus", tagline: "Sharper, deeper work daily", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe", img: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&q=80", habits: ["The One Priority Rule","Posture-Oxygen Protocol","Phone Face-Down Focus Lock","The 2-Minute Intention Ritual"] },
-          { emoji: "🌿", theme: "Gut Health", tagline: "Less bloating, more energy", color: "#059669", bg: "#ecfdf5", border: "#6ee7b7", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80", habits: ["The Dahi Lunch Protocol","The 20-Chew Digestion Rule","Morning Warm Water Activation","The Screen-Free Meal Method"] },
-          { emoji: "🧘", theme: "Stress", tagline: "Calm without meditating for an hour", color: "#db2777", bg: "#fdf2f8", border: "#f9a8d4", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["Box Breathing at Your Desk","The Phone-Free First 10 Minutes","2-Minute Gratitude Anchor","The Post-Dinner Reset Walk"] },
-          { emoji: "💪", theme: "Fitness", tagline: "Active without the gym", color: "#ea580c", bg: "#fff7ed", border: "#fdba74", img: "/goals/theme-fitness.png", habits: ["The Wake-Up Push Protocol","One-Flight Rule","45-Minute Stand Reset","The 60-Second Wall Sit"] },
-          { emoji: "⚖️", theme: "Weight Reset", tagline: "Feel lighter, build better food habits", color: "#16a34a", bg: "#f0fdf4", border: "#86efac", img: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80", habits: ["The 10-Minute Post-Meal Walk","The Half-Plate Veg Rule","The Slow First 5 Bites Method","The Night Snacking Pause"] },
-          { emoji: "🛡️", theme: "Immunity", tagline: "Daily habits to make your immunity stronger", color: "#0891b2", bg: "#ecfeff", border: "#a5f3fc", img: "/goals/theme-immunity.png", habits: ["The Morning Sunlight Habit","The Colorful Plate Rule","The Sleep Consistency Reset","The Hygiene Before Meals Rule"] },
-          { emoji: "✨", theme: "Skin & Glow", tagline: "Healthier habits for a younger skin", color: "#c026d3", bg: "#fdf4ff", border: "#e879f9", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=600&q=80", habits: ["The Hydration Glow Rule","The Sleep-for-Skin Wind-Down","The Sugar Pause Method","The Face-Touch Awareness Habit"] },
-          { emoji: "💧", theme: "Hydration", tagline: "More water, better everything", color: "#0284c7", bg: "#f0f9ff", border: "#bae6fd", img: "/goals/theme-hydration.png", habits: ["Pre-Coffee Water Protocol","Post-Toilet Hydration Habit","The 3 PM Water Alarm","The 8-Glass Track Method"] },
-          { emoji: "🌬️", theme: "Breathwork", tagline: "Calm your body in minutes", color: "#0369a1", bg: "#f0f9ff", border: "#7dd3fc", img: "https://images.unsplash.com/photo-1474418397713-7ede21d49118?w=600&q=80", habits: ["The 3-Breath Reset","The Box Breathing Method","The Long Exhale Protocol","The Pre-Meeting Calm Breath"] },
-          { emoji: "🥗", theme: "Mindful Eating", tagline: "Eat better without dieting", color: "#65a30d", bg: "#f7fee7", border: "#bef264", img: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80", habits: ["The 20-Chew Rule","The No-Phone Meal Method","The Hunger Check Pause","The Smaller Plate Habit"] },
-          { emoji: "❤️", theme: "Heart Health", tagline: "Strong heart, long life", color: "#dc2626", bg: "#fff1f2", border: "#fecaca", img: "https://images.unsplash.com/photo-1506126279646-a697353d3166?w=600&q=80", habits: ["The 5-Minute Brisk Walk","Walnut Heart Ritual","Deep Breath Blood Pressure Reset","The Anti-Sitting Protocol"] },
-          { emoji: "🌸", theme: "Women's Wellness", tagline: "Energy, movement and self-care", color: "#be185d", bg: "#fdf2f8", border: "#fbcfe8", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80", habits: ["The 5-Minute Self-Care Pause","The Cycle-Aware Energy Check","The Gentle Movement Reset","The Evening Calm Ritual"] },
-          { emoji: "💙", theme: "Men's Health", tagline: "Energy, strength and better routine", color: "#1d4ed8", bg: "#eff6ff", border: "#bfdbfe", img: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80", habits: ["The Calm Reset Walk","The Protein-First Meal Rule","The Posture Confidence Check","The No-Late-Snack Rule"] },
-          { emoji: "🤸", theme: "Mobility", tagline: "Move freely, feel less stiff", color: "#7c3aed", bg: "#faf5ff", border: "#d8b4fe", img: "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80", habits: ["The Morning Joint Wake-Up","The Hip Unlock Routine","The Ankle Circle Reset","The 60-Second Stretch Break"] },
-        ];
-
-        return (
-          <>
-            <section className="bg-section-cream py-16 lg:py-24">
-              <div className="max-w-5xl mx-auto px-6 lg:px-10">
-                <div className="text-center mb-10">
-                  <p className="duc-label mb-3">Your Monthly Themes</p>
-                  <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
-                  <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit theme designed to improve one area of your life without overwhelming your schedule.</p>
-                </div>
-              </div>
-
-              {/* ── Continuously moving theme train (right → left) ── */}
-              <div style={{ overflow: "hidden" }}>
-                <div style={{ position: "relative", overflow: "hidden" }}>
-                  <div className="duc-ticker-track" style={{ animationDuration: "70s" }}>
-                    {[...TICKER_CARDS, ...TICKER_CARDS].map(({ emoji, theme, tagline, color, bg, border, img, habits }, i) => (
-                      <div key={`${theme}-${i}`} style={{
-                        width: 300,
-                        flexShrink: 0,
-                        borderRadius: 20,
-                        overflow: "hidden",
-                        border: `2px solid ${border}`,
-                        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
-                        background: bg,
-                        display: "flex",
-                        flexDirection: "column",
-                      }}>
-                        <div style={{ position: "relative", height: 170, overflow: "hidden", flexShrink: 0 }}>
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img src={img} alt={theme} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                          <div style={{ position: "absolute", inset: 0, background: `linear-gradient(to bottom, transparent 25%, ${bg} 92%)` }} />
-                          <div style={{ position: "absolute", bottom: 6, left: 14, right: 14, display: "flex", alignItems: "center", gap: 8 }}>
-                            <span style={{ fontSize: 28, flexShrink: 0 }}>{emoji}</span>
-                            <div>
-                              <p style={{ fontSize: 22, fontWeight: 900, color, lineHeight: 1.1, margin: 0, letterSpacing: "-0.01em", textShadow: `0 1px 3px ${bg}` }}>{theme}</p>
-                              <p style={{ fontSize: 12, color: "#3f3f46", fontWeight: 600, margin: 0, marginTop: 2 }}>{tagline}</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div style={{ padding: "12px 14px 16px", display: "flex", flexDirection: "column" }}>
-                          <p style={{ fontSize: 10, fontWeight: 700, color, textTransform: "uppercase", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>Sample habits:</p>
-                          {habits.map((h, hi) => (
-                            <div key={hi} style={{ display: "flex", alignItems: "flex-start", gap: 7, marginBottom: 6 }}>
-                              <span style={{ color, fontSize: 10, marginTop: 4, flexShrink: 0 }}>●</span>
-                              <span style={{ fontSize: 12.5, fontWeight: 600, color: "#3f3f46", lineHeight: 1.4 }}>{h}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 100, background: "linear-gradient(to right, #f7f5ef, transparent)", pointerEvents: "none" }} />
-                  <div style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 100, background: "linear-gradient(to left, #f7f5ef, transparent)", pointerEvents: "none" }} />
-                </div>
-              </div>
-
-              <div className="max-w-5xl mx-auto px-6 lg:px-10">
-                <div className="flex justify-center mt-8">
-                  <CTA label="I Want to Pick My First Theme" sub="1 healthy habit every morning for the next 90 days" />
-                </div>
-              </div>
-            </section>
-          </>
-        );
-      })()}
-
-      {/* ══ 7. REAL WA MESSAGES — 3 iPhones ════════════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-12">
-            <p className="duc-label mb-3">What lands in your WhatsApp</p>
-            <h2 className="duc-h2 duc-section-title mb-3">Here&apos;s What a Daily Habit Looks Like</h2>
-            <p className="duc-body max-w-sm mx-auto">Every habit is simple, practical and designed to fit into your real day.</p>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            {/* Energy Month Habits */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#fffbeb", border: "2px solid #fde68a", color: "#d97706", fontSize: 13 }}>
-                ⚡ Energy Month Habits
-              </div>
-              <PhoneGlow from="#fbbf24" to="#f97316" accent="rgba(251,191,36,0.55)">
-                <StaticPhone>
-                  <WAChatBg height={360}>
-                    <WADateSep label="⚡ Energy Theme · Day 3" />
-                    <WAIn title="⚡ Day 3 habit:" lines={["🌞 Step outside for 5 min of natural sunlight — within 30 min of waking.","","Why: Morning sunlight resets your cortisol clock and controls your energy rhythm for the entire day.","","Reply DONE when you're back 💪"]} time="7:01 AM" />
-                    <WAOut text="✅ DONE — felt amazing!" time="7:08 AM" />
-                    <WAIn title="" lines={["🔥 Day 3 streak! Energy starts shifting by Day 5."]} time="7:09 AM" />
-                  </WAChatBg>
-                </StaticPhone>
-              </PhoneGlow>
-            </div>
-
-            {/* Sleep Month Habits */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#eef2ff", border: "2px solid #c7d2fe", color: "#6366f1", fontSize: 13 }}>
-                😴 Sleep Month Habits
-              </div>
-              <PhoneGlow from="#818cf8" to="#4338ca" accent="rgba(99,102,241,0.55)">
-                <StaticPhone>
-                  <WAChatBg height={360}>
-                    <WADateSep label="😴 Sleep Theme · Day 11" />
-                    <WAIn title="😴 Day 11 habit:" lines={["📵 Tonight — plug your phone charger outside the bedroom.","","Why: Blue light suppresses melatonin for up to 2 hours. Removing the device removes the problem.","","Set a 9:30 PM reminder now. Reply DONE 🌙"]} time="7:01 AM" />
-                    <WAOut text="✅ Done — reminder is set!" time="7:05 AM" />
-                    <WAIn title="" lines={["🔥 Day 11! Most members sleep better within 3 nights."]} time="7:06 AM" />
-                  </WAChatBg>
-                </StaticPhone>
-              </PhoneGlow>
-            </div>
-
-            {/* Focus Month Habits */}
-            <div className="flex flex-col items-center gap-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full font-bold" style={{ background: "#f5f3ff", border: "2px solid #ddd6fe", color: "#7c3aed", fontSize: 13 }}>
-                🧠 Focus Month Habits
-              </div>
-              <PhoneGlow from="#a78bfa" to="#7c3aed" accent="rgba(139,92,246,0.55)">
-                <StaticPhone>
-                  <WAChatBg height={360}>
-                    <WADateSep label="🧠 Focus Theme · Day 7" />
-                    <WAIn title="🧠 Day 7 habit:" lines={["📵 For the first 30 minutes after waking — no phone, no scrolling.","","Why: Your prefrontal cortex is most active right after waking. Protecting this window improves deep work output by up to 40%.","","Reply DONE when you've completed it 🎯"]} time="7:01 AM" />
-                    <WAOut text="✅ Done — read a book instead!" time="7:28 AM" />
-                    <WAIn title="" lines={["🔥 Day 7! Focus sharpens noticeably by Week 2."]} time="7:29 AM" />
-                  </WAChatBg>
-                </StaticPhone>
-              </PhoneGlow>
-            </div>
-          </div>
-
-          <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
-
-          <div className="flex justify-center mt-8">
-            <CTA label="Send My First Habit Now" sub="1 healthy habit every morning for the next 90 days" />
-          </div>
-        </div>
-      </section>
 
       {/* ══ WHO THIS IS FOR ═════════════════════════════════════════════════ */}
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">

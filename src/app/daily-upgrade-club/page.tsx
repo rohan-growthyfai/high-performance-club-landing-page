@@ -686,7 +686,7 @@ export default function DailyUpgradeClubPage() {
                       <path d="M2 6 Q50 2 100 6 Q150 10 198 5" stroke="#25d366" strokeWidth="2.5" fill="none" strokeLinecap="round" />
                     </svg>
                   </span>{" "}
-                  gives you 1 science-backed healthy habit every morning for next 90 days — plus monthly habit themes, community access, personal accountability &amp; streak tracking designed to help you become healthier &amp; happier every day.
+                  sends you 1 science-backed healthy habit every morning for next 90 days — plus monthly habit themes, community access, personal accountability &amp; streak tracking designed to help you become healthier &amp; happier every day.
                 </p>
 
                 {/* WhatsApp callout — label shifted right, clean arrow only */}
@@ -922,19 +922,19 @@ export default function DailyUpgradeClubPage() {
                 n: "1",
                 emoji: "📲",
                 title: "Join & Choose Your Monthly Theme",
-                body: "Sign up and choose your first habit theme — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
+                body: "Sign up and choose what you want to improve first — like Health, Energy, Sleep, Focus or Consistency. You'll be added to your WhatsApp habit system instantly.",
               },
               {
                 n: "2",
                 emoji: "🌅",
                 title: "Get 1 Tiny Habit Every Morning",
-                body: "Every morning, you'll receive one science-backed healthy habit that takes under 5 minutes — with simple steps, why it works, and how to complete it.",
+                body: "Every morning, you'll receive one science-backed healthy habit related to your chosen area of improvement. Each habit takes less than 5 minutes to complete!",
               },
               {
                 n: "3",
                 emoji: "🔥",
                 title: "Reply DONE & Track Your Progress",
-                body: "Complete the habit, reply DONE, build your streak and get weekly progress scorecards to see how your health, energy and consistency are improving.",
+                body: "Complete the daily tiny habit, reply DONE, build your streak and get weekly progress scorecards to see how you're improving each day.",
               },
             ].map(({ n, emoji, title, body }) => (
               <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
@@ -978,7 +978,7 @@ export default function DailyUpgradeClubPage() {
               <div className="max-w-5xl mx-auto px-6 lg:px-10">
                 <div className="text-center mb-10">
                   <p className="duc-label mb-3">Your Monthly Themes</p>
-                  <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Upgrade Every Month</h2>
+                  <h2 className="duc-h2 duc-section-title mb-3">Choose What You Want to Improve Every Month</h2>
                   <p className="duc-body max-w-lg mx-auto">Each month, you follow a focused habit theme designed to improve one area of your life without overwhelming your schedule.</p>
                 </div>
               </div>
@@ -1206,6 +1206,56 @@ export default function DailyUpgradeClubPage() {
 
           <div className="flex justify-center mt-12">
             <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 9. VALUE STACK — premium dark card ═══════════════════════════════ */}
+      <section className="bg-section-white py-16 lg:py-24">
+        <div className="max-w-2xl mx-auto px-6 lg:px-10">
+          <div className="rounded-2xl overflow-hidden shadow-2xl" style={{
+            background: "linear-gradient(145deg,#0d1f12 0%,#0a1a0f 50%,#061009 100%)",
+            border: "1px solid rgba(37,211,102,0.2)",
+          }}>
+            <div className="text-center px-6 pt-8 pb-4">
+              <p className="duc-label mb-2">Everything you get</p>
+              <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>Your full membership</h2>
+            </div>
+            <div className="px-5 sm:px-8">
+              {[
+                { emoji: "📲", name: "Daily healthy habits on WhatsApp", value: "₹2,999" },
+                { emoji: "✔️", name: "Personalised tracking and accountability", value: "₹1,499" },
+                { emoji: "🎯", name: "Monthly themes + personal habit calendar", value: "₹1,799" },
+                { emoji: "📊", name: "Weekly progress scorecard", value: "₹999" },
+                { emoji: "👥", name: "Private WhatsApp accountability group", value: "₹999" },
+                { emoji: "🗓️", name: "Monthly habit guides", value: "₹499" },
+                { emoji: "🏆", name: "Full habit vault — 100+ powerful habits, forever", value: "₹999" },
+                { emoji: "📩", name: "Weekly wellness newsletter", value: "₹199" },
+              ].map(it => (
+                <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <span style={{ fontSize: 22 }} className="shrink-0">{it.emoji}</span>
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "#d4f7e0" }}>{it.name}</span>
+                  </div>
+                  <span style={{ fontSize: 15, fontWeight: 700, color: "#4ade80", flexShrink: 0 }}>{it.value}</span>
+                </div>
+              ))}
+              <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid rgba(37,211,102,0.2)", background: "rgba(0,0,0,0.3)" }}>
+                <span style={{ fontSize: 12, fontWeight: 700, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
+                <span className="font-black line-through" style={{ fontSize: 17, color: "#d97706" }}>₹9,992/month</span>
+              </div>
+            </div>
+            <div className="text-center px-5 sm:px-8 pt-5 pb-8">
+              <div className="flex flex-col gap-1 mb-4">
+                {["Not ₹9,992/month","Not ₹999","Not ₹299"].map(s => (
+                  <p key={s} style={{ fontSize: 18, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
+                ))}
+              </div>
+              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹99</p>
+              <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">for 3 full months of daily habits</p>
+              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">One payment · 90 daily habits · No renewals, ever</p>
+              <CTA label="Join for Just ₹99 →" sub="1 healthy habit every morning for the next 90 days" />
+            </div>
           </div>
         </div>
       </section>
@@ -1531,56 +1581,6 @@ export default function DailyUpgradeClubPage() {
 
           <div className="flex justify-center mt-10">
             <CTA label="Join for Just ₹99" sub="1 healthy habit every morning for the next 90 days" />
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 9. VALUE STACK — premium dark card ═══════════════════════════════ */}
-      <section className="bg-section-white py-16 lg:py-24">
-        <div className="max-w-2xl mx-auto px-6 lg:px-10">
-          <div className="rounded-2xl overflow-hidden shadow-2xl" style={{
-            background: "linear-gradient(145deg,#0d1f12 0%,#0a1a0f 50%,#061009 100%)",
-            border: "1px solid rgba(37,211,102,0.2)",
-          }}>
-            <div className="text-center px-6 pt-8 pb-4">
-              <p className="duc-label mb-2">Everything you get</p>
-              <h2 style={{ fontSize: "clamp(1.8rem,3.5vw,2.6rem)", fontWeight: 900, color: "#fff", letterSpacing: "-0.02em" }}>Your full membership</h2>
-            </div>
-            <div className="px-5 sm:px-8">
-              {[
-                { emoji: "📲", name: "Daily healthy habits on WhatsApp", value: "₹2,999" },
-                { emoji: "✔️", name: "Personalised tracking and accountability", value: "₹1,499" },
-                { emoji: "🎯", name: "Monthly themes + personal habit calendar", value: "₹1,799" },
-                { emoji: "📊", name: "Weekly progress scorecard", value: "₹999" },
-                { emoji: "👥", name: "Private WhatsApp accountability group", value: "₹999" },
-                { emoji: "🗓️", name: "Monthly habit guides", value: "₹499" },
-                { emoji: "🏆", name: "Full habit vault — 100+ powerful habits, forever", value: "₹999" },
-                { emoji: "📩", name: "Weekly wellness newsletter", value: "₹199" },
-              ].map(it => (
-                <div key={it.name} className="duc-glow-card flex items-center justify-between gap-3 py-3.5" style={{ borderTop: "1px solid rgba(37,211,102,0.12)", borderLeft: "2px solid rgba(37,211,102,0.3)", paddingLeft: 10, marginBottom: 2 }}>
-                  <div className="flex items-center gap-2.5 min-w-0">
-                    <span style={{ fontSize: 22 }} className="shrink-0">{it.emoji}</span>
-                    <span style={{ fontSize: 15, fontWeight: 700, color: "#d4f7e0" }}>{it.name}</span>
-                  </div>
-                  <span style={{ fontSize: 15, fontWeight: 700, color: "#4ade80", flexShrink: 0 }}>{it.value}</span>
-                </div>
-              ))}
-              <div className="flex items-center justify-between gap-3 py-4 -mx-5 sm:-mx-8 px-5 sm:px-8 mt-2" style={{ borderTop: "2px solid rgba(37,211,102,0.2)", background: "rgba(0,0,0,0.3)" }}>
-                <span style={{ fontSize: 12, fontWeight: 700, color: "#6ee7b7", textTransform: "uppercase", letterSpacing: "0.06em" }}>Total Value</span>
-                <span className="font-black line-through" style={{ fontSize: 17, color: "#d97706" }}>₹9,992/month</span>
-              </div>
-            </div>
-            <div className="text-center px-5 sm:px-8 pt-5 pb-8">
-              <div className="flex flex-col gap-1 mb-4">
-                {["Not ₹9,992/month","Not ₹999","Not ₹299"].map(s => (
-                  <p key={s} style={{ fontSize: 18, color: "#6b7280", textDecoration: "line-through" }}>{s}</p>
-                ))}
-              </div>
-              <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹99</p>
-              <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">for 3 full months of daily habits</p>
-              <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">One payment · 90 daily habits · No renewals, ever</p>
-              <CTA label="Join for Just ₹99 →" sub="1 healthy habit every morning for the next 90 days" />
-            </div>
           </div>
         </div>
       </section>

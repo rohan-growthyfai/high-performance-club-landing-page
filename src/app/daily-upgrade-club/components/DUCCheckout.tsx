@@ -89,11 +89,11 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
 
     setLoading(true);
     // Fire InitiateCheckout when user clicks the button
-    window.fbq?.("track", "InitiateCheckout", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" });
+    window.fbq?.("track", "InitiateCheckout", { value: 99, currency: "INR", content_name: "Daily Upgrade Club" });
     // WhatsApp number with India country code (engine delivers habits here)
     const waNumber = "91" + trimmedPhone.slice(-10);
     try {
-      // Step 1: Create a one-time ₹365 order on our server (notes carry the
+      // Step 1: Create a one-time ₹99 order on our server (notes carry the
       // WhatsApp number so the payment webhook can onboard the buyer).
       const resp = await fetch(`${ENGINE_URL}/duc/create-order`, {
         method: "POST",
@@ -105,7 +105,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         throw new Error(data.error || "Could not initiate payment. Please try again.");
       }
 
-      // One-time ₹365 checkout — 365 days of daily habits, no renewals
+      // One-time ₹99 checkout — 90 days of daily habits, no renewals
       const RazorpayCtor = (window as unknown as { Razorpay: new (o: RazorpayOptions) => RazorpayInstance }).Razorpay;
       const rzp = new RazorpayCtor({
         key: data.key_id,
@@ -113,7 +113,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         amount: data.amount,
         currency: data.currency || "INR",
         name: "Daily Upgrade Club",
-        description: "1 Year of Daily Habits · ₹365 one-time (just ₹1/day)",
+        description: "90 Days of Daily Habits · ₹99 one-time",
         prefill: {
           name: data.name,
           email: data.email,
@@ -122,8 +122,8 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         theme: { color: "#1da851" },
         handler: () => {
           setSuccess(true);
-          window.fbq?.("track", "Purchase", { value: 365, currency: "INR", content_name: "Daily Upgrade Club", content_type: "product" });
-          window.fbq?.("track", "Lead", { value: 365, currency: "INR", content_name: "Daily Upgrade Club" });
+          window.fbq?.("track", "Purchase", { value: 99, currency: "INR", content_name: "Daily Upgrade Club", content_type: "product" });
+          window.fbq?.("track", "Lead", { value: 99, currency: "INR", content_name: "Daily Upgrade Club" });
         },
         modal: {
           ondismiss: () => {
@@ -194,7 +194,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             <WAIcon />
             <span className="font-black text-white text-lg">Daily Upgrade Club</span>
           </div>
-          <p className="text-white text-sm opacity-90">One payment of ₹365 · Just ₹1/day for a full year · No renewals</p>
+          <p className="text-white text-sm opacity-90">One payment of ₹99 · 1 daily habit for the next 90 days</p>
         </div>
 
         {/* Form */}
@@ -270,7 +270,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             ) : (
               <>
                 <WAIcon />
-                {ctaLabel || "Join Daily Upgrade Club → ₹365"}
+                {ctaLabel || "Join Daily Upgrade Club → ₹99"}
               </>
             )}
           </button>

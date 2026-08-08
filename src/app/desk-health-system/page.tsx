@@ -423,13 +423,19 @@ export default function DeskHealthSystemPage() {
       `}</style>
 
       {/* ══ 0. ANNOUNCEMENT BAR ══════════════════════════════════════════════ */}
-      <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "9px 16px" }}>
-        <p className="text-center font-black text-white flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5" style={{ fontSize: 14.5, letterSpacing: "0.005em", lineHeight: 1.3 }}>
-          <span>✨ FREE Live Masterclass</span>
+      <div style={{ background: "linear-gradient(90deg,#b8860b 0%,#d4a017 50%,#b8860b 100%)", padding: "12px 16px" }}>
+        <p className="text-center font-black text-white flex flex-wrap items-center justify-center gap-x-2.5 gap-y-0.5" style={{ fontSize: "clamp(15px,2vw,18px)", fontWeight: 900, letterSpacing: "0.005em", lineHeight: 1.3 }}>
+          <span>✨ FREE Desk Fit Masterclass</span>
           <span className="opacity-70" aria-hidden="true">·</span>
           <span>🗓 {DATE_LINE}</span>
           <span className="opacity-70 hidden sm:inline" aria-hidden="true">·</span>
           <span className="hidden sm:inline rounded-full px-2.5 py-0.5" style={{ background: "rgba(0,0,0,0.18)" }}>Limited seats</span>
+        </p>
+      </div>
+      {/* one-line promise banner under the announcement bar */}
+      <div style={{ background: "#18181b", padding: "10px 16px" }}>
+        <p className="text-center" style={{ fontSize: "clamp(14px,2vw,17px)", fontWeight: 800, color: "#fff", lineHeight: 1.35, fontFamily: "'Poppins',sans-serif" }}>
+          Finally! A Simplest Way to <span style={{ color: "#e8a020" }}>Stay Healthy &amp; Fit</span> — Without Finding Extra Time.
         </p>
       </div>
 
@@ -1034,7 +1040,7 @@ export default function DeskHealthSystemPage() {
                     "Certified Nutrition & Lifestyle Coach",
                     "Certified Corporate Wellness Specialist",
                     "Ergonomics & Posture Practitioner",
-                    "Certified Personal Trainer (ACE)",
+                    "Movement & Mobility Specialist",
                     "Mindfulness & Stress-Management Coach",
                   ].map(c => (
                     <span key={c} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", fontSize: 12.5, fontWeight: 600, color: "#3f3f46" }}>

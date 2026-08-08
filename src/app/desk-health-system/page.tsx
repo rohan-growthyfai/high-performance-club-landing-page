@@ -453,7 +453,7 @@ export default function DeskHealthSystemPage() {
             </h1>
 
             <p style={{ fontSize: 16.5, color: "#3f3f46", maxWidth: 560, margin: "0 auto 10px", lineHeight: 1.6 }} className="lg:mx-0">
-              Join this free 90-minute masterclass and learn the <strong style={{ color: "#18181b" }}>Desk Fit Formula</strong> — a practical system to help you build a <strong style={{ color: "#18181b" }}>healthier body while you work at your desk.</strong>
+              Join this free 90-minute masterclass and learn the <strong style={{ color: "#18181b" }}>Desk Fit Formula™</strong> — a practical system to help you build a <strong style={{ color: "#18181b" }}>healthier body while you work at your desk.</strong>
             </p>
             <p style={{ fontSize: 15, color: "#a8790d", fontWeight: 700, maxWidth: 560, margin: "0 auto 18px" }} className="lg:mx-0">
               No gym membership. No strict diet. No separate 60-minute routine.
@@ -561,10 +561,10 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={120}>
             <div className="rounded-2xl px-6 py-7 text-center mt-10" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.45rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-                What if you never had to <span style={{ color: "#e8a020" }}>choose between work and your health?</span>
+                What if you <strong style={{ fontWeight: 900 }}>NEVER</strong> had to <span style={{ color: "#e8a020" }}>choose between work and your health?</span>
               </p>
               <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 12, maxWidth: 620, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
-                The Desk Fit Formula doesn&apos;t ask you to find extra time. It helps you build healthy habits <strong style={{ color: "#fff" }}>into the workday you&apos;re already living.</strong>
+                The <strong style={{ color: "#fff" }}>Desk Fit Formula™</strong> doesn&apos;t ask you to find extra time. It helps you build <strong style={{ color: "#fff" }}>HEALTHY QUICK HABITS</strong> into the workday you&apos;re already living.
               </p>
             </div>
           </Reveal>
@@ -578,7 +578,7 @@ export default function DeskHealthSystemPage() {
             <p className="duc-label mb-3" style={{ color: "#e8a020" }}>The uncomfortable truth</p>
             <h2 className="duc-h2" style={{ color: "#fff" }}>Sitting is the <span style={{ color: "#e8a020" }}>new smoking!</span></h2>
             <p style={{ fontSize: 17, color: "rgba(255,255,255,0.72)", maxWidth: 640, margin: "0.75rem auto 0", fontWeight: 500 }}>
-              You might not be smoking. But sitting 6+ hours is quietly doing similar damage to your health — even if you feel fine right now.
+              You might not be smoking. <strong style={{ color: "#fff" }}>But sitting 6+ hours is quietly doing similar damage to your health</strong> — even if you feel fine right now.
             </p>
           </Reveal>
           <div className="grid lg:grid-cols-2 gap-9 lg:gap-12 items-center">
@@ -641,7 +641,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={120}>
             <div className="rounded-2xl px-6 py-8 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: "clamp(1.2rem,2.8vw,1.65rem)", fontWeight: 900, color: "#fff", lineHeight: 1.45 }}>
-                That&apos;s Exactly Why We Created the <span style={{ color: "#e8a020" }}>Desk Fit Formula.</span>
+                That&apos;s Exactly Why We Created the <span style={{ color: "#e8a020" }}>Desk Fit Formula™.</span>
               </p>
               <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 14, maxWidth: 660, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
                 Instead of asking you to find more time, it helps you turn the hours you&apos;re already spending at your desk into <strong style={{ color: "#fff" }}>opportunities to build healthier habits</strong> — without interrupting your work.
@@ -661,7 +661,7 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-9">
-            <h2 className="duc-h2 duc-section-title mb-3" style={{ fontSize: "clamp(2.1rem,5vw,3.4rem)" }}>Learn the Desk Fit Formula</h2>
+            <h2 className="duc-h2 duc-section-title mb-3" style={{ fontSize: "clamp(2.1rem,5vw,3.4rem)" }}>Learn the Desk Fit Formula™</h2>
             <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to become healthier while you work.</p>
             <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
               A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it integrates <strong style={{ color: "#18181b" }}>healthier habits that fit naturally into your daily work schedule.</strong>
@@ -681,7 +681,7 @@ export default function DeskHealthSystemPage() {
 
           {/* 7 Things Your Body Needs Every Day */}
           <div className="text-center mb-6">
-            <p style={{ fontSize: "clamp(1.25rem,2.6vw,1.65rem)", fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif", letterSpacing: "-0.01em" }}>Desk Fit Formula Helps to Improve All 7 Things Your Body Needs Every Day</p>
+            <p style={{ fontSize: "clamp(1.25rem,2.6vw,1.65rem)", fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif", letterSpacing: "-0.01em" }}>Desk Fit Formula™ Helps to Improve All 7 Things Your Body Needs Every Day</p>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
@@ -703,11 +703,11 @@ export default function DeskHealthSystemPage() {
             {/* filler CTA tile to complete the grid */}
             <div className="rounded-2xl p-5 flex flex-col items-center justify-center text-center" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)" }}>
               <span style={{ fontSize: 24, marginBottom: 4 }}>🎓</span>
-              <p style={{ fontSize: 12.5, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>Learn How Desk Fit Formula Makes Them Work Together</p>
+              <p style={{ fontSize: 12.5, fontWeight: 800, color: "#fff", lineHeight: 1.3 }}>Learn How Desk Fit Formula™ Makes Them Work Together</p>
             </div>
           </div>
           <div className="flex justify-center mt-8">
-            <CTA label="I Want to Learn the Desk Fit Formula →" sub={`Free · ${DATE_LINE}`} />
+            <CTA label="I Want to Learn the Desk Fit Formula™ →" sub={`Free · ${DATE_LINE}`} />
           </div>
         </div>
       </section>
@@ -717,7 +717,7 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-4">
             <p className="duc-label mb-3">Imagine this…</p>
-            <h2 className="duc-h2 duc-section-title">The Desk Fit Formula Teaches You to<br className="hidden sm:block" /> Swap Big Goals with <span style={{ color: "#a8790d" }}>Tiny Healthy Habits</span></h2>
+            <h2 className="duc-h2 duc-section-title">The Desk Fit Formula™ Teaches You to<br className="hidden sm:block" /> Swap Big Goals with <span style={{ color: "#a8790d" }}>Tiny Healthy Habits</span></h2>
           </Reveal>
           <Reveal className="mb-11">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
@@ -779,7 +779,7 @@ export default function DeskHealthSystemPage() {
               <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
                 Tiny healthy habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, starts rebuilding your health.</span>
               </p>
-              <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the Desk Fit Formula. (You&apos;ll get many more on the masterclass.)</p>
+              <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the <strong style={{ color: "#e8e8e8" }}>Desk Fit Formula™</strong>. (You&apos;ll get many more on the masterclass.)</p>
             </div>
           </Reveal>
         </div>
@@ -866,7 +866,7 @@ export default function DeskHealthSystemPage() {
                 <img src="/desk/professional.jpg" alt="The Desk Fit Formula — healthier starts right at your desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
               </div>
               <div className="space-y-4" style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7, fontWeight: 500 }}>
-                <p>This is <strong style={{ color: "#fff" }}>not</strong> another session telling you to exercise more or follow a strict diet. In just <strong style={{ color: "#fff" }}>90 minutes</strong>, you&apos;ll learn the <strong style={{ color: "#fff" }}>Desk Fit Formula</strong> — a simple framework that fits healthy habits into your workday <strong style={{ color: "#fff" }}>without changing your busy schedule.</strong></p>
+                <p>This is <strong style={{ color: "#fff" }}>not</strong> another session telling you to exercise more or follow a strict diet. In just <strong style={{ color: "#fff" }}>90 minutes</strong>, you&apos;ll learn the <strong style={{ color: "#fff" }}>Desk Fit Formula™</strong> — a simple framework that fits healthy habits into your workday <strong style={{ color: "#fff" }}>without changing your busy schedule.</strong></p>
                 <p>No gym. No strict diets. No extra hours.</p>
                 <p><strong style={{ color: "#e8a020" }}>This one session could completely change the way you look after your health.</strong></p>
               </div>
@@ -1041,7 +1041,7 @@ export default function DeskHealthSystemPage() {
                 </div>
                 <p>So I flipped it. Instead of adding health <em>on top of</em> work, I started hiding tiny healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday — triggered by things I already did. A posture reset before every email. Water after every meeting. A 20-second eye break between tasks. A quick stretch before each call.</p>
                 <p>No gym. No diet. No extra time. And slowly, everything changed — my posture, my energy, my focus, my mood. I felt <strong style={{ color: "#18181b" }}>years younger at the same desk.</strong></p>
-                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Fit Formula</strong> — 7 pillars and a set of tiny daily &ldquo;desk missions&rdquo; that fit into any workday. It changed how I feel at my desk, and I built this masterclass to hand it to <strong style={{ color: "#18181b" }}>busy professionals like you</strong>.</p>
+                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Fit Formula™</strong> — 7 pillars and a set of tiny daily &ldquo;desk missions&rdquo; that fit into any workday. It changed how I feel at my desk, and I built this masterclass to hand it to <strong style={{ color: "#18181b" }}>busy professionals like you</strong>.</p>
                 <p style={{ fontWeight: 700, color: "#18181b" }}>In this free masterclass, I&apos;ll hand you the exact same system — so your workday starts working <em>for</em> your health, instead of against it. 🙌</p>
               </div>
               <div className="mt-6 flex items-center gap-3">
@@ -1071,7 +1071,7 @@ export default function DeskHealthSystemPage() {
           <div className="flex flex-col gap-2.5">
             {[
               { q: "Is it really free?", a: "Yes — the masterclass is 100% free. Just add your full name, email and WhatsApp number, and we'll send you the Zoom join link." },
-              { q: "What is the Desk Fit Formula?", a: "It's a practical workplace wellness framework for people who work long hours at a desk. Instead of asking you to change your whole lifestyle, it improves your health through small daily actions that fit naturally into your workday — no gym, no diet, no complicated routines, no extra hours." },
+              { q: "What is the Desk Fit Formula™?", a: "It's a practical workplace wellness framework for people who work long hours at a desk. Instead of asking you to change your whole lifestyle, it improves your health through small daily actions that fit naturally into your workday — no gym, no diet, no complicated routines, no extra hours." },
               { q: "Do I need a special desk or any equipment?", a: "Not at all. It works with the normal desk and laptop or computer you already use for work. Nothing to buy, install or set up." },
               { q: "Is this about losing weight?", a: "No. This is about becoming healthier and more energetic — better posture, less stiffness, less eye strain, more energy and less stress. Feeling and looking better follows naturally, but weight loss is not the goal." },
               { q: "When is it and how long?", a: `${WHEN_LINE}. It's live on Zoom. We'll send the exact join link and reminders to your WhatsApp after you register.` },

@@ -82,9 +82,9 @@ function CTA({ label, sub, big = false }: { label?: string; sub?: string; big?: 
     <div className="flex flex-col items-center gap-2">
       <button
         onClick={register}
-        className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full font-black text-white"
-        style={{ fontSize: big ? 20 : 18, padding: big ? "20px 40px" : "17px 34px", boxShadow: "0 10px 30px rgba(212,160,23,0.45)", letterSpacing: "-0.01em", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
-        <TicketIcon size={big ? 22 : 20} />
+        className="btn-primary inline-flex items-center justify-center gap-3 rounded-full font-black text-white w-full sm:w-auto"
+        style={{ fontSize: big ? 24 : 22, padding: big ? "26px 56px" : "22px 48px", boxShadow: "0 14px 38px rgba(212,160,23,0.5)", letterSpacing: "-0.01em", border: "none", cursor: "pointer", lineHeight: 1.15 }}>
+        <TicketIcon size={big ? 26 : 24} />
         {label ? <span>{label}</span> : <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>}
       </button>
       {sub && <p style={{ fontSize: 13.5, color: "#3f3f46", textAlign: "center" }}>{sub}</p>}
@@ -592,10 +592,10 @@ export default function DeskHealthSystemPage() {
             {/* facts */}
             <div className="flex flex-col gap-4">
               {[
-                { icon: "🪑", label: "Long Sitting", t: "Your body isn't designed to sit for 6+ hours a day — the effects quietly build up over time." },
-                { icon: "🖥️", label: "Too Much Screen Time", t: "Staring at a screen all day strains your eyes and affects your posture." },
-                { icon: "🍟", label: "Stress Eating", t: "Stress and mindless snacking quietly become a daily habit." },
-                { icon: "⏰", label: "Poor Meal Routine", t: "Skipping meals and relying on coffee leads to energy crashes, cravings, and stress." },
+                { icon: "🪑", label: "Long Sitting", t: "Sitting 6+ hours daily is slowly <strong style=\"color:#fff\">weakening</strong> your body, building long-term health risks." },
+                { icon: "🖥️", label: "Too Much Screen Time", t: "Staring at screens all day is making your eyes <strong style=\"color:#fff\">dry &amp; irritated.</strong>" },
+                { icon: "🍟", label: "Stress Eating", t: "Daily stress snacking is quietly increasing your <strong style=\"color:#fff\">weight and body fat.</strong>" },
+                { icon: "⏰", label: "Poor Meal Routine", t: "Skipping meals and relying on coffee is causing <strong style=\"color:#fff\">energy crashes.</strong>" },
               ].map(({ icon, label, t }, i) => (
                 <Reveal key={label} delay={i * 70}>
                   <div className="flex items-start gap-4 rounded-2xl p-5" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(212,160,23,0.22)" }}>
@@ -603,7 +603,7 @@ export default function DeskHealthSystemPage() {
                       <span className="shrink-0" style={{ fontSize: 16 }}>{icon}</span>
                       <span>{label}</span>
                     </span>
-                    <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.55, fontWeight: 500 }}>{t}</p>
+                    <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", lineHeight: 1.55, fontWeight: 500 }} dangerouslySetInnerHTML={{ __html: t }} />
                   </div>
                 </Reveal>
               ))}
@@ -611,7 +611,7 @@ export default function DeskHealthSystemPage() {
           </div>
           <Reveal delay={100}>
             <p className="text-center mt-10" style={{ fontSize: 17.5, fontWeight: 700, color: "#fff", maxWidth: 620, margin: "2.5rem auto 0", lineHeight: 1.55 }}>
-              The good news? <span style={{ color: "#e8a020" }}>You can undo most of it in seconds a day</span> — without a gym, a diet, or any extra time. That&apos;s exactly what the masterclass shows you.
+              The good news? <span style={{ color: "#e8a020" }}>You can UNDO all of it in minutes a day</span> — without a gym, a diet, or any extra time. That&apos;s exactly what the masterclass shows you.
             </p>
           </Reveal>
         </div>
@@ -621,12 +621,12 @@ export default function DeskHealthSystemPage() {
       <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-4">
-            <p className="duc-label mb-3">The biggest health opportunity</p>
+            <p className="duc-label mb-3">The problem with most health plans</p>
             <h2 className="duc-h2 duc-section-title">Almost Every Health Plan Focuses on <span className="gradient-text">Before Work or After Work.</span></h2>
           </Reveal>
           <Reveal className="mb-8">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 660, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
-              Every plan you&apos;ve tried expects you to find <strong style={{ color: "#b91c1c", fontWeight: 900 }}>EXTRA TIME.</strong>
+              Every health plan you&apos;ve tried expects you to find <strong style={{ color: "#b91c1c", fontWeight: 900 }}>EXTRA TIME.</strong>
             </p>
           </Reveal>
 
@@ -664,7 +664,7 @@ export default function DeskHealthSystemPage() {
             <h2 className="duc-h2 duc-section-title mb-3" style={{ fontSize: "clamp(2.1rem,5vw,3.4rem)" }}>Learn the Desk Fit Formula™</h2>
             <p style={{ fontSize: 17, fontWeight: 700, color: "#a8790d", marginBottom: 14 }}>A smarter way to become healthier while you work.</p>
             <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 640, margin: "0 auto", lineHeight: 1.65 }}>
-              A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it integrates <strong style={{ color: "#18181b" }}>healthier habits that fit naturally into your daily work schedule.</strong>
+              A practical workplace wellness framework designed for people who spend long hours at a desk. Instead of changing your whole lifestyle, it integrates <strong style={{ color: "#18181b" }}>healthier quick habits that fit naturally into your daily work schedule.</strong>
             </p>
           </Reveal>
 
@@ -717,11 +717,11 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-4">
             <p className="duc-label mb-3">Imagine this…</p>
-            <h2 className="duc-h2 duc-section-title">The Desk Fit Formula™ Teaches You to<br className="hidden sm:block" /> Swap Big Goals with <span style={{ color: "#a8790d" }}>Tiny Healthy Habits</span></h2>
+            <h2 className="duc-h2 duc-section-title">The Desk Fit Formula™ Teaches You to<br className="hidden sm:block" /> Swap Big Goals with <span style={{ color: "#a8790d" }}>Quick Healthy Habits</span></h2>
           </Reveal>
           <Reveal className="mb-11">
             <p className="text-center" style={{ fontSize: 17, color: "#3f3f46", maxWidth: 620, margin: "0 auto", lineHeight: 1.6, fontWeight: 500 }}>
-              Skip the big goals hard to keep up with. Just swap each one in <strong style={{ color: "#18181b" }}>one tiny habit</strong> that fits your workday 👇
+              Skip the big goals hard to keep up with. Just swap each one in <strong style={{ color: "#18181b" }}>one quick habit</strong> that fits your workday 👇
             </p>
           </Reveal>
 
@@ -777,7 +777,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={100}>
             <div className="rounded-2xl px-6 py-6 text-center mt-9" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: "clamp(1.05rem,2.4vw,1.35rem)", fontWeight: 900, color: "#fff", lineHeight: 1.5 }}>
-                Tiny healthy habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, starts rebuilding your health.</span>
+                Quick healthy habits. Zero extra time. — <span style={{ color: "#e8a020" }}>done daily, starts rebuilding your health.</span>
               </p>
               <p style={{ fontSize: 13.5, color: "#a1a1aa", marginTop: 10 }}>That&apos;s the philosophy behind the <strong style={{ color: "#e8e8e8" }}>Desk Fit Formula™</strong>. (You&apos;ll get many more on the masterclass.)</p>
             </div>
@@ -833,7 +833,7 @@ export default function DeskHealthSystemPage() {
               Or if you&apos;re someone who spends long hours on a work desk… <strong style={{ color: "#e8a020" }}>then this masterclass was made just for you.</strong>
             </p>
             <div className="flex justify-center mt-8">
-              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
+              <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 22, padding: "22px 48px", border: "none", cursor: "pointer" }}>
                 <TicketIcon size={22} />
                 <span className="inline-flex flex-wrap items-baseline gap-1.5">Register for <PriceTag /></span>
               </button>
@@ -871,7 +871,7 @@ export default function DeskHealthSystemPage() {
                 <p><strong style={{ color: "#e8a020" }}>This one session could completely change the way you look after your health.</strong></p>
               </div>
               <div className="mt-7">
-                <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 19, padding: "18px 40px", border: "none", cursor: "pointer" }}>
+                <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 rounded-full font-black text-white w-full sm:w-auto justify-center" style={{ fontSize: 22, padding: "22px 48px", border: "none", cursor: "pointer" }}>
                   <TicketIcon size={22} />
                   <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
                 </button>
@@ -881,7 +881,7 @@ export default function DeskHealthSystemPage() {
             {/* RIGHT — 3 secret cards */}
             <div className="flex flex-col gap-5">
               {[
-                { n: "Secret 1", title: "The Trigger Trick", body: "Learn how to attach tiny healthy actions to things you already do — like opening your laptop, joining a call or drinking coffee — so the habits become easier to remember and repeat." },
+                { n: "Secret 1", title: "The Trigger Trick", body: "Learn how to attach quick healthy actions to things you already do — like opening your laptop, joining a call or drinking coffee — so the habits become easier to remember and repeat." },
                 { n: "Secret 2", title: "The Repair, Rebuild and Sustain Framework", body: "Discover how Desk Fit gradually improves your daily movement, mobility, strength, nutrition, energy and consistency — without overwhelming you." },
                 { n: "Secret 3", title: "Build Your Seven-Day Desk Fit Starter Plan", body: "Choose the first simple actions you can integrate into your own workday immediately." },
               ].map(({ n, title, body }, i) => (
@@ -908,19 +908,19 @@ export default function DeskHealthSystemPage() {
         <div className="max-w-6xl mx-auto px-6 lg:px-10 relative">
           <Reveal className="text-center mb-3">
             <p className="duc-label mb-3">🎁 Attend live &amp; get these free</p>
-            <h2 className="duc-h2 duc-section-title">Free bonuses worth <span className="gradient-text">₹4,500+</span></h2>
+            <h2 className="duc-h2 duc-section-title">Free bonuses worth <span className="gradient-text">₹9,000+</span></h2>
           </Reveal>
           <Reveal className="text-center mb-11">
-            <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 560, margin: "0 auto", fontWeight: 500 }}>
-              Show up live on the masterclass and you&apos;ll walk away with this complete Desk Fit starter kit — <strong style={{ color: "#18181b" }}>yours free.</strong>
+            <p style={{ fontSize: 17, color: "#3f3f46", maxWidth: 580, margin: "0 auto", fontWeight: 500 }}>
+              Show up live and walk away with this complete Desk Fit toolkit — the exact resources to start transforming your health from day one, <strong style={{ color: "#18181b" }}>yours 100% free.</strong>
             </p>
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { img: "/desk/gem/bonus-guide.jpg", tag: "Bonus #1", title: "The Desk Fit Playbook", worth: "₹1,500", desc: "A simple guide with the exact tiny habits for all 7 pillars — so you know precisely what to do at your desk each day." },
-              { img: "/desk/gem/bonus-tracker.jpg", tag: "Bonus #2", title: "7-Day Habit Tracker", worth: "₹1,000", desc: "A printable tracker to lock in your new desk habits in your first week — the fastest way to actually stay consistent." },
-              { img: "/desk/gem/bonus-cards.jpg", tag: "Bonus #3", title: "Desk Reminder Cards", worth: "₹2,000", desc: "Quick posture, eye-care &amp; stretch cheat-cards you keep at your desk — gentle nudges that turn healthy actions into habit." },
+              { img: "/desk/gem/bonus-guide.jpg", tag: "Bonus #1", title: "Personalized Desk Fit Health Score", worth: "₹2,500", desc: "A quick self-assessment that reveals exactly where your posture, energy and habits stand today — and the #1 thing to fix first." },
+              { img: "/desk/gem/bonus-tracker.jpg", tag: "Bonus #2", title: "The 7-Day Desk Fit Challenge", worth: "₹3,000", desc: "A guided day-by-day plan with simple daily missions and reminders — so your first week of results happens on autopilot." },
+              { img: "/desk/gem/bonus-cards.jpg", tag: "Bonus #3", title: "Eat-Smart Desk Snack Cheat-Sheet", worth: "₹3,500", desc: "Exactly what to eat and drink at your desk for steady all-day energy — no crashes, no cravings, no diet required." },
             ].map(({ img, tag, title, worth, desc }, i) => (
               <Reveal key={title} delay={i * 90}>
                 <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 10px 30px -12px rgba(184,134,11,0.25)" }}>
@@ -943,7 +943,7 @@ export default function DeskHealthSystemPage() {
           <Reveal delay={100}>
             <div className="rounded-2xl mt-9 px-6 py-6 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center" style={{ background: "linear-gradient(135deg,#171412,#18181b)" }}>
               <p style={{ fontSize: 17, color: "rgba(255,255,255,0.85)", fontWeight: 600 }}>
-                Total bonus value: <span style={{ textDecoration: "line-through", color: "#a1a1aa" }}>₹4,500</span>
+                Total bonus value: <span style={{ textDecoration: "line-through", color: "#a1a1aa" }}>₹9,000</span>
               </p>
               <span className="hidden sm:inline" style={{ color: "#3f3f46" }}>|</span>
               <p style={{ fontSize: 20, fontWeight: 900, color: "#e8a020", fontFamily: "'Poppins',sans-serif" }}>Yours FREE today 🎉</p>
@@ -1015,21 +1015,38 @@ export default function DeskHealthSystemPage() {
 
           <div className="grid lg:grid-cols-12 gap-9 lg:gap-12 items-start">
             {/* Big image */}
-            <Reveal className="lg:col-span-5">
-              <div className="relative mx-auto" style={{ maxWidth: 440 }}>
+            <Reveal className="lg:col-span-6">
+              <div className="relative mx-auto" style={{ maxWidth: 520 }}>
                 <div className="rounded-3xl overflow-hidden" style={{ border: "8px solid #fff", boxShadow: "0 26px 60px -18px rgba(0,0,0,0.3)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/desk/professional.jpg" alt="Rohan — creator of the Desk Fit Formula" className="w-full h-auto object-cover object-center" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  <img src="/desk/professional.jpg" alt="Rohan Mote — Healthy Lifestyle Coach, creator of the Desk Fit Formula" className="w-full h-auto object-cover object-center" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                 </div>
-                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl px-5 py-2.5 text-center whitespace-nowrap" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 12px 28px -8px rgba(184,134,11,0.6)" }}>
-                  <p style={{ fontSize: 16, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>Rohan</p>
-                  <p style={{ fontSize: 11.5, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>Creator, Desk Fit System</p>
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-2xl px-6 py-3 text-center whitespace-nowrap" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 12px 28px -8px rgba(184,134,11,0.6)" }}>
+                  <p style={{ fontSize: 18, fontWeight: 900, color: "#fff", lineHeight: 1.1, fontFamily: "'Poppins',sans-serif" }}>Rohan Mote</p>
+                  <p style={{ fontSize: 12.5, fontWeight: 600, color: "rgba(255,255,255,0.9)" }}>Healthy Lifestyle Coach</p>
+                </div>
+              </div>
+              {/* certifications — credibility */}
+              <div className="mt-8">
+                <p className="text-center" style={{ fontSize: 11.5, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.12em", color: "#a8790d", marginBottom: 10 }}>Certified &amp; Trained In</p>
+                <div className="flex flex-wrap items-center justify-center gap-2">
+                  {[
+                    "Certified Nutrition & Lifestyle Coach",
+                    "Certified Corporate Wellness Specialist",
+                    "Ergonomics & Posture Practitioner",
+                    "Certified Personal Trainer (ACE)",
+                    "Mindfulness & Stress-Management Coach",
+                  ].map(c => (
+                    <span key={c} className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", fontSize: 12.5, fontWeight: 600, color: "#3f3f46" }}>
+                      <span style={{ color: "#d4a017" }}>🏅</span>{c}
+                    </span>
+                  ))}
                 </div>
               </div>
             </Reveal>
 
             {/* Story */}
-            <Reveal delay={80} className="lg:col-span-7">
+            <Reveal delay={80} className="lg:col-span-6">
               <div className="space-y-4" style={{ fontSize: 16.5, color: "#3f3f46", lineHeight: 1.75 }}>
                 <p>A few years ago, I was living the exact life you are — <strong style={{ color: "#18181b" }}>6 to 7 hours a day glued to a desk.</strong> Back-to-back meetings, endless emails, one deadline after another.</p>
                 <p>On paper I was doing great. But my body was quietly falling apart. My neck ached every evening. My back was stiff. My eyes burned by 4 PM. My energy crashed after lunch, and by night I was too drained to do anything.</p>
@@ -1039,15 +1056,15 @@ export default function DeskHealthSystemPage() {
                     Then it hit me: the problem wasn&apos;t that I lacked discipline. The problem was that I was trying to fix my health <em>outside</em> the one place I spent most of my life — my desk.
                   </p>
                 </div>
-                <p>So I flipped it. Instead of adding health <em>on top of</em> work, I started hiding tiny healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday — triggered by things I already did. A posture reset before every email. Water after every meeting. A 20-second eye break between tasks. A quick stretch before each call.</p>
+                <p>So I flipped it. Instead of adding health <em>on top of</em> work, I started hiding quick healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday — triggered by things I already did. A posture reset before every email. Water after every meeting. A 20-second eye break between tasks. A quick stretch before each call.</p>
                 <p>No gym. No diet. No extra time. And slowly, everything changed — my posture, my energy, my focus, my mood. I felt <strong style={{ color: "#18181b" }}>years younger at the same desk.</strong></p>
-                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Fit Formula™</strong> — 7 pillars and a set of tiny daily &ldquo;desk missions&rdquo; that fit into any workday. It changed how I feel at my desk, and I built this masterclass to hand it to <strong style={{ color: "#18181b" }}>busy professionals like you</strong>.</p>
+                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Fit Formula™</strong> — 7 pillars and a set of quick daily &ldquo;desk missions&rdquo; that fit into any workday. It changed how I feel at my desk, and I built this masterclass to hand it to <strong style={{ color: "#18181b" }}>busy professionals like you</strong>.</p>
                 <p style={{ fontWeight: 700, color: "#18181b" }}>In this free masterclass, I&apos;ll hand you the exact same system — so your workday starts working <em>for</em> your health, instead of against it. 🙌</p>
               </div>
               <div className="mt-6 flex items-center gap-3">
-                <p style={{ fontSize: 22, color: "#a8790d", fontWeight: 900, fontFamily: "'Poppins',sans-serif" }}>— Rohan</p>
+                <p style={{ fontSize: 22, color: "#a8790d", fontWeight: 900, fontFamily: "'Poppins',sans-serif" }}>— Rohan Mote</p>
                 <span className="w-8 h-px" style={{ background: "#e2dfd6" }} />
-                <p style={{ fontSize: 14, color: "#3f3f46" }}>Creator, Desk Fit System</p>
+                <p style={{ fontSize: 14, color: "#3f3f46" }}>Healthy Lifestyle Coach</p>
               </div>
               <div className="mt-7">
                 <CTA sub={`${DATE_LINE} · ${WEBINAR.duration}`} />

@@ -438,7 +438,7 @@ export default function DeskHealthSystemPage() {
           section starts right when you scroll past it. */}
       <section className="relative overflow-hidden mesh-bg flex flex-col lg:min-h-[calc(100svh-48px)]" style={{ borderBottom: "1px solid #e2dfd6" }}>
         <div className="flex-1 flex items-center">
-        <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 pt-7 pb-8 lg:py-6 grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
+        <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 pt-7 pb-8 lg:py-6 grid lg:grid-cols-[1fr_1.2fr] gap-6 lg:gap-8 items-center">
 
           {/* Left: copy */}
           <div className="text-center lg:text-left">
@@ -495,7 +495,7 @@ export default function DeskHealthSystemPage() {
 
           {/* Right: AI split before/after image — the image itself explains the product */}
           <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 620, width: "100%" }}>
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 720, width: "100%" }}>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="/desk/hf/final_desk.jpg" alt="No time for health vs health built into work — the Desk Fit approach woven into your workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />

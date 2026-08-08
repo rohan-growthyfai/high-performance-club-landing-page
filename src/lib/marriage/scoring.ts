@@ -37,34 +37,50 @@ const TRAIT_DIRECTION: Record<string, 1 | -1> = {
   extraversion: 1,
   conscientiousness: 1,
   agreeableness: 1,
+  // character & integrity — higher is healthier
+  integrity: 1,
+  humility: 1,
+  generosity: 1,
+  accountability: 1,
   // attachment: security = low anxiety + low avoidance
   anxiety: -1,
   avoidance: -1,
   // communication / EQ
   emotional_regulation: 1,
   empathy: 1,
-  // Gottman negative markers
+  emotional_openness: 1,
+  // conflict: Gottman negative markers (any horsemen_* is negative), repair positive
   four_horsemen: -1,
+  horsemen_criticism: -1,
+  horsemen_contempt: -1,
+  horsemen_defensiveness: -1,
+  horsemen_stonewalling: -1,
+  repair_attempt: 1,
+  jealousy_tendency: -1,
 };
 
-const LIKERT_MIN = 1;
-const LIKERT_MAX = 5;
-
-/** Normalize a raw mean on the item scale (1..5) to 0..100, honoring reverse. */
-function normalize(raw: number, reverse: boolean): number {
-  const span = LIKERT_MAX - LIKERT_MIN;
-  let pct = ((raw - LIKERT_MIN) / span) * 100;
-  if (reverse) pct = 100 - pct;
-  return Math.max(0, Math.min(100, Math.round(pct)));
-}
-
 interface TraitAccumulator {
-  sum: number;
+  sum: number; // sum of per-item positions in 0..1
   count: number;
-  reverse: boolean;
   kind: ScoringKind;
   dimension: DimensionKey;
   weight: number;
+}
+
+/**
+ * Normalize one answered item to a 0..1 position on its trait, using THAT
+ * question's own option-value range (supports bespoke option sets of any
+ * size). reverse=true flips the direction so value 5 (or the max) maps to
+ * the LOW pole of the trait.
+ */
+function itemPosition(q: Question, value: number): number | null {
+  const vals = q.options.map((o) => o.value);
+  const qMin = Math.min(...vals);
+  const qMax = Math.max(...vals);
+  if (qMax === qMin) return null; // degenerate question, skip
+  let pos = (value - qMin) / (qMax - qMin); // 0..1
+  if (q.scoring.reverse) pos = 1 - pos;
+  return Math.max(0, Math.min(1, pos));
 }
 
 /** Build a single person's profile from their answers + the question bank. */
@@ -77,19 +93,15 @@ export function scorePerson(name: string, answers: AnswerMap, bank: Question[]):
     d.total += 1;
     const val = answers[q.id];
     if (val !== undefined && val !== null) {
+      const pos = itemPosition(q, val);
+      if (pos === null) { dimAnswered.set(q.dimension, d); continue; }
       d.answered += 1;
       const acc = byTrait.get(q.scoring.trait) || {
-        sum: 0, count: 0, reverse: q.scoring.reverse, kind: q.scoring.kind,
+        sum: 0, count: 0, kind: q.scoring.kind,
         dimension: q.dimension, weight: q.scoring.weight ?? 1,
       };
-      // Each item's raw contribution is its chosen value on 1..5.
-      // Reverse-keying is applied per-item at normalize time, but since a
-      // trait can mix keyed directions, we fold reverse into the value here.
-      const contributed = q.scoring.reverse ? (LIKERT_MIN + LIKERT_MAX - val) : val;
-      acc.sum += contributed;
+      acc.sum += pos; // already reverse-folded & normalized to 0..1
       acc.count += 1;
-      // trait-level reverse now already folded in → store as non-reverse
-      acc.reverse = false;
       byTrait.set(q.scoring.trait, acc);
     }
     dimAnswered.set(q.dimension, d);
@@ -100,11 +112,11 @@ export function scorePerson(name: string, answers: AnswerMap, bank: Question[]):
 
   for (const [trait, acc] of byTrait) {
     if (acc.count === 0) continue;
-    const raw = acc.sum / acc.count;
-    const normalized = normalize(raw, false); // reverse already folded
+    const raw01 = acc.sum / acc.count; // 0..1
+    const normalized = Math.round(raw01 * 100);
     traits[trait] = normalized;
     const map = traitScoresByDim.get(acc.dimension) || {};
-    map[trait] = { trait, raw: Number(raw.toFixed(2)), normalized, itemCount: acc.count };
+    map[trait] = { trait, raw: Number(raw01.toFixed(3)), normalized, itemCount: acc.count };
     traitScoresByDim.set(acc.dimension, map);
   }
 

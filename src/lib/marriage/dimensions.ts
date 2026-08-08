@@ -7,6 +7,7 @@ import { DimensionKey, DimensionMeta } from "./types";
 export const DIMENSIONS: Record<DimensionKey, DimensionMeta> = {
   // Part I — who each person is
   big5: { key: "big5", name: "Personality", part: "portrait", blurb: "Core temperament across the Big Five traits." },
+  character: { key: "character", name: "Character & Integrity", part: "portrait", blurb: "Who each person is when it costs something — honesty, humility, how they treat others." },
   attachment: { key: "attachment", name: "Attachment Style", part: "portrait", blurb: "How each person bonds and seeks security." },
   communication: { key: "communication", name: "Communication & EQ", part: "portrait", blurb: "How each expresses, listens, and regulates emotion." },
   conflict: { key: "conflict", name: "Conflict & Repair", part: "portrait", blurb: "What each does when you disagree." },
@@ -25,7 +26,7 @@ export const DIMENSIONS: Record<DimensionKey, DimensionMeta> = {
 };
 
 export const DIMENSION_ORDER: DimensionKey[] = [
-  "big5", "attachment", "communication", "conflict",
+  "big5", "character", "attachment", "communication", "conflict",
   "values", "money", "family", "children", "career",
   "lifestyle", "religion", "roles", "intimacy", "lifevision",
 ];

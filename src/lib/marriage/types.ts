@@ -9,6 +9,7 @@
 // ---- Dimensions (the 15 areas the assessment maps) ----
 export type DimensionKey =
   | "big5"
+  | "character"
   | "attachment"
   | "conflict"
   | "communication"

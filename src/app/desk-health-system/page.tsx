@@ -1054,17 +1054,13 @@ export default function DeskHealthSystemPage() {
             {/* Story */}
             <Reveal delay={80} className="lg:col-span-6">
               <div className="space-y-4" style={{ fontSize: 16.5, color: "#3f3f46", lineHeight: 1.75 }}>
-                <p>A few years ago, I was living the exact life you are — <strong style={{ color: "#18181b" }}>6 to 7 hours a day glued to a desk.</strong> Back-to-back meetings, endless emails, one deadline after another.</p>
-                <p>On paper I was doing great. But my body was quietly falling apart. My neck ached every evening. My back was stiff. My eyes burned by 4 PM. My energy crashed after lunch, and by night I was too drained to do anything.</p>
-                <p>So I did what everyone tells you to do — <em>&ldquo;just go to the gym,&rdquo; &ldquo;follow a diet,&rdquo; &ldquo;wake up early and exercise.&rdquo;</em> I tried them all. And every single one failed within weeks, because none of them fit into my actual workday. I simply didn&apos;t have the time or energy left over.</p>
+                <p>A few years ago, I was living your exact life — <strong style={{ color: "#18181b" }}>6 to 7 hours a day glued to a desk.</strong> Aching neck, stiff back, tired eyes, energy gone by evening. I tried the gym, diets, waking up early — and every one failed within weeks, because none of them fit into my actual workday.</p>
                 <div className="my-5 pl-5 py-2" style={{ borderLeft: "4px solid #d4a017" }}>
                   <p style={{ fontSize: 18, fontWeight: 600, color: "#18181b", fontStyle: "italic", lineHeight: 1.6 }}>
-                    Then it hit me: the problem wasn&apos;t that I lacked discipline. The problem was that I was trying to fix my health <em>outside</em> the one place I spent most of my life — my desk.
+                    Then it hit me: I was trying to fix my health <em>outside</em> the one place I spent most of my life — my desk.
                   </p>
                 </div>
-                <p>So I flipped it. Instead of adding health <em>on top of</em> work, I started hiding quick healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday — triggered by things I already did. A posture reset before every email. Water after every meeting. A 20-second eye break between tasks. A quick stretch before each call.</p>
-                <p>No gym. No diet. No extra time. And slowly, everything changed — my posture, my energy, my focus, my mood. I felt <strong style={{ color: "#18181b" }}>years younger at the same desk.</strong></p>
-                <p>I organized everything I learned into a simple framework — <strong style={{ color: "#18181b" }}>the Desk Fit Formula™</strong> — 7 pillars and a set of quick daily &ldquo;desk missions&rdquo; that fit into any workday. It changed how I feel at my desk, and I built this masterclass to hand it to <strong style={{ color: "#18181b" }}>busy professionals like you</strong>.</p>
+                <p>So I flipped it — I started building quick healthy habits <strong style={{ color: "#18181b" }}>inside</strong> my workday, triggered by things I already did. No gym. No diet. No extra time. And slowly everything changed — my posture, energy, focus and mood. I organized it all into a simple framework: <strong style={{ color: "#18181b" }}>the Desk Fit Formula™.</strong></p>
                 <p style={{ fontWeight: 700, color: "#18181b" }}>In this free masterclass, I&apos;ll hand you the exact same system — so your workday starts working <em>for</em> your health, instead of against it. 🙌</p>
               </div>
               <div className="mt-6 flex items-center gap-3">

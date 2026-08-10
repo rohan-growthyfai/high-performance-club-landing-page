@@ -507,13 +507,13 @@ export default function DeskHealthSystemPage() {
             {/* 3 one-liner testimonials — borderless, below the image */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 mt-6" style={{ maxWidth: 720, width: "100%" }}>
               {[
-                { q: "My back pain and 4 PM slump are finally gone — no gym needed.", img: "avatar-1", n: "Ankit S.", city: "Software Engineer" },
-                { q: "Stopped stress-snacking and dropped 4 kg — just desk habits.", img: "avatar-2", n: "Priya M.", city: "HR Manager" },
-                { q: "Finally something that fits my crazy schedule. I stuck to it!", img: "avatar-4", n: "Rahul K.", city: "Consultant" },
+                { q: "Finally found something that actually fits my crazy schedule!", img: "avatar-1", n: "Ankit S.", city: "Software Engineer" },
+                { q: "I thought I had no time for health — turns out I just needed the <strong style=\"color:#a8790d;font-style:italic\">right system.</strong>", img: "avatar-2", n: "Priya M.", city: "HR Manager" },
+                { q: "I wasn't sure at first, but this actually <strong style=\"color:#a8790d;font-style:italic\">WORKS!</strong>", img: "avatar-4", n: "Rahul K.", city: "Consultant" },
               ].map(({ q, img, n, city }, i) => (
                 <div key={i}>
                   <div style={{ color: "#e8a020", fontSize: 12.5, letterSpacing: "1.5px", marginBottom: 6 }}>★★★★★</div>
-                  <p style={{ fontSize: 13, color: "#18181b", fontWeight: 600, lineHeight: 1.42, marginBottom: 10 }}>&ldquo;{q}&rdquo;</p>
+                  <p style={{ fontSize: 13, color: "#18181b", fontWeight: 600, lineHeight: 1.42, marginBottom: 10 }} dangerouslySetInnerHTML={{ __html: `&ldquo;${q}&rdquo;` }} />
                   <div className="flex items-center gap-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={`/desk/gem/${img}.jpg`} alt={n} className="rounded-full object-cover shrink-0" style={{ width: 30, height: 30, border: "1.5px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />

@@ -577,7 +577,7 @@ export default function DeskHealthSystemPage() {
                 What if you <strong style={{ fontWeight: 900 }}>NEVER</strong> had to <span style={{ color: "#e8a020" }}>choose between work and your health?</span>
               </p>
               <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", marginTop: 12, maxWidth: 620, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65, fontWeight: 500 }}>
-                The <strong style={{ color: "#fff" }}>Desk Fit Formula™</strong> doesn&apos;t ask you to find extra time. It helps you build <strong style={{ color: "#fff" }}>HEALTHY QUICK HABITS</strong> into the workday you&apos;re already living.
+                The <strong style={{ color: "#fff" }}>Desk Fit Formula™</strong> helps you build <strong style={{ color: "#fff" }}>HEALTHY QUICK HABITS</strong> into the work schedule you already have.
               </p>
             </div>
           </Reveal>

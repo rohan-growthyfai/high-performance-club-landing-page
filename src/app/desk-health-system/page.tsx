@@ -483,22 +483,22 @@ export default function DeskHealthSystemPage() {
               </button>
             </div>
 
-            {/* 3 one-liner testimonials — stars · quote · person */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
+            {/* 3 one-liner testimonials — borderless: stars · quote · person */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 max-w-xl mx-auto lg:mx-0">
               {[
-                { q: "Instant energy shift from Day 3. Never felt this good.", img: "avatar-1", n: "Arjun S.", city: "Bengaluru" },
-                { q: "Sleeping so much better. The difference is real.", img: "avatar-2", n: "Preethi R.", city: "Chennai" },
-                { q: "Felt healthier from within. Didn't expect this in 7 days.", img: "avatar-4", n: "Divya M.", city: "Mumbai" },
+                { q: "My back pain and 4 PM slump are finally gone — no gym needed.", img: "avatar-1", n: "Ankit S.", city: "Software Engineer" },
+                { q: "Stopped stress-snacking and dropped 4 kg — just desk habits.", img: "avatar-2", n: "Priya M.", city: "HR Manager" },
+                { q: "Finally something that fits my crazy schedule. I stuck to it!", img: "avatar-4", n: "Rahul K.", city: "Consultant" },
               ].map(({ q, img, n, city }, i) => (
-                <div key={i} className="rounded-xl px-3.5 py-3" style={{ background: "rgba(255,255,255,0.75)", border: "1px solid #e6d9b0" }}>
+                <div key={i}>
                   <div style={{ color: "#e8a020", fontSize: 12.5, letterSpacing: "1.5px", marginBottom: 6 }}>★★★★★</div>
                   <p style={{ fontSize: 13, color: "#18181b", fontWeight: 600, lineHeight: 1.42, marginBottom: 10 }}>&ldquo;{q}&rdquo;</p>
                   <div className="flex items-center gap-2">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={`/desk/gem/${img}.jpg`} alt={n} className="rounded-full object-cover shrink-0" style={{ width: 28, height: 28, border: "1.5px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                    <img src={`/desk/gem/${img}.jpg`} alt={n} className="rounded-full object-cover shrink-0" style={{ width: 30, height: 30, border: "1.5px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
                     <div>
-                      <p style={{ fontSize: 12, fontWeight: 800, color: "#18181b", lineHeight: 1.1 }}>{n}</p>
-                      <p style={{ fontSize: 10.5, color: "#71717a", lineHeight: 1.1 }}>{city}</p>
+                      <p style={{ fontSize: 12.5, fontWeight: 800, color: "#18181b", lineHeight: 1.1 }}>{n}</p>
+                      <p style={{ fontSize: 10.5, color: "#71717a", lineHeight: 1.1, marginTop: 1 }}>{city}</p>
                     </div>
                   </div>
                 </div>

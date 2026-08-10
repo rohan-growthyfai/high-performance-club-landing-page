@@ -476,39 +476,26 @@ export default function DeskHealthSystemPage() {
             </div>
 
             {/* CTA — bigger, bolder */}
-            <div className="flex flex-col items-center lg:items-start gap-2.5 mb-4">
+            <div className="flex flex-col items-center lg:items-start gap-2 mb-4">
               <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 rounded-2xl font-black text-white w-full sm:w-auto" style={{ fontSize: 22, padding: "22px 44px", boxShadow: "0 16px 40px rgba(212,160,23,0.5)", border: "none", cursor: "pointer", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
                 <TicketIcon size={26} />
                 <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
               </button>
-              {/* avatars + loved-by count */}
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center">
-                  {["avatar-1", "avatar-2", "avatar-3", "avatar-4"].map((a, i) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img key={a} src={`/desk/gem/${a}.jpg`} alt="Happy professional" className="rounded-full object-cover" style={{ width: 34, height: 34, border: "2.5px solid #fff", marginLeft: i === 0 ? 0 : -11, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  ))}
-                </div>
-                <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>
-                  <span style={{ color: "#e8a020", letterSpacing: "1px" }}>★★★★★</span><br />Loved by <strong style={{ color: "#a8790d", fontWeight: 800 }}>5,000+ professionals</strong>
-                </p>
-              </div>
+              <p style={{ fontSize: 13, color: "#3f3f46" }}>Takes 30 seconds · Zoom link sent on WhatsApp</p>
             </div>
 
-            {/* 3 one-liner testimonials */}
-            <div className="flex flex-col gap-2 max-w-md mx-auto lg:mx-0">
-              {[
-                { q: "My back pain and 4 PM slump are finally gone — no gym needed.", n: "Ankit S., Software Engineer" },
-                { q: "Stopped stress-snacking and dropped 4 kg — just desk habits.", n: "Priya M., HR Manager" },
-                { q: "Finally something that fits my crazy schedule. I actually stuck to it!", n: "Rahul K., Consultant" },
-              ].map(({ q, n }, i) => (
-                <div key={i} className="rounded-xl px-3.5 py-2.5" style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #e6d9b0" }}>
-                  <p style={{ fontSize: 13.5, color: "#18181b", fontWeight: 600, lineHeight: 1.4 }}>
-                    <span style={{ color: "#e8a020" }}>★★★★★</span>  &ldquo;{q}&rdquo;
-                  </p>
-                  <p style={{ fontSize: 11.5, color: "#71717a", fontWeight: 600, marginTop: 2 }}>— {n}</p>
-                </div>
-              ))}
+            {/* social proof — avatars + loved-by count */}
+            <div className="flex items-center justify-center lg:justify-start gap-3">
+              <div className="flex items-center">
+                {["avatar-1", "avatar-2", "avatar-3", "avatar-4"].map((a, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={a} src={`/desk/gem/${a}.jpg`} alt="Happy professional" className="rounded-full object-cover" style={{ width: 40, height: 40, border: "2.5px solid #fff", marginLeft: i === 0 ? 0 : -12, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                ))}
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-1" style={{ color: "#e8a020", fontSize: 13, lineHeight: 1 }}>★★★★★</div>
+                <p style={{ fontSize: 14, fontWeight: 700, color: "#18181b", marginTop: 3, lineHeight: 1.2 }}>Loved by <span style={{ color: "#a8790d" }}>2,000+ professionals</span> across India</p>
+              </div>
             </div>
           </div>
 

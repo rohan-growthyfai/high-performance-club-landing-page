@@ -476,37 +476,31 @@ export default function DeskHealthSystemPage() {
             </div>
 
             {/* CTA — bigger, bolder */}
-            <div className="flex flex-col items-center lg:items-start gap-2.5 mb-4">
+            <div className="flex flex-col items-center lg:items-start gap-2 mb-5">
               <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 rounded-2xl font-black text-white w-full sm:w-auto" style={{ fontSize: 22, padding: "22px 44px", boxShadow: "0 16px 40px rgba(212,160,23,0.5)", border: "none", cursor: "pointer", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
                 <TicketIcon size={26} />
                 <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
               </button>
-              {/* avatars + loved-by count */}
-              <div className="flex items-center gap-2.5">
-                <div className="flex items-center">
-                  {["avatar-1", "avatar-2", "avatar-3", "avatar-4"].map((a, i) => (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img key={a} src={`/desk/gem/${a}.jpg`} alt="Happy professional" className="rounded-full object-cover" style={{ width: 34, height: 34, border: "2.5px solid #fff", marginLeft: i === 0 ? 0 : -11, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                  ))}
-                </div>
-                <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>
-                  <span style={{ color: "#e8a020", letterSpacing: "1px" }}>★★★★★</span><br />Loved by <strong style={{ color: "#a8790d", fontWeight: 800 }}>5,000+ professionals</strong>
-                </p>
-              </div>
             </div>
 
-            {/* 3 one-liner testimonials */}
-            <div className="flex flex-col gap-2 max-w-md mx-auto lg:mx-0">
+            {/* 3 one-liner testimonials — stars · quote · person */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
               {[
-                { q: "My back pain and 4 PM slump are finally gone — no gym needed.", n: "Ankit S., Software Engineer" },
-                { q: "Stopped stress-snacking and dropped 4 kg — just desk habits.", n: "Priya M., HR Manager" },
-                { q: "Finally something that fits my crazy schedule. I actually stuck to it!", n: "Rahul K., Consultant" },
-              ].map(({ q, n }, i) => (
-                <div key={i} className="rounded-xl px-3.5 py-2.5" style={{ background: "rgba(255,255,255,0.7)", border: "1px solid #e6d9b0" }}>
-                  <p style={{ fontSize: 13.5, color: "#18181b", fontWeight: 600, lineHeight: 1.4 }}>
-                    <span style={{ color: "#e8a020" }}>★★★★★</span>  &ldquo;{q}&rdquo;
-                  </p>
-                  <p style={{ fontSize: 11.5, color: "#71717a", fontWeight: 600, marginTop: 2 }}>— {n}</p>
+                { q: "Instant energy shift from Day 3. Never felt this good.", img: "avatar-1", n: "Arjun S.", city: "Bengaluru" },
+                { q: "Sleeping so much better. The difference is real.", img: "avatar-2", n: "Preethi R.", city: "Chennai" },
+                { q: "Felt healthier from within. Didn't expect this in 7 days.", img: "avatar-4", n: "Divya M.", city: "Mumbai" },
+              ].map(({ q, img, n, city }, i) => (
+                <div key={i} className="rounded-xl px-3.5 py-3" style={{ background: "rgba(255,255,255,0.75)", border: "1px solid #e6d9b0" }}>
+                  <div style={{ color: "#e8a020", fontSize: 12.5, letterSpacing: "1.5px", marginBottom: 6 }}>★★★★★</div>
+                  <p style={{ fontSize: 13, color: "#18181b", fontWeight: 600, lineHeight: 1.42, marginBottom: 10 }}>&ldquo;{q}&rdquo;</p>
+                  <div className="flex items-center gap-2">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={`/desk/gem/${img}.jpg`} alt={n} className="rounded-full object-cover shrink-0" style={{ width: 28, height: 28, border: "1.5px solid #fff", boxShadow: "0 1px 4px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                    <div>
+                      <p style={{ fontSize: 12, fontWeight: 800, color: "#18181b", lineHeight: 1.1 }}>{n}</p>
+                      <p style={{ fontSize: 10.5, color: "#71717a", lineHeight: 1.1 }}>{city}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>

@@ -476,15 +476,36 @@ export default function DeskHealthSystemPage() {
             </div>
 
             {/* CTA — bigger, bolder */}
-            <div className="flex flex-col items-center lg:items-start gap-2 mb-5">
+            <div className="flex flex-col items-center lg:items-start gap-2.5 mb-4">
               <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 rounded-2xl font-black text-white w-full sm:w-auto" style={{ fontSize: 22, padding: "22px 44px", boxShadow: "0 16px 40px rgba(212,160,23,0.5)", border: "none", cursor: "pointer", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
                 <TicketIcon size={26} />
                 <span className="inline-flex flex-wrap items-baseline justify-center gap-1.5">Register for <PriceTag /></span>
               </button>
+              {/* avatars + loved-by count */}
+              <div className="flex items-center gap-2.5">
+                <div className="flex items-center">
+                  {["avatar-1", "avatar-2", "avatar-3", "avatar-4"].map((a, i) => (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img key={a} src={`/desk/gem/${a}.jpg`} alt="Happy professional" className="rounded-full object-cover" style={{ width: 34, height: 34, border: "2.5px solid #fff", marginLeft: i === 0 ? 0 : -11, boxShadow: "0 2px 8px rgba(0,0,0,0.15)" }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                  ))}
+                </div>
+                <p style={{ fontSize: 14, fontWeight: 600, color: "#18181b", lineHeight: 1.2 }}>
+                  <span style={{ color: "#e8a020", letterSpacing: "1px" }}>★★★★★</span><br />Loved by <strong style={{ color: "#a8790d", fontWeight: 800 }}>5,000+ professionals</strong>
+                </p>
+              </div>
             </div>
+          </div>
 
-            {/* 3 one-liner testimonials — borderless: stars · quote · person */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 max-w-xl mx-auto lg:mx-0">
+          {/* Right: hero image + testimonials below it */}
+          <div className="flex flex-col items-center lg:items-end">
+            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 720, width: "100%" }}>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/desk/hf/final_desk.jpg" alt="No time for health vs health built into work — the Desk Fit approach woven into your workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+            </div>
+            {/* 3 one-liner testimonials — borderless, below the image */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-x-5 gap-y-5 mt-6" style={{ maxWidth: 720, width: "100%" }}>
               {[
                 { q: "My back pain and 4 PM slump are finally gone — no gym needed.", img: "avatar-1", n: "Ankit S.", city: "Software Engineer" },
                 { q: "Stopped stress-snacking and dropped 4 kg — just desk habits.", img: "avatar-2", n: "Priya M.", city: "HR Manager" },
@@ -503,16 +524,6 @@ export default function DeskHealthSystemPage() {
                   </div>
                 </div>
               ))}
-            </div>
-          </div>
-
-          {/* Right: AI split before/after image — the image itself explains the product */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative" style={{ animation: "ss-float 5s ease-in-out infinite", maxWidth: 720, width: "100%" }}>
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(184,134,11,0.4)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/desk/hf/final_desk.jpg" alt="No time for health vs health built into work — the Desk Fit approach woven into your workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-              </div>
             </div>
           </div>
         </div>

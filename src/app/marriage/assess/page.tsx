@@ -11,10 +11,8 @@ import { T, BRAND } from "../theme";
  * question. On finish, submits to /api/marriage/submit.
  */
 interface Opt { label: string; value: number; }
-interface Q { id: string; text: string; type: string; options: Opt[] }
-interface Group { dimension: string; name: string; blurb: string; part: string; questions: Q[] }
-// A question flattened with its section context for the one-at-a-time flow.
-interface FlatQ extends Q { sectionName: string; sectionPart: string; sectionIndex: number; sectionTotal: number; posInSection: number; sizeOfSection: number }
+// A question in presentation order, carrying its section + phase context.
+interface FlatQ { id: string; text: string; type: string; options: Opt[]; dimension: string; sectionName: string; part: string; phase: string }
 
 export default function AssessPage() {
   const [token, setToken] = useState<string | null>(null);
@@ -45,7 +43,7 @@ export default function AssessPage() {
         ]);
         const qData = await qRes.json();
         const sData = await sRes.json();
-        if (qData.ok) setFlat(flatten(qData.groups as Group[]));
+        if (qData.ok) setFlat(qData.questions as FlatQ[]);
         if (sData.ok) {
           if (sData.yourName) setName(sData.yourName);
           if (sData.youSubmitted) setAlreadyDone({ code: sData.code });
@@ -168,10 +166,10 @@ export default function AssessPage() {
         {phase === "question" && current && (
           <div key={current.id} style={{ animation: "mipfade .25s ease" }}>
             <div style={{ fontFamily: T.sans, fontSize: 11.5, letterSpacing: "0.12em", textTransform: "uppercase", color: T.accent, fontWeight: 700, marginBottom: 4 }}>
-              {current.sectionName}
+              {current.phase}
             </div>
             <div style={{ fontFamily: T.sans, fontSize: 12, color: T.inkFaint, marginBottom: 20 }}>
-              {current.sectionPart === "portrait" ? "About you" : "What you want"} · Question {qIndex + 1} of {total}
+              {current.sectionName} · Question {qIndex + 1} of {total}
             </div>
 
             <h2 style={{ fontSize: "clamp(21px,3.6vw,28px)", fontWeight: 500, lineHeight: 1.35, margin: "0 0 26px", textWrap: "balance" as const }}>
@@ -233,21 +231,6 @@ export default function AssessPage() {
       <style>{`@keyframes mipfade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}`}</style>
     </main>
   );
-}
-
-function flatten(groups: Group[]): FlatQ[] {
-  const out: FlatQ[] = [];
-  groups.forEach((g, gi) => {
-    g.questions.forEach((q, qi) => {
-      out.push({
-        ...q,
-        sectionName: g.name, sectionPart: g.part,
-        sectionIndex: gi, sectionTotal: groups.length,
-        posInSection: qi + 1, sizeOfSection: g.questions.length,
-      });
-    });
-  });
-  return out;
 }
 
 function scrollTop() { if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" }); }

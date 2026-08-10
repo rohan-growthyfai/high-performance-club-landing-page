@@ -528,17 +528,17 @@ export default function DeskHealthSystemPage() {
           </div>
         </div>
         </div>
-
-        {/* Countdown timer bar — pinned to the very bottom of the hero screen */}
-        <div className="border-t shrink-0" style={{ borderColor: "#e6d9b0", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(4px)" }}>
-          <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-7">
-            <p className="text-center sm:text-right" style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b" }}>
-              ⏳ Masterclass starts in
-            </p>
-            <Countdown />
-          </div>
-        </div>
       </section>
+
+      {/* Countdown timer bar — sits just below the hero, revealed on scroll */}
+      <div className="border-y" style={{ borderColor: "#e6d9b0", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(4px)" }}>
+        <div className="max-w-6xl mx-auto px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-7">
+          <p className="text-center sm:text-right" style={{ fontSize: 16.5, fontWeight: 800, color: "#18181b" }}>
+            ⏳ Masterclass starts in
+          </p>
+          <Countdown />
+        </div>
+      </div>
 
       {/* ══ 2. WORK vs HEALTH BALANCE — the modern struggle ═════════════════ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
@@ -749,46 +749,45 @@ export default function DeskHealthSystemPage() {
             </p>
           </Reveal>
 
-          {/* 4 pillars — image-topped cards: Instead of this… ⬇️ Try this… + tiny pointers */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {/* 4 pillars — zig-zag rows: image one side, content the other, alternating */}
+          <div className="flex flex-col gap-8 lg:gap-12">
             {[
-              { icon: "⚡", pillar: "Energy", bar: "#e0a020", tint: "#fff5e6", img: "/desk/gem/swap-energy.jpg", big: "Drink more coffee", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch.", points: ["Feel less tired in the afternoon", "Stay awake during long meetings"] },
-              { icon: "🚶", pillar: "Movement", bar: "#10b981", tint: "#eafaf0", img: "/desk/gem/swap-movement.jpg", big: "Walk 10,000 steps", tiny: "Walk for just 2 minutes after every meeting — that&apos;s enough to undo hours of sitting.", points: ["Less neck and back pain", "No gym needed — do it between tasks"] },
-              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", tint: "#eaf3ff", img: "/desk/gem/swap-nutrition.jpg", big: "Drink 3 litres of water", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort.", points: ["Snack less through the morning", "Just one glass — takes a few seconds"] },
-              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", tint: "#f4ecff", img: "/desk/gem/swap-mind.jpg", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus.", points: ["Feel calmer in a few seconds", "Focus better on your work"] },
-            ].map(({ icon, pillar, bar, tint, img, big, tiny, points }, i) => (
-              <Reveal key={pillar} delay={i * 80}>
-                <div className="pop-card rounded-3xl overflow-hidden h-full flex flex-col" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 10px 30px -14px rgba(0,0,0,0.16)" }}>
-                  {/* photo */}
-                  <div className="relative">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img} alt={pillar} className="w-full h-44 object-cover block" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3 py-1.5" style={{ background: "#fff", boxShadow: "0 4px 12px rgba(0,0,0,0.18)" }}>
-                      <span style={{ fontSize: 15 }}>{icon}</span>
-                      <span style={{ fontSize: 13.5, fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif" }}>{pillar}</span>
+              { icon: "⚡", pillar: "Energy", bar: "#e0a020", img: "/desk/gem/swap-energy.jpg", big: "Drink more coffee", tiny: "Every time you return to your desk, take a sip of water — hydration is your fastest energy switch.", points: ["Feel less tired in the afternoon", "Stay awake during long meetings"] },
+              { icon: "🚶", pillar: "Movement", bar: "#10b981", img: "/desk/gem/swap-movement.jpg", big: "Walk 10,000 steps", tiny: "Walk for just 2 minutes after every meeting — that&apos;s enough to undo hours of sitting.", points: ["Less neck and back pain", "No gym needed — do it between tasks"] },
+              { icon: "🥗", pillar: "Nutrition & Hydration", bar: "#3b82f6", img: "/desk/gem/swap-nutrition.jpg", big: "Drink 3 litres of water", tiny: "Before your first coffee, drink one glass of water — a healthy start with zero effort.", points: ["Snack less through the morning", "Just one glass — takes a few seconds"] },
+              { icon: "🧘", pillar: "Relaxed Mind", bar: "#8b5cf6", img: "/desk/gem/swap-mind.jpg", big: "Meditate for 20 minutes", tiny: "Before every video call, take three slow deep breaths — instant calm, sharper focus.", points: ["Feel calmer in a few seconds", "Focus better on your work"] },
+            ].map(({ icon, pillar, bar, img, big, tiny, points }, i) => (
+              <Reveal key={pillar} delay={i * 60}>
+                <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+                  {/* image (right side on odd rows via lg:order) */}
+                  <div className={`relative ${i % 2 === 1 ? "lg:order-2" : "lg:order-1"}`}>
+                    <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid #fff", boxShadow: "0 16px 40px -18px rgba(0,0,0,0.28)" }}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img} alt={pillar} className="w-full h-56 lg:h-64 object-cover block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                    </div>
+                    <span className="absolute top-3 left-3 inline-flex items-center gap-1.5 rounded-full px-3.5 py-2" style={{ background: "#fff", boxShadow: "0 4px 12px rgba(0,0,0,0.18)" }}>
+                      <span style={{ fontSize: 16 }}>{icon}</span>
+                      <span style={{ fontSize: 14.5, fontWeight: 800, color: "#18181b", fontFamily: "'Poppins',sans-serif" }}>{pillar}</span>
                     </span>
                   </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    {/* Instead of this… */}
+                  {/* content (left side on odd rows via lg:order) */}
+                  <div className={i % 2 === 1 ? "lg:order-1" : "lg:order-2"}>
                     <div className="rounded-xl px-4 py-3" style={{ background: "#fff7f7", border: "1px solid #fde0e0" }}>
                       <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: "#b91c1c", marginBottom: 3 }}>Instead of this…</p>
-                      <p style={{ fontSize: 15.5, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#f5a3a3" }}>{big}</p>
+                      <p style={{ fontSize: 16, fontWeight: 700, color: "#9ca3af", textDecoration: "line-through", textDecorationColor: "#f5a3a3" }}>{big}</p>
                     </div>
-                    {/* arrow */}
-                    <div className="flex justify-center" style={{ margin: "6px 0" }}>
-                      <span className="inline-flex items-center justify-center rounded-full" style={{ width: 28, height: 28, background: bar, color: "#fff", fontSize: 15, fontWeight: 900 }}>↓</span>
+                    <div className="flex justify-center" style={{ margin: "8px 0" }}>
+                      <span className="inline-flex items-center justify-center rounded-full" style={{ width: 30, height: 30, background: bar, color: "#fff", fontSize: 16, fontWeight: 900 }}>↓</span>
                     </div>
-                    {/* Try this… */}
                     <div className="rounded-xl px-4 py-3" style={{ background: `${bar}12`, border: `1px solid ${bar}44` }}>
                       <p style={{ fontSize: 11, fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: bar, marginBottom: 4 }}>✓ Try this…</p>
-                      <p style={{ fontSize: 15.5, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: tiny }} />
+                      <p style={{ fontSize: 16, color: "#18181b", lineHeight: 1.5, fontWeight: 600 }} dangerouslySetInnerHTML={{ __html: tiny }} />
                     </div>
-                    {/* tiny pointers */}
                     <div className="flex flex-col gap-2 mt-4 pt-4" style={{ borderTop: "1px dashed #e6d9b0" }}>
                       {points.map(pt => (
                         <div key={pt} className="flex items-start gap-2">
-                          <span className="shrink-0" style={{ color: bar, fontSize: 14, fontWeight: 900, lineHeight: 1.5 }}>✓</span>
-                          <span style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.5, fontWeight: 500 }}>{pt}</span>
+                          <span className="shrink-0" style={{ color: bar, fontSize: 15, fontWeight: 900, lineHeight: 1.5 }}>✓</span>
+                          <span style={{ fontSize: 15, color: "#3f3f46", lineHeight: 1.5, fontWeight: 500 }}>{pt}</span>
                         </div>
                       ))}
                     </div>

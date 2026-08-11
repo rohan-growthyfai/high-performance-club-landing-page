@@ -841,7 +841,7 @@ export default function FiveMinuteBodyChallengePage() {
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-11">
             <SectionLabel>The actual method</SectionLabel>
-            <h2 className="duc-h2 duc-section-title">What happens inside your <Brand gradient tm={false} /><span className="gradient-text">?</span></h2>
+            <h2 className="duc-h2 duc-section-title">What happens inside your <Brand gradient tm={false} /> <span className="gradient-text">Challenge?</span></h2>
           </div>
 
           <div className="flex flex-col gap-3">

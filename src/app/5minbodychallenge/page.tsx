@@ -886,14 +886,25 @@ export default function FiveMinuteBodyChallengePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { tag: "🟢 EASY", title: "Start comfortable", ex: "e.g. Wall push-up", c: "#059669", bg: "#f0fdf4", bd: "#bbf7d0" },
-              { tag: "🟡 MODERATE", title: "Challenge yourself", ex: "e.g. Incline push-up", c: "#b8860b", bg: "#fffbeb", bd: "#fde68a" },
-              { tag: "🔥 INTENSE", title: "Push further", ex: "e.g. Full push-up", c: "#dc2626", bg: "#fff7f7", bd: "#fecaca" },
-            ].map(({ tag, title, ex, c, bg, bd }) => (
-              <div key={tag} className="pop-card rounded-3xl p-6 text-center" style={{ background: bg, border: `2px solid ${bd}` }}>
-                <p style={{ fontSize: 15, fontWeight: 900, color: c, marginBottom: 10, letterSpacing: "0.04em" }}>{tag}</p>
-                <p style={{ fontSize: 19, fontWeight: 900, color: "#18181b", marginBottom: 6 }}>{title}</p>
-                <p style={{ fontSize: 15.5, color: "#52525b" }}>{ex}</p>
+              { tag: "🟢 EASY", title: "Start comfortable", ex: "Wall push-up", clip: "/pushup-easy.mp4", c: "#059669", bg: "#f0fdf4", bd: "#bbf7d0" },
+              { tag: "🟡 MODERATE", title: "Challenge yourself", ex: "Knee push-up", clip: "/pushup-moderate.mp4", c: "#b8860b", bg: "#fffbeb", bd: "#fde68a" },
+              { tag: "🔥 INTENSE", title: "Push further", ex: "Full push-up", clip: "/pushup-intense.mp4", c: "#dc2626", bg: "#fff7f7", bd: "#fecaca" },
+            ].map(({ tag, title, ex, clip, c, bg, bd }) => (
+              <div key={tag} className="pop-card rounded-3xl overflow-hidden flex flex-col" style={{ background: bg, border: `2px solid ${bd}` }}>
+                {/* Video: the same exercise (push-up) shown at this intensity */}
+                <div className="relative" style={{ aspectRatio: "16 / 10", background: "#171412" }}>
+                  <video
+                    src={clip}
+                    autoPlay muted loop playsInline
+                    preload="none"
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                  <span className="absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 font-black" style={{ fontSize: 12, background: "rgba(255,255,255,0.92)", color: c, letterSpacing: "0.03em" }}>{tag}</span>
+                </div>
+                <div className="p-6 text-center">
+                  <p style={{ fontSize: 19, fontWeight: 900, color: "#18181b", marginBottom: 6 }}>{title}</p>
+                  <p style={{ fontSize: 15.5, color: "#52525b" }}>{ex}</p>
+                </div>
               </div>
             ))}
           </div>

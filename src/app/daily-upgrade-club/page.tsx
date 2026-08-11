@@ -477,7 +477,7 @@ function TrialPopup() {
           </div>
           <div className="px-6 py-5 text-center">
             <p style={{ fontSize: 14, color: "#3f3f46", lineHeight: 1.7, marginBottom: 16 }}>
-              Join Daily Upgrade Club for <strong style={{ color: "#18181b" }}>just ₹99 per month</strong> and get 1 science-backed tiny healthy habit every morning on WhatsApp for the <strong style={{ color: "#18181b" }}>next 30 days</strong> — with accountability, streaks and guidance to keep you consistent.
+              Join Daily Upgrade Club for <strong style={{ color: "#18181b" }}>just ₹99 per month</strong> and get 1 quick, science-backed 5-minute habit every morning on WhatsApp for the <strong style={{ color: "#18181b" }}>next 30 days</strong> — with accountability, streaks and guidance to keep you consistent.
             </p>
             <div className="flex flex-col gap-2 mb-5 text-left">
               {["No complicated routines", "Under 5 minutes a day", "Just ₹99/month · less than a chai a day · No auto-charges"].map(t => (
@@ -498,7 +498,7 @@ function TrialPopup() {
 }
 
 // ─── TinyGainsDUC ────────────────────────────────────────────────────────────
-// "The power of tiny healthy habits — Get just 1% better every day"
+// "The power of quick 5-minute habits — Get just 1% better every day"
 // Ported from src/components/TinyGains.tsx, re-skinned for DUC palette.
 const VW = 720, VH = 460, X0 = 90, Y0 = 360, XEND = 660, TOP = 40;
 const BETTER_PATH = `M ${X0} ${Y0} C ${X0 + 240} ${Y0 - 8}, ${XEND - 140} ${Y0 - 70}, ${XEND} ${TOP}`;
@@ -535,12 +535,12 @@ function TinyGainsDUC() {
     <section ref={ref} style={{ background: "#fff", borderTop: "1px solid #e4e4e7" }} className="py-16 lg:py-24 overflow-hidden">
       <div className="max-w-5xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-10 lg:mb-12">
-          <p className="duc-label mb-3" style={{ color: "#25d366" }}>The power of tiny healthy habits</p>
+          <p className="duc-label mb-3" style={{ color: "#25d366" }}>The power of quick 5-minute habits</p>
           <h2 className="duc-h2 mb-4" style={{ color: "#18181b" }}>
             Get just <span style={{ color: "#25d366" }}>1% better</span> every day…
           </h2>
           <p className="duc-body max-w-2xl mx-auto" style={{ color: "#52525b" }}>
-            A tiny healthy habit feels like nothing on Day 1. But small wins add up. Keep going and the math is shocking — you can become a{" "}
+            A quick 5-minute habit feels like nothing on Day 1. But small wins add up. Keep going and the math is shocking — you can become a{" "}
             <strong style={{ color: "#18181b" }}>37× better version of yourself</strong> in just 1 year!
           </p>
         </div>
@@ -589,9 +589,9 @@ function TinyGainsDUC() {
             If you do nothing, nothing changes.
           </p>
           <p style={{ fontSize: 16, color: "#52525b", maxWidth: 560, margin: "0 auto 32px", lineHeight: 1.7 }}>
-            Daily Upgrade Club gives you your 1% — one tiny healthy habit a day, on WhatsApp. The small wins do the rest.
+            Daily Upgrade Club gives you your 1% — one quick 5-minute habit a day, on WhatsApp. The small wins do the rest.
           </p>
-          <CTA label="Start My 1% Today →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+          <CTA label="Start My 1% Today →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
         </div>
       </div>
     </section>
@@ -817,7 +817,7 @@ export default function DailyUpgradeClubPage() {
               style={{ fontSize: 16, boxShadow: "0 8px 28px rgba(37,211,102,0.42)", textDecoration: "none" }}>
               <WAIcon size={18} />Join for Just ₹99/month →
             </button>
-            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>Just ₹99 per month · 1 tiny healthy habit every morning for 30 days</p>
+            <p className="mt-2" style={{ fontSize: 12, color: "#71717a" }}>Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days</p>
           </div>
         </div>
       </section>
@@ -903,7 +903,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="I Want This Version of Myself →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="I Want This Version of Myself →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -914,7 +914,7 @@ export default function DailyUpgradeClubPage() {
           <div className="text-center mb-12">
             <p className="duc-label mb-3">Simple by design</p>
             <h2 className="duc-h2 duc-section-title mb-4">How <span className="relative inline-block" style={{ whiteSpace: "nowrap", WebkitTextFillColor: "#18181b", color: "#18181b" }}>Daily Upgrade Club<svg viewBox="0 0 220 10" className="absolute left-0 bottom-[-4px] w-full" style={{ height: 8 }} fill="none"><path d="M2 7 Q55 2 110 6 Q165 10 218 5" stroke="#25d366" strokeWidth="2.5" strokeLinecap="round" fill="none"/></svg></span> Works</h2>
-            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one tiny healthy habit every morning on WhatsApp.</p>
+            <p className="duc-body max-w-xl mx-auto">No app. No long routines. Just one quick 5-minute habit every morning on WhatsApp.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -927,14 +927,14 @@ export default function DailyUpgradeClubPage() {
               {
                 n: "2",
                 emoji: "🌅",
-                title: "Get 1 Tiny Habit Every Morning",
+                title: "Get 1 Quick 5-Minute Habit Every Morning",
                 body: "Every morning, you'll receive one science-backed healthy habit related to your chosen area of improvement. Each habit takes less than 5 minutes to complete!",
               },
               {
                 n: "3",
                 emoji: "🔥",
                 title: "Reply DONE & Track Your Progress",
-                body: "Complete the daily tiny habit, reply DONE, build your streak and get weekly progress scorecards to see how you're improving each day.",
+                body: "Complete the quick daily habit, reply DONE, build your streak and get weekly progress scorecards to see how you're improving each day.",
               },
             ].map(({ n, emoji, title, body }) => (
               <div key={n} className="bg-white rounded-2xl p-7 flex flex-col items-center text-center" style={{ border: "1px solid #e4e4e7", boxShadow: "0 2px 16px rgba(0,0,0,0.04)" }}>
@@ -946,7 +946,7 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -1030,7 +1030,7 @@ export default function DailyUpgradeClubPage() {
 
               <div className="max-w-5xl mx-auto px-6 lg:px-10">
                 <div className="flex justify-center mt-8">
-                  <CTA label="I Want to Pick My First Theme" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+                  <CTA label="I Want to Pick My First Theme" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
                 </div>
               </div>
             </section>
@@ -1103,7 +1103,7 @@ export default function DailyUpgradeClubPage() {
           <p className="text-center mt-8" style={{ fontSize: 13, color: "#71717a" }}>3 of 30 habits shown. Every habit: specific, science-explained, under 5 minutes to do.</p>
 
           <div className="flex justify-center mt-8">
-            <CTA label="Send My First Habit Now" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="Send My First Habit Now" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -1131,7 +1131,7 @@ export default function DailyUpgradeClubPage() {
               },
               {
                 num: "#2", label: "YOUR DAILY DELIVERY",
-                icon: "🌅", title: "1 Tiny Healthy Habit Every Morning",
+                icon: "🌅", title: "1 Quick 5-Minute Habit Every Morning",
                 value: "₹799 value",
                 desc: "Every morning at 7 AM, one powerful habit lands in your WhatsApp. No app. No notifications to ignore. Just one thing to do today.",
                 bullets: ["Delivered at 7 AM on WhatsApp", "Under 5 minutes to complete", "Clear why-it-works explanation with each habit"],
@@ -1205,7 +1205,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-12">
-            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -1254,7 +1254,7 @@ export default function DailyUpgradeClubPage() {
               <p className="font-black leading-none mb-1" style={{ fontSize: "clamp(5rem,12vw,7rem)", color: "#fff", textShadow: "0 0 32px rgba(37,211,102,0.4)" }}>₹99</p>
               <p style={{ fontSize: 15, color: "#e4e4e7", fontWeight: 700 }} className="mb-1">per month — that's ₹3.3 a day, less than your daily chai ☕</p>
               <p style={{ fontSize: 13, color: "#9ca3af" }} className="mb-6">Just ₹99 per month · 30 daily habits · No auto-charges</p>
-              <CTA label="Join for Just ₹99 →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+              <CTA label="Join for Just ₹99 →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
             </div>
           </div>
         </div>
@@ -1264,8 +1264,8 @@ export default function DailyUpgradeClubPage() {
       <section style={{ background: "linear-gradient(135deg,#0f1f13 0%,#18181b 50%,#0f1f13 100%)" }} className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
           <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>Not a Course. Not an App. Not Another Challenge.</h2>
-          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Daily Upgrade Club</strong> is a simple WhatsApp-based habit system that helps you build healthier daily routines through tiny actions, daily check-ins, streaks and accountability.</p>
-          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No videos to watch. No app to download. No heavy routine to follow. Just one tiny habit every morning.</p>
+          <p className="max-w-2xl mx-auto mb-6" style={{ fontSize: 16, lineHeight: 1.75, color: "rgba(255,255,255,0.78)" }}><strong style={{ color: "#fff" }}>Daily Upgrade Club</strong> is a simple WhatsApp-based habit system that helps you build healthier daily routines through quick 5-minute actions, daily check-ins, streaks and accountability.</p>
+          <p style={{ fontSize: 17, color: "rgba(37,211,102,0.9)", fontStyle: "italic", fontWeight: 500 }}>No videos to watch. No app to download. No heavy routine to follow. Just one quick 5-minute habit every morning.</p>
         </div>
       </section>
 
@@ -1292,7 +1292,7 @@ export default function DailyUpgradeClubPage() {
             </div>
             <div />
             <div className="text-center">
-              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#15803d" }}>The tiny habit way ✓</span>
+              <span style={{ fontSize: 11, fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "#15803d" }}>The quick habit way ✓</span>
             </div>
           </div>
 
@@ -1373,15 +1373,15 @@ export default function DailyUpgradeClubPage() {
                   </svg>
                 </div>
 
-                {/* RIGHT — tiny habit */}
+                {/* RIGHT — quick habit */}
                 <div className="rounded-2xl overflow-hidden" style={{ border: "1.5px solid #bbf7d0", background: "#f0fdf4" }}>
                   <div className="px-4 py-3 flex items-center gap-2.5" style={{ borderBottom: "1.5px solid #bbf7d0" }}>
                     <span style={{ fontSize: 20 }}>{emoji}</span>
                     <span style={{ fontSize: 14, fontWeight: 800, color: "#18181b" }}>{goal}</span>
-                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>tiny habit ✓</span>
+                    <span className="ml-auto" style={{ fontSize: 10, fontWeight: 700, color: "#15803d", textTransform: "uppercase", letterSpacing: "0.08em" }}>quick habit ✓</span>
                   </div>
                   <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", borderBottom: "1.5px solid #bbf7d0" }}>
-                    <img src={goodImg} alt={`${goal} the tiny habit way`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src={goodImg} alt={`${goal} the quick habit way`} loading="lazy" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0) 50%,rgba(37,211,102,0.18) 100%)" }} />
                   </div>
                   <div className="px-4 py-4 flex flex-col gap-2.5">
@@ -1404,19 +1404,19 @@ export default function DailyUpgradeClubPage() {
           {/* Bridge — the reframe */}
           <div className="rounded-2xl px-8 py-7 text-center mb-10" style={{ background: "linear-gradient(135deg,#0f1f13,#18181b)" }}>
             <p style={{ fontSize: "clamp(1.1rem,2.5vw,1.5rem)", fontWeight: 900, color: "#fff", lineHeight: 1.35, marginBottom: 10 }}>
-              This is how tiny habits work.
+              This is how quick 5-minute habits work.
             </p>
             <p style={{ fontSize: 15, color: "rgba(255,255,255,0.7)", lineHeight: 1.65, maxWidth: 520, margin: "0 auto" }}>
-              You don't overhaul your life. You start with one small step you can't fail at — and let it compound. That's the <span style={{ color: "#25d366", fontWeight: 700 }}>power of tiny habits</span>.
+              You don't overhaul your life. You start with one small step you can't fail at — and let it compound. That's the <span style={{ color: "#25d366", fontWeight: 700 }}>power of quick habits</span>.
             </p>
           </div>
 
-          {/* The 3 pillars of tiny habits */}
+          {/* The 3 pillars of quick habits */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
             {[
               { icon: "✅", title: "Easy to Do", desc: "2–3 minutes. No equipment. No planning. You can do it on the busiest Monday." },
               { icon: "🔄", title: "No Lifestyle Overhaul", desc: "Fits into the life you already have. No gym, no diet change, no 5am alarm." },
-              { icon: "🎯", title: "Too Small to Miss", desc: "When it's tiny enough, there's no excuse. That's when the streak starts to matter." },
+              { icon: "🎯", title: "Too Small to Miss", desc: "When it's this quick, there's no excuse. That's when the streak starts to matter." },
             ].map(({ icon, title, desc }) => (
               <div key={title} className="rounded-2xl p-6 flex flex-col gap-3" style={{ background: "#fff", border: "1.5px solid #e4e4e7", boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}>
                 <span style={{ fontSize: 28 }}>{icon}</span>
@@ -1427,7 +1427,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center">
-            <CTA label="Start My Tiny Habit Journey →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="Start My Quick Habit Journey →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
 
         </div>
@@ -1452,7 +1452,7 @@ export default function DailyUpgradeClubPage() {
               </p>
               <div className="flex flex-col gap-3">
                 {[
-                  { n: "1", icon: "🌅", bold: "7 AM every morning", text: "One tiny healthy habit arrives in your WhatsApp" },
+                  { n: "1", icon: "🌅", bold: "7 AM every morning", text: "One quick 5-minute habit arrives in your WhatsApp" },
                   { n: "2", icon: "✅", bold: "Do it anytime", text: "Under 5 minutes. Before breakfast, during lunch, whenever." },
                   { n: "3", icon: "💬", bold: "Reply DONE", text: "Your streak updates. Tomorrow's habit is already queued." },
                 ].map(s => (
@@ -1492,7 +1492,7 @@ export default function DailyUpgradeClubPage() {
                 </div>
               </div>
               <div className="mt-5 flex justify-center lg:justify-start">
-                <CTA label="Show Me My First Habit →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+                <CTA label="Show Me My First Habit →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
               </div>
             </div>
           </div>
@@ -1554,7 +1554,7 @@ export default function DailyUpgradeClubPage() {
               <p className="font-bold mb-5" style={{ fontSize: 13, color: "#25d366", textTransform: "uppercase", letterSpacing: "0.1em" }}>The Daily Upgrade Club System</p>
               <div className="flex flex-col gap-4">
                 {[
-                  { icon: "🌱", label: "1 tiny habit", sub: "Small enough to never skip" },
+                  { icon: "🌱", label: "1 quick habit", sub: "Small enough to never skip" },
                   { icon: "⏱️", label: "Less than 5 minutes", sub: "Fits into any schedule" },
                   { icon: "📲", label: "Delivered on WhatsApp daily", sub: "No new app to remember" },
                   { icon: "✅", label: "DONE check-in", sub: "Instant accountability" },
@@ -1580,7 +1580,7 @@ export default function DailyUpgradeClubPage() {
           </div>
 
           <div className="flex justify-center mt-10">
-            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="Join for Just ₹99/month" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -1595,7 +1595,7 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="flex flex-col gap-4">
             {[
-              { n: "01", belief: "\"One tiny habit can't actually change my health.\"", truth: "A Stanford study found that habits done for 30 consecutive days rewire neural pathways — permanently. Members who started with just morning sunlight ended the month sleeping better, eating better, and moving more. None of those were the habit. The habit built the momentum.", icon: "🧠" },
+              { n: "01", belief: "\"One quick habit can't actually change my health.\"", truth: "A Stanford study found that habits done for 30 consecutive days rewire neural pathways — permanently. Members who started with just morning sunlight ended the month sleeping better, eating better, and moving more. None of those were the habit. The habit built the momentum.", icon: "🧠" },
               { n: "02", belief: "\"I've tried this before. I always quit eventually.\"", truth: "You quit because the habit was too big, too vague, or required willpower you didn't have that day. When a habit takes under 5 minutes, arrives automatically, and you only need to reply DONE — there's nothing to quit. Our members average 78% completion in month one.", icon: "🔄" },
               { n: "03", belief: "\"What if I pay and don't stay consistent?\"", truth: "That's exactly why it's just ₹99 per month — ₹3.3 a day, less than your daily cup of chai. There's no auto-charge and nothing to cancel. Even if you complete just a fraction of the 30 habits, the few that stick are worth far more than ₹99. This is the cheapest bet you'll ever make on yourself.", icon: "💰" },
             ].map(({ n, belief, truth, icon }) => (
@@ -1674,7 +1674,7 @@ export default function DailyUpgradeClubPage() {
             ))}
           </div>
           <div className="flex justify-center mt-10">
-            <CTA label="I Want Results Like These →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+            <CTA label="I Want Results Like These →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           </div>
         </div>
       </section>
@@ -1786,14 +1786,14 @@ export default function DailyUpgradeClubPage() {
           </div>
           <div className="flex flex-col gap-2">
             {[
-              { q: "What exactly is a 'tiny healthy habit'?", a: "One specific, science-backed action under 5 minutes, tied to your monthly theme. For example: 5 min of morning sunlight (Energy Month), one spoon of plain curd at lunch (Gut Health Month), phone charger outside the bedroom (Sleep Month), box breathing before a meeting (Stress Month). Every habit is specific, explained, and doable today." },
+              { q: "What exactly is a 'quick 5-minute habit'?", a: "One specific, science-backed action under 5 minutes, tied to your monthly theme. For example: 5 min of morning sunlight (Energy Month), one spoon of plain curd at lunch (Gut Health Month), phone charger outside the bedroom (Sleep Month), box breathing before a meeting (Stress Month). Every habit is specific, explained, and doable today." },
               { q: "What happens on Day 1?", a: "The morning after you join, at 7 AM, your first habit lands on WhatsApp. You read it, do it, reply DONE. Your streak begins. That's the entire Day 1." },
               { q: "How do I choose my monthly theme?", a: "After joining, you pick from 8 themes: Sleep, Energy, Focus, Gut Health, Stress, Fitness, Hydration, or Heart Health. All 30 habits that month focus on that one area. You can switch next month or repeat the same theme." },
               { q: "What if I miss a day?", a: "Nothing bad happens. One missed day doesn't end your membership — your habits keep arriving every morning. You get a gentle evening nudge if you haven't replied by 8 PM. Missing a day occasionally is normal — the system is designed for real life." },
-              { q: "How much does it cost?", a: "Just ₹99 per month — that's about ₹3.3 a day, less than your daily cup of chai or coffee. You pay ₹99 and receive one tiny science-backed habit every morning for the next 30 days, plus streaks, check-ins and weekly scorecards." },
+              { q: "How much does it cost?", a: "Just ₹99 per month — that's about ₹3.3 a day, less than your daily cup of chai or coffee. You pay ₹99 and receive one quick science-backed habit every morning for the next 30 days, plus streaks, check-ins and weekly scorecards." },
               { q: "Will I be charged again automatically?", a: "No. You will never be auto-charged. Each ₹99 payment covers your next 30 days — when the month ends, you simply choose whether to continue for another month. Nothing renews on its own." },
               { q: "Do I need to download anything?", a: "No app. No download. Everything is on WhatsApp. Save the number when you join, and habits arrive every morning." },
-              { q: "How long does the programme run?", a: "It's a monthly membership — just ₹99 per month for 30 tiny habits, one every morning, built around the theme you choose. Continue month after month with a fresh theme each time, or stop whenever you like. No auto-charges." },
+              { q: "How long does the programme run?", a: "It's a monthly membership — just ₹99 per month for 30 quick habits, one every morning, built around the theme you choose. Continue month after month with a fresh theme each time, or stop whenever you like. No auto-charges." },
               { q: "I've failed at habits before. Why will this be different?", a: "The habit arrives automatically so you never have to remember or plan. It takes under 5 minutes so even on your worst day it's possible. You reply DONE so there's a completion signal. And the habit is so specific you never wonder what to do. That's why 78% of members complete their monthly habit — the system does the work, not willpower." },
             ].map(({ q, a }) => <FAQ key={q} q={q} a={a} />)}
           </div>
@@ -1807,7 +1807,7 @@ export default function DailyUpgradeClubPage() {
         <div className="max-w-xl mx-auto px-6 text-center relative">
           <p style={{ fontSize: 44 }} className="mb-5">🌱</p>
           <h2 className="duc-h1 mb-5" style={{ color: "#fff" }}>
-            One tiny healthy habit.<br />Tomorrow morning.<br />
+            One quick 5-minute habit.<br />Tomorrow morning.<br />
             <span style={{ color: "#25d366" }}>On your WhatsApp.</span>
           </h2>
           <p style={{ fontSize: 16, color: "#a1a1aa", lineHeight: 1.75, marginBottom: 32 }}>
@@ -1817,7 +1817,7 @@ export default function DailyUpgradeClubPage() {
             Or you could keep planning to start next Monday.<br />
             <strong style={{ color: "#e4e4e7" }}>₹1 a day decides which one.</strong>
           </p>
-          <CTA label="Yes — Join for Just ₹99/month →" sub="Just ₹99 per month · 1 tiny healthy habit every morning for 30 days" />
+          <CTA label="Yes — Join for Just ₹99/month →" sub="Just ₹99 per month · 1 quick 5-minute habit every morning for 30 days" />
           <p className="mt-5" style={{ fontSize: 13, color: "#52525b" }}>
             Questions?{" "}
             <a href="https://wa.me/918956146485?text=Hi%2C+I+have+a+question+about+the+Daily+Upgrade+Club" className="underline" style={{ color: "#25d366" }}>Chat with Rohan on WhatsApp</a>

@@ -111,7 +111,7 @@ Match the story to the pain point:
   adult life. 3 weeks into the Gut Health Track — gone. He messaged us saying his wife
   noticed before he did."
 - Weight / eating habits / food / diet → "Meera from Chennai started the Weight Reset Track.
-  No dieting, no gym pressure — just tiny food habits. In a month she felt lighter and had
+  No dieting, no gym pressure — just quick food habits. In a month she felt lighter and had
   more energy than she had in years."
 - General fitness / movement / inactive / sedentary → "Vikram from Jaipur hadn't exercised
   in years. The Fitness Track gave him habits that took under 5 minutes each. By Day 19 he
@@ -184,7 +184,7 @@ WHAT IS DAILY UPGRADE CLUB?
 Daily Upgrade Club is India's simplest healthy habit membership — delivered entirely on WhatsApp.
 No app to download. No complex routine. No overwhelming programme.
 
-Every morning you receive ONE tiny healthy habit on WhatsApp. You do it (under 5 minutes). You
+Every morning you receive ONE quick healthy habit on WhatsApp. You do it (under 5 minutes). You
 reply "DONE". That's the whole system. Deceptively simple, genuinely powerful.
 
 Tagline: "For busy people who want better health without complicated routines."
@@ -198,7 +198,7 @@ real changes in their energy, sleep, focus and mood.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WHY TINY HABITS? THE CONCEPT EXPLAINED (USE THIS TO EXPLAIN TO USERS)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Here is how to explain the tiny habits concept in simple, relatable language:
+Here is how to explain the quick habits concept in simple, relatable language:
 
 Most people already know what they want. They want to lose weight, build better health, or sleep
 better. These are real goals. But when they try to act on them, they get overwhelmed.
@@ -217,10 +217,10 @@ wind-down routine, white noise machine. All of these are real advice — but sta
 once is why nobody actually follows them.
 
 Here's the reframe: What if you didn't need to do all of that? What if breaking one big goal
-into a single tiny healthy habit — something so small it takes 2 minutes — was actually the
+into a single quick healthy habit — something so small it takes 2 minutes — was actually the
 path that works?
 
-Example of a tiny habit for Losing Weight: "Drink one glass of warm water before your first
+Example of a quick habit for Losing Weight: "Drink one glass of warm water before your first
 meal." That's it. Why it works: it reduces appetite, boosts metabolism, and takes 10 seconds.
 
 Example for Building Better Health: "Do 5 deep breaths the moment you wake up." Why it works:
@@ -229,21 +229,21 @@ it activates your parasympathetic nervous system and sets a calm, intentional to
 Example for Sleeping Better: "Put your phone face-down 10 minutes before bed." Why it works:
 it reduces blue light exposure and signals your brain to enter sleep mode.
 
-These are tiny healthy habits. They're easy to do. They require no big lifestyle changes. And
+These are quick healthy habits. They're easy to do. They require no big lifestyle changes. And
 they're too small to miss. That's the entire philosophy behind Daily Upgrade Club.
 
 WHY TINY HABITS WIN — THE THREE REASONS:
 1. Easy to Do: Takes 2–3 minutes. No equipment. No planning. You can do it half-asleep on a Monday.
 2. No Big Lifestyle Changes: Fits into the life you already have. No gym membership, no diet overhaul.
-3. Too Small to Miss: When the habit is tiny enough, there's no excuse not to do it. That's when the streak starts to matter. 21 days to automatic. 30 days to transformed.
+3. Too Small to Miss: When the habit is quick enough, there's no excuse not to do it. That's when the streak starts to matter. 21 days to automatic. 30 days to transformed.
 
 THE SCIENCE:
-Daily Upgrade Club uses the science of tiny habits: one small action done daily compounds into
+Daily Upgrade Club uses the science of quick habits: one small action done daily compounds into
 massive results over time. James Clear proved in Atomic Habits: 1% better every day = 37x
 better in a year.
 
 The brain forms habits through a loop: cue → routine → reward. Daily Upgrade Club is
-engineered around this. The 7 AM WhatsApp message is the cue. The tiny habit is the routine.
+engineered around this. The 7 AM WhatsApp message is the cue. The quick habit is the routine.
 The "DONE" check-in and streak update are the reward. Repeat 30 times = a habit that lasts.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -253,7 +253,7 @@ Step 1 — JOIN: Tap any "Join for Just ₹99" button on this page, enter your n
 number, and pay just ₹99 for your first month. Your membership activates instantly.
 Step 2 — CHOOSE YOUR THEME: Pick the health theme you want to focus on first (Energy,
 Sleep, Focus, Gut Health, Stress, Fitness, and more).
-Step 3 — RECEIVE: Every morning at 7 AM sharp, one tiny healthy habit arrives in your WhatsApp.
+Step 3 — RECEIVE: Every morning at 7 AM sharp, one quick 5-minute healthy habit arrives in your WhatsApp.
 Step 4 — DO IT: The habit takes under 5 minutes. Morning sunlight, deep breathing, a stretch,
 drinking water — simple, science-backed actions anyone can do.
 Step 5 — CHECK IN: Reply "DONE" on WhatsApp. Your streak updates instantly.
@@ -266,7 +266,7 @@ PRICING
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Just ₹99 per month for 30 days of daily habits. That's about ₹3.3 a day — less than a
 cutting chai, and far less than a coffee.
-The frame: "For less than what you spend on one chai a day, you get a full month of one tiny
+The frame: "For less than what you spend on one chai a day, you get a full month of one quick
 science-backed habit arriving on your WhatsApp at 7 AM — with streaks, check-ins, weekly
 scorecards, and a fresh theme each month you continue."
 You will NEVER be auto-charged. Each ₹99 covers 30 days; when the month ends, you choose
@@ -344,7 +344,7 @@ and quitting. One track = one focus = real, visible change in 30 days.
 FEATURE 2: DAILY HABIT DELIVERY (₹799 value)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WHAT IT IS:
-Every single morning at 7 AM, one tiny healthy habit is delivered directly to the member's
+Every single morning at 7 AM, one quick 5-minute healthy habit is delivered directly to the member's
 WhatsApp. The timing is fixed at 7 AM — this is intentional. Morning is when willpower is
 highest, the day hasn't derailed yet, and the habit gets done before the chaos begins.
 
@@ -530,7 +530,7 @@ experience the full value with zero risk. Most people who start never want to st
 "Will I actually stick to it?"
 Acknowledge: That's the most honest question you can ask — and it shows self-awareness.
 Reframe: Daily Upgrade Club is specifically designed for people who've struggled to stick to
-things before. The habits are intentionally tiny — you literally cannot say "I don't have time
+things before. The habits are intentionally quick — you literally cannot say "I don't have time
 for this." WhatsApp is where you already are — no new app to remember to open. The streak
 makes you not want to stop. And the community means you're not doing it alone. The design
 itself is the solution to the consistency problem.
@@ -666,7 +666,7 @@ FOUNDER NOTE
 "I spent years knowing what I should do for my health but never doing it consistently.
 I tried apps, YouTube routines, courses — nothing stuck. The problem wasn't information.
 I had more than enough of that. It was the gap between knowing and doing. Daily Upgrade Club
-closes that gap — one tiny habit, every morning, on the app you already open. The 7-day
+closes that gap — one quick 5-minute habit, every morning, on the app you already open. The 7-day
 money-back promise exists because I know that once you experience even 7 days of this,
 you'll understand exactly what I mean." — Rohan Mote, Founder
 

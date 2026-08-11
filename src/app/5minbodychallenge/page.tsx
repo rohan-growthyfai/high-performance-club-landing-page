@@ -589,10 +589,10 @@ export default function FiveMinuteBodyChallengePage() {
           {/* When / where — big clear badges */}
           <div className="flex flex-wrap items-center justify-center gap-3 mt-7 mb-8">
             {[
-              { icon: "🌅", label: `${CHALLENGE.morning} Morning` },
-              { icon: "🌙", label: `${CHALLENGE.evening} Evening` },
-              { icon: "🏠", label: "Join from anywhere" },
               { icon: "🎁", label: "100% FREE" },
+              { icon: "🔴", label: "LIVE Daily" },
+              { icon: "👥", label: "Do with Community" },
+              { icon: "🏠", label: "Join from Anywhere" },
             ].map(({ icon, label }) => (
               <div key={label} className="flex items-center gap-2 rounded-full px-4 py-2.5" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 4px 14px rgba(0,0,0,0.05)" }}>
                 <span style={{ fontSize: 18 }}>{icon}</span>
@@ -886,10 +886,10 @@ export default function FiveMinuteBodyChallengePage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { tag: "🟢 EASY", title: "Start comfortable", ex: "Wall push-up", clip: "/pushup-easy.mp4", c: "#059669", bg: "#f0fdf4", bd: "#bbf7d0" },
-              { tag: "🟡 MODERATE", title: "Challenge yourself", ex: "Knee push-up", clip: "/pushup-moderate.mp4", c: "#b8860b", bg: "#fffbeb", bd: "#fde68a" },
-              { tag: "🔥 INTENSE", title: "Push further", ex: "Full push-up", clip: "/pushup-intense.mp4", c: "#dc2626", bg: "#fff7f7", bd: "#fecaca" },
-            ].map(({ tag, title, ex, clip, c, bg, bd }) => (
+              { tag: "🟢 EASY", ex: "Wall Push-up", sub: "Go at Your Comfort", clip: "/pushup-easy.mp4", c: "#059669", bg: "#f0fdf4", bd: "#bbf7d0" },
+              { tag: "🟡 MODERATE", ex: "Incline Push-up", sub: "Challenge Yourself", clip: "/pushup-moderate.mp4", c: "#b8860b", bg: "#fffbeb", bd: "#fde68a" },
+              { tag: "🔥 INTENSE", ex: "Full Push-up", sub: "Push Further", clip: "/pushup-intense.mp4", c: "#dc2626", bg: "#fff7f7", bd: "#fecaca" },
+            ].map(({ tag, ex, sub, clip, c, bg, bd }) => (
               <div key={tag} className="pop-card rounded-3xl overflow-hidden flex flex-col" style={{ background: bg, border: `2px solid ${bd}` }}>
                 {/* Video: the same exercise (push-up) shown at this intensity */}
                 <div className="relative" style={{ aspectRatio: "16 / 10", background: "#171412" }}>
@@ -902,8 +902,8 @@ export default function FiveMinuteBodyChallengePage() {
                   <span className="absolute top-2.5 left-2.5 rounded-full px-2.5 py-1 font-black" style={{ fontSize: 12, background: "rgba(255,255,255,0.92)", color: c, letterSpacing: "0.03em" }}>{tag}</span>
                 </div>
                 <div className="p-6 text-center">
-                  <p style={{ fontSize: 19, fontWeight: 900, color: "#18181b", marginBottom: 6 }}>{title}</p>
-                  <p style={{ fontSize: 15.5, color: "#52525b" }}>{ex}</p>
+                  <p style={{ fontSize: 21, fontWeight: 900, color: "#18181b", marginBottom: 5, letterSpacing: "-0.01em" }}>{ex}</p>
+                  <p style={{ fontSize: 15.5, fontWeight: 700, color: c }}>{sub}</p>
                 </div>
               </div>
             ))}

@@ -239,13 +239,13 @@ function StickyBottomCTA() {
   }, []);
   return (
     <div className={`fixed bottom-0 inset-x-0 z-50 transition-all duration-300 ${visible ? "translate-y-0 opacity-100" : "translate-y-full opacity-0 pointer-events-none"}`}>
-      <div className="px-4 pb-3 pt-2 md:hidden" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
+      <div className="px-4 pb-3 pt-3 md:hidden" style={{ background: "#faf8f3", borderTop: "1px solid #e6d9b0", boxShadow: "0 -6px 20px rgba(0,0,0,0.06)" }}>
         <button onClick={register} className="w-full flex items-center justify-between gap-3 rounded-2xl px-5 py-3" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
           <div className="text-left"><p className="text-white font-black text-sm leading-tight">Start My Challenge →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>14 days · 5 min/day · Free</p></div>
           <div className="flex items-center gap-1.5 rounded-xl px-3 py-1.5 shrink-0" style={{ background: "rgba(255,255,255,0.2)" }}><FlameIcon size={15} /><span className="text-white font-bold text-sm">Join</span></div>
         </button>
       </div>
-      <div className="hidden md:block px-6 pb-4 pt-3" style={{ background: "linear-gradient(to top,#faf8f3 70%,transparent)", backdropFilter: "blur(8px)" }}>
+      <div className="hidden md:block px-6 pb-4 pt-4" style={{ background: "#faf8f3", borderTop: "1px solid #e6d9b0", boxShadow: "0 -6px 20px rgba(0,0,0,0.06)" }}>
         <div className="max-w-lg mx-auto">
           <button onClick={register} className="w-full flex items-center justify-between gap-4 rounded-2xl px-6 py-3.5" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", boxShadow: "0 4px 20px rgba(212,160,23,0.4)", border: "none", cursor: "pointer" }}>
             <div className="text-left"><p className="text-white font-black text-sm leading-tight">Start My 14-Day Challenge →</p><p className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.85)" }}>{WHEN_LINE}</p></div>
@@ -289,7 +289,7 @@ function LiveToast() {
   }, [scrolled]);
   if (!scrolled || toasts.length === 0) return null;
   return (
-    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[100px] md:bottom-[90px]" aria-live="polite">
+    <div className="fixed left-2 z-40 flex flex-col gap-2 pointer-events-none bottom-[110px] md:bottom-[104px]" aria-live="polite">
       {toasts.map((t, i) => (
         <div key={t.id} className="pointer-events-auto" style={{ opacity: i === 0 ? 1 : 0.65 - i * 0.15, transform: `scale(${1 - i * 0.03})`, transformOrigin: "bottom left", animation: "duc-fadein 0.3s ease" }}>
           <div className="flex items-center gap-2 rounded-2xl px-3 py-2 w-[240px]" style={{ background: "#fff", border: "1px solid #e2dfd6", boxShadow: "0 4px 16px rgba(0,0,0,0.09)" }}>
@@ -413,15 +413,14 @@ function InstitutionBadge({ label, bg, fg }: { label: string; bg: string; fg: st
 }
 
 // ─── Animated 14-day streak strip ───────────────────────────────────────────────
-// Days 1–5 ignite one-by-one when the strip scrolls into view; the day-14 trophy
-// then pulses with a glowing ring. Respects prefers-reduced-motion.
-const STREAK_DONE = 5; // days already completed (the lit flames)
+// The black circles stay constant. When scrolled into view, gold "completed"
+// circles fill in one-by-one from day 1 to day 14; once the sweep reaches the
+// last cell, the trophy pops big and celebrates. Respects prefers-reduced-motion.
 function prefersReducedMotion() {
   return typeof window !== "undefined" && !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 }
 function StreakStrip() {
   const ref = useRef<HTMLDivElement>(null);
-  // If the user prefers reduced motion, start already-lit (no animation classes fire).
   const [lit, setLit] = useState(prefersReducedMotion);
   useEffect(() => {
     if (lit) return; // already lit (reduced motion) — nothing to observe
@@ -437,39 +436,40 @@ function StreakStrip() {
     return () => io.disconnect();
   }, [lit]);
 
-  // Slower, clearly sequential sweep: each of the 14 cells lights in turn,
-  // ~0.32s apart, so the eye follows it travelling all the way to the trophy.
-  const STEP = 0.32;
-  const trophyDelay = 13 * STEP; // day 14 fires last
+  // Each day's gold fill lands STEP seconds after the previous — a clear,
+  // sequential fill from day 1 → day 14. The trophy fires after the last fill.
+  const STEP = 0.3;
+  const trophyDelay = 13 * STEP;
   return (
     <div ref={ref} className="rounded-2xl mt-8 px-4 py-6 overflow-x-auto" style={{ background: "#18181b" }}>
-      <div className="flex items-center justify-start md:justify-center gap-1.5 min-w-max" style={{ paddingRight: 14, paddingLeft: 6 }}>
+      <div className="flex items-center justify-start md:justify-center gap-1.5 min-w-max" style={{ paddingRight: 16, paddingLeft: 6 }}>
         {Array.from({ length: 14 }, (_, i) => i + 1).map(d => {
-          const done = d <= STREAK_DONE;
           const isTrophy = d === 14;
-          const stepDelay = (d - 1) * STEP; // the travelling sweep
+          const fillDelay = (d - 1) * STEP;
           return (
             <div key={d} className="flex flex-col items-center gap-1" style={{ minWidth: 34, position: "relative" }}>
-              <div
-                className={
-                  "fmb-streak-cell w-8 h-8 rounded-full flex items-center justify-center font-black " +
-                  (lit ? (isTrophy ? "fmb-trophy-celebrate" : done ? "fmb-ignite" : "fmb-sweep") : "")
-                }
-                style={{
-                  fontSize: 12,
-                  background: done ? "linear-gradient(135deg,#b8860b,#d4a017)" : "rgba(255,255,255,0.08)",
-                  color: done ? "#171412" : "rgba(255,255,255,0.55)",
-                  border: isTrophy ? "1.5px solid #e8a020" : "none",
-                  // every cell starts hidden so the sweep reads as a light-up in order
-                  opacity: !lit ? 0 : 1,
-                  animationDelay: isTrophy ? `${trophyDelay}s` : `${stepDelay}s`,
-                  zIndex: isTrophy ? 2 : 1,
-                }}>
-                <span className={lit && done ? "fmb-flame" : ""} style={{ display: "inline-block", animationDelay: `${stepDelay + 0.3}s` }}>
-                  {done ? "🔥" : isTrophy ? "🏆" : d}
-                </span>
+              {/* constant black base circle — always present, shows the day number */}
+              <div className="w-8 h-8 rounded-full flex items-center justify-center font-black" style={{ position: "relative", fontSize: 12, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.5)" }}>
+                <span>{isTrophy ? "" : d}</span>
+                {/* gold "completed" overlay that fills in, in sequence, on top of the black base */}
+                {lit && (
+                  <div
+                    className={isTrophy ? "fmb-trophy-fill" : "fmb-fill"}
+                    style={{
+                      position: "absolute", inset: 0, borderRadius: "9999px",
+                      background: "linear-gradient(135deg,#b8860b,#d4a017)",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#171412", fontWeight: 900, fontSize: 12,
+                      border: isTrophy ? "1.5px solid #e8a020" : "none",
+                      opacity: 0,
+                      animationDelay: isTrophy ? `${trophyDelay}s` : `${fillDelay}s`,
+                      zIndex: isTrophy ? 3 : 1,
+                    }}>
+                    {isTrophy ? "🏆" : "🔥"}
+                  </div>
+                )}
               </div>
-              {/* confetti-ish sparkle burst on the trophy when the sweep arrives */}
+              {/* sparkle burst on the trophy when the sweep arrives */}
               {isTrophy && lit && (
                 <span className="fmb-trophy-spark" style={{ animationDelay: `${trophyDelay + 0.15}s` }} aria-hidden="true" />
               )}
@@ -497,26 +497,20 @@ export default function FiveMinuteBodyChallengePage() {
         @keyframes duc-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         @keyframes fmb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes fmb-pulse-ring{0%{transform:scale(0.9);opacity:0.7}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
-        /* streak strip: each flame day "ignites" — pop in with a warm glow */
-        @keyframes fmb-ignite{0%{opacity:0;transform:scale(0.35)}55%{opacity:1;transform:scale(1.25);box-shadow:0 0 0 6px rgba(232,160,32,0.3),0 0 20px 5px rgba(232,160,32,0.6)}100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(232,160,32,0)}}
-        /* unlit future days: gentle sweep-in as the wave passes over them */
-        @keyframes fmb-sweep{0%{opacity:0;transform:scale(0.6)}50%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
-        /* flame flicker after it lights */
-        @keyframes fmb-flicker{0%,100%{transform:scale(1) rotate(-2deg)}30%{transform:scale(1.14) rotate(3deg)}60%{transform:scale(0.94) rotate(-3deg)}}
+        /* streak strip: each gold "completed" circle fills in over its black base */
+        @keyframes fmb-fill{0%{opacity:0;transform:scale(0.25)}60%{opacity:1;transform:scale(1.18);box-shadow:0 0 0 5px rgba(232,160,32,0.28),0 0 16px 4px rgba(232,160,32,0.5)}100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(232,160,32,0)}}
         /* trophy: pops BIG when the sweep reaches it, then celebrates */
-        @keyframes fmb-trophy-pop{0%{opacity:0;transform:scale(0.4)}40%{opacity:1;transform:scale(1.9)}62%{transform:scale(1.55)}80%{transform:scale(1.8)}100%{transform:scale(1.65)}}
+        @keyframes fmb-trophy-pop{0%{opacity:0;transform:scale(0.35)}45%{opacity:1;transform:scale(1.85)}64%{transform:scale(1.5)}82%{transform:scale(1.75)}100%{opacity:1;transform:scale(1.6)}}
         @keyframes fmb-trophy-ring{0%,100%{box-shadow:0 0 0 0 rgba(232,160,32,0.6)}50%{box-shadow:0 0 0 10px rgba(232,160,32,0)}}
         @keyframes fmb-spark{0%{opacity:0;transform:scale(0.2)}30%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
-        #fmb-top .fmb-ignite{animation:fmb-ignite 0.85s cubic-bezier(0.22,1,0.36,1) both}
-        #fmb-top .fmb-sweep{animation:fmb-sweep 0.7s cubic-bezier(0.22,1,0.36,1) both}
-        #fmb-top .fmb-flame{animation:fmb-flicker 1.7s ease-in-out infinite both}
+        #fmb-top .fmb-fill{animation:fmb-fill 0.6s cubic-bezier(0.22,1,0.36,1) both}
         /* the trophy grows and stays big + gold-glow celebrating ring */
-        #fmb-top .fmb-trophy-celebrate{animation:fmb-trophy-pop 0.9s cubic-bezier(0.34,1.56,0.64,1) both,fmb-trophy-ring 1.8s ease-in-out infinite 1s;transform-origin:center}
+        #fmb-top .fmb-trophy-fill{animation:fmb-trophy-pop 0.9s cubic-bezier(0.34,1.56,0.64,1) both,fmb-trophy-ring 1.8s ease-in-out infinite 1.1s;transform-origin:center}
         #fmb-top .fmb-trophy-spark{position:absolute;top:16px;left:50%;width:56px;height:56px;margin-left:-28px;border-radius:50%;pointer-events:none;
           background:radial-gradient(circle,rgba(232,160,32,0.55) 0%,rgba(232,160,32,0) 62%);
           animation:fmb-spark 0.9s ease-out both}
         @media (prefers-reduced-motion: reduce){
-          #fmb-top .fmb-ignite,#fmb-top .fmb-sweep,#fmb-top .fmb-flame,#fmb-top .fmb-trophy-celebrate,#fmb-top .fmb-trophy-spark{animation:none!important;transform:none!important}
+          #fmb-top .fmb-fill,#fmb-top .fmb-trophy-fill,#fmb-top .fmb-trophy-spark{animation:none!important;opacity:1!important;transform:none!important}
           #fmb-top .fmb-trophy-spark{display:none}
         }
         .duc-h1{font-size:clamp(2.2rem,5.5vw,3.7rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em}
@@ -738,14 +732,6 @@ export default function FiveMinuteBodyChallengePage() {
             </div>
           </div>
 
-          {/* Big stat band */}
-          <div className="rounded-3xl px-6 py-8 mb-10 text-center" style={{ background: "linear-gradient(135deg,#171412,#26211a)" }}>
-            <p style={{ fontSize: "clamp(2.6rem,7vw,4rem)", fontWeight: 900, color: "#e8a020", lineHeight: 1, letterSpacing: "-0.02em" }}>~5 min</p>
-            <p style={{ fontSize: 17, color: "rgba(255,255,255,0.82)", maxWidth: 560, margin: "12px auto 0", lineHeight: 1.6 }}>
-              of vigorous or focused daily movement has been linked in recent studies to <strong style={{ color: "#fff" }}>lower risk of heart disease and early death</strong> — a dose small enough that almost anyone can start today.
-            </p>
-          </div>
-
           {/* Research callouts — institution badges + short claims */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
@@ -922,7 +908,7 @@ export default function FiveMinuteBodyChallengePage() {
           <p style={{ fontSize: 18, color: "rgba(255,255,255,0.75)", maxWidth: 560, margin: "0 auto 2rem", lineHeight: 1.6 }}>
             Every morning and evening, people from across the community show up and do their 5 together. We&apos;re building a community of people who believe fitness doesn&apos;t have to start with an hour. <strong style={{ color: "#fff" }}>It can start with 5.</strong>
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-9">
             {[
               { icon: "🌅", label: `${CHALLENGE.morning} — Morning 5` },
               { icon: "🌙", label: `${CHALLENGE.evening} — Evening 5` },
@@ -932,6 +918,16 @@ export default function FiveMinuteBodyChallengePage() {
                 <span style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>{label}</span>
               </div>
             ))}
+          </div>
+
+          {/* Real people — different homes, same 5 */}
+          <div className="rounded-3xl overflow-hidden mb-10 relative" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", maxWidth: 760, margin: "0 auto 2.5rem" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/fmb-community.png" alt="Real people across India doing their 5 minutes at home — different ages, different homes, same challenge" style={{ width: "100%", height: "auto", display: "block" }} />
+            <div className="absolute inset-x-0 bottom-0 px-4 py-3 flex items-center justify-center gap-2" style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75),transparent)" }}>
+              <span style={{ fontSize: 14, color: "#fff", fontWeight: 800 }}>Different homes. Different ages.</span>
+              <span style={{ fontSize: 14, color: "#e8a020", fontWeight: 900 }}>Same 5.</span>
+            </div>
           </div>
 
           {/* Mission + live counter */}
@@ -1107,23 +1103,33 @@ export default function FiveMinuteBodyChallengePage() {
             <SectionLabel dark>This is for you if…</SectionLabel>
             <h2 className="duc-h2" style={{ color: "#fff" }}><Brand light /> is for you if…</h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-            {[
-              "You want to exercise but struggle to find time",
-              "You keep starting workouts but can't stay consistent",
-              "Long workout routines feel overwhelming",
-              "You've been inactive and want a gentle way to start again",
-              "You prefer exercising with people, not alone",
-              "You want something you can do from home",
-            ].map((point, i) => (
-              <div key={i} className="flex items-center gap-3 rounded-2xl p-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.18)" }}>
-                <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", fontSize: 13, color: "#fff", fontWeight: 900 }}>✓</div>
-                <p style={{ fontSize: 17.5, color: "rgba(255,255,255,0.9)", lineHeight: 1.45, fontWeight: 500 }}>{point}</p>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
+            {/* Real person image */}
+            <div className="md:col-span-2">
+              <div className="rounded-3xl overflow-hidden" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/fmb-person-2.png" alt="A real person starting their day with a few minutes of gentle movement at home" style={{ width: "100%", height: "auto", display: "block" }} />
               </div>
-            ))}
+            </div>
+            {/* Checklist */}
+            <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              {[
+                "You want to exercise but struggle to find time",
+                "You keep starting workouts but can't stay consistent",
+                "Long workout routines feel overwhelming",
+                "You've been inactive and want a gentle way to start again",
+                "You prefer exercising with people, not alone",
+                "You want something you can do from home",
+              ].map((point, i) => (
+                <div key={i} className="flex items-center gap-3 rounded-2xl p-4" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(212,160,23,0.18)" }}>
+                  <div className="w-7 h-7 rounded-full flex items-center justify-center shrink-0" style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", fontSize: 13, color: "#fff", fontWeight: 900 }}>✓</div>
+                  <p style={{ fontSize: 16, color: "rgba(255,255,255,0.9)", lineHeight: 1.4, fontWeight: 500 }}>{point}</p>
+                </div>
+              ))}
+            </div>
           </div>
-          <p className="text-center" style={{ fontSize: 18, fontWeight: 700, color: "rgba(255,255,255,0.9)", maxWidth: 540, margin: "2rem auto 0", lineHeight: 1.5 }}>
-            You don&apos;t need to already be fit. <span style={{ color: "#e8a020" }}>You just need to be willing to give yourself five minutes.</span>
+          <p className="text-center" style={{ fontSize: 18, fontWeight: 700, color: "rgba(255,255,255,0.9)", maxWidth: 540, margin: "2.5rem auto 0", lineHeight: 1.5 }}>
+            You don&apos;t need to already be fit. <span style={{ color: "#e8a020" }}>You just need to be willing to give yourself 5 minutes.</span>
           </p>
           <div className="flex justify-center mt-9">
             <button onClick={openRegister} className="btn-primary inline-flex items-center gap-3 px-10 py-5 rounded-full font-black" style={{ fontSize: 18, border: "none", cursor: "pointer" }}>
@@ -1170,22 +1176,33 @@ export default function FiveMinuteBodyChallengePage() {
         </div>
       </section>
 
-      {/* ══ 16. YOUR COACH ══════════════════════════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
-        <div className="max-w-3xl mx-auto px-6 lg:px-10">
-          <div className="rounded-3xl p-7 lg:p-9 flex flex-col sm:flex-row items-center gap-7 text-center sm:text-left" style={{ background: "#fff", border: "1.5px solid #e6d9b0" }}>
-            <div className="shrink-0">
-              <div className="rounded-2xl overflow-hidden" style={{ width: 130, height: 130, border: "4px solid #fff", boxShadow: "0 12px 30px -8px rgba(0,0,0,0.25)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/rohan.png" alt="Rohan — your coach" className="w-full h-full object-cover object-top" onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
-              </div>
+      {/* ══ 16. YOUR COACH / FOUNDER ════════════════════════════════════════ */}
+      <section className="py-16 lg:py-24" style={{ background: "#faf8f3" }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-10">
+            <SectionLabel>Meet your coach</SectionLabel>
+            <h2 className="duc-h2 duc-section-title">The person behind your 5.</h2>
+          </div>
+          <div className="rounded-3xl overflow-hidden flex flex-col md:flex-row items-stretch" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 20px 50px -22px rgba(0,0,0,0.28)" }}>
+            <div className="shrink-0 md:w-2/5" style={{ minHeight: 320 }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/rohan.png" alt="Rohan — founder and coach of the 5-Minute Body Challenge" className="w-full h-full object-cover object-top" style={{ minHeight: 320, maxHeight: 480 }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
             </div>
-            <div>
-              <p className="duc-label mb-2">👋 Your coach</p>
-              <h2 style={{ fontSize: 24, fontWeight: 900, color: "#18181b", marginBottom: 8 }}>Hi, I&apos;m Rohan.</h2>
-              <p style={{ fontSize: 17, color: "#52525b", lineHeight: 1.65 }}>
-                I kept seeing the same problem: people know exercise matters, but long routines don&apos;t fit their real lives. I created <Brand /> to make <strong style={{ color: "#18181b" }}>daily fitness feel achievable even when life gets busy</strong> — starting with just 5 focused minutes.
-              </p>
+            <div className="p-8 lg:p-10 flex flex-col justify-center md:w-3/5">
+              <p className="duc-label mb-2">👋 Founder &amp; Coach</p>
+              <h3 style={{ fontSize: 30, fontWeight: 900, color: "#18181b", marginBottom: 14, letterSpacing: "-0.02em" }}>Hi, I&apos;m Rohan.</h3>
+              <div className="flex flex-col gap-4" style={{ fontSize: 17, color: "#52525b", lineHeight: 1.7 }}>
+                <p>
+                  For years I did what most of us do — buy the gym membership in January, quit by February, and feel guilty the rest of the year. The plans were never the problem. <strong style={{ color: "#18181b" }}>They were just too big to keep.</strong>
+                </p>
+                <p>
+                  So I flipped the question: what&apos;s the smallest amount of exercise I&apos;d never skip? The answer was 5 minutes. I started showing up for just 5 focused minutes a day — and for the first time, it stuck.
+                </p>
+                <p>
+                  That&apos;s why I built <Brand /> — to make <strong style={{ color: "#18181b" }}>daily fitness feel achievable even when life gets busy</strong>. Not another challenge you burn out on. A daily habit you can actually keep.
+                </p>
+              </div>
+              <p style={{ fontSize: 15, fontWeight: 800, color: "#a8790d", marginTop: 18 }}>— Rohan · Founder, High Performance Club</p>
             </div>
           </div>
         </div>

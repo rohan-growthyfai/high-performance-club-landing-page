@@ -93,7 +93,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
     // WhatsApp number with India country code (engine delivers habits here)
     const waNumber = "91" + trimmedPhone.slice(-10);
     try {
-      // Step 1: Create a one-time ₹99 order on our server (notes carry the
+      // Step 1: Create a ₹99 monthly order on our server (notes carry the
       // WhatsApp number so the payment webhook can onboard the buyer).
       const resp = await fetch(`${ENGINE_URL}/duc/create-order`, {
         method: "POST",
@@ -105,7 +105,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         throw new Error(data.error || "Could not initiate payment. Please try again.");
       }
 
-      // One-time ₹99 checkout — 90 days of daily habits, no renewals
+      // ₹99/month checkout — 30 days of daily habits, no auto-charges
       const RazorpayCtor = (window as unknown as { Razorpay: new (o: RazorpayOptions) => RazorpayInstance }).Razorpay;
       const rzp = new RazorpayCtor({
         key: data.key_id,
@@ -113,7 +113,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
         amount: data.amount,
         currency: data.currency || "INR",
         name: "Daily Upgrade Club",
-        description: "90 Days of Daily Habits · ₹99 one-time",
+        description: "Just ₹99/month · 1 daily habit for 30 days",
         prefill: {
           name: data.name,
           email: data.email,
@@ -194,7 +194,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             <WAIcon />
             <span className="font-black text-white text-lg">Daily Upgrade Club</span>
           </div>
-          <p className="text-white text-sm opacity-90">One payment of ₹99 · 1 daily habit for the next 90 days</p>
+          <p className="text-white text-sm opacity-90">Just ₹99 per month · 1 daily habit for the next 30 days</p>
         </div>
 
         {/* Form */}
@@ -270,7 +270,7 @@ export default function DUCCheckout({ isOpen, onClose, ctaLabel }: Props) {
             ) : (
               <>
                 <WAIcon />
-                {ctaLabel || "Join Daily Upgrade Club → ₹99"}
+                {ctaLabel || "Join Now → Just ₹99/month"}
               </>
             )}
           </button>

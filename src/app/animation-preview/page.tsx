@@ -38,27 +38,55 @@ function TimerChip({ time = "05:00", light = false }: { time?: string; light?: b
   );
 }
 
-// ─── Option 3: CSS/SVG exercising figure — a jumping-jack loop ───────────────────
+// ─── Option 3: cartoon person doing jumping jacks — friendly, on-brand ───────────
 function ExerciseFigure() {
+  const skin = "#f4c9a0";
+  const hair = "#2b1a12";
+  const shirt = "#d4a017";   // brand gold
+  const shorts = "#171412";  // charcoal
   return (
-    <svg viewBox="0 0 120 140" width="150" height="175" aria-label="Animated figure exercising" role="img">
-      {/* head */}
-      <circle cx="60" cy="22" r="12" fill="#171412" />
-      {/* body */}
-      <rect x="55" y="34" width="10" height="40" rx="5" fill="#171412" />
-      {/* arms — animate up/down like jumping jacks */}
-      <g className="fmb-arm-l" style={{ transformOrigin: "58px 40px" }}>
-        <rect x="30" y="38" width="30" height="8" rx="4" fill="#d4a017" />
-      </g>
-      <g className="fmb-arm-r" style={{ transformOrigin: "62px 40px" }}>
-        <rect x="60" y="38" width="30" height="8" rx="4" fill="#d4a017" />
-      </g>
-      {/* legs — animate in/out */}
-      <g className="fmb-leg-l" style={{ transformOrigin: "60px 74px" }}>
-        <rect x="50" y="72" width="8" height="42" rx="4" fill="#171412" />
-      </g>
-      <g className="fmb-leg-r" style={{ transformOrigin: "60px 74px" }}>
-        <rect x="62" y="72" width="8" height="42" rx="4" fill="#171412" />
+    <svg viewBox="0 0 160 200" width="180" height="225" aria-label="Cartoon person doing jumping jacks" role="img">
+      {/* soft ground shadow */}
+      <ellipse className="fmb-shadow" cx="80" cy="190" rx="34" ry="7" fill="rgba(0,0,0,0.28)" />
+
+      {/* whole body bounces */}
+      <g className="fmb-figure-body">
+        {/* ── ARMS (behind torso) — swing overhead like jumping jacks ── */}
+        {/* left arm */}
+        <g className="fmb-arm-l" style={{ transformOrigin: "62px 78px" }}>
+          <rect x="40" y="72" width="26" height="11" rx="5.5" fill={skin} />
+          <circle cx="42" cy="77.5" r="6.5" fill={skin} />
+        </g>
+        {/* right arm */}
+        <g className="fmb-arm-r" style={{ transformOrigin: "98px 78px" }}>
+          <rect x="94" y="72" width="26" height="11" rx="5.5" fill={skin} />
+          <circle cx="118" cy="77.5" r="6.5" fill={skin} />
+        </g>
+
+        {/* ── LEGS — split in/out like jumping jacks ── */}
+        <g className="fmb-leg-l" style={{ transformOrigin: "80px 128px" }}>
+          <rect x="70" y="126" width="12" height="46" rx="6" fill={skin} />
+          <ellipse cx="76" cy="176" rx="10" ry="6" fill={shorts} />
+        </g>
+        <g className="fmb-leg-r" style={{ transformOrigin: "80px 128px" }}>
+          <rect x="78" y="126" width="12" height="46" rx="6" fill={skin} />
+          <ellipse cx="84" cy="176" rx="10" ry="6" fill={shorts} />
+        </g>
+
+        {/* shorts */}
+        <rect x="64" y="120" width="32" height="22" rx="8" fill={shorts} />
+
+        {/* torso / shirt */}
+        <rect x="60" y="74" width="40" height="52" rx="16" fill={shirt} />
+
+        {/* head */}
+        <circle cx="80" cy="50" r="22" fill={skin} />
+        {/* hair */}
+        <path d="M58 46 a22 22 0 0 1 44 0 q-6 -12 -22 -12 q-16 0 -22 12 Z" fill={hair} />
+        {/* smile + eyes */}
+        <circle cx="72" cy="49" r="2.4" fill="#171412" />
+        <circle cx="88" cy="49" r="2.4" fill="#171412" />
+        <path d="M71 58 q9 8 18 0" stroke="#171412" strokeWidth="2.6" strokeLinecap="round" fill="none" />
       </g>
     </svg>
   );
@@ -71,22 +99,24 @@ export default function AnimationPreviewPage() {
     <div id="fmb-preview" style={{ background: "#faf8f3", minHeight: "100vh", color: "#18181b" }}>
       <style>{`
         @keyframes fmb-pulse-ring{0%{transform:scale(0.9);opacity:0.7}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
-        /* Option 3 figure motion */
-        @keyframes fmb-jack-arm-l{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-140deg)}}
-        @keyframes fmb-jack-arm-r{0%,100%{transform:rotate(0deg)}50%{transform:rotate(140deg)}}
-        @keyframes fmb-jack-leg-l{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-22deg)}}
-        @keyframes fmb-jack-leg-r{0%,100%{transform:rotate(0deg)}50%{transform:rotate(22deg)}}
-        @keyframes fmb-hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-        #fmb-preview .fmb-arm-l{animation:fmb-jack-arm-l 0.9s ease-in-out infinite}
-        #fmb-preview .fmb-arm-r{animation:fmb-jack-arm-r 0.9s ease-in-out infinite}
-        #fmb-preview .fmb-leg-l{animation:fmb-jack-leg-l 0.9s ease-in-out infinite}
-        #fmb-preview .fmb-leg-r{animation:fmb-jack-leg-r 0.9s ease-in-out infinite}
-        #fmb-preview .fmb-figure-wrap{animation:fmb-hop 0.9s ease-in-out infinite}
+        /* Option 3 cartoon jumping-jack motion */
+        @keyframes fmb-jack-arm-l{0%,100%{transform:rotate(8deg)}50%{transform:rotate(-150deg)}}
+        @keyframes fmb-jack-arm-r{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(150deg)}}
+        @keyframes fmb-jack-leg-l{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-20deg)}}
+        @keyframes fmb-jack-leg-r{0%,100%{transform:rotate(0deg)}50%{transform:rotate(20deg)}}
+        @keyframes fmb-hop{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+        @keyframes fmb-shadow{0%,100%{transform:scale(1);opacity:0.28}50%{transform:scale(0.72);opacity:0.16}}
+        #fmb-preview .fmb-arm-l{animation:fmb-jack-arm-l 0.85s ease-in-out infinite}
+        #fmb-preview .fmb-arm-r{animation:fmb-jack-arm-r 0.85s ease-in-out infinite}
+        #fmb-preview .fmb-leg-l{animation:fmb-jack-leg-l 0.85s ease-in-out infinite}
+        #fmb-preview .fmb-leg-r{animation:fmb-jack-leg-r 0.85s ease-in-out infinite}
+        #fmb-preview .fmb-figure-body{animation:fmb-hop 0.85s ease-in-out infinite;transform-origin:center bottom}
+        #fmb-preview .fmb-shadow{animation:fmb-shadow 0.85s ease-in-out infinite;transform-origin:center}
         /* Option 4 Ken Burns */
         @keyframes fmb-kenburns{0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.12) translate(-2%,-2%)}100%{transform:scale(1) translate(0,0)}}
         #fmb-preview .fmb-kb{animation:fmb-kenburns 14s ease-in-out infinite}
         @media (prefers-reduced-motion: reduce){
-          #fmb-preview .fmb-arm-l,#fmb-preview .fmb-arm-r,#fmb-preview .fmb-leg-l,#fmb-preview .fmb-leg-r,#fmb-preview .fmb-figure-wrap,#fmb-preview .fmb-kb{animation:none!important}
+          #fmb-preview .fmb-arm-l,#fmb-preview .fmb-arm-r,#fmb-preview .fmb-leg-l,#fmb-preview .fmb-leg-r,#fmb-preview .fmb-figure-body,#fmb-preview .fmb-shadow,#fmb-preview .fmb-kb{animation:none!important}
         }
       `}</style>
 
@@ -141,12 +171,19 @@ export default function AnimationPreviewPage() {
               <TimerChip time="05:00" light />
             </div>
             <div className="grid grid-cols-3 gap-1.5 p-2.5">
-              {["Rohan (Coach)", "Priya", "Aditya", "Meera", "Karan", "Sneha"].map((who, i) => (
+              {[
+                { who: "Priya (Coach)", clip: "/exercise-1.mp4" },
+                { who: "Karan", clip: "/exercise-2.mp4" },
+                { who: "Amit", clip: "/exercise-3.mp4" },
+                { who: "Neha", clip: "/exercise-4.mp4" },
+                { who: "Sushma", clip: "/exercise-5.mp4" },
+                { who: "Ravi", clip: "/exercise-6.mp4" },
+              ].map(({ who, clip }, i) => (
                 <div key={i} className="rounded-xl overflow-hidden relative" style={{ aspectRatio: "1", background: "rgba(255,255,255,0.05)", border: i === 0 ? "1.5px solid #d4a017" : "1px solid rgba(255,255,255,0.08)" }}>
                   {clipOk ? (
-                    <video src={CLIP} autoPlay muted loop playsInline
+                    <video src={clip} autoPlay muted loop playsInline
                       onError={() => setClipOk(false)}
-                      style={{ width: "100%", height: "100%", objectFit: "cover", filter: `hue-rotate(${i * 12}deg)` }} />
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   ) : (
                     /* eslint-disable-next-line @next/next/no-img-element */
                     <img src={POSTER} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
@@ -166,7 +203,7 @@ export default function AnimationPreviewPage() {
         <section>
           <Label n={3} title="Lightweight illustrated figure" note="A crisp, gold, looping figure — near-zero page weight, always sharp. Stylized, not photorealistic. Great inside the 'Inside the 5' timeline." />
           <div className="rounded-3xl p-10 flex flex-col items-center justify-center" style={{ background: "linear-gradient(135deg,#171412,#26211a)", border: "1.5px solid #e6d9b0", minHeight: 300 }}>
-            <div className="fmb-figure-wrap"><ExerciseFigure /></div>
+            <ExerciseFigure />
             <div className="mt-6 flex items-center gap-2">
               <TimerChip time="05:00" light />
               <span style={{ fontSize: 14, color: "rgba(255,255,255,0.75)", fontWeight: 700 }}>Warm → Work → Reset → Work → Finish</span>

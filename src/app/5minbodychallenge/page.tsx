@@ -367,6 +367,65 @@ function SectionLabel({ children, dark = false }: { children: React.ReactNode; d
   return <p className="duc-label mb-3" style={dark ? { color: "#a8790d" } : undefined}>{children}</p>;
 }
 
+// ─── Animated 14-day streak strip ───────────────────────────────────────────────
+// Days 1–5 ignite one-by-one when the strip scrolls into view; the day-14 trophy
+// then pulses with a glowing ring. Respects prefers-reduced-motion.
+const STREAK_DONE = 5; // days already completed (the lit flames)
+function prefersReducedMotion() {
+  return typeof window !== "undefined" && !!window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+}
+function StreakStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  // If the user prefers reduced motion, start already-lit (no animation classes fire).
+  const [lit, setLit] = useState(prefersReducedMotion);
+  useEffect(() => {
+    if (lit) return; // already lit (reduced motion) — nothing to observe
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some(e => e.isIntersecting)) { setLit(true); io.disconnect(); }
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [lit]);
+
+  return (
+    <div ref={ref} className="rounded-2xl mt-8 px-4 py-5 overflow-x-auto" style={{ background: "#18181b" }}>
+      <div className="flex items-center justify-start md:justify-center gap-1.5 min-w-max">
+        {Array.from({ length: 14 }, (_, i) => i + 1).map(d => {
+          const done = d <= STREAK_DONE;
+          const isTrophy = d === 14;
+          const igniteDelay = (d - 1) * 0.14; // stagger the flames
+          const trophyDelay = STREAK_DONE * 0.14 + 0.25;
+          return (
+            <div key={d} className="flex flex-col items-center gap-1" style={{ minWidth: 34 }}>
+              <div
+                className={`fmb-streak-cell w-8 h-8 rounded-full flex items-center justify-center font-black ${lit && done ? "fmb-ignite" : ""} ${lit && isTrophy ? "fmb-trophy-glow" : ""}`}
+                style={{
+                  fontSize: 12,
+                  background: done ? "linear-gradient(135deg,#b8860b,#d4a017)" : "rgba(255,255,255,0.08)",
+                  color: done ? "#171412" : "rgba(255,255,255,0.55)",
+                  border: isTrophy ? "1.5px solid #e8a020" : "none",
+                  // start invisible only for the animated (done) cells so the ignite reads as a "light-up"
+                  opacity: !lit && done ? 0 : 1,
+                  animationDelay: isTrophy ? `${trophyDelay}s` : done ? `${igniteDelay}s` : undefined,
+                }}>
+                <span className={lit && done ? "fmb-flame" : ""} style={{ display: "inline-block", animationDelay: `${igniteDelay + 0.3}s` }}>
+                  {done ? "🔥" : isTrophy ? "🏆" : d}
+                </span>
+              </div>
+              <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{d}</span>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE — simple words, big visuals, understandable at a glance
 // ═════════════════════════════════════════════════════════════════════════════
@@ -382,6 +441,19 @@ export default function FiveMinuteBodyChallengePage() {
         @keyframes duc-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         @keyframes fmb-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes fmb-pulse-ring{0%{transform:scale(0.9);opacity:0.7}70%{transform:scale(1.25);opacity:0}100%{opacity:0}}
+        /* streak strip: each flame day "ignites" — pop in with a warm glow */
+        @keyframes fmb-ignite{0%{opacity:0;transform:scale(0.4)}55%{opacity:1;transform:scale(1.22);box-shadow:0 0 0 6px rgba(232,160,32,0.28),0 0 18px 4px rgba(232,160,32,0.55)}100%{opacity:1;transform:scale(1);box-shadow:0 0 0 0 rgba(232,160,32,0)}}
+        /* flame flicker after it lights */
+        @keyframes fmb-flicker{0%,100%{transform:scale(1) rotate(-2deg)}30%{transform:scale(1.14) rotate(3deg)}60%{transform:scale(0.94) rotate(-3deg)}}
+        /* trophy pulsing glow ring */
+        @keyframes fmb-trophy{0%{transform:scale(0.6);opacity:0}45%{transform:scale(1.18);opacity:1}100%{transform:scale(1);opacity:1}}
+        @keyframes fmb-trophy-ring{0%,100%{box-shadow:0 0 0 0 rgba(232,160,32,0.55)}50%{box-shadow:0 0 0 7px rgba(232,160,32,0)}}
+        #fmb-top .fmb-ignite{animation:fmb-ignite 0.6s cubic-bezier(0.22,1,0.36,1) both}
+        #fmb-top .fmb-flame{animation:fmb-flicker 1.7s ease-in-out infinite both}
+        #fmb-top .fmb-trophy-glow{animation:fmb-trophy 0.6s cubic-bezier(0.22,1,0.36,1) both,fmb-trophy-ring 2s ease-in-out infinite 1s}
+        @media (prefers-reduced-motion: reduce){
+          #fmb-top .fmb-ignite,#fmb-top .fmb-flame,#fmb-top .fmb-trophy-glow{animation:none!important}
+        }
         .duc-h1{font-size:clamp(2.2rem,5.5vw,3.7rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em}
         .duc-h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;line-height:1.12;letter-spacing:-0.02em}
         .duc-label{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:#a8790d}
@@ -629,19 +701,8 @@ export default function FiveMinuteBodyChallengePage() {
             ))}
           </div>
 
-          {/* Streak strip */}
-          <div className="rounded-2xl mt-8 px-4 py-5 overflow-x-auto" style={{ background: "#18181b" }}>
-            <div className="flex items-center justify-start md:justify-center gap-1.5 min-w-max">
-              {Array.from({ length: 14 }, (_, i) => i + 1).map(d => (
-                <div key={d} className="flex flex-col items-center gap-1" style={{ minWidth: 34 }}>
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center font-black" style={{ fontSize: 12, background: d < 6 ? "linear-gradient(135deg,#b8860b,#d4a017)" : "rgba(255,255,255,0.08)", color: d < 6 ? "#171412" : "rgba(255,255,255,0.55)", border: d === 14 ? "1.5px solid #e8a020" : "none" }}>
-                    {d < 6 ? "🔥" : d === 14 ? "🏆" : d}
-                  </div>
-                  <span style={{ fontSize: 9, color: "rgba(255,255,255,0.4)" }}>{d}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          {/* Streak strip — animated ignite on scroll-in */}
+          <StreakStrip />
           <div className="flex justify-center mt-10">
             <CTA label="Start My Challenge Free →" sub={WHEN_LINE} />
           </div>

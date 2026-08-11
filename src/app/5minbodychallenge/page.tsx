@@ -21,6 +21,16 @@ const CHALLENGE = {
 };
 const WHEN_LINE = `${CHALLENGE.morning} or ${CHALLENGE.evening} · LIVE · Free`;
 
+// Six short looping exercise clips (different people) for the hero LIVE grid.
+const LIVE_CLIPS = [
+  { who: "Priya (Coach)", clip: "/exercise-1.mp4" },
+  { who: "Karan", clip: "/exercise-2.mp4" },
+  { who: "Amit", clip: "/exercise-3.mp4" },
+  { who: "Neha", clip: "/exercise-4.mp4" },
+  { who: "Sushma", clip: "/exercise-5.mp4" },
+  { who: "Ravi", clip: "/exercise-6.mp4" },
+];
+
 // ─── Register modal context ─────────────────────────────────────────────────────
 const RegisterCtx = createContext<() => void>(() => {});
 function useRegister() { return useContext(RegisterCtx); }
@@ -367,6 +377,24 @@ function SectionLabel({ children, dark = false }: { children: React.ReactNode; d
   return <p className="duc-label mb-3" style={dark ? { color: "#a8790d" } : undefined}>{children}</p>;
 }
 
+// ─── Ken Burns image — a real photo with a slow, gentle zoom/pan loop ────────────
+// `delay` staggers multiple images so they don't move in lockstep.
+function KenBurns({ src, alt, objectPosition = "center", delay = 0, className = "" }:
+  { src: string; alt: string; objectPosition?: string; delay?: number; className?: string }) {
+  return (
+    <div className={`overflow-hidden ${className}`} style={{ width: "100%", height: "100%" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="fmb-kb"
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition, display: "block", animationDelay: `${delay}s` }}
+        onError={e => { (e.target as HTMLImageElement).style.display = "none"; }}
+      />
+    </div>
+  );
+}
+
 // ─── CountUp — animates a number up to `target` when scrolled into view ──────────
 function CountUp({ target }: { target: number }) {
   const ref = useRef<HTMLSpanElement>(null);
@@ -509,8 +537,11 @@ export default function FiveMinuteBodyChallengePage() {
         #fmb-top .fmb-trophy-spark{position:absolute;top:16px;left:50%;width:56px;height:56px;margin-left:-28px;border-radius:50%;pointer-events:none;
           background:radial-gradient(circle,rgba(232,160,32,0.55) 0%,rgba(232,160,32,0) 62%);
           animation:fmb-spark 0.9s ease-out both}
+        /* Ken Burns — slow gentle zoom/pan on real photos */
+        @keyframes fmb-kenburns{0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.12) translate(-1.5%,-1.5%)}100%{transform:scale(1) translate(0,0)}}
+        #fmb-top .fmb-kb{animation:fmb-kenburns 16s ease-in-out infinite;will-change:transform}
         @media (prefers-reduced-motion: reduce){
-          #fmb-top .fmb-fill,#fmb-top .fmb-trophy-fill,#fmb-top .fmb-trophy-spark{animation:none!important;opacity:1!important;transform:none!important}
+          #fmb-top .fmb-fill,#fmb-top .fmb-trophy-fill,#fmb-top .fmb-trophy-spark,#fmb-top .fmb-kb{animation:none!important;opacity:1!important;transform:none!important}
           #fmb-top .fmb-trophy-spark{display:none}
         }
         .duc-h1{font-size:clamp(2.2rem,5.5vw,3.7rem);font-weight:900;line-height:1.05;letter-spacing:-0.03em}
@@ -570,23 +601,36 @@ export default function FiveMinuteBodyChallengePage() {
             ))}
           </div>
 
-          {/* Hero visual — LIVE session grid with 05:00 timer */}
+          {/* Hero visual — animated LIVE session grid (6 different people) */}
           <div className="max-w-2xl mx-auto mb-9">
             <div className="rounded-3xl overflow-hidden relative" style={{ border: "1.5px solid #e6d9b0", boxShadow: "0 24px 55px -18px rgba(0,0,0,0.45)", background: "#171412" }}>
-              {/* Real photo: a laptop on a desk with a live 6-person exercise call */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/live-zoom.png" alt="A live online 5-Minute Body session on a laptop — real people exercising together from home" style={{ width: "100%", height: "auto", display: "block" }} />
-              {/* LIVE badge overlay */}
-              <div className="absolute top-3 left-3 flex items-center gap-2 rounded-full px-3 py-1.5" style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}>
-                <span className="relative flex w-2.5 h-2.5">
-                  <span className="absolute inline-flex w-full h-full rounded-full" style={{ background: "#ef4444", animation: "fmb-pulse-ring 1.6s ease-out infinite" }} />
-                  <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#ef4444" }} />
-                </span>
-                <span className="text-white font-black" style={{ fontSize: 12, letterSpacing: "0.08em" }}>LIVE</span>
-              </div>
-              <div className="absolute top-3 right-3">
+              {/* Header bar: LIVE + timer */}
+              <div className="flex items-center justify-between px-4 py-2.5" style={{ background: "rgba(0,0,0,0.4)" }}>
+                <div className="flex items-center gap-2">
+                  <span className="relative flex w-2.5 h-2.5">
+                    <span className="absolute inline-flex w-full h-full rounded-full" style={{ background: "#ef4444", animation: "fmb-pulse-ring 1.6s ease-out infinite" }} />
+                    <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#ef4444" }} />
+                  </span>
+                  <span className="text-white font-black" style={{ fontSize: 12, letterSpacing: "0.08em" }}>LIVE</span>
+                </div>
                 <TimerChip time="05:00" light />
               </div>
+              {/* Video-call grid — a different person exercising in each tile */}
+              <div className="grid grid-cols-3 gap-1.5 p-2.5">
+                {LIVE_CLIPS.map(({ who, clip }, i) => (
+                  <div key={i} className="rounded-xl overflow-hidden relative" style={{ aspectRatio: "1", background: "rgba(255,255,255,0.05)", border: i === 0 ? "1.5px solid #d4a017" : "1px solid rgba(255,255,255,0.08)" }}>
+                    <video
+                      src={clip}
+                      autoPlay muted loop playsInline
+                      preload={i < 3 ? "auto" : "none"}
+                      poster="/live-zoom.png"
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                    <span className="absolute bottom-1 left-1 rounded px-1.5 py-0.5 text-white font-bold" style={{ fontSize: 9, background: "rgba(0,0,0,0.55)" }}>{who}</span>
+                  </div>
+                ))}
+              </div>
+              {/* Caption bar */}
               <div className="px-4 py-3 flex items-center justify-center gap-2" style={{ background: "rgba(0,0,0,0.4)", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                 <span style={{ fontSize: 15, color: "#fff", fontWeight: 900, letterSpacing: "0.02em" }}>5 Minutes.</span>
                 <span style={{ fontSize: 15, color: "#fff", fontWeight: 900, letterSpacing: "0.02em" }}>Every Day.</span>
@@ -920,11 +964,10 @@ export default function FiveMinuteBodyChallengePage() {
             ))}
           </div>
 
-          {/* Real people — different homes, same 5 */}
-          <div className="rounded-3xl overflow-hidden mb-10 relative" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", maxWidth: 760, margin: "0 auto 2.5rem" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/fmb-community.png" alt="Real people across India doing their 5 minutes at home — different ages, different homes, same challenge" style={{ width: "100%", height: "auto", display: "block" }} />
-            <div className="absolute inset-x-0 bottom-0 px-4 py-3 flex items-center justify-center gap-2" style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75),transparent)" }}>
+          {/* Real people — different homes, same 5 (Ken Burns) */}
+          <div className="rounded-3xl overflow-hidden mb-10 relative" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", maxWidth: 760, margin: "0 auto 2.5rem", aspectRatio: "16 / 9" }}>
+            <KenBurns src="/fmb-community.png" alt="Real people across India doing their 5 minutes at home — different ages, different homes, same challenge" />
+            <div className="absolute inset-x-0 bottom-0 px-4 py-3 flex items-center justify-center gap-2 z-10" style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75),transparent)" }}>
               <span style={{ fontSize: 14, color: "#fff", fontWeight: 800 }}>Different homes. Different ages.</span>
               <span style={{ fontSize: 14, color: "#e8a020", fontWeight: 900 }}>Same 5.</span>
             </div>
@@ -1104,11 +1147,10 @@ export default function FiveMinuteBodyChallengePage() {
             <h2 className="duc-h2" style={{ color: "#fff" }}><Brand light /> is for you if…</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
-            {/* Real person image */}
+            {/* Real person image (Ken Burns) */}
             <div className="md:col-span-2">
-              <div className="rounded-3xl overflow-hidden" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/fmb-person-2.png" alt="A real person starting their day with a few minutes of gentle movement at home" style={{ width: "100%", height: "auto", display: "block" }} />
+              <div className="rounded-3xl overflow-hidden" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", aspectRatio: "3 / 4" }}>
+                <KenBurns src="/fmb-person-2.png" alt="A real person starting their day with a few minutes of gentle movement at home" objectPosition="center 20%" delay={-6} />
               </div>
             </div>
             {/* Checklist */}
@@ -1189,9 +1231,8 @@ export default function FiveMinuteBodyChallengePage() {
             <h2 className="duc-h2 duc-section-title">The person behind your 5.</h2>
           </div>
           <div className="rounded-3xl overflow-hidden flex flex-col md:flex-row items-stretch" style={{ background: "#fff", border: "1.5px solid #e6d9b0", boxShadow: "0 20px 50px -22px rgba(0,0,0,0.28)" }}>
-            <div className="shrink-0 md:w-2/5" style={{ minHeight: 320 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/rohan.png" alt="Rohan — founder and coach of the 5-Minute Body Challenge" className="w-full h-full object-cover object-top" style={{ minHeight: 320, maxHeight: 480 }} onError={e => { (e.target as HTMLImageElement).style.display = "none"; }} />
+            <div className="shrink-0 md:w-2/5 overflow-hidden" style={{ minHeight: 320, maxHeight: 480 }}>
+              <KenBurns src="/rohan.png" alt="Rohan — founder and coach of the 5-Minute Body Challenge" objectPosition="center top" delay={-11} />
             </div>
             <div className="p-8 lg:p-10 flex flex-col justify-center md:w-3/5">
               <p className="duc-label mb-2">👋 Founder &amp; Coach</p>

@@ -1192,43 +1192,67 @@ export default function FiveMinuteBodyChallengePage() {
         </div>
       </section>
 
-      {/* ══ 15b. WHAT YOU GET ═══════════════════════════════════════════════ */}
+      {/* ══ 15b. WHAT YOU GET — value-stack card (layout ref: pricing card) ══ */}
       <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="text-center mb-11">
-            <SectionLabel>Everything you get</SectionLabel>
-            <h2 className="duc-h2 duc-section-title">Your FREE 14-Day<br className="hidden sm:block" /> <Brand gradient tm={false} /> <span className="gradient-text">experience</span></h2>
-          </div>
-          <div className="flex flex-col gap-4 max-w-3xl mx-auto">
-            {[
-              { num: "1", icon: "🔥", t: "14 Daily 5-Minute Workouts", s: "One guided session, every single day — so movement becomes a habit, not a one-off.", color: "#d97706", bg: "#fffbeb", border: "#fde68a" },
-              { num: "2", icon: "👥", t: "LIVE Guided Sessions", s: "Exercise together with the community, in real time — never alone, never guessing what to do.", color: "#059669", bg: "#ecfdf5", border: "#d1fae5" },
-              { num: "3", icon: "🌅", t: "7 AM + 7 PM Options", s: "Two live sessions a day. Attend whichever one fits your schedule that day.", color: "#0ea5e9", bg: "#f0f9ff", border: "#bae6fd" },
-              { num: "4", icon: "🎚️", t: "Easy / Moderate / Intense", s: "Every movement has three variations, so it's right for your body — whatever your level.", color: "#7c3aed", bg: "#f5f3ff", border: "#ddd6fe" },
-              { num: "5", icon: "📲", t: "Daily WhatsApp Reminders", s: "A gentle nudge each day so you never forget your 5 — no app to download.", color: "#16a34a", bg: "#f0fdf4", border: "#bbf7d0" },
-              { num: "6", icon: "📊", t: "14-Day Streak Tracking", s: "Tap DONE and watch your consistency build, day by day, all the way to 14/14.", color: "#db2777", bg: "#fdf2f8", border: "#fbcfe8" },
-              { num: "7", icon: "⚡", t: "Today's Upgrade™", s: "One tiny, optional health action to carry into your day — a little extra beyond your 5.", color: "#ea580c", bg: "#fff7ed", border: "#fed7aa" },
-              { num: "8", icon: "🏆", t: "Completion Certificate", s: "Finish all 14 days and earn a personalised certificate — real proof that you showed up.", color: "#b8860b", bg: "#fefce8", border: "#fde68a" },
-              { num: "9", icon: "❤️", t: "Sunday Health Reset™", s: "A simple weekly reset to keep your momentum going, week after week.", color: "#dc2626", bg: "#fef2f2", border: "#fecaca" },
-            ].map(({ num, icon, t, s, color, bg, border }) => (
-              <div key={t} className="pop-card rounded-2xl overflow-hidden flex items-stretch" style={{ background: "#fff", border: `1.5px solid ${border}`, boxShadow: "0 4px 20px rgba(0,0,0,0.05)" }}>
-                {/* Accent icon block */}
-                <div className="flex flex-col items-center justify-center shrink-0" style={{ width: 84, background: bg, borderRight: `1.5px solid ${border}` }}>
-                  <span style={{ fontSize: 30, lineHeight: 1 }}>{icon}</span>
-                  <span style={{ fontSize: 11, fontWeight: 900, color, marginTop: 4, letterSpacing: "0.04em" }}>#{num}</span>
+        <div className="max-w-2xl mx-auto px-6 lg:px-10">
+          {/* One dark rounded card holding the whole value stack */}
+          <div className="rounded-3xl overflow-hidden" style={{ background: "linear-gradient(180deg,#1a1611,#171412)", border: "1.5px solid rgba(212,160,23,0.25)", boxShadow: "0 30px 70px -28px rgba(0,0,0,0.6)" }}>
+            <div className="px-6 lg:px-9 pt-9 pb-6 text-center">
+              <p className="duc-label mb-3" style={{ color: "#a8790d" }}>Everything you get</p>
+              <h2 style={{ fontSize: "clamp(1.9rem,5vw,2.8rem)", fontWeight: 900, color: "#fff", lineHeight: 1.08, letterSpacing: "-0.02em" }}>
+                Your FREE 14-Day<br /><span style={{ color: "#e8a020" }}>5-Minute Body experience</span>
+              </h2>
+            </div>
+
+            {/* Value rows — icon + label left, value tag right */}
+            <div className="px-4 lg:px-6">
+              {[
+                { icon: "🔥", t: "14 Daily 5-Minute Workouts", v: "₹2,999" },
+                { icon: "👥", t: "LIVE Guided Sessions", v: "₹1,999" },
+                { icon: "🌅", t: "7 AM + 7 PM Session Options", v: "₹999" },
+                { icon: "🎚️", t: "Easy / Moderate / Intense Variations", v: "₹1,499" },
+                { icon: "📲", t: "Daily WhatsApp Reminders", v: "₹799" },
+                { icon: "📊", t: "14-Day Streak Tracking", v: "₹999" },
+                { icon: "⚡", t: "Today's Upgrade™", v: "₹499" },
+                { icon: "🏆", t: "Completion Certificate", v: "₹999" },
+                { icon: "❤️", t: "Sunday Health Reset™", v: "₹199" },
+              ].map(({ icon, t, v }, i) => (
+                <div key={t} className="flex items-center gap-3 py-3.5" style={{ borderTop: i === 0 ? "none" : "1px solid rgba(255,255,255,0.07)" }}>
+                  <span style={{ fontSize: 20, width: 26, textAlign: "center", flexShrink: 0 }}>{icon}</span>
+                  <span className="flex-1" style={{ fontSize: 15.5, fontWeight: 700, color: "#fff", lineHeight: 1.3 }}>{t}</span>
+                  <span style={{ fontSize: 14.5, fontWeight: 900, color: "#e8a020", flexShrink: 0 }}>{v}</span>
                 </div>
-                {/* Content */}
-                <div className="flex-1 px-5 py-4 flex flex-col justify-center">
-                  <p style={{ fontSize: 17, fontWeight: 900, color: "#18181b", marginBottom: 3, lineHeight: 1.25 }}>{t}</p>
-                  <p style={{ fontSize: 15, color: "#52525b", lineHeight: 1.5 }}>{s}</p>
-                </div>
+              ))}
+            </div>
+
+            {/* Total value row */}
+            <div className="px-4 lg:px-6 mt-2">
+              <div className="flex items-center justify-between py-4" style={{ borderTop: "1.5px solid rgba(212,160,23,0.3)" }}>
+                <span style={{ fontSize: 13, fontWeight: 900, color: "#a8790d", letterSpacing: "0.12em" }}>TOTAL VALUE</span>
+                <span style={{ fontSize: 18, fontWeight: 900, color: "#71717a", textDecoration: "line-through" }}>₹10,991</span>
               </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <p className="inline-block rounded-full px-6 py-3 mb-7" style={{ background: "#18181b", color: "#e8a020", fontSize: 17, fontWeight: 900, letterSpacing: "0.04em" }}>🎁 ALL FREE FOR 14 DAYS</p>
-            <div className="flex justify-center">
-              <CTA label="Start My Challenge Free →" sub={WHEN_LINE} />
+            </div>
+
+            {/* Free reveal */}
+            <div className="px-6 lg:px-9 pb-9 pt-3 text-center">
+              <div className="flex flex-col items-center gap-0.5 mb-3" style={{ color: "#52525b" }}>
+                <span style={{ fontSize: 15, textDecoration: "line-through" }}>Not ₹10,991</span>
+                <span style={{ fontSize: 14, textDecoration: "line-through" }}>Not ₹4,999</span>
+                <span style={{ fontSize: 13, textDecoration: "line-through" }}>Not ₹999</span>
+              </div>
+              <p style={{ fontSize: "clamp(3.6rem,13vw,5.5rem)", fontWeight: 900, color: "#e8a020", lineHeight: 1, letterSpacing: "-0.02em", textShadow: "0 0 40px rgba(232,160,32,0.35)" }}>
+                FREE
+              </p>
+              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.85)", margin: "14px auto 4px", maxWidth: 400, lineHeight: 1.5 }}>
+                for the full 14 days — <strong style={{ color: "#fff" }}>no card, no catch, no auto-charges.</strong>
+              </p>
+              <p style={{ fontSize: 13, color: "#71717a", marginBottom: 24 }}>Just 5 focused minutes a day · Cancel anytime</p>
+              <div className="flex justify-center">
+                <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 px-10 py-5 rounded-full font-black" style={{ fontSize: 19, boxShadow: "0 12px 34px rgba(212,160,23,0.5)", border: "none", cursor: "pointer" }}>
+                  <FlameIcon size={22} />Start My Challenge Free →
+                </button>
+              </div>
+              <p style={{ fontSize: 12.5, color: "#52525b", marginTop: 14 }}>🇮🇳 India&apos;s first daily fitness habit program · One 5-minute habit every day for 14 days</p>
             </div>
           </div>
         </div>

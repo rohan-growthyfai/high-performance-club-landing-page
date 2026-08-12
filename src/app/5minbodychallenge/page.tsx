@@ -573,7 +573,7 @@ export default function FiveMinuteBodyChallengePage() {
       <section className="relative overflow-hidden mesh-bg" style={{ borderBottom: "1px solid #e2dfd6" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-12 pb-14 lg:pt-16 text-center">
 
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-6 accent-pill" style={{ fontSize: 15.5, fontWeight: 900, letterSpacing: "0.03em" }}>
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full mb-6 accent-pill" style={{ fontSize: "clamp(15.5px,2.4vw,19px)", fontWeight: 900, letterSpacing: "0.03em" }}>
             🇮🇳 INDIA&apos;S FIRST DAILY FITNESS HABIT PROGRAM
           </div>
 
@@ -583,7 +583,7 @@ export default function FiveMinuteBodyChallengePage() {
           </h1>
 
           <p style={{ fontSize: 20, lineHeight: 1.55, color: "#3f3f46", maxWidth: 680, margin: "0 auto 10px", fontWeight: 500 }}>
-            Join the FREE 14-Day <Brand /> Challenge and build the habit of moving your body every day — with just <strong style={{ color: "#18181b" }}>5 focused minutes of LIVE exercise</strong>.
+            Join the FREE 14-Day <Brand /> Challenge and build the habit of moving your body every day — with just <strong style={{ color: "#18181b" }}>5 focused minutes of LIVE exercise</strong>. <strong style={{ color: "#18181b" }}>No equipment needed.</strong>
           </p>
 
           {/* When / where — big clear badges */}
@@ -701,6 +701,52 @@ export default function FiveMinuteBodyChallengePage() {
                 <p style={{ fontSize: 15, color: "#52525b", lineHeight: 1.55 }}>{body}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 1c. COMMUNITY + MOVEMENT (moved below the science section) ═══════ */}
+      <section className="relative overflow-hidden py-16 lg:py-24" style={{ background: "linear-gradient(135deg,#171412 0%,#18181b 50%,#171412 100%)" }}>
+        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
+          <SectionLabel dark>You&apos;re not doing this alone</SectionLabel>
+          <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>5 Minutes. Every Day.<br /> <span style={{ color: "#e8a020" }}>Together.</span></h2>
+          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.75)", maxWidth: 560, margin: "0 auto 2rem", lineHeight: 1.6 }}>
+            Every morning and evening, people from across the community show up and do their 5 together. We&apos;re building a community of people who believe fitness doesn&apos;t have to start with an hour. <strong style={{ color: "#fff" }}>It can start with 5.</strong>
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-9">
+            {[
+              { icon: "🌅", label: `${CHALLENGE.morning} — Morning 5` },
+              { icon: "🌙", label: `${CHALLENGE.evening} — Evening 5` },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex items-center gap-2 rounded-full px-5 py-3" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,160,23,0.3)" }}>
+                <span style={{ fontSize: 20 }}>{icon}</span>
+                <span style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>{label}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Real people — different homes, same 5 (Ken Burns) */}
+          <div className="rounded-3xl overflow-hidden mb-10 relative" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", maxWidth: 760, margin: "0 auto 2.5rem", aspectRatio: "16 / 9" }}>
+            <KenBurns src="/fmb-community.png" alt="Real people across India doing their 5 minutes at home — different ages, different homes, same challenge" />
+            <div className="absolute inset-x-0 bottom-0 px-4 py-3 flex items-center justify-center gap-2 z-10" style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75),transparent)" }}>
+              <span style={{ fontSize: 14, color: "#fff", fontWeight: 800 }}>Different homes. Different ages.</span>
+              <span style={{ fontSize: 14, color: "#e8a020", fontWeight: 900 }}>Same 5.</span>
+            </div>
+          </div>
+
+          {/* Mission + live counter */}
+          <div className="rounded-3xl px-6 py-8" style={{ background: "rgba(212,160,23,0.08)", border: "1px solid rgba(212,160,23,0.25)", maxWidth: 620, margin: "0 auto" }}>
+            <p style={{ fontSize: 13, fontWeight: 900, color: "#a8790d", letterSpacing: "0.14em", marginBottom: 8 }}>OUR MISSION</p>
+            <p style={{ fontSize: "clamp(1.4rem,3.4vw,2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 18 }}>
+              Get 1 Million People<br /><span style={{ color: "#e8a020" }}>Moving Every Day.</span>
+            </p>
+            <div className="inline-flex items-center gap-2.5 rounded-full px-5 py-2.5" style={{ background: "#18181b", border: "1px solid rgba(212,160,23,0.35)" }}>
+              <span className="relative flex w-2.5 h-2.5">
+                <span className="absolute inline-flex w-full h-full rounded-full" style={{ background: "#e8a020", animation: "fmb-pulse-ring 1.6s ease-out infinite" }} />
+                <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#e8a020" }} />
+              </span>
+              <span style={{ fontSize: 16, fontWeight: 900, color: "#e8a020", letterSpacing: "0.02em" }}>🔥 <CountUp target={184729} /> 5s Completed</span>
+            </div>
           </div>
         </div>
       </section>
@@ -955,54 +1001,8 @@ export default function FiveMinuteBodyChallengePage() {
         </div>
       </section>
 
-      {/* ══ 11. COMMUNITY + MOVEMENT ════════════════════════════════════════ */}
-      <section className="relative overflow-hidden py-16 lg:py-24" style={{ background: "linear-gradient(135deg,#171412 0%,#18181b 50%,#171412 100%)" }}>
-        <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center relative">
-          <SectionLabel dark>You&apos;re not doing this alone</SectionLabel>
-          <h2 className="duc-h2 mb-4" style={{ color: "#fff" }}>5 Minutes. Every Day.<br /> <span style={{ color: "#e8a020" }}>Together.</span></h2>
-          <p style={{ fontSize: 18, color: "rgba(255,255,255,0.75)", maxWidth: 560, margin: "0 auto 2rem", lineHeight: 1.6 }}>
-            Every morning and evening, people from across the community show up and do their 5 together. We&apos;re building a community of people who believe fitness doesn&apos;t have to start with an hour. <strong style={{ color: "#fff" }}>It can start with 5.</strong>
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-9">
-            {[
-              { icon: "🌅", label: `${CHALLENGE.morning} — Morning 5` },
-              { icon: "🌙", label: `${CHALLENGE.evening} — Evening 5` },
-            ].map(({ icon, label }) => (
-              <div key={label} className="flex items-center gap-2 rounded-full px-5 py-3" style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(212,160,23,0.3)" }}>
-                <span style={{ fontSize: 20 }}>{icon}</span>
-                <span style={{ fontSize: 15, fontWeight: 800, color: "#fff" }}>{label}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Real people — different homes, same 5 (Ken Burns) */}
-          <div className="rounded-3xl overflow-hidden mb-10 relative" style={{ border: "1.5px solid rgba(212,160,23,0.3)", boxShadow: "0 24px 55px -20px rgba(0,0,0,0.6)", maxWidth: 760, margin: "0 auto 2.5rem", aspectRatio: "16 / 9" }}>
-            <KenBurns src="/fmb-community.png" alt="Real people across India doing their 5 minutes at home — different ages, different homes, same challenge" />
-            <div className="absolute inset-x-0 bottom-0 px-4 py-3 flex items-center justify-center gap-2 z-10" style={{ background: "linear-gradient(to top,rgba(0,0,0,0.75),transparent)" }}>
-              <span style={{ fontSize: 14, color: "#fff", fontWeight: 800 }}>Different homes. Different ages.</span>
-              <span style={{ fontSize: 14, color: "#e8a020", fontWeight: 900 }}>Same 5.</span>
-            </div>
-          </div>
-
-          {/* Mission + live counter */}
-          <div className="rounded-3xl px-6 py-8" style={{ background: "rgba(212,160,23,0.08)", border: "1px solid rgba(212,160,23,0.25)", maxWidth: 620, margin: "0 auto" }}>
-            <p style={{ fontSize: 13, fontWeight: 900, color: "#a8790d", letterSpacing: "0.14em", marginBottom: 8 }}>OUR MISSION</p>
-            <p style={{ fontSize: "clamp(1.4rem,3.4vw,2rem)", fontWeight: 900, color: "#fff", lineHeight: 1.2, marginBottom: 18 }}>
-              Get 1 Million People<br /><span style={{ color: "#e8a020" }}>Moving Every Day.</span>
-            </p>
-            <div className="inline-flex items-center gap-2.5 rounded-full px-5 py-2.5" style={{ background: "#18181b", border: "1px solid rgba(212,160,23,0.35)" }}>
-              <span className="relative flex w-2.5 h-2.5">
-                <span className="absolute inline-flex w-full h-full rounded-full" style={{ background: "#e8a020", animation: "fmb-pulse-ring 1.6s ease-out infinite" }} />
-                <span className="relative inline-flex w-2.5 h-2.5 rounded-full" style={{ background: "#e8a020" }} />
-              </span>
-              <span style={{ fontSize: 16, fontWeight: 900, color: "#e8a020", letterSpacing: "0.02em" }}>🔥 <CountUp target={184729} /> 5s Completed</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ══ 12. STREAK / GAMIFICATION ═══════════════════════════════════════ */}
-      <section className="py-14 lg:py-20" style={{ background: "#fff" }}>
+      <section className="py-14 lg:py-20" style={{ background: "#faf8f3" }}>
         <div className="max-w-3xl mx-auto px-6 lg:px-10">
           <div className="text-center mb-10">
             <SectionLabel>Build your streak</SectionLabel>

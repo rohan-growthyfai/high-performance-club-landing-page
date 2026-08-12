@@ -367,6 +367,24 @@ function Label({ children, dark = false }: { children: React.ReactNode; dark?: b
   return <p className="aiw-label" style={dark ? { color: "#a5b4fc" } : undefined}>{children}</p>;
 }
 
+// ─── Ken Burns image — a static photo with a slow, gentle zoom/pan loop ──────────
+// `delay` staggers multiple images so they don't move in lockstep.
+function KenBurns({ src, alt, objectPosition = "center", delay = 0, className = "" }:
+  { src: string; alt: string; objectPosition?: string; delay?: number; className?: string }) {
+  return (
+    <div className={`overflow-hidden ${className}`} style={{ width: "100%", height: "100%" }}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={alt}
+        className="aiw-kb"
+        style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition, display: "block", animationDelay: `${delay}s` }}
+        onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display', 'none'); }}
+      />
+    </div>
+  );
+}
+
 // ═════════════════════════════════════════════════════════════════════════════
 // PAGE
 // ═════════════════════════════════════════════════════════════════════════════
@@ -446,6 +464,9 @@ export default function AiAtWorkPage() {
         @keyframes aiw-fadein{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         @keyframes aiw-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
         @keyframes aiw-pulse-line{0%,100%{opacity:0.35}50%{opacity:1}}
+        @keyframes aiw-kenburns{0%{transform:scale(1) translate(0,0)}50%{transform:scale(1.12) translate(-1.5%,-1.5%)}100%{transform:scale(1) translate(0,0)}}
+        #aiw-top .aiw-kb{animation:aiw-kenburns 16s ease-in-out infinite;will-change:transform}
+        @media (prefers-reduced-motion:reduce){#aiw-top .aiw-kb{animation:none!important;transform:none!important}}
         #aiw-top{font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
         #aiw-top h1,#aiw-top h2,#aiw-top .aiw-h1,#aiw-top .aiw-h2{font-family:'Poppins','Plus Jakarta Sans',sans-serif}
         #aiw-top p{letter-spacing:0.01em;line-height:1.7;font-weight:500}
@@ -471,35 +492,34 @@ export default function AiAtWorkPage() {
         </p>
       </div>
 
-      {/* ══ 1. HERO ══════════════════════════════════════════════════════════ */}
-      <section className="relative overflow-hidden mesh flex flex-col lg:min-h-[calc(100svh-48px)]" style={{ borderBottom: "1px solid #e2e8f0" }}>
-        <div className="flex-1 flex items-center">
-        <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 pt-8 pb-10 lg:py-8 grid lg:grid-cols-[1.05fr_1fr] gap-8 lg:gap-10 items-center">
-          {/* Left: copy */}
-          <div className="text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-4 accent-pill" style={{ fontSize: 12.5, fontWeight: 700 }}>
+      {/* ══ 1. HERO — full-width stacked: centered copy over a wide banner ═════ */}
+      <section className="relative overflow-hidden mesh" style={{ borderBottom: "1px solid #e2e8f0" }}>
+        <div className="w-full max-w-6xl mx-auto px-6 lg:px-8 pt-10 pb-12 lg:pt-14 lg:pb-16">
+          {/* Copy — centered, full width */}
+          <div className="text-center max-w-4xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-5 accent-pill" style={{ fontSize: 12.5, fontWeight: 700 }}>
               <span className="w-2 h-2 rounded-full inline-block animate-pulse" style={{ background: "#4f46e5" }} />
               Free 14-Day Live AI Series for Working Professionals
             </div>
-            <h1 className="mb-4" style={{ fontSize: "clamp(2rem,4vw,3.1rem)", fontWeight: 800, lineHeight: 1.08, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
-              Stop Just Learning AI.<br />
+            <h1 className="mb-4" style={{ fontSize: "clamp(2.2rem,5vw,3.6rem)", fontWeight: 800, lineHeight: 1.06, letterSpacing: "-0.03em", fontFamily: "'Poppins','Plus Jakarta Sans',sans-serif" }}>
+              Stop Just Learning AI.{" "}
               <span className="grad">Start Using It At Work.</span>
             </h1>
-            <p style={{ fontSize: 16.5, color: "#475569", maxWidth: 560, margin: "0 auto 14px" }} className="lg:mx-0">
+            <p style={{ fontSize: 17.5, color: "#475569", maxWidth: 720, margin: "0 auto 14px" }}>
               Join the <strong style={{ color: "#0f172a" }}>14-Day AI at Work™ LIVE Series</strong> and discover one practical way to use AI in your everyday work — from emails and meetings to research, presentations, Excel, productivity and automation.
             </p>
-            <p style={{ fontSize: 16.5, fontWeight: 800, color: "#4338ca", maxWidth: 560, margin: "0 auto 18px", fontFamily: "'Poppins',sans-serif" }} className="lg:mx-0">
+            <p style={{ fontSize: 17.5, fontWeight: 800, color: "#4338ca", margin: "0 auto 18px", fontFamily: "'Poppins',sans-serif" }}>
               14 Days. 14 Work Problems. 14 Practical AI Skills.
             </p>
 
             {/* quick highlights */}
-            <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-6">
+            <div className="flex flex-wrap justify-center gap-2 mb-7">
               {["⚡ 15 Min LIVE Daily", "💼 For Professionals", "🛠️ Learn + Do LIVE", "📲 Daily AI Upgrade", "🎁 Completely FREE"].map(h => (
-                <span key={h} className="rounded-full px-3 py-1.5" style={{ background: "#fff", border: "1.5px solid #e2e8f0", fontSize: 13, fontWeight: 700, color: "#334155" }}>{h}</span>
+                <span key={h} className="rounded-full px-3.5 py-1.5" style={{ background: "#fff", border: "1.5px solid #e2e8f0", fontSize: 13, fontWeight: 700, color: "#334155" }}>{h}</span>
               ))}
             </div>
 
-            <div className="flex flex-col items-center lg:items-start gap-2.5">
+            <div className="flex flex-col items-center gap-2.5">
               <button onClick={openRegister} className="btn-primary inline-flex items-center justify-center gap-3 rounded-full font-black text-white w-full sm:w-auto" style={{ fontSize: 21, padding: "22px 46px", border: "none", cursor: "pointer", lineHeight: 1.1, letterSpacing: "-0.01em" }}>
                 <BoltIcon size={24} /><span>Join The 14-Day Series — Free</span><ArrowIcon size={20} />
               </button>
@@ -507,19 +527,15 @@ export default function AiAtWorkPage() {
             </div>
           </div>
 
-          {/* Right: WORK × AI visual — a real professional, workday tools + AI wired in */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="relative w-full" style={{ maxWidth: 560, animation: "aiw-float 5.5s ease-in-out infinite" }}>
-              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 24px 60px -18px rgba(79,70,229,0.4)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/aiatwork/hero.jpg" alt="A working professional at a laptop with their emails, meetings, spreadsheets and slides — AI wired into their existing workday" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
-              </div>
-              {/* floating chips */}
-              <span className="absolute -top-3 -left-3 rounded-full px-3 py-1.5 hidden sm:inline-flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 20px rgba(15,23,42,0.12)", fontSize: 12, fontWeight: 800, color: "#0f172a" }}>🎁 Free</span>
-              <span className="absolute -bottom-3 -right-3 rounded-full px-3 py-1.5 hidden sm:inline-flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 20px rgba(15,23,42,0.12)", fontSize: 12, fontWeight: 800, color: "#0f172a" }}>⚡ 15 min/day</span>
+          {/* Wide WORK × AI banner — fills the full width, no empty space */}
+          <div className="relative mt-11 lg:mt-14" style={{ animation: "aiw-float 6s ease-in-out infinite" }}>
+            <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 30px 70px -22px rgba(79,70,229,0.4)" }}>
+              <KenBurns src="/aiatwork/hero-wide.jpg" alt="A working professional at a laptop with their emails, meetings, documents, spreadsheets and slides — AI wired across their whole workday" className="aspect-[16/9]" />
             </div>
+            {/* floating chips */}
+            <span className="absolute -top-3 left-4 sm:left-8 rounded-full px-3.5 py-2 inline-flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 20px rgba(15,23,42,0.12)", fontSize: 13, fontWeight: 800, color: "#0f172a" }}>🎁 Completely Free</span>
+            <span className="absolute -bottom-3 right-4 sm:right-8 rounded-full px-3.5 py-2 inline-flex items-center gap-1.5" style={{ background: "#fff", boxShadow: "0 8px 20px rgba(15,23,42,0.12)", fontSize: 13, fontWeight: 800, color: "#0f172a" }}>⚡ 15 min live / day</span>
           </div>
-        </div>
         </div>
       </section>
 
@@ -532,8 +548,7 @@ export default function AiAtWorkPage() {
           </Reveal>
           <Reveal className="mb-8">
             <div className="rounded-3xl overflow-hidden mx-auto" style={{ maxWidth: 620, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/aiatwork/bookmarks.jpg" alt="A professional surrounded by saved reels, bookmarked tools and downloaded ebooks piling up unused — learning about AI but not using it" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              <KenBurns src="/aiatwork/bookmarks.jpg" alt="A professional surrounded by saved reels, bookmarked tools and downloaded ebooks piling up unused — learning about AI but not using it" className="aspect-square" />
             </div>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
@@ -541,7 +556,7 @@ export default function AiAtWorkPage() {
               <div className="rounded-3xl p-7 h-full" style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0" }}>
                 <p style={{ fontSize: 12.5, fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>What most people do</p>
                 <div className="flex flex-col gap-2.5">
-                  {["Save AI reels", "Collect prompts", "Bookmark new tools", "Watch tutorials", "Download AI ebooks", "Attend webinars"].map(t => (
+                  {["Watch random YouTube videos", "Save AI reels", "Collect prompts", "Bookmark new tools", "Watch tutorials", "Download AI ebooks", "Attend webinars"].map(t => (
                     <div key={t} className="flex items-center gap-2.5"><span style={{ color: "#94a3b8", fontWeight: 900 }}>•</span><span style={{ fontSize: 15.5, color: "#64748b", fontWeight: 600 }}>{t}</span></div>
                   ))}
                 </div>
@@ -591,7 +606,7 @@ export default function AiAtWorkPage() {
           <Reveal delay={100}>
             <div className="text-center mt-10">
               <p style={{ fontSize: "clamp(1.3rem,3vw,1.8rem)", fontWeight: 800, color: "#0f172a", lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>
-                AI can already help across almost all of these.
+                AI can already help across all of these.
               </p>
               <p style={{ fontSize: 15.5, color: "#64748b", marginTop: 8 }}>The question is:</p>
               <p style={{ fontSize: "clamp(1.5rem,3.5vw,2.2rem)", fontWeight: 900, marginTop: 4, fontFamily: "'Poppins',sans-serif" }} className="grad">Do you know HOW to use it?</p>
@@ -607,11 +622,11 @@ export default function AiAtWorkPage() {
           <Reveal className="text-center mb-4">
             <Label>Introducing</Label>
             <h2 className="mt-3" style={{ fontSize: "clamp(2.4rem,6vw,3.6rem)", fontWeight: 900, fontFamily: "'Poppins',sans-serif", letterSpacing: "-0.02em" }}><span className="grad">AI at Work™</span></h2>
-            <p style={{ fontSize: 17, color: "#475569", marginTop: 10, fontWeight: 700 }}>A 14-Day LIVE AI Experience Built Specifically for Working Professionals.</p>
+            <p style={{ fontSize: 17, color: "#475569", marginTop: 10, fontWeight: 700 }}>A 14-Day LIVE AI Series Built Specifically for Working Professionals.</p>
           </Reveal>
           <Reveal delay={60}>
             <p className="text-center" style={{ fontSize: 17, color: "#475569", maxWidth: 640, margin: "10px auto 40px", lineHeight: 1.65 }}>
-              For 14 days, we meet LIVE every day for approximately <strong style={{ color: "#0f172a" }}>15 focused minutes</strong>. Every session focuses on <strong style={{ color: "#0f172a" }}>one real workplace problem.</strong>
+              For 14 days, we meet LIVE every day for <strong style={{ color: "#0f172a" }}>15 focused minutes</strong>. Every session focuses on <strong style={{ color: "#0f172a" }}>one real workplace problem.</strong>
             </p>
           </Reveal>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
@@ -652,24 +667,21 @@ export default function AiAtWorkPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/aiatwork/method-live.jpg" alt="A professional doing a real work task live with an AI assistant open on their laptop" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <KenBurns src="/aiatwork/method-live.jpg" alt="A professional doing a real work task live with an AI assistant open on their laptop" className="aspect-square" />
               </div>
             </Reveal>
             {/* the 3 steps */}
             <div className="flex flex-col gap-4">
               {[
-                { n: "01", t: "LEARN", min: "~3 Minutes", d: "Understand today's work problem and where AI can help." },
-                { n: "02", t: "DO", min: "~7 Minutes", d: "Open the tool and perform the workflow with us LIVE." },
-                { n: "03", t: "APPLY", min: "~5 Minutes", d: "Take the skill and apply it to something from your real work." },
-              ].map(({ n, t, min, d }, i) => (
+                { n: "01", t: "LEARN", d: "Understand today's work problem and where AI can help." },
+                { n: "02", t: "DO", d: "Open the tool and perform the workflow with us LIVE." },
+                { n: "03", t: "APPLY", d: "Take the skill and apply it to something from your real work." },
+              ].map(({ n, t, d }, i) => (
                 <Reveal key={t} delay={i * 90}>
                   <div className="rounded-3xl p-6 h-full" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(165,180,252,0.25)" }}>
                     <div className="flex items-center gap-3 mb-3">
                       <span className="inline-flex items-center justify-center rounded-full" style={{ width: 42, height: 42, background: "linear-gradient(135deg,#4338ca,#6366f1)", color: "#fff", fontSize: 16, fontWeight: 900, fontFamily: "'Poppins',sans-serif" }}>{n}</span>
-                      <div>
-                        <p style={{ fontSize: 20, fontWeight: 900, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{t}</p>
-                        <p style={{ fontSize: 12.5, fontWeight: 700, color: "#a5b4fc" }}>{min}</p>
-                      </div>
+                      <p style={{ fontSize: 20, fontWeight: 900, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{t}</p>
                     </div>
                     <p style={{ fontSize: 15, color: "rgba(255,255,255,0.8)", lineHeight: 1.6 }}>{d}</p>
                   </div>
@@ -748,10 +760,10 @@ export default function AiAtWorkPage() {
             ))}
           </div>
           <Reveal delay={100}>
-            <div className="rounded-2xl px-6 py-7 mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-center" style={{ background: "#0f172a" }}>
-              <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", fontWeight: 600 }}>Day 1: <span style={{ color: "#fff" }}>&ldquo;I use AI sometimes.&rdquo;</span></p>
-              <span style={{ color: "#a5b4fc", fontSize: 22, fontWeight: 900 }}>→</span>
-              <p style={{ fontSize: 16, color: "#fff", fontWeight: 800 }}>Day 14: <span style={{ color: "#a5b4fc" }}>&ldquo;I know where AI fits into my work.&rdquo;</span></p>
+            <div className="rounded-2xl px-6 py-9 mt-10 flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8 text-center" style={{ background: "#0f172a" }}>
+              <p style={{ fontSize: "clamp(1.15rem,2.4vw,1.6rem)", color: "rgba(255,255,255,0.8)", fontWeight: 800, lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>Day 1: <span style={{ color: "#fff" }}>&ldquo;I use AI sometimes.&rdquo;</span></p>
+              <span style={{ color: "#a5b4fc", fontSize: 30, fontWeight: 900 }}>→</span>
+              <p style={{ fontSize: "clamp(1.15rem,2.4vw,1.6rem)", color: "#fff", fontWeight: 900, lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>Day 14: <span style={{ color: "#a5b4fc" }}>&ldquo;I know where AI fits into my work.&rdquo;</span></p>
             </div>
             <div className="flex justify-center mt-8"><CTA label="Start My 14 Days" sub="Free · 15 min live daily" /></div>
           </Reveal>
@@ -781,7 +793,7 @@ export default function AiAtWorkPage() {
               <p style={{ fontSize: "clamp(1.3rem,3vw,1.85rem)", fontWeight: 900, color: "#0f172a", lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>
                 You&apos;re Not Expected To Master AI In 14 Days.
               </p>
-              <p style={{ fontSize: 17.5, color: "#4338ca", fontWeight: 800, marginTop: 8 }}>You&apos;re expected to start USING it differently.</p>
+              <p style={{ fontSize: 17.5, color: "#4338ca", fontWeight: 800, marginTop: 8 }}>You&apos;re expected to start USING it in your daily work.</p>
             </div>
           </Reveal>
         </div>
@@ -800,17 +812,27 @@ export default function AiAtWorkPage() {
           <div className="grid md:grid-cols-2 gap-6">
             <Reveal>
               <div className="rounded-3xl p-7 h-full" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.12)" }}>
-                <p style={{ fontSize: 13, fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>📺 YouTube</p>
-                {["Search", "Watch", "Save", "Forget"].map(t => (
-                  <div key={t} className="flex items-center gap-2.5 mb-2"><span style={{ color: "#64748b", fontWeight: 900 }}>•</span><span style={{ fontSize: 16, color: "#94a3b8", fontWeight: 600 }}>{t}</span></div>
+                <p style={{ fontSize: 13, fontWeight: 800, color: "#94a3b8", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>📺 YouTube</p>
+                {[
+                  { t: "Search for a video", d: "You go hunting for the right one." },
+                  { t: "Watch it passively", d: "You watch someone else do it." },
+                  { t: "Save it for later", d: "You bookmark it to try someday." },
+                  { t: "Forget all about it", d: "And you never actually use it." },
+                ].map(({ t, d }) => (
+                  <div key={t} className="flex items-start gap-2.5 mb-3"><span style={{ color: "#64748b", fontWeight: 900, lineHeight: 1.5 }}>•</span><span><span style={{ fontSize: 16, color: "#cbd5e1", fontWeight: 700 }}>{t}</span><br /><span style={{ fontSize: 13.5, color: "#94a3b8", fontWeight: 500 }}>{d}</span></span></div>
                 ))}
               </div>
             </Reveal>
             <Reveal delay={80}>
               <div className="rounded-3xl p-7 h-full" style={{ background: "rgba(99,102,241,0.14)", border: "1px solid rgba(165,180,252,0.4)" }}>
-                <p style={{ fontSize: 13, fontWeight: 800, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 14 }}>⚡ AI at Work™</p>
-                {["Show Up", "Learn", "Do", "Apply"].map(t => (
-                  <div key={t} className="flex items-center gap-2.5 mb-2"><span style={{ color: "#a5b4fc", fontWeight: 900 }}>✓</span><span style={{ fontSize: 16, color: "#fff", fontWeight: 800 }}>{t}</span></div>
+                <p style={{ fontSize: 13, fontWeight: 800, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16 }}>⚡ AI at Work™</p>
+                {[
+                  { t: "Show up live", d: "Join a short 15-minute live session." },
+                  { t: "Learn the skill", d: "See exactly where AI fits your work." },
+                  { t: "Do it with us", d: "Open your laptop and try it right there." },
+                  { t: "Apply it today", d: "Use it on your own real work — same day." },
+                ].map(({ t, d }) => (
+                  <div key={t} className="flex items-start gap-2.5 mb-3"><span style={{ color: "#a5b4fc", fontWeight: 900, lineHeight: 1.5 }}>✓</span><span><span style={{ fontSize: 16, color: "#fff", fontWeight: 800 }}>{t}</span><br /><span style={{ fontSize: 13.5, color: "rgba(255,255,255,0.75)", fontWeight: 500 }}>{d}</span></span></div>
                 ))}
               </div>
             </Reveal>
@@ -824,7 +846,7 @@ export default function AiAtWorkPage() {
               </div>
               <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/aiatwork/live-session.jpg" alt="A professional following along in a live online session, doing the task on their own laptop" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <KenBurns src="/aiatwork/live-session.jpg" alt="A professional following along in a live online session, doing the task on their own laptop" className="aspect-[4/3]" />
               </div>
             </div>
             <p className="text-center mt-9" style={{ fontSize: "clamp(1.3rem,3vw,1.9rem)", fontWeight: 900, color: "#fff", lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>
@@ -844,7 +866,7 @@ export default function AiAtWorkPage() {
           <Reveal className="mb-8">
             <div className="rounded-3xl overflow-hidden mx-auto" style={{ maxWidth: 900, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/aiatwork/audiences.jpg" alt="Professionals across marketing, management, HR and finance using AI at their desks" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              <KenBurns src="/aiatwork/audiences.jpg" alt="Professionals across marketing, management, HR and finance using AI at their desks" className="aspect-[3/2]" />
             </div>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -860,7 +882,7 @@ export default function AiAtWorkPage() {
           </div>
           <Reveal delay={100}>
             <p className="text-center mt-10" style={{ fontSize: "clamp(1.25rem,3vw,1.75rem)", fontWeight: 900, color: "#0f172a", lineHeight: 1.35, fontFamily: "'Poppins',sans-serif" }}>
-              Different Jobs. Different Work.<br /><span className="grad">Same Question: How Can AI Help Me Do This Better?</span>
+              Different Jobs. Different Work.<br /><span className="grad">Same Question: How Can AI Help Me Do My Work Better?</span>
             </p>
           </Reveal>
         </div>
@@ -877,7 +899,7 @@ export default function AiAtWorkPage() {
             <Reveal>
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/aiatwork/no-code.jpg" alt="An everyday, non-technical professional at a simple desk with a laptop, coffee and a notebook" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <KenBurns src="/aiatwork/no-code.jpg" alt="An everyday, non-technical professional at a simple desk with a laptop, coffee and a notebook" className="aspect-[4/3]" />
               </div>
             </Reveal>
             {/* do / don't cards */}
@@ -960,8 +982,7 @@ export default function AiAtWorkPage() {
           <Reveal delay={80}>
             <div className="grid lg:grid-cols-2 gap-6 items-center">
               <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #f8fafc", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/aiatwork/achieve.jpg" alt="A professional feeling a sense of achievement and momentum after using an AI skill at work" className="w-full h-full object-cover block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+                <KenBurns src="/aiatwork/achieve.jpg" alt="A professional feeling a sense of achievement and momentum after using an AI skill at work" className="aspect-square" delay={1} />
               </div>
               <div className="rounded-3xl p-7" style={{ background: "linear-gradient(135deg,#1e1b4b,#111827)" }}>
                 <p style={{ fontSize: 12, fontWeight: 800, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>Your AI-at-Work Progress</p>
@@ -999,7 +1020,7 @@ export default function AiAtWorkPage() {
           <Reveal className="mb-9">
             <div className="rounded-3xl overflow-hidden mx-auto" style={{ maxWidth: 860, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/aiatwork/community.jpg" alt="A supportive community of working professionals sharing how they use AI at work" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              <KenBurns src="/aiatwork/community.jpg" alt="A supportive community of working professionals sharing how they use AI at work" className="aspect-[3/2]" />
             </div>
           </Reveal>
           <div className="grid sm:grid-cols-2 gap-4">
@@ -1092,7 +1113,7 @@ export default function AiAtWorkPage() {
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
           <Reveal className="text-center mb-10">
             <Label>Everything included</Label>
-            <h2 className="aiw-h2 mt-3">Your 14-Day <span className="grad">AI at Work™ Experience</span></h2>
+            <h2 className="aiw-h2 mt-3">Your 14-Day <span className="grad">AI at Work™ Series</span></h2>
           </Reveal>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
@@ -1202,9 +1223,8 @@ export default function AiAtWorkPage() {
       <section className="relative overflow-hidden py-20 lg:py-24" style={{ background: "#0f172a" }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(99,102,241,0.18),transparent 70%)" }} />
         <div className="max-w-xl mx-auto px-6 text-center relative">
-          <div className="mx-auto mb-7 rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/aiatwork/hero.jpg" alt="A working professional using AI at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+          <div className="mx-auto mb-7 rounded-3xl overflow-hidden" style={{ maxWidth: 340, border: "5px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
+            <KenBurns src="/aiatwork/hero.jpg" alt="A working professional using AI at their desk" className="aspect-[4/3]" />
           </div>
           <p className="aiw-label mb-3" style={{ color: "#a5b4fc" }}>Your work is already changing</p>
           <h2 className="aiw-h1 mb-4" style={{ color: "#fff" }}>

@@ -526,9 +526,15 @@ export default function AiAtWorkPage() {
       {/* ══ 2. BELIEF BREAKER ════════════════════════════════════════════════ */}
       <section className="py-16 lg:py-20" style={{ background: "#fff" }}>
         <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <Reveal className="text-center mb-10">
+          <Reveal className="text-center mb-8">
             <Label>The real AI problem</Label>
             <h2 className="aiw-h2 mt-3">You&apos;ve Probably Learned More AI<br className="hidden sm:block" /> Than You&apos;ve Actually <span className="grad">Used.</span></h2>
+          </Reveal>
+          <Reveal className="mb-8">
+            <div className="rounded-3xl overflow-hidden mx-auto" style={{ maxWidth: 620, border: "6px solid #fff", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/aiatwork/bookmarks.jpg" alt="A professional surrounded by saved reels, bookmarked tools and downloaded ebooks piling up unused — learning about AI but not using it" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+            </div>
           </Reveal>
           <div className="grid md:grid-cols-2 gap-6 items-stretch">
             <Reveal>
@@ -810,10 +816,16 @@ export default function AiAtWorkPage() {
             </Reveal>
           </div>
           <Reveal delay={100}>
-            <div className="rounded-2xl px-6 py-6 mt-8" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "4px solid #6366f1" }}>
-              <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
-                You can find thousands of AI videos online. What you rarely get is someone saying: <strong style={{ color: "#fff" }}>&ldquo;Open your laptop. We&apos;re doing this together right now.&rdquo;</strong>
-              </p>
+            <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-center mt-8">
+              <div className="rounded-2xl px-6 py-6" style={{ background: "rgba(255,255,255,0.04)", borderLeft: "4px solid #6366f1" }}>
+                <p style={{ fontSize: 16.5, color: "rgba(255,255,255,0.85)", lineHeight: 1.7 }}>
+                  You can find thousands of AI videos online. What you rarely get is someone saying: <strong style={{ color: "#fff" }}>&ldquo;Open your laptop. We&apos;re doing this together right now.&rdquo;</strong>
+                </p>
+              </div>
+              <div className="rounded-3xl overflow-hidden" style={{ border: "5px solid rgba(255,255,255,0.08)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/aiatwork/live-session.jpg" alt="A professional following along in a live online session, doing the task on their own laptop" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
             </div>
             <p className="text-center mt-9" style={{ fontSize: "clamp(1.3rem,3vw,1.9rem)", fontWeight: 900, color: "#fff", lineHeight: 1.3, fontFamily: "'Poppins',sans-serif" }}>
               Information Is Everywhere.<br /><span style={{ color: "#a5b4fc" }}>Implementation Is The Difference.</span>
@@ -946,19 +958,25 @@ export default function AiAtWorkPage() {
             <span className="inline-flex items-center gap-2 rounded-full px-6 py-3" style={{ background: "#f8fafc", border: "1.5px solid #e2e8f0", fontSize: 16, fontWeight: 800, color: "#64748b" }}>🔖 TRY LATER</span>
           </div>
           <Reveal delay={80}>
-            <div className="rounded-3xl p-7" style={{ background: "linear-gradient(135deg,#1e1b4b,#111827)" }}>
-              <p style={{ fontSize: 12, fontWeight: 800, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>Your AI-at-Work Progress</p>
-              <div className="grid grid-cols-3 gap-4">
-                {[
-                  { k: "Days Completed", v: "8/14" },
-                  { k: "Skills Applied", v: "6" },
-                  { k: "Current Streak", v: "🔥 4" },
-                ].map(({ k, v }) => (
-                  <div key={k} className="rounded-2xl py-5 text-center" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(165,180,252,0.2)" }}>
-                    <p style={{ fontSize: 26, fontWeight: 900, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{v}</p>
-                    <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 4, fontWeight: 600 }}>{k}</p>
-                  </div>
-                ))}
+            <div className="grid lg:grid-cols-2 gap-6 items-center">
+              <div className="rounded-3xl overflow-hidden" style={{ border: "6px solid #f8fafc", boxShadow: "0 20px 50px -18px rgba(79,70,229,0.28)" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/aiatwork/achieve.jpg" alt="A professional feeling a sense of achievement and momentum after using an AI skill at work" className="w-full h-full object-cover block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+              </div>
+              <div className="rounded-3xl p-7" style={{ background: "linear-gradient(135deg,#1e1b4b,#111827)" }}>
+                <p style={{ fontSize: 12, fontWeight: 800, color: "#a5b4fc", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 16, textAlign: "center" }}>Your AI-at-Work Progress</p>
+                <div className="grid grid-cols-3 gap-4">
+                  {[
+                    { k: "Days Completed", v: "8/14" },
+                    { k: "Skills Applied", v: "6" },
+                    { k: "Current Streak", v: "🔥 4" },
+                  ].map(({ k, v }) => (
+                    <div key={k} className="rounded-2xl py-5 text-center" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(165,180,252,0.2)" }}>
+                      <p style={{ fontSize: 26, fontWeight: 900, color: "#fff", fontFamily: "'Poppins',sans-serif" }}>{v}</p>
+                      <p style={{ fontSize: 12, color: "#94a3b8", marginTop: 4, fontWeight: 600 }}>{k}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </Reveal>
@@ -1184,6 +1202,10 @@ export default function AiAtWorkPage() {
       <section className="relative overflow-hidden py-20 lg:py-24" style={{ background: "#0f172a" }}>
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse,rgba(99,102,241,0.18),transparent 70%)" }} />
         <div className="max-w-xl mx-auto px-6 text-center relative">
+          <div className="mx-auto mb-7 rounded-3xl overflow-hidden" style={{ maxWidth: 300, border: "5px solid rgba(255,255,255,0.1)", boxShadow: "0 20px 50px -18px rgba(0,0,0,0.6)" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/aiatwork/hero.jpg" alt="A working professional using AI at their desk" className="w-full h-auto block" onError={e => { (e.target as HTMLImageElement).closest('div')?.style.setProperty('display','none'); }} />
+          </div>
           <p className="aiw-label mb-3" style={{ color: "#a5b4fc" }}>Your work is already changing</p>
           <h2 className="aiw-h1 mb-4" style={{ color: "#fff" }}>
             The Question Is Whether<br />

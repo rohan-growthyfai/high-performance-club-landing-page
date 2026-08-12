@@ -9,6 +9,7 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700", "800"],
+  fallback: ["system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "sans-serif"],
 });
 
 const fraunces = Fraunces({
@@ -17,6 +18,7 @@ const fraunces = Fraunces({
   display: "swap",
   weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
+  fallback: ["Georgia", "Cambria", "Times New Roman", "serif"],
 });
 
 export const metadata: Metadata = {

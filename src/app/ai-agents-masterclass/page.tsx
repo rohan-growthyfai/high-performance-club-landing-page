@@ -221,11 +221,11 @@ export default function AiAgentsMasterclassPage() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "rgba(124,108,245,0.16)", border: "1px solid rgba(155,140,247,0.42)", borderRadius: 999, padding: "9px 18px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.12em", color: "#cfc7fb" }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: "#34d399", animation: "agp-pulse 1.8s infinite" }} /> FREE LIVE AI AGENTS MASTERCLASS
             </div>
-            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(38px,7.2vw,68px)", fontWeight: 800, lineHeight: 1.12, letterSpacing: "-0.04em", margin: "24px 0 0" }}>
+            <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(38px,7.2vw,68px)", fontWeight: 800, lineHeight: 1.16, letterSpacing: "-0.005em", margin: "24px 0 0" }}>
               Stop Doing Everything Yourself.<br />
-              <span style={{ fontSize: "clamp(26px,5vw,46px)", fontWeight: 800, display: "inline-block", marginTop: 18, lineHeight: 1.18 }}>Build AI Agents That <span className="grad-ink">Work For You 24/7 — Even While You Sleep.</span></span>
+              <span style={{ fontSize: "clamp(26px,5vw,46px)", fontWeight: 800, display: "inline-block", marginTop: 20, lineHeight: 1.24 }}>Build AI Agents That <span className="grad-ink">Work For You 24/7 — Even While You Sleep.</span></span>
             </h1>
-            <p style={{ fontSize: "clamp(18px,2.7vw,24px)", fontWeight: 500, color: "#d8d3ee", maxWidth: 680, margin: "28px auto 0", lineHeight: 1.6 }}>
+            <p style={{ fontSize: "clamp(18px,2.7vw,24px)", fontWeight: 500, color: "#d8d3ee", maxWidth: 680, margin: "28px auto 0", lineHeight: 1.65, letterSpacing: "0.005em" }}>
               Learn to build your <b style={{ color: "#fff", fontWeight: 700 }}>first AI Agent</b>, automate repetitive work and <b style={{ color: "#fff", fontWeight: 700 }}>save hours of manual work every week.</b>
             </p>
             <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Knowledge Required.</p>
@@ -264,10 +264,10 @@ export default function AiAgentsMasterclassPage() {
               {[
                 { img: "/avatars/women/woman-1.jpg", who: "Marketers & Content Creators", line: "Creating content & staying consistent takes hours." },
                 { img: "/avatars/men/man-2.jpg", who: "Working Professionals", line: "Emails, PPTs, research & reports eat up your day." },
-                { img: "/avatars/men/man-3.jpg", who: "Business Owners & Entrepreneurs", line: "Follow-ups, customers & daily tasks keep you constantly busy." },
+                { img: "/avatars/women/woman-6.webp", who: "Business Owners & Entrepreneurs", line: "Follow-ups, customers & daily tasks keep you constantly busy." },
                 { img: "/avatars/women/woman-4.jpg", who: "Freelancers & Consultants", line: "Finding clients, proposals & client work take up your time." },
-                { img: "/avatars/men/man-7.jpg", who: "Job Seekers & Career Professionals", line: "Finding jobs, applying & researching companies takes hours." },
-                { img: "/avatars/women/woman-5.jpg", who: "Students", line: "Research, presentations & projects consume hours of your time." },
+                { img: "/avatars/men/man-1.jpg", who: "Job Seekers & Career Professionals", line: "Finding jobs, applying & researching companies takes hours." },
+                { img: "/avatars/men/man-4.jpg", who: "Students", line: "Research, presentations & projects consume hours of your time." },
               ].map((c, i) => (
                 <Reveal key={c.who} delay={(i % 3) * 90}>
                   <div className="who-card" style={{ ...CARD, overflow: "hidden", height: "100%", display: "flex", flexDirection: "column" }}>

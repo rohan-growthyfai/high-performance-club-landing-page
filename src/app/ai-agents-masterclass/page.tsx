@@ -393,10 +393,16 @@ export default function AiAgentsMasterclassPage() {
               <CTA big><HeroPriceLabel /></CTA>
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 22px", marginTop: 26, fontSize: 14.5, color: "#cbc6e6" }}>
-              {["Beginner Friendly", "Practical Live Demo", "Build Your Own AI Agent"].map((t) => (
-                <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><CheckIcon size={17} color="#34d399" /> {t}</span>
-              ))}
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 14, marginTop: 28 }}>
+              <div style={{ display: "flex" }}>
+                {["/avatars/women/woman-1.jpg", "/avatars/men/man-2.jpg", "/avatars/women/woman-4.jpg", "/avatars/men/man-1.jpg", "/avatars/women/woman-6.webp"].map((src, i) => (
+                  <img key={i} src={src} alt="" loading="lazy" style={{ width: 38, height: 38, borderRadius: 999, objectFit: "cover", border: "2px solid #1a1440", marginLeft: i === 0 ? 0 : -10 }} onError={(e) => { (e.currentTarget.style.display = "none"); }} />
+                ))}
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ display: "flex", gap: 2, color: "#fbbf24", fontSize: 15, lineHeight: 1 }}>★★★★★</div>
+                <p style={{ fontSize: 14, color: "#cbc6e6", marginTop: 3 }}><strong style={{ color: "#fff", fontWeight: 700 }}>Loved by 3,000+ AI learners</strong></p>
+              </div>
             </div>
 
             <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", marginTop: 26, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "13px 22px", fontSize: 14.5, fontWeight: 700 }}>

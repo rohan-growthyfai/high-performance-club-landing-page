@@ -79,17 +79,26 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 // ─── Primary CTA ────────────────────────────────────────────────────────────────
-function CTA({ label = "Reserve My Free Seat", big = false }: { label?: string; big?: boolean }) {
+function CTA({ label = "Reserve My Free Seat", big = false, children }: { label?: string; big?: boolean; children?: React.ReactNode }) {
   const register = useRegister();
   return (
     <button
       onClick={register}
       className="btn-primary inline-flex items-center justify-center gap-3 rounded-full text-white w-full sm:w-auto"
-      style={{ fontSize: big ? 20 : 17, fontWeight: 800, padding: big ? "21px 48px" : "16px 40px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-      <BoltIcon size={big ? 21 : 19} />
-      <span>{label}</span>
-      <ArrowIcon size={big ? 20 : 18} />
+      style={{ fontSize: big ? 23 : 19, fontWeight: 900, padding: big ? "24px 56px" : "19px 46px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+      <BoltIcon size={big ? 24 : 21} />
+      <span>{children ?? label}</span>
+      <ArrowIcon size={big ? 22 : 19} />
     </button>
+  );
+}
+
+// Hero price CTA text: Register for ₹1,999 (struck-through) FREE
+function HeroPriceLabel() {
+  return (
+    <span className="inline-flex items-baseline gap-1.5">
+      Register for <span style={{ textDecoration: "line-through", textDecorationColor: "#f7a6a6", textDecorationThickness: 2, opacity: 0.85 }}>{CLASS.price}</span> <b style={{ fontWeight: 900 }}>FREE</b>
+    </span>
   );
 }
 
@@ -157,20 +166,72 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
   );
 }
 
-// ─── Sticky mobile CTA ──────────────────────────────────────────────────────────
+// ─── Sticky bottom CTA (all devices, appears on scroll) ──────────────────────────
 function StickyCTA() {
   const register = useRegister();
   const [show, setShow] = useState(false);
   useEffect(() => {
-    const onScroll = () => setShow(window.scrollY > 640);
+    const onScroll = () => setShow(window.scrollY > 560);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <div className="sm:hidden" style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 90, padding: "12px 16px calc(12px + env(safe-area-inset-bottom))", background: "rgba(255,255,255,0.9)", backdropFilter: "blur(12px)", borderTop: "1px solid #ece8f7", transform: show ? "translateY(0)" : "translateY(120%)", transition: "transform 0.28s cubic-bezier(0.16,1,0.3,1)" }}>
-      <button onClick={register} className="btn-primary rounded-full text-white w-full inline-flex items-center justify-center gap-2" style={{ padding: "15px", fontSize: 18, fontWeight: 800, border: "none" }}>
-        <BoltIcon size={20} /> Reserve My Free Seat
-      </button>
+    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, background: "linear-gradient(180deg, rgba(250,249,253,0.75), #faf9fd 40%)", backdropFilter: "blur(12px)", borderTop: "1px solid #e7e1f5", padding: "12px 16px calc(12px + env(safe-area-inset-bottom))", transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", boxShadow: "0 -10px 30px -18px rgba(76,55,207,0.35)" }}>
+      <div style={{ maxWidth: 560, margin: "0 auto" }}>
+        <button onClick={register} className="btn-primary rounded-full text-white w-full inline-flex items-center justify-center gap-2.5" style={{ padding: "18px", fontSize: 19, fontWeight: 900, border: "none", cursor: "pointer", letterSpacing: "-0.01em" }}>
+          <BoltIcon size={22} /> Register for <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", textDecorationThickness: 2, opacity: 0.85 }}>{CLASS.price}</span> FREE
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ─── Live social-proof toast (bottom-left) ───────────────────────────────────────
+const REG_NAMES = [
+  { name: "Rahul", city: "Delhi" }, { name: "Priya", city: "Mumbai" }, { name: "Aditya", city: "Bengaluru" },
+  { name: "Sneha", city: "Pune" }, { name: "Vikram", city: "Hyderabad" }, { name: "Anjali", city: "Chennai" },
+  { name: "Karan", city: "Jaipur" }, { name: "Divya", city: "Ahmedabad" }, { name: "Manish", city: "Kolkata" },
+  { name: "Meera", city: "Surat" }, { name: "Arjun", city: "Lucknow" }, { name: "Tanvi", city: "Nagpur" },
+  { name: "Nikhil", city: "Indore" }, { name: "Kavya", city: "Kochi" }, { name: "Ritesh", city: "Bhopal" },
+];
+let _regId = 0;
+function regAgo() { const r = Math.random(); return r < 0.3 ? `${Math.floor(r * 150 + 10)}s ago` : r < 0.6 ? "just now" : `${Math.floor(r * 5 + 1)} min ago`; }
+
+function LiveToast() {
+  interface T { id: number; name: string; city: string; time: string }
+  const [toasts, setToasts] = useState<T[]>([]);
+  const [scrolled, setScrolled] = useState(false);
+  const used = useRef<Set<number>>(new Set());
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => { const f = () => { if (window.scrollY > 300) setScrolled(true); }; window.addEventListener("scroll", f, { passive: true }); f(); return () => window.removeEventListener("scroll", f); }, []);
+  useEffect(() => {
+    if (!scrolled) return;
+    const spawn = () => {
+      let idx: number; do { idx = Math.floor(Math.random() * REG_NAMES.length); } while (used.current.has(idx));
+      used.current.add(idx); if (used.current.size > 5) { const first = used.current.values().next().value as number; used.current.delete(first); }
+      const p = REG_NAMES[idx]; const id = ++_regId;
+      setToasts(prev => [{ id, name: p.name, city: p.city, time: regAgo() }, ...prev].slice(0, 2));
+      setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 5000);
+      timer.current = setTimeout(spawn, 8000 + Math.random() * 11000);
+    };
+    timer.current = setTimeout(spawn, 3500 + Math.random() * 3000);
+    return () => { if (timer.current) clearTimeout(timer.current); };
+  }, [scrolled]);
+  if (!scrolled || toasts.length === 0) return null;
+  return (
+    <div style={{ position: "fixed", left: 10, bottom: 92, zIndex: 92, display: "flex", flexDirection: "column", gap: 8, pointerEvents: "none" }} aria-live="polite">
+      {toasts.map((t, i) => (
+        <div key={t.id} style={{ opacity: i === 0 ? 1 : 0.6, transform: `scale(${1 - i * 0.03})`, transformOrigin: "bottom left", animation: "reg-fadein 0.3s ease" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, borderRadius: 16, padding: "9px 12px", width: 248, background: "#fff", border: "1px solid #ece8f7", boxShadow: "0 8px 24px -8px rgba(76,55,207,0.28)" }}>
+            <div style={{ width: 30, height: 30, borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 12.5, flexShrink: 0, background: `hsl(${(t.name.charCodeAt(0) * 37) % 360},52%,52%)` }}>{t.name[0]}</div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p style={{ fontWeight: 700, lineHeight: 1.3, fontSize: 12, color: "#1a1530", margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t.name} from {t.city}</p>
+              <p style={{ lineHeight: 1.3, marginTop: 2, fontSize: 10.5, color: "#8a84a0", margin: 0 }}>registered · {t.time}</p>
+            </div>
+            <span style={{ position: "relative", display: "flex", width: 8, height: 8, flexShrink: 0 }}><span style={{ position: "absolute", display: "inline-flex", width: "100%", height: "100%", borderRadius: 999, background: "#34d399", opacity: 0.75, animation: "reg-ping 1.4s cubic-bezier(0,0,0.2,1) infinite" }} /><span style={{ position: "relative", display: "inline-flex", width: 8, height: 8, borderRadius: 999, background: "#34d399" }} /></span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -202,6 +263,8 @@ export default function AiAgentsMasterclassPage() {
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 46px -12px rgba(90,68,224,0.7); }
         .btn-primary:active { transform: translateY(0); }
         @keyframes agp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+        @keyframes reg-fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes reg-ping { 75%,100% { transform: scale(2); opacity: 0; } }
         @keyframes agp-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
         .grad-ink { background: linear-gradient(115deg,#8b7cf7,#b9aef7); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .grad-vio { background: linear-gradient(115deg,#6d5cf0,#9b59f0); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -231,7 +294,7 @@ export default function AiAgentsMasterclassPage() {
             <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Knowledge Required.</p>
 
             <div style={{ marginTop: 36 }}>
-              <CTA big label="Reserve My Free Seat" />
+              <CTA big><HeroPriceLabel /></CTA>
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 22px", marginTop: 26, fontSize: 14.5, color: "#cbc6e6" }}>
@@ -257,7 +320,7 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>Who it&apos;s for</Eyebrow>
                 <h2 style={{ ...H2, marginTop: 16 }}>Who Is This Masterclass For?</h2>
-                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>If your day is full of repetitive work, an AI Agent can take it off your plate.</p>
+                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>Stop doing repetitive work. Let AI do it for you.</p>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 22, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 46 }}>
@@ -655,10 +718,12 @@ export default function AiAgentsMasterclassPage() {
           © {new Date().getFullYear()} High Performance Club · {CLASS.name}
         </div>
 
-        <div style={{ height: 76 }} className="sm:hidden" />
+        {/* spacer so the fixed sticky CTA never covers the footer */}
+        <div style={{ height: 84 }} />
       </main>
 
       <StickyCTA />
+      <LiveToast />
       <RegisterModal open={modalOpen} onClose={() => setModalOpen(false)} />
     </RegisterCtx.Provider>
   );

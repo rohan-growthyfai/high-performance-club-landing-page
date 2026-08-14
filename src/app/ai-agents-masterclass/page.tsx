@@ -229,6 +229,10 @@ export default function AiAgentsMasterclassPage() {
             <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", marginTop: 26, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "12px 20px", fontSize: 14.5, fontWeight: 700 }}>
               <span>📅 {CLASS.date}</span><span>🕚 {CLASS.time}</span><span style={{ color: "#cbd5e1", fontWeight: 500 }}>💻 LIVE Online</span>
             </div>
+
+            <div style={{ maxWidth: 720, margin: "38px auto 0", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
+              <img src="/aiatwork/hero-wide.jpg" alt="A working professional at a laptop with AI agents handling emails, research, follow-ups and reports across their workday" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+            </div>
           </div>
         </section>
 
@@ -334,6 +338,9 @@ export default function AiAgentsMasterclassPage() {
                 <Eyebrow>What can AI do for you?</Eyebrow>
                 <h2 style={{ ...H2, marginTop: 12 }}>Imagine Having Your Own <span style={{ color: "#4f46e5" }}>AI Workforce</span></h2>
                 <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 12 }}>AI Agents that can help you with:</p>
+                <div style={{ maxWidth: 620, margin: "28px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid #eef2f7", boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)", lineHeight: 0 }}>
+                  <img src="/aiatwork/method-live.jpg" alt="A professional at a laptop with an AI assistant doing real work tasks alongside them" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                </div>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 36 }}>
@@ -370,7 +377,10 @@ export default function AiAgentsMasterclassPage() {
             <Reveal>
               <h2 style={H2}>Think AI Agents Sound Too Technical?</h2>
               <p style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 900, color: "#4f46e5", marginTop: 8 }}>They&apos;re Not.</p>
-              <p style={{ fontSize: 17, color: "#475569", marginTop: 18, fontWeight: 600 }}>You DON&apos;T need to be:</p>
+              <div style={{ maxWidth: 460, margin: "26px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)", lineHeight: 0 }}>
+                <img src="/aiatwork/no-code.jpg" alt="An everyday, non-technical person at a simple desk with a laptop, coffee and a notebook building AI agents" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+              </div>
+              <p style={{ fontSize: 17, color: "#475569", marginTop: 24, fontWeight: 600 }}>You DON&apos;T need to be:</p>
             </Reveal>
             <Reveal delay={60}>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 20 }}>
@@ -426,6 +436,9 @@ export default function AiAgentsMasterclassPage() {
             <Reveal>
               <h2 style={H2}>Watch Me Build An AI Agent<br /><span className="clone-grad">LIVE — Without Writing Code</span></h2>
               <p style={{ fontSize: 16.5, color: "#cbd5e1", marginTop: 18, lineHeight: 1.6 }}>Not theory. Not complicated programming. You&apos;ll actually see how an AI Agent can be built and used to do real work.</p>
+              <div style={{ maxWidth: 620, margin: "30px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
+                <img src="/aiatwork/live-session.jpg" alt="A live online session showing an AI agent being built on screen, step by step" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+              </div>
             </Reveal>
             <Reveal delay={80}>
               <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 8, marginTop: 34 }}>
@@ -456,6 +469,9 @@ export default function AiAgentsMasterclassPage() {
           <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
             <Reveal>
               <h2 style={H2}>If You Use A Computer For Work,<br /><span style={{ color: "#4f46e5" }}>This Is For You.</span></h2>
+              <div style={{ maxWidth: 600, margin: "26px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)", lineHeight: 0 }}>
+                <img src="/aiatwork/audiences.jpg" alt="Business owners, working professionals, marketers, entrepreneurs, coaches and freelancers using AI at their desks" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+              </div>
             </Reveal>
             <Reveal delay={60}>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 30 }}>

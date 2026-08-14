@@ -157,10 +157,10 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
           <input style={inputStyle} type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
           <div style={{ display: "flex", gap: 10 }}>
             <div style={{ position: "relative", flexShrink: 0 }}>
-              <select value={dialCode} onChange={(e) => setDialCode(e.target.value)} aria-label="Country code" style={{ ...inputStyle, width: "auto", paddingRight: 34, fontWeight: 700, cursor: "pointer", appearance: "none", WebkitAppearance: "none", MozAppearance: "none" }}>
+              <select value={dialCode} onChange={(e) => setDialCode(e.target.value)} aria-label="Country code" style={{ ...inputStyle, width: "auto", paddingRight: 42, fontWeight: 700, cursor: "pointer", appearance: "none", WebkitAppearance: "none", MozAppearance: "none" }}>
                 {DIAL_CODES.map((c) => <option key={c.code + c.label} value={c.code}>{c.flag} {c.code}</option>)}
               </select>
-              <span aria-hidden style={{ position: "absolute", right: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#8a84a0", fontSize: 12 }}>▾</span>
+              <span aria-hidden style={{ position: "absolute", right: 12, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", width: 22, height: 22, borderRadius: 7, background: "#efeafe", display: "flex", alignItems: "center", justifyContent: "center", color: "#6d5cf0", fontSize: 15, fontWeight: 900, lineHeight: 1 }}>▾</span>
             </div>
             <input style={{ ...inputStyle, flex: 1 }} type="tel" inputMode="numeric" placeholder="Enter 10-digit WhatsApp number only" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value.replace(/\D/g, "").slice(0, 12))} />
           </div>
@@ -196,7 +196,7 @@ const DIAL_CODES = [
   { code: "+880", flag: "🇧🇩", label: "Bangladesh" },
 ];
 
-// ─── Sticky bottom CTA (all devices, appears on scroll) ──────────────────────────
+// ─── Sticky bottom CTA bar: timer (left) + register button (right) ───────────────
 function StickyCTA() {
   const register = useRegister();
   const [show, setShow] = useState(false);
@@ -206,10 +206,39 @@ function StickyCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>
-      <button onClick={register} className="btn-primary text-white w-full inline-flex items-center justify-center gap-2.5" style={{ padding: "18px 16px calc(18px + env(safe-area-inset-bottom))", fontSize: 19, fontWeight: 900, border: "none", borderRadius: 0, cursor: "pointer", letterSpacing: "-0.01em" }}>
-        <BoltIcon size={22} /> Register for <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", textDecorationThickness: 2, opacity: 0.85 }}>{CLASS.price}</span> FREE
-      </button>
+    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", background: "linear-gradient(120deg,#4b37cf,#6d5cf0)", padding: "10px 14px calc(10px + env(safe-area-inset-bottom))", boxShadow: "0 -12px 34px -16px rgba(76,55,207,0.6)" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+        {/* left — compact countdown (not clickable) */}
+        <div className="sticky-timer" style={{ display: "flex", flexDirection: "column", gap: 3 }}>
+          <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#d8d2fb" }}>Starts In</span>
+          <StickyCountdown />
+        </div>
+        {/* right — the only clickable element */}
+        <button onClick={register} className="inline-flex items-center justify-center gap-2" style={{ background: "#fff", color: "#4b37cf", borderRadius: 999, padding: "14px 22px", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(15px,3.4vw,18px)", fontWeight: 900, letterSpacing: "-0.01em", whiteSpace: "nowrap", flexShrink: 0, boxShadow: "0 10px 26px -12px rgba(0,0,0,0.5)" }}>
+          <BoltIcon size={19} color="#5a44e0" /> Register Now For Free
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// Compact inline countdown for the sticky bar
+function StickyCountdown() {
+  const t = useCountdown();
+  const units = [
+    { v: t?.days, l: "d" },
+    { v: t?.hours, l: "h" },
+    { v: t?.minutes, l: "m" },
+    { v: t?.seconds, l: "s" },
+  ];
+  return (
+    <div style={{ display: "flex", alignItems: "baseline", gap: 8, color: "#fff", fontVariantNumeric: "tabular-nums" }}>
+      {units.map((u) => (
+        <span key={u.l} style={{ display: "inline-flex", alignItems: "baseline", gap: 2 }}>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(17px,4.5vw,22px)", fontWeight: 800, lineHeight: 1 }}>{String(u.v ?? 0).padStart(2, "0")}</span>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#cfc7fb" }}>{u.l}</span>
+        </span>
+      ))}
     </div>
   );
 }
@@ -254,7 +283,7 @@ function LiveToast() {
             <div style={{ width: 30, height: 30, borderRadius: 999, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontWeight: 800, fontSize: 12.5, flexShrink: 0, background: `hsl(${(t.name.charCodeAt(0) * 37) % 360},52%,52%)` }}>{t.name[0]}</div>
             <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{ fontWeight: 700, lineHeight: 1.3, fontSize: 12, color: "#1a1530", margin: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{t.name} from {t.city}</p>
-              <p style={{ lineHeight: 1.3, marginTop: 2, fontSize: 10.5, color: "#8a84a0", margin: 0 }}>registered · {t.time}</p>
+              <p style={{ lineHeight: 1.3, marginTop: 2, fontSize: 10.5, color: "#8a84a0", margin: 0 }}>registered for masterclass · {t.time}</p>
             </div>
             <span style={{ position: "relative", display: "flex", width: 8, height: 8, flexShrink: 0 }}><span style={{ position: "absolute", display: "inline-flex", width: "100%", height: "100%", borderRadius: 999, background: "#34d399", opacity: 0.75, animation: "reg-ping 1.4s cubic-bezier(0,0,0.2,1) infinite" }} /><span style={{ position: "relative", display: "inline-flex", width: 8, height: 8, borderRadius: 999, background: "#34d399" }} /></span>
           </div>
@@ -284,47 +313,6 @@ function useCountdown() {
     seconds: s % 60,
   };
 }
-function CountdownTimer({ light = false }: { light?: boolean }) {
-  const t = useCountdown();
-  const units = [
-    { v: t?.days, l: "Days" },
-    { v: t?.hours, l: "Hours" },
-    { v: t?.minutes, l: "Mins" },
-    { v: t?.seconds, l: "Secs" },
-  ];
-  const box = light
-    ? { bg: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", num: "#fff", lab: "#c6c1de" }
-    : { bg: "#fff", border: "1px solid #ece8f7", num: "#4b37cf", lab: "#8a84a0" };
-  return (
-    <div style={{ display: "flex", gap: 10 }}>
-      {units.map((u, i) => (
-        <div key={u.l} style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 62, background: box.bg, border: box.border, borderRadius: 14, padding: "12px 8px" }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px,4vw,34px)", fontWeight: 800, lineHeight: 1, color: box.num, fontVariantNumeric: "tabular-nums" }}>{String(u.v ?? 0).padStart(2, "0")}</span>
-          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: box.lab, marginTop: 6 }}>{u.l}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// ─── Timer + CTA bar (timer left, register button right) ─────────────────────────
-function TimerCTABar() {
-  const register = useRegister();
-  return (
-    <section style={{ padding: "clamp(28px,4vw,40px) 20px", background: "linear-gradient(120deg,#5a44e0,#7c6cf5)" }}>
-      <div style={{ maxWidth: 980, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "20px 28px" }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#e2ddfb", marginBottom: 12 }}>Masterclass Starts In</div>
-          <CountdownTimer light />
-        </div>
-        <button onClick={register} className="inline-flex items-center justify-center gap-3" style={{ background: "#fff", color: "#4b37cf", borderRadius: 999, padding: "20px 40px", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(18px,2.4vw,22px)", fontWeight: 900, letterSpacing: "-0.01em", boxShadow: "0 16px 40px -14px rgba(0,0,0,0.4)" }}>
-          <BoltIcon size={22} color="#5a44e0" /><span>Register Now For Free</span><ArrowIcon size={20} />
-        </button>
-      </div>
-    </section>
-  );
-}
-
 // ─── FAQ accordion item ─────────────────────────────────────────────────────────
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -416,9 +404,6 @@ export default function AiAgentsMasterclassPage() {
             </div>
           </div>
         </section>
-
-        {/* ═══════════ TIMER + CTA BAR (below hero) ═══════════ */}
-        <TimerCTABar />
 
         {/* ═══════════ SECTION 1B — WHO IS THIS FOR (premium image cards) ═══════════ */}
         <section style={{ padding: "clamp(56px,8vw,96px) 20px", background: "#faf9fd" }}>
@@ -548,8 +533,45 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ═══════════ SECTION 1D — NOT TECHNICAL (left image / right content) ═══════════ */}
+        {/* ═══════════ SECTION 10B — TESTIMONIALS ═══════════ */}
         <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>What people say</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>People Just Like You, <span className="grad-vio">Already Building</span></h2>
+                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 540, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>From past masterclasses and workshops — none of them knew how to code before.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", marginTop: 46 }}>
+              {[
+                { img: "/avatars/women/woman-1.jpg", name: "Ananya Krishnan", role: "Marketing Manager", quote: "I always thought AI agents were only for techies. In one session I built an agent that writes my weekly content. I still can't believe I did that." },
+                { img: "/avatars/men/man-4.jpg", name: "Ishaan Kapoor", role: "Content Creator", quote: "I used to spend my whole Sunday planning posts. Now my content agent turns one idea into a full week of posts in my voice — I just review and publish." },
+                { img: "/avatars/men/man-2.jpg", name: "Rohit Deshpande", role: "Sales Professional", quote: "My follow-ups used to eat 2 hours a day. Now an agent does them for me and I only step in when a lead replies. Genuinely changed my week." },
+                { img: "/avatars/women/woman-4.jpg", name: "Meera Nair", role: "Freelance Consultant", quote: "No coding, no jargon — just build along. I set up a research agent that saves me half a day per client. Worth every minute." },
+                { img: "/avatars/men/man-1.jpg", name: "Arjun Verma", role: "Job Seeker", quote: "The job-application agent alone was worth attending. I went from applying to 5 jobs a week to 30 — without extra effort." },
+                { img: "/avatars/women/woman-6.webp", name: "Kavya Reddy", role: "Small Business Owner", quote: "I run my shop alone. Now an AI agent replies to customer messages 24/7. It's like having a teammate that never sleeps." },
+              ].map((t, i) => (
+                <Reveal key={t.name} delay={(i % 3) * 90}>
+                  <div style={{ ...CARD, background: "#faf9fd", boxShadow: "none", padding: "26px 24px", height: "100%", display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: 3, color: "#f5b301", fontSize: 16 }}>{"★★★★★"}</div>
+                    <p style={{ fontSize: 15.5, color: "#3a3452", lineHeight: 1.65, marginTop: 14, flex: 1 }}>“{t.quote}”</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 20, paddingTop: 18, borderTop: "1px solid #f0edf9" }}>
+                      <img src={t.img} alt={t.name} loading="lazy" style={{ width: 46, height: 46, borderRadius: 999, objectFit: "cover", flexShrink: 0, border: "1px solid #ece8f7" }} onError={(e) => { const el = e.currentTarget; el.style.display = "none"; }} />
+                      <div>
+                        <div style={{ fontFamily: "var(--font-display)", fontSize: 15.5, fontWeight: 700, color: "#1a1530" }}>{t.name}</div>
+                        <div style={{ fontSize: 13, color: "#8a84a0" }}>{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════ SECTION 1D — NOT TECHNICAL (left image / right content) ═══════════ */}
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#faf9fd" }}>
           <div style={{ maxWidth: 1080, margin: "0 auto" }}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(28px,5vw,56px)", alignItems: "center" }} className="nt-grid">
               <Reveal>
@@ -587,7 +609,7 @@ export default function AiAgentsMasterclassPage() {
 
 
         {/* ═══════════ SECTION 5 — WHAT AI CAN DO (marquee train) ═══════════ */}
-        <section style={{ padding: "clamp(56px,8vw,90px) 0", background: "#faf9fd", overflow: "hidden" }}>
+        <section style={{ padding: "clamp(56px,8vw,90px) 0", background: "#fff", overflow: "hidden" }}>
           <div style={{ maxWidth: 980, margin: "0 auto", padding: "0 20px" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
@@ -626,13 +648,13 @@ export default function AiAgentsMasterclassPage() {
                 ));
               })()}
             </div>
-            <div aria-hidden style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 60, background: "linear-gradient(90deg,#faf9fd,transparent)", pointerEvents: "none" }} />
-            <div aria-hidden style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 60, background: "linear-gradient(270deg,#faf9fd,transparent)", pointerEvents: "none" }} />
+            <div aria-hidden style={{ position: "absolute", top: 0, left: 0, bottom: 0, width: 60, background: "linear-gradient(90deg,#fff,transparent)", pointerEvents: "none" }} />
+            <div aria-hidden style={{ position: "absolute", top: 0, right: 0, bottom: 0, width: 60, background: "linear-gradient(270deg,#fff,transparent)", pointerEvents: "none" }} />
           </div>
         </section>
 
         {/* ═══════════ SECTION 5B — REAL AGENTS BY USE CASE ═══════════ */}
-        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#faf9fd" }}>
           <div style={{ maxWidth: 1040, margin: "0 auto" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
@@ -678,7 +700,7 @@ export default function AiAgentsMasterclassPage() {
 
 
         {/* ═══════════ SECTION 10 — TRUST / INSTRUCTOR ═══════════ */}
-        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#faf9fd" }}>
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
@@ -687,7 +709,7 @@ export default function AiAgentsMasterclassPage() {
               </div>
             </Reveal>
             <Reveal delay={70}>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,300px) 1fr", gap: 36, alignItems: "center", marginTop: 40, ...CARD, padding: "clamp(24px,4vw,40px)" }} className="host-grid">
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,300px) 1fr", gap: 36, alignItems: "center", marginTop: 40, ...CARD, background: "#faf9fd", boxShadow: "none", padding: "clamp(24px,4vw,40px)" }} className="host-grid">
                 <div style={{ borderRadius: 22, overflow: "hidden", border: "1px solid #ece8f7", lineHeight: 0, boxShadow: "0 24px 50px -22px rgba(76,55,207,0.45)" }}>
                   <img src="/rohan.png" alt="Rohan Mote — AI Growth Coach, High Performance Club" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
                 </div>
@@ -710,10 +732,10 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginTop: 22, textAlign: "center" }}>
                 {[
                   { big: "10,000+", small: "People trained on practical AI" },
-                  { big: "50+", small: "AI workshops & sessions run" },
+                  { big: "100+", small: "AI workshops & sessions run" },
                   { big: "Daily", small: "Building real AI agents in business" },
                 ].map((s) => (
-                  <div key={s.big} style={{ ...CARD, padding: "22px 12px" }}>
+                  <div key={s.big} style={{ ...CARD, background: "#faf9fd", boxShadow: "none", padding: "22px 12px" }}>
                     <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,30px)", fontWeight: 800, color: "#6d5cf0", letterSpacing: "-0.02em" }}>{s.big}</div>
                     <div style={{ fontSize: 13, color: "#6b6580", marginTop: 6, lineHeight: 1.4 }}>{s.small}</div>
                   </div>
@@ -724,42 +746,6 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ═══════════ SECTION 10B — TESTIMONIALS ═══════════ */}
-        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
-          <div style={{ maxWidth: 1040, margin: "0 auto" }}>
-            <Reveal>
-              <div style={{ textAlign: "center" }}>
-                <Eyebrow>What people say</Eyebrow>
-                <h2 style={{ ...H2, marginTop: 16 }}>People Just Like You, <span className="grad-vio">Already Building</span></h2>
-                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 540, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>From past masterclasses and workshops — none of them knew how to code before.</p>
-              </div>
-            </Reveal>
-            <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", marginTop: 46 }}>
-              {[
-                { img: "/avatars/women/woman-1.jpg", name: "Ananya Krishnan", role: "Marketing Manager", quote: "I always thought AI agents were only for techies. In one session I built an agent that writes my weekly content. I still can't believe I did that." },
-                { img: "/avatars/men/man-4.jpg", name: "Ishaan Kapoor", role: "Content Creator", quote: "I used to spend my whole Sunday planning posts. Now my content agent turns one idea into a full week of posts in my voice — I just review and publish." },
-                { img: "/avatars/men/man-2.jpg", name: "Rohit Deshpande", role: "Sales Professional", quote: "My follow-ups used to eat 2 hours a day. Now an agent does them for me and I only step in when a lead replies. Genuinely changed my week." },
-                { img: "/avatars/women/woman-4.jpg", name: "Meera Nair", role: "Freelance Consultant", quote: "No coding, no jargon — just build along. I set up a research agent that saves me half a day per client. Worth every minute." },
-                { img: "/avatars/men/man-1.jpg", name: "Arjun Verma", role: "Job Seeker", quote: "The job-application agent alone was worth attending. I went from applying to 5 jobs a week to 30 — without extra effort." },
-                { img: "/avatars/women/woman-6.webp", name: "Kavya Reddy", role: "Small Business Owner", quote: "I run my shop alone. Now an AI agent replies to customer messages 24/7. It's like having a teammate that never sleeps." },
-              ].map((t, i) => (
-                <Reveal key={t.name} delay={(i % 3) * 90}>
-                  <div style={{ ...CARD, background: "#faf9fd", boxShadow: "none", padding: "26px 24px", height: "100%", display: "flex", flexDirection: "column" }}>
-                    <div style={{ display: "flex", gap: 3, color: "#f5b301", fontSize: 16 }}>{"★★★★★"}</div>
-                    <p style={{ fontSize: 15.5, color: "#3a3452", lineHeight: 1.65, marginTop: 14, flex: 1 }}>“{t.quote}”</p>
-                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 20, paddingTop: 18, borderTop: "1px solid #f0edf9" }}>
-                      <img src={t.img} alt={t.name} loading="lazy" style={{ width: 46, height: 46, borderRadius: 999, objectFit: "cover", flexShrink: 0, border: "1px solid #ece8f7" }} onError={(e) => { const el = e.currentTarget; el.style.display = "none"; }} />
-                      <div>
-                        <div style={{ fontFamily: "var(--font-display)", fontSize: 15.5, fontWeight: 700, color: "#1a1530" }}>{t.name}</div>
-                        <div style={{ fontSize: 13, color: "#8a84a0" }}>{t.role}</div>
-                      </div>
-                    </div>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ═══════════ SECTION 10C — FAQ ═══════════ */}
         <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#faf9fd" }}>

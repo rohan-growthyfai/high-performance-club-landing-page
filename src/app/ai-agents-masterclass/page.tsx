@@ -278,7 +278,7 @@ export default function AiAgentsMasterclassPage() {
       <main className="aam">
 
         {/* ═══════════ SECTION 1 — HERO ═══════════ */}
-        <section style={{ position: "relative", background: "radial-gradient(1200px 620px at 50% -12%, #2a2168 0%, #141033 52%, #0a0720 100%)", color: "#fff", padding: "clamp(56px,8vw,92px) 20px clamp(50px,6vw,74px)", overflow: "hidden" }}>
+        <section style={{ position: "relative", background: "radial-gradient(1200px 620px at 50% -12%, #2a2168 0%, #141033 52%, #0a0720 100%)", color: "#fff", padding: "clamp(28px,4vw,44px) 20px clamp(48px,6vw,68px)", overflow: "hidden" }}>
           <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 18% 30%, rgba(124,108,245,0.22), transparent 42%), radial-gradient(circle at 84% 18%, rgba(155,89,240,0.18), transparent 40%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
             <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "rgba(124,108,245,0.16)", border: "1px solid rgba(155,140,247,0.42)", borderRadius: 999, padding: "9px 18px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.12em", color: "#cfc7fb" }}>
@@ -305,10 +305,6 @@ export default function AiAgentsMasterclassPage() {
 
             <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", marginTop: 26, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "13px 22px", fontSize: 14.5, fontWeight: 700 }}>
               <span>📅 {CLASS.date}</span><span>🕚 {CLASS.time}</span><span style={{ color: "#cbc6e6", fontWeight: 500 }}>💻 LIVE Online</span>
-            </div>
-
-            <div style={{ maxWidth: 720, margin: "40px auto 0", borderRadius: 24, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 40px 90px -40px rgba(0,0,0,0.8)", lineHeight: 0 }}>
-              <img src="/ai-agents/hero-clone.png" alt="A professional relaxing while their AI agents handle research, follow-ups, reports and content — working 24/7" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { const img = e.currentTarget as HTMLImageElement; if (!img.dataset.fb) { img.dataset.fb = "1"; img.src = "/aiatwork/hero-wide.jpg"; } else { const w = img.closest("div") as HTMLElement | null; if (w) w.style.display = "none"; } }} />
             </div>
           </div>
         </section>

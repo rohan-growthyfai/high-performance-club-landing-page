@@ -63,30 +63,6 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
   );
 }
 
-// ─── "Zero Coding Required" stamp / seal ────────────────────────────────────────
-function ZeroCodingStamp() {
-  return (
-    <div aria-label="Zero coding required" style={{ position: "absolute", right: -14, top: -22, width: 118, height: 118, transform: "rotate(-13deg)", zIndex: 5, filter: "drop-shadow(0 10px 22px rgba(0,0,0,0.35))" }} className="zc-stamp">
-      <svg viewBox="0 0 120 120" width="118" height="118" aria-hidden="true">
-        <defs>
-          <path id="zc-arc-top" d="M60 60 m-42 0 a42 42 0 1 1 84 0" fill="none" />
-          <path id="zc-arc-bot" d="M60 60 m42 0 a42 42 0 1 1 -84 0" fill="none" />
-        </defs>
-        <circle cx="60" cy="60" r="57" fill="#facc15" stroke="#0f172a" strokeWidth="3" />
-        <circle cx="60" cy="60" r="47" fill="none" stroke="#0f172a" strokeWidth="1.5" strokeDasharray="2 3" opacity="0.55" />
-        <text fill="#0f172a" fontSize="12.5" fontWeight="800" letterSpacing="2.2" style={{ textTransform: "uppercase" }}>
-          <textPath href="#zc-arc-top" startOffset="50%" textAnchor="middle">Zero Coding</textPath>
-        </text>
-        <text fill="#0f172a" fontSize="12.5" fontWeight="800" letterSpacing="2.2" style={{ textTransform: "uppercase" }}>
-          <textPath href="#zc-arc-bot" startOffset="50%" textAnchor="middle">Required</textPath>
-        </text>
-        <text x="60" y="55" textAnchor="middle" fill="#0f172a" fontSize="30" fontWeight="900">0%</text>
-        <text x="60" y="72" textAnchor="middle" fill="#0f172a" fontSize="10.5" fontWeight="800" letterSpacing="1.5">CODE</text>
-      </svg>
-    </div>
-  );
-}
-
 // ─── Reveal-on-scroll ───────────────────────────────────────────────────────────
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -219,10 +195,6 @@ export default function AiAgentsMasterclassPage() {
         @keyframes agp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .clone-grad { background: linear-gradient(120deg,#a5b4fc,#818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
         @media (max-width: 620px) { .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 220px; margin: 0 auto; } }
-        .zc-stamp { animation: zc-pop 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
-        @keyframes zc-pop { 0% { opacity: 0; transform: rotate(-13deg) scale(0.5); } 60% { transform: rotate(-13deg) scale(1.08); } 100% { opacity: 1; transform: rotate(-13deg) scale(1); } }
-        @media (max-width: 520px) { .zc-stamp { width: 88px !important; height: 88px !important; right: -6px !important; top: -14px !important; } .zc-stamp svg { width: 88px; height: 88px; } }
-        @media (prefers-reduced-motion: reduce) { .zc-stamp { animation: none; } }
       `}</style>
 
       <main style={{ fontFamily: "'Inter',system-ui,-apple-system,'Segoe UI',sans-serif", color: "#0f172a", background: "#fff", overflowX: "hidden" }}>
@@ -233,16 +205,16 @@ export default function AiAgentsMasterclassPage() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(99,102,241,0.18)", border: "1px solid rgba(129,140,248,0.4)", borderRadius: 999, padding: "8px 16px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.06em", color: "#c7d2fe" }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: "#22c55e", animation: "agp-pulse 1.8s infinite" }} /> FREE LIVE AI AGENTS MASTERCLASS
             </div>
-            <h1 style={{ fontSize: "clamp(32px,6.4vw,58px)", fontWeight: 900, lineHeight: 1.06, letterSpacing: "-0.035em", margin: "20px 0 0" }}>
+            <h1 style={{ fontSize: "clamp(38px,7.2vw,68px)", fontWeight: 900, lineHeight: 1.14, letterSpacing: "-0.035em", margin: "24px 0 0" }}>
               Stop Doing Everything Yourself.<br />
-              <span style={{ fontSize: "clamp(23px,4.4vw,40px)", display: "inline-block", marginTop: 10 }}>Build AI Agents That <span className="clone-grad">Work For You 24/7 — Even While You Sleep.</span></span>
+              <span style={{ fontSize: "clamp(26px,5vw,46px)", fontWeight: 900, display: "inline-block", marginTop: 18, lineHeight: 1.18 }}>Build AI Agents That <span className="clone-grad">Work For You 24/7 — Even While You Sleep.</span></span>
             </h1>
-            <p style={{ fontSize: "clamp(16px,2.3vw,20px)", color: "#cbd5e1", maxWidth: 640, margin: "22px auto 0", lineHeight: 1.55 }}>
+            <p style={{ fontSize: "clamp(18px,2.7vw,24px)", fontWeight: 700, color: "#e2e8f0", maxWidth: 680, margin: "28px auto 0", lineHeight: 1.65 }}>
               Learn to build your <b style={{ color: "#fff" }}>first AI Agent</b>, automate repetitive work and <b style={{ color: "#fff" }}>save hours of manual work every week.</b>
             </p>
-            <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 900, color: "#fff", marginTop: 20, letterSpacing: "-0.01em" }}>No Coding. No Technical Knowledge Required.</p>
+            <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 900, color: "#fff", marginTop: 26, letterSpacing: "-0.01em" }}>No Coding. No Technical Knowledge Required.</p>
 
-            <div style={{ marginTop: 30 }}>
+            <div style={{ marginTop: 36 }}>
               <CTA big label="Reserve My Free Seat" />
             </div>
 
@@ -260,8 +232,34 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
                 <img src="/ai-agents/hero-clone.png" alt="On the left, a working professional; on the right, their AI Clone completing research, follow-ups, reports and content — working 24/7" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { const img = e.currentTarget as HTMLImageElement; if (!img.dataset.fallback) { img.dataset.fallback = "1"; img.src = "/aiatwork/hero-wide.jpg"; } else { const w = img.closest("[data-herowrap]") as HTMLElement | null; if (w) w.style.display = "none"; } }} />
               </div>
-              <ZeroCodingStamp />
             </div>
+          </div>
+        </section>
+
+        {/* ═══════════ SECTION 1B — WHO IS THIS WEBINAR FOR ═══════════ */}
+        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
+            <Reveal>
+              <Eyebrow>Who is this webinar for?</Eyebrow>
+              <h2 style={{ ...H2, marginTop: 12 }}>If You Use A Computer For Work,<br /><span style={{ color: "#4f46e5" }}>This Is For You.</span></h2>
+            </Reveal>
+            <Reveal delay={60}>
+              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 30 }}>
+                {["👨‍💼 Business Owners", "💼 Working Professionals", "📈 Marketers", "🚀 Entrepreneurs", "🎓 Coaches & Consultants", "🧑‍💻 Freelancers"].map((t) => (
+                  <span key={t} style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 999, padding: "11px 20px", fontSize: 15, fontWeight: 600, color: "#0f172a", boxShadow: "0 2px 8px rgba(15,23,42,0.04)" }}>{t}</span>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 34, fontWeight: 600 }}>Especially if you think:</p>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
+                {["“I spend too much time doing repetitive work.”", "“I'd love to use AI beyond just ChatGPT.”", "“AI Agents sound useful, but I'm not technical.”"].map((q) => (
+                  <div key={q} style={{ background: "#f8fafc", borderLeft: "4px solid #6366f1", borderRadius: 10, padding: "14px 18px", fontSize: 16, fontWeight: 700, color: "#0f172a", textAlign: "left", boxShadow: "0 2px 10px rgba(15,23,42,0.04)" }}>{q}</div>
+                ))}
+              </div>
+              <p style={{ fontSize: 17, fontWeight: 700, marginTop: 26 }}>That&apos;s exactly what this masterclass is designed for.</p>
+              <p style={{ fontSize: 15, fontWeight: 900, letterSpacing: "0.06em", color: "#4f46e5", marginTop: 8 }}>NO CODING REQUIRED.</p>
+            </Reveal>
           </div>
         </section>
 
@@ -475,11 +473,14 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ═══════════ SECTION 7 — WHAT YOU'LL LEARN ═══════════ */}
-        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
+        {/* ═══════════ SECTION 7 — WHAT YOU'LL LEARN IN 90 MINUTES ═══════════ */}
+        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f8fafc" }}>
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <Reveal>
-              <h2 style={{ ...H2, textAlign: "center" }}>What You&apos;ll Learn Inside The Masterclass</h2>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Your 90-minute agenda</Eyebrow>
+                <h2 style={{ ...H2, textAlign: "center", marginTop: 12 }}>What You&apos;ll Learn In <span style={{ color: "#4f46e5" }}>90 Minutes</span></h2>
+              </div>
             </Reveal>
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", marginTop: 40 }}>
               {[
@@ -491,7 +492,7 @@ export default function AiAgentsMasterclassPage() {
                 { n: "06", t: "Build Your Own AI Workforce", d: "Discover how different Agents can handle different types of work for you." },
               ].map((c, i) => (
                 <Reveal key={c.n} delay={(i % 3) * 70}>
-                  <div style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 16, padding: "24px 22px", height: "100%" }}>
+                  <div style={{ background: "#fff", border: "1px solid #eef2f7", borderRadius: 16, padding: "24px 22px", height: "100%", boxShadow: "0 4px 18px rgba(15,23,42,0.05)" }}>
                     <div style={{ fontSize: 15, fontWeight: 900, color: "#818cf8", fontFamily: "monospace", letterSpacing: "0.05em" }}>{c.n}</div>
                     <div style={{ fontSize: 19, fontWeight: 800, marginTop: 8, letterSpacing: "-0.01em", lineHeight: 1.25 }}>{c.t}</div>
                     <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.55, marginTop: 8 }}>{c.d}</p>
@@ -532,35 +533,6 @@ export default function AiAgentsMasterclassPage() {
                 <p style={{ fontSize: "clamp(20px,3.2vw,28px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2 }}>No Coding. No Technical Background.<br />Just AI Working For You.</p>
                 <div style={{ marginTop: 26 }}><CTA label="Save My Free Seat" /></div>
               </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ═══════════ SECTION 9 — WHO IS THIS FOR ═══════════ */}
-        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f8fafc" }}>
-          <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
-            <Reveal>
-              <h2 style={H2}>If You Use A Computer For Work,<br /><span style={{ color: "#4f46e5" }}>This Is For You.</span></h2>
-              <div style={{ maxWidth: 600, margin: "26px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)", lineHeight: 0 }}>
-                <img src="/aiatwork/audiences.jpg" alt="Business owners, working professionals, marketers, entrepreneurs, coaches and freelancers using AI at their desks" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
-              </div>
-            </Reveal>
-            <Reveal delay={60}>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 30 }}>
-                {["👨‍💼 Business Owners", "💼 Working Professionals", "📈 Marketers", "🚀 Entrepreneurs", "🎓 Coaches & Consultants", "🧑‍💻 Freelancers"].map((t) => (
-                  <span key={t} style={{ background: "#fff", border: "1px solid #e2e8f0", borderRadius: 999, padding: "11px 20px", fontSize: 15, fontWeight: 600, color: "#0f172a", boxShadow: "0 2px 8px rgba(15,23,42,0.04)" }}>{t}</span>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={120}>
-              <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 34, fontWeight: 600 }}>Especially if you think:</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-                {["“I spend too much time doing repetitive work.”", "“I'd love to use AI beyond just ChatGPT.”", "“AI Agents sound useful, but I'm not technical.”"].map((q) => (
-                  <div key={q} style={{ background: "#fff", borderLeft: "4px solid #6366f1", borderRadius: 10, padding: "14px 18px", fontSize: 16, fontWeight: 700, color: "#0f172a", textAlign: "left", boxShadow: "0 2px 10px rgba(15,23,42,0.04)" }}>{q}</div>
-                ))}
-              </div>
-              <p style={{ fontSize: 17, fontWeight: 700, marginTop: 26 }}>That&apos;s exactly what this masterclass is designed for.</p>
-              <p style={{ fontSize: 15, fontWeight: 900, letterSpacing: "0.06em", color: "#4f46e5", marginTop: 8 }}>NO CODING REQUIRED.</p>
             </Reveal>
           </div>
         </section>

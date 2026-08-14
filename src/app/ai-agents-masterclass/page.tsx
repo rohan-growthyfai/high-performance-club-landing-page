@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, createContext, useContext } from "react";
+import { useState, useEffect, useRef, createContext, useContext } from "react";
 
 declare global {
   interface Window {
@@ -52,6 +52,34 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
     <svg width={size} height={size} viewBox="0 0 32 32" fill="currentColor" aria-hidden="true">
       <path d="M16.004 3C9.383 3 4 8.383 4 15c0 2.13.558 4.126 1.535 5.86L4 29l8.34-1.5A11.9 11.9 0 0016.004 27C22.62 27 28 21.617 28 15S22.62 3 16.004 3zm0 21.6c-1.94 0-3.74-.52-5.29-1.42l-.38-.22-4.95.89.9-4.83-.25-.4A9.55 9.55 0 016.4 15c0-5.29 4.31-9.6 9.604-9.6 5.29 0 9.596 4.31 9.596 9.6 0 5.29-4.306 9.6-9.596 9.6zm5.27-7.16c-.29-.145-1.71-.844-1.976-.94-.264-.097-.457-.145-.65.145-.193.29-.746.94-.915 1.134-.168.193-.337.217-.626.072-.29-.145-1.223-.451-2.33-1.438-.86-.767-1.44-1.714-1.61-2.004-.168-.29-.018-.446.127-.59.13-.13.29-.338.434-.507.145-.169.193-.29.29-.483.096-.193.048-.362-.024-.507-.072-.145-.65-1.566-.89-2.145-.235-.563-.473-.487-.65-.496l-.554-.01c-.193 0-.507.072-.772.362-.265.29-1.012.99-1.012 2.41 0 1.42 1.036 2.793 1.18 2.986.145.193 2.04 3.114 4.943 4.365.69.298 1.229.476 1.648.61.692.22 1.322.19 1.82.115.555-.083 1.71-.699 1.95-1.374.241-.676.241-1.255.169-1.375-.072-.121-.265-.193-.554-.338z" />
     </svg>
+  );
+}
+
+// ─── Reveal-on-scroll ───────────────────────────────────────────────────────────
+function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [shown, setShown] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } }, { threshold: 0.12 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+  return <div ref={ref} style={{ opacity: shown ? 1 : 0, transform: shown ? "none" : "translateY(22px)", transition: `opacity 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms, transform 0.6s cubic-bezier(0.16,1,0.3,1) ${delay}ms` }}>{children}</div>;
+}
+
+// ─── FAQ item ─────────────────────────────────────────────────────────────────
+function FAQ({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="rounded-xl overflow-hidden border" style={{ borderColor: "#e2e8f0", boxShadow: "0 2px 10px rgba(15,23,42,0.04)" }}>
+      <button onClick={() => setOpen(!open)} className="w-full flex items-center justify-between gap-3 px-5 py-4 text-left font-bold bg-white hover:bg-slate-50 transition-colors" style={{ color: "#0f172a", fontSize: 17 }}>
+        {q}
+        <span className="shrink-0 text-2xl font-light" style={{ color: "#4f46e5", transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+      </button>
+      {open && <div className="px-5 pb-5 leading-relaxed bg-white" style={{ fontSize: 15, color: "#475569" }}>{a}</div>}
+    </div>
   );
 }
 
@@ -162,7 +190,7 @@ export default function AiAgentsMasterclassPage() {
               Let them do your daily work.
             </h1>
             <p style={{ fontSize: "clamp(16px,2.3vw,20px)", color: "#cbd5e1", maxWidth: 620, margin: "20px auto 0", lineHeight: 1.55 }}>
-              In this free 90-minute masterclass, learn to build <b style={{ color: "#fff" }}>AI agents &amp; automations</b> that work like a copy of you — handling your repetitive daily tasks — so you get your time back for family, friends and what you love. <b style={{ color: "#fff" }}>No coding required.</b>
+              In this free 90-minute masterclass, learn to build <b style={{ color: "#fff" }}>AI agents &amp; automations</b> that work like a copy of you — handling your repetitive daily tasks — so you can focus on the things that truly matter. <b style={{ color: "#fff" }}>No coding required.</b>
             </p>
 
             {/* date/time card */}
@@ -197,8 +225,39 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ───────── WHAT YOU'LL LEARN ───────── */}
+        {/* ───────── WHY LEARN AI AGENTS NOW ───────── */}
         <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center", marginBottom: 8 }}>
+                <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4f46e5" }}>Why learn this now</div>
+                <h2 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.15, marginTop: 12 }}>
+                  In 2023 it was ChatGPT. In 2026, it&apos;s AI Agents — and you&apos;re early.
+                </h2>
+                <p style={{ fontSize: "clamp(16px,2.2vw,18px)", color: "#475569", lineHeight: 1.6, marginTop: 16, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
+                  Everyone can now <i>chat</i> with AI. But the people getting ahead have moved one step further — they build AI agents that <b>do the work for them.</b> This is the skill almost nobody has yet, and the window to be early is right now.
+                </p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: 40 }}>
+              {[
+                { big: "70%", small: "of your day is repetitive work an AI agent can quietly take over — replies, follow-ups, admin, research." },
+                { big: "24/7", small: "your agents keep working when you don't — nights, weekends, holidays. They never get tired or forget." },
+                { big: "₹0 code", small: "you build all of this by describing what you want in plain language. No programming, no tech background." },
+              ].map((s, i) => (
+                <Reveal key={s.big} delay={i * 90}>
+                  <div style={{ background: "#f8fafc", borderRadius: 16, padding: "24px 22px", border: "1px solid #eef2f7", height: "100%" }}>
+                    <div style={{ fontSize: 32, fontWeight: 900, color: "#4f46e5", letterSpacing: "-0.02em" }}>{s.big}</div>
+                    <div style={{ fontSize: 15, color: "#475569", marginTop: 8, lineHeight: 1.5 }}>{s.small}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ───────── WHAT YOU'LL LEARN ───────── */}
+        <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#f8fafc" }}>
           <div style={{ maxWidth: 860, margin: "0 auto" }}>
             <h2 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 900, letterSpacing: "-0.02em", textAlign: "center" }}>What you&apos;ll learn in 90 minutes</h2>
             <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 34 }}>
@@ -208,7 +267,7 @@ export default function AiAgentsMasterclassPage() {
                 { t: "Automate your repetitive work", d: "How to connect agents into automations that run your follow-ups, content and admin on autopilot." },
                 { t: "Your next 90 days", d: "A clear path to build a full team of AI agents that handle most of your work — and even earn from this skill." },
               ].map((c) => (
-                <div key={c.t} style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 16, padding: "22px 20px" }}>
+                <div key={c.t} style={{ background: "#fff", border: "1px solid #eef2f7", borderRadius: 16, padding: "22px 20px", boxShadow: "0 2px 12px rgba(15,23,42,0.04)" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
                     <CheckIcon size={22} />
                     <span style={{ fontSize: 18, fontWeight: 800, letterSpacing: "-0.01em" }}>{c.t}</span>
@@ -229,6 +288,121 @@ export default function AiAgentsMasterclassPage() {
               {["Working professionals", "Business owners", "Freelancers & solopreneurs", "Coaches & consultants", "Students & job-seekers", "Complete beginners"].map((t) => (
                 <span key={t} style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 999, padding: "10px 18px", fontSize: 15, fontWeight: 600 }}>{t}</span>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ───────── FREE BONUSES ───────── */}
+        <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 960, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center", marginBottom: 34 }}>
+                <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#4f46e5" }}>Register &amp; get these free</div>
+                <h2 style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 900, letterSpacing: "-0.02em", marginTop: 12 }}>
+                  Free bonuses worth <span style={{ background: "linear-gradient(120deg,#b8860b,#d4a017)", WebkitBackgroundClip: "text", backgroundClip: "text", color: "transparent" }}>₹7,500+</span>
+                </h2>
+                <p style={{ fontSize: 16, color: "#64748b", marginTop: 10 }}>Given free to everyone who attends the masterclass live.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))" }}>
+              {[
+                { tag: "Bonus #1", title: "The “Clone Yourself” AI Agent Starter Kit", worth: "₹2,500", desc: "Ready-to-use prompts and templates to spin up your first AI agents fast — copy, paste, done." },
+                { tag: "Bonus #2", title: "The Top 10 Agents to Build First", worth: "₹2,000", desc: "A shortlist of the highest-impact AI agents for everyday work, so you never wonder where to start." },
+                { tag: "Bonus #3", title: "No-Code AI Tools Cheat-Sheet", worth: "₹3,000", desc: "The exact free & low-cost tools we use to build agents and automations — no guesswork, no tech overwhelm." },
+              ].map(({ tag, title, worth, desc }, i) => (
+                <Reveal key={title} delay={i * 90}>
+                  <div style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 18, padding: "24px 22px", height: "100%", position: "relative", boxShadow: "0 4px 18px rgba(15,23,42,0.05)" }}>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                      <span style={{ fontFamily: "monospace", fontSize: 12, fontWeight: 800, letterSpacing: "0.08em", color: "#4f46e5", textTransform: "uppercase" }}>{tag}</span>
+                      <span style={{ background: "linear-gradient(135deg,#b8860b,#d4a017)", color: "#fff", fontSize: 12.5, fontWeight: 800, borderRadius: 999, padding: "5px 12px" }}>Worth {worth}</span>
+                    </div>
+                    <div style={{ fontSize: 18.5, fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.25 }}>{title}</div>
+                    <p style={{ fontSize: 14.5, color: "#475569", lineHeight: 1.5, marginTop: 8 }}>{desc}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={80}>
+              <div style={{ textAlign: "center", marginTop: 30 }}>
+                <p style={{ fontSize: 16, fontWeight: 700, color: "#0f172a" }}>
+                  Total bonus value: <span style={{ textDecoration: "line-through", color: "#a1a1aa" }}>₹7,500</span>
+                </p>
+                <p style={{ fontSize: 20, fontWeight: 900, color: "#e8a020", fontFamily: "'Poppins',sans-serif", marginTop: 2 }}>Yours FREE today 🎉</p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ───────── VALUE LADDER / WHAT YOU GET ───────── */}
+        <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#f8fafc" }}>
+          <div style={{ maxWidth: 620, margin: "0 auto" }}>
+            <Reveal>
+              <h2 style={{ fontSize: "clamp(23px,3.8vw,34px)", fontWeight: 900, letterSpacing: "-0.02em", textAlign: "center", marginBottom: 26 }}>
+                Here&apos;s everything you get — free
+              </h2>
+            </Reveal>
+            <Reveal delay={60}>
+              <div style={{ background: "#fff", border: "1px solid #eef2f7", borderRadius: 20, padding: "10px 24px", boxShadow: "0 8px 30px rgba(15,23,42,0.06)" }}>
+                {[
+                  { item: "90-min live AI Agents Masterclass", worth: "₹1,999" },
+                  { item: "Live build of a real AI agent (watch it work)", worth: "₹2,000" },
+                  { item: "“Clone Yourself” AI Agent Starter Kit", worth: "₹2,500" },
+                  { item: "Top 10 Agents to Build First", worth: "₹2,000" },
+                  { item: "No-Code AI Tools Cheat-Sheet", worth: "₹3,000" },
+                  { item: "Live Q&A with the host", worth: "₹1,500" },
+                ].map((r, i, arr) => (
+                  <div key={r.item} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, padding: "15px 0", borderBottom: i < arr.length - 1 ? "1px solid #f1f5f9" : "none" }}>
+                    <span style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 15.5, color: "#0f172a", fontWeight: 500 }}>
+                      <CheckIcon size={20} color="#22c55e" /> {r.item}
+                    </span>
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "#64748b", whiteSpace: "nowrap", fontVariantNumeric: "tabular-nums" }}>{r.worth}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div style={{ textAlign: "center", marginTop: 26 }}>
+                <p style={{ fontSize: 17, color: "#475569", fontWeight: 600 }}>Total value: <span style={{ textDecoration: "line-through", color: "#a1a1aa" }}>₹12,999</span></p>
+                <p style={{ fontSize: "clamp(26px,5vw,38px)", fontWeight: 900, color: "#4f46e5", letterSpacing: "-0.02em", marginTop: 4, fontFamily: "'Poppins',sans-serif" }}>Today: FREE</p>
+                <div style={{ marginTop: 22 }}><CTA label="Reserve My Free Seat" /></div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ───────── HOST ───────── */}
+        <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ background: "#0f172a", borderRadius: 24, padding: "clamp(28px,5vw,44px)", color: "#fff", textAlign: "center" }}>
+                <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#a5b4fc" }}>Your host</div>
+                <h2 style={{ fontSize: "clamp(23px,3.8vw,32px)", fontWeight: 900, letterSpacing: "-0.02em", marginTop: 12, lineHeight: 1.2 }}>
+                  Rohan Mote
+                </h2>
+                <p style={{ fontSize: 15, color: "#818cf8", fontWeight: 600, marginTop: 4 }}>Founder, High Performance Club</p>
+                <p style={{ fontSize: "clamp(15px,2.2vw,17px)", color: "#cbd5e1", lineHeight: 1.65, marginTop: 18, maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>
+                  I build AI agents and automations every single day to run real businesses — lead systems, content, follow-ups and more. In this masterclass I&apos;ll show you exactly how it&apos;s done, in plain language, so you can start building your own agents from day one — even if you&apos;ve never touched a line of code.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ───────── FAQ ───────── */}
+        <section style={{ padding: "clamp(44px,6vw,72px) 20px", background: "#f8fafc" }}>
+          <div style={{ maxWidth: 700, margin: "0 auto" }}>
+            <Reveal>
+              <h2 style={{ fontSize: "clamp(24px,4vw,34px)", fontWeight: 900, letterSpacing: "-0.02em", textAlign: "center", marginBottom: 28 }}>Questions, answered</h2>
+            </Reveal>
+            <div className="flex flex-col gap-3">
+              {[
+                { q: "Do I need to know coding?", a: "No. Everything is built with no-code tools by describing what you want in plain language. If you can use WhatsApp and fill a form, you can follow along." },
+                { q: "Is it really free?", a: "Yes — the 90-minute live masterclass and all the bonuses are completely free. Just show up live on 23 August 2026 at 11 AM." },
+                { q: "Is this about cloning my face or voice?", a: "No. This is not about avatar tools like Synthesia. \"Cloning yourself\" here means building AI agents and automations that do your daily work — so your tasks run without you." },
+                { q: "I'm a complete beginner — will I keep up?", a: "Absolutely. This masterclass is built beginner-first. We explain everything simply and show a real agent being built live, step by step." },
+                { q: "What if I can't attend live?", a: "Register anyway. If you're registered, we'll try to share access — but the live session (and the bonuses) are for those who show up, so block the time if you can." },
+                { q: "How do I join?", a: "After you register, your Zoom joining link and reminders are sent on WhatsApp and email. Just click the link at 11 AM on 23 August." },
+              ].map((f) => (<FAQ key={f.q} q={f.q} a={f.a} />))}
             </div>
           </div>
         </section>

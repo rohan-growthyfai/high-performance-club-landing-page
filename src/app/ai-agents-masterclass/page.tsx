@@ -208,9 +208,9 @@ function StickyCTA() {
   return (
     <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", background: "linear-gradient(120deg,#4b37cf,#6d5cf0)", padding: "10px 14px calc(10px + env(safe-area-inset-bottom))", boxShadow: "0 -12px 34px -16px rgba(76,55,207,0.6)" }}>
       <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        {/* left — compact countdown (not clickable) */}
-        <div className="sticky-timer" style={{ display: "flex", flexDirection: "column", gap: 3 }}>
-          <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#d8d2fb" }}>Starts In</span>
+        {/* left — compact boxed countdown (not clickable) */}
+        <div className="sticky-timer" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#e2ddfb" }}>Masterclass Starts In</span>
           <StickyCountdown />
         </div>
         {/* right — the only clickable element */}
@@ -222,22 +222,22 @@ function StickyCTA() {
   );
 }
 
-// Compact inline countdown for the sticky bar
+// Compact boxed countdown for the sticky bar
 function StickyCountdown() {
   const t = useCountdown();
   const units = [
-    { v: t?.days, l: "d" },
-    { v: t?.hours, l: "h" },
-    { v: t?.minutes, l: "m" },
-    { v: t?.seconds, l: "s" },
+    { v: t?.days, l: "Days" },
+    { v: t?.hours, l: "Hrs" },
+    { v: t?.minutes, l: "Min" },
+    { v: t?.seconds, l: "Sec" },
   ];
   return (
-    <div style={{ display: "flex", alignItems: "baseline", gap: 8, color: "#fff", fontVariantNumeric: "tabular-nums" }}>
+    <div style={{ display: "flex", gap: 6 }}>
       {units.map((u) => (
-        <span key={u.l} style={{ display: "inline-flex", alignItems: "baseline", gap: 2 }}>
-          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(17px,4.5vw,22px)", fontWeight: 800, lineHeight: 1 }}>{String(u.v ?? 0).padStart(2, "0")}</span>
-          <span style={{ fontSize: 11, fontWeight: 700, color: "#cfc7fb" }}>{u.l}</span>
-        </span>
+        <div key={u.l} style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 38, background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)", borderRadius: 9, padding: "5px 4px" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(15px,4vw,19px)", fontWeight: 800, lineHeight: 1, color: "#fff", fontVariantNumeric: "tabular-nums" }}>{String(u.v ?? 0).padStart(2, "0")}</span>
+          <span style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "#d8d2fb", marginTop: 3 }}>{u.l}</span>
+        </div>
       ))}
     </div>
   );
@@ -313,6 +313,27 @@ function useCountdown() {
     seconds: s % 60,
   };
 }
+// Big boxed countdown (for the below-hero timer bar)
+function BigCountdown() {
+  const t = useCountdown();
+  const units = [
+    { v: t?.days, l: "Days" },
+    { v: t?.hours, l: "Hours" },
+    { v: t?.minutes, l: "Mins" },
+    { v: t?.seconds, l: "Secs" },
+  ];
+  return (
+    <>
+      {units.map((u) => (
+        <div key={u.l} style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: "clamp(66px,18vw,86px)", background: "rgba(255,255,255,0.12)", border: "1px solid rgba(255,255,255,0.22)", borderRadius: 16, padding: "14px 8px" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(28px,6vw,40px)", fontWeight: 800, lineHeight: 1, color: "#fff", fontVariantNumeric: "tabular-nums" }}>{String(u.v ?? 0).padStart(2, "0")}</span>
+          <span style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#d8d2fb", marginTop: 7 }}>{u.l}</span>
+        </div>
+      ))}
+    </>
+  );
+}
+
 // ─── FAQ accordion item ─────────────────────────────────────────────────────────
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -407,6 +428,16 @@ export default function AiAgentsMasterclassPage() {
 
             <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", marginTop: 26, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "13px 22px", fontSize: 14.5, fontWeight: 700 }}>
               <span>📅 {CLASS.date}</span><span>🕚 {CLASS.time}</span><span style={{ color: "#cbc6e6", fontWeight: 500 }}>💻 LIVE Online</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════ TIMER BAR (below hero, no button) ═══════════ */}
+        <section style={{ padding: "clamp(28px,4vw,44px) 20px", background: "linear-gradient(120deg,#5a44e0,#7c6cf5)" }}>
+          <div style={{ maxWidth: 980, margin: "0 auto", textAlign: "center" }}>
+            <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#e2ddfb", marginBottom: 16 }}>Masterclass Starts In</div>
+            <div style={{ display: "flex", justifyContent: "center", gap: 12, flexWrap: "wrap" }}>
+              <BigCountdown />
             </div>
           </div>
         </section>

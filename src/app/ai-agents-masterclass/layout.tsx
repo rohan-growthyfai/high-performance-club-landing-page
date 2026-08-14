@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "AI Agents Masterclass — Clone Yourself & Automate Your Work (Free Live · 23 Aug 2026)",
+  title: "AI Agents Masterclass — Build Your Own AI Clone That Works 24/7 (Free Live · 23 Aug 2026)",
   description:
-    "A free 90-minute live masterclass on 23 August 2026, 11 AM. Learn to build AI agents that work like a clone of you — handling your daily, repetitive work so you get your time back. No coding required.",
+    "A free live AI Agents Masterclass on 23 August 2026, 11 AM. Learn to build your own AI Clone — AI Agents that do your repetitive work for you 24/7, even while you sleep. No coding required.",
   keywords: [
     "AI agents masterclass",
     "AI automation",
@@ -15,9 +15,9 @@ export const metadata: Metadata = {
     "free AI webinar",
   ],
   openGraph: {
-    title: "AI Agents Masterclass — Clone Yourself & Automate Your Work",
+    title: "Build Your Own AI Clone That Works 24/7 — Free AI Agents Masterclass",
     description:
-      "Free 90-min live masterclass · 23 Aug 2026, 11 AM. Build AI agents that do your daily work like a clone of you. No coding required.",
+      "Free live masterclass · 23 Aug 2026, 11 AM. Build AI Agents that do your repetitive work for you 24/7 — even while you sleep. No coding required.",
     type: "website",
     locale: "en_IN",
     url: "https://highperformanceclub.co/ai-agents-masterclass",

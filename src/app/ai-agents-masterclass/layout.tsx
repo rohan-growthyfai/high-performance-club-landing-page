@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 
+// Revalidate this funnel frequently so copy edits go live quickly
+// (avoids the CDN serving a long-cached static copy after each deploy).
+export const revalidate = 60;
+
 export const metadata: Metadata = {
   title: "AI Agents Masterclass — Build Your Own AI Clone That Works 24/7 (Free Live · 23 Aug 2026)",
   description:

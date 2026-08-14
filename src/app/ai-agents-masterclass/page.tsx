@@ -26,10 +26,10 @@ const RegisterCtx = createContext<() => void>(() => {});
 function useRegister() { return useContext(RegisterCtx); }
 
 // ─── Icons ────────────────────────────────────────────────────────────────────
-function BoltIcon({ size = 20 }: { size?: number }) {
+function BoltIcon({ size = 20, color = "#fff" }: { size?: number; color?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z" fill="#fff" />
+      <path d="M13 2L4.5 13.5H11L10 22l8.5-11.5H12L13 2z" fill={color} />
     </svg>
   );
 }
@@ -264,6 +264,67 @@ function LiveToast() {
   );
 }
 
+// ─── Countdown timer (to the masterclass date) ──────────────────────────────────
+// 23 Aug 2026, 11:00 AM IST (UTC+5:30) → 05:30 UTC.
+const CLASS_TS = Date.UTC(2026, 7, 23, 5, 30, 0);
+function useCountdown() {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = now === null ? null : Math.max(0, CLASS_TS - now);
+  if (diff === null) return null;
+  const s = Math.floor(diff / 1000);
+  return {
+    days: Math.floor(s / 86400),
+    hours: Math.floor((s % 86400) / 3600),
+    minutes: Math.floor((s % 3600) / 60),
+    seconds: s % 60,
+  };
+}
+function CountdownTimer({ light = false }: { light?: boolean }) {
+  const t = useCountdown();
+  const units = [
+    { v: t?.days, l: "Days" },
+    { v: t?.hours, l: "Hours" },
+    { v: t?.minutes, l: "Mins" },
+    { v: t?.seconds, l: "Secs" },
+  ];
+  const box = light
+    ? { bg: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.18)", num: "#fff", lab: "#c6c1de" }
+    : { bg: "#fff", border: "1px solid #ece8f7", num: "#4b37cf", lab: "#8a84a0" };
+  return (
+    <div style={{ display: "flex", gap: 10 }}>
+      {units.map((u, i) => (
+        <div key={u.l} style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 62, background: box.bg, border: box.border, borderRadius: 14, padding: "12px 8px" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px,4vw,34px)", fontWeight: 800, lineHeight: 1, color: box.num, fontVariantNumeric: "tabular-nums" }}>{String(u.v ?? 0).padStart(2, "0")}</span>
+          <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: box.lab, marginTop: 6 }}>{u.l}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─── Timer + CTA bar (timer left, register button right) ─────────────────────────
+function TimerCTABar() {
+  const register = useRegister();
+  return (
+    <section style={{ padding: "clamp(28px,4vw,40px) 20px", background: "linear-gradient(120deg,#5a44e0,#7c6cf5)" }}>
+      <div style={{ maxWidth: 980, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "20px 28px" }}>
+        <div style={{ textAlign: "center" }}>
+          <div style={{ fontSize: 13, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#e2ddfb", marginBottom: 12 }}>Masterclass Starts In</div>
+          <CountdownTimer light />
+        </div>
+        <button onClick={register} className="inline-flex items-center justify-center gap-3" style={{ background: "#fff", color: "#4b37cf", borderRadius: 999, padding: "20px 40px", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(18px,2.4vw,22px)", fontWeight: 900, letterSpacing: "-0.01em", boxShadow: "0 16px 40px -14px rgba(0,0,0,0.4)" }}>
+          <BoltIcon size={22} color="#5a44e0" /><span>Register Now For Free</span><ArrowIcon size={20} />
+        </button>
+      </div>
+    </section>
+  );
+}
+
 // ─── FAQ accordion item ─────────────────────────────────────────────────────────
 function FAQItem({ q, a }: { q: string; a: string }) {
   const [open, setOpen] = useState(false);
@@ -355,6 +416,9 @@ export default function AiAgentsMasterclassPage() {
             </div>
           </div>
         </section>
+
+        {/* ═══════════ TIMER + CTA BAR (below hero) ═══════════ */}
+        <TimerCTABar />
 
         {/* ═══════════ SECTION 1B — WHO IS THIS FOR (premium image cards) ═══════════ */}
         <section style={{ padding: "clamp(56px,8vw,96px) 20px", background: "#faf9fd" }}>

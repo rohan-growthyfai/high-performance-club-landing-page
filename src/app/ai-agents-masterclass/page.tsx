@@ -413,9 +413,9 @@ export default function AiAgentsMasterclassPage() {
             </Reveal>
             <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 46 }}>
               {[
-                { step: "Part 1", emoji: "🧠", title: "The “Aha” Moment", head: "Finally understand what an AI Agent really is", body: "In plain English — no tech words. You'll see how an AI Agent is different from ChatGPT, and why it can actually do your work for you.", tag: "Zero background needed" },
-                { step: "Part 2", emoji: "🛠️", title: "Build It With Me, Live", head: "Create your very first AI Agent — step by step", body: "You watch my screen and copy along. If you can fill a form and type a message, you can do this. No code, no setup headache.", tag: "100% beginner-friendly" },
-                { step: "Part 3", emoji: "🚀", title: "Put It To Work", head: "Make your Agent run your daily tasks 24/7", body: "Learn how to point your Agent at real work — emails, follow-ups, research — so it keeps working even when you're not.", tag: "Walk away able to do it yourself" },
+                { step: "Part 1", emoji: "🧠", title: "The “Aha” Moment", head: "Finally understand what an AI Agent really is", body: "You'll learn how an AI Agent is different from ChatGPT, and why it can actually do your work for you.", tag: "Zero background needed" },
+                { step: "Part 2", emoji: "🛠️", title: "Build It With Me, Live", head: "Create your very first AI Agent — step by step", body: "Follow along as we build your first AI Agent together — live, step by step, without coding.", tag: "100% beginner-friendly" },
+                { step: "Part 3", emoji: "🚀", title: "Put It To Work", head: "Make your Agent run your daily tasks 24/7", body: "Learn how to make your AI Agent handle real tasks like research, emails and follow-ups automatically.", tag: "Walk away able to do it yourself" },
               ].map((c, i) => (
                 <Reveal key={c.step} delay={i * 90}>
                   <div className="use-card" style={{ ...CARD, padding: "28px 26px", height: "100%", display: "flex", flexDirection: "column", position: "relative", overflow: "hidden" }}>
@@ -463,7 +463,7 @@ export default function AiAgentsMasterclassPage() {
             </Reveal>
             <Reveal delay={120}>
               <div style={{ marginTop: 40 }}>
-                <p style={{ fontSize: 17, color: "#6b6580" }}>If you can use ChatGPT,</p>
+                <p style={{ ...H2, fontSize: "clamp(24px,4vw,36px)" }}>If you can use ChatGPT,</p>
                 <p style={{ ...H2, fontSize: "clamp(24px,4vw,36px)", marginTop: 8 }}>You Can Learn To <span className="grad-vio">Build AI Agents.</span></p>
                 <p style={{ fontSize: 16, color: "#4a4460", marginTop: 14 }}>I&apos;ll show you exactly how, step-by-step.</p>
                 <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 16px", marginTop: 20, fontSize: 13, fontWeight: 800, letterSpacing: "0.06em", color: "#6d5cf0" }}>

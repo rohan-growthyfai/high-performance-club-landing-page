@@ -194,6 +194,7 @@ export default function AiAgentsMasterclassPage() {
         .btn-primary:active { transform: translateY(0); }
         @keyframes agp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .clone-grad { background: linear-gradient(120deg,#a5b4fc,#818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        @media (max-width: 620px) { .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 220px; margin: 0 auto; } }
       `}</style>
 
       <main style={{ fontFamily: "'Inter',system-ui,-apple-system,'Segoe UI',sans-serif", color: "#0f172a", background: "#fff", overflowX: "hidden" }}>
@@ -209,19 +210,16 @@ export default function AiAgentsMasterclassPage() {
               <span style={{ fontSize: "clamp(24px,4.6vw,40px)", display: "inline-block", marginTop: 8 }}>That Works For You 24/7 — Even While You Sleep</span>
             </h1>
             <p style={{ fontSize: "clamp(16px,2.3vw,20px)", color: "#cbd5e1", maxWidth: 640, margin: "22px auto 0", lineHeight: 1.55 }}>
-              Learn how to build <b style={{ color: "#fff" }}>AI Agents</b> that can <b style={{ color: "#fff" }}>do your repetitive work for you</b> and save you hours every week.
+              Learn how to build AI Agents that <b style={{ color: "#fff" }}>do your repetitive work for you</b>, so you can save hours of manual work every week.
             </p>
-            <p style={{ fontSize: "clamp(17px,2.6vw,21px)", fontWeight: 900, color: "#fff", marginTop: 20, letterSpacing: "-0.01em" }}>NO CODING REQUIRED.</p>
-            <p style={{ fontSize: 15.5, color: "#94a3b8", maxWidth: 560, margin: "8px auto 0", lineHeight: 1.55 }}>
-              Even if you have <b style={{ color: "#cbd5e1" }}>zero technical knowledge</b>, you&apos;ll learn how to build your own AI Agents using simple AI tools.
-            </p>
+            <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 900, color: "#fff", marginTop: 20, letterSpacing: "-0.01em" }}>No Coding. No Technical Knowledge Required.</p>
 
             <div style={{ marginTop: 30 }}>
               <CTA big label="Reserve My Free Seat" />
             </div>
 
             <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "10px 22px", marginTop: 26, fontSize: 14.5, color: "#cbd5e1" }}>
-              {["No Coding Required", "Beginner Friendly", "Build Practical AI Agents", "FREE Live Masterclass"].map((t) => (
+              {["Beginner Friendly", "Practical Live Demo", "Build Your Own AI Agent"].map((t) => (
                 <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 7 }}><CheckIcon size={17} color="#22c55e" /> {t}</span>
               ))}
             </div>
@@ -252,12 +250,12 @@ export default function AiAgentsMasterclassPage() {
             </Reveal>
             <Reveal delay={120}>
               <div style={{ marginTop: 40, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
-                <p style={{ fontSize: "clamp(20px,3vw,26px)", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.3 }}>What if AI could do more of this work <span style={{ color: "#4f46e5" }}>for you?</span></p>
-                <p style={{ fontSize: 17, color: "#64748b", marginTop: 14, lineHeight: 1.6 }}>Not just answer your questions. Not just write something when you ask. But actually help <b style={{ color: "#0f172a" }}>do the work.</b></p>
-                <p style={{ fontSize: 15, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#4f46e5", marginTop: 22 }}>And the best part?</p>
-                <p style={{ fontSize: "clamp(21px,3.4vw,30px)", fontWeight: 900, letterSpacing: "-0.02em", marginTop: 6, lineHeight: 1.2 }}>You Don&apos;t Need To Know Coding To Build It.</p>
+                <p style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.25 }}>What If You Could Give This Work To AI <span style={{ color: "#4f46e5" }}>Instead?</span></p>
+                <p style={{ fontSize: 17, color: "#64748b", marginTop: 14, lineHeight: 1.7 }}>Not just ask AI questions. Not just generate content.</p>
+                <p style={{ fontSize: "clamp(18px,2.8vw,23px)", fontWeight: 800, letterSpacing: "-0.01em", marginTop: 10, lineHeight: 1.3 }}>Give AI a task — and let it <span style={{ color: "#4f46e5" }}>do the work for you.</span></p>
+                <p style={{ fontSize: 15.5, color: "#94a3b8", marginTop: 18, fontWeight: 700 }}>And you don&apos;t need coding to build it.</p>
               </div>
-              <div style={{ marginTop: 30 }}><CTA label="Show Me How" /></div>
+              <div style={{ marginTop: 28 }}><CTA label="Show Me How" /></div>
             </Reveal>
           </div>
         </section>
@@ -267,7 +265,7 @@ export default function AiAgentsMasterclassPage() {
           <div style={{ maxWidth: 900, margin: "0 auto" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
-                <h2 style={H2}>You&apos;ve Used AI To Get Answers.<br /><span style={{ color: "#4f46e5" }}>Now Use AI To Get Work Done.</span></h2>
+                <h2 style={H2}>Until Now, You&apos;ve Been <span style={{ color: "#4f46e5" }}>Talking To AI.</span><br />Now It&apos;s Time To Put AI <span style={{ color: "#4f46e5" }}>To Work.</span></h2>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", marginTop: 40 }}>
@@ -285,11 +283,9 @@ export default function AiAgentsMasterclassPage() {
               </Reveal>
             </div>
             <Reveal delay={120}>
-              <div style={{ textAlign: "center", marginTop: 44, maxWidth: 620, marginLeft: "auto", marginRight: "auto" }}>
-                <p style={{ fontSize: "clamp(20px,3vw,26px)", fontWeight: 800, letterSpacing: "-0.01em" }}>And You DON&apos;T Need To Be A Developer.</p>
-                <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 12, lineHeight: 1.7 }}>You don&apos;t need to learn programming. You don&apos;t need to understand complicated code. You don&apos;t need a technical background.</p>
-                <p style={{ fontSize: "clamp(18px,2.8vw,24px)", fontWeight: 900, color: "#4f46e5", marginTop: 18, letterSpacing: "-0.01em" }}>NO CODE. NO TECH BACKGROUND.</p>
-                <p style={{ fontSize: 15.5, color: "#94a3b8", marginTop: 8 }}>Just practical AI tools that you&apos;ll learn step-by-step.</p>
+              <div style={{ textAlign: "center", marginTop: 44, maxWidth: 600, marginLeft: "auto", marginRight: "auto" }}>
+                <p style={{ fontSize: "clamp(19px,2.9vw,25px)", fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.3 }}>And Yes — You Can Build This <span style={{ color: "#4f46e5" }}>Without Coding.</span></p>
+                <p style={{ fontSize: 16, color: "#64748b", marginTop: 10, fontWeight: 600 }}>No programming. No technical background required.</p>
                 <div style={{ marginTop: 26 }}><CTA label="Reserve My Free Seat" /></div>
               </div>
             </Reveal>
@@ -321,10 +317,11 @@ export default function AiAgentsMasterclassPage() {
               ))}
             </div>
             <Reveal delay={100}>
-              <div style={{ textAlign: "center", marginTop: 40 }}>
-                <p style={{ fontSize: "clamp(22px,3.6vw,32px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2 }}>Your AI Agents Can Work For You <span className="clone-grad">24/7.</span></p>
-                <p style={{ fontSize: 16.5, color: "#94a3b8", marginTop: 12, maxWidth: 480, marginLeft: "auto", marginRight: "auto" }}>Handling repetitive tasks while you focus on other things. And you can build them without writing code.</p>
-                <div style={{ marginTop: 28 }}><CTA label="I Want To Learn This" /></div>
+              <div style={{ textAlign: "center", marginTop: 44 }}>
+                <p style={{ fontSize: "clamp(23px,3.8vw,34px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.18 }}>Your Workday Ends.<br /><span className="clone-grad">Your AI Agents Don&apos;t Have To.</span></p>
+                <p style={{ fontSize: 16.5, color: "#94a3b8", marginTop: 14, maxWidth: 480, marginLeft: "auto", marginRight: "auto", lineHeight: 1.55 }}>Set them up to handle repetitive work for you throughout the day — and even while you sleep.</p>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: 8, marginTop: 20, background: "rgba(34,197,94,0.14)", border: "1px solid rgba(34,197,94,0.4)", borderRadius: 999, padding: "8px 16px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.06em", color: "#86efac" }}>NO CODING REQUIRED</div>
+                <div style={{ marginTop: 26 }}><CTA label="I Want To Learn This" /></div>
               </div>
             </Reveal>
           </div>
@@ -345,13 +342,13 @@ export default function AiAgentsMasterclassPage() {
             </Reveal>
             <div style={{ display: "grid", gap: 14, gridTemplateColumns: "repeat(auto-fit,minmax(230px,1fr))", marginTop: 36 }}>
               {[
-                { icon: "🔍", t: "Research", d: "Find and organize information for you." },
-                { icon: "📧", t: "Emails", d: "Prepare emails and repetitive replies." },
-                { icon: "🔄", t: "Follow-Ups", d: "Handle repetitive follow-up tasks." },
-                { icon: "📊", t: "Reports", d: "Collect information and prepare reports." },
-                { icon: "✍️", t: "Content", d: "Create drafts and recurring content." },
-                { icon: "📋", t: "Data", d: "Organize and process information." },
-                { icon: "⚙️", t: "Repetitive Tasks", d: "Handle work you currently do manually again and again." },
+                { icon: "🔍", t: "Research", d: "Research topics, competitors, products or information for you." },
+                { icon: "📧", t: "Emails", d: "Draft, organize and handle repetitive email tasks." },
+                { icon: "🔄", t: "Follow-Ups", d: "Follow up with leads, customers or your team automatically." },
+                { icon: "📊", t: "Reports", d: "Collect data and prepare recurring reports for you." },
+                { icon: "✍️", t: "Content", d: "Create drafts and recurring content in your style." },
+                { icon: "📋", t: "Data", d: "Organize, clean and process your information." },
+                { icon: "⚙️", t: "Repetitive Tasks", d: "Handle the work you currently do manually, again and again." },
               ].map((c, i) => (
                 <Reveal key={c.t} delay={(i % 3) * 70}>
                   <div style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 16, padding: "22px 20px", height: "100%" }}>
@@ -363,9 +360,9 @@ export default function AiAgentsMasterclassPage() {
               ))}
             </div>
             <Reveal delay={100}>
-              <div style={{ textAlign: "center", marginTop: 40 }}>
-                <p style={{ fontSize: "clamp(21px,3.4vw,30px)", fontWeight: 900, letterSpacing: "-0.02em", lineHeight: 1.2 }}>You Tell AI What To Do. <span style={{ color: "#4f46e5" }}>AI Does The Work.</span></p>
-                <p style={{ fontSize: 15.5, color: "#94a3b8", marginTop: 10, fontWeight: 700 }}>No coding required.</p>
+              <div style={{ textAlign: "center", marginTop: 48, borderTop: "1px solid #eef2f7", paddingTop: 40 }}>
+                <p style={{ fontSize: "clamp(26px,5vw,44px)", fontWeight: 900, letterSpacing: "-0.03em", lineHeight: 1.08 }}>YOU TELL AI WHAT TO DO.<br /><span style={{ color: "#4f46e5" }}>AI DOES THE WORK.</span></p>
+                <p style={{ fontSize: 16, color: "#94a3b8", marginTop: 14, fontWeight: 700 }}>And you can build it without coding.</p>
               </div>
             </Reveal>
           </div>
@@ -375,27 +372,26 @@ export default function AiAgentsMasterclassPage() {
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f8fafc" }}>
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
             <Reveal>
-              <h2 style={H2}>Think AI Agents Sound Too Technical?</h2>
-              <p style={{ fontSize: "clamp(20px,3vw,28px)", fontWeight: 900, color: "#4f46e5", marginTop: 8 }}>They&apos;re Not.</p>
+              <h2 style={H2}>AI Agents Sound Technical.<br /><span style={{ color: "#4f46e5" }}>Building Them Doesn&apos;t Have To Be.</span></h2>
               <div style={{ maxWidth: 460, margin: "26px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid #e2e8f0", boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)", lineHeight: 0 }}>
                 <img src="/aiatwork/no-code.jpg" alt="An everyday, non-technical person at a simple desk with a laptop, coffee and a notebook building AI agents" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
               </div>
-              <p style={{ fontSize: 17, color: "#475569", marginTop: 24, fontWeight: 600 }}>You DON&apos;T need to be:</p>
+              <p style={{ fontSize: 17, color: "#475569", marginTop: 24, fontWeight: 600 }}>You don&apos;t need to be a:</p>
             </Reveal>
             <Reveal delay={60}>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 20 }}>
-                {["A Programmer", "A Developer", "An AI Expert", "An Automation Expert", "A Tech Person"].map((t) => (
+                {["Programmer", "Developer", "AI Expert", "Automation Expert"].map((t) => (
                   <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#fff", border: "1px solid #fecaca", borderRadius: 999, padding: "9px 16px", fontSize: 14.5, fontWeight: 600, color: "#0f172a" }}><CrossIcon size={18} /> {t}</span>
                 ))}
               </div>
             </Reveal>
             <Reveal delay={120}>
-              <div style={{ marginTop: 36 }}>
-                <p style={{ fontSize: 17, color: "#64748b" }}>If you can use ChatGPT...</p>
-                <p style={{ fontSize: "clamp(22px,3.6vw,32px)", fontWeight: 900, letterSpacing: "-0.02em", marginTop: 6 }}>You Can Learn To Build AI Agents.</p>
-                <p style={{ fontSize: 16, color: "#475569", marginTop: 14, lineHeight: 1.6, maxWidth: 520, marginLeft: "auto", marginRight: "auto" }}>I&apos;ll show you the process <b>step-by-step</b>, using simple tools that don&apos;t require you to write code.</p>
-                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 20px", marginTop: 18, fontSize: 14, fontWeight: 900, letterSpacing: "0.04em", color: "#4f46e5" }}>
-                  <span>ZERO CODING.</span><span>BEGINNER FRIENDLY.</span><span>PRACTICAL.</span>
+              <div style={{ marginTop: 38 }}>
+                <p style={{ fontSize: 17, color: "#64748b" }}>If you can use ChatGPT,</p>
+                <p style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 900, letterSpacing: "-0.025em", marginTop: 6, lineHeight: 1.1 }}>You Can Learn To <span style={{ color: "#4f46e5" }}>Build AI Agents.</span></p>
+                <p style={{ fontSize: 16, color: "#475569", marginTop: 14 }}>I&apos;ll show you exactly how, step-by-step.</p>
+                <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", marginTop: 18, fontSize: 13.5, fontWeight: 900, letterSpacing: "0.05em", color: "#4f46e5" }}>
+                  <span>NO CODING</span><span style={{ color: "#c7d2fe" }}>•</span><span>BEGINNER FRIENDLY</span><span style={{ color: "#c7d2fe" }}>•</span><span>PRACTICAL</span>
                 </div>
                 <div style={{ marginTop: 26 }}><CTA label="Reserve My Free Seat" /></div>
               </div>
@@ -411,12 +407,12 @@ export default function AiAgentsMasterclassPage() {
             </Reveal>
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", marginTop: 40 }}>
               {[
-                { n: "01", t: "What AI Agents Actually Are", d: "Understand how they're different from simply using ChatGPT." },
-                { n: "02", t: "What Work You Can Give To AI", d: "Find repetitive tasks you currently do manually that AI can help handle." },
-                { n: "03", t: "How To Build Your Own AI Agent", d: "See how to create an AI Agent from scratch." },
-                { n: "04", t: "How To Make AI Do The Work", d: "Learn how Agents can perform multiple steps to complete a task for you." },
-                { n: "05", t: "How To Make AI Work 24/7", d: "Learn how AI Agents can keep performing defined tasks even when you're not working." },
-                { n: "06", t: "How To Do It WITHOUT CODING", d: "See how today's AI tools make it possible to build useful AI Agents without becoming a programmer." },
+                { n: "01", t: "AI Agents Made Simple", d: "Understand what AI Agents are and why they're different from ChatGPT." },
+                { n: "02", t: "Find What You Can Give To AI", d: "Identify the repetitive work you can stop doing manually." },
+                { n: "03", t: "Build Your First AI Agent", d: "See how an AI Agent is created from scratch — without coding." },
+                { n: "04", t: "Make AI Do The Work", d: "Learn how AI can perform multiple steps instead of waiting for your next prompt." },
+                { n: "05", t: "Make AI Work 24/7", d: "See how Agents can keep handling tasks even when you're not working." },
+                { n: "06", t: "Build Your Own AI Workforce", d: "Discover how different Agents can handle different types of work for you." },
               ].map((c, i) => (
                 <Reveal key={c.n} delay={(i % 3) * 70}>
                   <div style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 16, padding: "24px 22px", height: "100%" }}>
@@ -434,8 +430,8 @@ export default function AiAgentsMasterclassPage() {
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "radial-gradient(900px 480px at 50% -10%, #1e1b4b 0%, #0f172a 60%, #020617 100%)", color: "#fff" }}>
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
             <Reveal>
-              <h2 style={H2}>Watch Me Build An AI Agent<br /><span className="clone-grad">LIVE — Without Writing Code</span></h2>
-              <p style={{ fontSize: 16.5, color: "#cbd5e1", marginTop: 18, lineHeight: 1.6 }}>Not theory. Not complicated programming. You&apos;ll actually see how an AI Agent can be built and used to do real work.</p>
+              <h2 style={H2}>Watch Me Build A <span className="clone-grad">Working AI Agent LIVE</span><br />From Scratch. Without Writing A Single Line Of Code.</h2>
+              <p style={{ fontSize: 16.5, color: "#cbd5e1", marginTop: 18, lineHeight: 1.6 }}>You&apos;ll see exactly how an AI Agent goes from receiving a task to actually doing the work.</p>
               <div style={{ maxWidth: 620, margin: "30px auto 0", borderRadius: 18, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
                 <img src="/aiatwork/live-session.jpg" alt="A live online session showing an AI agent being built on screen, step by step" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
               </div>
@@ -493,20 +489,43 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ═══════════ SECTION 10 — THE SIMPLE PROMISE ═══════════ */}
+        {/* ═══════════ SECTION 10 — TRUST / INSTRUCTOR ═══════════ */}
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
-          <div style={{ maxWidth: 680, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: 760, margin: "0 auto" }}>
             <Reveal>
-              <h2 style={H2}>You Don&apos;t Need To Work More.</h2>
-              <p style={{ fontSize: "clamp(20px,3.2vw,28px)", fontWeight: 800, color: "#4f46e5", marginTop: 8, letterSpacing: "-0.01em" }}>Let AI Do More Of The Work.</p>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Meet your AI coach</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 12 }}>The Person Teaching You This</h2>
+              </div>
             </Reveal>
-            <Reveal delay={80}>
-              <div style={{ display: "inline-flex", flexDirection: "column", gap: 12, marginTop: 30, textAlign: "left" }}>
-                {["Do repetitive work for you", "Save you hours of manual work", "Work for you 24/7", "Keep working even when you're sleeping"].map((t) => (
-                  <span key={t} style={{ display: "inline-flex", alignItems: "center", gap: 12, fontSize: 16.5, fontWeight: 600, color: "#0f172a" }}><CheckIcon size={22} color="#22c55e" /> {t}</span>
+            <Reveal delay={70}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,220px) 1fr", gap: 28, alignItems: "center", marginTop: 36, background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 24, padding: "clamp(20px,4vw,32px)" }} className="host-grid">
+                <div style={{ borderRadius: 18, overflow: "hidden", border: "1px solid #e2e8f0", lineHeight: 0, boxShadow: "0 14px 40px -22px rgba(15,23,42,0.35)" }}>
+                  <img src="/rohan.png" alt="Rohan Mote — AI Growth Coach, High Performance Club" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                </div>
+                <div>
+                  <div style={{ fontSize: "clamp(22px,3.4vw,28px)", fontWeight: 900, letterSpacing: "-0.02em" }}>Rohan Mote</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: "#4f46e5", marginTop: 2 }}>AI Growth Coach · High Performance Club</div>
+                  <p style={{ fontSize: 15.5, color: "#475569", lineHeight: 1.65, marginTop: 14 }}>
+                    I build AI Agents and automations every day to run real businesses — lead systems, content, follow-ups and more. In this masterclass I&apos;ll show you exactly how it&apos;s done, in plain language, so you can start building your own AI Agents from day one — even if you&apos;ve never written a line of code.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 14, marginTop: 20, textAlign: "center" }}>
+                {[
+                  { big: "10,000+", small: "People trained on practical AI" },
+                  { big: "50+", small: "AI workshops & sessions run" },
+                  { big: "Daily", small: "Building real AI agents in business" },
+                ].map((s) => (
+                  <div key={s.big} style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 16, padding: "20px 12px" }}>
+                    <div style={{ fontSize: "clamp(22px,4vw,30px)", fontWeight: 900, color: "#4f46e5", letterSpacing: "-0.02em" }}>{s.big}</div>
+                    <div style={{ fontSize: 13, color: "#64748b", marginTop: 6, lineHeight: 1.4 }}>{s.small}</div>
+                  </div>
                 ))}
               </div>
-              <p style={{ fontSize: 15.5, color: "#94a3b8", marginTop: 26, fontWeight: 700 }}>And you can build them without coding.</p>
+              <p style={{ fontSize: 12, color: "#94a3b8", textAlign: "center", marginTop: 12 }}>Figures reflect High Performance Club&apos;s AI training to date.</p>
             </Reveal>
           </div>
         </section>
@@ -518,10 +537,13 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(99,102,241,0.18)", border: "1px solid rgba(129,140,248,0.4)", borderRadius: 999, padding: "8px 16px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.06em", color: "#c7d2fe" }}>
                 <span style={{ width: 8, height: 8, borderRadius: 999, background: "#22c55e", animation: "agp-pulse 1.8s infinite" }} /> FREE LIVE AI AGENTS MASTERCLASS
               </div>
-              <h2 style={{ ...H2, marginTop: 20 }}>Build Your Own <span className="clone-grad">AI Clone</span></h2>
-              <p style={{ fontSize: "clamp(17px,2.6vw,21px)", color: "#cbd5e1", marginTop: 12, fontWeight: 600, lineHeight: 1.4 }}>That Does Your Repetitive Work &amp; Works For You <b style={{ color: "#fff" }}>24/7 — Even While You Sleep</b></p>
-              <p style={{ fontSize: 15.5, color: "#94a3b8", marginTop: 16 }}>And learn how to build it...</p>
-              <p style={{ fontSize: "clamp(18px,2.8vw,24px)", fontWeight: 900, color: "#fff", marginTop: 6, letterSpacing: "-0.01em" }}>WITHOUT WRITING A SINGLE LINE OF CODE.</p>
+              <h2 style={{ ...H2, marginTop: 20 }}>Stop Doing Everything Yourself.<br /><span className="clone-grad">Build AI Agents That Work For You 24/7.</span></h2>
+              <div style={{ display: "flex", flexDirection: "column", gap: 6, marginTop: 18, fontSize: "clamp(16px,2.3vw,19px)", color: "#cbd5e1", fontWeight: 600 }}>
+                <span>Do your repetitive work.</span>
+                <span>Save hours every week.</span>
+                <span>Keep working even while you&apos;re sleeping.</span>
+              </div>
+              <p style={{ fontSize: "clamp(18px,2.8vw,24px)", fontWeight: 900, color: "#fff", marginTop: 16, letterSpacing: "-0.01em" }}>And Build It All Without Coding.</p>
             </Reveal>
             <Reveal delay={80}>
               <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 20px", marginTop: 26, background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 12, padding: "14px 22px", fontSize: 15.5, fontWeight: 700 }}>

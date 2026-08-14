@@ -236,6 +236,20 @@ function LiveToast() {
   );
 }
 
+// ─── FAQ accordion item ─────────────────────────────────────────────────────────
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ background: "#fff", border: "1px solid #ece8f7", borderRadius: 16, overflow: "hidden", boxShadow: open ? "0 12px 30px -18px rgba(76,55,207,0.3)" : "0 1px 2px rgba(16,12,34,0.03)", transition: "box-shadow 0.2s" }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "18px 20px", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 700, color: "#1a1530", letterSpacing: "-0.01em" }}>
+        {q}
+        <span style={{ flexShrink: 0, fontSize: 24, fontWeight: 400, color: "#6d5cf0", lineHeight: 1, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+      </button>
+      {open && <div style={{ padding: "0 20px 20px", fontSize: 15.5, color: "#544e6c", lineHeight: 1.65 }}>{a}</div>}
+    </div>
+  );
+}
+
 // ─── Shared bits ────────────────────────────────────────────────────────────────
 function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
@@ -600,6 +614,41 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
+        {/* ═══════════ SECTION 5C — SEE WHAT AI AGENTS CAN DO ═══════════ */}
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 900, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>See what AI Agents can do</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>Imagine Having AI That Can <span className="grad-vio">Do This For You…</span></h2>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(260px,1fr))", marginTop: 46 }}>
+              {[
+                { emoji: "📱", t: "Create & Post Content 24/7", d: "Write and publish posts across your platforms — automatically, every day." },
+                { emoji: "💼", t: "Find & Apply to Jobs Automatically", d: "Search openings, match your profile and send applications for you." },
+                { emoji: "🔍", t: "Do Hours of Research in Minutes", d: "Gather, read and summarise everything you need — in one place, fast." },
+                { emoji: "📩", t: "Take Follow-Ups Automatically", d: "Chase leads, remind customers and keep conversations going on their own." },
+              ].map((c, i) => (
+                <Reveal key={c.t} delay={(i % 2) * 90}>
+                  <div className="use-card" style={{ ...CARD, padding: "26px 24px", height: "100%", display: "flex", alignItems: "flex-start", gap: 16 }}>
+                    <div style={{ width: 52, height: 52, borderRadius: 14, background: "linear-gradient(135deg,#efeafe,#e0d8fb)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, flexShrink: 0 }}>{c.emoji}</div>
+                    <div>
+                      <div style={{ fontFamily: "var(--font-display)", fontSize: 18.5, fontWeight: 700, letterSpacing: "-0.01em", lineHeight: 1.25, color: "#1a1530" }}>{c.t}</div>
+                      <p style={{ fontSize: 14.5, color: "#6b6580", lineHeight: 1.55, marginTop: 7 }}>{c.d}</p>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={120}>
+              <div style={{ textAlign: "center", marginTop: 44 }}>
+                <p style={{ ...H2, fontSize: "clamp(22px,3.6vw,32px)" }}>And You&apos;ll Learn How To <span className="grad-vio">Build Them Yourself.</span></p>
+                <div style={{ marginTop: 26 }}><CTA label="Reserve My Free Seat" /></div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
 
         {/* ═══════════ SECTION 8 — SEE IT LIVE ═══════════ */}
         <section style={{ position: "relative", padding: "clamp(56px,8vw,90px) 20px", background: "radial-gradient(1000px 520px at 50% -18%, #241c5a 0%, #130f30 55%, #0a0720 100%)", color: "#fff", overflow: "hidden" }}>
@@ -674,6 +723,77 @@ export default function AiAgentsMasterclassPage() {
                 ))}
               </div>
               <p style={{ fontSize: 12, color: "#a49ec0", textAlign: "center", marginTop: 14 }}>Figures reflect High Performance Club&apos;s AI training to date.</p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ═══════════ SECTION 10B — TESTIMONIALS ═══════════ */}
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#faf9fd" }}>
+          <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>What people say</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>People Just Like You, <span className="grad-vio">Already Building</span></h2>
+                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 540, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>From past masterclasses and workshops — none of them knew how to code before.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", marginTop: 46 }}>
+              {[
+                { img: "/avatars/women/woman-1.jpg", name: "Ananya Krishnan", role: "Marketing Manager", quote: "I always thought AI agents were only for techies. In one session I built an agent that writes my weekly content. I still can't believe I did that." },
+                { img: "/avatars/men/man-2.jpg", name: "Rohit Deshpande", role: "Sales Professional", quote: "My follow-ups used to eat 2 hours a day. Now an agent does them for me and I only step in when a lead replies. Genuinely changed my week." },
+                { img: "/avatars/women/woman-4.jpg", name: "Meera Nair", role: "Freelance Consultant", quote: "No coding, no jargon — just build along. I set up a research agent that saves me half a day per client. Worth every minute." },
+                { img: "/avatars/men/man-1.jpg", name: "Arjun Verma", role: "Job Seeker", quote: "The job-application agent alone was worth attending. I went from applying to 5 jobs a week to 30 — without extra effort." },
+                { img: "/avatars/women/woman-6.webp", name: "Kavya Reddy", role: "Small Business Owner", quote: "I run my shop alone. Now an AI agent replies to customer messages 24/7. It's like having a teammate that never sleeps." },
+                { img: "/avatars/men/man-4.jpg", name: "Sahil Khanna", role: "Final-year Student", quote: "I built my first agent live during the class. Honestly the most useful 90 minutes I've spent this year." },
+              ].map((t, i) => (
+                <Reveal key={t.name} delay={(i % 3) * 90}>
+                  <div style={{ ...CARD, padding: "26px 24px", height: "100%", display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: 3, color: "#f5b301", fontSize: 16 }}>{"★★★★★"}</div>
+                    <p style={{ fontSize: 15.5, color: "#3a3452", lineHeight: 1.65, marginTop: 14, flex: 1 }}>“{t.quote}”</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 20, paddingTop: 18, borderTop: "1px solid #f0edf9" }}>
+                      <img src={t.img} alt={t.name} loading="lazy" style={{ width: 46, height: 46, borderRadius: 999, objectFit: "cover", flexShrink: 0, border: "1px solid #ece8f7" }} onError={(e) => { const el = e.currentTarget; el.style.display = "none"; }} />
+                      <div>
+                        <div style={{ fontFamily: "var(--font-display)", fontSize: 15.5, fontWeight: 700, color: "#1a1530" }}>{t.name}</div>
+                        <div style={{ fontSize: 13, color: "#8a84a0" }}>{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={100}>
+              <p style={{ fontSize: 12, color: "#a49ec0", textAlign: "center", marginTop: 20 }}>Individual experiences from past attendees. Results vary from person to person.</p>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ═══════════ SECTION 10C — FAQ ═══════════ */}
+        <section style={{ padding: "clamp(56px,8vw,90px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Questions</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>Frequently Asked <span className="grad-vio">Questions</span></h2>
+              </div>
+            </Reveal>
+            <Reveal delay={70}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 40 }}>
+                {[
+                  { q: "Do I need to know coding?", a: "No. Everything is built with simple, no-code tools by describing what you want in plain language. If you can use WhatsApp and fill a form, you can follow along." },
+                  { q: "Is it really free?", a: "Yes — the 90-minute live masterclass is completely free. Just register and show up live on 23 August 2026 at 11 AM IST." },
+                  { q: "I'm a complete beginner. Will I keep up?", a: "Absolutely. This class is built beginner-first. We explain everything simply and build a real AI Agent together, step by step — you just follow along." },
+                  { q: "What exactly is an AI Agent?", a: "It's AI that doesn't just answer questions — it actually does tasks for you, like replying to messages, doing research, or following up with leads, on its own." },
+                  { q: "What if I can't attend live?", a: "Register anyway. If you're registered, we'll try to share access — but the live session is where you build alongside us, so block the time if you can." },
+                  { q: "How do I join after registering?", a: "Your joining link and reminders are sent on WhatsApp and email right after you register. Just click the link at 11 AM on 23 August." },
+                  { q: "Do I need to install anything expensive?", a: "No. We use free and low-cost tools, and we show you exactly which ones and how to set them up — nothing complicated." },
+                ].map((f) => <FAQItem key={f.q} q={f.q} a={f.a} />)}
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div style={{ textAlign: "center", marginTop: 40 }}>
+                <p style={{ fontSize: 16, color: "#6b6580", fontWeight: 500 }}>Still have a question? You&apos;ll get everything answered live.</p>
+                <div style={{ marginTop: 22 }}><CTA label="Reserve My Free Seat" /></div>
+              </div>
             </Reveal>
           </div>
         </section>

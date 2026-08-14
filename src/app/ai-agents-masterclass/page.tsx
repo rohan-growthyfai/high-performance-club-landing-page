@@ -104,13 +104,14 @@ function HeroPriceLabel() {
 
 // ─── Register modal ─────────────────────────────────────────────────────────────
 const inputStyle: React.CSSProperties = {
-  width: "100%", padding: "14px 16px", borderRadius: 14, border: "1.5px solid #e7e3f5",
+  width: "100%", padding: "16px 18px", borderRadius: 14, border: "1.5px solid #e7e3f5",
   fontSize: 17, color: "#141026", outline: "none", background: "#faf9ff",
 };
 
 function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [dialCode, setDialCode] = useState("+91");
   const [whatsapp, setWhatsapp] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
@@ -125,15 +126,17 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
   async function submit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    if (!name.trim() || !email.includes("@") || whatsapp.replace(/\D/g, "").length < 8) {
-      setError("Please enter your name, a valid email and WhatsApp number.");
+    const digits = whatsapp.replace(/\D/g, "");
+    if (!name.trim() || !email.includes("@") || digits.length < 8) {
+      setError("Please enter your full name, a valid email and WhatsApp number.");
       return;
     }
     setSubmitting(true);
+    const fullPhone = `${dialCode}${digits}`;
     try {
       await fetch("/api/ai-agents-register", {
         method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name: name.trim(), email: email.trim(), whatsapp: whatsapp.trim() }),
+        body: JSON.stringify({ name: name.trim(), email: email.trim(), whatsapp: fullPhone }),
       });
       try { window.fbq?.("track", "Lead", { content_name: "ai-agents-masterclass" }); } catch {}
     } catch {}
@@ -141,30 +144,57 @@ function RegisterModal({ open, onClose }: { open: boolean; onClose: () => void }
   }
 
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(16,12,34,0.62)", backdropFilter: "blur(6px)", display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 20, overflowY: "auto" }}>
-      <div onClick={(e) => e.stopPropagation()} className="w-full" style={{ maxWidth: 440, background: "#fff", borderRadius: 26, marginTop: "8vh", boxShadow: "0 40px 90px rgba(16,12,34,0.4)", overflow: "hidden" }}>
-        <div style={{ background: "linear-gradient(135deg,#6d5cf0,#4b37cf)", padding: "24px 26px 22px", color: "#fff", position: "relative" }}>
-          <button onClick={onClose} aria-label="Close" style={{ position: "absolute", top: 14, right: 16, background: "rgba(255,255,255,0.18)", border: "none", borderRadius: 999, width: 32, height: 32, color: "#fff", fontSize: 20, cursor: "pointer", lineHeight: 1 }}>×</button>
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, zIndex: 1000, background: "rgba(16,12,34,0.62)", backdropFilter: "blur(6px)", display: "flex", alignItems: "flex-start", justifyContent: "center", padding: 20, overflowY: "auto" }}>
+      <div onClick={(e) => e.stopPropagation()} className="w-full" style={{ maxWidth: 520, background: "#fff", borderRadius: 26, marginTop: "6vh", boxShadow: "0 40px 90px rgba(16,12,34,0.4)", overflow: "hidden", position: "relative" }}>
+        <button type="button" onClick={onClose} aria-label="Close" style={{ position: "absolute", top: 16, right: 18, zIndex: 5, background: "rgba(255,255,255,0.2)", border: "none", borderRadius: 999, width: 38, height: 38, color: "#fff", fontSize: 24, cursor: "pointer", lineHeight: 1, display: "flex", alignItems: "center", justifyContent: "center", padding: 0 }}>×</button>
+        <div style={{ background: "linear-gradient(135deg,#6d5cf0,#4b37cf)", padding: "28px 30px 26px", color: "#fff" }}>
           <div style={{ fontSize: 12.5, fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", opacity: 0.92 }}>Free · {CLASS.date}</div>
-          <div style={{ fontSize: 23, fontWeight: 800, marginTop: 6, lineHeight: 1.15, fontFamily: "var(--font-display)" }}>Reserve your free seat</div>
-          <div style={{ fontSize: 13.5, opacity: 0.92, marginTop: 4 }}>{CLASS.time} · {CLASS.duration}</div>
+          <div style={{ fontSize: 26, fontWeight: 800, marginTop: 6, lineHeight: 1.15, fontFamily: "var(--font-display)" }}>Reserve your free seat</div>
+          <div style={{ fontSize: 14, opacity: 0.92, marginTop: 5 }}>{CLASS.time} · {CLASS.duration}</div>
         </div>
-        <form onSubmit={submit} style={{ padding: "24px 26px 28px" }} className="flex flex-col gap-3.5">
-          <input style={inputStyle} placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} autoFocus />
+        <form onSubmit={submit} style={{ padding: "28px 30px 30px" }} className="flex flex-col gap-4">
+          <input style={inputStyle} placeholder="Your full name" value={name} onChange={(e) => setName(e.target.value)} autoFocus />
           <input style={inputStyle} type="email" placeholder="Email address" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <input style={inputStyle} type="tel" placeholder="WhatsApp number (with country code)" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value)} />
+          <div style={{ display: "flex", gap: 10 }}>
+            <div style={{ position: "relative", flexShrink: 0 }}>
+              <select value={dialCode} onChange={(e) => setDialCode(e.target.value)} aria-label="Country code" style={{ ...inputStyle, width: "auto", paddingRight: 34, fontWeight: 700, cursor: "pointer", appearance: "none", WebkitAppearance: "none", MozAppearance: "none" }}>
+                {DIAL_CODES.map((c) => <option key={c.code + c.label} value={c.code}>{c.flag} {c.code}</option>)}
+              </select>
+              <span aria-hidden style={{ position: "absolute", right: 13, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#8a84a0", fontSize: 12 }}>▾</span>
+            </div>
+            <input style={{ ...inputStyle, flex: 1 }} type="tel" inputMode="numeric" placeholder="Enter 10-digit WhatsApp number only" value={whatsapp} onChange={(e) => setWhatsapp(e.target.value.replace(/\D/g, "").slice(0, 12))} />
+          </div>
           {error && <div style={{ color: "#dc2626", fontSize: 14, fontWeight: 600 }}>{error}</div>}
-          <button type="submit" disabled={submitting} className="btn-primary rounded-full text-white w-full inline-flex items-center justify-center gap-2" style={{ padding: 16, fontSize: 18, fontWeight: 800, border: "none", cursor: submitting ? "wait" : "pointer", opacity: submitting ? 0.75 : 1 }}>
-            <BoltIcon size={20} /> {submitting ? "Reserving…" : "Reserve My Free Seat"}
+          <button type="submit" disabled={submitting} className="btn-primary rounded-full text-white w-full inline-flex items-center justify-center gap-2" style={{ padding: 18, fontSize: 19, fontWeight: 900, border: "none", cursor: submitting ? "wait" : "pointer", opacity: submitting ? 0.75 : 1, marginTop: 2 }}>
+            <BoltIcon size={21} /> {submitting ? "Reserving…" : "Reserve My Free Seat"}
           </button>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 6, fontSize: 13, color: "#6b6580" }}>
-            <WhatsAppIcon size={16} /> The joining link is sent on WhatsApp. No spam.
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 7, fontSize: 13.5, color: "#6b6580", textAlign: "center" }}>
+            <WhatsAppIcon size={16} /> The joining link will be sent on WhatsApp and email.
           </div>
         </form>
       </div>
     </div>
   );
 }
+
+// Country dial codes — India first (default), then common others.
+const DIAL_CODES = [
+  { code: "+91", flag: "🇮🇳", label: "India" },
+  { code: "+1", flag: "🇺🇸", label: "USA/Canada" },
+  { code: "+44", flag: "🇬🇧", label: "UK" },
+  { code: "+971", flag: "🇦🇪", label: "UAE" },
+  { code: "+61", flag: "🇦🇺", label: "Australia" },
+  { code: "+65", flag: "🇸🇬", label: "Singapore" },
+  { code: "+966", flag: "🇸🇦", label: "Saudi Arabia" },
+  { code: "+974", flag: "🇶🇦", label: "Qatar" },
+  { code: "+60", flag: "🇲🇾", label: "Malaysia" },
+  { code: "+64", flag: "🇳🇿", label: "New Zealand" },
+  { code: "+49", flag: "🇩🇪", label: "Germany" },
+  { code: "+353", flag: "🇮🇪", label: "Ireland" },
+  { code: "+27", flag: "🇿🇦", label: "South Africa" },
+  { code: "+977", flag: "🇳🇵", label: "Nepal" },
+  { code: "+880", flag: "🇧🇩", label: "Bangladesh" },
+];
 
 // ─── Sticky bottom CTA (all devices, appears on scroll) ──────────────────────────
 function StickyCTA() {
@@ -362,7 +392,7 @@ export default function AiAgentsMasterclassPage() {
             </div>
             <Reveal delay={100}>
               <div style={{ textAlign: "center", marginTop: 48 }}>
-                <p style={{ fontSize: "clamp(18px,2.6vw,22px)", color: "#4a4460", fontWeight: 500 }}>If you want AI to automate all of this, then…</p>
+                <p style={{ fontSize: "clamp(18px,2.6vw,22px)", color: "#4a4460", fontWeight: 500 }}>Or, if you are someone who wants to automate your daily work &amp; make AI work for you…</p>
                 <p style={{ ...H2, fontSize: "clamp(24px,4vw,38px)", marginTop: 10 }}>This Masterclass Is <span className="grad-vio">Made For You.</span></p>
                 <p style={{ fontSize: 13.5, fontWeight: 800, letterSpacing: "0.1em", color: "#6d5cf0", marginTop: 16 }}>NO CODING · NO TECHNICAL KNOWLEDGE REQUIRED</p>
                 <div style={{ marginTop: 28 }}><CTA label="Reserve My Free Seat" /></div>

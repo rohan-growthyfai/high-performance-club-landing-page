@@ -238,27 +238,38 @@ export default function AiAgentsMasterclassPage() {
 
         {/* ═══════════ SECTION 1B — WHO IS THIS WEBINAR FOR ═══════════ */}
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
-          <div style={{ maxWidth: 820, margin: "0 auto", textAlign: "center" }}>
+          <div style={{ maxWidth: 980, margin: "0 auto" }}>
             <Reveal>
-              <Eyebrow>Who is this webinar for?</Eyebrow>
-              <h2 style={{ ...H2, marginTop: 12 }}>If You Use A Computer For Work,<br /><span style={{ color: "#4f46e5" }}>This Is For You.</span></h2>
-            </Reveal>
-            <Reveal delay={60}>
-              <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 30 }}>
-                {["👨‍💼 Business Owners", "💼 Working Professionals", "📈 Marketers", "🚀 Entrepreneurs", "🎓 Coaches & Consultants", "🧑‍💻 Freelancers"].map((t) => (
-                  <span key={t} style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 999, padding: "11px 20px", fontSize: 15, fontWeight: 600, color: "#0f172a", boxShadow: "0 2px 8px rgba(15,23,42,0.04)" }}>{t}</span>
-                ))}
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Who is this for?</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 12 }}>Who Is This Masterclass For?</h2>
               </div>
             </Reveal>
-            <Reveal delay={120}>
-              <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 34, fontWeight: 600 }}>Especially if you think:</p>
-              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 16, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
-                {["“I spend too much time doing repetitive work.”", "“I'd love to use AI beyond just ChatGPT.”", "“AI Agents sound useful, but I'm not technical.”"].map((q) => (
-                  <div key={q} style={{ background: "#f8fafc", borderLeft: "4px solid #6366f1", borderRadius: 10, padding: "14px 18px", fontSize: 16, fontWeight: 700, color: "#0f172a", textAlign: "left", boxShadow: "0 2px 10px rgba(15,23,42,0.04)" }}>{q}</div>
-                ))}
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 40 }}>
+              {[
+                { icon: "📈", who: "Marketers & Content Creators", pain: "finding ideas, creating content, writing posts and staying consistent across platforms." },
+                { icon: "💼", who: "Working Professionals", pain: "replying to emails, making PPTs, doing research, preparing reports and other repetitive work." },
+                { icon: "👨‍💼", who: "Business Owners & Entrepreneurs", pain: "following up with leads, replying to customers, creating content and managing daily tasks yourself." },
+                { icon: "🧑‍💻", who: "Freelancers & Consultants", pain: "finding clients, making proposals, doing research, following up and handling repetitive client work." },
+                { icon: "🎯", who: "Job Seekers & Career Professionals", pain: "searching for jobs, applying, researching companies and trying to grow your career." },
+                { icon: "🎓", who: "Students", pain: "researching, studying, making presentations, working on projects and preparing for your career." },
+              ].map((c, i) => (
+                <Reveal key={c.who} delay={(i % 3) * 80}>
+                  <div style={{ background: "#f8fafc", border: "1px solid #eef2f7", borderRadius: 18, padding: "24px 22px", height: "100%", boxShadow: "0 4px 18px rgba(15,23,42,0.05)" }}>
+                    <div style={{ fontSize: 30 }}>{c.icon}</div>
+                    <div style={{ fontSize: 18.5, fontWeight: 800, marginTop: 10, letterSpacing: "-0.01em", lineHeight: 1.25 }}>{c.who}</div>
+                    <p style={{ fontSize: 15, color: "#475569", lineHeight: 1.55, marginTop: 8 }}>You spend hours <b style={{ color: "#0f172a" }}>{c.pain}</b></p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={100}>
+              <div style={{ textAlign: "center", marginTop: 40 }}>
+                <p style={{ fontSize: "clamp(18px,2.6vw,22px)", color: "#475569", fontWeight: 600 }}>If you want AI to automate all of this, then…</p>
+                <p style={{ fontSize: "clamp(24px,4vw,36px)", fontWeight: 900, letterSpacing: "-0.025em", marginTop: 8, lineHeight: 1.15 }}>This Masterclass Is <span style={{ color: "#4f46e5" }}>Made For You.</span></p>
+                <p style={{ fontSize: 15, fontWeight: 900, letterSpacing: "0.06em", color: "#4f46e5", marginTop: 14 }}>NO CODING. NO TECHNICAL KNOWLEDGE REQUIRED.</p>
+                <div style={{ marginTop: 26 }}><CTA label="Reserve My Free Seat" /></div>
               </div>
-              <p style={{ fontSize: 17, fontWeight: 700, marginTop: 26 }}>That&apos;s exactly what this masterclass is designed for.</p>
-              <p style={{ fontSize: 15, fontWeight: 900, letterSpacing: "0.06em", color: "#4f46e5", marginTop: 8 }}>NO CODING REQUIRED.</p>
             </Reveal>
           </div>
         </section>

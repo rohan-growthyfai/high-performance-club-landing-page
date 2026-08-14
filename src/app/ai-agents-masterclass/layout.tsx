@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 export const revalidate = 60;
 
 export const metadata: Metadata = {
-  title: "AI Agents Masterclass — Build Your Own AI Clone That Works 24/7 (Free Live · 23 Aug 2026)",
+  title: "AI Agents Masterclass — Build AI Agents That Work For You 24/7 (Free Live · 23 Aug 2026)",
   description:
-    "A free live AI Agents Masterclass on 23 August 2026, 11 AM. Learn to build your own AI Clone — AI Agents that do your repetitive work for you 24/7, even while you sleep. No coding required.",
+    "A free live AI Agents Masterclass on 23 August 2026, 11 AM. Stop doing everything yourself — learn to build AI Agents that do your repetitive work for you 24/7, even while you sleep. No coding required.",
   keywords: [
     "AI agents masterclass",
     "AI automation",

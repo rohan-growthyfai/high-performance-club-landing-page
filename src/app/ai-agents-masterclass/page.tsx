@@ -63,6 +63,30 @@ function WhatsAppIcon({ size = 16 }: { size?: number }) {
   );
 }
 
+// ─── "Zero Coding Required" stamp / seal ────────────────────────────────────────
+function ZeroCodingStamp() {
+  return (
+    <div aria-label="Zero coding required" style={{ position: "absolute", right: -14, top: -22, width: 118, height: 118, transform: "rotate(-13deg)", zIndex: 5, filter: "drop-shadow(0 10px 22px rgba(0,0,0,0.35))" }} className="zc-stamp">
+      <svg viewBox="0 0 120 120" width="118" height="118" aria-hidden="true">
+        <defs>
+          <path id="zc-arc-top" d="M60 60 m-42 0 a42 42 0 1 1 84 0" fill="none" />
+          <path id="zc-arc-bot" d="M60 60 m42 0 a42 42 0 1 1 -84 0" fill="none" />
+        </defs>
+        <circle cx="60" cy="60" r="57" fill="#facc15" stroke="#0f172a" strokeWidth="3" />
+        <circle cx="60" cy="60" r="47" fill="none" stroke="#0f172a" strokeWidth="1.5" strokeDasharray="2 3" opacity="0.55" />
+        <text fill="#0f172a" fontSize="12.5" fontWeight="800" letterSpacing="2.2" style={{ textTransform: "uppercase" }}>
+          <textPath href="#zc-arc-top" startOffset="50%" textAnchor="middle">Zero Coding</textPath>
+        </text>
+        <text fill="#0f172a" fontSize="12.5" fontWeight="800" letterSpacing="2.2" style={{ textTransform: "uppercase" }}>
+          <textPath href="#zc-arc-bot" startOffset="50%" textAnchor="middle">Required</textPath>
+        </text>
+        <text x="60" y="55" textAnchor="middle" fill="#0f172a" fontSize="30" fontWeight="900">0%</text>
+        <text x="60" y="72" textAnchor="middle" fill="#0f172a" fontSize="10.5" fontWeight="800" letterSpacing="1.5">CODE</text>
+      </svg>
+    </div>
+  );
+}
+
 // ─── Reveal-on-scroll ───────────────────────────────────────────────────────────
 function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -195,6 +219,10 @@ export default function AiAgentsMasterclassPage() {
         @keyframes agp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
         .clone-grad { background: linear-gradient(120deg,#a5b4fc,#818cf8); -webkit-background-clip: text; background-clip: text; color: transparent; }
         @media (max-width: 620px) { .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 220px; margin: 0 auto; } }
+        .zc-stamp { animation: zc-pop 0.5s cubic-bezier(0.16,1,0.3,1) 0.3s both; }
+        @keyframes zc-pop { 0% { opacity: 0; transform: rotate(-13deg) scale(0.5); } 60% { transform: rotate(-13deg) scale(1.08); } 100% { opacity: 1; transform: rotate(-13deg) scale(1); } }
+        @media (max-width: 520px) { .zc-stamp { width: 88px !important; height: 88px !important; right: -6px !important; top: -14px !important; } .zc-stamp svg { width: 88px; height: 88px; } }
+        @media (prefers-reduced-motion: reduce) { .zc-stamp { animation: none; } }
       `}</style>
 
       <main style={{ fontFamily: "'Inter',system-ui,-apple-system,'Segoe UI',sans-serif", color: "#0f172a", background: "#fff", overflowX: "hidden" }}>
@@ -205,12 +233,12 @@ export default function AiAgentsMasterclassPage() {
             <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(99,102,241,0.18)", border: "1px solid rgba(129,140,248,0.4)", borderRadius: 999, padding: "8px 16px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.06em", color: "#c7d2fe" }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: "#22c55e", animation: "agp-pulse 1.8s infinite" }} /> FREE LIVE AI AGENTS MASTERCLASS
             </div>
-            <h1 style={{ fontSize: "clamp(34px,7vw,62px)", fontWeight: 900, lineHeight: 1.05, letterSpacing: "-0.035em", margin: "20px 0 0" }}>
-              Build Your Own <span className="clone-grad">AI Clone</span><br />
-              <span style={{ fontSize: "clamp(24px,4.6vw,40px)", display: "inline-block", marginTop: 8 }}>That Works For You 24/7 — Even While You Sleep</span>
+            <h1 style={{ fontSize: "clamp(32px,6.4vw,58px)", fontWeight: 900, lineHeight: 1.06, letterSpacing: "-0.035em", margin: "20px 0 0" }}>
+              Stop Doing Everything Yourself.<br />
+              <span style={{ fontSize: "clamp(23px,4.4vw,40px)", display: "inline-block", marginTop: 10 }}>Build AI Agents That <span className="clone-grad">Work For You 24/7 — Even While You Sleep.</span></span>
             </h1>
             <p style={{ fontSize: "clamp(16px,2.3vw,20px)", color: "#cbd5e1", maxWidth: 640, margin: "22px auto 0", lineHeight: 1.55 }}>
-              Learn how to build AI Agents that <b style={{ color: "#fff" }}>do your repetitive work for you</b>, so you can save hours of manual work every week.
+              Learn to build your <b style={{ color: "#fff" }}>first AI Agent</b>, automate repetitive work and <b style={{ color: "#fff" }}>save hours of manual work every week.</b>
             </p>
             <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 900, color: "#fff", marginTop: 20, letterSpacing: "-0.01em" }}>No Coding. No Technical Knowledge Required.</p>
 
@@ -228,8 +256,11 @@ export default function AiAgentsMasterclassPage() {
               <span>📅 {CLASS.date}</span><span>🕚 {CLASS.time}</span><span style={{ color: "#cbd5e1", fontWeight: 500 }}>💻 LIVE Online</span>
             </div>
 
-            <div style={{ maxWidth: 720, margin: "38px auto 0", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
-              <img src="/aiatwork/hero-wide.jpg" alt="A working professional at a laptop with AI agents handling emails, research, follow-ups and reports across their workday" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+            <div data-herowrap style={{ position: "relative", maxWidth: 720, margin: "38px auto 0" }}>
+              <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.12)", boxShadow: "0 30px 70px -30px rgba(0,0,0,0.7)", lineHeight: 0 }}>
+                <img src="/ai-agents/hero-clone.png" alt="On the left, a working professional; on the right, their AI Clone completing research, follow-ups, reports and content — working 24/7" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { const img = e.currentTarget as HTMLImageElement; if (!img.dataset.fallback) { img.dataset.fallback = "1"; img.src = "/aiatwork/hero-wide.jpg"; } else { const w = img.closest("[data-herowrap]") as HTMLElement | null; if (w) w.style.display = "none"; } }} />
+              </div>
+              <ZeroCodingStamp />
             </div>
           </div>
         </section>
@@ -368,8 +399,53 @@ export default function AiAgentsMasterclassPage() {
           </div>
         </section>
 
-        {/* ═══════════ SECTION 6 — "BUT I'M NOT TECHNICAL" ═══════════ */}
+        {/* ═══════════ SECTION 5B — REAL AGENTS BY USE CASE ═══════════ */}
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f8fafc" }}>
+          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Real agents you can build</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 12 }}>The Kind Of AI Agents <span style={{ color: "#4f46e5" }}>You&apos;ll Be Able To Build</span></h2>
+                <p style={{ fontSize: 16.5, color: "#64748b", marginTop: 12, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>Practical examples of AI Agents and automations for everyday work — pick the ones that save you the most time.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 18, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 40 }}>
+              {[
+                { icon: "✍️", name: "Content Creation Agent", tasks: ["Turn one idea into a week of posts", "Write emails, captions & scripts in your style", "Repurpose long content into short posts"] },
+                { icon: "🔍", name: "Research Agent", tasks: ["Research a topic and summarise the key points", "Compare products, tools or competitors", "Pull the information you need into one place"] },
+                { icon: "🔄", name: "Follow-Up Agent", tasks: ["Follow up with leads that didn't reply", "Nudge customers and your team automatically", "Never let a warm lead go cold again"] },
+                { icon: "💬", name: "Lead-Reply Agent", tasks: ["Reply to new enquiries in seconds, 24/7", "Answer common questions like you would", "Qualify leads and book the call for you"] },
+                { icon: "📊", name: "Reporting Agent", tasks: ["Collect data from your tools", "Build the same report every week", "Send you a clean summary on schedule"] },
+                { icon: "🗂️", name: "Admin & Data Agent", tasks: ["Organise, clean and update information", "Handle repetitive data entry", "Keep your sheets and records tidy"] },
+              ].map((a, i) => (
+                <Reveal key={a.name} delay={(i % 3) * 80}>
+                  <div style={{ background: "#fff", border: "1px solid #eef2f7", borderRadius: 18, padding: "24px 22px", height: "100%", boxShadow: "0 6px 22px rgba(15,23,42,0.05)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+                      <div style={{ width: 46, height: 46, borderRadius: 12, background: "linear-gradient(135deg,#6366f1,#4f46e5)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, flexShrink: 0 }}>{a.icon}</div>
+                      <div style={{ fontSize: 18.5, fontWeight: 800, letterSpacing: "-0.01em", lineHeight: 1.2 }}>{a.name}</div>
+                    </div>
+                    <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 9 }}>
+                      {a.tasks.map((t) => (
+                        <div key={t} style={{ display: "flex", alignItems: "flex-start", gap: 9, fontSize: 14.5, color: "#475569", lineHeight: 1.45 }}>
+                          <span style={{ flexShrink: 0, marginTop: 2 }}><CheckIcon size={17} color="#22c55e" /></span>{t}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            <Reveal delay={100}>
+              <div style={{ textAlign: "center", marginTop: 36 }}>
+                <p style={{ fontSize: 16, color: "#64748b", fontWeight: 600 }}>…and once you know how, you can build an agent for almost any repetitive task.</p>
+                <div style={{ marginTop: 22 }}><CTA label="Reserve My Free Seat" /></div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ═══════════ SECTION 6 — "BUT I'M NOT TECHNICAL" ═══════════ */}
+        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
           <div style={{ maxWidth: 720, margin: "0 auto", textAlign: "center" }}>
             <Reveal>
               <h2 style={H2}>AI Agents Sound Technical.<br /><span style={{ color: "#4f46e5" }}>Building Them Doesn&apos;t Have To Be.</span></h2>

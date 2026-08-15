@@ -224,6 +224,20 @@ function StickyCTA() {
   );
 }
 
+// ─── FAQ accordion item ─────────────────────────────────────────────────────────
+function FAQItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ background: "#fff", border: "1px solid #e4e7df", borderRadius: 16, overflow: "hidden", boxShadow: open ? "0 12px 30px -18px rgba(14,124,90,0.3)" : "0 1px 2px rgba(15,27,45,0.03)", transition: "box-shadow 0.2s" }}>
+      <button onClick={() => setOpen(!open)} style={{ width: "100%", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 16, padding: "18px 20px", textAlign: "left", background: "transparent", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 700, color: "#12160f", letterSpacing: "-0.01em" }}>
+        {q}
+        <span style={{ flexShrink: 0, fontSize: 24, fontWeight: 400, color: "#0e7c5a", lineHeight: 1, transform: open ? "rotate(45deg)" : "none", transition: "transform 0.2s" }}>+</span>
+      </button>
+      {open && <div style={{ padding: "0 20px 20px", fontSize: 15.5, color: "#4b5245", lineHeight: 1.65 }}>{a}</div>}
+    </div>
+  );
+}
+
 // ─── Shared bits ────────────────────────────────────────────────────────────────
 function Eyebrow({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return (
@@ -272,9 +286,9 @@ export default function AiCareerMasterclassPage() {
               In Your Career.
             </h1>
             <p style={{ fontSize: "clamp(18px,2.6vw,23px)", fontWeight: 500, color: "#cfd8dd", maxWidth: 660, margin: "26px auto 0", lineHeight: 1.55 }}>
-              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to use AI to earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>5X higher salary</b> and get you promoted.
+              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to combine AI + your current skills to earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>5X higher salary</b> and get you promoted.
             </p>
-            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. Not for someone chasing random AI tools.</p>
+            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. No 50+ random AI tools. Learn what actually helps your career grow.</p>
 
             <div style={{ marginTop: 34 }}><CTA big><HeroPriceLabel /></CTA></div>
 
@@ -332,7 +346,7 @@ export default function AiCareerMasterclassPage() {
                   <Eyebrow>What this masterclass is about</Eyebrow>
                   <h2 style={{ ...H2, marginTop: 16 }}>AI Is Not Coming For Your Job.<br /><span className="grad-green">It&apos;s Coming For Whoever Does Not Use It.</span></h2>
                   <p style={{ fontSize: "clamp(16px,2.2vw,18px)", color: "#4b5245", lineHeight: 1.65, marginTop: 18 }}>
-                    Every week there is news of layoffs. But the same companies are paying <b style={{ color: "#0e7c5a" }}>up to 56% more</b> for people who know how to work with AI. This masterclass shows you which side to be on — and exactly how to get there, using AI plus the skills AI can not replace.
+                    Every week there is news of layoffs. But the same companies are paying <b style={{ color: "#0e7c5a" }}>up to 56% more</b> for people who know how to work with AI. This masterclass shows you exactly how to get there, using AI + your current skills.
                   </p>
                 </Reveal>
               </div>
@@ -345,7 +359,7 @@ export default function AiCareerMasterclassPage() {
           <div style={{ maxWidth: 900, margin: "0 auto", textAlign: "center" }}>
             <Reveal>
               <Eyebrow>Who it&apos;s for</Eyebrow>
-              <h2 style={{ ...H2, marginTop: 16 }}>Made For Working Professionals</h2>
+              <h2 style={{ ...H2, marginTop: 16 }}>Made For Working Professionals Who Want Their Next Career Leap</h2>
               <p style={{ fontSize: 16.5, color: "#6b7266", marginTop: 12 }}>Whether you have 2 years of experience or 20 — this is for you if you want to stay ahead.</p>
             </Reveal>
             <Reveal delay={60}>
@@ -369,7 +383,7 @@ export default function AiCareerMasterclassPage() {
             </Reveal>
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))", marginTop: 44 }}>
               {[
-                { n: "01", t: "Where AI Is Actually Hitting Jobs", d: "See clearly which roles and tasks AI is replacing right now — and where the real opportunity is." },
+                { n: "01", t: "See How AI Is Changing Your Job", d: "See clearly which roles and tasks AI is replacing right now — and where the real AI opportunity is." },
                 { n: "02", t: "The AI Skills That Pay 5X More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary jump." },
                 { n: "03", t: "Only Top AI Tools For Your Role", d: "Skip the 100+ tools launching every week. Learn only the handful that matter for your exact profession." },
                 { n: "04", t: "AI + The Human Skills AI Can't Replace", d: "Combine AI with communication, interviews and positioning — the real key to standing out." },
@@ -398,7 +412,7 @@ export default function AiCareerMasterclassPage() {
               <Eyebrow light>Why this is different</Eyebrow>
               <h2 style={{ ...H2, marginTop: 16 }}>Not Another &quot;Learn 50 AI Tools&quot; Session.</h2>
               <p style={{ fontSize: "clamp(16px,2.2vw,18.5px)", color: "#c9d3df", lineHeight: 1.65, marginTop: 18, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-                Most AI sessions make you dependent on tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with the human skills AI can not replace, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
+                Most AI sessions teach you random AI tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with your current skills, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
               </p>
             </Reveal>
             <Reveal delay={70}>
@@ -420,30 +434,34 @@ export default function AiCareerMasterclassPage() {
 
         {/* ═══════════ OUTCOMES ═══════════ */}
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f6f7f4" }}>
-          <div style={{ maxWidth: 780, margin: "0 auto" }}>
+          <div style={{ maxWidth: 980, margin: "0 auto" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>What you will walk away with</Eyebrow>
                 <h2 style={{ ...H2, marginTop: 16 }}>By The End Of The Masterclass, You Will Know…</h2>
               </div>
             </Reveal>
-            <Reveal delay={60}>
-              <div style={{ display: "inline-flex", flexDirection: "column", gap: 14, marginTop: 34, textAlign: "left", background: "#fff", border: "1px solid #e4e7df", borderRadius: 18, padding: "clamp(22px,4vw,32px)", width: "100%" }}>
-                {[
-                  "Exactly how AI affects your job — and how to stay ahead of it",
-                  "Which AI tools actually matter for your role (and which to ignore)",
-                  "How to make yourself more valuable to your current company",
-                  "How to combine AI with your communication and interview skills",
-                  "A clear 90-day path to become an AI-skilled, promotion-ready professional",
-                ].map((t) => (
-                  <div key={t} style={{ display: "flex", gap: 14, alignItems: "flex-start", fontSize: 16.5, color: "#1a1f16", fontWeight: 500 }}>
-                    <span style={{ flexShrink: 0, marginTop: 1 }}><CheckIcon size={22} color="#12a374" /></span>{t}
+            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: 40 }}>
+              {[
+                { big: "AI Career Score", d: "See exactly where you stand — and what's holding you back." },
+                { big: "5 Career Skills", d: "Build the skills that make you irreplaceable." },
+                { big: "Top 3 AI Tools", d: "Master the tools that help you grow in your career." },
+                { big: "5+ AI Workflows", d: "Know where AI can fit into your working day." },
+                { big: "90-Day Roadmap", d: "Your step-by-step plan to become an AI-powered professional." },
+              ].map((c, i) => (
+                <Reveal key={c.big} delay={(i % 3) * 70}>
+                  <div className="card-hover" style={{ ...CARD, padding: "26px 22px", height: "100%" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
+                      <CheckIcon size={22} color="#12a374" />
+                      <span style={{ fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 800, letterSpacing: "-0.01em", color: "#0e7c5a" }}>{c.big}</span>
+                    </div>
+                    <p style={{ fontSize: 14.5, color: "#4b5245", lineHeight: 1.55, margin: 0 }}>{c.d}</p>
                   </div>
-                ))}
-              </div>
-            </Reveal>
+                </Reveal>
+              ))}
+            </div>
             <Reveal delay={120}>
-              <div style={{ textAlign: "center", marginTop: 36 }}><CTA label="Reserve My Free Seat" /></div>
+              <div style={{ textAlign: "center", marginTop: 40 }}><CTA label="Reserve My Free Seat" /></div>
             </Reveal>
           </div>
         </section>
@@ -487,6 +505,71 @@ export default function AiCareerMasterclassPage() {
                   </div>
                 ))}
               </div>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ═══════════ TESTIMONIALS ═══════════ */}
+        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#f6f7f4" }}>
+          <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Real results</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>Professionals Already <span className="grad-green">Saving Hours With AI</span></h2>
+                <p style={{ fontSize: 16.5, color: "#6b7266", marginTop: 14, maxWidth: 540, marginLeft: "auto", marginRight: "auto" }}>Real, measurable outcomes from people who applied what they learned.</p>
+              </div>
+            </Reveal>
+            <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", marginTop: 46 }}>
+              {[
+                { img: "/avatars/men/man-2.jpg", name: "Rohit Deshpande", role: "Business Analyst", quote: "I now save around 45 minutes preparing my weekly reports — AI does the first draft, I just review it." },
+                { img: "/avatars/women/woman-1.jpg", name: "Ananya Krishnan", role: "Marketing Manager", quote: "I reduced my presentation prep from 3 hours to around 1 hour. That's the biggest time-saver I've found." },
+                { img: "/avatars/men/man-1.jpg", name: "Arjun Verma", role: "Project Lead", quote: "I started using 4 AI workflows every week for status updates, meeting notes and follow-ups. My team noticed." },
+                { img: "/avatars/women/woman-4.jpg", name: "Meera Nair", role: "Consultant", quote: "I used AI to prepare for 5 interview rounds — mock answers, research, positioning. I walked in far more confident." },
+                { img: "/avatars/men/man-4.jpg", name: "Sahil Khanna", role: "Software Engineer", quote: "AI now handles the boilerplate parts of my work. I ship roughly 2x faster and spend my time on the harder problems." },
+                { img: "/avatars/women/woman-6.webp", name: "Kavya Reddy", role: "HR Professional", quote: "I automated 3 repetitive tasks I did daily. That's easily 5+ hours back every single week." },
+              ].map((t, i) => (
+                <Reveal key={t.name} delay={(i % 3) * 90}>
+                  <div style={{ ...CARD, padding: "26px 24px", height: "100%", display: "flex", flexDirection: "column" }}>
+                    <div style={{ display: "flex", gap: 3, color: "#fbbf24", fontSize: 16 }}>{"★★★★★"}</div>
+                    <p style={{ fontSize: 15.5, color: "#2b3327", lineHeight: 1.65, marginTop: 14, flex: 1 }}>“{t.quote}”</p>
+                    <div style={{ display: "flex", alignItems: "center", gap: 12, marginTop: 20, paddingTop: 18, borderTop: "1px solid #eceee9" }}>
+                      <img src={t.img} alt={t.name} loading="lazy" style={{ width: 46, height: 46, borderRadius: 999, objectFit: "cover", flexShrink: 0, border: "1px solid #e4e7df" }} onError={(e) => { (e.currentTarget.style.display = "none"); }} />
+                      <div>
+                        <div style={{ fontFamily: "var(--font-display)", fontSize: 15.5, fontWeight: 700, color: "#12160f" }}>{t.name}</div>
+                        <div style={{ fontSize: 13, color: "#6b7266" }}>{t.role}</div>
+                      </div>
+                    </div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════ FAQ ═══════════ */}
+        <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
+          <div style={{ maxWidth: 720, margin: "0 auto" }}>
+            <Reveal>
+              <div style={{ textAlign: "center" }}>
+                <Eyebrow>Questions</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>Frequently Asked <span className="grad-green">Questions</span></h2>
+              </div>
+            </Reveal>
+            <Reveal delay={70}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 12, marginTop: 40 }}>
+                {[
+                  { q: "Do I need any AI experience?", a: "No. You can start even if you have used ChatGPT fewer than 5 times. This masterclass is built for working professionals, not AI experts." },
+                  { q: "How long is the masterclass?", a: "90 minutes, live. That is it — no long, dragging session." },
+                  { q: "How many tools will you cover?", a: "You will learn how to identify the 3–5 tools most relevant to your role — rather than chase dozens of apps you will forget next week." },
+                  { q: "Will this help me get promoted?", a: "The masterclass cannot guarantee a promotion. What it does is show you how to build and demonstrate AI-enhanced skills that make you more valuable and better positioned for career opportunities." },
+                  { q: "Is it really free?", a: "Yes — the 90-minute live masterclass is completely free. Just register and show up live." },
+                  { q: "What if I cannot attend live?", a: "Register anyway. If you are registered, we will try to share access — but the live session is where you get the most value, so block the time if you can." },
+                  { q: "How do I join after registering?", a: "Your joining link and reminders are sent on WhatsApp and email right after you register. Just click the link at the start time." },
+                ].map((f) => <FAQItem key={f.q} q={f.q} a={f.a} />)}
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div style={{ textAlign: "center", marginTop: 40 }}><CTA label="Reserve My Free Seat" /></div>
             </Reveal>
           </div>
         </section>

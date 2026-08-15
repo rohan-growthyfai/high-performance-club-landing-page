@@ -406,7 +406,7 @@ export default function AiAgentsMasterclassPage() {
               <span style={{ fontSize: "clamp(26px,5vw,46px)", fontWeight: 800, display: "inline-block", marginTop: 20, lineHeight: 1.24 }}>Build AI Agents That <span className="grad-ink">Work For You 24/7 — Even While You Sleep.</span></span>
             </h1>
             <p style={{ fontSize: "clamp(18px,2.7vw,24px)", fontWeight: 500, color: "#d8d3ee", maxWidth: 680, margin: "28px auto 0", lineHeight: 1.65, letterSpacing: "0.005em" }}>
-              Learn to build your <b style={{ color: "#fff", fontWeight: 700 }}>first AI Agent</b>, automate repetitive work and <b style={{ color: "#fff", fontWeight: 700 }}>save hours of manual work every week.</b>
+              Learn to build your <b style={{ color: "#fff", fontWeight: 700 }}>first AI Agent from scratch</b>, automate repetitive work and <b style={{ color: "#fff", fontWeight: 700 }}>save hours of manual work every week.</b>
             </p>
             <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Knowledge Required.</p>
 
@@ -453,17 +453,16 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>Who it&apos;s for</Eyebrow>
                 <h2 style={{ ...H2, marginTop: 16 }}>Who Is This Masterclass For?</h2>
-                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 520, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>Stop doing repetitive work. Let AI do it for you.</p>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 22, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 46 }}>
               {[
-                { img: "/avatars/women/woman-1.jpg", who: "Marketers & Content Creators", line: "Creating content and staying consistent is taking hours." },
-                { img: "/avatars/men/man-2.jpg", who: "Working Professionals", line: "Emails, PPTs, research and reports are eating up your day." },
-                { img: "/avatars/women/woman-6.webp", who: "Business Owners & Entrepreneurs", line: "Follow-ups, customers and daily tasks are keeping you constantly busy." },
-                { img: "/avatars/women/woman-4.jpg", who: "Freelancers & Consultants", line: "Finding clients, proposals and client work are taking up your time." },
-                { img: "/avatars/men/man-1.jpg", who: "Job Seekers & Career Professionals", line: "Finding jobs, applying and researching companies is taking hours." },
-                { img: "/avatars/men/man-4.jpg", who: "Students", line: "Research, presentations and projects are consuming hours of your time." },
+                { img: "/avatars/women/woman-1.jpg", emoji: "📈", who: "Marketers & Content Creators", line: "Creating content and staying consistent is taking hours." },
+                { img: "/avatars/men/man-2.jpg", emoji: "💼", who: "Working Professionals", line: "Emails, PPTs, research and reports are eating up your day." },
+                { img: "/avatars/women/woman-6.webp", emoji: "👨‍💼", who: "Business Owners & Entrepreneurs", line: "Follow-ups, customers and daily tasks are keeping you constantly busy." },
+                { img: "/avatars/women/woman-4.jpg", emoji: "🧑‍💻", who: "Freelancers & Consultants", line: "Finding clients, proposals and client work are taking up your time." },
+                { img: "/avatars/men/man-1.jpg", emoji: "🎯", who: "Job Seekers & Career Professionals", line: "Finding jobs, applying and researching companies is taking hours." },
+                { img: "/avatars/men/man-4.jpg", emoji: "🎓", who: "Students", line: "Research, presentations and projects are consuming hours of your time." },
               ].map((c, i) => (
                 <Reveal key={c.who} delay={(i % 3) * 90}>
                   <div className="who-card" style={{ ...CARD, overflow: "hidden", height: "100%", display: "flex", flexDirection: "column" }}>
@@ -472,7 +471,7 @@ export default function AiAgentsMasterclassPage() {
                       <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(20,16,40,0.16), transparent 55%)" }} />
                     </div>
                     <div style={{ padding: "22px 22px 24px", display: "flex", flexDirection: "column", gap: 7 }}>
-                      <div style={{ fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 700, letterSpacing: "-0.01em", lineHeight: 1.25, color: "#1a1530" }}>{c.who}</div>
+                      <div style={{ fontFamily: "var(--font-display)", fontSize: 19, fontWeight: 700, letterSpacing: "-0.01em", lineHeight: 1.25, color: "#1a1530" }}><span style={{ marginRight: 8 }}>{c.emoji}</span>{c.who}</div>
                       <div style={{ fontSize: 15, color: "#6b6580", lineHeight: 1.5 }}>{c.line}</div>
                     </div>
                   </div>
@@ -497,7 +496,7 @@ export default function AiAgentsMasterclassPage() {
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>Your 90 minutes</Eyebrow>
                 <h2 style={{ ...H2, marginTop: 16 }}>What You&apos;ll Learn In <span className="grad-vio">90 Minutes</span></h2>
-                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 600, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>This isn&apos;t just another AI session — learn a skill that can put you ahead of people who are still only using AI for answers.</p>
+                <p style={{ fontSize: 17, color: "#6b6580", marginTop: 14, maxWidth: 600, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>This isn&apos;t just another AI session — learn a skill that can put you ahead of people who are still only using ChatGPT for answers.</p>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", marginTop: 46 }}>
@@ -538,7 +537,7 @@ export default function AiAgentsMasterclassPage() {
             <Reveal>
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>See what AI Agents can do</Eyebrow>
-                <h2 style={{ ...H2, marginTop: 16 }}>Imagine Having AI That Can <span className="grad-vio">Do This For You…</span></h2>
+                <h2 style={{ ...H2, marginTop: 16 }}>Imagine Having AI Agents That Can <span className="grad-vio">Do This For You…</span></h2>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 20, gridTemplateColumns: "repeat(auto-fit,minmax(300px,1fr))", marginTop: 46 }}>

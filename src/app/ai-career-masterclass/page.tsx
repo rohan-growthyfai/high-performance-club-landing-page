@@ -26,6 +26,36 @@ const CLASS = {
 const RegisterCtx = createContext<() => void>(() => {});
 function useRegister() { return useContext(RegisterCtx); }
 
+// ─── Countdown to the masterclass (PLACEHOLDER date — update CLASS_TS) ───────────
+// TODO: set to the real masterclass date/time. 31 Aug 2026, 11:00 AM IST = 05:30 UTC.
+const CLASS_TS = Date.UTC(2026, 7, 31, 5, 30, 0);
+function useCountdown() {
+  const [now, setNow] = useState<number | null>(null);
+  useEffect(() => {
+    setNow(Date.now());
+    const id = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(id);
+  }, []);
+  const diff = now === null ? null : Math.max(0, CLASS_TS - now);
+  if (diff === null) return null;
+  const s = Math.floor(diff / 1000);
+  return { days: Math.floor(s / 86400), hours: Math.floor((s % 86400) / 3600), minutes: Math.floor((s % 3600) / 60), seconds: s % 60 };
+}
+function StickyCountdown() {
+  const t = useCountdown();
+  const units = [{ v: t?.days, l: "Days" }, { v: t?.hours, l: "Hrs" }, { v: t?.minutes, l: "Min" }, { v: t?.seconds, l: "Sec" }];
+  return (
+    <div style={{ display: "flex", gap: 6 }}>
+      {units.map((u) => (
+        <div key={u.l} style={{ display: "flex", flexDirection: "column", alignItems: "center", minWidth: 38, background: "rgba(255,255,255,0.16)", border: "1px solid rgba(255,255,255,0.28)", borderRadius: 9, padding: "5px 4px" }}>
+          <span style={{ fontFamily: "var(--font-display)", fontSize: "clamp(15px,4vw,19px)", fontWeight: 800, lineHeight: 1, color: "#fff", fontVariantNumeric: "tabular-nums" }}>{String(u.v ?? 0).padStart(2, "0")}</span>
+          <span style={{ fontSize: 8.5, fontWeight: 700, letterSpacing: "0.04em", textTransform: "uppercase", color: "#dffaee", marginTop: 3 }}>{u.l}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 // ─── Icons ────────────────────────────────────────────────────────────────────
 function BoltIcon({ size = 20, color = "#fff" }: { size?: number; color?: string }) {
   return (
@@ -180,10 +210,16 @@ function StickyCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>
-      <button onClick={register} className="btn-primary text-white w-full inline-flex items-center justify-center gap-2.5" style={{ padding: "18px 16px calc(18px + env(safe-area-inset-bottom))", fontSize: 19, fontWeight: 900, border: "none", borderRadius: 0, cursor: "pointer", letterSpacing: "-0.01em" }}>
-        <BoltIcon size={22} /> Register for <span style={{ textDecoration: "line-through", textDecorationColor: "#a7f3cf", textDecorationThickness: 2, opacity: 0.85 }}>{CLASS.price}</span> FREE
-      </button>
+    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", background: "linear-gradient(120deg,#0c6a4d,#12a374)", padding: "10px 14px calc(10px + env(safe-area-inset-bottom))", boxShadow: "0 -12px 34px -16px rgba(14,124,90,0.6)" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#dffaee" }}>Masterclass Starts In</span>
+          <StickyCountdown />
+        </div>
+        <button onClick={register} className="inline-flex items-center justify-center gap-2" style={{ background: "#fff", color: "#0c6a4d", borderRadius: 999, padding: "14px 22px", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(15px,3.4vw,18px)", fontWeight: 900, letterSpacing: "-0.01em", whiteSpace: "nowrap", flexShrink: 0, boxShadow: "0 10px 26px -12px rgba(0,0,0,0.5)" }}>
+          <BoltIcon size={19} color="#0e7c5a" /> Register Now For Free
+        </button>
+      </div>
     </div>
   );
 }
@@ -236,9 +272,9 @@ export default function AiCareerMasterclassPage() {
               In Your Career.
             </h1>
             <p style={{ fontSize: "clamp(18px,2.6vw,23px)", fontWeight: 500, color: "#cfd8dd", maxWidth: 660, margin: "26px auto 0", lineHeight: 1.55 }}>
-              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b>. In the AI era you&apos;re either replaced — or <b style={{ color: "#fff", fontWeight: 700 }}>irreplaceable</b>. Learn the AI skills that earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>56% higher salary</b> and get you promoted, not left behind.
+              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to use AI to earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>5X higher salary</b> and get you promoted.
             </p>
-            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. No fluff. Not for beginners chasing random AI tools.</p>
+            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. Not for someone chasing random AI tools.</p>
 
             <div style={{ marginTop: 34 }}><CTA big><HeroPriceLabel /></CTA></div>
 
@@ -270,7 +306,7 @@ export default function AiCareerMasterclassPage() {
           <div style={{ maxWidth: 980, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 20, textAlign: "center" }}>
             {[
               { big: "56%", small: "higher salary for professionals with AI skills" },
-              { big: "66%", small: "of professionals fear layoffs in the next 6 months" },
+              { big: "66%", small: "chances of layoffs in the next 6 months" },
               { big: "10+", small: "hours a week you can save by using AI at work" },
               { big: "3,000+", small: "professionals already growing with AI" },
             ].map((s) => (
@@ -294,9 +330,9 @@ export default function AiCareerMasterclassPage() {
               <div>
                 <Reveal>
                   <Eyebrow>What this masterclass is about</Eyebrow>
-                  <h2 style={{ ...H2, marginTop: 16 }}>AI Isn&apos;t Coming For Your Job.<br /><span className="grad-green">It&apos;s Coming For Whoever Doesn&apos;t Use It.</span></h2>
+                  <h2 style={{ ...H2, marginTop: 16 }}>AI Is Not Coming For Your Job.<br /><span className="grad-green">It&apos;s Coming For Whoever Does Not Use It.</span></h2>
                   <p style={{ fontSize: "clamp(16px,2.2vw,18px)", color: "#4b5245", lineHeight: 1.65, marginTop: 18 }}>
-                    Every week there&apos;s news of layoffs. But the same companies are paying <b style={{ color: "#0e7c5a" }}>up to 56% more</b> for people who know how to work with AI. This masterclass shows you which side to be on — and exactly how to get there, using AI plus the skills AI can&apos;t replace.
+                    Every week there is news of layoffs. But the same companies are paying <b style={{ color: "#0e7c5a" }}>up to 56% more</b> for people who know how to work with AI. This masterclass shows you which side to be on — and exactly how to get there, using AI plus the skills AI can not replace.
                   </p>
                 </Reveal>
               </div>
@@ -318,7 +354,6 @@ export default function AiCareerMasterclassPage() {
                   <span key={t} style={{ background: "#fff", border: "1px solid #e4e7df", borderRadius: 999, padding: "11px 20px", fontSize: 15, fontWeight: 600, color: "#1a1f16", boxShadow: "0 2px 8px rgba(15,27,45,0.04)" }}>{t}</span>
                 ))}
               </div>
-              <p style={{ fontSize: 14, fontWeight: 700, color: "#b0402e", marginTop: 26 }}>Not for you if you just want to collect random AI tools with no career goal.</p>
             </Reveal>
           </div>
         </section>
@@ -329,14 +364,14 @@ export default function AiCareerMasterclassPage() {
             <Reveal>
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>Your 90 minutes</Eyebrow>
-                <h2 style={{ ...H2, marginTop: 16 }}>What You&apos;ll Learn In <span className="grad-green">90 Minutes</span></h2>
+                <h2 style={{ ...H2, marginTop: 16 }}>What You Will Learn In <span className="grad-green">90 Minutes</span></h2>
               </div>
             </Reveal>
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))", marginTop: 44 }}>
               {[
                 { n: "01", t: "Where AI Is Actually Hitting Jobs", d: "See clearly which roles and tasks AI is replacing right now — and where the real opportunity is." },
-                { n: "02", t: "The AI Skills That Pay 56% More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary premium." },
-                { n: "03", t: "Only 3–5 AI Tools For Your Role", d: "Skip the 100+ tools launching every week. Learn only the handful that matter for your exact profession." },
+                { n: "02", t: "The AI Skills That Pay 5X More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary jump." },
+                { n: "03", t: "Only Top AI Tools For Your Role", d: "Skip the 100+ tools launching every week. Learn only the handful that matter for your exact profession." },
                 { n: "04", t: "AI + The Human Skills AI Can't Replace", d: "Combine AI with communication, interviews and positioning — the real key to standing out." },
                 { n: "05", t: "Save 10+ Hours A Week", d: "Watch AI handle real professional tasks on screen — so you know exactly what's possible for you." },
                 { n: "06", t: "Your 90-Day Path Forward", d: "A clear, step-by-step way to become the AI-skilled professional your company can't replace." },
@@ -363,7 +398,7 @@ export default function AiCareerMasterclassPage() {
               <Eyebrow light>Why this is different</Eyebrow>
               <h2 style={{ ...H2, marginTop: 16 }}>Not Another &quot;Learn 50 AI Tools&quot; Session.</h2>
               <p style={{ fontSize: "clamp(16px,2.2vw,18.5px)", color: "#c9d3df", lineHeight: 1.65, marginTop: 18, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-                Most AI sessions make you dependent on tools you&apos;ll forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with the human skills AI can&apos;t replace, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
+                Most AI sessions make you dependent on tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with the human skills AI can not replace, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
               </p>
             </Reveal>
             <Reveal delay={70}>
@@ -388,8 +423,8 @@ export default function AiCareerMasterclassPage() {
           <div style={{ maxWidth: 780, margin: "0 auto" }}>
             <Reveal>
               <div style={{ textAlign: "center" }}>
-                <Eyebrow>What you&apos;ll walk away with</Eyebrow>
-                <h2 style={{ ...H2, marginTop: 16 }}>By The End Of The Masterclass, You&apos;ll Know…</h2>
+                <Eyebrow>What you will walk away with</Eyebrow>
+                <h2 style={{ ...H2, marginTop: 16 }}>By The End Of The Masterclass, You Will Know…</h2>
               </div>
             </Reveal>
             <Reveal delay={60}>
@@ -431,10 +466,10 @@ export default function AiCareerMasterclassPage() {
                   <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(25px,3.8vw,34px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#12160f" }}>Rohan Mote</div>
                   <div style={{ fontSize: 15.5, fontWeight: 700, color: "#0e7c5a", marginTop: 4 }}>AI Career Coach · Founder, High Performance Club</div>
                   <p style={{ fontSize: 15.5, color: "#4b5245", lineHeight: 1.75, marginTop: 16 }}>
-                    I&apos;ve helped <b style={{ color: "#12160f" }}>10,000+ professionals</b> use AI in their day-to-day work — and I build AI systems for real businesses every single day. I&apos;ve seen exactly what separates the people who get ahead in the AI era from the ones who get left behind.
+                    I have helped <b style={{ color: "#12160f" }}>10,000+ professionals</b> use AI in their day-to-day work — and I build AI systems for real businesses every single day. I have seen exactly what separates the people who get ahead in the AI era from the ones who get left behind.
                   </p>
                   <p style={{ fontSize: 15.5, color: "#4b5245", lineHeight: 1.75, marginTop: 14 }}>
-                    In this masterclass I&apos;ll show you that difference — in plain language, matched to <b style={{ color: "#12160f" }}>your</b> profession — so you leave knowing exactly what to do next to grow in your career.
+                    In this masterclass I will show you that difference — in plain language, matched to <b style={{ color: "#12160f" }}>your</b> profession — so you leave knowing exactly what to do next to grow in your career.
                   </p>
                 </div>
               </div>
@@ -464,7 +499,7 @@ export default function AiCareerMasterclassPage() {
               <div style={{ display: "inline-flex", alignItems: "center", gap: 10, background: "rgba(18,163,116,0.16)", border: "1px solid rgba(94,224,176,0.4)", borderRadius: 999, padding: "11px 22px", fontSize: 15, fontWeight: 800, letterSpacing: "0.06em", color: "#a7ecd0" }}>
                 <span style={{ width: 9, height: 9, borderRadius: 999, background: "#34d399", animation: "acm-pulse 1.8s infinite" }} /> FREE LIVE MASTERCLASS
               </div>
-              <h2 style={{ ...H2, marginTop: 22 }}>Don&apos;t Compete With AI.<br /><span className="grad-g">Grow With It.</span></h2>
+              <h2 style={{ ...H2, marginTop: 22 }}>Do Not Compete With AI.<br /><span className="grad-g">Grow With It.</span></h2>
               <p style={{ fontSize: "clamp(16px,2.3vw,19px)", color: "#c9d3df", marginTop: 18, lineHeight: 1.55, maxWidth: 560, marginLeft: "auto", marginRight: "auto" }}>
                 Join the free AI Career Growth Masterclass and leave with a clear plan to become the professional every company wants to keep.
               </p>

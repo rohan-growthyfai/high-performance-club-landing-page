@@ -219,6 +219,7 @@ export default function AiCareerMasterclassPage() {
         .grad-green { background: linear-gradient(115deg,#0e7c5a,#12a374); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .card-hover:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(15,27,45,0.05), 0 26px 54px -30px rgba(14,124,90,0.4); }
         .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
+        @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr !important; } .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 260px; margin: 0 auto; } }
       `}</style>
 
       <main className="acm">
@@ -231,17 +232,32 @@ export default function AiCareerMasterclassPage() {
               <span style={{ width: 8, height: 8, borderRadius: 999, background: "#34d399", animation: "acm-pulse 1.8s infinite" }} /> AI CAREER GROWTH MASTERCLASS · FREE · LIVE
             </div>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,7vw,64px)", fontWeight: 800, lineHeight: 1.14, letterSpacing: "-0.035em", margin: "24px 0 0" }}>
-              In The AI Era, You&apos;ll Either Be Replaced —<br />
-              <span className="grad-g">Or Become Irreplaceable.</span>
+              Use AI To Grow <span className="grad-g">5X Faster</span><br />
+              In Your Career.
             </h1>
             <p style={{ fontSize: "clamp(18px,2.6vw,23px)", fontWeight: 500, color: "#cfd8dd", maxWidth: 660, margin: "26px auto 0", lineHeight: 1.55 }}>
-              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to use AI to <b style={{ color: "#fff", fontWeight: 700 }}>grow in your career</b>, instead of getting left behind by it.
+              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b>. In the AI era you&apos;re either replaced — or <b style={{ color: "#fff", fontWeight: 700 }}>irreplaceable</b>. Learn the AI skills that earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>56% higher salary</b> and get you promoted, not left behind.
             </p>
-            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Only 90 minutes. No fluff. Not for beginners chasing random AI tools.</p>
+            <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. No fluff. Not for beginners chasing random AI tools.</p>
 
             <div style={{ marginTop: 34 }}><CTA big><HeroPriceLabel /></CTA></div>
 
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 26 }}>
+            {/* social proof — avatars + count */}
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
+              <div style={{ display: "inline-flex", alignItems: "center", gap: 14 }}>
+                <div style={{ display: "flex" }}>
+                  {["/avatars/men/man-2.jpg", "/avatars/women/woman-1.jpg", "/avatars/men/man-1.jpg", "/avatars/women/woman-4.jpg", "/avatars/men/man-4.jpg"].map((src, i) => (
+                    <img key={i} src={src} alt="" loading="lazy" style={{ width: 38, height: 38, borderRadius: 999, objectFit: "cover", border: "2px solid #0f1b2d", marginLeft: i === 0 ? 0 : -10 }} onError={(e) => { (e.currentTarget.style.display = "none"); }} />
+                  ))}
+                </div>
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ display: "flex", gap: 2, color: "#fbbf24", fontSize: 15, lineHeight: 1 }}>★★★★★</div>
+                  <p style={{ fontSize: 14, color: "#cfd8dd", marginTop: 3 }}><strong style={{ color: "#fff", fontWeight: 700 }}>3,000+ working professionals</strong> already growing with AI</p>
+                </div>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "center", marginTop: 22 }}>
               <div style={{ display: "inline-flex", flexWrap: "wrap", justifyContent: "center", gap: "8px 18px", background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 14, padding: "13px 22px", fontSize: 14.5, fontWeight: 700 }}>
                 <span>📅 {CLASS.date}</span><span>🕚 {CLASS.time}</span><span style={{ color: "#cfd8dd", fontWeight: 500 }}>💻 {CLASS.duration}</span>
               </div>
@@ -249,16 +265,42 @@ export default function AiCareerMasterclassPage() {
           </div>
         </section>
 
+        {/* ═══════════ STAT BAND ═══════════ */}
+        <section style={{ padding: "clamp(28px,4vw,44px) 20px", background: "linear-gradient(120deg,#0e7c5a,#12a374)", color: "#fff" }}>
+          <div style={{ maxWidth: 980, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(150px,1fr))", gap: 20, textAlign: "center" }}>
+            {[
+              { big: "56%", small: "higher salary for professionals with AI skills" },
+              { big: "66%", small: "of professionals fear layoffs in the next 6 months" },
+              { big: "10+", small: "hours a week you can save by using AI at work" },
+              { big: "3,000+", small: "professionals already growing with AI" },
+            ].map((s) => (
+              <div key={s.big}>
+                <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(30px,5vw,42px)", fontWeight: 800, letterSpacing: "-0.02em", lineHeight: 1 }}>{s.big}</div>
+                <div style={{ fontSize: 13.5, color: "#dffaee", marginTop: 8, lineHeight: 1.4 }}>{s.small}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
         {/* ═══════════ WHAT THIS IS ABOUT ═══════════ */}
         <section style={{ padding: "clamp(48px,7vw,80px) 20px", background: "#fff" }}>
-          <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-            <Reveal>
-              <Eyebrow>What this masterclass is about</Eyebrow>
-              <h2 style={{ ...H2, marginTop: 16 }}>AI Isn&apos;t Coming For Your Job.<br /><span className="grad-green">It&apos;s Coming For Whoever Doesn&apos;t Use It.</span></h2>
-              <p style={{ fontSize: "clamp(16px,2.2vw,18.5px)", color: "#4b5245", lineHeight: 1.65, marginTop: 18 }}>
-                Every week there&apos;s news of layoffs. But the same companies are <b style={{ color: "#1a1f16" }}>paying more</b> for people who know how to work with AI. This masterclass shows you which side to be on — and exactly how to get there, using AI plus the skills AI can&apos;t replace.
-              </p>
-            </Reveal>
+          <div style={{ maxWidth: 940, margin: "0 auto" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(28px,5vw,52px)", alignItems: "center" }} className="about-grid">
+              <Reveal>
+                <div style={{ borderRadius: 22, overflow: "hidden", ...CARD, lineHeight: 0 }}>
+                  <img src="/aiatwork/hero-wide.jpg" alt="A working professional using AI at their desk to get ahead in their career" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", aspectRatio: "4 / 3" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                </div>
+              </Reveal>
+              <div>
+                <Reveal>
+                  <Eyebrow>What this masterclass is about</Eyebrow>
+                  <h2 style={{ ...H2, marginTop: 16 }}>AI Isn&apos;t Coming For Your Job.<br /><span className="grad-green">It&apos;s Coming For Whoever Doesn&apos;t Use It.</span></h2>
+                  <p style={{ fontSize: "clamp(16px,2.2vw,18px)", color: "#4b5245", lineHeight: 1.65, marginTop: 18 }}>
+                    Every week there&apos;s news of layoffs. But the same companies are paying <b style={{ color: "#0e7c5a" }}>up to 56% more</b> for people who know how to work with AI. This masterclass shows you which side to be on — and exactly how to get there, using AI plus the skills AI can&apos;t replace.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -293,10 +335,10 @@ export default function AiCareerMasterclassPage() {
             <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))", marginTop: 44 }}>
               {[
                 { n: "01", t: "Where AI Is Actually Hitting Jobs", d: "See clearly which roles and tasks AI is replacing right now — and where the real opportunity is." },
-                { n: "02", t: "The AI Skills Companies Pay More For", d: "The specific AI skills that get professionals hired, retained and promoted in 2026." },
-                { n: "03", t: "AI For Your Exact Role", d: "How to use only the AI tools that matter for your profession — so you're not drowning in 100 new tools." },
-                { n: "04", t: "AI + The Human Skills AI Can't Replace", d: "How to combine AI with communication, interviews and positioning — the real key to standing out." },
-                { n: "05", t: "See AI Do Real Work, Live", d: "Watch AI handle real professional tasks on screen — so you know exactly what's possible for you." },
+                { n: "02", t: "The AI Skills That Pay 56% More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary premium." },
+                { n: "03", t: "Only 3–5 AI Tools For Your Role", d: "Skip the 100+ tools launching every week. Learn only the handful that matter for your exact profession." },
+                { n: "04", t: "AI + The Human Skills AI Can't Replace", d: "Combine AI with communication, interviews and positioning — the real key to standing out." },
+                { n: "05", t: "Save 10+ Hours A Week", d: "Watch AI handle real professional tasks on screen — so you know exactly what's possible for you." },
                 { n: "06", t: "Your 90-Day Path Forward", d: "A clear, step-by-step way to become the AI-skilled professional your company can't replace." },
               ].map((c, i) => (
                 <Reveal key={c.n} delay={(i % 3) * 70}>
@@ -381,17 +423,34 @@ export default function AiCareerMasterclassPage() {
               </div>
             </Reveal>
             <Reveal delay={70}>
-              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,240px) 1fr", gap: 34, alignItems: "center", marginTop: 40, ...CARD, background: "#f6f7f4", boxShadow: "none", padding: "clamp(24px,4vw,38px)" }} className="host-grid">
-                <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid #e4e7df", lineHeight: 0, boxShadow: "0 20px 44px -24px rgba(14,124,90,0.4)" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "minmax(0,320px) 1fr", gap: 40, alignItems: "center", marginTop: 40, ...CARD, background: "#f6f7f4", boxShadow: "none", padding: "clamp(24px,4vw,40px)" }} className="host-grid">
+                <div style={{ borderRadius: 22, overflow: "hidden", border: "1px solid #e4e7df", lineHeight: 0, boxShadow: "0 24px 50px -22px rgba(14,124,90,0.45)" }}>
                   <img src="/rohan.png" alt="Rohan Mote — AI Career Coach, High Performance Club" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
                 </div>
                 <div>
-                  <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(24px,3.6vw,32px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#12160f" }}>Rohan Mote</div>
+                  <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(25px,3.8vw,34px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#12160f" }}>Rohan Mote</div>
                   <div style={{ fontSize: 15.5, fontWeight: 700, color: "#0e7c5a", marginTop: 4 }}>AI Career Coach · Founder, High Performance Club</div>
                   <p style={{ fontSize: 15.5, color: "#4b5245", lineHeight: 1.75, marginTop: 16 }}>
-                    I help working professionals use AI to grow in their careers — not get replaced by it. In this masterclass I&apos;ll show you exactly how, in simple language, so you leave knowing your next move.
+                    I&apos;ve helped <b style={{ color: "#12160f" }}>10,000+ professionals</b> use AI in their day-to-day work — and I build AI systems for real businesses every single day. I&apos;ve seen exactly what separates the people who get ahead in the AI era from the ones who get left behind.
+                  </p>
+                  <p style={{ fontSize: 15.5, color: "#4b5245", lineHeight: 1.75, marginTop: 14 }}>
+                    In this masterclass I&apos;ll show you that difference — in plain language, matched to <b style={{ color: "#12160f" }}>your</b> profession — so you leave knowing exactly what to do next to grow in your career.
                   </p>
                 </div>
+              </div>
+            </Reveal>
+            <Reveal delay={120}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 16, marginTop: 20, textAlign: "center" }}>
+                {[
+                  { big: "10,000+", small: "Professionals trained on practical AI" },
+                  { big: "56%", small: "The salary premium AI skills now earn" },
+                  { big: "Daily", small: "Building real AI systems in business" },
+                ].map((s) => (
+                  <div key={s.big} style={{ ...CARD, background: "#f6f7f4", boxShadow: "none", padding: "22px 12px" }}>
+                    <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(22px,4vw,30px)", fontWeight: 800, color: "#0e7c5a", letterSpacing: "-0.02em" }}>{s.big}</div>
+                    <div style={{ fontSize: 13, color: "#6b7266", marginTop: 6, lineHeight: 1.4 }}>{s.small}</div>
+                  </div>
+                ))}
               </div>
             </Reveal>
           </div>

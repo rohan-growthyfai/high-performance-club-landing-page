@@ -9,7 +9,7 @@ declare global {
 
 // ═════════════════════════════════════════════════════════════════════════════
 // AI Career Growth Masterclass — free live masterclass for working professionals.
-// Angle: use AI + the human skills AI can't replace to grow in your career,
+// Angle: use AI + your current skills to grow in your career,
 // not get left behind. V1 registration page — clear, to the point, no program
 // detail (that's webinar content). Design: navy ink + green (growth) accent.
 // ═════════════════════════════════════════════════════════════════════════════
@@ -106,10 +106,10 @@ function CTA({ label = "Reserve My Free Seat", big = false, children }: { label?
   const register = useRegister();
   return (
     <button onClick={register} className="btn-primary inline-flex items-center justify-center gap-3 rounded-full text-white w-full sm:w-auto"
-      style={{ fontSize: big ? 22 : 18, fontWeight: 900, padding: big ? "23px 52px" : "18px 44px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-      <BoltIcon size={big ? 23 : 20} />
+      style={{ fontSize: big ? 24 : 20, fontWeight: 900, padding: big ? "26px 60px" : "21px 52px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
+      <BoltIcon size={big ? 25 : 22} />
       <span>{children ?? label}</span>
-      <ArrowIcon size={big ? 21 : 19} />
+      <ArrowIcon size={big ? 22 : 20} />
     </button>
   );
 }
@@ -364,7 +364,7 @@ export default function AiCareerMasterclassPage() {
             </Reveal>
             <Reveal delay={60}>
               <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 10, marginTop: 30 }}>
-                {["💻 IT & Software Professionals", "📊 Analysts & Consultants", "📈 Marketing & Sales", "🧑‍💼 Managers & Team Leads", "🎯 Job Seekers", "🚀 Anyone who fears being left behind"].map((t) => (
+                {["💻 IT & Software Professionals", "📊 Analysts & Consultants", "📈 Marketing & Sales", "🧑‍💼 Managers & Team Leads", "🎯 Job Seekers", "🚀 Anyone who wants to use AI to grow, not get left behind"].map((t) => (
                   <span key={t} style={{ background: "#fff", border: "1px solid #e4e7df", borderRadius: 999, padding: "11px 20px", fontSize: 15, fontWeight: 600, color: "#1a1f16", boxShadow: "0 2px 8px rgba(15,27,45,0.04)" }}>{t}</span>
                 ))}
               </div>
@@ -386,9 +386,8 @@ export default function AiCareerMasterclassPage() {
                 { n: "01", t: "See How AI Is Changing Your Job", d: "See clearly which roles and tasks AI is replacing right now — and where the real AI opportunity is." },
                 { n: "02", t: "The AI Skills That Pay 5X More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary jump." },
                 { n: "03", t: "Only Top AI Tools For Your Role", d: "Skip the 100+ tools launching every week. Learn only the handful that matter for your exact profession." },
-                { n: "04", t: "AI + The Human Skills AI Can't Replace", d: "Combine AI with communication, interviews and positioning — the real key to standing out." },
-                { n: "05", t: "Save 10+ Hours A Week", d: "Watch AI handle real professional tasks on screen — so you know exactly what's possible for you." },
-                { n: "06", t: "Your 90-Day Path Forward", d: "A clear, step-by-step way to become the AI-skilled professional your company can't replace." },
+                { n: "04", t: "AI + Your Current Skills Opportunity", d: "Combine AI with the skills and experience you already have — the real key to standing out." },
+                { n: "05", t: "Your 90-Day Roadmap", d: "A clear, step-by-step way to become the AI-skilled professional your company can not replace." },
               ].map((c, i) => (
                 <Reveal key={c.n} delay={(i % 3) * 70}>
                   <div className="card-hover" style={{ ...CARD, padding: "26px 24px", height: "100%" }}>
@@ -420,7 +419,7 @@ export default function AiCareerMasterclassPage() {
                 {[
                   "Focused only on your career — not random tools",
                   "AI matched to your exact profession",
-                  "AI + soft skills, not AI alone",
+                  "AI + your current skills, not AI alone",
                   "Practical and real — you see AI actually work",
                 ].map((t) => (
                   <div key={t} style={{ display: "flex", gap: 12, alignItems: "flex-start", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.09)", borderRadius: 14, padding: "16px 18px" }}>

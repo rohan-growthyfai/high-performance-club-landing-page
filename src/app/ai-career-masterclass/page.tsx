@@ -105,17 +105,17 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 function CTA({ label = "Reserve My Free Seat", big = false, children }: { label?: string; big?: boolean; children?: React.ReactNode }) {
   const register = useRegister();
   return (
-    <button onClick={register} className="btn-primary inline-flex items-center justify-center gap-3 rounded-full text-white w-full sm:w-auto"
-      style={{ fontSize: big ? 24 : 20, fontWeight: 900, padding: big ? "26px 60px" : "21px 52px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
-      <BoltIcon size={big ? 25 : 22} />
+    <button onClick={register} className="btn-primary inline-flex items-center justify-center gap-2.5 rounded-full text-white w-full sm:w-auto"
+      style={{ fontSize: big ? "clamp(17px,4.4vw,22px)" : "clamp(16px,4vw,19px)", fontWeight: 800, padding: big ? "clamp(16px,4vw,22px) clamp(28px,7vw,54px)" : "clamp(14px,3.5vw,19px) clamp(24px,6vw,48px)", border: "none", cursor: "pointer", lineHeight: 1.2, letterSpacing: "-0.01em" }}>
+      <BoltIcon size={big ? 21 : 19} />
       <span>{children ?? label}</span>
-      <ArrowIcon size={big ? 22 : 20} />
+      <ArrowIcon size={big ? 20 : 18} />
     </button>
   );
 }
 function HeroPriceLabel() {
   return (
-    <span className="inline-flex items-baseline gap-1.5">
+    <span style={{ display: "inline-flex", alignItems: "baseline", gap: 6, whiteSpace: "nowrap" }}>
       Register for <span style={{ textDecoration: "line-through", textDecorationColor: "#fca5a5", textDecorationThickness: 2, opacity: 0.85 }}>{CLASS.price}</span> <b style={{ fontWeight: 900 }}>FREE</b>
     </span>
   );
@@ -210,14 +210,14 @@ function StickyCTA() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
   return (
-    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", background: "linear-gradient(120deg,#0c6a4d,#12a374)", padding: "10px 14px calc(10px + env(safe-area-inset-bottom))", boxShadow: "0 -12px 34px -16px rgba(14,124,90,0.6)" }}>
-      <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 12 }}>
-        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-          <span style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "#dffaee" }}>Masterclass Starts In</span>
+    <div style={{ position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 95, transform: show ? "translateY(0)" : "translateY(130%)", transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)", background: "linear-gradient(120deg,#0c6a4d,#12a374)", padding: "10px 12px calc(10px + env(safe-area-inset-bottom))", boxShadow: "0 -12px 34px -16px rgba(14,124,90,0.6)" }}>
+      <div style={{ maxWidth: 1000, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 5, flexShrink: 0 }}>
+          <span style={{ fontSize: "clamp(9px,2.4vw,10.5px)", fontWeight: 800, letterSpacing: "0.06em", textTransform: "uppercase", color: "#dffaee" }}>Starts In</span>
           <StickyCountdown />
         </div>
-        <button onClick={register} className="inline-flex items-center justify-center gap-2" style={{ background: "#fff", color: "#0c6a4d", borderRadius: 999, padding: "14px 22px", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(15px,3.4vw,18px)", fontWeight: 900, letterSpacing: "-0.01em", whiteSpace: "nowrap", flexShrink: 0, boxShadow: "0 10px 26px -12px rgba(0,0,0,0.5)" }}>
-          <BoltIcon size={19} color="#0e7c5a" /> Register Now For Free
+        <button onClick={register} className="inline-flex items-center justify-center gap-1.5" style={{ background: "#fff", color: "#0c6a4d", borderRadius: 999, padding: "13px clamp(14px,4vw,24px)", border: "none", cursor: "pointer", fontFamily: "var(--font-display)", fontSize: "clamp(14px,3.6vw,18px)", fontWeight: 900, letterSpacing: "-0.01em", whiteSpace: "nowrap", flexShrink: 1, minWidth: 0, boxShadow: "0 10px 26px -12px rgba(0,0,0,0.5)" }}>
+          <BoltIcon size={18} color="#0e7c5a" /> Register Free
         </button>
       </div>
     </div>
@@ -269,7 +269,7 @@ export default function AiCareerMasterclassPage() {
         .grad-green { background: linear-gradient(115deg,#0e7c5a,#12a374); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .card-hover:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(15,27,45,0.05), 0 26px 54px -30px rgba(14,124,90,0.4); }
         .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
-        @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr !important; } .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 260px; margin: 0 auto; } }
+        @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr !important; text-align: center; } .about-grid > div:first-child { max-width: 460px; margin: 0 auto; } .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 260px; margin: 0 auto; } }
         /* centered card grid: orphan last-row cards center instead of left-align */
         .cgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
         .cgrid > * { flex: 1 1 300px; max-width: 340px; }
@@ -282,8 +282,8 @@ export default function AiCareerMasterclassPage() {
         <section style={{ position: "relative", background: "radial-gradient(1200px 620px at 50% -12%, #16283f 0%, #0f1b2d 55%, #0a1320 100%)", color: "#fff", padding: "clamp(30px,4vw,48px) 20px clamp(48px,6vw,70px)", overflow: "hidden" }}>
           <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 18% 25%, rgba(18,163,116,0.2), transparent 42%), radial-gradient(circle at 84% 15%, rgba(18,163,116,0.14), transparent 40%)", pointerEvents: "none" }} />
           <div style={{ position: "relative", maxWidth: 860, margin: "0 auto", textAlign: "center" }}>
-            <div style={{ display: "inline-flex", alignItems: "center", gap: 9, background: "rgba(18,163,116,0.16)", border: "1px solid rgba(94,224,176,0.4)", borderRadius: 999, padding: "9px 18px", fontSize: 12.5, fontWeight: 800, letterSpacing: "0.1em", color: "#a7ecd0" }}>
-              <span style={{ width: 8, height: 8, borderRadius: 999, background: "#34d399", animation: "acm-pulse 1.8s infinite" }} /> AI CAREER GROWTH MASTERCLASS · FREE · LIVE
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(18,163,116,0.16)", border: "1px solid rgba(94,224,176,0.4)", borderRadius: 999, padding: "8px 15px", fontSize: "clamp(10px,2.7vw,12.5px)", fontWeight: 800, letterSpacing: "0.08em", color: "#a7ecd0", whiteSpace: "nowrap", maxWidth: "94vw" }}>
+              <span style={{ width: 7, height: 7, borderRadius: 999, background: "#34d399", animation: "acm-pulse 1.8s infinite", flexShrink: 0 }} /> AI CAREER GROWTH MASTERCLASS · FREE · LIVE
             </div>
             <h1 style={{ fontFamily: "var(--font-display)", fontSize: "clamp(36px,7vw,64px)", fontWeight: 800, lineHeight: 1.14, letterSpacing: "-0.035em", margin: "24px 0 0" }}>
               Use AI To Grow <span className="grad-g">5X Faster</span><br />
@@ -297,17 +297,15 @@ export default function AiCareerMasterclassPage() {
             <div style={{ marginTop: 34 }}><CTA big><HeroPriceLabel /></CTA></div>
 
             {/* social proof — avatars + count */}
-            <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>
-              <div style={{ display: "inline-flex", alignItems: "center", gap: 14 }}>
-                <div style={{ display: "flex" }}>
-                  {["/avatars/men/man-2.jpg", "/avatars/women/woman-1.jpg", "/avatars/men/man-1.jpg", "/avatars/women/woman-4.jpg", "/avatars/men/man-4.jpg"].map((src, i) => (
-                    <img key={i} src={src} alt="" loading="lazy" style={{ width: 38, height: 38, borderRadius: 999, objectFit: "cover", border: "2px solid #0f1b2d", marginLeft: i === 0 ? 0 : -10 }} onError={(e) => { (e.currentTarget.style.display = "none"); }} />
-                  ))}
-                </div>
-                <div style={{ textAlign: "left" }}>
-                  <div style={{ display: "flex", gap: 2, color: "#fbbf24", fontSize: 15, lineHeight: 1 }}>★★★★★</div>
-                  <p style={{ fontSize: 14, color: "#cfd8dd", marginTop: 3 }}><strong style={{ color: "#fff", fontWeight: 700 }}>3,000+ working professionals</strong> already growing with AI</p>
-                </div>
+            <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "center", gap: "10px 14px", marginTop: 28 }}>
+              <div style={{ display: "flex", flexShrink: 0 }}>
+                {["/avatars/men/man-2.jpg", "/avatars/women/woman-1.jpg", "/avatars/men/man-1.jpg", "/avatars/women/woman-4.jpg", "/avatars/men/man-4.jpg"].map((src, i) => (
+                  <img key={i} src={src} alt="" loading="lazy" style={{ width: 36, height: 36, borderRadius: 999, objectFit: "cover", border: "2px solid #0f1b2d", marginLeft: i === 0 ? 0 : -10 }} onError={(e) => { (e.currentTarget.style.display = "none"); }} />
+                ))}
+              </div>
+              <div style={{ textAlign: "left" }}>
+                <div style={{ display: "flex", gap: 2, color: "#fbbf24", fontSize: 15, lineHeight: 1 }}>★★★★★</div>
+                <p style={{ fontSize: 13.5, color: "#cfd8dd", marginTop: 3, margin: 0 }}><strong style={{ color: "#fff", fontWeight: 700 }}>3,000+ professionals</strong> already growing with AI</p>
               </div>
             </div>
 

@@ -18,6 +18,18 @@ const nextConfig: NextConfig = {
           { key: "Cache-Control", value: "public, max-age=0, s-maxage=0, must-revalidate" },
         ],
       },
+      {
+        source: "/ai-career-masterclass/:path*",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, s-maxage=0, must-revalidate" },
+        ],
+      },
+      {
+        source: "/ai-career-masterclass",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, s-maxage=0, must-revalidate" },
+        ],
+      },
     ];
   },
 };

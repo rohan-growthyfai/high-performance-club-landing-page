@@ -79,12 +79,12 @@ function Reveal({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 // ─── Primary CTA ────────────────────────────────────────────────────────────────
-function CTA({ label = "Reserve My Free Seat", big = false, children }: { label?: string; big?: boolean; children?: React.ReactNode }) {
+function CTA({ label = "Reserve My Free Seat", big = false, hero = false, children }: { label?: string; big?: boolean; hero?: boolean; children?: React.ReactNode }) {
   const register = useRegister();
   return (
     <button
       onClick={register}
-      className="btn-primary inline-flex items-center justify-center gap-3 rounded-full text-white w-full sm:w-auto"
+      className={`${hero ? "btn-hero" : "btn-primary"} inline-flex items-center justify-center gap-3 rounded-full text-white w-full sm:w-auto`}
       style={{ fontSize: big ? 23 : 19, fontWeight: 900, padding: big ? "24px 56px" : "19px 46px", border: "none", cursor: "pointer", lineHeight: 1.15, letterSpacing: "-0.01em" }}>
       <BoltIcon size={big ? 24 : 21} />
       <span>{children ?? label}</span>
@@ -374,6 +374,12 @@ export default function AiAgentsMasterclassPage() {
         .btn-primary { background: linear-gradient(135deg,#7c6cf5 0%,#5a44e0 55%,#4b37cf 100%); box-shadow: 0 14px 34px -10px rgba(90,68,224,0.6); transition: transform 0.18s, box-shadow 0.18s; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 22px 46px -12px rgba(90,68,224,0.7); }
         .btn-primary:active { transform: translateY(0); }
+        /* Premium hero CTA — vibrant violet→magenta gradient with glow + hover lift */
+        .btn-hero { position: relative; background: linear-gradient(100deg,#7b2ff7 0%,#9d34f0 45%,#c026d3 100%); box-shadow: 0 10px 30px -8px rgba(157,52,240,0.55), 0 0 0 1px rgba(255,255,255,0.08) inset; transition: transform 0.22s cubic-bezier(0.16,1,0.3,1), box-shadow 0.22s, filter 0.22s; }
+        .btn-hero::after { content: ""; position: absolute; inset: 0; border-radius: inherit; background: linear-gradient(100deg,#8b3ff8,#b93cf2,#d63be0); opacity: 0; transition: opacity 0.22s; z-index: -1; }
+        .btn-hero:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 20px 50px -10px rgba(192,38,211,0.7), 0 0 34px -4px rgba(157,52,240,0.6), 0 0 0 1px rgba(255,255,255,0.14) inset; filter: brightness(1.06); }
+        .btn-hero:hover::after { opacity: 1; }
+        .btn-hero:active { transform: translateY(-1px) scale(1.0); }
         @keyframes agp-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
         @keyframes reg-fadein { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes reg-ping { 75%,100% { transform: scale(2); opacity: 0; } }
@@ -411,7 +417,7 @@ export default function AiAgentsMasterclassPage() {
             <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Background Required.</p>
 
             <div style={{ marginTop: 36 }}>
-              <CTA big><HeroPriceLabel /></CTA>
+              <CTA big hero><HeroPriceLabel /></CTA>
             </div>
 
             <div style={{ display: "flex", justifyContent: "center", marginTop: 28 }}>

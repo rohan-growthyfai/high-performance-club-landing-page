@@ -8,7 +8,7 @@ declare global {
 }
 
 // EDIT THIS: paste your AI Career Growth Masterclass WhatsApp group invite link.
-const WHATSAPP_GROUP_LINK = "https://chat.whatsapp.com/REPLACE_WITH_YOUR_GROUP_INVITE";
+const WHATSAPP_GROUP_LINK = "https://swiy.co/ai-career-wa-group";
 const CLASS = { date: "Sunday, 31 August 2026", time: "11:00 AM IST" };
 
 function CheckIcon({ size = 44 }: { size?: number }) {

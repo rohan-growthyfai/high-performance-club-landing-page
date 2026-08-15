@@ -290,7 +290,7 @@ export default function AiCareerMasterclassPage() {
               In Your Career.
             </h1>
             <p style={{ fontSize: "clamp(18px,2.6vw,23px)", fontWeight: 500, color: "#cfd8dd", maxWidth: 660, margin: "26px auto 0", lineHeight: 1.55 }}>
-              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to combine AI + your current skills to earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>5X higher salary</b> and get you promoted.
+              A free live masterclass for <b style={{ color: "#fff", fontWeight: 700 }}>working professionals</b> — learn how to combine AI + your current skills to earn a <b style={{ color: "#5fe0b0", fontWeight: 700 }}>high paying salary</b> and get you promoted.
             </p>
             <p style={{ fontSize: "clamp(16px,2.2vw,19px)", fontWeight: 700, color: "#fff", marginTop: 22, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>Just 90 minutes. No 50+ random AI tools. Learn what actually helps your career grow.</p>
 

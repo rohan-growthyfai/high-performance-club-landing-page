@@ -270,6 +270,10 @@ export default function AiCareerMasterclassPage() {
         .card-hover:hover { transform: translateY(-3px); box-shadow: 0 2px 4px rgba(15,27,45,0.05), 0 26px 54px -30px rgba(14,124,90,0.4); }
         .card-hover { transition: transform 0.2s, box-shadow 0.2s; }
         @media (max-width: 800px) { .about-grid { grid-template-columns: 1fr !important; } .host-grid { grid-template-columns: 1fr !important; text-align: center; } .host-grid > div:first-child { max-width: 260px; margin: 0 auto; } }
+        /* centered card grid: orphan last-row cards center instead of left-align */
+        .cgrid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+        .cgrid > * { flex: 1 1 300px; max-width: 340px; }
+        @media (max-width: 680px) { .cgrid > * { flex-basis: 100%; max-width: 460px; } }
       `}</style>
 
       <main className="acm">
@@ -338,7 +342,7 @@ export default function AiCareerMasterclassPage() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(28px,5vw,52px)", alignItems: "center" }} className="about-grid">
               <Reveal>
                 <div style={{ borderRadius: 22, overflow: "hidden", ...CARD, lineHeight: 0 }}>
-                  <img src="/aiatwork/hero-wide.jpg" alt="A working professional using AI at their desk to get ahead in their career" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", aspectRatio: "4 / 3" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                  <img src="/ai-career/growth-arrow.png" alt="AI powering career growth — an upward growth arrow rising over a connected network" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", aspectRatio: "4 / 3" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
                 </div>
               </Reveal>
               <div>
@@ -381,7 +385,7 @@ export default function AiCareerMasterclassPage() {
                 <h2 style={{ ...H2, marginTop: 16 }}>What You Will Learn In <span className="grad-green">90 Minutes</span></h2>
               </div>
             </Reveal>
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(270px,1fr))", marginTop: 44 }}>
+            <div className="cgrid" style={{ marginTop: 44 }}>
               {[
                 { n: "01", t: "See How AI Is Changing Your Job", d: "See clearly which roles and tasks AI is replacing right now — and where the real AI opportunity is." },
                 { n: "02", t: "The AI Skills That Pay 5X More", d: "The specific AI skills that get professionals hired, retained and promoted — with a real salary jump." },
@@ -413,9 +417,12 @@ export default function AiCareerMasterclassPage() {
               <p style={{ fontSize: "clamp(16px,2.2vw,18.5px)", color: "#c9d3df", lineHeight: 1.65, marginTop: 18, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
                 Most AI sessions teach you random AI tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with your current skills, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
               </p>
+              <div style={{ maxWidth: 480, margin: "30px auto 0", borderRadius: 22, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -40px rgba(0,0,0,0.8)", lineHeight: 0 }}>
+                <img src="/ai-career/ai-plus-skills.png" alt="AI combined with your current skills — two puzzle pieces fitting together" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+              </div>
             </Reveal>
             <Reveal delay={70}>
-              <div style={{ display: "grid", gap: 12, gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", marginTop: 36, textAlign: "left" }}>
+              <div className="cgrid" style={{ marginTop: 36, textAlign: "left" }}>
                 {[
                   "Focused only on your career — not random tools",
                   "AI matched to your exact profession",
@@ -440,7 +447,7 @@ export default function AiCareerMasterclassPage() {
                 <h2 style={{ ...H2, marginTop: 16 }}>By The End Of The Masterclass, You Will Know…</h2>
               </div>
             </Reveal>
-            <div style={{ display: "grid", gap: 16, gridTemplateColumns: "repeat(auto-fit,minmax(220px,1fr))", marginTop: 40 }}>
+            <div className="cgrid" style={{ marginTop: 40 }}>
               {[
                 { big: "AI Career Score", d: "See exactly where you stand — and what's holding you back." },
                 { big: "5 Career Skills", d: "Build the skills that make you irreplaceable." },
@@ -514,7 +521,7 @@ export default function AiCareerMasterclassPage() {
             <Reveal>
               <div style={{ textAlign: "center" }}>
                 <Eyebrow>Real results</Eyebrow>
-                <h2 style={{ ...H2, marginTop: 16 }}>Professionals Already <span className="grad-green">Saving Hours With AI</span></h2>
+                <h2 style={{ ...H2, marginTop: 16 }}>Professionals Already <span className="grad-green">Growing With AI</span></h2>
                 <p style={{ fontSize: 16.5, color: "#6b7266", marginTop: 14, maxWidth: 540, marginLeft: "auto", marginRight: "auto" }}>Real, measurable outcomes from people who applied what they learned.</p>
               </div>
             </Reveal>

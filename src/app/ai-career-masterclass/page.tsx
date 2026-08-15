@@ -344,7 +344,7 @@ export default function AiCareerMasterclassPage() {
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "clamp(28px,5vw,52px)", alignItems: "center" }} className="about-grid">
               <Reveal>
                 <div style={{ borderRadius: 22, overflow: "hidden", ...CARD, lineHeight: 0 }}>
-                  <img src="/ai-career/pros-duo.png" alt="Two Indian working professionals using AI on a laptop to get ahead in their careers" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", aspectRatio: "4 / 3" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                  <img src="/ai-career/worried-pro.png" alt="A worried professional anxious about their job as AI reshapes the workplace" style={{ width: "100%", height: "100%", display: "block", objectFit: "cover", aspectRatio: "4 / 3" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
                 </div>
               </Reveal>
               <div>
@@ -419,8 +419,8 @@ export default function AiCareerMasterclassPage() {
               <p style={{ fontSize: "clamp(16px,2.2vw,18.5px)", color: "#c9d3df", lineHeight: 1.65, marginTop: 18, maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
                 Most AI sessions teach you random AI tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with your current skills, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
               </p>
-              <div style={{ maxWidth: 560, margin: "30px auto 0", borderRadius: 22, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -40px rgba(0,0,0,0.8)", lineHeight: 0 }}>
-                <img src="/ai-career/ai-tools-collage.png" alt="A curated set of AI tools — you only need the few that matter for your role" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+              <div style={{ maxWidth: 860, margin: "34px auto 0", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -40px rgba(0,0,0,0.8)", lineHeight: 0 }}>
+                <img src="/ai-career/before-after.png" alt="Before: too many AI tools and confusion. After: clarity, focus and career growth with the right tools for your role." style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
               </div>
             </Reveal>
             <Reveal delay={70}>

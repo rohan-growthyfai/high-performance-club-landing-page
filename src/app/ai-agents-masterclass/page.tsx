@@ -408,7 +408,7 @@ export default function AiAgentsMasterclassPage() {
             <p style={{ fontSize: "clamp(18px,2.7vw,24px)", fontWeight: 500, color: "#d8d3ee", maxWidth: 680, margin: "28px auto 0", lineHeight: 1.65, letterSpacing: "0.005em" }}>
               Learn to build your <b style={{ color: "#fff", fontWeight: 700 }}>first AI Agent from scratch</b>, automate repetitive work and <b style={{ color: "#fff", fontWeight: 700 }}>save hours of manual work every week.</b>
             </p>
-            <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Knowledge Required.</p>
+            <p style={{ fontSize: "clamp(17px,2.6vw,22px)", fontWeight: 800, color: "#fff", marginTop: 26, letterSpacing: "-0.01em", fontFamily: "var(--font-display)" }}>No Coding. No Technical Background Required.</p>
 
             <div style={{ marginTop: 36 }}>
               <CTA big><HeroPriceLabel /></CTA>

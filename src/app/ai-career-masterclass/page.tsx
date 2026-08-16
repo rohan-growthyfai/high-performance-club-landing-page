@@ -495,7 +495,7 @@ export default function AiCareerMasterclassPage() {
                     I have helped <b style={{ color: "#12160f" }}>10,000+ professionals</b> use AI in their day-to-day work — and I build AI systems for real businesses every single day. I have seen exactly what separates the people who get ahead in the AI era from the ones who get left behind.
                   </p>
                   <p style={{ fontSize: 15.5, color: "#4b5245", lineHeight: 1.75, marginTop: 14 }}>
-                    In this masterclass I will show you that difference — in plain language, matched to <b style={{ color: "#12160f" }}>your</b> profession — so you leave knowing exactly what to do next to grow in your career.
+                    In this masterclass I will show you that difference — for <b style={{ color: "#12160f" }}>your exact profession</b> — so you leave knowing exactly what to do next to grow massively in your career.
                   </p>
                 </div>
               </div>

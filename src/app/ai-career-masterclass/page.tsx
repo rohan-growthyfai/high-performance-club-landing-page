@@ -420,7 +420,7 @@ export default function AiCareerMasterclassPage() {
                 Most AI sessions teach you random AI tools you will forget next week. This one is built around <b style={{ color: "#fff" }}>your career</b> — combining AI with your current skills, so <b style={{ color: "#5fe0b0" }}>you</b> become irreplaceable.
               </p>
               <div style={{ maxWidth: 860, margin: "34px auto 0", borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.14)", boxShadow: "0 30px 70px -40px rgba(0,0,0,0.8)", lineHeight: 0 }}>
-                <img src="/ai-career/before-after.png" alt="Before: too many AI tools and confusion. After: clarity, focus and career growth with the right tools for your role." style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                <img src="/ai-career/table.png" alt="Before: too many AI tools and confusion. After: clarity, focus and career growth with the exact tools for your role." style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
               </div>
             </Reveal>
             <Reveal delay={70}>
@@ -486,7 +486,7 @@ export default function AiCareerMasterclassPage() {
             <Reveal delay={70}>
               <div style={{ display: "grid", gridTemplateColumns: "minmax(0,320px) 1fr", gap: 40, alignItems: "center", marginTop: 40, ...CARD, background: "#f6f7f4", boxShadow: "none", padding: "clamp(24px,4vw,40px)" }} className="host-grid">
                 <div style={{ borderRadius: 22, overflow: "hidden", border: "1px solid #e4e7df", lineHeight: 0, boxShadow: "0 24px 50px -22px rgba(14,124,90,0.45)" }}>
-                  <img src="/rohan.png" alt="Rohan Mote — AI Career Coach, High Performance Club" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
+                  <img src="/ai-career/me.png" alt="Rohan Mote — AI Career Coach, High Performance Club" style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = "none"; }} />
                 </div>
                 <div>
                   <div style={{ fontFamily: "var(--font-display)", fontSize: "clamp(25px,3.8vw,34px)", fontWeight: 800, letterSpacing: "-0.02em", color: "#12160f" }}>Rohan Mote</div>
